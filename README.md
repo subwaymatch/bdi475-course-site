@@ -1,8 +1,15 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# BDI 475
 
-## Getting Started
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/705f981145c54b278af0066fad01f505)](https://www.codacy.com/gh/subwaymatch/bdi475-course-site/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=subwaymatch/bdi475-course-site&amp;utm_campaign=Badge_Grade)
+[![DeepScan grade](https://deepscan.io/api/teams/10181/projects/15454/branches/308854/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=10181&pid=15454&bid=308854)
 
-First, run the development server:
+Introduction to Data Analytics Applications in Business
+
+This is a course site for UIUC's BDI 475 - Introduction to Data Analytics Applications in Business.
+
+## Development
+
+Clone the repository and run the development server using one of the commands below:
 
 ```bash
 npm run dev
@@ -12,19 +19,9 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-## Learn More
+## Built with
 
-To learn more about Next.js, take a look at the following resources:
+![next-vercel-illustration](https://user-images.githubusercontent.com/1064036/89702608-860a2900-d908-11ea-83ad-aa228b4322ae.jpg)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This site is built with [Next.js](https://nextjs.org/) and is continuously deployed to [Vercel](https://vercel.com/).
