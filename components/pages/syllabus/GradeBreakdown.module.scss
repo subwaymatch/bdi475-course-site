@@ -1,0 +1,42 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.gradeBreakdownSection {
+  font-size: 1.25rem;
+  margin-top: 7.5rem;
+
+  @include media-breakpoint-down(sm) {
+    font-size: 1rem;
+  }
+
+  .columnCell {
+    display: block;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid $color-border-gray;
+
+    &.columnHeader {
+      font-weight: 500;
+      border-color: black;
+    }
+
+    &.purple {
+      color: $color-purple;
+      border-color: $color-purple;
+    }
+
+    &.note {
+      color: #828282;
+    }
+
+    @include media-breakpoint-down(sm) {
+      padding: 1.1rem 0;
+      border-bottom: none;
+    }
+  }
+}
+
+.gradedItem {
+  @include media-breakpoint-down(sm) {
+    border-top: 1px solid black;
+  }
+}

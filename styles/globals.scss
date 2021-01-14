@@ -22,6 +22,19 @@ h1.pageTitle {
   font-weight: 500;
   letter-spacing: -0.15rem;
   padding: 4rem 0;
+
+  @include media-breakpoint-down(md) {
+    font-size: 4rem;
+  }
+
+  @include media-breakpoint-down(sm) {
+    font-size: 3rem;
+    letter-spacing: -0.1rem;
+  }
+
+  @include media-breakpoint-down(xs) {
+    font-size: 2rem;
+  }
 }
 
 h2.sectionTitle {
@@ -33,6 +46,10 @@ h2.sectionTitle {
   padding-bottom: 3rem;
   display: flex;
   align-items: center;
+
+  &.blackBottomBorder {
+    border-bottom: 1px solid black;
+  }
 }
 
 [class$="Accent"] {
