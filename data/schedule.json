@@ -1,0 +1,325 @@
+[
+  {
+    "date": "0824",
+    "type": "Lecture",
+    "text": "Introductions and course overview"
+  },
+  {
+    "date": "0826",
+    "type": "Lecture",
+    "text": ["Intro to programming", "If statements"]
+  },
+  {
+    "date": "0828",
+    "type": "AfterClassAssignment",
+    "text": "After Class Exercise #1 due by 11:59pm"
+  },
+  {
+    "date": "0831",
+    "type": "Lecture",
+    "text": ["While Loops, For Loops", "Variables"]
+  },
+  {
+    "date": "0901",
+    "type": "AfterClassAssignment",
+    "text": "After Class Exercise #2 due by 11:59pm"
+  },
+  {
+    "date": "0902",
+    "type": "Quiz",
+    "text": "Quiz 1"
+  },
+  {
+    "date": "0902",
+    "type": "Lecture",
+    "text": "Data Types"
+  },
+  {
+    "date": "0903",
+    "type": "AfterClassAssignment",
+    "text": "After Class Exercise #3 due by 11:59pm"
+  },
+  {
+    "date": "0907",
+    "type": "NoLecture",
+    "text": "Labor Day - No Classes"
+  },
+  {
+    "date": "0909",
+    "type": "Lecture",
+    "text": ["Operators", "The print function"]
+  },
+  {
+    "date": "0910",
+    "type": "AfterClassAssignment",
+    "text": "After Class Exercise #4 due by 11:59pm"
+  },
+  {
+    "date": "0914",
+    "type": "Lecture",
+    "text": "Collections of Data"
+  },
+  {
+    "date": "0915",
+    "type": "AfterClassAssignment",
+    "text": "After Class Exercise #5 due by 11:59pm"
+  },
+  {
+    "date": "0916",
+    "type": "Lecture",
+    "text": "Functions"
+  },
+  {
+    "date": "0917",
+    "type": "AfterClassAssignment",
+    "text": "After Class Exercise #6 due by 11:59pm"
+  },
+  {
+    "date": "0921",
+    "type": "Quiz",
+    "text": "Quiz 2"
+  },
+  {
+    "date": "0921",
+    "type": "Lecture",
+    "text": "Functions"
+  },
+  {
+    "date": "0922",
+    "type": "AfterClassAssignment",
+    "text": "After Class Exercise #7 due by 11:59pm"
+  },
+  {
+    "date": "0923",
+    "type": "Lecture",
+    "text": "Working with strings"
+  },
+  {
+    "date": "1001",
+    "type": "CaseStudy",
+    "text": "Problem Set #1 due by 11:59pm"
+  },
+  {
+    "date": "0928",
+    "type": "Lecture",
+    "text": "Visualizations: Bar charts and histograms"
+  },
+  {
+    "date": "0930",
+    "type": "Lecture",
+    "text": "Visualizations: Histograms and box plots"
+  },
+  {
+    "date": "1003",
+    "type": "AfterClassAssignment",
+    "text": "After Class Exercise #8 due by 11:59pm"
+  },
+  {
+    "date": "1005",
+    "type": "Quiz",
+    "text": "Quiz 3"
+  },
+  {
+    "date": "1005",
+    "type": "Lecture",
+    "text": "Visualizations: Line charts and scatter plots"
+  },
+  {
+    "date": "1007",
+    "type": "Lecture",
+    "text": "Visualizations: Pie charts and heat maps"
+  },
+  {
+    "date": "1008",
+    "type": "AfterClassAssignment",
+    "text": "After Class Exercise #9 due by 11:59pm"
+  },
+  {
+    "date": "1012",
+    "type": "Lecture",
+    "text": "Visualizations: Heat maps and location-based maps"
+  },
+  {
+    "date": "1014",
+    "type": "Lecture",
+    "text": ["Intro to working with data", "Files and file systems, CSV files"]
+  },
+  {
+    "date": "1015",
+    "type": "AfterClassAssignment",
+    "text": "After Class Exercise #10 due by 11:59pm"
+  },
+  {
+    "date": "1018",
+    "type": "CaseStudy",
+    "text": "Problem Set #2 due by 11:59pm"
+  },
+  {
+    "date": "1019",
+    "type": "Quiz",
+    "text": "Quiz 4"
+  },
+  {
+    "date": "1019",
+    "type": "Lecture",
+    "text": "Intro to Pandas"
+  },
+  {
+    "date": "1021",
+    "type": "Lecture",
+    "text": ["Loading data into Pandas", "Data cleaning"]
+  },
+  {
+    "date": "1022",
+    "type": "AfterClassAssignment",
+    "text": "After Class Exercise #11 due by 11:59pm"
+  },
+  {
+    "date": "1026",
+    "type": "Lecture",
+    "text": ["Finishing up dates", "Exploring data"]
+  },
+  {
+    "date": "1028",
+    "type": "Lecture",
+    "text": "Selecting and filtering data"
+  },
+  {
+    "date": "1029",
+    "type": "AfterClassAssignment",
+    "text": "After Class Exercise #12 due by 11:59pm"
+  },
+  {
+    "date": "1101",
+    "type": "CaseStudy",
+    "text": "Midterm Project due by 11:59pm"
+  },
+  {
+    "date": "1102",
+    "type": "Quiz",
+    "text": "Quiz 5"
+  },
+  {
+    "date": "1102",
+    "type": "Lecture",
+    "text": ["Missing values", "Creating new columns"]
+  },
+  {
+    "date": "1103",
+    "type": "AfterClassAssignment",
+    "text": "After Class Exercise #13 due by 11:59pm"
+  },
+  {
+    "date": "1104",
+    "type": "Lecture",
+    "text": "Sorting and modifying data in Pandas"
+  },
+  {
+    "date": "1106",
+    "type": "AfterClassAssignment",
+    "text": "After Class Exercise #14 due by 11:59pm"
+  },
+  {
+    "date": "1109",
+    "type": "Lecture",
+    "text": ["Data analysis", "Descriptive Statistics"]
+  },
+  {
+    "date": "1110",
+    "type": "AfterClassAssignment",
+    "text": "After Class Exercise #15 due by 11:59pm"
+  },
+  {
+    "date": "1111",
+    "type": "Lecture",
+    "text": "Pivot tables"
+  },
+  {
+    "date": "1112",
+    "type": "AfterClassAssignment",
+    "text": "After Class Exercise #16 due by 11:59pm"
+  },
+  {
+    "date": "1113",
+    "type": "CaseStudy",
+    "text": "Problem Set #3 due by 11:59pm"
+  },
+  {
+    "date": "1117",
+    "type": "Quiz",
+    "text": "Quiz 6"
+  },
+  {
+    "date": "1116",
+    "type": "Lecture",
+    "text": "Pivot tables"
+  },
+  {
+    "date": "1117",
+    "type": "AfterClassAssignment",
+    "text": "After Class Exercise #17 due by 11:59pm"
+  },
+  {
+    "date": "1118",
+    "type": "Lecture",
+    "text": "Regression"
+  },
+
+  {
+    "date": "1123",
+    "type": "NoLecture",
+    "text": "Thanksgiving Break"
+  },
+  {
+    "date": "1125",
+    "type": "NoLecture",
+    "text": "Thanksgiving Break"
+  },
+
+  {
+    "date": "1130",
+    "type": "Lecture",
+    "text": "Intro to robotic process automation (RPA)"
+  },
+  {
+    "date": "1202",
+    "type": "Lecture",
+    "text": "UiPath software for RPA"
+  },
+  {
+    "date": "1203",
+    "type": "CaseStudy",
+    "text": "Problem Set #4 due by 11:59pm"
+  },
+  {
+    "date": "1203",
+    "type": "AfterClassAssignment",
+    "text": "After Class Exercise #18 due by 11:59pm"
+  },
+
+  {
+    "date": "1207",
+    "type": "Quiz",
+    "text": "Quiz 7"
+  },
+  {
+    "date": "1207",
+    "type": "Lecture",
+    "text": "For loops and if statements in RPA"
+  },
+  {
+    "date": "1208",
+    "type": "AfterClassAssignment",
+    "text": "After Class Exercise #19 due by 11:59pm"
+  },
+  {
+    "date": "1209",
+    "type": "Lecture",
+    "text": "Work on final project in class"
+  },
+  {
+    "date": "1212",
+    "type": "CaseStudy",
+    "text": "Final Project due by 11:59pm"
+  }
+]
