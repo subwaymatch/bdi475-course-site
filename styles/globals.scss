@@ -34,6 +34,7 @@ h1.pageTitle {
 
   @include media-breakpoint-down(xs) {
     font-size: 2rem;
+    letter-spacing: -0.07rem;
   }
 }
 
