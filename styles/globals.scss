@@ -1,0 +1,17 @@
+@use 'sass:color';
+@import './variables';
+@import url('https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css');
+@import './bootstrap.custom';
+@import '~bootstrap/scss/bootstrap-grid';
+
+body {
+  font-family: $font-sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  letter-spacing: -0.02rem;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
