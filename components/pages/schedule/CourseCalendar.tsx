@@ -11,6 +11,7 @@ import clsx from "clsx";
 const startWeekIndex = moment("20210824").week();
 const endWeekIndex = moment("20211212").week();
 const currentWeekIndex = moment().week();
+const todayKey = moment().format("YYYYMMDD");
 
 let calendar = [];
 
@@ -56,7 +57,7 @@ const CalendarWeek = ({ week, show, isPrevWeek }) => {
           className={styles.calendarRow}
         >
           {week.map((day) => {
-            const dayKey = day.format("MMDD");
+            const dayKey = day.format("YYYYMMDD");
             const dayEvents = eventsByDate[dayKey];
 
             return (
@@ -70,14 +71,12 @@ const CalendarWeek = ({ week, show, isPrevWeek }) => {
 };
 
 const CalendarCell = ({ day, dayEvents }) => {
-  const todayKey = moment().format("MMDD");
-  const dayKey = day.format("MMDD");
+  const dayKey = day.format("YYYYMMDD");
 
   return (
     <div key={dayKey} className={styles.calendarCell}>
       <div
-        className={clsx("day", {
-          [styles.empty]: typeof dayEvents === "undefined",
+        className={clsx(styles.day, {
           [styles.today]: todayKey === dayKey,
         })}
       >

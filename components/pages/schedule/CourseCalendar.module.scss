@@ -3,19 +3,17 @@
 @import "styles/mixins";
 
 .calendar {
-  padding: 2rem 0;
-  margin: 0 auto;
   font-size: 0.8rem;
   letter-spacing: -0.01rem;
   line-height: 1.6;
   width: 98%;
-  max-width: 1300px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 
   .togglePrevButton {
     display: flex;
     color: #444;
     background-color: #e3e3e3;
-    border-radius: 0.4rem;
     font-size: 1rem;
 
     justify-content: center;
@@ -36,7 +34,6 @@
 
   .calendarRow {
     display: flex;
-    padding: 0.5rem 0;
 
     @include media-breakpoint-down(md) {
       padding: 0;
@@ -59,7 +56,7 @@
 
   .day {
     margin: 0.8rem 0;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid $color-border-gray;
 
     .todayIndicator {
       display: none;
@@ -69,17 +66,16 @@
       display: flex;
       justify-content: space-between;
       padding-top: 0.4rem;
-      font-weight: 500;
+      font-weight: 600;
 
       .date {
-        color: #333;
       }
 
       .weekday {
-        color: $color-green;
+        color: #aaa;
       }
 
-      @include media-breakpoint-down(lg) {
+      @include media-breakpoint-down(md) {
         justify-content: flex-start;
 
         .weekday {
@@ -90,10 +86,11 @@
 
     .dayContent {
       margin-top: 0.5rem;
+      font-weight: 600;
 
       .box {
         padding: 0.2rem 0.4rem;
-        border-radius: 0.3rem;
+        border-radius: 0.2rem;
         margin-top: 0.3rem;
 
         @include media-breakpoint-only(md) {
@@ -102,48 +99,31 @@
       }
 
       .quiz {
-        color: white;
-        background-color: $color-green;
-        text-align: center;
-        font-weight: 600;
+        background-color: $color-yellow;
       }
 
       .lecture {
-        background-color: white;
+        background-color: $color-green;
 
         .lectureHeading {
           font-weight: 600;
         }
 
         .lectureTopic {
-          color: #777;
+          font-weight: 400;
         }
       }
 
       .afterClassAssignment {
-        color: white;
-        background-color: color.scale(
-          $color-purple,
-          $lightness: 30%,
-          $saturation: 20%
-        );
+        background-color: $color-purple;
       }
 
       .noLecture {
-        color: #000;
         background-color: #ccc;
       }
 
       .caseStudy {
-        color: white;
-        background: color.scale($color-green, $lightness: -20%);
-      }
-    }
-
-    &.empty {
-      .dayHeader,
-      .dayContent {
-        opacity: 0.5;
+        background-color: $color-blue;
       }
     }
 

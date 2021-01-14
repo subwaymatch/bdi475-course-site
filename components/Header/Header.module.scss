@@ -1,0 +1,23 @@
+@import "styles/variables";
+.header {
+  margin-top: 1rem;
+
+  .logoLink {
+    padding: 0.5rem 0;
+  }
+
+  .mainMenu {
+    a {
+      color: black;
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 0;
+
+      &:hover {
+      }
+
+      [class$="Accent"] {
+      }
+    }
+  }
+}

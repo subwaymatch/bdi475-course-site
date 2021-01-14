@@ -1,10 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Container, Row, Col } from "react-bootstrap";
+import styles from "./Header.module.scss";
+import clsx from "clsx";
 
 export default function Header() {
   return (
-    <header>
+    <header className={styles.header}>
       <Container>
         <Row className="align-items-center">
           <Col md={2}>
@@ -14,33 +16,55 @@ export default function Header() {
               }}
             >
               <Link href="/">
-                <Image
-                  src="/images/logo_bdi475.svg"
-                  alt="Tabbied"
-                  layout="fixed"
-                  width={124}
-                  height={25}
-                />
+                <a className={styles.logoLink}>
+                  <Image
+                    src="/images/logo_bdi475.svg"
+                    alt="Tabbied"
+                    layout="fixed"
+                    width={124}
+                    height={25}
+                  />
+                </a>
               </Link>
             </div>
           </Col>
 
           <Col md={8}>
-            <Row className="align-items-center">
+            <Row className={clsx(styles.mainMenu, "align-items-center")}>
               <Col md={3}>
-                <Link href="/syllabus">Syllabus</Link>
+                <Link href="/syllabus">
+                  <a>
+                    Syllabus
+                    <span className="greenAccent" />
+                  </a>
+                </Link>
               </Col>
 
               <Col md={3}>
-                <Link href="/schedule">Schedule</Link>
+                <Link href="/schedule">
+                  <a>
+                    Schedule
+                    <span className="purpleAccent" />
+                  </a>
+                </Link>
               </Col>
 
               <Col md={3}>
-                <Link href="/">Assignments</Link>
+                <Link href="/">
+                  <a>
+                    Assignments
+                    <span className="pinkAccent" />
+                  </a>
+                </Link>
               </Col>
 
               <Col md={3}>
-                <Link href="/">Notes</Link>
+                <Link href="/">
+                  <a>
+                    Notes
+                    <span className="blueAccent" />
+                  </a>
+                </Link>
               </Col>
             </Row>
           </Col>
