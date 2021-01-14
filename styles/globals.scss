@@ -1,8 +1,8 @@
 @use 'sass:color';
-@import './variables';
-@import url('https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css');
-@import './bootstrap.custom';
-@import '~bootstrap/scss/bootstrap-grid';
+@import "./variables";
+@import url("https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css");
+@import "./bootstrap.custom";
+@import "~bootstrap/scss/bootstrap-grid";
 
 body {
   font-family: $font-sans-serif;
@@ -30,16 +30,69 @@ h2.sectionTitle {
   font-weight: 500;
   border-top: 1px solid black;
   padding-top: 0.75rem;
+  padding-bottom: 3rem;
   display: flex;
   align-items: center;
-  
-  &::after {
-    content: " ";
-    margin-left: 0.75rem;
-    display: inline-block;
-    width: 0.5rem;
-    height: 0.5rem;
+}
+
+[class$="Accent"] {
+  margin-left: 0.75rem;
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: black;
+  border-radius: 1rem;
+
+  &.greenAccent {
     background-color: $color-green;
-    border-radius: 1rem;
+  }
+
+  &.purpleAccent {
+    background-color: $color-purple;
+  }
+
+  &.yellowAccent {
+    background-color: $color-yellow;
+  }
+
+  &.pinkAccent {
+    background-color: $color-pink;
+  }
+
+  &.blueAccent {
+    background-color: $color-blue;
+  }
+
+  &.orangeAccent {
+    background-color: $color-orange;
+  }
+}
+
+[class$="Label"] {
+  padding: 0.25rem 0.7rem;
+  border-radius: 2rem;
+
+  &.greenLabel {
+    background-color: $color-green;
+  }
+
+  &.purpleLabel {
+    background-color: $color-purple;
+  }
+
+  &.yellowLabel {
+    background-color: $color-yellow;
+  }
+
+  &.pinkLabel {
+    background-color: $color-pink;
+  }
+
+  &.blueLabel {
+    background-color: $color-blue;
+  }
+
+  &.orangeLabel {
+    background-color: $color-orange;
   }
 }
