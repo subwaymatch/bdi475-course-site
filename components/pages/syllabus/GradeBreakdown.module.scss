@@ -11,8 +11,17 @@
 
   .columnCell {
     display: block;
-    padding: 1.25rem 0;
     border-bottom: 1px solid $color-border-gray;
+    padding: 1.25rem 0;
+
+    @include media-breakpoint-down(md) {
+      padding: 1rem 0;
+    }
+
+    @include media-breakpoint-down(sm) {
+      padding: 0;
+      border: none;
+    }
 
     &.columnHeader {
       font-weight: 500;
@@ -25,18 +34,24 @@
     }
 
     &.note {
-      color: #828282;
-    }
+      color: #aaa;
 
-    @include media-breakpoint-down(sm) {
-      padding: 1.1rem 0;
-      border-bottom: none;
+      @include media-breakpoint-down(xs) {
+        margin-top: 0.5rem;
+      }
     }
   }
 }
 
-.gradedItem {
+.headerRow,
+.itemRow {
   @include media-breakpoint-down(sm) {
-    border-top: 1px solid black;
+    padding: 1.1rem 0;
+  }
+}
+
+.itemRow {
+  @include media-breakpoint-down(sm) {
+    border-top: 1px solid $color-border-gray;
   }
 }
