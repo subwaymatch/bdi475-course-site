@@ -11,8 +11,8 @@
   },
   {
     "date": "20210828",
-    "type": "AfterClassAssignment",
-    "text": "After-class Exercise #1"
+    "type": "AfterClassExercise",
+    "text": "Exercise #1"
   },
   {
     "date": "20210831",
@@ -21,8 +21,8 @@
   },
   {
     "date": "20210901",
-    "type": "AfterClassAssignment",
-    "text": "After-class Exercise #2"
+    "type": "AfterClassExercise",
+    "text": "Exercise #2"
   },
   {
     "date": "20210902",
@@ -36,8 +36,8 @@
   },
   {
     "date": "20210903",
-    "type": "AfterClassAssignment",
-    "text": "After-class Exercise #3"
+    "type": "AfterClassExercise",
+    "text": "Exercise #3"
   },
   {
     "date": "20210907",
@@ -51,8 +51,8 @@
   },
   {
     "date": "20210910",
-    "type": "AfterClassAssignment",
-    "text": "After-class Exercise #4"
+    "type": "AfterClassExercise",
+    "text": "Exercise #4"
   },
   {
     "date": "20210914",
@@ -61,8 +61,8 @@
   },
   {
     "date": "20210915",
-    "type": "AfterClassAssignment",
-    "text": "After-class Exercise #5"
+    "type": "AfterClassExercise",
+    "text": "Exercise #5"
   },
   {
     "date": "20210916",
@@ -71,8 +71,8 @@
   },
   {
     "date": "20210917",
-    "type": "AfterClassAssignment",
-    "text": "After-class Exercise #6"
+    "type": "AfterClassExercise",
+    "text": "Exercise #6"
   },
   {
     "date": "20210921",
@@ -86,8 +86,8 @@
   },
   {
     "date": "20210922",
-    "type": "AfterClassAssignment",
-    "text": "After-class Exercise #7"
+    "type": "AfterClassExercise",
+    "text": "Exercise #7"
   },
   {
     "date": "20210923",
@@ -97,7 +97,7 @@
   {
     "date": "20211001",
     "type": "CaseStudy",
-    "text": "Problem Set #1"
+    "text": "Case Study #1"
   },
   {
     "date": "20210928",
@@ -111,8 +111,8 @@
   },
   {
     "date": "20211003",
-    "type": "AfterClassAssignment",
-    "text": "After-class Exercise #8"
+    "type": "AfterClassExercise",
+    "text": "Exercise #8"
   },
   {
     "date": "20211005",
@@ -131,8 +131,8 @@
   },
   {
     "date": "20211008",
-    "type": "AfterClassAssignment",
-    "text": "After-class Exercise #9"
+    "type": "AfterClassExercise",
+    "text": "Exercise #9"
   },
   {
     "date": "20211012",
@@ -146,13 +146,13 @@
   },
   {
     "date": "20211015",
-    "type": "AfterClassAssignment",
-    "text": "After-class Exercise #10"
+    "type": "AfterClassExercise",
+    "text": "Exercise #10"
   },
   {
     "date": "20211018",
     "type": "CaseStudy",
-    "text": "Problem Set #2"
+    "text": "Case Study #2"
   },
   {
     "date": "20211019",
@@ -171,8 +171,8 @@
   },
   {
     "date": "20211022",
-    "type": "AfterClassAssignment",
-    "text": "After-class Exercise #11"
+    "type": "AfterClassExercise",
+    "text": "Exercise #11"
   },
   {
     "date": "20211026",
@@ -186,8 +186,8 @@
   },
   {
     "date": "20211029",
-    "type": "AfterClassAssignment",
-    "text": "After-class Exercise #12"
+    "type": "AfterClassExercise",
+    "text": "Exercise #12"
   },
   {
     "date": "20211101",
@@ -206,8 +206,8 @@
   },
   {
     "date": "20211103",
-    "type": "AfterClassAssignment",
-    "text": "After-class Exercise #13"
+    "type": "AfterClassExercise",
+    "text": "Exercise #13"
   },
   {
     "date": "20211104",
@@ -216,8 +216,8 @@
   },
   {
     "date": "20211106",
-    "type": "AfterClassAssignment",
-    "text": "After-class Exercise #14"
+    "type": "AfterClassExercise",
+    "text": "Exercise #14"
   },
   {
     "date": "20211109",
@@ -226,8 +226,8 @@
   },
   {
     "date": "20211110",
-    "type": "AfterClassAssignment",
-    "text": "After-class Exercise #15"
+    "type": "AfterClassExercise",
+    "text": "Exercise #15"
   },
   {
     "date": "20211111",
@@ -236,13 +236,13 @@
   },
   {
     "date": "20211112",
-    "type": "AfterClassAssignment",
-    "text": "After-class Exercise #16"
+    "type": "AfterClassExercise",
+    "text": "Exercise #16"
   },
   {
     "date": "20211113",
     "type": "CaseStudy",
-    "text": "Problem Set #3"
+    "text": "Case Study #3"
   },
   {
     "date": "20211117",
@@ -256,8 +256,8 @@
   },
   {
     "date": "20211117",
-    "type": "AfterClassAssignment",
-    "text": "After-class Exercise #17"
+    "type": "AfterClassExercise",
+    "text": "Exercise #17"
   },
   {
     "date": "20211118",
@@ -289,12 +289,12 @@
   {
     "date": "20211203",
     "type": "CaseStudy",
-    "text": "Problem Set #4"
+    "text": "Case Study #4"
   },
   {
     "date": "20211203",
-    "type": "AfterClassAssignment",
-    "text": "After-class Exercise #18"
+    "type": "AfterClassExercise",
+    "text": "Exercise #18"
   },
 
   {
@@ -309,8 +309,8 @@
   },
   {
     "date": "20211208",
-    "type": "AfterClassAssignment",
-    "text": "After-class Exercise #19"
+    "type": "AfterClassExercise",
+    "text": "Exercise #19"
   },
   {
     "date": "20211209",

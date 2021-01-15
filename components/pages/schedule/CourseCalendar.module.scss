@@ -3,8 +3,8 @@
 @import "styles/mixins";
 
 .calendar {
-  font-size: 0.8rem;
-  letter-spacing: -0.01rem;
+  font-size: 1rem;
+  letter-spacing: -0.02rem;
   line-height: 1.6;
   width: 98%;
   padding-left: 0.5rem;
@@ -37,6 +37,7 @@
 
     @include media-breakpoint-down(md) {
       padding: 0;
+      flex-direction: column;
     }
   }
 
@@ -46,17 +47,9 @@
     padding-right: 0.5rem;
   }
 
-  @include media-breakpoint-down(md) {
-    font-size: 1rem;
-
-    .calendarRow {
-      flex-direction: column;
-    }
-  }
-
   .day {
     margin: 0.8rem 0;
-    border-top: 1px solid $color-border-gray;
+    border-top: 1px solid #333;
 
     .todayIndicator {
       display: none;
@@ -66,13 +59,20 @@
       display: flex;
       justify-content: space-between;
       padding-top: 0.4rem;
-      font-weight: 600;
 
       .date {
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+
+        .dateDivider {
+          display: inline-block;
+          padding: 0 0.15rem;
+        }
       }
 
       .weekday {
-        color: #aaa;
+        color: #999;
       }
 
       @include media-breakpoint-down(md) {
@@ -86,10 +86,10 @@
 
     .dayContent {
       margin-top: 0.5rem;
-      font-weight: 600;
+      font-weight: 500;
 
       .box {
-        padding: 0.2rem 0.4rem;
+        padding: 0.3rem 0.5rem;
         border-radius: 0.2rem;
         margin-top: 0.3rem;
 
@@ -100,30 +100,46 @@
 
       .quiz {
         background-color: $color-yellow;
+        border: 1px solid color.scale($color-yellow, $lightness: -28%);
       }
 
       .lecture {
         background-color: $color-green;
+        border: 1px solid color.scale($color-green, $lightness: -8%);
 
         .lectureHeading {
-          font-weight: 600;
+          font-weight: 500;
+          padding-bottom: 0.3rem;
         }
 
-        .lectureTopic {
+        .topic {
+          color: color.scale($color-green, $lightness: -48%);
+          font-size: 0.95rem;
           font-weight: 400;
+          border-top: 2px solid color.scale($color-green, $lightness: -8%);
+          padding: 0.3rem 0;
+
+          &:last-child {
+            padding-bottom: 0;
+          }
         }
       }
 
-      .afterClassAssignment {
+      .afterClassExercise {
         background-color: $color-purple;
+        border-top: 1px solid color.scale($color-purple, $lightness: -8%);
       }
 
       .noLecture {
-        background-color: #ccc;
+        color: #777;
+        font-weight: 400;
+        background-color: #eee;
+        border: 1px solid #ddd;
       }
 
       .caseStudy {
-        background-color: $color-blue;
+        background-color: $color-pink;
+        border-top: 1px solid color.scale($color-pink, $lightness: -16%);
       }
     }
 

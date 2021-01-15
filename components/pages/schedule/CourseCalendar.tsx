@@ -85,7 +85,11 @@ const CalendarCell = ({ day, dayEvents }) => {
           <IoMdArrowDown className={styles.todayIcon} />
         </div>
         <div className={styles.dayHeader}>
-          <span className={styles.date}>{day.format("MM/DD")}</span>
+          <span className={styles.date}>
+            <span>{day.format("MM")}</span>
+            <div className={styles.dateDivider}>⁄</div>
+            <span>{day.format("DD")}</span>
+          </span>
           <span className={styles.weekday}>{day.format("ddd")}</span>
         </div>
 
@@ -107,22 +111,24 @@ const CalendarCell = ({ day, dayEvents }) => {
                   Lecture {lectureNumberByDate[day.format("MMDD")]}
                 </h3>
 
-                {dayEvents[ScheduleType.Lecture].map((text, idx) => (
-                  <div
-                    key={`${dayKey}_topic_${idx}`}
-                    className={styles.lectureTopic}
-                  >
-                    {text}
-                  </div>
-                ))}
+                <div className={styles.lectureTopics}>
+                  {dayEvents[ScheduleType.Lecture].map((text, idx) => (
+                    <div
+                      key={`${dayKey}_topic_${idx}`}
+                      className={styles.topic}
+                    >
+                      {text}
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
 
-            {dayEvents.hasOwnProperty(ScheduleType.AfterClassAssignment) &&
-              dayEvents[ScheduleType.AfterClassAssignment].map((text, idx) => (
+            {dayEvents.hasOwnProperty(ScheduleType.AfterClassExercise) &&
+              dayEvents[ScheduleType.AfterClassExercise].map((text, idx) => (
                 <div
                   key={`${dayKey}_ac_${idx}`}
-                  className={clsx(styles.afterClassAssignment, styles.box)}
+                  className={clsx(styles.afterClassExercise, styles.box)}
                 >
                   {text}
                 </div>
