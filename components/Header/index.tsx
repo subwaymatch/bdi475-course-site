@@ -50,7 +50,7 @@ export default function Header() {
               </Col>
 
               <Col md={3}>
-                <Link href="/">
+                <Link href="/assignments">
                   <a>
                     Assignments
                     <span className="pinkAccent" />

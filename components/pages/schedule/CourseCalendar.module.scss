@@ -6,29 +6,24 @@
   font-size: 1rem;
   letter-spacing: -0.02rem;
   line-height: 1.6;
-  width: 98%;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding: 0 1rem 10rem 1rem;
 
   .togglePrevButton {
     display: flex;
-    color: #444;
-    background-color: #e3e3e3;
-    font-size: 1rem;
+    color: black;
+    font-size: 1.25rem;
+    border-top: 1px solid black;
 
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    padding: 0.8rem 1rem;
+    padding: 1.25rem;
 
     .reactIcon {
       margin-right: 0.5rem;
     }
 
     &:hover {
-      color: #000;
-      background-color: #ddd;
-      box-shadow: 0 0 1rem rgba(black, 0.05);
     }
   }
 
@@ -45,6 +40,14 @@
     flex: 1;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:last-child {
+      padding-right: 0;
+    }
   }
 
   .day {
@@ -60,6 +63,10 @@
       justify-content: space-between;
       padding-top: 0.4rem;
 
+      @include media-breakpoint-down(md) {
+        justify-content: flex-start;
+      }
+
       .date {
         font-weight: 600;
         display: inline-flex;
@@ -73,12 +80,8 @@
 
       .weekday {
         color: #999;
-      }
 
-      @include media-breakpoint-down(md) {
-        justify-content: flex-start;
-
-        .weekday {
+        @include media-breakpoint-down(md) {
           margin-left: 0.5rem;
         }
       }
@@ -100,12 +103,10 @@
 
       .quiz {
         background-color: $color-yellow;
-        border: 1px solid color.scale($color-yellow, $lightness: -28%);
       }
 
       .lecture {
         background-color: $color-green;
-        border: 1px solid color.scale($color-green, $lightness: -8%);
 
         .lectureHeading {
           font-weight: 500;
@@ -116,7 +117,7 @@
           color: color.scale($color-green, $lightness: -48%);
           font-size: 0.95rem;
           font-weight: 400;
-          border-top: 2px solid color.scale($color-green, $lightness: -8%);
+          border-top: 1px solid color.scale($color-green, $lightness: -12%);
           padding: 0.3rem 0;
 
           &:last-child {
@@ -127,19 +128,16 @@
 
       .afterClassExercise {
         background-color: $color-purple;
-        border-top: 1px solid color.scale($color-purple, $lightness: -8%);
       }
 
       .noLecture {
-        color: #777;
+        color: #555;
         font-weight: 400;
-        background-color: #eee;
-        border: 1px solid #ddd;
+        background-color: #ddd;
       }
 
       .caseStudy {
         background-color: $color-pink;
-        border-top: 1px solid color.scale($color-pink, $lightness: -16%);
       }
     }
 
@@ -162,7 +160,9 @@
       }
 
       .dayHeader {
-        font-weight: 700;
+        .weekday {
+          color: black;
+        }
       }
     }
   }

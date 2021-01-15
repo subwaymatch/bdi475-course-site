@@ -1,5 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap";
-import styles from "./GradeBreakdown.module.scss";
+import styles from "./GradingBreakdown.module.scss";
 import clsx from "clsx";
 
 const GradedItem = ({ item, points, percentage, notes }) => (
@@ -26,7 +26,7 @@ const GradedItem = ({ item, points, percentage, notes }) => (
   </div>
 );
 
-export default function GradeBreakdown() {
+export default function GradingBreakdown() {
   return (
     <section className={styles.gradeBreakdownSection}>
       <Container>

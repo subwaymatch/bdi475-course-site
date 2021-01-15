@@ -53,6 +53,25 @@ h2.sectionTitle {
   }
 }
 
+.green {
+  color: $color-green;
+}
+.purple {
+  color: $color-purple;
+}
+.yellow {
+  color: $color-yellow;
+}
+.pink {
+  color: $color-pink;
+}
+.blue {
+  color: $color-blue;
+}
+.orange {
+  color: $color-orange;
+}
+
 [class$="Accent"] {
   margin-left: 0.75rem;
   display: inline-block;
@@ -87,6 +106,8 @@ h2.sectionTitle {
 }
 
 [class$="Label"] {
+  font-size: 1rem;
+  letter-spacing: -0.01rem;
   padding: 0.25rem 0.7rem;
   border-radius: 2rem;
 
@@ -112,5 +133,13 @@ h2.sectionTitle {
 
   &.orangeLabel {
     background-color: $color-orange;
+  }
+
+  &.grayLabel {
+    background-color: $color-gray;
+  }
+
+  &.lightGrayLabel {
+    background-color: $color-light-gray;
   }
 }

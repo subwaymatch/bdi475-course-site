@@ -4,12 +4,12 @@ import { eventsByDate, lectureNumberByDate } from "lib/schedule";
 import { ScheduleType } from "typings/schedule";
 import { BsChevronUp, BsChevronDown } from "react-icons/bs";
 import { IoMdArrowDown } from "react-icons/io";
-import { motion, AnimatePresence } from "framer-motion";
 import styles from "./CourseCalendar.module.scss";
 import clsx from "clsx";
 
-const startWeekIndex = moment("20210824").week();
-const endWeekIndex = moment("20211212").week();
+const eventDates = Object.keys(eventsByDate).sort();
+const startWeekIndex = moment("20210101").week();
+const endWeekIndex = moment(eventDates[eventDates.length - 1]).week();
 const currentWeekIndex = moment().week();
 const todayKey = moment().format("YYYYMMDD");
 
@@ -29,44 +29,18 @@ for (let weekIndex = startWeekIndex; weekIndex <= endWeekIndex; weekIndex++) {
   );
 }
 
-console.log(eventsByDate);
-
 const CalendarWeek = ({ week, show, isPrevWeek }) => {
   return (
-    <AnimatePresence>
-      {show && (
-        <motion.div
-          key={`week-${week}`}
-          initial={isPrevWeek ? "hidden" : false}
-          animate={isPrevWeek ? "visible" : false}
-          exit="hidden"
-          variants={{
-            hidden: {
-              opacity: 0,
-              height: 0,
-              y: 30,
-              padding: 0,
-            },
-            visible: {
-              opacity: 1,
-              height: "auto",
-              y: 0,
-            },
-          }}
-          transition={{ duration: 0.5 }}
-          className={styles.calendarRow}
-        >
-          {week.map((day) => {
-            const dayKey = day.format("YYYYMMDD");
-            const dayEvents = eventsByDate[dayKey];
+    show && (
+      <div key={`week-${week}`} className={styles.calendarRow}>
+        {week.map((day) => {
+          const dayKey = day.format("YYYYMMDD");
+          const dayEvents = eventsByDate[dayKey];
 
-            return (
-              <CalendarCell key={dayKey} day={day} dayEvents={dayEvents} />
-            );
-          })}
-        </motion.div>
-      )}
-    </AnimatePresence>
+          return <CalendarCell key={dayKey} day={day} dayEvents={dayEvents} />;
+        })}
+      </div>
+    )
   );
 };
 
@@ -158,7 +132,7 @@ export default function CourseCalendar() {
   const [showPrev, setShowPrev] = useState(false);
 
   return (
-    <motion.div
+    <div
       className={clsx(styles.calendar, {
         [styles.hidePrev]: !showPrev,
       })}
@@ -182,6 +156,11 @@ export default function CourseCalendar() {
         )}
       </div>
 
+      <h2 className="sectionTitle">
+        2021
+        <span className="blueAccent" />
+      </h2>
+
       {calendar.map((week, weekIndex) => (
         <CalendarWeek
           key={`week-${week}`}
@@ -192,6 +171,6 @@ export default function CourseCalendar() {
           isPrevWeek={weekIndex < currentWeekIndex - startWeekIndex}
         />
       ))}
-    </motion.div>
+    </div>
   );
 }
