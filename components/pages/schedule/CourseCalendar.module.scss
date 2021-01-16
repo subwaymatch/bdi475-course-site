@@ -8,10 +8,22 @@
   line-height: 1.6;
   padding: 0 1rem 10rem 1rem;
 
+  @include media-breakpoint-only(md) {
+    font-size: 0.9rem;
+  }
+
+  @include media-breakpoint-only(sm) {
+    font-size: 1.2rem;
+  }
+
+  @include media-breakpoint-only(xs) {
+    font-size: 1.1rem;
+  }
+
   .togglePrevButton {
     display: flex;
     color: black;
-    font-size: 1.25rem;
+    font-size: 1.2em;
     border-top: 1px solid black;
 
     justify-content: center;
@@ -30,7 +42,7 @@
   .calendarRow {
     display: flex;
 
-    @include media-breakpoint-down(md) {
+    @include media-breakpoint-down(sm) {
       padding: 0;
       flex-direction: column;
     }
@@ -48,6 +60,16 @@
     &:last-child {
       padding-right: 0;
     }
+
+    @include media-breakpoint-only(md) {
+      padding-left: 0.25rem;
+      padding-right: 0.25rem;
+    }
+
+    @include media-breakpoint-down(sm) {
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
 
   .day {
@@ -63,7 +85,7 @@
       justify-content: space-between;
       padding-top: 0.4rem;
 
-      @include media-breakpoint-down(md) {
+      @include media-breakpoint-down(sm) {
         justify-content: flex-start;
       }
 
@@ -81,7 +103,7 @@
       .weekday {
         color: #999;
 
-        @include media-breakpoint-down(md) {
+        @include media-breakpoint-down(sm) {
           margin-left: 0.5rem;
         }
       }
@@ -95,10 +117,6 @@
         padding: 0.3rem 0.5rem;
         border-radius: 0.2rem;
         margin-top: 0.3rem;
-
-        @include media-breakpoint-only(md) {
-          padding: 0.6rem 1rem;
-        }
       }
 
       .quiz {
@@ -115,7 +133,7 @@
 
         .topic {
           color: color.scale($color-green, $lightness: -48%);
-          font-size: 0.95rem;
+          font-size: 0.95em;
           font-weight: 400;
           border-top: 1px solid color.scale($color-green, $lightness: -12%);
           padding: 0.3rem 0;
@@ -155,7 +173,6 @@
 
         .todayIcon {
           margin-left: 0.2rem;
-          font-size: 1.1rem;
         }
       }
 
