@@ -117,30 +117,33 @@ export default function AssignmentsPage() {
           </Row>
 
           <Row>
-            <Col md={4}>
+            <Col lg={4} md={6}>
               <CaseStudyItem
                 name="Uber Supply and Demand"
                 dueDate="20210131"
                 pointsAvailable={8}
                 status={AssignmentStatus.Complete}
+                thumbnail={<img src="/images/placeholder_plates.jpg" />}
               />
             </Col>
 
-            <Col md={4}>
+            <Col lg={4} md={6}>
               <CaseStudyItem
                 name="AirBnB Analysis"
                 dueDate="20210204"
                 pointsAvailable={8}
                 status={AssignmentStatus.Available}
+                thumbnail={<img src="/images/placeholder_lemon.jpg" />}
               />
             </Col>
 
-            <Col md={4}>
+            <Col lg={4} md={6}>
               <CaseStudyItem
                 name="DuPont Case"
                 dueDate="20210215"
                 pointsAvailable={10}
                 status={AssignmentStatus.Unavailable}
+                thumbnail={<img src="/images/placeholder_grapefruits.jpg" />}
               />
             </Col>
           </Row>

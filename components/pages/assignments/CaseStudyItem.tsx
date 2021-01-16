@@ -9,6 +9,7 @@ type CaseStudyItemProps = {
   dueDate: string;
   pointsAvailable: number;
   status: AssignmentStatus;
+  thumbnail: React.ReactNode;
 };
 
 export default function CaseStudyItem({
@@ -16,6 +17,7 @@ export default function CaseStudyItem({
   dueDate,
   pointsAvailable,
   status,
+  thumbnail,
 }: CaseStudyItemProps) {
   console.log(`status=${status}`);
   console.log(`AssignmentStatus.Complete=${AssignmentStatus.Complete}`);
@@ -29,6 +31,9 @@ export default function CaseStudyItem({
       })}
     >
       <Row>
+        <Col>{thumbnail}</Col>
+      </Row>
+      <Row>
         <Col md={12}>
           <span>{name}</span>
         </Col>
@@ -38,18 +43,18 @@ export default function CaseStudyItem({
             <span
               className={clsx(
                 status === AssignmentStatus.Available
-                  ? "blueLabelLabel"
+                  ? "blueLabel"
                   : "lightGrayLabel"
               )}
             >
               Due {moment(dueDate, "YYYYMMDD").format("ll")}
             </span>
+            <span className="grayLabel">
+              {pointsAvailable} Points Available
+            </span>
           </div>
         </Col>
-
-        <Col md={12}>
-          <span className="grayLabel">{pointsAvailable} Points Available</span>
-
+        <Col>
           <span
             className={clsx(styles.status, {
               blue: status === AssignmentStatus.Available,
