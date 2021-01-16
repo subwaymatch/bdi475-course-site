@@ -117,7 +117,7 @@ export default function AssignmentsPage() {
           </Row>
 
           <Row>
-            <Col lg={4} md={6}>
+            <Col md={6}>
               <CaseStudyItem
                 name="Uber Supply and Demand"
                 dueDate="20210131"
@@ -127,7 +127,7 @@ export default function AssignmentsPage() {
               />
             </Col>
 
-            <Col lg={4} md={6}>
+            <Col md={6}>
               <CaseStudyItem
                 name="AirBnB Analysis"
                 dueDate="20210204"
@@ -137,7 +137,7 @@ export default function AssignmentsPage() {
               />
             </Col>
 
-            <Col lg={4} md={6}>
+            <Col md={6}>
               <CaseStudyItem
                 name="DuPont Case"
                 dueDate="20210215"

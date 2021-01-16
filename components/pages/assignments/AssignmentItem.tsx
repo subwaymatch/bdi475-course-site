@@ -36,19 +36,7 @@ export default function AssignmentItem({
       )}
     >
       <Row>
-        <Col md={4}>
-          <span
-            className={
-              status === AssignmentStatus.Available
-                ? colorTheme.toLowerCase()
-                : styles.name
-            }
-          >
-            {name}
-          </span>
-        </Col>
-
-        <Col md={6}>
+        <Col md={{ span: 6, order: 2 }}>
           <div className={styles.metaInfo}>
             <span
               className={clsx(
@@ -65,7 +53,17 @@ export default function AssignmentItem({
           </div>
         </Col>
 
-        <Col md={2}>
+        <Col md={{ span: 4, order: 1 }}>
+          <span
+            className={clsx(styles.name, {
+              [colorTheme.toLowerCase()]: status === AssignmentStatus.Available,
+            })}
+          >
+            {name}
+          </span>
+        </Col>
+
+        <Col md={{ span: 2, order: 3 }} sm={{ span: 12, order: 3 }}>
           <span
             className={clsx(styles.status, {
               [colorTheme.toLowerCase()]: status === AssignmentStatus.Available,

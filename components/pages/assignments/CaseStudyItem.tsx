@@ -33,11 +33,8 @@ export default function CaseStudyItem({
       <Row>
         <Col>{thumbnail}</Col>
       </Row>
-      <Row>
-        <Col md={12}>
-          <span>{name}</span>
-        </Col>
 
+      <Row>
         <Col md={12}>
           <div className={styles.metaInfo}>
             <span
@@ -54,6 +51,15 @@ export default function CaseStudyItem({
             </span>
           </div>
         </Col>
+      </Row>
+
+      <Row>
+        <Col md={12}>
+          <span className={styles.name}>{name}</span>
+        </Col>
+      </Row>
+
+      <Row>
         <Col>
           <span
             className={clsx(styles.status, {
