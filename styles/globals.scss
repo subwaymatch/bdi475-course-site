@@ -110,6 +110,7 @@ h2.sectionTitle {
   letter-spacing: -0.01rem;
   padding: 0.25rem 0.7rem;
   border-radius: 2rem;
+  white-space: nowrap;
 
   &.greenLabel {
     background-color: $color-green;

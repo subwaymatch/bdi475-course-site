@@ -3,13 +3,14 @@ import Header from "components/Header";
 import { Container, Row, Col } from "react-bootstrap";
 import CourseInformation from "components/pages/syllabus/CourseInformation";
 import GradingBreakdown from "components/pages/syllabus/GradingBreakdown";
+import styles from "styles/pages/syllabus.module.scss";
 
 export default function SyllabusPage() {
   return (
     <Layout>
       <Header />
 
-      <main>
+      <main className={styles.syllabusPage}>
         <Container>
           <Row>
             <Col>

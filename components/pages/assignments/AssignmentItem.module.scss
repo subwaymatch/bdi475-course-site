@@ -20,6 +20,7 @@
   }
 
   &.complete {
+    .name,
     .status {
       color: black;
     }

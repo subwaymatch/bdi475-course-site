@@ -48,7 +48,8 @@ export default function GradingBreakdown() {
 
           <Col sm={2} xs={3}>
             <div className={clsx(styles.columnCell, styles.columnHeader)}>
-              Points
+              <span className="d-sm-none">Pts</span>
+              <span className="d-none d-sm-inline">Points</span>
             </div>
           </Col>
 

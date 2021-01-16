@@ -2,6 +2,7 @@ import Layout from "components/Layout";
 import Header from "components/Header";
 import { Container, Row, Col } from "react-bootstrap";
 import AssignmentItem from "components/pages/assignments/AssignmentItem";
+import CaseStudyItem from "components/pages/assignments/CaseStudyItem";
 import { AssignmentStatus } from "typings/assignment";
 import { ColorTheme } from "typings/color-theme";
 import styles from "styles/pages/assignments.module.scss";
@@ -112,6 +113,35 @@ export default function AssignmentsPage() {
                   Case Study <span className="blueAccent" />
                 </h2>
               </div>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col md={4}>
+              <CaseStudyItem
+                name="Uber Supply and Demand"
+                dueDate="20210131"
+                pointsAvailable={8}
+                status={AssignmentStatus.Complete}
+              />
+            </Col>
+
+            <Col md={4}>
+              <CaseStudyItem
+                name="AirBnB Analysis"
+                dueDate="20210204"
+                pointsAvailable={8}
+                status={AssignmentStatus.Available}
+              />
+            </Col>
+
+            <Col md={4}>
+              <CaseStudyItem
+                name="DuPont Case"
+                dueDate="20210215"
+                pointsAvailable={10}
+                status={AssignmentStatus.Unavailable}
+              />
             </Col>
           </Row>
         </Container>

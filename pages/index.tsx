@@ -1,13 +1,14 @@
 import Layout from "components/Layout";
 import Header from "components/Header";
 import { Container, Row, Col } from "react-bootstrap";
+import styles from "styles/pages/index.module.scss";
 
 export default function Home() {
   return (
     <Layout>
       <Header />
 
-      <main>
+      <main className={styles.mainPage}>
         <Container>
           <Row>
             <Col>

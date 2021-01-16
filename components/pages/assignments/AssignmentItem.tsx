@@ -37,7 +37,15 @@ export default function AssignmentItem({
     >
       <Row>
         <Col md={4}>
-          <span className={styles.name}>{name}</span>
+          <span
+            className={
+              status === AssignmentStatus.Available
+                ? colorTheme.toLowerCase()
+                : styles.name
+            }
+          >
+            {name}
+          </span>
         </Col>
 
         <Col md={6}>
