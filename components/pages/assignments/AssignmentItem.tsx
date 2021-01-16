@@ -20,13 +20,20 @@ export default function AssignmentItem({
   status,
   colorTheme,
 }: AssignmentItemProps) {
+  console.log(`status=${status}`);
+  console.log(`AssignmentStatus.Complete=${AssignmentStatus.Complete}`);
+
   return (
     <div
-      className={clsx(styles.assignmentItem, {
-        [styles.completed]: status === AssignmentStatus.Completed,
-        [styles.available]: status === AssignmentStatus.Available,
-        [styles.unavailable]: status === AssignmentStatus.Unavailable,
-      })}
+      className={clsx(
+        styles.assignmentItem,
+        {
+          [styles.complete]: status === AssignmentStatus.Complete,
+          [styles.available]: status === AssignmentStatus.Available,
+          [styles.unavailable]: status === AssignmentStatus.Unavailable,
+        },
+        styles[colorTheme.toLowerCase()]
+      )}
     >
       <Row>
         <Col md={4}>
@@ -34,8 +41,14 @@ export default function AssignmentItem({
         </Col>
 
         <Col md={6}>
-          <div className={styles.statusLabels}>
-            <span className="lightGrayLabel">
+          <div className={styles.metaInfo}>
+            <span
+              className={clsx(
+                status === AssignmentStatus.Available
+                  ? colorTheme.toLowerCase() + "Label"
+                  : "lightGrayLabel"
+              )}
+            >
               Due {moment(dueDate, "YYYYMMDD").format("ll")}
             </span>
             <span className="grayLabel">
@@ -46,8 +59,8 @@ export default function AssignmentItem({
 
         <Col md={2}>
           <span
-            className={clsx({
-              [colorTheme.toLowerCase()]: status == AssignmentStatus.Completed,
+            className={clsx(styles.status, {
+              [colorTheme.toLowerCase()]: status === AssignmentStatus.Available,
             })}
           >
             {status}

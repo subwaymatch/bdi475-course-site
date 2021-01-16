@@ -19,7 +19,9 @@ export default function Home() {
 
           <Row>
             <Col>
-              <h2 className="sectionTitle">Announcements</h2>
+              <h2 className="sectionTitle">
+                Announcements <span className="greenAccent" />
+              </h2>
             </Col>
           </Row>
         </Container>

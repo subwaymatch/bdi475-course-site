@@ -9,13 +9,26 @@
     color: $color-gray;
   }
 
-  .statusLabels {
+  .metaInfo {
     [class$="Label"] {
       margin-left: 0.75rem;
 
       &:first-child {
         margin-left: 0;
       }
+    }
+  }
+
+  &.complete {
+    .status {
+      color: black;
+    }
+  }
+  &.available {
+  }
+  &.unavailable {
+    .status {
+      color: $color-gray;
     }
   }
 }
