@@ -10,6 +10,7 @@ type AssignmentItemProps = {
   dueDate: string;
   pointsAvailable: number;
   status: AssignmentStatus;
+  link?: string;
   colorTheme: ColorTheme;
 };
 
@@ -18,11 +19,9 @@ export default function AssignmentItem({
   dueDate,
   pointsAvailable,
   status,
+  link,
   colorTheme,
 }: AssignmentItemProps) {
-  console.log(`status=${status}`);
-  console.log(`AssignmentStatus.Complete=${AssignmentStatus.Complete}`);
-
   return (
     <div
       className={clsx(

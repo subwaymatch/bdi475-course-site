@@ -9,6 +9,7 @@ type CaseStudyItemProps = {
   dueDate: string;
   pointsAvailable: number;
   status: AssignmentStatus;
+  link?: string;
   thumbnail: React.ReactNode;
 };
 
@@ -17,11 +18,9 @@ export default function CaseStudyItem({
   dueDate,
   pointsAvailable,
   status,
+  link,
   thumbnail,
 }: CaseStudyItemProps) {
-  console.log(`status=${status}`);
-  console.log(`AssignmentStatus.Complete=${AssignmentStatus.Complete}`);
-
   return (
     <div
       className={clsx(styles.caseStudyItem, {

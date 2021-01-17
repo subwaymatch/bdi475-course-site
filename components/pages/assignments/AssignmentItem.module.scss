@@ -36,10 +36,13 @@
   &.complete {
     .name,
     .status {
-      color: black;
+      color: #bdbdbd;
     }
   }
   &.available {
+    .name {
+      color: black;
+    }
   }
   &.unavailable {
     .status {
