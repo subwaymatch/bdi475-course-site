@@ -3,9 +3,18 @@
 @import url("https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css");
 @import "./bootstrap.custom";
 @import "~bootstrap/scss/bootstrap-grid";
+@import url("https://rsms.me/inter/inter.css");
+
+html {
+  font-family: "Inter", sans-serif;
+}
+@supports (font-variation-settings: normal) {
+  html {
+    font-family: "Inter var", sans-serif;
+  }
+}
 
 body {
-  font-family: $font-sans-serif;
   font-size: 1.2rem;
   line-height: 1.8;
   letter-spacing: -0.03rem;
