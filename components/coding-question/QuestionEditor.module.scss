@@ -1,0 +1,97 @@
+.questionEditPage {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  .controlBar {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding: 0 10px;
+    height: 40px;
+
+    .questionTitleInput {
+      font-size: 1.2rem;
+      line-height: 1;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      width: 200px;
+    }
+  }
+
+  .editorBox {
+    display: flex;
+    flex-direction: column;
+
+    .boxHeader {
+      display: flex;
+      align-items: center;
+      height: 35px;
+      border-top: 1px solid black;
+      border-bottom: 1px solid #ddd;
+      padding: 0 10px;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    .codeEditorWrapper {
+      flex-grow: 1;
+    }
+  }
+
+  .questionAndTemplate {
+    display: flex;
+    flex-grow: 1;
+
+    .questionText {
+      width: 50%;
+
+      .boxHeader {
+        border-right: 1px solid #ddd;
+      }
+
+      .codeEditorWrapper {
+        border-right: 1px solid #ddd;
+      }
+
+      textarea.questionTextarea {
+        width: 100%;
+        height: 100%;
+        padding: 1rem;
+        font-family: Inter, "sans-serif";
+        font-size: 1.2rem;
+        line-height: 1.6;
+        letter-spacing: -0.02rem;
+        outline: none;
+        border: none;
+      }
+    }
+
+    .starter {
+      width: 50%;
+    }
+  }
+
+  .solutionAndCheck {
+    display: flex;
+    flex-grow: 1;
+
+    .solution {
+      width: 50%;
+
+      .boxHeader {
+        border-right: 1px solid #ddd;
+      }
+
+      .codeEditorWrapper {
+        border-right: 1px solid #ddd;
+      }
+    }
+
+    .testCases {
+      width: 50%;
+    }
+  }
+}

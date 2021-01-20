@@ -1,0 +1,47 @@
+{
+  "base": "vs",
+  "inherit": true,
+  "rules": [
+    { "token": "", "foreground": "000000", "background": "ffffff" },
+    { "token": "invalid", "foreground": "ff5c26" },
+    { "token": "emphasis", "fontStyle": "italic" },
+    { "token": "strong", "fontStyle": "bold" },
+
+    { "token": "variable", "foreground": "43c1ff" },
+    { "token": "variable.predefined", "foreground": "43c1ff" },
+    { "token": "constant", "foreground": "ff5c26" },
+    { "token": "constant.language.boolean", "foreground": "dc7fff" },
+    { "token": "comment", "foreground": "bdbdbd" },
+    { "token": "number", "foreground": "dc7fff" },
+    { "token": "number.hex", "foreground": "dc7fff" },
+    { "token": "regexp", "foreground": "dc7fff" },
+    { "token": "annotation", "foreground": "808080" },
+    { "token": "type", "foreground": "43c1ff" },
+
+    { "token": "delimiter", "foreground": "000000" },
+
+    { "token": "tag", "foreground": "ff5c26" },
+    { "token": "metatag", "foreground": "ff5c26" },
+
+    { "token": "key", "foreground": "863B00" },
+
+    { "token": "attribute.name", "foreground": "ff5c26" },
+    { "token": "attribute.value", "foreground": "43c1ff" },
+    { "token": "attribute.value.number", "foreground": "ff75af" },
+
+    { "token": "string", "foreground": "ff75af" },
+    { "token": "keyword", "foreground": "43c1ff" },
+    { "token": "keyword.operator", "foreground": "dc7fff" },
+    { "token": "keyword.control", "foreground": "dc7fff" },
+    { "token": "support", "foreground": "dc7fff" },
+    { "token": "storage", "foreground": "dc7fff" },
+    { "token": "punctuation", "foreground": "dc7fff" }
+  ],
+  "colors": {
+    "editor.foreground": "#000000",
+    "editor.background": "#FFFFFF",
+    "editor.selectionBackground": "#ffff55",
+    "editor.lineHighlightBackground": "#f9f9f9",
+    "editorCursor.foreground": "#00ff88"
+  }
+}
