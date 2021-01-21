@@ -15,7 +15,7 @@ html {
 }
 
 body {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   line-height: 1.8;
   letter-spacing: -0.03rem;
 }
@@ -86,7 +86,7 @@ h2.sectionTitle {
 }
 
 [class$="Accent"] {
-  margin-left: 0.75rem;
+  margin-left: 0.625rem;
   display: inline-block;
   width: 0.5rem;
   height: 0.5rem;
@@ -97,15 +97,19 @@ h2.sectionTitle {
 [class$="Label"] {
   font-size: 1rem;
   letter-spacing: -0.01rem;
+  line-height: 1.2;
   padding: 0.25rem 0.7rem;
-  border-radius: 2rem;
+  border-radius: 4rem;
   white-space: nowrap;
 }
 
 [class$="Button"] {
+  display: inline-block;
   color: black;
   background-color: $color-light-gray;
-  padding: 1.25rem 1.5rem;
+  line-height: 1.2;
+  padding: 1.35rem 1.6rem;
+  border: none;
   border-radius: 0.25rem;
 }
 
@@ -147,4 +151,8 @@ h2.sectionTitle {
 
 input {
   font-family: $font-sans-serif;
+}
+
+::placeholder {
+  color: $color-gray;
 }

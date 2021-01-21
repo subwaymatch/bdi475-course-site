@@ -49,8 +49,8 @@ export default function CourseInformation() {
 
           <Col sm={4}>
             <div className={styles.displayBox}>
-              <span className="blueLabel">Zoom Link</span>
-              <span className={styles.text}>Join via Zoom ⟶</span>
+              <span className="blueLabel">Email</span>
+              <span className={styles.text}>ypark32@illinois.edu</span>
             </div>
           </Col>
         </Row>

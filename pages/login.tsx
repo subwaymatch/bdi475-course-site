@@ -32,7 +32,7 @@ export default function LoginPage() {
           </Row>
 
           <Row className="align-items-center">
-            <Col md={4} xs={6}>
+            <Col>
               <div className={styles.inputWrapper}>
                 <span className="greenLabel">NetID</span>
                 <input
@@ -43,12 +43,15 @@ export default function LoginPage() {
               </div>
             </Col>
 
-            <Col md={4} xs={6}>
+            <Col>
               <div className={styles.emailFormat}>@illinois.edu</div>
             </Col>
-
-            <Col md={4} xs={6}>
-              <a className="greenButton">Email Me</a>
+          </Row>
+          <Row>
+            <Col>
+              <div className={styles.buttonWrapper}>
+                <a className="greenButton">Email Me</a>
+              </div>
             </Col>
           </Row>
 
