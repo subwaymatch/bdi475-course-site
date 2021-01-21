@@ -1,42 +1,56 @@
 @import "styles/variables";
+@import "styles/mixins";
 
-.loginFormTitle {
-  margin-bottom: 4rem;
-}
+.loginPage {
+  padding-bottom: 10rem;
 
-.inputWrapper {
-  position: relative;
-
-  :global([class$="Label"]) {
-    position: absolute;
-    left: 0;
-    top: 1.55rem;
-    padding: 0.35rem 0.6rem;
+  .loginFormTitle {
+    margin-bottom: 4rem;
   }
-}
 
-.netIdInput,
-.emailFormat {
-  font-size: 2.25rem;
-  line-height: 1.2;
-  font-weight: 300;
-  padding: 1rem 0;
-}
+  .netIdInput,
+  .emailFormat {
+    font-size: 2.25rem;
+    line-height: 1.2;
+    font-weight: 300;
+    padding: 1rem 0;
 
-.netIdInput {
-  display: block;
-  width: 100%;
-  border: none;
-  border-bottom: 1px solid black;
-  outline: none;
-  text-align: right;
-}
+    @include media-breakpoint-down(sm) {
+      font-size: 1.5rem;
+    }
+  }
 
-.emailFormat {
-  color: $color-gray;
-  border-bottom: 1px dashed $color-border-gray;
-}
+  .netIdInput {
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+  }
 
-.note {
-  margin-top: 2rem;
+  .emailFormat {
+    color: $color-gray;
+    border-bottom: 1px solid $color-border-gray;
+    padding-left: 0.5rem;
+  }
+
+  .submitControls {
+    margin-top: 4rem;
+
+    :global([class$="Button"]) {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    p.note {
+      @include media-breakpoint-down(sm) {
+        margin-top: 1rem;
+      }
+
+      @include media-breakpoint-down(xs) {
+        font-size: 1.1rem;
+        letter-spacing: -0.02rem;
+      }
+    }
+  }
 }

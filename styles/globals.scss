@@ -104,11 +104,12 @@ h2.sectionTitle {
 }
 
 [class$="Button"] {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   color: black;
   background-color: $color-light-gray;
-  line-height: 1.2;
-  padding: 1.35rem 1.6rem;
+  line-height: 1.5;
+  padding: 1.25rem 1.75rem;
   border: none;
   border-radius: 0.25rem;
 }

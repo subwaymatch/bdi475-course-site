@@ -1,6 +1,7 @@
 import Layout from "components/Layout";
 import Header from "components/Header";
 import { Container, Row, Col } from "react-bootstrap";
+import { RiSendPlaneLine } from "react-icons/ri";
 import styles from "styles/pages/login.module.scss";
 import clsx from "clsx";
 
@@ -31,10 +32,15 @@ export default function LoginPage() {
             </Col>
           </Row>
 
-          <Row className="align-items-center">
+          <Row>
+            <Col>
+              <span className="greenLabel">NetID</span>
+            </Col>
+          </Row>
+
+          <Row className="align-items-center no-gutters">
             <Col>
               <div className={styles.inputWrapper}>
-                <span className="greenLabel">NetID</span>
                 <input
                   type="text"
                   placeholder="mynetid"
@@ -47,18 +53,18 @@ export default function LoginPage() {
               <div className={styles.emailFormat}>@illinois.edu</div>
             </Col>
           </Row>
-          <Row>
-            <Col>
-              <div className={styles.buttonWrapper}>
-                <a className="greenButton">Email Me</a>
-              </div>
-            </Col>
-          </Row>
 
-          <Row>
-            <Col>
+          <Row className={clsx(styles.submitControls, "align-items-center")}>
+            <Col md={4} xs={12}>
+              <a className="greenButton">
+                <span className={styles.label}>Email Me</span>
+                <RiSendPlaneLine className={styles.reactIcon} />
+              </a>
+            </Col>
+            <Col md={8} xs={12}>
               <p className={styles.note}>
-                Please use your @illinois.edu email to sign in.
+                This will send a link to your{" "}
+                <span className="green">@illinois.edu</span> email to sign in.
               </p>
             </Col>
           </Row>
