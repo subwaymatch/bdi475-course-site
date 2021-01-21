@@ -29,21 +29,6 @@ for (let weekIndex = startWeekIndex; weekIndex <= endWeekIndex; weekIndex++) {
   );
 }
 
-const CalendarWeek = ({ week, show, isPrevWeek }) => {
-  return (
-    show && (
-      <div key={`week-${week}`} className={styles.calendarRow}>
-        {week.map((day) => {
-          const dayKey = day.format("YYYYMMDD");
-          const dayEvents = eventsByDate[dayKey];
-
-          return <CalendarCell key={dayKey} day={day} dayEvents={dayEvents} />;
-        })}
-      </div>
-    )
-  );
-};
-
 const CalendarCell = ({ day, dayEvents }) => {
   const dayKey = day.format("YYYYMMDD");
 
@@ -125,6 +110,21 @@ const CalendarCell = ({ day, dayEvents }) => {
         )}
       </div>
     </div>
+  );
+};
+
+const CalendarWeek = ({ week, show, isPrevWeek }) => {
+  return (
+    show && (
+      <div key={`week-${week}`} className={styles.calendarRow}>
+        {week.map((day) => {
+          const dayKey = day.format("YYYYMMDD");
+          const dayEvents = eventsByDate[dayKey];
+
+          return <CalendarCell key={dayKey} day={day} dayEvents={dayEvents} />;
+        })}
+      </div>
+    )
   );
 };
 
