@@ -16,9 +16,6 @@
 
 .netIdInput,
 .emailFormat {
-  padding: 1rem 0;
-  border: none;
-  border-bottom: 1px solid black;
   font-size: 2.25rem;
   line-height: 1.2;
   padding: 1rem 0;
@@ -27,13 +24,15 @@
 .netIdInput {
   display: block;
   width: 100%;
+  border: none;
+  border-bottom: 1px solid black;
   outline: none;
   text-align: right;
 }
 
 .emailFormat {
   color: $color-gray;
-  border-color: $color-gray;
+  border-bottom: 1px solid transparent;
 }
 
 .note {
