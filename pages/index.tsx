@@ -3,7 +3,7 @@ import Header from "components/Header";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "styles/pages/index.module.scss";
 
-export default function Home() {
+export default function MainPage() {
   return (
     <Layout>
       <Header />

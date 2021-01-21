@@ -26,11 +26,14 @@ export default function CodingQuestionEditor() {
             className={styles.questionTitleInput}
           />
         </div>
+
+        <div className={styles.controls}></div>
       </div>
       <div className={styles.questionAndTemplate}>
         <div className={clsx(styles.questionText, styles.editorBox)}>
           <div className={styles.boxHeader}>
             <span className={styles.boxTitle}>Question Text</span>
+            <span className="purpleAccent" />
           </div>
 
           <div className={styles.codeEditorWrapper}>
@@ -47,6 +50,7 @@ export default function CodingQuestionEditor() {
         <div className={clsx(styles.starter, styles.editorBox)}>
           <div className={styles.boxHeader}>
             <span className={styles.boxTitle}>Starter</span>
+            <span className="blueAccent" />
           </div>
 
           <div className={styles.codeEditorWrapper}>
@@ -64,6 +68,7 @@ export default function CodingQuestionEditor() {
         <div className={clsx(styles.solution, styles.editorBox)}>
           <div className={styles.boxHeader}>
             <span className={styles.boxTitle}>Solution</span>
+            <span className="greenAccent" />
           </div>
 
           <div className={styles.codeEditorWrapper}>
@@ -79,6 +84,7 @@ export default function CodingQuestionEditor() {
         <div className={clsx(styles.testCases, styles.editorBox)}>
           <div className={styles.boxHeader}>
             <span className={styles.boxTitle}>Test Cases</span>
+            <span className="pinkAccent" />
           </div>
 
           <div className={styles.codeEditorWrapper}>

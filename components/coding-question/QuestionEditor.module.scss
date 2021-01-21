@@ -13,13 +13,32 @@
     padding: 0 10px;
     height: 40px;
 
-    .questionTitleInput {
-      font-size: 1.2rem;
-      line-height: 1;
-      background-color: transparent;
-      border: none;
-      outline: none;
-      width: 200px;
+    .questionTitleWrapper {
+      width: 48%;
+
+      .questionTitleInput {
+        background: aqua;
+        font-family: $font-sans-serif;
+        letter-spacing: -0.01rem;
+        font-size: 1rem;
+        line-height: 1;
+        font-weight: 500;
+        display: inline-block;
+        padding: 3px 0;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        width: 100%;
+
+        &:focus {
+          color: $color-purple;
+          border-bottom: 1px solid $color-purple;
+        }
+      }
+    }
+
+    .controls {
+      width: 48%;
     }
   }
 
@@ -36,6 +55,11 @@
       padding: 0 10px;
       font-size: 1rem;
       line-height: 1.4;
+      font-weight: 500;
+
+      :global([class$="Accent"]) {
+        margin-left: 0.5rem;
+      }
     }
 
     .codeEditorWrapper {
@@ -61,13 +85,17 @@
       textarea.questionTextarea {
         width: 100%;
         height: 100%;
-        padding: 1rem;
-        font-family: $font-sans-serif;
+        padding: 0.8rem 1rem;
+        font-family: $font-monospace;
+        font-feature-settings: "liga" 0, "calt" 0;
         font-size: 1.2rem;
-        line-height: 1.6;
+        line-height: 1.5;
         letter-spacing: -0.02rem;
         outline: none;
         border: none;
+
+        &:focus {
+        }
       }
     }
 

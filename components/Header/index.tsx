@@ -68,6 +68,12 @@ export default function Header() {
               </Col>
             </Row>
           </Col>
+
+          <Col md={2}>
+            <Link href="/login">
+              <a>Sign In</a>
+            </Link>
+          </Col>
         </Row>
       </Container>
     </header>

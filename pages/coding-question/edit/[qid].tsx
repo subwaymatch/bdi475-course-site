@@ -1,8 +1,13 @@
 import QuestionEditor from "components/coding-question/QuestionEditor";
+import Layout from "components/Layout";
 
 export default function EditCodingQuestionPage(props) {
   console.log(props);
-  return <QuestionEditor />;
+  return (
+    <Layout>
+      <QuestionEditor />
+    </Layout>
+  );
 }
 
 export async function getServerSideProps(context) {

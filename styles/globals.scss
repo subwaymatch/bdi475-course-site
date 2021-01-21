@@ -60,6 +60,10 @@ h2.sectionTitle {
   &.blackBottomBorder {
     border-bottom: 1px solid black;
   }
+
+  &.grayBottomBorder {
+    border-bottom: 1px solid $color-border-gray;
+  }
 }
 
 .green {
@@ -88,30 +92,6 @@ h2.sectionTitle {
   height: 0.5rem;
   background-color: black;
   border-radius: 1rem;
-
-  &.greenAccent {
-    background-color: $color-green;
-  }
-
-  &.purpleAccent {
-    background-color: $color-purple;
-  }
-
-  &.yellowAccent {
-    background-color: $color-yellow;
-  }
-
-  &.pinkAccent {
-    background-color: $color-pink;
-  }
-
-  &.blueAccent {
-    background-color: $color-blue;
-  }
-
-  &.orangeAccent {
-    background-color: $color-orange;
-  }
 }
 
 [class$="Label"] {
@@ -120,36 +100,51 @@ h2.sectionTitle {
   padding: 0.25rem 0.7rem;
   border-radius: 2rem;
   white-space: nowrap;
+}
 
-  &.greenLabel {
+[class$="Button"] {
+  color: black;
+  background-color: $color-light-gray;
+  padding: 1.25rem 1.5rem;
+  border-radius: 0.25rem;
+}
+
+[class$="Accent"],
+[class$="Label"],
+[class$="Button"] {
+  &[class^="green"] {
     background-color: $color-green;
   }
 
-  &.purpleLabel {
+  &[class^="purple"] {
     background-color: $color-purple;
   }
 
-  &.yellowLabel {
+  &[class^="yellow"] {
     background-color: $color-yellow;
   }
 
-  &.pinkLabel {
+  &[class^="pink"] {
     background-color: $color-pink;
   }
 
-  &.blueLabel {
+  &[class^="blue"] {
     background-color: $color-blue;
   }
 
-  &.orangeLabel {
+  &[class^="orange"] {
     background-color: $color-orange;
   }
 
-  &.grayLabel {
+  &[class^="gray"] {
     background-color: $color-gray;
   }
 
-  &.lightGrayLabel {
+  &[class^="lightGray"] {
     background-color: $color-light-gray;
   }
+}
+
+input {
+  font-family: $font-sans-serif;
 }
