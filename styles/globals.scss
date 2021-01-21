@@ -150,6 +150,40 @@ h2.sectionTitle {
   }
 }
 
+[class$="Button"] {
+  &[class^="green"]:hover {
+    background-color: color.scale($color-green, $lightness: 10%);
+  }
+
+  &[class^="purple"] {
+    background-color: $color-purple;
+  }
+
+  &[class^="yellow"] {
+    background-color: $color-yellow;
+  }
+
+  &[class^="pink"] {
+    background-color: $color-pink;
+  }
+
+  &[class^="blue"] {
+    background-color: $color-blue;
+  }
+
+  &[class^="orange"] {
+    background-color: $color-orange;
+  }
+
+  &[class^="gray"] {
+    background-color: $color-gray;
+  }
+
+  &[class^="lightGray"] {
+    background-color: $color-light-gray;
+  }
+}
+
 input {
   font-family: $font-sans-serif;
 }

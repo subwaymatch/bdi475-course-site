@@ -1,11 +1,15 @@
+import { useState } from "react";
 import Layout from "components/Layout";
 import Header from "components/Header";
 import { Container, Row, Col } from "react-bootstrap";
 import { RiSendPlaneLine } from "react-icons/ri";
 import styles from "styles/pages/login.module.scss";
 import clsx from "clsx";
+import { firebaseClient } from "firebase/firebaseClient";
 
 export default function LoginPage() {
+  const [netId, setNetId] = useState("");
+
   return (
     <Layout>
       <Header />
@@ -42,7 +46,8 @@ export default function LoginPage() {
             <Col>
               <div className={styles.inputWrapper}>
                 <input
-                  type="text"
+                  value={netId}
+                  onChange={(e) => setNetId(e.target.value)}
                   placeholder="mynetid"
                   className={styles.netIdInput}
                 />
@@ -63,8 +68,8 @@ export default function LoginPage() {
             </Col>
             <Col md={8} xs={12}>
               <p className={styles.note}>
-                This will send a link to your{" "}
-                <span className="green">@illinois.edu</span> email to sign in.
+                This will send a sign-in link to your{" "}
+                <span className="green">@illinois.edu</span> email.
               </p>
             </Col>
           </Row>

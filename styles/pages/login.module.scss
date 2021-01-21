@@ -16,7 +16,13 @@
     padding: 1rem 0;
 
     @include media-breakpoint-down(sm) {
+      font-weight: normal;
       font-size: 1.5rem;
+    }
+
+    @include media-breakpoint-down(xs) {
+      font-weight: normal;
+      font-size: 1.25rem;
     }
   }
 
