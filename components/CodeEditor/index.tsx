@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Editor from "@monaco-editor/react";
 import styles from "./editor.module.scss";
 import customTheme from "./custom-theme.json";

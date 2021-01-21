@@ -1,5 +1,4 @@
 import dynamic from "next/dynamic";
-import { useRouter } from "next/router";
 import { useState } from "react";
 import styles from "./QuestionEditor.module.scss";
 import clsx from "clsx";
