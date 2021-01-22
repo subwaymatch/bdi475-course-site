@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import nookies from "nookies";
 import Layout from "components/Layout";
 import Header from "components/Header";
 import { Container, Row, Col } from "react-bootstrap";
@@ -6,8 +7,13 @@ import { RiSendPlaneLine } from "react-icons/ri";
 import styles from "styles/pages/login.module.scss";
 import clsx from "clsx";
 import { firebaseClient as firebase } from "firebase/firebaseClient";
+import { firebaseAdmin } from "firebase/firebaseAdmin";
 
-export default function LoginPage() {
+import { InferGetServerSidePropsType, GetServerSidePropsContext } from "next";
+
+export default function LoginPage(
+  props: InferGetServerSidePropsType<typeof getServerSideProps>
+) {
   const [netId, setNetId] = useState("");
 
   useEffect(() => {
@@ -137,3 +143,20 @@ export default function LoginPage() {
     </Layout>
   );
 }
+
+export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+  try {
+    const cookies = nookies.get(ctx);
+    console.log(JSON.stringify(cookies, null, 2));
+    const token = await firebaseAdmin.auth().verifyIdToken(cookies.token);
+
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/",
+      },
+    };
+  } catch (err) {
+    return { props: {} };
+  }
+};
