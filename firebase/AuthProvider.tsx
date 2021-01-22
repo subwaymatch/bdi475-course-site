@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useContext, createContext } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import nookies from "nookies";
-import { firebaseClient } from "firebase/firebaseClient";
+import { firebaseClient } from "./firebaseClient";
 
-const AuthContext = createContext<{ user: firebaseClient.User | null }>({
+export const AuthContext = createContext<{ user: firebaseClient.User | null }>({
   user: null,
 });
 
-export function AuthProvider({ children }: any) {
+export default function AuthProvider({ children }: any) {
   const [user, setUser] = useState<firebaseClient.User | null>(null);
 
   useEffect(() => {
@@ -48,7 +48,3 @@ export function AuthProvider({ children }: any) {
     <AuthContext.Provider value={{ user }}>{children}</AuthContext.Provider>
   );
 }
-
-export const useAuth = () => {
-  return useContext(AuthContext);
-};

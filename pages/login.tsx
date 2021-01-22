@@ -29,6 +29,8 @@ export default function LoginPage() {
           window.localStorage.removeItem("emailForSignIn");
           console.log("Sign in complete");
           console.log(result);
+
+          window.location.href = "/";
         })
         .catch((err) => {
           console.error("Error signing in through email link");

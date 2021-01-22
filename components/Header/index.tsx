@@ -3,8 +3,12 @@ import Link from "next/link";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "./Header.module.scss";
 import clsx from "clsx";
+import useAuth from "hooks/useAuth";
+import { firebaseClient } from "firebase/firebaseClient";
 
 export default function Header() {
+  const { user } = useAuth();
+
   return (
     <header className={styles.header}>
       <Container>
@@ -70,9 +74,21 @@ export default function Header() {
           </Col>
 
           <Col md={2}>
-            <Link href="/login">
-              <a>Sign In</a>
-            </Link>
+            {user ? (
+              <a
+                className={styles.signOutButton}
+                onClick={async () => {
+                  await firebaseClient.auth().signOut();
+                  window.location.href = "/";
+                }}
+              >
+                Sign Out
+              </a>
+            ) : (
+              <Link href="/login">
+                <a>Sign In</a>
+              </Link>
+            )}
           </Col>
         </Row>
       </Container>
