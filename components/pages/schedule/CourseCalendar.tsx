@@ -8,7 +8,9 @@ import styles from "./CourseCalendar.module.scss";
 import clsx from "clsx";
 
 const eventDates = Object.keys(eventsByDate).sort();
-const startWeekIndex = moment("20210101").week();
+// TODO: Refactor to enable events spanning through two or more years
+// Currently, only events in a single year is supported
+const startWeekIndex = moment("20210122").week();
 const endWeekIndex = moment(eventDates[eventDates.length - 1]).week();
 const currentWeekIndex = moment().week();
 const todayKey = moment().format("YYYYMMDD");
@@ -67,7 +69,7 @@ const CalendarCell = ({ day, dayEvents }) => {
             {dayEvents.hasOwnProperty(ScheduleType.Lecture) && (
               <div className={clsx(styles.lecture, styles.box)}>
                 <h3 className={styles.lectureHeading}>
-                  Lecture {lectureNumberByDate[day.format("MMDD")]}
+                  Lecture {lectureNumberByDate[day.format("YYYYMMDD")]}
                 </h3>
 
                 <div className={styles.lectureTopics}>
@@ -83,11 +85,11 @@ const CalendarCell = ({ day, dayEvents }) => {
               </div>
             )}
 
-            {dayEvents.hasOwnProperty(ScheduleType.AfterClassExercise) &&
-              dayEvents[ScheduleType.AfterClassExercise].map((text, idx) => (
+            {dayEvents.hasOwnProperty(ScheduleType.Exercise) &&
+              dayEvents[ScheduleType.Exercise].map((text, idx) => (
                 <div
                   key={`${dayKey}_ac_${idx}`}
-                  className={clsx(styles.afterClassExercise, styles.box)}
+                  className={clsx(styles.exercise, styles.box)}
                 >
                   {text}
                 </div>

@@ -1,325 +1,350 @@
 [
   {
-    "date": "20201224",
+    "date": "20210125",
     "type": "Lecture",
-    "text": "Introductions and course overview"
+    "text": ["Welcome", "Course Overview"]
   },
   {
-    "date": "20201226",
+    "date": "20210127",
     "type": "Lecture",
-    "text": ["Intro to programming", "If statements"]
+    "text": ["Intro to Python", "Print function", "Comment"]
   },
   {
-    "date": "20201228",
-    "type": "AfterClassExercise",
-    "text": "Exercise #1"
+    "date": "20210128",
+    "type": "Exercise",
+    "text": "Exercise 1"
   },
   {
-    "date": "20201231",
+    "date": "20210201",
     "type": "Lecture",
-    "text": ["While Loops, For Loops", "Variables"]
+    "text": ["Variables", "Primitive Data Types", "Operators"]
   },
   {
-    "date": "20210101",
-    "type": "AfterClassExercise",
-    "text": "Exercise #2"
+    "date": "20210202",
+    "type": "Exercise",
+    "text": "Exercise 2"
   },
   {
-    "date": "20210102",
+    "date": "20210203",
+    "type": "Lecture",
+    "text": ["Booleans", "Conditional Logic"]
+  },
+  {
+    "date": "20210204",
+    "type": "Exercise",
+    "text": "Exercise 3"
+  },
+
+  {
+    "date": "20210208",
+    "type": "Lecture",
+    "text": ["While Loops", "For Loops"]
+  },
+  {
+    "date": "20210209",
+    "type": "Exercise",
+    "text": "Exercise 4"
+  },
+  {
+    "date": "20210210",
     "type": "Quiz",
     "text": "Quiz 1"
   },
   {
-    "date": "20210102",
+    "date": "20210210",
     "type": "Lecture",
-    "text": "Data Types"
+    "text": ["Strings", "String Methods"]
   },
   {
-    "date": "20210103",
-    "type": "AfterClassExercise",
-    "text": "Exercise #3"
+    "date": "20210211",
+    "type": "Exercise",
+    "text": "Exercise 5"
+  },
+
+  {
+    "date": "20210213",
+    "type": "CaseStudy",
+    "text": "Case Study 1"
+  },
+
+  {
+    "date": "20210215",
+    "type": "Lecture",
+    "text": ["Collections"]
   },
   {
-    "date": "20210107",
+    "date": "20210216",
+    "type": "Exercise",
+    "text": "Exercise 6"
+  },
+  {
+    "date": "20210217",
     "type": "NoLecture",
-    "text": "Labor Day - No Classes"
+    "text": "No Class (Break)"
   },
   {
-    "date": "20210109",
+    "date": "20210222",
     "type": "Lecture",
-    "text": ["Operators", "The print function"]
+    "text": ["Function"]
   },
   {
-    "date": "20210110",
-    "type": "AfterClassExercise",
-    "text": "Exercise #4"
+    "date": "20210223",
+    "type": "Exercise",
+    "text": "Exercise 7"
   },
   {
-    "date": "20210114",
+    "date": "20210224",
     "type": "Lecture",
-    "text": "Collections of Data"
+    "text": ["Functions", "Import Packages"]
   },
   {
-    "date": "20210115",
-    "type": "AfterClassExercise",
-    "text": "Exercise #5"
+    "date": "20210225",
+    "type": "Exercise",
+    "text": "Exercise 8"
   },
   {
-    "date": "20210116",
-    "type": "Lecture",
-    "text": "Functions"
-  },
-  {
-    "date": "20210117",
-    "type": "AfterClassExercise",
-    "text": "Exercise #6"
-  },
-  {
-    "date": "20210121",
+    "date": "20210301",
     "type": "Quiz",
     "text": "Quiz 2"
   },
   {
-    "date": "20210121",
+    "date": "20210301",
     "type": "Lecture",
-    "text": "Functions"
+    "text": [
+      "Intro to Jupyter Notebooks",
+      "Intro to Pandas",
+      "Series and DataFrame"
+    ]
   },
   {
-    "date": "20210122",
-    "type": "AfterClassExercise",
-    "text": "Exercise #7"
+    "date": "20210302",
+    "type": "Exercise",
+    "text": "Exercise 9"
   },
   {
-    "date": "20210123",
+    "date": "20210303",
     "type": "Lecture",
-    "text": "Working with strings"
+    "text": [
+      "Create, Read, Update Data",
+      "CSV Format",
+      "Pandas Data Types",
+      "Missing Values"
+    ]
   },
   {
-    "date": "20210201",
+    "date": "20210304",
+    "type": "Exercise",
+    "text": "Exercise 10"
+  },
+  {
+    "date": "20210306",
     "type": "CaseStudy",
-    "text": "Case Study #1"
+    "text": "Case Study 2"
   },
   {
-    "date": "20210128",
-    "type": "Lecture",
-    "text": "Visualizations: Bar charts and histograms"
-  },
-  {
-    "date": "20210130",
-    "type": "Lecture",
-    "text": "Visualizations: Histograms and box plots"
-  },
-  {
-    "date": "20210203",
-    "type": "AfterClassExercise",
-    "text": "Exercise #8"
-  },
-  {
-    "date": "20210205",
+    "date": "20210308",
     "type": "Quiz",
     "text": "Quiz 3"
   },
   {
-    "date": "20210205",
+    "date": "20210308",
     "type": "Lecture",
-    "text": "Visualizations: Line charts and scatter plots"
+    "text": [
+      "Pandas Indices",
+      "Datetime Formats",
+      "Rename/reorder columns",
+      "Merge DataFrames"
+    ]
   },
   {
-    "date": "20210207",
+    "date": "20210309",
+    "type": "Exercise",
+    "text": "Exercise 11"
+  },
+  {
+    "date": "20210310",
     "type": "Lecture",
-    "text": "Visualizations: Pie charts and heat maps"
+    "text": ["Filter Data", "Sort Data", "Read/Update a Cell"]
   },
   {
-    "date": "20210208",
-    "type": "AfterClassExercise",
-    "text": "Exercise #9"
+    "date": "20210311",
+    "type": "Exercise",
+    "text": "Exercise 12"
   },
   {
-    "date": "20210212",
+    "date": "20210315",
     "type": "Lecture",
-    "text": "Visualizations: Heat maps and location-based maps"
+    "text": ["Descriptive Statistics", "Grouping Data"]
   },
   {
-    "date": "20210214",
-    "type": "Lecture",
-    "text": ["Intro to working with data", "Files and file systems, CSV files"]
+    "date": "20210316",
+    "type": "Exercise",
+    "text": "Exercise 13"
   },
   {
-    "date": "20210215",
-    "type": "AfterClassExercise",
-    "text": "Exercise #10"
-  },
-  {
-    "date": "20210218",
-    "type": "CaseStudy",
-    "text": "Case Study #2"
-  },
-  {
-    "date": "20210219",
+    "date": "20210317",
     "type": "Quiz",
     "text": "Quiz 4"
   },
   {
-    "date": "20210219",
+    "date": "20210317",
     "type": "Lecture",
-    "text": "Intro to Pandas"
+    "text": ["Pivot Tables", "Linear Regression"]
   },
   {
-    "date": "20210221",
-    "type": "Lecture",
-    "text": ["Loading data into Pandas", "Data cleaning"]
-  },
-  {
-    "date": "20210222",
-    "type": "AfterClassExercise",
-    "text": "Exercise #11"
-  },
-  {
-    "date": "20210226",
-    "type": "Lecture",
-    "text": ["Finishing up dates", "Exploring data"]
-  },
-  {
-    "date": "20210228",
-    "type": "Lecture",
-    "text": "Selecting and filtering data"
-  },
-  {
-    "date": "20210229",
-    "type": "AfterClassExercise",
-    "text": "Exercise #12"
-  },
-  {
-    "date": "20210301",
+    "date": "20210320",
     "type": "CaseStudy",
-    "text": "Midterm Project"
+    "text": "Case Study 3"
   },
   {
-    "date": "20210302",
+    "date": "20210322",
+    "type": "Lecture",
+    "text": ["Joins"]
+  },
+  {
+    "date": "20210323",
+    "type": "Exercise",
+    "text": "Exercise 14"
+  },
+  {
+    "date": "20210324",
+    "type": "NoLecture",
+    "text": "No Class (Break)"
+  },
+  {
+    "date": "20210329",
+    "type": "Lecture",
+    "text": ["Intro to SQL", "Create Table", "Basic Querying"]
+  },
+  {
+    "date": "20210330",
+    "type": "Exercise",
+    "text": "Exercise 15"
+  },
+  {
+    "date": "20210331",
+    "type": "Lecture",
+    "text": ["Query Data", "Sort Results"]
+  },
+  {
+    "date": "20210401",
+    "type": "Exercise",
+    "text": "Exercise 16"
+  },
+  {
+    "date": "20210403",
+    "type": "CaseStudy",
+    "text": "Case Study 4"
+  },
+  {
+    "date": "20210405",
     "type": "Quiz",
     "text": "Quiz 5"
   },
   {
-    "date": "20210302",
+    "date": "20210405",
     "type": "Lecture",
-    "text": ["Missing values", "Creating new columns"]
+    "text": ["Intro to DataViz with Python", "Box Plots", "Histograms"]
   },
   {
-    "date": "20210303",
-    "type": "AfterClassExercise",
-    "text": "Exercise #13"
-  },
-  {
-    "date": "20210304",
-    "type": "Lecture",
-    "text": "Sorting and modifying data in Pandas"
-  },
-  {
-    "date": "20210306",
-    "type": "AfterClassExercise",
-    "text": "Exercise #14"
-  },
-  {
-    "date": "20210309",
-    "type": "Lecture",
-    "text": ["Data analysis", "Descriptive Statistics"]
-  },
-  {
-    "date": "20210310",
-    "type": "AfterClassExercise",
-    "text": "Exercise #15"
-  },
-  {
-    "date": "20210311",
-    "type": "Lecture",
-    "text": "Pivot tables"
-  },
-  {
-    "date": "20210312",
-    "type": "AfterClassExercise",
-    "text": "Exercise #16"
-  },
-  {
-    "date": "20210313",
-    "type": "CaseStudy",
-    "text": "Case Study #3"
-  },
-  {
-    "date": "20210317",
-    "type": "Quiz",
-    "text": "Quiz 6"
-  },
-  {
-    "date": "20210316",
-    "type": "Lecture",
-    "text": "Pivot tables"
-  },
-  {
-    "date": "20210317",
-    "type": "AfterClassExercise",
-    "text": "Exercise #17"
-  },
-  {
-    "date": "20210318",
-    "type": "Lecture",
-    "text": "Regression"
-  },
-
-  {
-    "date": "20210323",
-    "type": "NoLecture",
-    "text": "Thanksgiving Break"
-  },
-  {
-    "date": "20210325",
-    "type": "NoLecture",
-    "text": "Thanksgiving Break"
-  },
-
-  {
-    "date": "20210330",
-    "type": "Lecture",
-    "text": "Intro to robotic process automation (RPA)"
-  },
-  {
-    "date": "20210402",
-    "type": "Lecture",
-    "text": "UiPath software for RPA"
-  },
-  {
-    "date": "20210403",
-    "type": "CaseStudy",
-    "text": "Case Study #4"
-  },
-  {
-    "date": "20210403",
-    "type": "AfterClassExercise",
-    "text": "Exercise #18"
-  },
-
-  {
-    "date": "20210407",
-    "type": "Quiz",
-    "text": "Quiz 7"
+    "date": "20210406",
+    "type": "Exercise",
+    "text": "Exercise 17"
   },
   {
     "date": "20210407",
     "type": "Lecture",
-    "text": "For loops and if statements in RPA"
+    "text": ["DataViz with Python", "Line Charts", "Bar Charts"]
   },
   {
     "date": "20210408",
-    "type": "AfterClassExercise",
-    "text": "Exercise #19"
-  },
-  {
-    "date": "20210409",
-    "type": "Lecture",
-    "text": "Work on final project in class"
+    "type": "Exercise",
+    "text": "Exercise 18"
   },
   {
     "date": "20210412",
+    "type": "Lecture",
+    "text": ["DataViz with Python", "Scatter Plots", "Heatmaps"]
+  },
+  {
+    "date": "20210413",
+    "type": "Exercise",
+    "text": "Exercise 19"
+  },
+  {
+    "date": "20210414",
+    "type": "Lecture",
+    "text": ["Intro to Tableau", "Box Plots", "Histograms"]
+  },
+  {
+    "date": "20210415",
+    "type": "Exercise",
+    "text": "Exercise 20"
+  },
+  {
+    "date": "20210417",
     "type": "CaseStudy",
-    "text": "Final Project"
+    "text": "Case Study 5"
+  },
+  {
+    "date": "20210419",
+    "type": "Lecture",
+    "text": ["Tableau", "Line Charts", "Bar Charts"]
+  },
+  {
+    "date": "20210420",
+    "type": "Exercise",
+    "text": "Exercise 21"
+  },
+  {
+    "date": "20210421",
+    "type": "Lecture",
+    "text": ["Tableau", "Scatter Plots", "Heatmaps", "Geographic Maps"]
+  },
+  {
+    "date": "20210422",
+    "type": "Exercise",
+    "text": "Exercise 22"
+  },
+
+  {
+    "date": "20210426",
+    "type": "Lecture",
+    "text": ["Review: Python and Pandas"]
+  },
+  {
+    "date": "20210427",
+    "type": "Exercise",
+    "text": "Exercise 23"
+  },
+  {
+    "date": "20210428",
+    "type": "Lecture",
+    "text": ["Review: Pandas and SQL"]
+  },
+  {
+    "date": "20210429",
+    "type": "Exercise",
+    "text": "Exercise 24"
+  },
+  {
+    "date": "20210501",
+    "type": "CaseStudy",
+    "text": "Case Study 6"
+  },
+  {
+    "date": "20210503",
+    "type": "Lecture",
+    "text": ["Review: DataViz"]
+  },
+  {
+    "date": "20210505",
+    "type": "Lecture",
+    "text": ["Wrap Up", "Individual Feedback"]
+  },
+  {
+    "date": "20210514",
+    "type": "CaseStudy",
+    "text": "Case Study 7"
   }
 ]

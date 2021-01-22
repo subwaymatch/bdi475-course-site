@@ -1,7 +1,7 @@
 export enum ScheduleType {
   Lecture = "Lecture",
   NoLecture = "NoLecture",
-  AfterClassExercise = "AfterClassExercise",
+  Exercise = "Exercise",
   Quiz = "Quiz",
   CaseStudy = "CaseStudy",
 }
