@@ -85,35 +85,6 @@ h2.sectionTitle {
   color: $color-orange;
 }
 
-[class$="Accent"] {
-  margin-left: 0.625rem;
-  display: inline-block;
-  width: 0.5rem;
-  height: 0.5rem;
-  background-color: black;
-  border-radius: 1rem;
-}
-
-[class$="Label"] {
-  font-size: 1rem;
-  letter-spacing: -0.01rem;
-  line-height: 1.2;
-  padding: 0.25rem 0.7rem;
-  border-radius: 4rem;
-  white-space: nowrap;
-}
-
-[class$="Button"] {
-  display: inline-flex;
-  align-items: center;
-  color: black;
-  background-color: $color-light-gray;
-  line-height: 1.5;
-  padding: 1.25rem 1.75rem;
-  border: none;
-  border-radius: 0.25rem;
-}
-
 [class$="Accent"],
 [class$="Label"],
 [class$="Button"] {
@@ -150,7 +121,34 @@ h2.sectionTitle {
   }
 }
 
+[class$="Accent"] {
+  margin-left: 0.625rem;
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: black;
+  border-radius: 1rem;
+}
+
+[class$="Label"] {
+  font-size: 1rem;
+  letter-spacing: -0.01rem;
+  line-height: 1.2;
+  padding: 0.25rem 0.7rem;
+  border-radius: 4rem;
+  white-space: nowrap;
+}
+
 [class$="Button"] {
+  display: inline-flex;
+  align-items: center;
+  color: black;
+  background-color: $color-light-gray;
+  line-height: 1.5;
+  padding: 1.25rem 1.75rem;
+  border: none;
+  border-radius: 0.25rem;
+
   &[class^="green"]:hover {
     background-color: color.scale($color-green, $lightness: 10%);
   }

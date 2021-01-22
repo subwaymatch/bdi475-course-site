@@ -9,19 +9,13 @@ import clsx from "clsx";
 import { firebaseClient as firebase } from "firebase/firebaseClient";
 import { firebaseAdmin } from "firebase/firebaseAdmin";
 
-import { InferGetServerSidePropsType, GetServerSidePropsContext } from "next";
+import { GetServerSidePropsContext } from "next";
 
-export default function LoginPage(
-  props: InferGetServerSidePropsType<typeof getServerSideProps>
-) {
+export default function LoginPage() {
   const [netId, setNetId] = useState("");
 
   useEffect(() => {
-    console.log(location);
-
     if (firebase.auth().isSignInWithEmailLink(window.location.href)) {
-      console.log("Sign in!");
-
       let email = window.localStorage.getItem("emailForSignIn");
 
       if (!email) {
@@ -148,7 +142,8 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
     const cookies = nookies.get(ctx);
     console.log(JSON.stringify(cookies, null, 2));
-    const token = await firebaseAdmin.auth().verifyIdToken(cookies.token);
+
+    await firebaseAdmin.auth().verifyIdToken(cookies.token);
 
     return {
       redirect: {
