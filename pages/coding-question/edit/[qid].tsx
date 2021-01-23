@@ -4,7 +4,7 @@ import Layout from "components/Layout";
 export default function EditCodingQuestionPage(props) {
   console.log(props);
   return (
-    <Layout>
+    <Layout excludeHeader={true}>
       <QuestionEditor />
     </Layout>
   );
