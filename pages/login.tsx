@@ -3,6 +3,7 @@ import nookies from "nookies";
 import Layout from "components/Layout";
 import Header from "components/Header";
 import { Container, Row, Col } from "react-bootstrap";
+import { MdDone } from "react-icons/md";
 import { RiSendPlaneLine } from "react-icons/ri";
 import styles from "styles/pages/login.module.scss";
 import clsx from "clsx";
@@ -13,6 +14,7 @@ import { GetServerSidePropsContext } from "next";
 
 export default function LoginPage() {
   const [netId, setNetId] = useState("");
+  const [isEmailSent, setIsEmailSent] = useState(false);
 
   useEffect(() => {
     if (firebase.auth().isSignInWithEmailLink(window.location.href)) {
@@ -52,6 +54,7 @@ export default function LoginPage() {
     try {
       await firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings);
       window.localStorage.setItem("emailForSignIn", email);
+      setIsEmailSent(true);
       console.log(`Successfully sent an email sign in link to ${email}`);
     } catch (err) {
       const errorCode = err.code;
@@ -114,16 +117,28 @@ export default function LoginPage() {
 
           <Row className={clsx(styles.submitControls, "align-items-center")}>
             <Col md={4} xs={12}>
-              <a
-                className="greenButton"
-                onClick={(e) => {
-                  e.preventDefault();
-                  sendSignInLink(netId + "@illinois.edu");
-                }}
-              >
-                <span className={styles.label}>Email Me</span>
-                <RiSendPlaneLine className={styles.reactIcon} />
-              </a>
+              {isEmailSent ? (
+                <a
+                  className="lightGrayButton disabled"
+                  onClick={(e) => {
+                    e.preventDefault();
+                  }}
+                >
+                  <span className={styles.label}>Check your Inbox</span>
+                  <MdDone className={styles.reactIcon} />
+                </a>
+              ) : (
+                <a
+                  className="greenButton"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    sendSignInLink(netId + "@illinois.edu");
+                  }}
+                >
+                  <span className={styles.label}>Email Me</span>
+                  <RiSendPlaneLine className={styles.reactIcon} />
+                </a>
+              )}
             </Col>
             <Col md={8} xs={12}>
               <p className={styles.note}>

@@ -85,43 +85,43 @@ h2.sectionTitle {
   color: $color-orange;
 }
 
-[class$="Accent"],
-[class$="Label"],
-[class$="Button"] {
-  &[class^="green"] {
+[class*="Accent"],
+[class*="Label"],
+[class*="Button"] {
+  &[class*="green"] {
     background-color: $color-green;
   }
 
-  &[class^="purple"] {
+  &[class*="purple"] {
     background-color: $color-purple;
   }
 
-  &[class^="yellow"] {
+  &[class*="yellow"] {
     background-color: $color-yellow;
   }
 
-  &[class^="pink"] {
+  &[class*="pink"] {
     background-color: $color-pink;
   }
 
-  &[class^="blue"] {
+  &[class*="blue"] {
     background-color: $color-blue;
   }
 
-  &[class^="orange"] {
+  &[class*="orange"] {
     background-color: $color-orange;
   }
 
-  &[class^="gray"] {
+  &[class*="gray"] {
     background-color: $color-gray;
   }
 
-  &[class^="lightGray"] {
+  &[class*="lightGray"] {
     background-color: $color-light-gray;
   }
 }
 
-[class$="Accent"] {
+[class*="Accent"] {
   margin-left: 0.625rem;
   display: inline-block;
   width: 0.5rem;
@@ -130,7 +130,7 @@ h2.sectionTitle {
   border-radius: 1rem;
 }
 
-[class$="Label"] {
+[class*="Label"] {
   font-size: 1rem;
   letter-spacing: -0.01rem;
   line-height: 1.2;
@@ -139,7 +139,7 @@ h2.sectionTitle {
   white-space: nowrap;
 }
 
-[class$="Button"] {
+[class*="Button"] {
   display: inline-flex;
   align-items: center;
   color: black;
@@ -149,36 +149,16 @@ h2.sectionTitle {
   border: none;
   border-radius: 0.25rem;
 
-  &[class^="green"]:hover {
-    background-color: color.scale($color-green, $lightness: 10%);
+  &:hover {
+    box-shadow: 0 0 0.75rem rgba(black, 0.07);
   }
 
-  &[class^="purple"] {
-    background-color: $color-purple;
-  }
+  &.disabled {
+    cursor: not-allowed;
 
-  &[class^="yellow"] {
-    background-color: $color-yellow;
-  }
-
-  &[class^="pink"] {
-    background-color: $color-pink;
-  }
-
-  &[class^="blue"] {
-    background-color: $color-blue;
-  }
-
-  &[class^="orange"] {
-    background-color: $color-orange;
-  }
-
-  &[class^="gray"] {
-    background-color: $color-gray;
-  }
-
-  &[class^="lightGray"] {
-    background-color: $color-light-gray;
+    &:hover {
+      box-shadow: none;
+    }
   }
 }
 

@@ -74,31 +74,38 @@ export default function GradingBreakdown() {
         </Row>
 
         <GradedItem
-          item="In-class Exercise"
-          points={200}
-          percentage="20%"
+          item="Participation"
+          points={100}
+          percentage="10%"
           notes="Every class"
         />
 
         <GradedItem
-          item="After-class Exercise"
+          item="Exercises"
+          points={240}
+          percentage="24%"
+          notes="24 @ 10 points each"
+        />
+
+        <GradedItem
+          item="Quizzes"
           points={100}
           percentage="10%"
-          notes="20 Exercises"
+          notes="5 Quizzes → drop the lowest score"
         />
 
         <GradedItem
           item="Case Studies"
-          points={320}
-          percentage="32%"
-          notes="8 Cases"
+          points={560}
+          percentage="56%"
+          notes="7 Cases @ 80 points each"
         />
 
         <GradedItem
           item="Extra Credit"
           points={10}
           percentage="1%"
-          notes="Accountancy Research Lab"
+          notes="ARL Subject Pool"
         />
       </Container>
     </section>
