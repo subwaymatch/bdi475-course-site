@@ -39,14 +39,15 @@ export default function AssignmentItem({
           <div className={styles.metaInfo}>
             <span
               className={clsx(
+                "label",
                 status === AssignmentStatus.Available
-                  ? colorTheme.toLowerCase() + "Label"
-                  : "lightGrayLabel"
+                  ? colorTheme.toLowerCase()
+                  : "lightGray"
               )}
             >
               Due {moment(dueDate, "YYYYMMDD").format("ll")}
             </span>
-            <span className="grayLabel">
+            <span className="gray label">
               {pointsAvailable} Points Available
             </span>
           </div>

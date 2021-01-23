@@ -18,7 +18,7 @@ export default function MainPage() {
           <Row>
             <Col>
               <h2 className="sectionTitle">
-                Announcements <span className="greenAccent" />
+                Announcements <span className="green accent" />
               </h2>
             </Col>
           </Row>

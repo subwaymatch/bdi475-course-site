@@ -6,21 +6,19 @@ const GradedItem = ({ item, points, percentage, notes }) => (
   <div className={styles.itemRow}>
     <Row>
       <Col sm={4} xs={6}>
-        <div className={clsx(styles.columnCell)}>{item}</div>
+        <div className={clsx(styles.cell, styles.componentName)}>{item}</div>
       </Col>
 
       <Col sm={2} xs={3}>
-        <div className={clsx(styles.columnCell)}>{points}</div>
+        <div className={clsx(styles.cell, styles.points)}>{points}</div>
       </Col>
 
       <Col sm={2} xs={3}>
-        <div className={clsx(styles.columnCell, styles.purple)}>
-          {percentage}
-        </div>
+        <div className={clsx(styles.cell, styles.percentage)}>{percentage}</div>
       </Col>
 
       <Col sm={4} xs={12}>
-        <div className={clsx(styles.columnCell, styles.note)}>{notes}</div>
+        <div className={clsx(styles.cell, styles.notes)}>{notes}</div>
       </Col>
     </Row>
   </div>
@@ -28,50 +26,45 @@ const GradedItem = ({ item, points, percentage, notes }) => (
 
 export default function GradingBreakdown() {
   return (
-    <section className={styles.gradeBreakdownSection}>
+    <section className={styles.gradingBreakdownSection}>
       <Container>
         <Row>
           <Col>
             <h2 className="sectionTitle blackBottomBorder">
-              Grade Breakdown
-              <span className="purpleAccent" />
+              Grading Breakdown
+              <span className="accent purple" />
             </h2>
           </Col>
         </Row>
 
-        <Row className={styles.headerRow}>
-          <Col sm={4} xs={6}>
-            <div className={clsx(styles.columnCell, styles.columnHeader)}>
-              Item
-            </div>
-          </Col>
+        <div className={styles.headerRow}>
+          <Row>
+            <Col sm={4} xs={6}>
+              <div className={clsx(styles.columnCell)}>
+                <span className="label green">Item</span>
+              </div>
+            </Col>
 
-          <Col sm={2} xs={3}>
-            <div className={clsx(styles.columnCell, styles.columnHeader)}>
-              <span className="d-sm-none">Pts</span>
-              <span className="d-none d-sm-inline">Points</span>
-            </div>
-          </Col>
+            <Col sm={2} xs={3}>
+              <div className={clsx(styles.columnCell)}>
+                <span className="d-sm-none label blue">Pts</span>
+                <span className="d-none d-sm-inline label blue">Points</span>
+              </div>
+            </Col>
 
-          <Col sm={2} xs={3}>
-            <div
-              className={clsx(
-                styles.columnCell,
-                styles.columnHeader,
-                styles.purple
-              )}
-            >
-              <span className="d-sm-none">%</span>
-              <span className="d-none d-sm-inline">Percentage</span>
-            </div>
-          </Col>
+            <Col sm={2} xs={3}>
+              <div className={clsx(styles.columnCell, styles.purple)}>
+                <span className="label purple">%</span>
+              </div>
+            </Col>
 
-          <Col sm={4} className="d-none d-sm-block">
-            <div className={clsx(styles.columnCell, styles.columnHeader)}>
-              Notes
-            </div>
-          </Col>
-        </Row>
+            <Col sm={4} className="d-none d-sm-block">
+              <div className={clsx(styles.columnCell)}>
+                <span className="label yellow">Notes</span>
+              </div>
+            </Col>
+          </Row>
+        </div>
 
         <GradedItem
           item="Participation"
@@ -91,14 +84,14 @@ export default function GradingBreakdown() {
           item="Quizzes"
           points={100}
           percentage="10%"
-          notes="5 Quizzes → drop the lowest score"
+          notes="5 @ 2.5 points each (drop 1 lowest score)"
         />
 
         <GradedItem
           item="Case Studies"
           points={560}
           percentage="56%"
-          notes="7 Cases @ 80 points each"
+          notes="7 @ 80 points each"
         />
 
         <GradedItem

@@ -119,7 +119,7 @@ export default function LoginPage() {
             <Col md={4} xs={12}>
               {isEmailSent ? (
                 <a
-                  className="lightGrayButton disabled"
+                  className="lightGray button disabled"
                   onClick={(e) => {
                     e.preventDefault();
                   }}
@@ -129,7 +129,7 @@ export default function LoginPage() {
                 </a>
               ) : (
                 <a
-                  className="greenButton"
+                  className="green button"
                   onClick={(e) => {
                     e.preventDefault();
                     sendSignInLink(netId + "@illinois.edu");

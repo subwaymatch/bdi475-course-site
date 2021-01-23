@@ -39,7 +39,7 @@ export default function Header() {
                 <Link href="/syllabus">
                   <a>
                     Syllabus
-                    <span className="greenAccent" />
+                    <span className="accent green" />
                   </a>
                 </Link>
               </Col>
@@ -48,7 +48,7 @@ export default function Header() {
                 <Link href="/schedule">
                   <a>
                     Schedule
-                    <span className="purpleAccent" />
+                    <span className="accent purple" />
                   </a>
                 </Link>
               </Col>
@@ -57,7 +57,7 @@ export default function Header() {
                 <Link href="/assignments">
                   <a>
                     Assignments
-                    <span className="pinkAccent" />
+                    <span className="accent pink" />
                   </a>
                 </Link>
               </Col>
@@ -66,7 +66,7 @@ export default function Header() {
                 <Link href="/">
                   <a>
                     Notes
-                    <span className="blueAccent" />
+                    <span className="accent blue" />
                   </a>
                 </Link>
               </Col>

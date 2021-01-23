@@ -29,7 +29,7 @@ export default function AssignmentsPage(props) {
             <Col>
               <div className={styles.exercises}>
                 <h2 className="sectionTitle">
-                  After-class Exercises <span className="purpleAccent" />
+                  Exercises <span className="accent purple" />
                 </h2>
 
                 <AssignmentItem
@@ -71,7 +71,7 @@ export default function AssignmentsPage(props) {
             <Col>
               <div className={styles.codingQuiz}>
                 <h2 className="sectionTitle">
-                  Coding Quiz <span className="pinkAccent" />
+                  Coding Quiz <span className="accent pink" />
                 </h2>
 
                 <AssignmentItem
@@ -113,7 +113,7 @@ export default function AssignmentsPage(props) {
             <Col>
               <div className={styles.caseStudies}>
                 <h2 className="sectionTitle">
-                  Case Study <span className="blueAccent" />
+                  Case Study <span className="accent blue" />
                 </h2>
               </div>
             </Col>

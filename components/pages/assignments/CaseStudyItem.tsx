@@ -38,14 +38,13 @@ export default function CaseStudyItem({
           <div className={styles.metaInfo}>
             <span
               className={clsx(
-                status === AssignmentStatus.Available
-                  ? "blueLabel"
-                  : "lightGrayLabel"
+                "label",
+                status === AssignmentStatus.Available ? "blue" : "lightGray"
               )}
             >
               Due {moment(dueDate, "YYYYMMDD").format("ll")}
             </span>
-            <span className="grayLabel">
+            <span className="gray label">
               {pointsAvailable} Points Available
             </span>
           </div>

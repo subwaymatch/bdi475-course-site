@@ -43,7 +43,7 @@
   .submitControls {
     margin-top: 4rem;
 
-    :global([class*="Button"]) {
+    :global(.button) {
       display: flex;
       justify-content: space-between;
     }

@@ -11,7 +11,7 @@ export default function CourseInformation() {
             <Col>
               <h2 className="sectionTitle">
                 Course Information
-                <span className="greenAccent" />
+                <span className="accent green" />
               </h2>
             </Col>
           </Row>
@@ -19,21 +19,21 @@ export default function CourseInformation() {
           <Row>
             <Col sm={4}>
               <div className={styles.displayBox}>
-                <span className="greenLabel">Term</span>
+                <span className="label green">Term</span>
                 <span className={styles.text}>Spring 2021</span>
               </div>
             </Col>
 
             <Col sm={4}>
               <div className={styles.displayBox}>
-                <span className="purpleLabel">Credit</span>
+                <span className="label purple">Credit</span>
                 <span className={styles.text}>3 Hours</span>
               </div>
             </Col>
 
             <Col sm={4}>
               <div className={styles.displayBox}>
-                <span className="yellowLabel">Instructor</span>
+                <span className="label yellow">Instructor</span>
                 <span className={styles.text}>Park, Ye Joo</span>
               </div>
             </Col>
@@ -42,7 +42,7 @@ export default function CourseInformation() {
           <Row>
             <Col sm={8}>
               <div className={styles.displayBox}>
-                <span className="pinkLabel">Class Time</span>
+                <span className="label pink">Class Time</span>
                 <span className={styles.text}>
                   Monday &amp; Wednesday 2:00-3:20PM
                 </span>
@@ -51,7 +51,7 @@ export default function CourseInformation() {
 
             <Col sm={4}>
               <div className={styles.displayBox}>
-                <span className="blueLabel">Email</span>
+                <span className="label blue">Email</span>
                 <span className={styles.text}>ypark32@illinois.edu</span>
               </div>
             </Col>
@@ -65,7 +65,7 @@ export default function CourseInformation() {
             <Col>
               <h2 className="sectionTitle">
                 Teaching Assistant
-                <span className="greenAccent" />
+                <span className="accent pink" />
               </h2>
             </Col>
           </Row>
@@ -73,14 +73,14 @@ export default function CourseInformation() {
           <Row>
             <Col sm={4}>
               <div className={styles.displayBox}>
-                <span className="yellowLabel">Name</span>
+                <span className="label yellow">Name</span>
                 <span className={styles.text}>Yang, Li</span>
               </div>
             </Col>
 
             <Col sm={4}>
               <div className={styles.displayBox}>
-                <span className="blueLabel">Email</span>
+                <span className="label blue">Email</span>
                 <span className={styles.text}>liyang3@illinois.edu</span>
               </div>
             </Col>

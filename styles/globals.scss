@@ -66,62 +66,62 @@ h2.sectionTitle {
   }
 }
 
-.green {
+.color-green {
   color: $color-green;
 }
-.purple {
+.color-purple {
   color: $color-purple;
 }
-.yellow {
+.color-yellow {
   color: $color-yellow;
 }
-.pink {
+.color-pink {
   color: $color-pink;
 }
-.blue {
+.color-blue {
   color: $color-blue;
 }
-.orange {
+.color-orange {
   color: $color-orange;
 }
 
-[class*="Accent"],
-[class*="Label"],
-[class*="Button"] {
-  &[class*="green"] {
+.accent,
+.label,
+.button {
+  &.green {
     background-color: $color-green;
   }
 
-  &[class*="purple"] {
+  &.purple {
     background-color: $color-purple;
   }
 
-  &[class*="yellow"] {
+  &.yellow {
     background-color: $color-yellow;
   }
 
-  &[class*="pink"] {
+  &.pink {
     background-color: $color-pink;
   }
 
-  &[class*="blue"] {
+  &.blue {
     background-color: $color-blue;
   }
 
-  &[class*="orange"] {
+  &.orange {
     background-color: $color-orange;
   }
 
-  &[class*="gray"] {
+  &.gray {
     background-color: $color-gray;
   }
 
-  &[class*="lightGray"] {
+  &.lightGray {
     background-color: $color-light-gray;
   }
 }
 
-[class*="Accent"] {
+.accent {
   margin-left: 0.625rem;
   display: inline-block;
   width: 0.5rem;
@@ -130,7 +130,7 @@ h2.sectionTitle {
   border-radius: 1rem;
 }
 
-[class*="Label"] {
+.label {
   font-size: 1rem;
   letter-spacing: -0.01rem;
   line-height: 1.2;
@@ -139,7 +139,7 @@ h2.sectionTitle {
   white-space: nowrap;
 }
 
-[class*="Button"] {
+.button {
   display: inline-flex;
   align-items: center;
   color: black;

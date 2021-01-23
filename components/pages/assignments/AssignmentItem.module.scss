@@ -18,7 +18,7 @@
   }
 
   .metaInfo {
-    [class$="Label"] {
+    :global(.label) {
       margin-left: 0.75rem;
 
       &:first-child {
