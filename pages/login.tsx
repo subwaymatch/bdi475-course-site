@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import nookies from "nookies";
 import Layout from "components/Layout";
-import Header from "components/Header";
 import { Container, Row, Col } from "react-bootstrap";
 import { MdDone } from "react-icons/md";
 import { RiSendPlaneLine } from "react-icons/ri";
@@ -68,8 +67,6 @@ export default function LoginPage() {
 
   return (
     <Layout>
-      <Header />
-
       <main className={styles.loginPage}>
         <Container>
           <Row>

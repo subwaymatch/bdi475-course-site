@@ -1,5 +1,4 @@
 import Layout from "components/Layout";
-import Header from "components/Header";
 import { Container, Row, Col } from "react-bootstrap";
 import AssignmentItem from "components/pages/assignments/AssignmentItem";
 import CaseStudyItem from "components/pages/assignments/CaseStudyItem";
@@ -10,8 +9,6 @@ import styles from "styles/pages/assignments.module.scss";
 export default function AssignmentsPage() {
   return (
     <Layout>
-      <Header />
-
       <Container>
         <Row>
           <Col>

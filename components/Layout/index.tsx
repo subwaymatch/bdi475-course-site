@@ -1,10 +1,12 @@
 import Head from "next/head";
+import Header from "components/Header";
 
 type PropTypes = {
   children: React.ReactNode;
+  excludeHeader?: boolean;
 };
 
-export default function Layout({ children }: PropTypes) {
+export default function Layout({ children, excludeHeader }: PropTypes) {
   return (
     <>
       <Head>
@@ -32,6 +34,8 @@ export default function Layout({ children }: PropTypes) {
         <meta name="msapplication-TileColor" content="#00aba9" />
         <meta name="theme-color" content="#00ff88" />
       </Head>
+
+      {excludeHeader !== true && <Header />}
 
       {children}
     </>
