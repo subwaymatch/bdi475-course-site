@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import nookies from "nookies";
 import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
+import { toast } from "react-toastify";
 import { MdDone } from "react-icons/md";
 import { RiSendPlaneLine } from "react-icons/ri";
 import styles from "styles/pages/login.module.scss";
@@ -26,17 +27,16 @@ export default function LoginPage() {
       firebase
         .auth()
         .signInWithEmailLink(email, window.location.href)
-        .then((result) => {
+        .then((isSignInWithEmailLink) => {
           window.localStorage.removeItem("emailForSignIn");
           console.log("Sign in complete");
-          console.log(result);
+          console.log(`isSignInWithEmailLink=${isSignInWithEmailLink}`);
 
           window.location.href = "/";
         })
         .catch((err) => {
           console.error("Error signing in through email link");
-          console.log(err.errorCode);
-          console.log(err.errorMessage);
+          toast.error(err.errorMessage);
         });
     }
   }, []);
@@ -55,13 +55,16 @@ export default function LoginPage() {
       window.localStorage.setItem("emailForSignIn", email);
       setIsEmailSent(true);
       console.log(`Successfully sent an email sign in link to ${email}`);
+
+      toast.success(`Successfully sent a sign-in link to ${email}`);
     } catch (err) {
       const errorCode = err.code;
       const errorMessage = err.message;
 
-      console.error("Error sending authentication email");
       console.log(errorCode);
       console.log(errorMessage);
+
+      toast.error(errorMessage);
     }
   };
 
