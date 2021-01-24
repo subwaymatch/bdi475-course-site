@@ -23,6 +23,29 @@ export default function MainPage() {
             </Col>
           </Row>
         </Container>
+
+        <div className={styles.zoomLinkSection}>
+          <Container>
+            <Row>
+              <Col>
+                <h2 className="sectionTitle">
+                  Join Lecture <span className="blue accent" />
+                </h2>
+              </Col>
+            </Row>
+
+            <Row>
+              <Col xs={6}>
+                <span className="label yellow">Lecture</span>
+                <a href="https://github.com">Zoom Link ⟶</a>
+              </Col>
+              <Col xs={6}>
+                <span className="label pink">Discussions</span>
+                <a href="https://github.com">Discord ⟶</a>
+              </Col>
+            </Row>
+          </Container>
+        </div>
       </main>
     </Layout>
   );

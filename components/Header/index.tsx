@@ -10,6 +10,15 @@ import clickableVariants from "animations/clickableVariants";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 
+const headerAccentVariants = {
+  hover: {
+    x: 4,
+    transition: {
+      duration: 0.3,
+    },
+  },
+};
+
 export default function Header() {
   const { user } = useAuth();
   const router = useRouter();
@@ -28,8 +37,7 @@ export default function Header() {
                 <a className={styles.logoLink}>
                   <Image
                     src="/images/logo_bdi475.svg"
-                    alt="Tabbied"
-                    layout="fixed"
+                    alt="BDI 475"
                     width={124}
                     height={25}
                   />
@@ -48,7 +56,10 @@ export default function Header() {
                     whileTap="tap"
                   >
                     Syllabus
-                    <span className="accent green" />
+                    <motion.span
+                      variants={headerAccentVariants}
+                      className="accent green"
+                    />
                   </motion.a>
                 </Link>
               </Col>
@@ -61,7 +72,26 @@ export default function Header() {
                     whileTap="tap"
                   >
                     Schedule
-                    <span className="accent purple" />
+                    <motion.span
+                      variants={headerAccentVariants}
+                      className="accent purple"
+                    />
+                  </motion.a>
+                </Link>
+              </Col>
+
+              <Col md={3}>
+                <Link href="/notes">
+                  <motion.a
+                    variants={clickableVariants}
+                    whileHover="hover"
+                    whileTap="tap"
+                  >
+                    Notes
+                    <motion.span
+                      variants={headerAccentVariants}
+                      className="accent blue"
+                    />
                   </motion.a>
                 </Link>
               </Col>
@@ -74,20 +104,10 @@ export default function Header() {
                     whileTap="tap"
                   >
                     Assignments
-                    <span className="accent pink" />
-                  </motion.a>
-                </Link>
-              </Col>
-
-              <Col md={3}>
-                <Link href="/">
-                  <motion.a
-                    variants={clickableVariants}
-                    whileHover="hover"
-                    whileTap="tap"
-                  >
-                    Notes
-                    <span className="accent blue" />
+                    <motion.span
+                      variants={headerAccentVariants}
+                      className="accent pink"
+                    />
                   </motion.a>
                 </Link>
               </Col>

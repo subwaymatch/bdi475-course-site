@@ -11,7 +11,8 @@
   }
 
   .headerRow,
-  .itemRow {
+  .itemRow,
+  .footerRow {
     padding: 1rem 0;
     border-bottom: 1px solid $color-border-gray;
 
@@ -24,13 +25,10 @@
     font-weight: 500;
   }
 
-  .itemRow {
+  .itemRow,
+  .footerRow {
     @include media-breakpoint-down(xs) {
       padding: 0.5rem 0;
-    }
-
-    .componentName {
-      font-weight: 500;
     }
 
     .points {
@@ -44,5 +42,26 @@
     .notes {
       color: #818181;
     }
+  }
+
+  .itemRow {
+    .componentName {
+      font-weight: 500;
+    }
+  }
+
+  .footerRow {
+    border-bottom: none;
+
+    .componentName,
+    .points,
+    .percentage {
+      font-weight: 600;
+    }
+  }
+
+  .cell {
+    display: flex;
+    align-items: center;
   }
 }

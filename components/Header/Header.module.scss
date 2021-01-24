@@ -3,11 +3,11 @@
 
 .header {
   margin-top: 1rem;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  letter-spacing: -0.01rem;
 
   @include media-breakpoint-down(lg) {
     font-size: 1.1rem;
-    letter-spacing: -0.01rem;
   }
 
   @include media-breakpoint-down(md) {
@@ -16,7 +16,9 @@
   }
 
   .logoLink {
-    padding: 0.5rem 0;
+    display: block;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
   }
 
   .mainMenu {
@@ -25,6 +27,10 @@
       display: flex;
       align-items: center;
       padding: 0.5rem 0;
+
+      :global(.accent) {
+        margin-left: 0.5rem;
+      }
     }
   }
 }

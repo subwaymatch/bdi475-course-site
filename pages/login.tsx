@@ -36,6 +36,7 @@ export default function LoginPage() {
 
           toast.success("Successfully signed in");
 
+          window.scrollTo(0, 0);
           router.push("/");
         })
         .catch((err) => {

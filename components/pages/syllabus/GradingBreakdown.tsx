@@ -30,7 +30,7 @@ export default function GradingBreakdown() {
       <Container>
         <Row>
           <Col>
-            <h2 className="sectionTitle blackBottomBorder">
+            <h2 className="sectionTitle grayBottomBorder">
               Grading Breakdown
               <span className="accent purple" />
             </h2>
@@ -40,26 +40,26 @@ export default function GradingBreakdown() {
         <div className={styles.headerRow}>
           <Row>
             <Col sm={4} xs={6}>
-              <div className={clsx(styles.columnCell)}>
+              <div>
                 <span className="label green">Item</span>
               </div>
             </Col>
 
             <Col sm={2} xs={3}>
-              <div className={clsx(styles.columnCell)}>
+              <div>
                 <span className="d-sm-none label blue">Pts</span>
                 <span className="d-none d-sm-inline label blue">Points</span>
               </div>
             </Col>
 
             <Col sm={2} xs={3}>
-              <div className={clsx(styles.columnCell, styles.purple)}>
+              <div>
                 <span className="label purple">%</span>
               </div>
             </Col>
 
             <Col sm={4} className="d-none d-sm-block">
-              <div className={clsx(styles.columnCell)}>
+              <div>
                 <span className="label yellow">Notes</span>
               </div>
             </Col>
@@ -100,6 +100,24 @@ export default function GradingBreakdown() {
           percentage="1%"
           notes="ARL Subject Pool"
         />
+
+        <div className={styles.footerRow}>
+          <Row>
+            <Col sm={4} xs={6}>
+              <div className={clsx(styles.cell, styles.componentName)}>
+                Total <span className="accent green" />
+              </div>
+            </Col>
+
+            <Col sm={2} xs={3}>
+              <div className={clsx(styles.cell, styles.points)}>1000</div>
+            </Col>
+
+            <Col sm={2} xs={3}>
+              <div className={clsx(styles.cell, styles.percentage)}>100%</div>
+            </Col>
+          </Row>
+        </div>
       </Container>
     </section>
   );
