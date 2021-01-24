@@ -9,12 +9,14 @@ import styles from "styles/pages/login.module.scss";
 import clsx from "clsx";
 import { firebaseClient as firebase } from "firebase/firebaseClient";
 import { firebaseAdmin } from "firebase/firebaseAdmin";
+import { useRouter } from "next/router";
 
 import { GetServerSidePropsContext } from "next";
 
 export default function LoginPage() {
   const [netId, setNetId] = useState("");
   const [isEmailSent, setIsEmailSent] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     if (firebase.auth().isSignInWithEmailLink(window.location.href)) {
@@ -32,7 +34,9 @@ export default function LoginPage() {
           console.log("Sign in complete");
           console.log(`isSignInWithEmailLink=${isSignInWithEmailLink}`);
 
-          window.location.href = "/";
+          toast.success("Successfully signed in");
+
+          router.push("/");
         })
         .catch((err) => {
           console.error("Error signing in through email link");

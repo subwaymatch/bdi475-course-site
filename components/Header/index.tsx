@@ -7,9 +7,12 @@ import useAuth from "hooks/useAuth";
 import { firebaseClient } from "firebase/firebaseClient";
 import { motion } from "framer-motion";
 import clickableVariants from "animations/clickableVariants";
+import { toast } from "react-toastify";
+import { useRouter } from "next/router";
 
 export default function Header() {
   const { user } = useAuth();
+  const router = useRouter();
 
   return (
     <header className={styles.header}>
@@ -97,7 +100,8 @@ export default function Header() {
                 className={styles.signOutButton}
                 onClick={async () => {
                   await firebaseClient.auth().signOut();
-                  window.location.href = "/";
+                  toast.success("Successfully signed out, bye!");
+                  router.push("/");
                 }}
               >
                 Sign Out

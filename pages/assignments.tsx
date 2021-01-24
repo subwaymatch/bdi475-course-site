@@ -5,7 +5,7 @@ import CaseStudyItem from "components/pages/assignments/CaseStudyItem";
 import { AssignmentStatus } from "typings/assignment";
 import { ColorTheme } from "typings/color-theme";
 import styles from "styles/pages/assignments.module.scss";
-import { InferGetServerSidePropsType, GetServerSidePropsContext } from "next";
+import { GetServerSidePropsContext } from "next";
 import nookies from "nookies";
 import { firebaseAdmin } from "firebase/firebaseAdmin";
 
