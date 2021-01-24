@@ -4,7 +4,7 @@
 .header {
   margin-top: 1rem;
   font-size: 1.1rem;
-  letter-spacing: -0.01rem;
+  letter-spacing: -0.02rem;
 
   @include media-breakpoint-down(lg) {
     font-size: 1.1rem;
@@ -12,7 +12,6 @@
 
   @include media-breakpoint-down(md) {
     font-size: 1rem;
-    letter-spacing: -0.01rem;
   }
 
   .logoLink {
