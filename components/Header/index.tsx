@@ -10,15 +10,6 @@ import clickableVariants from "animations/clickableVariants";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 
-const headerAccentVariants = {
-  hover: {
-    x: 8,
-    transition: {
-      duration: 0.3,
-    },
-  },
-};
-
 export default function Header() {
   const { user } = useAuth();
   const router = useRouter();
@@ -56,10 +47,7 @@ export default function Header() {
                     whileTap="tap"
                   >
                     Syllabus
-                    <motion.span
-                      variants={headerAccentVariants}
-                      className="accent green"
-                    />
+                    <span className="accent green" />
                   </motion.a>
                 </Link>
               </Col>
@@ -72,10 +60,7 @@ export default function Header() {
                     whileTap="tap"
                   >
                     Schedule
-                    <motion.span
-                      variants={headerAccentVariants}
-                      className="accent purple"
-                    />
+                    <span className="accent purple" />
                   </motion.a>
                 </Link>
               </Col>
@@ -88,10 +73,7 @@ export default function Header() {
                     whileTap="tap"
                   >
                     Notes
-                    <motion.span
-                      variants={headerAccentVariants}
-                      className="accent blue"
-                    />
+                    <span className="accent blue" />
                   </motion.a>
                 </Link>
               </Col>
@@ -104,10 +86,7 @@ export default function Header() {
                     whileTap="tap"
                   >
                     Assignments
-                    <motion.span
-                      variants={headerAccentVariants}
-                      className="accent pink"
-                    />
+                    <span className="accent pink" />
                   </motion.a>
                 </Link>
               </Col>
@@ -115,22 +94,24 @@ export default function Header() {
           </Col>
 
           <Col md={2}>
-            {user ? (
-              <a
-                className={styles.signOutButton}
-                onClick={async () => {
-                  await firebaseClient.auth().signOut();
-                  toast.success("Successfully signed out, bye!");
-                  router.push("/");
-                }}
-              >
-                Sign Out
-              </a>
-            ) : (
-              <Link href="/login">
-                <a>Sign In</a>
-              </Link>
-            )}
+            <div className={styles.userMenu}>
+              {user ? (
+                <a
+                  className={styles.signOutButton}
+                  onClick={async () => {
+                    await firebaseClient.auth().signOut();
+                    toast.success("Successfully signed out, bye!");
+                    router.push("/");
+                  }}
+                >
+                  Sign Out
+                </a>
+              ) : (
+                <Link href="/login">
+                  <a className={styles.signInButton}>Sign In</a>
+                </Link>
+              )}
+            </div>
           </Col>
         </Row>
       </Container>

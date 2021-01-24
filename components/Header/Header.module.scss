@@ -30,7 +30,21 @@
 
       :global(.accent) {
         margin-left: 0.5rem;
+        transition: all 0.3s;
+      }
+
+      &:hover {
+        :global(.accent) {
+          transform: translateX(0.25rem);
+          width: 1.5rem;
+          height: 0.2rem;
+        }
       }
     }
+  }
+
+  .userMenu {
+    display: flex;
+    justify-content: end;
   }
 }
