@@ -39,6 +39,14 @@
           height: 0.2rem;
         }
       }
+
+      &:active {
+        :global(.accent) {
+          transform: translateX(0);
+          width: 0.5rem;
+          height: 0.5rem;
+        }
+      }
     }
   }
 
