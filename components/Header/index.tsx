@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 
 const headerAccentVariants = {
   hover: {
-    x: 4,
+    x: 8,
     transition: {
       duration: 0.3,
     },
