@@ -5,6 +5,8 @@ import styles from "./Header.module.scss";
 import clsx from "clsx";
 import useAuth from "hooks/useAuth";
 import { firebaseClient } from "firebase/firebaseClient";
+import { motion } from "framer-motion";
+import clickableVariants from "animations/clickableVariants";
 
 export default function Header() {
   const { user } = useAuth();
@@ -37,37 +39,53 @@ export default function Header() {
             <Row className={clsx(styles.mainMenu, "align-items-center")}>
               <Col md={3}>
                 <Link href="/syllabus">
-                  <a>
+                  <motion.a
+                    variants={clickableVariants}
+                    whileHover="hover"
+                    whileTap="tap"
+                  >
                     Syllabus
                     <span className="accent green" />
-                  </a>
+                  </motion.a>
                 </Link>
               </Col>
 
               <Col md={3}>
                 <Link href="/schedule">
-                  <a>
+                  <motion.a
+                    variants={clickableVariants}
+                    whileHover="hover"
+                    whileTap="tap"
+                  >
                     Schedule
                     <span className="accent purple" />
-                  </a>
+                  </motion.a>
                 </Link>
               </Col>
 
               <Col md={3}>
                 <Link href="/assignments">
-                  <a>
+                  <motion.a
+                    variants={clickableVariants}
+                    whileHover="hover"
+                    whileTap="tap"
+                  >
                     Assignments
                     <span className="accent pink" />
-                  </a>
+                  </motion.a>
                 </Link>
               </Col>
 
               <Col md={3}>
                 <Link href="/">
-                  <a>
+                  <motion.a
+                    variants={clickableVariants}
+                    whileHover="hover"
+                    whileTap="tap"
+                  >
                     Notes
                     <span className="accent blue" />
-                  </a>
+                  </motion.a>
                 </Link>
               </Col>
             </Row>
