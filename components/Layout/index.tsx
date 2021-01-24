@@ -1,6 +1,5 @@
 import Head from "next/head";
 import Header from "components/Header";
-import { ToastContainer } from "react-toastify";
 
 type PropTypes = {
   children: React.ReactNode;
@@ -35,18 +34,6 @@ export default function Layout({ children, excludeHeader }: PropTypes) {
         <meta name="msapplication-TileColor" content="#00aba9" />
         <meta name="theme-color" content="#00ff88" />
       </Head>
-
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
 
       {excludeHeader !== true && <Header />}
 
