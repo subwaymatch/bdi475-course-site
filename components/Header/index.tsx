@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import clickableVariants from "animations/clickableVariants";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
+import { FiLogIn } from "react-icons/fi";
 
 export default function Header() {
   const { user } = useAuth();
@@ -108,7 +109,15 @@ export default function Header() {
                 </a>
               ) : (
                 <Link href="/login">
-                  <a className={styles.signInButton}>Sign In</a>
+                  <motion.a
+                    variants={clickableVariants}
+                    whileHover="hover"
+                    whileTap="tap"
+                    className={styles.signInButton}
+                  >
+                    Sign In
+                    <FiLogIn className={styles.reactIcon} />
+                  </motion.a>
                 </Link>
               )}
             </div>

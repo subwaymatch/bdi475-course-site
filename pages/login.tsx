@@ -5,6 +5,8 @@ import { Container, Row, Col } from "react-bootstrap";
 import { toast } from "react-toastify";
 import { MdDone } from "react-icons/md";
 import { RiSendPlaneLine } from "react-icons/ri";
+import { motion } from "framer-motion";
+import clickableVariants from "animations/clickableVariants";
 import styles from "styles/pages/login.module.scss";
 import clsx from "clsx";
 import { firebaseClient as firebase } from "firebase/firebaseClient";
@@ -133,7 +135,10 @@ export default function LoginPage() {
                   <MdDone className={styles.reactIcon} />
                 </a>
               ) : (
-                <a
+                <motion.a
+                  variants={clickableVariants}
+                  whileHover="hover"
+                  whileTap="tap"
                   className="green button"
                   onClick={(e) => {
                     e.preventDefault();
@@ -142,7 +147,7 @@ export default function LoginPage() {
                 >
                   <span className={styles.label}>Email Me</span>
                   <RiSendPlaneLine className={styles.reactIcon} />
-                </a>
+                </motion.a>
               )}
             </Col>
             <Col md={8} xs={12}>

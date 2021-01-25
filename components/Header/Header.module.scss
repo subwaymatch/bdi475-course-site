@@ -3,7 +3,7 @@
 
 .header {
   margin-top: 1rem;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   letter-spacing: -0.02rem;
 
   @include media-breakpoint-down(lg) {
@@ -53,5 +53,28 @@
   .userMenu {
     display: flex;
     justify-content: flex-end;
+  }
+
+  .signInButton {
+    display: inline-flex;
+    align-items: center;
+    line-height: 1.2;
+    background-color: black;
+    color: white;
+    padding: 0.8rem 1.2rem;
+    border-radius: 0.25rem;
+
+    @include media-breakpoint-down(md) {
+      padding: 0.6rem 1rem;
+    }
+
+    .reactIcon {
+      color: white;
+      margin-left: 0.5rem;
+    }
+
+    &:hover {
+      box-shadow: 0 0 1rem rgba(black, 0.2);
+    }
   }
 }

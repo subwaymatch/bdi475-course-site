@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { asyncRun } from "lib/pyodide/py-worker";
 
-const script = `3 + 4`;
+const script = `import numpy as np
+np.meassn([3, 4, 5, 6])`;
 
 const context = {
   A_rank: [0.8, 0.4, 1.2, 3.7, 2.6, 5.8],
