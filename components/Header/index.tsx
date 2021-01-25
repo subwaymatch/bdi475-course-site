@@ -98,7 +98,7 @@ export default function Header() {
       <header className={styles.header}>
         <Container>
           <Row className="align-items-center">
-            <Col md={2}>
+            <Col md={2} xs={6}>
               <div
                 style={{
                   lineHeight: 0,
@@ -162,30 +162,32 @@ export default function Header() {
             </Col>
           </Row>
         </Container>
-
-        <AnimatePresence>
-          {isMenuOpen && (
-            <motion.div
-              className={styles.mobileMenu}
-              initial="closed"
-              animate="open"
-              exit={{
-                height: 0,
-                opacity: 0,
-              }}
-              variants={{
-                open: {
-                  height: "auto",
-                  opacity: 1,
-                },
-                closed: { height: 0, opacity: 0 },
-              }}
-            >
-              <HeaderMenu />
-            </motion.div>
-          )}
-        </AnimatePresence>
       </header>
+
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            className={styles.mobileMenu}
+            initial="closed"
+            animate="open"
+            exit={{
+              height: 0,
+              opacity: 0,
+            }}
+            variants={{
+              open: {
+                height: "auto",
+                opacity: 1,
+              },
+              closed: { height: 0, opacity: 0 },
+            }}
+          >
+            <Container>
+              <HeaderMenu />
+            </Container>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

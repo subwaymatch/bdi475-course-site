@@ -3,9 +3,14 @@
 .menuBtn {
   cursor: pointer;
   display: block;
-  width: 52px;
-  height: 44px;
-  position: relative;
+  top: 1rem;
+  right: 1.25rem;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border-radius: 200px;
+  position: fixed;
+  z-index: 2100;
 
   .menuIcon {
     &::before,
@@ -16,30 +21,23 @@
       width: 20px;
       height: 2px;
       position: absolute;
-      right: 16px;
+      right: 10px;
       transition: background ease 0.2s, top ease 0.2s 0.2s, transform ease 0.3s;
     }
 
     &::before {
-      top: 16px;
+      top: 15px;
     }
 
     &::after {
-      top: 24px;
-    }
-  }
-
-  &:hover {
-    .menuIcon {
-      &::before,
-      &::after {
-        background: $color-blue;
-      }
+      top: 23px;
     }
   }
 
   &.open {
     .menuIcon {
+      background: $color-green;
+
       &::before {
         transform: rotate(45deg);
       }
@@ -50,7 +48,7 @@
 
       &::before,
       &::after {
-        top: 20px;
+        top: 19px;
         transition: top ease 0.2s, transform ease 0.2s 0.2s;
       }
     }
