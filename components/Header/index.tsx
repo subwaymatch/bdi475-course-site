@@ -10,6 +10,7 @@ import clickableVariants from "animations/clickableVariants";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 import { FiLogIn } from "react-icons/fi";
+import ReactTooltip from "react-tooltip";
 
 export default function Header() {
   const { user } = useAuth();
@@ -114,12 +115,25 @@ export default function Header() {
                     whileHover="hover"
                     whileTap="tap"
                     className={styles.signInButton}
+                    data-tip
+                    data-for="signInTooltip"
                   >
                     Sign In
                     <FiLogIn className={styles.reactIcon} />
                   </motion.a>
                 </Link>
               )}
+              <ReactTooltip
+                id="signInTooltip"
+                place="left"
+                effect="solid"
+                className={styles.tooltip}
+              >
+                <span>
+                  Sign in to access materials that are only visible to
+                  registered students
+                </span>
+              </ReactTooltip>
             </div>
           </Col>
         </Row>
