@@ -6,7 +6,7 @@ const projectId = process.env["FB_PROJECT_ID"];
 
 if (!privateKey || !clientEmail || !projectId) {
   console.log(
-    `Failed to load Firebase credentials. Follow the instructions in the README to set your Firebase credentials inside environment variables.`
+    `Failed to load Firebase credentials. Check your Firebase credential environment variables.`
   );
 }
 

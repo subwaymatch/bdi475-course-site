@@ -1,55 +1,38 @@
 import { useState, useEffect } from "react";
+import randomstring from "randomstring";
 
-const pythonCode = `
-    import statistics
-    statistics.stdev([0.8, 0.4, 1.2, 3.7, 2.6, 5.8])
-`;
+const pythonCode = `3 + 4`;
 
 export default function PyodideTestPage() {
   const [results, setResults] = useState("Results");
   const [pyodideError, setPyodideError] = useState("Error");
+  const [isPyodideReady, setIsPyodideReady] = useState(false);
 
   useEffect(async () => {
-    const pyodideWorker = new Worker("lib/pyodide/worker.js", {
+    const pyodideWorker = new Worker("lib/pyodide/worker2.js", {
       type: "module",
     });
 
-    function run(script, context, onSuccess, onError) {
-      pyodideWorker.onerror = onError;
-      pyodideWorker.onmessage = (e) => onSuccess(e.data);
-      pyodideWorker.postMessage({
-        ...context,
-        python: script,
-      });
-    }
+    pyodideWorker.onerror = (err) => {
+      console.log(`pyodideWorker.onerror ERR`);
+      console.error(err);
+    };
+    pyodideWorker.onmessage = (e) => {
+      console.log(`pyodideWorker.onmessage received`);
+      console.log(e);
+    };
 
-    // Transform the run (callback) form to a more modern async form.
-    // This is what allows to write:
-    //    const {results, error} = await asyncRun(script, context);
-    // Instead of:
-    //    run(script, context, successCallback, errorCallback);
-    function asyncRun(script, context) {
-      return new Promise(function (onSuccess, onError) {
-        run(script, context, onSuccess, onError);
-      });
-    }
+    pyodideWorker.postMessage({
+      id: randomstring.generate(6),
+      type: "LOAD_PYODIDE",
+    });
 
-    try {
-      const { results, error } = await asyncRun(pythonCode);
-
-      if (results) {
-        console.log(`pyodideWorker return results: `, results);
-        setResults(results);
-      } else if (error) {
-        console.log(`pyodideWorker error: `, error);
-        setPyodideError(error);
-      }
-    } catch (e) {
-      console.error(
-        `Error in pyodideWorker at ${e.filename}, Line: ${e.lineno}, ${e.message}`
-      );
-    }
-  });
+    // pyodideWorker.postMessage({
+    //   id: randomstring.generate(6),
+    //   type: "RUN_CODE",
+    //   userCode: pythonCode,
+    // });
+  }, []);
 
   return (
     <div>
