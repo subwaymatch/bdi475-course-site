@@ -12,6 +12,14 @@ export default function NotesPage() {
               <h1 className="pageTitle">Lecture Notes</h1>
             </Col>
           </Row>
+
+          <Row>
+            <Col>
+              <h2 className="sectionTitle">
+                No lecture notes posted <span className="blue accent" />
+              </h2>
+            </Col>
+          </Row>
         </Container>
       </main>
     </Layout>

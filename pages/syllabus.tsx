@@ -21,7 +21,7 @@ export default function SyllabusPage() {
 
         <GradingBreakdown />
 
-        <Participation />
+        {/* <Participation /> */}
       </main>
     </Layout>
   );
