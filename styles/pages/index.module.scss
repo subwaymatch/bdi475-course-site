@@ -34,6 +34,12 @@
     font-size: 2.25rem;
     margin-top: 0.5rem;
 
+    a {
+      &:hover {
+        color: #333;
+      }
+    }
+
     @include media-breakpoint-down(md) {
       font-size: 1.75rem;
     }

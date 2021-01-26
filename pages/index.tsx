@@ -1,5 +1,7 @@
 import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
+import { motion } from "framer-motion";
+import clickableVariants from "animations/clickableVariants";
 import styles from "styles/pages/index.module.scss";
 
 export default function MainPage() {
@@ -50,31 +52,46 @@ export default function MainPage() {
                   <span className="label yellow">
                     Lecture &amp; Office Hours
                   </span>
-                  <span className={styles.text}>
+                  <motion.div
+                    variants={clickableVariants}
+                    whileHover="hover"
+                    whileTap="tap"
+                    className={styles.text}
+                  >
                     <a href="https://illinois.zoom.us/j/84904507698?pwd=QzZ2N3MrRTJDZjlXc0Z5NW8ycmtSZz09">
                       Zoom Link ⟶
                     </a>
-                  </span>
+                  </motion.div>
                 </div>
               </Col>
 
               <Col md={4}>
                 <div className={styles.displayBox}>
                   <span className="label purple">Lecture Recordings</span>
-                  <span className={styles.text}>
+                  <motion.div
+                    variants={clickableVariants}
+                    whileHover="hover"
+                    whileTap="tap"
+                    className={styles.text}
+                  >
                     <a href="https://mediaspace.illinois.edu/channel/BDI%2B475%2BSpring%2B2020%2BSection%2BDAA/">
                       Mediaspace ⟶
                     </a>
-                  </span>
+                  </motion.div>
                 </div>
               </Col>
 
               <Col md={4}>
                 <div className={styles.displayBox}>
                   <span className="label blue">Discussion</span>
-                  <span className={styles.text}>
+                  <motion.div
+                    variants={clickableVariants}
+                    whileHover="hover"
+                    whileTap="tap"
+                    className={styles.text}
+                  >
                     <a href="https://discord.gg/jWF56zsQ7E">Discord ⟶</a>
-                  </span>
+                  </motion.div>
                 </div>
               </Col>
             </Row>
