@@ -1,0 +1,22 @@
+@import "styles/variables";
+
+.codingQuestionWrapper {
+  .exerciseHeader {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    border-top: 1px solid black;
+    padding-top: 0.75rem;
+    padding-bottom: 2.5rem;
+    align-items: center;
+    border-bottom: 1px solid $color-border-gray;
+
+    .exerciseType {
+      display: block;
+      font-weight: 500;
+    }
+
+    .exerciseTitle {
+      color: $color-green;
+    }
+  }
+}
