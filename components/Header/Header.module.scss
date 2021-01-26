@@ -28,13 +28,16 @@
   .signInButton {
     display: inline-flex;
     align-items: center;
+    font-size: 1rem;
+    letter-spacing: -0.01rem;
     line-height: 1.2;
     background-color: black;
     color: white;
-    padding: 0.8rem 1.2rem;
+    padding: 0.75rem 1.2rem;
     border-radius: 0.25rem;
 
     @include media-breakpoint-down(md) {
+      font-size: 0.9rem;
       padding: 0.6rem 1rem;
     }
 
