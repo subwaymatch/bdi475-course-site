@@ -45,9 +45,11 @@ export default function MainPage() {
             </Row>
 
             <Row>
-              <Col xs={6}>
+              <Col md={4}>
                 <div className={styles.displayBox}>
-                  <span className="label yellow">Lecture</span>
+                  <span className="label yellow">
+                    Lecture &amp; Office Hours
+                  </span>
                   <span className={styles.text}>
                     <a href="https://illinois.zoom.us/j/84904507698?pwd=QzZ2N3MrRTJDZjlXc0Z5NW8ycmtSZz09">
                       Zoom Link ⟶
@@ -55,13 +57,23 @@ export default function MainPage() {
                   </span>
                 </div>
               </Col>
-              <Col xs={6}>
+
+              <Col md={4}>
                 <div className={styles.displayBox}>
-                  <span className="label blue">Discord</span>
+                  <span className="label purple">Lecture Recordings</span>
                   <span className={styles.text}>
-                    <a href="https://discord.gg/jWF56zsQ7E">
-                      Discord Channel ⟶
+                    <a href="https://mediaspace.illinois.edu/channel/BDI%2B475%2BSpring%2B2020%2BSection%2BDAA/">
+                      Mediaspace ⟶
                     </a>
+                  </span>
+                </div>
+              </Col>
+
+              <Col md={4}>
+                <div className={styles.displayBox}>
+                  <span className="label blue">Discussion</span>
+                  <span className={styles.text}>
+                    <a href="https://discord.gg/jWF56zsQ7E">Discord ⟶</a>
                   </span>
                 </div>
               </Col>

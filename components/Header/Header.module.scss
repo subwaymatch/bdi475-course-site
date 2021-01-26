@@ -2,7 +2,7 @@
 @import "styles/mixins";
 
 .header {
-  margin-top: 1rem;
+  margin: 1rem 0;
   font-size: 1.15rem;
   letter-spacing: -0.02rem;
 
@@ -38,7 +38,7 @@
 
     @include media-breakpoint-down(md) {
       font-size: 0.9rem;
-      padding: 0.6rem 1rem;
+      padding: 0.7rem 1rem;
     }
 
     .reactIcon {
