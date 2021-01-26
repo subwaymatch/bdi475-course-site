@@ -1,4 +1,5 @@
 @import "styles/variables";
+@import "styles/mixins";
 
 .codingQuestionWrapper {
   .exerciseHeader {
@@ -18,5 +19,32 @@
     .exerciseTitle {
       color: $color-green;
     }
+  }
+
+  .questionTextWrapper {
+    height: 400px;
+    overflow-y: auto;
+
+    .questionTextInner {
+      padding: 2rem;
+      padding-left: 0;
+
+      .questionMarkdown {
+        margin-top: 1rem;
+
+        @include media-breakpoint-down(lg) {
+          font-size: 1.15rem;
+        }
+
+        @include media-breakpoint-down(md) {
+          font-size: 1.05rem;
+          letter-spacing: -0.02rem;
+        }
+      }
+    }
+  }
+
+  .codeEditorWrapper {
+    border-left: 1px solid $color-border-gray;
   }
 }
