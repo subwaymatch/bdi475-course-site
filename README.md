@@ -7,6 +7,11 @@ Introduction to Data Analytics Applications in Business
 
 This is a course site for UIUC's BDI 475 - Introduction to Data Analytics Applications in Business.
 
+## Preview (Development) and Production Branches
+
+- `main` branch is used for all development activities. `main` branch can be viewed at [https://bdi475-course-site-git-main.subwaymatch.vercel.app/](https://bdi475-course-site-git-main.subwaymatch.vercel.app/).
+- `production` is the branch that the course site ([https://bdi475.org](https://bdi475.org)) points to. Merging changes from `main` to `production` will automatically deploy all changes to the production site.
+
 ## Development
 
 Clone the repository and run the development server using one of the commands below:
