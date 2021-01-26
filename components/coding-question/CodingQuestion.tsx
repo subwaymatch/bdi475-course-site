@@ -66,31 +66,14 @@ export default function CodingQuestion({
 
       <Row className="no-gutters">
         <Col md={6}>
-          <div className={styles.questionTextWrapper}>
+          <div
+            className={styles.questionTextWrapper}
+            style={{ height: "440px" }}
+          >
             <div className={styles.questionTextInner}>
               <span className="label green">Task</span>
 
-              <div className={styles.questionMarkdown}>
-                The last step of writing a test is to validate the output
-                against a known response. This is known as an assertion. There
-                are some general best practices around how to write assertions:
-                Make sure tests are repeatable and run your test multiple times
-                to make sure it gives the same result every time Try and assert
-                results that relate to your input data, such as checking that
-                the result is the actual sum of values in the sum() example
-                unittest comes with lots of methods to assert on the values,
-                types, and existence of variables. Here are some of the most
-                commonly used methods: The last step of writing a test is to
-                validate the output against a known response. This is known as
-                an assertion. There are some general best practices around how
-                to write assertions: Make sure tests are repeatable and run your
-                test multiple times to make sure it gives the same result every
-                time Try and assert results that relate to your input data, such
-                as checking that the result is the actual sum of values in the
-                sum() example unittest comes with lots of methods to assert on
-                the values, types, and existence of variables. Here are some of
-                the most commonly used methods:
-              </div>
+              <div className={styles.textMarkdown}>{textMarkdown}</div>
             </div>
           </div>
         </Col>
@@ -101,19 +84,24 @@ export default function CodingQuestion({
               editorValue={starterCode}
               onChange={setUserCode}
               language="python"
-              height="400px"
+              height="440px"
             />
           </div>
         </Col>
       </Row>
 
-      <Row>
-        <Col>
-          <h2>Results</h2>
-          <pre>{results}</pre>
-
-          <h2>Error</h2>
-          <pre>{pyodideError}</pre>
+      <Row className="no-gutters">
+        <Col md={6}>
+          <div className={styles.resultsWrapper}>
+            <span className="label yellow">Output</span>
+            <pre>{results}</pre>
+          </div>
+        </Col>
+        <Col md={6}>
+          <div className={styles.errorWrapper}>
+            <span className="label pink">Error</span>
+            <pre>{pyodideError}</pre>
+          </div>
         </Col>
       </Row>
     </div>

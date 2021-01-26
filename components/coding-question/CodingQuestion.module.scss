@@ -22,15 +22,14 @@
   }
 
   .questionTextWrapper {
-    height: 400px;
     overflow-y: auto;
 
     .questionTextInner {
-      padding: 2rem;
+      padding: 1.5rem 2rem 2rem 0;
       padding-left: 0;
 
-      .questionMarkdown {
-        margin-top: 1rem;
+      .textMarkdown {
+        margin-top: 0.5rem;
 
         @include media-breakpoint-down(lg) {
           font-size: 1.15rem;
@@ -46,5 +45,28 @@
 
   .codeEditorWrapper {
     border-left: 1px solid $color-border-gray;
+  }
+
+  .resultsWrapper {
+    border-top: 1px solid $color-border-gray;
+    padding: 1rem 2rem 2rem 0;
+
+    pre {
+      color: #555;
+      margin-top: 0.5rem;
+    }
+  }
+
+  .errorWrapper {
+    border-top: 1px solid $color-border-gray;
+    border-left: 1px solid $color-border-gray;
+    padding: 1rem 0 2rem 1rem;
+
+    pre {
+      color: #ccc;
+      margin-top: 0.5rem;
+
+      overflow: auto;
+    }
   }
 }

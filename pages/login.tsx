@@ -94,7 +94,7 @@ export default function LoginPage() {
                   styles.loginFormTitle
                 )}
               >
-                Using NetId <span className="greenAccent" />
+                Using NetId <span className="accent green" />
               </h2>
             </Col>
           </Row>

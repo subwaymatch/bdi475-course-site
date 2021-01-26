@@ -33,7 +33,7 @@ export default function CodeEditor({
           onChange(v as string);
         }}
         language={language}
-        theme={isThemeLoaded ? "CustomTheme" : "dark"}
+        theme={isThemeLoaded ? "CustomTheme" : "light"}
         options={{
           folding: false,
           fontSize: 20,

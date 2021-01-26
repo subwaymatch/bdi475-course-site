@@ -11,9 +11,10 @@ export default function EditCodingQuestionPage() {
           <CodingQuestion
             title={"Update a variable"}
             textMarkdown={
-              "Create a variable named first_name with your first name as the value. Note that your name should be enclosed in either single quotes (') or double quotes(\")."
+              "Can you retrieve and print out the number of languages Vrushita speaks from the candidate dictionary? For example, if Vrushita speaks only one language, your printed output should be 3."
             }
             starterCode={"print('Hello World')"}
+            testCode={"tc.assertEqual(3, 3)"}
           />
         </Container>
       </main>
