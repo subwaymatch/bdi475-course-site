@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { asyncRun } from "lib/pyodide/py-worker";
 import styles from "./CodingQuestion.module.scss";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import clsx from "clsx";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
@@ -29,8 +30,11 @@ export default function CodingQuestion({
   testCode,
 }: Props) {
   const [userCode, setUserCode] = useState(starterCode);
-  const [results, setResults] = useState("Results");
-  const [pyodideError, setPyodideError] = useState("Error");
+  const [results, setResults] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const isScreenDesktop = useMediaQuery("(min-width: 992px)");
+
+  const editorHeight = "440px";
 
   useEffect(() => {
     runCode();
@@ -44,7 +48,7 @@ export default function CodingQuestion({
         setResults(results);
       } else if (error) {
         console.log("pyodideWorker error: ", error);
-        setPyodideError(error);
+        setErrorMessage(error);
       }
     } catch (e) {
       console.log(
@@ -68,7 +72,7 @@ export default function CodingQuestion({
         <Col md={6}>
           <div
             className={styles.questionTextWrapper}
-            style={{ height: "440px" }}
+            style={{ height: isScreenDesktop ? editorHeight : "auto" }}
           >
             <div className={styles.questionTextInner}>
               <span className="label green">Task</span>
@@ -84,23 +88,31 @@ export default function CodingQuestion({
               editorValue={starterCode}
               onChange={setUserCode}
               language="python"
-              height="440px"
+              height={editorHeight}
             />
           </div>
         </Col>
       </Row>
 
       <Row className="no-gutters">
-        <Col md={6}>
-          <div className={styles.resultsWrapper}>
+        <Col md={6} className={styles.outputCol}>
+          <div
+            className={clsx(styles.resultsWrapper, {
+              [styles.hasOutput]: results !== "",
+            })}
+          >
             <span className="label yellow">Output</span>
-            <pre>{results}</pre>
+            <pre>{results ? results : "No Output"}</pre>
           </div>
         </Col>
-        <Col md={6}>
-          <div className={styles.errorWrapper}>
+        <Col md={6} className={styles.outputCol}>
+          <div
+            className={clsx(styles.errorWrapper, {
+              [styles.hasOutput]: errorMessage !== "",
+            })}
+          >
             <span className="label pink">Error</span>
-            <pre>{pyodideError}</pre>
+            <pre>{errorMessage ? errorMessage : "No Error"}</pre>
           </div>
         </Col>
       </Row>

@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 import { FiLogIn } from "react-icons/fi";
 import MenuButton from "components/Header/MenuButton";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { desktop } from "constants/media-query-strings";
 
 const HeaderMenu = () => (
   <Row className={clsx(styles.mainMenu, "align-items-center")}>
@@ -74,7 +75,7 @@ export default function Header() {
   const { user } = useAuth();
   const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const isScreenDesktop = useMediaQuery("(min-width: 992px)");
+  const isScreenDesktop = useMediaQuery(desktop);
 
   useEffect(() => {
     if (isScreenDesktop && isMenuOpen) {

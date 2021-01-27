@@ -33,7 +33,7 @@ export default function CodingQuestionEditor() {
         <div className={clsx(styles.questionText, styles.editorBox)}>
           <div className={styles.boxHeader}>
             <span className={styles.boxTitle}>Question Text</span>
-            <span className="purpleAccent" />
+            <span className="accent purple" />
           </div>
 
           <div className={styles.codeEditorWrapper}>
@@ -50,7 +50,7 @@ export default function CodingQuestionEditor() {
         <div className={clsx(styles.starter, styles.editorBox)}>
           <div className={styles.boxHeader}>
             <span className={styles.boxTitle}>Starter</span>
-            <span className="blueAccent" />
+            <span className="accent blue" />
           </div>
 
           <div className={styles.codeEditorWrapper}>
@@ -68,7 +68,7 @@ export default function CodingQuestionEditor() {
         <div className={clsx(styles.solution, styles.editorBox)}>
           <div className={styles.boxHeader}>
             <span className={styles.boxTitle}>Solution</span>
-            <span className="greenAccent" />
+            <span className="accent green" />
           </div>
 
           <div className={styles.codeEditorWrapper}>
@@ -84,7 +84,7 @@ export default function CodingQuestionEditor() {
         <div className={clsx(styles.testCases, styles.editorBox)}>
           <div className={styles.boxHeader}>
             <span className={styles.boxTitle}>Test Cases</span>
-            <span className="pinkAccent" />
+            <span className="accent pink" />
           </div>
 
           <div className={styles.codeEditorWrapper}>
