@@ -26,7 +26,10 @@
 
     .questionTextInner {
       padding: 1.25rem 2rem 2rem 0;
-      padding-left: 0;
+
+      @include media-breakpoint-down(sm) {
+        padding-top: 1.5rem;
+      }
 
       .textMarkdown {
         margin-top: 0.5rem;
