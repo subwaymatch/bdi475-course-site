@@ -68,6 +68,14 @@
     margin-top: 0.75rem;
     padding-bottom: 0.75rem;
     white-space: normal;
+
+    @include media-breakpoint-down(lg) {
+      font-size: 1.1rem;
+    }
+
+    @include media-breakpoint-down(md) {
+      font-size: 1rem;
+    }
   }
 
   .resultsWrapper {

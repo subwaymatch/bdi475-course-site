@@ -5,6 +5,7 @@ import styles from "./CodingQuestion.module.scss";
 import { Col, Row } from "react-bootstrap";
 import clsx from "clsx";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { desktop } from "constants/media-query-strings";
 
 const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
@@ -32,7 +33,7 @@ export default function CodingQuestion({
   const [userCode, setUserCode] = useState(starterCode);
   const [results, setResults] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const isScreenDesktop = useMediaQuery("(min-width: 992px)");
+  const isScreenDesktop = useMediaQuery(desktop);
 
   const editorHeight = "440px";
 
