@@ -22,8 +22,6 @@ export default function CodeEditor({
   const isScreenSm = useMediaQuery(sm);
   const isScreenMd = useMediaQuery(md);
 
-  console.log(`isScreenSM=${isScreenSm}, isScreenMd=${isScreenMd}`);
-
   function handleEditorWillMount(monaco) {
     monaco.editor.defineTheme("CustomTheme", customTheme);
     setIsThemeLoaded(true);

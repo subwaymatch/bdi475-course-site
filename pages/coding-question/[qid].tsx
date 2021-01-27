@@ -9,7 +9,7 @@ export default function EditCodingQuestionPage() {
       <main className={styles.page}>
         <Container>
           <CodingQuestion
-            title={"Update a variable"}
+            title={"Update a Variable"}
             textMarkdown={
               "Can you retrieve and print out the number of languages Vrushita speaks from the candidate dictionary? For example, if Vrushita speaks only one language, your printed output should be 3."
             }
