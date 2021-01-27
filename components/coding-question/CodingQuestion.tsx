@@ -10,6 +10,7 @@ import { BsCheckCircle } from "react-icons/bs";
 import clsx from "clsx";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { desktop } from "constants/media-query-strings";
+import { toast } from "react-toastify";
 
 const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
@@ -32,28 +33,41 @@ export default function CodingQuestion({
   starterCode,
   testCode,
 }: Props) {
-  const [userCode, setUserCode] = useState(starterCode);
+  const [userCode, setUserCode] = useState("# YOUR CODE HERE");
   const [results, setResults] = useState("");
+  const [output, setOutput] = useState("");
+  const [hasError, setHasError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const isScreenDesktop = useMediaQuery(desktop);
 
   const editorHeight = "440px";
 
-  useEffect(() => {
-    runCode();
-  }, []);
-
   const runCode = async () => {
+    console.log(`runCode`);
+    console.log(`userCode=${userCode}`);
+
     try {
-      const { results, error } = await asyncRun(userCode, context);
-      if (results) {
-        console.log("pyodideWorker return results: ", results);
-        setResults(results);
-      } else if (error) {
+      const returnObj = await asyncRun(userCode, context, (err) => {
+        console.log("ERROR 22");
+        console.log(err);
+        throw "ASYNC RUN ERROR";
+      });
+
+      toast.success("Running code complete!");
+
+      console.log(returnObj);
+
+      const { results, output, error } = returnObj;
+
+      setResults(results);
+      setOutput(output);
+
+      if (hasError) {
         console.log("pyodideWorker error: ", error);
-        setErrorMessage(error);
+        setErrorMessage(errorMessage);
       }
     } catch (e) {
+      console.log("ERROR");
       console.log(
         `Error in pyodideWorker at ${e.filename}, Line: ${e.lineno}, ${e.message}`
       );
@@ -88,7 +102,7 @@ export default function CodingQuestion({
         <Col md={6}>
           <div className={styles.codeEditorWrapper}>
             <CodeEditor
-              editorValue={starterCode}
+              editorValue={userCode}
               onChange={setUserCode}
               language="python"
               height={editorHeight}
@@ -101,17 +115,17 @@ export default function CodingQuestion({
         <Col md={6} className={styles.outputCol}>
           <div
             className={clsx(styles.resultsWrapper, {
-              [styles.hasOutput]: results !== "",
+              [styles.hasOutput]: output !== "",
             })}
           >
             <span className="label yellow">Output</span>
-            <pre>{results ? results : "No Output"}</pre>
+            <pre>{output ? output : "No Output"}</pre>
           </div>
         </Col>
         <Col md={6} className={styles.outputCol}>
           <div
             className={clsx(styles.errorWrapper, {
-              [styles.hasOutput]: errorMessage !== "",
+              [styles.hasOutput]: hasError,
             })}
           >
             <span className="label pink">Error</span>
@@ -152,17 +166,18 @@ export default function CodingQuestion({
               <Col>
                 <div className={styles.rightControls}>
                   <div
-                    className={styles.button}
-                    onClick={(e) => {
+                    className={clsx(styles.button, styles.runButton)}
+                    onClick={async (e) => {
                       e.preventDefault();
-                      console.log("Button Clicked");
+                      console.log("Run Button Clicked");
+                      await runCode();
                     }}
                   >
                     <IoPlay className={styles.reactIcon} />
                     <span className={styles.label}>Run</span>
                   </div>
                   <div
-                    className={styles.button}
+                    className={clsx(styles.button, styles.checkButton)}
                     onClick={(e) => {
                       e.preventDefault();
                       console.log("Button Clicked");

@@ -26,7 +26,9 @@ export default function FirestoreTestPage() {
 
           <Row>
             <Col>
-              return <p>Test Data: {JSON.stringify(data)}!</p>;
+              <pre>
+                return <p>Test Data: {JSON.stringify(data)}!</p>;
+              </pre>
             </Col>
           </Row>
         </Container>

@@ -1,12 +1,35 @@
 import Layout from "components/Layout";
 import CodingQuestion from "components/coding-question/CodingQuestion";
 import styles from "styles/pages/coding-question/CodingQuestionPage.module.scss";
-import { Container } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
+import { useRouter } from "next/router";
+import { useFirestoreDocData, useFirestore } from "reactfire";
 
 export default function EditCodingQuestionPage() {
-  return (
+  const router = useRouter();
+  const { qid } = router.query;
+
+  // easily access the Firestore library
+  const docRef = useFirestore()
+    .collection("codingQuestions")
+    .doc(qid as string);
+
+  // subscribe to a document for realtime updates. just one line!
+  const { status, data } = useFirestoreDocData(docRef);
+
+  return (status as any) === "loading" ? (
+    <p>Fetching test data...</p>
+  ) : (
     <Layout>
       <main className={styles.page}>
+        <Row>
+          <Col>
+            <pre>
+              return <p>Test Data: {JSON.stringify(data)}!</p>;
+            </pre>
+          </Col>
+        </Row>
+
         <Container>
           <CodingQuestion
             title={"Update a Variable"}
