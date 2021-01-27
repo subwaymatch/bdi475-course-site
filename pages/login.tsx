@@ -61,15 +61,11 @@ export default function LoginPage() {
       await firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings);
       window.localStorage.setItem("emailForSignIn", email);
       setIsEmailSent(true);
-      console.log(`Successfully sent an email sign in link to ${email}`);
 
       toast.success(`Successfully sent a sign-in link to ${email}`);
     } catch (err) {
       const errorCode = err.code;
       const errorMessage = err.message;
-
-      console.log(errorCode);
-      console.log(errorMessage);
 
       toast.error(errorMessage);
     }

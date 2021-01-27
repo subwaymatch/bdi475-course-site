@@ -13,7 +13,7 @@ Otherwise, go to Firebase SDK Snippet > click the "Config" radio button >
 copy/paste.
 
 */
-const CLIENT_CONFIG = {
+export const firebaseConfig = {
   apiKey: "AIzaSyAFlZ1khxa2kNdQe8TZV5jBINZ1Zguv79Q",
   authDomain: "bdi475-2021sp.firebaseapp.com",
   databaseURL: "https://bdi475-2021sp-default-rtdb.firebaseio.com",
@@ -25,7 +25,7 @@ const CLIENT_CONFIG = {
 
 // The firebase.apps.length check is a clever way of preventing Next.js from accidentally re-initalizing your SDK when Next.js hot reloads your application!
 if (typeof window !== "undefined" && !firebaseClient.apps.length) {
-  firebaseClient.initializeApp(CLIENT_CONFIG);
+  firebaseClient.initializeApp(firebaseConfig);
   firebaseClient.firestore();
   firebaseClient
     .auth()
