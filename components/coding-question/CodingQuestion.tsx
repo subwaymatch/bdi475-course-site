@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
-import { asyncRun } from "lib/pyodide/py-worker";
 import styles from "./CodingQuestion.module.scss";
 import { Col, Row } from "react-bootstrap";
 import { BiReset } from "react-icons/bi";
@@ -34,40 +33,37 @@ export default function CodingQuestion({
   testCode,
 }: Props) {
   const [userCode, setUserCode] = useState(starterCode);
-  const [results, setResults] = useState("");
   const [output, setOutput] = useState("");
   const [hasError, setHasError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const isScreenDesktop = useMediaQuery(desktop);
+  const pyodideWorkerRef = useRef<Worker>();
 
   const editorHeight = "440px";
 
+  useEffect(() => {
+    pyodideWorkerRef.current = new Worker("lib/pyodide/webworker2", {
+      type: "module",
+    });
+
+    pyodideWorkerRef.current!.onmessage = (evt) => {
+      console.log("Received message from pyodideWorkerRef");
+      console.log(evt.data);
+
+      setOutput(evt.data.stdout);
+      setHasError(evt.data.hasError);
+      setErrorMessage(evt.data.errorMessage);
+    };
+
+    return () => {
+      pyodideWorkerRef.current?.terminate();
+    };
+  }, []);
+
   const runCode = async () => {
-    console.log(`runCode`);
-    console.log(`userCode=${userCode}`);
-
-    try {
-      const { returnObj, errorObj } = await asyncRun(userCode, context);
-
-      toast.success("Running code complete!");
-
-      console.log(returnObj);
-
-      const { results, output, error } = returnObj;
-
-      setResults(results);
-      setOutput(output);
-
-      if (hasError) {
-        console.log("pyodideWorker error: ", error);
-        setErrorMessage(errorMessage);
-      }
-    } catch (e) {
-      console.log("ERROR");
-      console.log(
-        `Error in pyodideWorker at ${e.filename}, Line: ${e.lineno}, ${e.message}`
-      );
-    }
+    pyodideWorkerRef.current?.postMessage({
+      userCode,
+    });
   };
 
   return (
@@ -111,7 +107,7 @@ export default function CodingQuestion({
         <Col md={6} className={styles.outputCol}>
           <div
             className={clsx(styles.resultsWrapper, {
-              [styles.hasOutput]: output !== "",
+              [styles.hasOutput]: !!output,
             })}
           >
             <span className="label yellow">Output</span>
@@ -165,7 +161,6 @@ export default function CodingQuestion({
                     className={clsx(styles.button, styles.runButton)}
                     onClick={async (e) => {
                       e.preventDefault();
-                      console.log("Run Button Clicked");
                       await runCode();
                     }}
                   >

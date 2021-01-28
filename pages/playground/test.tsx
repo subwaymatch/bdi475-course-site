@@ -3,7 +3,7 @@ import CodingQuestion from "components/coding-question/CodingQuestion";
 import styles from "styles/pages/coding-question/CodingQuestionPage.module.scss";
 import { Container } from "react-bootstrap";
 
-export default function EditCodingQuestionPage() {
+export default function PlaygroundTestPage() {
   return (
     <Layout>
       <main className={styles.page}>
