@@ -10,6 +10,7 @@ import clsx from "clsx";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { desktop } from "constants/media-query-strings";
 import { toast } from "react-toastify";
+import marked from "marked";
 
 const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
@@ -110,7 +111,10 @@ export default function CodingQuestion({
             <div className={styles.questionTextInner}>
               <span className="label green">Task</span>
 
-              <div className={styles.textMarkdown}>{textMarkdown}</div>
+              <div
+                className={styles.textMarkdown}
+                dangerouslySetInnerHTML={{ __html: marked(textMarkdown) }}
+              />
             </div>
           </div>
         </Col>
