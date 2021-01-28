@@ -24,20 +24,16 @@ export default function EditCodingQuestionPage() {
       <main className={styles.page}>
         <Row>
           <Col>
-            <pre>
-              return <p>Test Data: {JSON.stringify(data)}!</p>;
-            </pre>
+            <pre>{/* return <p>Test Data: {JSON.stringify(data)}!</p>; */}</pre>
           </Col>
         </Row>
 
         <Container>
           <CodingQuestion
-            title={"Update a Variable"}
-            textMarkdown={
-              "Can you retrieve and print out the number of languages Vrushita speaks from the candidate dictionary? For example, if Vrushita speaks only one language, your printed output should be 3."
-            }
-            starterCode={"print('Hello World')"}
-            testCode={"tc.assertEqual(3, 3)"}
+            title={(data as any).title}
+            textMarkdown={(data as any).textMarkdown}
+            starterCode={(data as any).starterCode}
+            testCode={(data as any).testCode}
           />
         </Container>
       </main>

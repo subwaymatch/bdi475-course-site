@@ -15,10 +15,6 @@ const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
 });
 
-const context = {
-  A_rank: [0.8, 0.4, 1.2, 3.7, 2.6, 5.8],
-};
-
 type Props = {
   title: string;
   textMarkdown: string;
@@ -40,7 +36,7 @@ export default function CodingQuestion({
   const pyodideWorkerRef = useRef<Worker>();
   const [isPyodideReady, setIsPyodideReady] = useState(false);
 
-  const editorHeight = "440px";
+  const editorHeight = "400px";
 
   useEffect(() => {
     pyodideWorkerRef.current = new Worker("lib/pyodide/web-worker", {
@@ -86,7 +82,13 @@ export default function CodingQuestion({
     });
   };
 
-  const runAndCheckCode = async () => {};
+  const runAndCheckCode = async () => {
+    pyodideWorkerRef.current?.postMessage({
+      type: "RUN_AND_CHECK_CODE",
+      userCode,
+      testCode,
+    });
+  };
 
   return (
     <div className={styles.codingQuestionWrapper}>
@@ -123,7 +125,7 @@ export default function CodingQuestion({
             <CodeEditor
               editorValue={userCode}
               onChange={setUserCode}
-              onRun={() => {}}
+              onRun={runCode}
               language="python"
               height={editorHeight}
             />
