@@ -85,14 +85,14 @@ export default function CodingQuestion({
     toast("Reset Complete!");
   };
 
-  const runCode = async () => {
+  const runCode = () => {
     pyodideWorkerRef.current?.postMessage({
       type: "RUN_CODE",
       userCode,
     });
   };
 
-  const runAndCheckCode = async () => {
+  const runAndCheckCode = () => {
     pyodideWorkerRef.current?.postMessage({
       type: "RUN_AND_CHECK_CODE",
       userCode,
@@ -202,7 +202,7 @@ export default function CodingQuestion({
               <Col>
                 <div className={styles.rightControls}>
                   <Tippy
-                    content="Ctrl + Enter"
+                    content={isPyodideReady ? "Ctrl + Enter" : "Loading..."}
                     className="tippy"
                     placement="bottom"
                     offset={[0, -4]}
@@ -216,7 +216,7 @@ export default function CodingQuestion({
                         if (!isPyodideReady) return;
 
                         e.preventDefault();
-                        await runCode();
+                        runCode();
                       }}
                     >
                       <IoPlay className={styles.reactIcon} />
@@ -225,7 +225,9 @@ export default function CodingQuestion({
                   </Tippy>
 
                   <Tippy
-                    content="Ctrl + Shift + Enter"
+                    content={
+                      isPyodideReady ? "Ctrl + Shift + Enter" : "Loading..."
+                    }
                     className="tippy"
                     placement="bottom"
                     offset={[0, -4]}
@@ -240,6 +242,8 @@ export default function CodingQuestion({
 
                         e.preventDefault();
                         console.log("Button Clicked");
+
+                        runAndCheckCode();
                       }}
                     >
                       <BsCheckCircle className={styles.reactIcon} />

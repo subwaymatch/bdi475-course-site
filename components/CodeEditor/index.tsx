@@ -35,7 +35,10 @@ export default function CodeEditor({
     if (onRun) {
       // Keyboard shortcut to run code editor
       editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter, onRun);
+    }
 
+    if (onCheck) {
+      // Keyboard shortcut to check code with test cases
       editor.addCommand(
         monaco.KeyMod.CtrlCmd | monaco.KeyMod.Shift | monaco.KeyCode.Enter,
         onCheck
