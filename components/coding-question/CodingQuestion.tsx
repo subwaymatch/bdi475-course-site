@@ -33,7 +33,7 @@ export default function CodingQuestion({
   starterCode,
   testCode,
 }: Props) {
-  const [userCode, setUserCode] = useState("# YOUR CODE HERE");
+  const [userCode, setUserCode] = useState(starterCode);
   const [results, setResults] = useState("");
   const [output, setOutput] = useState("");
   const [hasError, setHasError] = useState(false);
@@ -47,11 +47,7 @@ export default function CodingQuestion({
     console.log(`userCode=${userCode}`);
 
     try {
-      const returnObj = await asyncRun(userCode, context, (err) => {
-        console.log("ERROR 22");
-        console.log(err);
-        throw "ASYNC RUN ERROR";
-      });
+      const { returnObj, errorObj } = await asyncRun(userCode, context);
 
       toast.success("Running code complete!");
 
