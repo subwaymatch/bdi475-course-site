@@ -42,17 +42,21 @@ export default function CodingQuestion({
   const editorHeight = "440px";
 
   useEffect(() => {
-    pyodideWorkerRef.current = new Worker("lib/pyodide/webworker2", {
+    pyodideWorkerRef.current = new Worker("lib/pyodide/web-worker", {
       type: "module",
     });
 
-    pyodideWorkerRef.current!.onmessage = (evt) => {
-      console.log("Received message from pyodideWorkerRef");
-      console.log(evt.data);
+    pyodideWorkerRef.current!.onmessage = (e) => {
+      setOutput(e.data.stdout);
 
-      setOutput(evt.data.stdout);
-      setHasError(evt.data.hasError);
-      setErrorMessage(evt.data.errorMessage);
+      if (e.data.hasError) {
+        setHasError(e.data.hasError);
+        setErrorMessage(e.data.errorMessage);
+
+        toast.error("Error encountered running your code");
+      } else {
+        toast.success("Code run successfully!");
+      }
     };
 
     return () => {
