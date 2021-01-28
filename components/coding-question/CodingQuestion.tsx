@@ -57,10 +57,10 @@ export default function CodingQuestion({
         if (e.data.hasError) {
           toast.error("See the error message below.");
         } else {
-          toast.success("Code ran successfully!");
+          toast.success("Run complete.");
 
           if (!e.data.stdout) {
-            toast.info("Your code did not print anything.");
+            toast.warning("Your code did not print anything.");
           }
         }
       }
@@ -92,11 +92,6 @@ export default function CodingQuestion({
 
   return (
     <div className={styles.codingQuestionWrapper}>
-      {isPyodideReady && (
-        <Row>
-          <Col>Pyodide Ready</Col>
-        </Row>
-      )}
       <Row>
         <Col>
           <div className={styles.exerciseHeader}>
@@ -188,8 +183,12 @@ export default function CodingQuestion({
               <Col>
                 <div className={styles.rightControls}>
                   <div
-                    className={clsx(styles.button, styles.runButton)}
+                    className={clsx(styles.button, styles.runButton, {
+                      [styles.disabled]: !isPyodideReady,
+                    })}
                     onClick={async (e) => {
+                      if (!isPyodideReady) return;
+
                       e.preventDefault();
                       await runCode();
                     }}
@@ -198,8 +197,12 @@ export default function CodingQuestion({
                     <span className={styles.label}>Run</span>
                   </div>
                   <div
-                    className={clsx(styles.button, styles.checkButton)}
+                    className={clsx(styles.button, styles.checkButton, {
+                      [styles.disabled]: !isPyodideReady,
+                    })}
                     onClick={(e) => {
+                      if (!isPyodideReady) return;
+
                       e.preventDefault();
                       console.log("Button Clicked");
                     }}

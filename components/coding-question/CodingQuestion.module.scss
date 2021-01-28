@@ -129,6 +129,11 @@
       transition: all 0.3s;
       font-size: 1.15rem;
 
+      &.disabled {
+        cursor: not-allowed;
+        color: #aaa;
+      }
+
       .reactIcon {
         font-size: 1rem;
       }
@@ -148,8 +153,6 @@
     }
 
     .leftControls {
-      display: none;
-
       .button {
         margin-left: 1.5rem;
 
@@ -164,10 +167,6 @@
 
       .button {
         margin-right: 1.5rem;
-
-        &.checkButton {
-          display: none;
-        }
 
         &:last-child {
           margin-right: 0;
