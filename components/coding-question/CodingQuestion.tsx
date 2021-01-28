@@ -77,6 +77,14 @@ export default function CodingQuestion({
     };
   }, []);
 
+  const reset = async () => {
+    setUserCode(starterCode);
+    setOutput("");
+    setHasError(false);
+    setErrorMessage("");
+    toast("Reset Complete!");
+  };
+
   const runCode = async () => {
     pyodideWorkerRef.current?.postMessage({
       type: "RUN_CODE",
@@ -126,6 +134,7 @@ export default function CodingQuestion({
               editorValue={userCode}
               onChange={setUserCode}
               onRun={runCode}
+              onCheck={runAndCheckCode}
               language="python"
               height={editorHeight}
             />
@@ -170,7 +179,7 @@ export default function CodingQuestion({
                           "Do you really want to reset your code? Your code will be lost."
                         )
                       ) {
-                        setUserCode(starterCode);
+                        reset();
                       }
                     }}
                   >

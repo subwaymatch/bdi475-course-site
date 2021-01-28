@@ -9,6 +9,7 @@ type CodeEditorProps = {
   editorValue: string;
   onChange: (v: string) => void;
   onRun?: () => void;
+  onCheck?: () => void;
   language: string;
   height?: string | number;
 };
@@ -17,6 +18,7 @@ export default function CodeEditor({
   editorValue,
   onChange,
   onRun,
+  onCheck,
   language,
   height,
 }: CodeEditorProps) {
@@ -33,6 +35,11 @@ export default function CodeEditor({
     if (onRun) {
       // Keyboard shortcut to run code editor
       editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter, onRun);
+
+      editor.addCommand(
+        monaco.KeyMod.CtrlCmd | monaco.KeyMod.Shift | monaco.KeyCode.Enter,
+        onCheck
+      );
     }
   }
 
