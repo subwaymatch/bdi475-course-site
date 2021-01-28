@@ -75,6 +75,8 @@ const HeaderMenu = () => (
 const UserMenu = () => {
   const { user } = useAuth();
   const router = useRouter();
+  const isScreenDesktop = useMediaQuery(desktop);
+
   return (
     <Row className="align-items-middle">
       <Col>
@@ -93,6 +95,7 @@ const UserMenu = () => {
           ) : (
             <Link href="/login">
               <Tippy
+                disabled={!isScreenDesktop}
                 content="Requires @illinois email"
                 placement="bottom"
                 className="tippy"

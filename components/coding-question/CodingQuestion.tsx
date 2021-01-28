@@ -38,7 +38,6 @@ export default function CodingQuestion({
   const isScreenDesktop = useMediaQuery(desktop);
   const pyodideWorkerRef = useRef<Worker>();
   const [isPyodideReady, setIsPyodideReady] = useState(false);
-
   const editorHeight = "400px";
 
   useEffect(() => {
@@ -218,6 +217,7 @@ export default function CodingQuestion({
                     placement="bottom"
                     offset={[0, -4]}
                     theme="light"
+                    disabled={!isScreenDesktop}
                   >
                     <div
                       className={clsx(styles.button, styles.runButton, {
@@ -253,6 +253,7 @@ export default function CodingQuestion({
                     placement="bottom"
                     offset={[0, -4]}
                     theme="light"
+                    disabled={!isScreenDesktop}
                   >
                     <div
                       className={clsx(styles.button, styles.checkButton, {
