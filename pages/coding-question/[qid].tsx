@@ -18,16 +18,18 @@ export default function EditCodingQuestionPage() {
   const { status, data } = useFirestoreDocData(docRef);
 
   return (status as any) === "loading" ? (
-    <p>Fetching test data...</p>
+    <Layout>
+      <main className={styles.page}>
+        <Container>
+          <Row>
+            <Col>Loading...</Col>
+          </Row>
+        </Container>
+      </main>
+    </Layout>
   ) : (
     <Layout>
       <main className={styles.page}>
-        <Row>
-          <Col>
-            <pre>{/* return <p>Test Data: {JSON.stringify(data)}!</p>; */}</pre>
-          </Col>
-        </Row>
-
         <Container>
           <CodingQuestion
             title={(data as any).title}

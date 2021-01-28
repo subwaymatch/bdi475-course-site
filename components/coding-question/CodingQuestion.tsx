@@ -160,8 +160,13 @@ export default function CodingQuestion({
                   <div
                     className={styles.button}
                     onClick={(e) => {
-                      e.preventDefault();
-                      console.log("Button Clicked");
+                      if (
+                        window.confirm(
+                          "Do you really want to reset your code? Your code will be lost."
+                        )
+                      ) {
+                        setUserCode(starterCode);
+                      }
                     }}
                   >
                     <BiReset className={styles.reactIcon} />

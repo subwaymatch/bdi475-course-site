@@ -124,7 +124,7 @@
     .button {
       display: inline-flex;
       align-items: center;
-      padding: 1rem;
+      padding: 1rem 0;
       cursor: pointer;
       transition: all 0.3s;
       font-size: 1.15rem;
@@ -154,7 +154,7 @@
 
     .leftControls {
       .button {
-        margin-left: 1.5rem;
+        margin-left: 2.5rem;
 
         &:first-child {
           margin-left: 0;
@@ -166,10 +166,11 @@
       justify-content: flex-end;
 
       .button {
-        margin-right: 1.5rem;
+        margin-right: 2.5rem;
 
         &:last-child {
           margin-right: 0;
+          padding-right: 1.5rem;
         }
       }
     }
