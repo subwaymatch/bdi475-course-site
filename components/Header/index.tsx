@@ -72,9 +72,51 @@ const HeaderMenu = () => (
   </Row>
 );
 
-export default function Header() {
+const UserMenu = () => {
   const { user } = useAuth();
   const router = useRouter();
+  return (
+    <Row className="align-items-middle">
+      <Col>
+        <div className={styles.userMenu}>
+          {user ? (
+            <a
+              className={styles.signOutButton}
+              onClick={async () => {
+                await firebaseClient.auth().signOut();
+                toast.success("Successfully signed out, bye!");
+                router.push("/");
+              }}
+            >
+              Sign Out
+            </a>
+          ) : (
+            <Link href="/login">
+              <Tippy
+                content="Requires @illinois email"
+                placement="bottom"
+                className="tippy"
+                theme="light"
+              >
+                <motion.a
+                  variants={clickableVariants}
+                  whileHover="hover"
+                  whileTap="tap"
+                  className={styles.signInButton}
+                >
+                  Sign In
+                  <FiLogIn className={styles.reactIcon} />
+                </motion.a>
+              </Tippy>
+            </Link>
+          )}
+        </div>
+      </Col>
+    </Row>
+  );
+};
+
+export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isScreenDesktop = useMediaQuery(desktop);
 
@@ -124,38 +166,7 @@ export default function Header() {
             </Col>
 
             <Col md={2} className="d-none d-md-block">
-              <div className={styles.userMenu}>
-                {user ? (
-                  <a
-                    className={styles.signOutButton}
-                    onClick={async () => {
-                      await firebaseClient.auth().signOut();
-                      toast.success("Successfully signed out, bye!");
-                      router.push("/");
-                    }}
-                  >
-                    Sign Out
-                  </a>
-                ) : (
-                  <Link href="/login">
-                    <Tippy
-                      content="Requires @illinois email"
-                      className="tippy"
-                      theme="light"
-                    >
-                      <motion.a
-                        variants={clickableVariants}
-                        whileHover="hover"
-                        whileTap="tap"
-                        className={styles.signInButton}
-                      >
-                        Sign In
-                        <FiLogIn className={styles.reactIcon} />
-                      </motion.a>
-                    </Tippy>
-                  </Link>
-                )}
-              </div>
+              <UserMenu />
             </Col>
 
             <Col xs={6} className="d-md-none">
@@ -192,6 +203,8 @@ export default function Header() {
           >
             <Container>
               <HeaderMenu />
+
+              <UserMenu />
             </Container>
           </motion.div>
         )}

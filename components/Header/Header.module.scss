@@ -19,37 +19,6 @@
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
   }
-
-  .userMenu {
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  .signInButton {
-    display: inline-flex;
-    align-items: center;
-    font-size: 1rem;
-    letter-spacing: -0.01rem;
-    line-height: 1.2;
-    background-color: black;
-    color: white;
-    padding: 0.75rem 1.2rem;
-    border-radius: 0.25rem;
-
-    @include media-breakpoint-down(md) {
-      font-size: 0.9rem;
-      padding: 0.7rem 1rem;
-    }
-
-    .reactIcon {
-      color: white;
-      margin-left: 0.5rem;
-    }
-
-    &:hover {
-      box-shadow: 0 0 1rem rgba(black, 0.2);
-    }
-  }
 }
 
 .mainMenu {
@@ -82,6 +51,36 @@
   }
 }
 
+.userMenu {
+  display: flex;
+  justify-content: flex-end;
+
+  .signInButton {
+    display: inline-flex;
+    align-items: center;
+    font-size: 1rem;
+    letter-spacing: -0.01rem;
+    line-height: 1.2;
+    background-color: black;
+    color: white;
+    padding: 0.75rem 1.2rem;
+    border-radius: 0.25rem;
+
+    @include media-breakpoint-down(md) {
+      font-size: 0.9rem;
+      padding: 0.7rem 1rem;
+    }
+
+    .reactIcon {
+      margin-left: 0.5rem;
+    }
+
+    &:hover {
+      box-shadow: 0 0 1rem rgba(black, 0.2);
+    }
+  }
+}
+
 .mobileMenu {
   position: fixed;
   left: 0;
@@ -90,7 +89,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
   background-color: white;
   z-index: 1050;
 
@@ -100,6 +99,23 @@
     padding: 0.5rem 0;
     margin: 0;
     font-size: 1.1rem;
+  }
+
+  .userMenu {
+    display: flex;
+    justify-content: center;
+    font-size: 1.1rem;
+
+    .signInButton {
+      background-color: transparent;
+      display: flex;
+      font-size: inherit;
+      letter-spacing: -0.03rem;
+
+      &:hover {
+        box-shadow: none;
+      }
+    }
   }
 }
 
