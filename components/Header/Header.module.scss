@@ -107,10 +107,15 @@
     font-size: 1.1rem;
 
     .signInButton {
+      color: black;
       background-color: transparent;
       display: flex;
       font-size: inherit;
       letter-spacing: -0.03rem;
+
+      .reactIcon {
+        color: $color-green;
+      }
 
       &:hover {
         box-shadow: none;
