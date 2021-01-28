@@ -8,6 +8,7 @@ import customTheme from "./custom-theme.json";
 type CodeEditorProps = {
   editorValue: string;
   onChange: (v: string) => void;
+  onRun?: () => void;
   language: string;
   height?: string | number;
 };
@@ -15,6 +16,7 @@ type CodeEditorProps = {
 export default function CodeEditor({
   editorValue,
   onChange,
+  onRun,
   language,
   height,
 }: CodeEditorProps) {
@@ -27,12 +29,20 @@ export default function CodeEditor({
     setIsThemeLoaded(true);
   }
 
+  function handleEditorOnMount(editor, monaco) {
+    if (onRun) {
+      // Keyboard shortcut to run code editor
+      editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter, onRun);
+    }
+  }
+
   return (
     <div className={styles.codeEditorWrapper}>
       <Editor
         value={editorValue}
         height={height ? height : "100%"}
         beforeMount={handleEditorWillMount}
+        onMount={handleEditorOnMount}
         onChange={(v) => {
           onChange(v as string);
         }}

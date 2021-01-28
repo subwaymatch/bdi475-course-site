@@ -57,6 +57,7 @@ export default function CodingQuestionEditor() {
             <CodeEditor
               editorValue={starterCode}
               onChange={setStarterCode}
+              onRun={() => {}}
               language="python"
               height="calc(50vh - 55px)"
             />
@@ -75,6 +76,7 @@ export default function CodingQuestionEditor() {
             <CodeEditor
               editorValue={solutionCode}
               onChange={setSolutionCode}
+              onRun={() => {}}
               language="python"
               height="calc(50vh - 55px)"
             />
@@ -91,6 +93,7 @@ export default function CodingQuestionEditor() {
             <CodeEditor
               editorValue={testCode}
               onChange={setTestCode}
+              onRun={() => {}}
               language="python"
               height="calc(50vh - 55px)"
             />

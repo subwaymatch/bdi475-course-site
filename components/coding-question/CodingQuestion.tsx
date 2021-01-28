@@ -38,6 +38,7 @@ export default function CodingQuestion({
   const [errorMessage, setErrorMessage] = useState("");
   const isScreenDesktop = useMediaQuery(desktop);
   const pyodideWorkerRef = useRef<Worker>();
+  const [isPyodideReady, setIsPyodideReady] = useState(false);
 
   const editorHeight = "440px";
 
@@ -47,17 +48,31 @@ export default function CodingQuestion({
     });
 
     pyodideWorkerRef.current!.onmessage = (e) => {
-      setOutput(e.data.stdout);
+      console.log(`pyodideWorkerRef.current.onmessage event data`);
+      console.log(e.data);
 
-      if (e.data.hasError) {
+      if (e.data.type === "INITIALIZE_COMPLETE") {
+        setIsPyodideReady(true);
+      } else if (e.data.type === "RUN_CODE_COMPLETE") {
+        setOutput(e.data.stdout);
         setHasError(e.data.hasError);
         setErrorMessage(e.data.errorMessage);
 
-        toast.error("Error encountered running your code");
-      } else {
-        toast.success("Code run successfully!");
+        if (e.data.hasError) {
+          toast.error("See the error message below.");
+        } else {
+          toast.success("Code ran successfully!");
+
+          if (!e.data.stdout) {
+            toast.info("Your code did not print anything.");
+          }
+        }
       }
     };
+
+    pyodideWorkerRef.current?.postMessage({
+      type: "INITIALIZE",
+    });
 
     return () => {
       pyodideWorkerRef.current?.terminate();
@@ -66,12 +81,20 @@ export default function CodingQuestion({
 
   const runCode = async () => {
     pyodideWorkerRef.current?.postMessage({
+      type: "RUN_CODE",
       userCode,
     });
   };
 
+  const runAndCheckCode = async () => {};
+
   return (
     <div className={styles.codingQuestionWrapper}>
+      {isPyodideReady && (
+        <Row>
+          <Col>Pyodide Ready</Col>
+        </Row>
+      )}
       <Row>
         <Col>
           <div className={styles.exerciseHeader}>
@@ -100,6 +123,7 @@ export default function CodingQuestion({
             <CodeEditor
               editorValue={userCode}
               onChange={setUserCode}
+              onRun={() => {}}
               language="python"
               height={editorHeight}
             />
