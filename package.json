@@ -10,6 +10,7 @@
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@monaco-editor/react": "^4.0.6",
+    "@tippyjs/react": "^4.2.0",
     "bootstrap": "^4.5.3",
     "clsx": "^1.1.1",
     "firebase": "^8.2.3",

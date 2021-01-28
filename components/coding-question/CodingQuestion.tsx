@@ -11,6 +11,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { desktop } from "constants/media-query-strings";
 import { toast } from "react-toastify";
 import marked from "marked";
+import Tippy from "@tippyjs/react";
 
 const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
@@ -191,34 +192,51 @@ export default function CodingQuestion({
 
               <Col>
                 <div className={styles.rightControls}>
-                  <div
-                    className={clsx(styles.button, styles.runButton, {
-                      [styles.disabled]: !isPyodideReady,
-                    })}
-                    onClick={async (e) => {
-                      if (!isPyodideReady) return;
-
-                      e.preventDefault();
-                      await runCode();
-                    }}
+                  <Tippy
+                    content="Ctrl + Enter"
+                    className="tippy"
+                    placement="bottom"
+                    offset={[0, -4]}
+                    theme="light"
                   >
-                    <IoPlay className={styles.reactIcon} />
-                    <span className={styles.label}>Run</span>
-                  </div>
-                  <div
-                    className={clsx(styles.button, styles.checkButton, {
-                      [styles.disabled]: !isPyodideReady,
-                    })}
-                    onClick={(e) => {
-                      if (!isPyodideReady) return;
+                    <div
+                      className={clsx(styles.button, styles.runButton, {
+                        [styles.disabled]: !isPyodideReady,
+                      })}
+                      onClick={async (e) => {
+                        if (!isPyodideReady) return;
 
-                      e.preventDefault();
-                      console.log("Button Clicked");
-                    }}
+                        e.preventDefault();
+                        await runCode();
+                      }}
+                    >
+                      <IoPlay className={styles.reactIcon} />
+                      <span className={styles.label}>Run</span>
+                    </div>
+                  </Tippy>
+
+                  <Tippy
+                    content="Ctrl + Shift + Enter"
+                    className="tippy"
+                    placement="bottom"
+                    offset={[0, -4]}
+                    theme="light"
                   >
-                    <BsCheckCircle className={styles.reactIcon} />
-                    <span className={styles.label}>Check</span>
-                  </div>
+                    <div
+                      className={clsx(styles.button, styles.checkButton, {
+                        [styles.disabled]: !isPyodideReady,
+                      })}
+                      onClick={(e) => {
+                        if (!isPyodideReady) return;
+
+                        e.preventDefault();
+                        console.log("Button Clicked");
+                      }}
+                    >
+                      <BsCheckCircle className={styles.reactIcon} />
+                      <span className={styles.label}>Check</span>
+                    </div>
+                  </Tippy>
                 </div>
               </Col>
             </Row>

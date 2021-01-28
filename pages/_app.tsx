@@ -4,6 +4,8 @@ import { ToastContainer } from "react-toastify";
 import "styles/globals.scss";
 
 // Toastify default & custom styles
+import "tippy.js/dist/tippy.css";
+import "tippy.js/themes/light.css";
 import "react-toastify/dist/ReactToastify.css";
 import "styles/toastify.custom.scss";
 

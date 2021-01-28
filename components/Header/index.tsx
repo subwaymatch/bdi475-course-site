@@ -14,6 +14,7 @@ import { FiLogIn } from "react-icons/fi";
 import MenuButton from "components/Header/MenuButton";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { desktop } from "constants/media-query-strings";
+import Tippy from "@tippyjs/react";
 
 const HeaderMenu = () => (
   <Row className={clsx(styles.mainMenu, "align-items-center")}>
@@ -137,15 +138,21 @@ export default function Header() {
                   </a>
                 ) : (
                   <Link href="/login">
-                    <motion.a
-                      variants={clickableVariants}
-                      whileHover="hover"
-                      whileTap="tap"
-                      className={styles.signInButton}
+                    <Tippy
+                      content="Requires @illinois email"
+                      className="tippy"
+                      theme="light"
                     >
-                      Sign In
-                      <FiLogIn className={styles.reactIcon} />
-                    </motion.a>
+                      <motion.a
+                        variants={clickableVariants}
+                        whileHover="hover"
+                        whileTap="tap"
+                        className={styles.signInButton}
+                      >
+                        Sign In
+                        <FiLogIn className={styles.reactIcon} />
+                      </motion.a>
+                    </Tippy>
                   </Link>
                 )}
               </div>

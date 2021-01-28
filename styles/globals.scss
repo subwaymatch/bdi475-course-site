@@ -187,3 +187,13 @@ code {
   border-radius: 5px;
   font-size: 0.9em;
 }
+
+.tippy {
+  font-weight: 400;
+  letter-spacing: 0;
+
+  .tippy-content {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+}
