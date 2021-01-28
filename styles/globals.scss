@@ -178,14 +178,25 @@ input {
   color: $color-gray;
 }
 
-code {
+code,
+kbd {
   font-family: $font-monospace;
   padding: 0.05em 0.2em;
-  color: color.mix($color-blue, black, 99%);
+  color: $color-blue;
   background-color: color.mix($color-blue, white, 6%);
   border: 1px solid color.mix($color-blue, white, 20%);
-  border-radius: 5px;
+  border-radius: 0.25rem;
   font-size: 0.9em;
+}
+
+code {
+  white-space: nowrap;
+}
+
+kbd {
+  color: black;
+  background-color: color.scale(black, $lightness: 95%);
+  border-color: color.scale(black, $lightness: 80%);
 }
 
 .tippy {

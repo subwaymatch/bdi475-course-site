@@ -12,6 +12,7 @@ import { desktop } from "constants/media-query-strings";
 import { toast } from "react-toastify";
 import marked from "marked";
 import Tippy from "@tippyjs/react";
+import { isMacOs } from "react-device-detect";
 
 const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
@@ -202,7 +203,17 @@ export default function CodingQuestion({
               <Col>
                 <div className={styles.rightControls}>
                   <Tippy
-                    content={isPyodideReady ? "Ctrl + Enter" : "Loading..."}
+                    content={
+                      isPyodideReady ? (
+                        <>
+                          <kbd>{isMacOs ? "Cmd" : "Ctrl"}</kbd>
+                          <span className="color-blue"> + </span>
+                          <kbd>Enter ↵</kbd>
+                        </>
+                      ) : (
+                        "Loading..."
+                      )
+                    }
                     className="tippy"
                     placement="bottom"
                     offset={[0, -4]}
@@ -226,7 +237,17 @@ export default function CodingQuestion({
 
                   <Tippy
                     content={
-                      isPyodideReady ? "Ctrl + Shift + Enter" : "Loading..."
+                      isPyodideReady ? (
+                        <>
+                          <kbd>{isMacOs ? "Cmd" : "Ctrl"}</kbd>
+                          <span className="color-blue"> + </span>
+                          <kbd>Shift</kbd>
+                          <span className="color-blue"> + </span>
+                          <kbd>Enter ↵</kbd>
+                        </>
+                      ) : (
+                        "Loading..."
+                      )
                     }
                     className="tippy"
                     placement="bottom"
