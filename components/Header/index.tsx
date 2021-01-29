@@ -72,7 +72,7 @@ const HeaderMenu = () => (
   </Row>
 );
 
-const SignInButton = forwardRef((props, ref: React.Ref<div>) => {
+const SignInButton = forwardRef((props, ref: React.Ref<HTMLDivElement>) => {
   return (
     <Link href="/login">
       <motion.div
