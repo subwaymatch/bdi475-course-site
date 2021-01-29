@@ -1,12 +1,12 @@
-import { useState, useEffect } from "react";
 import QuestionEditor from "components/coding-question/QuestionEditor";
 import Layout from "components/Layout";
 import { useRouter } from "next/router";
 import { useFirestoreDocDataOnce, useFirestore } from "reactfire";
 import { Container, Row, Col } from "react-bootstrap";
 import ICodingQuestion from "typings/coding-question";
+import _ from "lodash";
 
-export default function EditCodingQuestionPage(props) {
+export default function EditCodingQuestionPage() {
   const router = useRouter();
   const { qid } = router.query;
 
@@ -21,8 +21,19 @@ export default function EditCodingQuestionPage(props) {
     docRef
   );
 
-  console.log(props);
-  return (status as any) === "loading" ? (
+  const saveDoc = async (v) => {
+    try {
+      const result = await docRef.set(v);
+      console.log(`save result=${result}`);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  console.log(`data`);
+  console.log(data);
+
+  return status === "loading" ? (
     <Layout excludeHeader={true}>
       <Container>
         <Row>
@@ -33,10 +44,11 @@ export default function EditCodingQuestionPage(props) {
   ) : (
     <Layout excludeHeader={true}>
       <QuestionEditor
-        codingQuestion={data}
-        onSave={(v) => {
+        initial={_.omit(data, "NO_ID_FIELD")}
+        onSave={(newData) => {
           console.log(`onSave, newValue`);
-          console.log(v);
+          console.log(newData);
+          saveDoc(newData);
         }}
       />
     </Layout>

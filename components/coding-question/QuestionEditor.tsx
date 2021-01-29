@@ -3,27 +3,47 @@ import { useState } from "react";
 import styles from "./QuestionEditor.module.scss";
 import clsx from "clsx";
 import ICodingQuestion from "typings/coding-question";
+import produce from "immer";
 
 const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
 });
 
 type CodingQuestionEditorProps = {
-  codingQuestion: ICodingQuestion;
+  initial: ICodingQuestion;
   onSave: (v: ICodingQuestion) => void;
 };
 
 export default function CodingQuestionEditor({
-  codingQuestion,
+  initial,
   onSave,
 }: CodingQuestionEditorProps) {
-  const [title, setTitle] = useState("");
-  const [questionMarkdown, setQuestionMarkdown] = useState("");
-  const [starterCode, setStarterCode] = useState("");
-  const [solutionCode, setSolutionCode] = useState("");
-  const [testCode, setTestCode] = useState(
-    "import unittest\ntc = unittest.TestCase()\n\n"
+  const [questionData, setQuestionData] = useState<ICodingQuestion>(
+    Object.assign(
+      {
+        title: "",
+        textMarkdown: "",
+        starterCode: "",
+        solutionCode: "",
+        testCode: "",
+      },
+      initial
+    )
   );
+
+  const update = (key, val) => {
+    const updatedQuestionData = produce(questionData, (draft) => {
+      draft[key] = val;
+    });
+
+    setQuestionData(updatedQuestionData);
+  };
+
+  const save = () => {
+    onSave(questionData);
+  };
+
+  console.log(questionData);
 
   return (
     <div className={styles.questionEditPage}>
@@ -31,14 +51,24 @@ export default function CodingQuestionEditor({
         <div className={styles.questionTitleWrapper}>
           <input
             type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            value={questionData.title}
+            onChange={(e) => update("title", e.target.value)}
             placeholder="Question Title"
             className={styles.questionTitleInput}
           />
         </div>
 
-        <div className={styles.controls}></div>
+        <div className={styles.controls}>
+          <div
+            className={styles.button}
+            onClick={(e) => {
+              e.preventDefault();
+              save();
+            }}
+          >
+            Save
+          </div>
+        </div>
       </div>
       <div className={styles.questionAndTemplate}>
         <div className={clsx(styles.questionText, styles.editorBox)}>
@@ -50,10 +80,8 @@ export default function CodingQuestionEditor({
           <div className={styles.codeEditorWrapper}>
             <textarea
               className={styles.questionTextarea}
-              value={questionMarkdown}
-              onChange={(e) => {
-                setQuestionMarkdown(e.target.value);
-              }}
+              value={questionData.textMarkdown}
+              onChange={(e) => update("textMarkdown", e.target.value)}
             />
           </div>
         </div>
@@ -66,8 +94,8 @@ export default function CodingQuestionEditor({
 
           <div className={styles.codeEditorWrapper}>
             <CodeEditor
-              editorValue={starterCode}
-              onChange={setStarterCode}
+              editorValue={questionData.starterCode}
+              onChange={(v) => update("starterCode", v)}
               onRun={() => {}}
               language="python"
               height="calc(50vh - 55px)"
@@ -85,8 +113,8 @@ export default function CodingQuestionEditor({
 
           <div className={styles.codeEditorWrapper}>
             <CodeEditor
-              editorValue={solutionCode}
-              onChange={setSolutionCode}
+              editorValue={questionData.solutionCode}
+              onChange={(v) => update("solutionCode", v)}
               onRun={() => {}}
               language="python"
               height="calc(50vh - 55px)"
@@ -102,8 +130,8 @@ export default function CodingQuestionEditor({
 
           <div className={styles.codeEditorWrapper}>
             <CodeEditor
-              editorValue={testCode}
-              onChange={setTestCode}
+              editorValue={questionData.testCode}
+              onChange={(v) => update("testCode", v)}
               onRun={() => {}}
               language="python"
               height="calc(50vh - 55px)"
