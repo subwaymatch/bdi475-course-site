@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, forwardRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Container, Row, Col } from "react-bootstrap";
@@ -72,6 +72,23 @@ const HeaderMenu = () => (
   </Row>
 );
 
+const SignInButton = forwardRef((props, ref: React.Ref<div>) => {
+  return (
+    <Link href="/login">
+      <motion.div
+        ref={ref}
+        variants={clickableVariants}
+        whileHover="hover"
+        whileTap="tap"
+        className={styles.signInButton}
+      >
+        <span className={styles.label}>Sign In</span>
+        <FiLogIn className={styles.reactIcon} />
+      </motion.div>
+    </Link>
+  );
+});
+
 const UserMenu = () => {
   const { user } = useAuth();
   const router = useRouter();
@@ -100,17 +117,7 @@ const UserMenu = () => {
               className="tippy"
               theme="light"
             >
-              <Link href="/login">
-                <motion.div
-                  variants={clickableVariants}
-                  whileHover="hover"
-                  whileTap="tap"
-                  className={styles.signInButton}
-                >
-                  <span className={styles.label}>Sign In</span>
-                  <FiLogIn className={styles.reactIcon} />
-                </motion.div>
-              </Link>
+              <SignInButton />
             </Tippy>
           )}
         </div>
