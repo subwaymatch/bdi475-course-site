@@ -93,25 +93,25 @@ const UserMenu = () => {
               Sign Out
             </a>
           ) : (
-            <Link href="/login">
-              <Tippy
-                disabled={!isScreenDesktop}
-                content="Requires @illinois email"
-                placement="bottom"
-                className="tippy"
-                theme="light"
-              >
+            <Tippy
+              disabled={!isScreenDesktop}
+              content="Requires @illinois email"
+              placement="bottom"
+              className="tippy"
+              theme="light"
+            >
+              <Link href="/login">
                 <motion.div
                   variants={clickableVariants}
                   whileHover="hover"
                   whileTap="tap"
                   className={styles.signInButton}
                 >
-                  Sign In
+                  <span className={styles.label}>Sign In</span>
                   <FiLogIn className={styles.reactIcon} />
                 </motion.div>
-              </Tippy>
-            </Link>
+              </Link>
+            </Tippy>
           )}
         </div>
       </Col>
