@@ -1,4 +1,4 @@
-export interface ICodingQuestion {
+export default interface ICodingQuestion {
   title: string;
   textMarkdown: string;
   starterCode: string;

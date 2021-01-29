@@ -2,13 +2,22 @@ import dynamic from "next/dynamic";
 import { useState } from "react";
 import styles from "./QuestionEditor.module.scss";
 import clsx from "clsx";
+import ICodingQuestion from "typings/coding-question";
 
 const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
 });
 
-export default function CodingQuestionEditor() {
-  const [questionTitle, setQuestionTitle] = useState("");
+type CodingQuestionEditorProps = {
+  codingQuestion: ICodingQuestion;
+  onSave: (v: ICodingQuestion) => void;
+};
+
+export default function CodingQuestionEditor({
+  codingQuestion,
+  onSave,
+}: CodingQuestionEditorProps) {
+  const [title, setTitle] = useState("");
   const [questionMarkdown, setQuestionMarkdown] = useState("");
   const [starterCode, setStarterCode] = useState("");
   const [solutionCode, setSolutionCode] = useState("");
@@ -22,6 +31,8 @@ export default function CodingQuestionEditor() {
         <div className={styles.questionTitleWrapper}>
           <input
             type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
             placeholder="Question Title"
             className={styles.questionTitleInput}
           />
