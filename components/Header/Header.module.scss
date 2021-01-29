@@ -65,6 +65,8 @@
     color: white;
     padding: 0.75rem 1.2rem;
     border-radius: 0.25rem;
+    cursor: pointer;
+    user-select: none;
 
     @include media-breakpoint-down(md) {
       font-size: 0.9rem;

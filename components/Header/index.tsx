@@ -101,7 +101,7 @@ const UserMenu = () => {
                 className="tippy"
                 theme="light"
               >
-                <motion.a
+                <motion.div
                   variants={clickableVariants}
                   whileHover="hover"
                   whileTap="tap"
@@ -109,7 +109,7 @@ const UserMenu = () => {
                 >
                   Sign In
                   <FiLogIn className={styles.reactIcon} />
-                </motion.a>
+                </motion.div>
               </Tippy>
             </Link>
           )}
