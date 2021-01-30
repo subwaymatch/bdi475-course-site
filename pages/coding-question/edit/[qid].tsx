@@ -1,7 +1,7 @@
 import QuestionEditor from "components/coding-question/QuestionEditor";
 import Layout from "components/Layout";
 import { useRouter } from "next/router";
-import { useFirestoreDocDataOnce, useFirestore } from "reactfire";
+import { useFirestore, useFirestoreDocDataOnce } from "reactfire";
 import { Container, Row, Col } from "react-bootstrap";
 import ICodingQuestion from "typings/coding-question";
 import _ from "lodash";
