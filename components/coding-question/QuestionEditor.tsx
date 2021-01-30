@@ -29,7 +29,6 @@ const CodeEditor = dynamic(() => import("components/CodeEditor"), {
 });
 
 type CodingQuestionEditorProps = {
-  qid: string;
   savedData: ICodingQuestion;
   onSave: (v: ICodingQuestion) => void;
   onDelete: () => void;
@@ -37,7 +36,6 @@ type CodingQuestionEditorProps = {
 };
 
 export default function CodingQuestionEditor({
-  qid,
   savedData,
   onSave,
   onDelete,

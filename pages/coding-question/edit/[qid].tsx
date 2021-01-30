@@ -1,11 +1,7 @@
 import QuestionEditor from "components/coding-question/QuestionEditor";
 import Layout from "components/Layout";
 import { useRouter } from "next/router";
-import {
-  useFirestore,
-  useFirestoreDocData,
-  useFirestoreDocDataOnce,
-} from "reactfire";
+import { useFirestore, useFirestoreDocData } from "reactfire";
 import { Container, Row, Col } from "react-bootstrap";
 import ICodingQuestion from "typings/coding-question";
 import _ from "lodash";
@@ -23,9 +19,7 @@ export default function EditCodingQuestionPage() {
 
   const onDelete = async () => {
     try {
-      const result = await docRef.delete();
-
-      console.log(`delete qid=${qid}, result=${result}`);
+      await docRef.delete();
 
       router.push("/coding-question/list");
     } catch (err) {
@@ -53,15 +47,11 @@ export default function EditCodingQuestionPage() {
 
   const saveDoc = async (v) => {
     try {
-      const result = await docRef.set(v);
-      console.log(`save qid=${qid}, result=${result}`);
+      await docRef.set(v);
     } catch (err) {
-      console.error(err);
+      throw err;
     }
   };
-
-  console.log(`data`);
-  console.log(data);
 
   return status === "loading" ? (
     <Layout excludeHeader={true}>
@@ -74,11 +64,8 @@ export default function EditCodingQuestionPage() {
   ) : (
     <Layout excludeHeader={true}>
       <QuestionEditor
-        qid={qid as string}
         savedData={_.omit(data, "NO_ID_FIELD")}
         onSave={(newData) => {
-          console.log(`onSave, newValue`);
-          console.log(newData);
           saveDoc(newData);
         }}
         onClone={onClone}
