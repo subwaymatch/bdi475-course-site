@@ -6,12 +6,15 @@ import clsx from "clsx";
 import { MdDelete } from "react-icons/md";
 import { IoCopy, IoPlay } from "react-icons/io5";
 import { AiFillSave } from "react-icons/ai";
+import { VscRepoForked } from "react-icons/vsc";
 import ICodingQuestion from "typings/coding-question";
 import produce from "immer";
 import { Row, Col } from "react-bootstrap";
 import { motion } from "framer-motion";
 import clickableVariants from "animations/clickableVariants";
+import { toast } from "react-toastify";
 
+// Tweaked clickable animation for small texts and buttons
 const buttonVariants = Object.assign({}, clickableVariants, {
   hover: {
     y: 1,
@@ -26,13 +29,19 @@ const CodeEditor = dynamic(() => import("components/CodeEditor"), {
 });
 
 type CodingQuestionEditorProps = {
-  initial: ICodingQuestion;
+  qid: string;
+  savedData: ICodingQuestion;
   onSave: (v: ICodingQuestion) => void;
+  onDelete: () => void;
+  onClone: (v: ICodingQuestion) => void;
 };
 
 export default function CodingQuestionEditor({
-  initial,
+  qid,
+  savedData,
   onSave,
+  onDelete,
+  onClone,
 }: CodingQuestionEditorProps) {
   const [questionData, setQuestionData] = useState<ICodingQuestion>(
     Object.assign(
@@ -43,7 +52,7 @@ export default function CodingQuestionEditor({
         solutionCode: "",
         testCode: "",
       },
-      initial
+      savedData
     )
   );
 
@@ -95,32 +104,6 @@ export default function CodingQuestionEditor({
                 variants={buttonVariants}
                 whileHover="hover"
                 whileTap="tap"
-                className={clsx(styles.button, styles.copyId)}
-                onClick={(e) => {
-                  e.preventDefault();
-                }}
-              >
-                <IoCopy className={styles.reactIcon} />
-                <span className={styles.label}>Copy ID</span>
-              </motion.div>
-
-              <motion.div
-                variants={buttonVariants}
-                whileHover="hover"
-                whileTap="tap"
-                className={clsx(styles.button, styles.delete)}
-                onClick={(e) => {
-                  e.preventDefault();
-                }}
-              >
-                <MdDelete className={styles.reactIcon} />
-                <span className={styles.label}>Delete</span>
-              </motion.div>
-
-              <motion.div
-                variants={buttonVariants}
-                whileHover="hover"
-                whileTap="tap"
                 className={clsx(styles.button, styles.run)}
                 onClick={(e) => {
                   e.preventDefault();
@@ -135,12 +118,72 @@ export default function CodingQuestionEditor({
                 whileHover="hover"
                 whileTap="tap"
                 className={clsx(styles.button, styles.save)}
-                onClick={(e) => {
+                onClick={async (e) => {
                   e.preventDefault();
+
+                  try {
+                    await save();
+                    toast.success("Save successful");
+                  } catch (err) {
+                    toast.error("Error saving question");
+                  }
                 }}
               >
                 <AiFillSave className={styles.reactIcon} />
                 <span className={styles.label}>Save</span>
+              </motion.div>
+
+              <motion.div
+                variants={buttonVariants}
+                whileHover="hover"
+                whileTap="tap"
+                className={clsx(styles.button, styles.clone)}
+                onClick={async (e) => {
+                  e.preventDefault();
+
+                  if (
+                    window.confirm("Your changes will be saved before cloning.")
+                  ) {
+                    await save();
+                    await onClone(questionData);
+                  }
+                }}
+              >
+                <VscRepoForked className={styles.reactIcon} />
+                <span className={styles.label}>Clone</span>
+              </motion.div>
+
+              <motion.div
+                variants={buttonVariants}
+                whileHover="hover"
+                whileTap="tap"
+                className={clsx(styles.button, styles.copyId)}
+                onClick={(e) => {
+                  e.preventDefault();
+                }}
+              >
+                <IoCopy className={styles.reactIcon} />
+                <span className={styles.label}>Copy ID</span>
+              </motion.div>
+
+              <motion.div
+                variants={buttonVariants}
+                whileHover="hover"
+                whileTap="tap"
+                className={clsx(styles.button, styles.delete)}
+                onClick={async (e) => {
+                  e.preventDefault();
+                  if (
+                    window.confirm(
+                      "Are you sure you want to delete this question? This cannot be undone."
+                    )
+                  ) {
+                    await onDelete();
+                  }
+                }}
+              >
+                <MdDelete className={styles.reactIcon} />
+                <span className={styles.label}>Delete</span>
               </motion.div>
             </div>
           </Col>

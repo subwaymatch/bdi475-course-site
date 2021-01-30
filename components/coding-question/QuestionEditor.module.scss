@@ -90,6 +90,12 @@
           margin-right: 0;
         }
 
+        &.clone {
+          .reactIcon {
+            font-size: 1rem;
+          }
+        }
+
         &.delete {
           .reactIcon {
             font-size: 0.85rem;
