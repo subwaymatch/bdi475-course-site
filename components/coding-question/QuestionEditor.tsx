@@ -1,9 +1,14 @@
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import { useState } from "react";
 import styles from "./QuestionEditor.module.scss";
 import clsx from "clsx";
+import { MdDelete } from "react-icons/md";
+import { IoCopy, IoPlay } from "react-icons/io5";
+import { AiFillSave } from "react-icons/ai";
 import ICodingQuestion from "typings/coding-question";
 import produce from "immer";
+import { Row, Col } from "react-bootstrap";
 
 const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
@@ -48,28 +53,70 @@ export default function CodingQuestionEditor({
   return (
     <div className={styles.questionEditPage}>
       <div className={styles.controlBar}>
-        <div className={styles.questionTitleWrapper}>
-          <input
-            type="text"
-            value={questionData.title}
-            onChange={(e) => update("title", e.target.value)}
-            placeholder="Question Title"
-            className={styles.questionTitleInput}
-          />
-        </div>
+        <Row className={clsx(styles.controlRow, "align-items-center")}>
+          <Col xs={4}>
+            <Link href="/coding-question/list">
+              <a className={styles.backButton}>← Back to List</a>
+            </Link>
+          </Col>
 
-        <div className={styles.controls}>
-          <div
-            className={styles.button}
-            onClick={(e) => {
-              e.preventDefault();
-              save();
-            }}
-          >
-            Save
-          </div>
-        </div>
+          <Col xs={4}>
+            <div className={styles.questionTitleWrapper}>
+              <input
+                type="text"
+                value={questionData.title}
+                onChange={(e) => update("title", e.target.value)}
+                placeholder="Question Title"
+                className={styles.questionTitleInput}
+              />
+            </div>
+          </Col>
+          <Col xs={4}>
+            <div className={styles.controls}>
+              <div
+                className={styles.button}
+                onClick={(e) => {
+                  e.preventDefault();
+                }}
+              >
+                <IoCopy className={styles.reactIcon} />
+                <span className={styles.label}>Copy ID</span>
+              </div>
+
+              <div
+                className={styles.button}
+                onClick={(e) => {
+                  e.preventDefault();
+                }}
+              >
+                <MdDelete className={styles.reactIcon} />
+                <span className={styles.label}>Delete</span>
+              </div>
+
+              <div
+                className={styles.button}
+                onClick={(e) => {
+                  e.preventDefault();
+                }}
+              >
+                <IoPlay className={styles.reactIcon} />
+                <span className={styles.label}>Run</span>
+              </div>
+
+              <div
+                className={styles.button}
+                onClick={(e) => {
+                  e.preventDefault();
+                }}
+              >
+                <AiFillSave className={styles.reactIcon} />
+                <span className={styles.label}>Save</span>
+              </div>
+            </div>
+          </Col>
+        </Row>
       </div>
+
       <div className={styles.questionAndTemplate}>
         <div className={clsx(styles.questionText, styles.editorBox)}>
           <div className={styles.boxHeader}>
