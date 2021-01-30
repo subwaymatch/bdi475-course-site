@@ -9,6 +9,17 @@ import { AiFillSave } from "react-icons/ai";
 import ICodingQuestion from "typings/coding-question";
 import produce from "immer";
 import { Row, Col } from "react-bootstrap";
+import { motion } from "framer-motion";
+import clickableVariants from "animations/clickableVariants";
+
+const buttonVariants = Object.assign({}, clickableVariants, {
+  hover: {
+    y: 1,
+  },
+  tap: {
+    scale: 0.96,
+  },
+});
 
 const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
@@ -56,7 +67,14 @@ export default function CodingQuestionEditor({
         <Row className={clsx(styles.controlRow, "align-items-center")}>
           <Col xs={4}>
             <Link href="/coding-question/list">
-              <a className={styles.backButton}>← Back to List</a>
+              <motion.a
+                variants={buttonVariants}
+                whileHover="hover"
+                whileTap="tap"
+                className={styles.backButton}
+              >
+                ← Back to List
+              </motion.a>
             </Link>
           </Col>
 
@@ -73,45 +91,57 @@ export default function CodingQuestionEditor({
           </Col>
           <Col xs={4}>
             <div className={styles.controls}>
-              <div
-                className={styles.button}
+              <motion.div
+                variants={buttonVariants}
+                whileHover="hover"
+                whileTap="tap"
+                className={clsx(styles.button, styles.copyId)}
                 onClick={(e) => {
                   e.preventDefault();
                 }}
               >
                 <IoCopy className={styles.reactIcon} />
                 <span className={styles.label}>Copy ID</span>
-              </div>
+              </motion.div>
 
-              <div
-                className={styles.button}
+              <motion.div
+                variants={buttonVariants}
+                whileHover="hover"
+                whileTap="tap"
+                className={clsx(styles.button, styles.delete)}
                 onClick={(e) => {
                   e.preventDefault();
                 }}
               >
                 <MdDelete className={styles.reactIcon} />
                 <span className={styles.label}>Delete</span>
-              </div>
+              </motion.div>
 
-              <div
-                className={styles.button}
+              <motion.div
+                variants={buttonVariants}
+                whileHover="hover"
+                whileTap="tap"
+                className={clsx(styles.button, styles.run)}
                 onClick={(e) => {
                   e.preventDefault();
                 }}
               >
                 <IoPlay className={styles.reactIcon} />
                 <span className={styles.label}>Run</span>
-              </div>
+              </motion.div>
 
-              <div
-                className={styles.button}
+              <motion.div
+                variants={buttonVariants}
+                whileHover="hover"
+                whileTap="tap"
+                className={clsx(styles.button, styles.save)}
                 onClick={(e) => {
                   e.preventDefault();
                 }}
               >
                 <AiFillSave className={styles.reactIcon} />
                 <span className={styles.label}>Save</span>
-              </div>
+              </motion.div>
             </div>
           </Col>
         </Row>

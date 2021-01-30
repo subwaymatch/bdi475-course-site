@@ -19,10 +19,17 @@
     }
 
     a.backButton {
-      color: #999;
-      font-size: 0.85rem;
+      display: inline-block;
+      color: #888;
+      font-size: 0.9rem;
       font-weight: 500;
-      letter-spacing: -0.02rem;
+      letter-spacing: -0.01rem;
+      padding: 0.5rem 1rem 0.4rem 0;
+      user-select: none;
+
+      &:hover {
+        color: $color-purple;
+      }
     }
 
     .questionTitleWrapper {
@@ -42,12 +49,12 @@
         width: 100%;
 
         &:hover {
-          color: $color-green;
+          background-color: #222;
         }
 
         &:focus {
+          background-color: transparent;
           color: $color-green;
-          border-bottom: 1px solid $color-green;
         }
       }
     }
@@ -59,23 +66,35 @@
       .button {
         display: inline-flex;
         align-items: center;
-        background-color: black;
         color: white;
         padding: 0.3rem 0.5rem;
         margin-right: 0.3rem;
-        border-radius: 0.2rem;
         font-size: 0.8rem;
         letter-spacing: -0.01rem;
         font-weight: 500;
         cursor: pointer;
+        user-select: none;
 
         .reactIcon {
-          font-size: 0.65rem;
+          font-size: 0.7rem;
           margin-right: 0.3rem;
+          position: relative;
+          top: 1px;
+        }
+
+        &:hover {
+          color: $color-yellow;
         }
 
         &:last-child {
           margin-right: 0;
+        }
+
+        &.delete {
+          .reactIcon {
+            font-size: 0.85rem;
+            top: 0;
+          }
         }
       }
     }
