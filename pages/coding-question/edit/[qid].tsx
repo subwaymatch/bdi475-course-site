@@ -64,6 +64,7 @@ export default function EditCodingQuestionPage() {
   ) : (
     <Layout excludeHeader={true}>
       <QuestionEditor
+        qid={docRef.id}
         savedData={_.omit(data, "NO_ID_FIELD")}
         onSave={(newData) => {
           saveDoc(newData);

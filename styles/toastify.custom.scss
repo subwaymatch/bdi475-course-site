@@ -22,8 +22,8 @@
 /** Classes for the displayed toast **/
 .Toastify__toast {
   font-family: $font-sans-serif;
-  font-size: 1rem;
-  letter-spacing: 0;
+  font-size: 0.9rem;
+  letter-spacing: -0.01rem;
   line-height: 1.7;
   padding: 12px;
 }
@@ -37,7 +37,7 @@
   color: #888;
 }
 .Toastify__toast--info {
-  color: black;
+  color: white;
   background-color: $color-blue;
 }
 

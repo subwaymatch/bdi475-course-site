@@ -28,7 +28,7 @@
       user-select: none;
 
       &:hover {
-        color: $color-purple;
+        color: #bbb;
       }
     }
 
@@ -90,9 +90,22 @@
           margin-right: 0;
         }
 
+        &.disabled {
+          cursor: not-allowed;
+          &:hover {
+            color: white;
+          }
+        }
+
         &.clone {
           .reactIcon {
             font-size: 1rem;
+          }
+        }
+
+        &.copyLink {
+          .reactIcon {
+            font-size: 0.85rem;
           }
         }
 

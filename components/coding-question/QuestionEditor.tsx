@@ -1,10 +1,11 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import styles from "./QuestionEditor.module.scss";
 import clsx from "clsx";
 import { MdDelete } from "react-icons/md";
-import { IoCopy, IoPlay } from "react-icons/io5";
+import { IoCopy, IoLink } from "react-icons/io5";
 import { AiFillSave } from "react-icons/ai";
 import { VscRepoForked } from "react-icons/vsc";
 import ICodingQuestion from "typings/coding-question";
@@ -13,6 +14,8 @@ import { Row, Col } from "react-bootstrap";
 import { motion } from "framer-motion";
 import clickableVariants from "animations/clickableVariants";
 import { toast } from "react-toastify";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import _ from "lodash";
 
 // Tweaked clickable animation for small texts and buttons
 const buttonVariants = Object.assign({}, clickableVariants, {
@@ -29,6 +32,7 @@ const CodeEditor = dynamic(() => import("components/CodeEditor"), {
 });
 
 type CodingQuestionEditorProps = {
+  qid: string;
   savedData: ICodingQuestion;
   onSave: (v: ICodingQuestion) => void;
   onDelete: () => void;
@@ -36,23 +40,29 @@ type CodingQuestionEditorProps = {
 };
 
 export default function CodingQuestionEditor({
+  qid,
   savedData,
   onSave,
   onDelete,
   onClone,
 }: CodingQuestionEditorProps) {
+  const router = useRouter();
   const [questionData, setQuestionData] = useState<ICodingQuestion>(
     Object.assign(
       {
         title: "",
         textMarkdown: "",
-        starterCode: "",
-        solutionCode: "",
-        testCode: "",
+        starterCode: "# YOUR CODE BEGINS\n\n\n\n# YOUR CODE ENDS\n\n",
+        solutionCode: "# YOUR CODE BEGINS\n\n\n\n# YOUR CODE ENDS\n\n",
+        testCode: "import unittest\n\ntc=unittest.TestCase()\n",
       },
       savedData
     )
   );
+
+  console.log(router);
+
+  const didChange = !_.isEqual(questionData, savedData);
 
   const update = (key, val) => {
     const updatedQuestionData = produce(questionData, (draft) => {
@@ -65,8 +75,6 @@ export default function CodingQuestionEditor({
   const save = () => {
     onSave(questionData);
   };
-
-  console.log(questionData);
 
   return (
     <div className={styles.questionEditPage}>
@@ -102,19 +110,6 @@ export default function CodingQuestionEditor({
                 variants={buttonVariants}
                 whileHover="hover"
                 whileTap="tap"
-                className={clsx(styles.button, styles.run)}
-                onClick={(e) => {
-                  e.preventDefault();
-                }}
-              >
-                <IoPlay className={styles.reactIcon} />
-                <span className={styles.label}>Run</span>
-              </motion.div>
-
-              <motion.div
-                variants={buttonVariants}
-                whileHover="hover"
-                whileTap="tap"
                 className={clsx(styles.button, styles.save)}
                 onClick={async (e) => {
                   e.preventDefault();
@@ -139,30 +134,67 @@ export default function CodingQuestionEditor({
                 onClick={async (e) => {
                   e.preventDefault();
 
-                  if (
-                    window.confirm("Your changes will be saved before cloning.")
-                  ) {
-                    await save();
-                    await onClone(questionData);
+                  if (didChange) {
+                    if (
+                      window.confirm(
+                        "You must save your changes to clone this question. Save and continue?"
+                      )
+                    ) {
+                      await save();
+                    } else {
+                      //
+                      return;
+                    }
                   }
+
+                  await onClone(questionData);
                 }}
               >
                 <VscRepoForked className={styles.reactIcon} />
                 <span className={styles.label}>Clone</span>
               </motion.div>
 
-              <motion.div
-                variants={buttonVariants}
-                whileHover="hover"
-                whileTap="tap"
-                className={clsx(styles.button, styles.copyId)}
-                onClick={(e) => {
-                  e.preventDefault();
-                }}
+              <CopyToClipboard
+                text={qid}
+                onCopy={() =>
+                  toast.info(
+                    <div>
+                      Copied <code>{qid}</code> to clipboard
+                    </div>
+                  )
+                }
               >
-                <IoCopy className={styles.reactIcon} />
-                <span className={styles.label}>Copy ID</span>
-              </motion.div>
+                <motion.div
+                  variants={buttonVariants}
+                  whileHover="hover"
+                  whileTap="tap"
+                  className={clsx(styles.button, styles.copyId)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                  }}
+                >
+                  <IoCopy className={styles.reactIcon} />
+                  <span className={styles.label}>Copy ID</span>
+                </motion.div>
+              </CopyToClipboard>
+
+              <CopyToClipboard
+                text={`${window.location.origin}/coding-question/view/${qid}`}
+                onCopy={() => toast.info("Copied permalink to clipboard")}
+              >
+                <motion.div
+                  variants={buttonVariants}
+                  whileHover="hover"
+                  whileTap="tap"
+                  className={clsx(styles.button, styles.copyLink)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                  }}
+                >
+                  <IoLink className={styles.reactIcon} />
+                  <span className={styles.label}>Copy Link</span>
+                </motion.div>
+              </CopyToClipboard>
 
               <motion.div
                 variants={buttonVariants}
