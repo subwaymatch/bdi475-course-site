@@ -60,8 +60,6 @@ export default function CodingQuestionEditor({
     )
   );
 
-  console.log(router);
-
   const didChange = !_.isEqual(questionData, savedData);
 
   const update = (key, val) => {

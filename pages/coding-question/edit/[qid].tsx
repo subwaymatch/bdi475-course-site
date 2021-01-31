@@ -47,7 +47,7 @@ export default function EditCodingQuestionPage() {
 
   const saveDoc = async (v) => {
     try {
-      await docRef.set(v);
+      await docRef.set(v, { merge: true });
     } catch (err) {
       throw err;
     }

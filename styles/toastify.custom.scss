@@ -22,7 +22,7 @@
 /** Classes for the displayed toast **/
 .Toastify__toast {
   font-family: $font-sans-serif;
-  font-size: 0.9rem;
+  font-size: 1rem;
   letter-spacing: -0.01rem;
   line-height: 1.7;
   padding: 12px;
@@ -50,7 +50,7 @@
   background-color: $color-yellow;
 }
 .Toastify__toast--error {
-  color: black;
+  color: white;
   background-color: $color-pink;
 }
 .Toastify__toast-body {
