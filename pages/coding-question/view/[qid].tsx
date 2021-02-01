@@ -46,8 +46,6 @@ export default function EditCodingQuestionPage() {
             starterCode={(data as any).starterCode}
             testCode={(data as any).testCode}
             onSubmit={(isSuccess) => {
-              console.log(user.email);
-
               if (user) {
                 const netId = user.email.split("@")[0];
 
