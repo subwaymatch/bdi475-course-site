@@ -27,7 +27,6 @@ export default function QuestionItem({
   title,
   createdAt,
   updatedAt,
-  onEdit,
   onDelete,
 }: QuestionItemProps) {
   console.log(`questionItem qid=${qid}`);
