@@ -49,9 +49,6 @@ export default function EditCodingQuestionPage() {
               if (user) {
                 const netId = user.email.split("@")[0];
 
-                console.log(`user.email=${user.email}`);
-                console.log(`netId=${netId}`);
-
                 userAttemptsDoc.set(
                   {
                     [qid as string]: {
