@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Layout from "components/Layout";
 import { Col, Container, Row } from "react-bootstrap";
+import firebase from "firebase";
 import { useFirestore, useFirestoreCollectionData } from "reactfire";
 import QuestionList from "components/question-list";
 import styles from "styles/pages/coding-question/list.module.scss";
@@ -14,6 +15,26 @@ export default function CodingQuestionListPage() {
   const { status, data } = useFirestoreCollectionData(
     codingQuestionsCollection
   );
+
+  const questionSummaryList = data
+    ? data.map((d): {
+        qid: string;
+        title: string;
+        createdAt: Date;
+        updatedAt: Date;
+      } => {
+        return {
+          qid: d["NO_ID_FIELD"] as string,
+          title: d.title as string,
+          createdAt: d.createdAt
+            ? (d.createdAt as firebase.firestore.Timestamp).toDate()
+            : null,
+          updatedAt: d.updatedAt
+            ? (d.updatedAt as firebase.firestore.Timestamp).toDate()
+            : null,
+        };
+      })
+    : [];
 
   return status === "loading" ? (
     <Layout excludeHeader={true}>
@@ -36,21 +57,7 @@ export default function CodingQuestionListPage() {
             </Col>
           </Row>
 
-          <QuestionList questionDataList={data} />
-          {/* 
-          {(data as any).map((q) => {
-            return (
-              <React.Fragment key={q["NO_ID_FIELD"]}>
-                <Row>
-                  <Col>
-                    <Link href={`/coding-question/edit/${q["NO_ID_FIELD"]}`}>
-                      <div>{q.title}</div>
-                    </Link>
-                  </Col>
-                </Row>
-              </React.Fragment>
-            );
-          })} */}
+          <QuestionList questionSummaryList={questionSummaryList} />
         </Container>
       </main>
     </Layout>

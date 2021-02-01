@@ -1,14 +1,22 @@
 import React from "react";
+import router from "next/router";
 import Link from "next/link";
-import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "./QuestionList.module.scss";
+import QuestionItem from "./QuestionItem";
 
-type QuestionListProps = {
-  questionDataList: any;
-};
+interface QuestionListProps {
+  questionSummaryList: {
+    qid: string;
+    title: string;
+    createdAt: Date;
+    updatedAt: Date;
+  }[];
+}
 
-export default function QuestionList({ questionDataList }: QuestionListProps) {
+export default function QuestionList({
+  questionSummaryList: questionDataList,
+}: QuestionListProps) {
   console.log(questionDataList);
 
   return (
@@ -41,15 +49,18 @@ export default function QuestionList({ questionDataList }: QuestionListProps) {
         </Col>
       </Row>
 
-      {(questionDataList as any).map((q) => {
+      {questionDataList.map((q) => {
         return (
-          <Row>
+          <Row key={q.qid}>
             <Col>
-              <Row>
-                <Col md={2}>Question ID</Col>
-
-                <Col md={4}>Title</Col>
-              </Row>
+              <QuestionItem
+                qid={q.qid as string}
+                permalink={`/coding-question/view/${q.qid}`}
+                title={q.title as string}
+                createdAt={q.createdAt}
+                updatedAt={q.updatedAt}
+                onDelete={() => {}}
+              />
             </Col>
           </Row>
         );
