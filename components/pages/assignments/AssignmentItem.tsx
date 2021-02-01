@@ -2,7 +2,6 @@ import { Row, Col } from "react-bootstrap";
 import styles from "./AssignmentItem.module.scss";
 import { AssignmentStatus } from "typings/assignment";
 import { ColorTheme } from "typings/color-theme";
-import moment from "moment";
 import clsx from "clsx";
 
 type AssignmentItemProps = {
@@ -45,7 +44,7 @@ export default function AssignmentItem({
                   : "lightGray"
               )}
             >
-              Due {moment(dueDate, "YYYYMMDD").format("ll")}
+              {/* Due {moment(dueDate, "YYYYMMDD").format("ll")} */}
             </span>
             <span className="gray label">
               {pointsAvailable} Points Available

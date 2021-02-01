@@ -59,7 +59,21 @@ export default function CodingQuestion({
         if (e.data.hasError) {
           toast.error("See the error message below.");
         } else {
-          toast.success("Run complete.");
+          toast("Run complete.");
+
+          if (!e.data.stdout) {
+            toast.warning("Your code did not print anything.");
+          }
+        }
+      } else if (e.data.type === "RUN_AND_CHECK_CODE_COMPLETE") {
+        setOutput(e.data.stdout);
+        setHasError(e.data.hasError);
+        setErrorMessage(e.data.errorMessage);
+
+        if (e.data.hasError) {
+          toast.error("See the error message below.");
+        } else {
+          toast.success("Nice!");
 
           if (!e.data.stdout) {
             toast.warning("Your code did not print anything.");
@@ -172,7 +186,7 @@ export default function CodingQuestion({
               <Col>
                 <div className={styles.leftControls}>
                   <div
-                    className={styles.button}
+                    className={clsx(styles.button, styles.reset)}
                     onClick={(e) => {
                       if (
                         window.confirm(
@@ -187,7 +201,7 @@ export default function CodingQuestion({
                     <span className={styles.label}>Reset</span>
                   </div>
                   <div
-                    className={styles.button}
+                    className={clsx(styles.button, styles.solution)}
                     onClick={(e) => {
                       e.preventDefault();
                       console.log("Button Clicked");

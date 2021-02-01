@@ -134,6 +134,10 @@
         color: #aaa;
       }
 
+      &.solution {
+        display: none;
+      }
+
       .reactIcon {
         font-size: 1rem;
       }
