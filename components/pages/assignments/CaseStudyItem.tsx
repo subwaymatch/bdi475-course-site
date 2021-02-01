@@ -1,7 +1,6 @@
 import { Row, Col } from "react-bootstrap";
 import styles from "./CaseStudyItem.module.scss";
 import { AssignmentStatus } from "typings/assignment";
-import moment from "moment";
 import clsx from "clsx";
 
 type CaseStudyItemProps = {
@@ -42,7 +41,7 @@ export default function CaseStudyItem({
                 status === AssignmentStatus.Available ? "blue" : "lightGray"
               )}
             >
-              Due {moment(dueDate, "YYYYMMDD").format("ll")}
+              {/* Due {moment(dueDate, "YYYYMMDD").format("ll")} */}
             </span>
             <span className="gray label">
               {pointsAvailable} Points Available
