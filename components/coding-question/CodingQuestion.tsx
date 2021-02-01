@@ -23,6 +23,7 @@ type Props = {
   textMarkdown: string;
   starterCode?: string;
   testCode: string;
+  onSubmit: (boolean) => void;
 };
 
 export default function CodingQuestion({
@@ -30,6 +31,7 @@ export default function CodingQuestion({
   textMarkdown,
   starterCode,
   testCode,
+  onSubmit,
 }: Props) {
   const [userCode, setUserCode] = useState(starterCode);
   const [output, setOutput] = useState("");
@@ -46,9 +48,6 @@ export default function CodingQuestion({
     });
 
     pyodideWorkerRef.current!.onmessage = (e) => {
-      console.log(`pyodideWorkerRef.current.onmessage event data`);
-      console.log(e.data);
-
       if (e.data.type === "INITIALIZE_COMPLETE") {
         setIsPyodideReady(true);
       } else if (e.data.type === "RUN_CODE_COMPLETE") {
@@ -72,12 +71,10 @@ export default function CodingQuestion({
 
         if (e.data.hasError) {
           toast.error("See the error message below.");
+          onSubmit(false);
         } else {
           toast.success("Nice!");
-
-          if (!e.data.stdout) {
-            toast.warning("Your code did not print anything.");
-          }
+          onSubmit(true);
         }
       }
     };

@@ -3,19 +3,28 @@ import CodingQuestion from "components/coding-question/CodingQuestion";
 import styles from "styles/pages/coding-question/CodingQuestionPage.module.scss";
 import { Container, Row, Col } from "react-bootstrap";
 import { useRouter } from "next/router";
+import useAuth from "hooks/useAuth";
+import firebase from "firebase";
 import { useFirestoreDocData, useFirestore } from "reactfire";
 
 export default function EditCodingQuestionPage() {
   const router = useRouter();
   const { qid } = router.query;
+  const { user } = useAuth();
+
+  const firestore = useFirestore();
 
   // easily access the Firestore library
-  const docRef = useFirestore()
+  const questionDocRef = firestore
     .collection("codingQuestions")
     .doc(qid as string);
 
+  const userAttemptsDoc = firestore
+    .collection("userAttempts")
+    .doc(qid as string);
+
   // subscribe to a document for realtime updates. just one line!
-  const { status, data } = useFirestoreDocData(docRef);
+  const { status, data } = useFirestoreDocData(questionDocRef);
 
   return (status as any) === "loading" ? (
     <Layout>
@@ -36,6 +45,27 @@ export default function EditCodingQuestionPage() {
             textMarkdown={(data as any).textMarkdown}
             starterCode={(data as any).starterCode}
             testCode={(data as any).testCode}
+            onSubmit={(isSuccess) => {
+              console.log(user.email);
+
+              if (user) {
+                const netId = user.email.split("@")[0];
+
+                console.log(`user.email=${user.email}`);
+                console.log(`netId=${netId}`);
+
+                userAttemptsDoc.set(
+                  {
+                    [qid as string]: {
+                      [netId]: isSuccess,
+                    },
+                  },
+                  {
+                    merge: true,
+                  }
+                );
+              }
+            }}
           />
         </Container>
       </main>
