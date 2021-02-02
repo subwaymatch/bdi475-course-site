@@ -23,7 +23,6 @@
     "marked": "^1.2.8",
     "monaco-editor": "^0.21.3",
     "next": "10.0.5",
-    "nookies": "^2.5.1",
     "randomstring": "^1.1.5",
     "react": "17.0.1",
     "react-bootstrap": "^1.4.3",

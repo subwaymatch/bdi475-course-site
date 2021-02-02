@@ -5,9 +5,6 @@ import CaseStudyItem from "components/pages/assignments/CaseStudyItem";
 import { AssignmentStatus } from "typings/assignment";
 import { ColorTheme } from "typings/color-theme";
 import styles from "styles/pages/assignments.module.scss";
-import { GetServerSidePropsContext } from "next";
-import nookies from "nookies";
-import { firebaseAdmin } from "firebase/firebaseAdmin";
 import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import utc from "dayjs/plugin/utc";
@@ -165,28 +162,3 @@ export default function AssignmentsPage(props) {
     </Layout>
   );
 }
-
-export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
-  try {
-    const cookies = nookies.get(ctx);
-    console.log(JSON.stringify(cookies, null, 2));
-    const token = await firebaseAdmin.auth().verifyIdToken(cookies.token);
-    const { uid, email } = token;
-
-    // Fetch assigments data here
-
-    return {
-      props: { message: `Your email is ${email} and your UID is ${uid}.` },
-    };
-  } catch (err) {
-    // either the `token` cookie didn't exist or token verification failed
-    // either way: redirect to the sign in page
-    return {
-      redirect: {
-        permanent: false,
-        destination: "/login",
-      },
-      props: {} as never,
-    };
-  }
-};
