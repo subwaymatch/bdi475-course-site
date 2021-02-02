@@ -1,7 +1,7 @@
 import React from "react";
 import router from "next/router";
 import Link from "next/link";
-import { Container, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import styles from "./QuestionList.module.scss";
 import QuestionItem from "./QuestionItem";
 

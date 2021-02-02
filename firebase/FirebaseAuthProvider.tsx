@@ -15,11 +15,6 @@ export default function FirebaseAuthProvider({ children }: any) {
 
   useEffect(() => {
     return firebaseClient.auth().onAuthStateChanged(async (user) => {
-      console.log(`FB Auth State changed`);
-      console.log(user);
-
-      setUser(user);
-
       if (user) {
         toast.success(`Signed in as ${user.email}`);
       } else {
