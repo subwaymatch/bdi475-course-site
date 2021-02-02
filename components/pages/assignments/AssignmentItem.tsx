@@ -3,6 +3,16 @@ import styles from "./AssignmentItem.module.scss";
 import { AssignmentStatus } from "typings/assignment";
 import { ColorTheme } from "typings/color-theme";
 import clsx from "clsx";
+import dayjs from "dayjs";
+import localizedFormat from "dayjs/plugin/localizedFormat";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
+
+dayjs.extend(localizedFormat);
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
+dayjs.tz.setDefault("America/Chicago");
 
 type AssignmentItemProps = {
   name: string;
@@ -44,7 +54,7 @@ export default function AssignmentItem({
                   : "lightGray"
               )}
             >
-              {/* Due {moment(dueDate, "YYYYMMDD").format("ll")} */}
+              Due {dueDate}
             </span>
             <span className="gray label">
               {pointsAvailable} Points Available

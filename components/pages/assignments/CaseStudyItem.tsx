@@ -2,6 +2,16 @@ import { Row, Col } from "react-bootstrap";
 import styles from "./CaseStudyItem.module.scss";
 import { AssignmentStatus } from "typings/assignment";
 import clsx from "clsx";
+import dayjs from "dayjs";
+import localizedFormat from "dayjs/plugin/localizedFormat";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
+
+dayjs.extend(localizedFormat);
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
+dayjs.tz.setDefault("America/Chicago");
 
 type CaseStudyItemProps = {
   name: string;
@@ -41,7 +51,7 @@ export default function CaseStudyItem({
                 status === AssignmentStatus.Available ? "blue" : "lightGray"
               )}
             >
-              {/* Due {moment(dueDate, "YYYYMMDD").format("ll")} */}
+              Due {dueDate}
             </span>
             <span className="gray label">
               {pointsAvailable} Points Available

@@ -1,14 +1,18 @@
 import { useState } from "react";
-import dayjs from "dayjs";
-import weekOfYear from "dayjs/plugin/weekOfYear";
 import { eventsByDate, lectureNumberByDate } from "lib/schedule";
 import { ScheduleType } from "typings/schedule";
 import { BsChevronUp, BsChevronDown } from "react-icons/bs";
 import { IoMdArrowDown } from "react-icons/io";
 import styles from "./CourseCalendar.module.scss";
 import clsx from "clsx";
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
+import weekOfYear from "dayjs/plugin/weekOfYear";
 
 dayjs.extend(weekOfYear);
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
 const eventDates = Object.keys(eventsByDate).sort();
 // TODO: Refactor to enable events spanning through two or more years
@@ -16,7 +20,7 @@ const eventDates = Object.keys(eventsByDate).sort();
 const startWeekIndex = dayjs("2021-01-22").week();
 const endWeekIndex = dayjs(eventDates[eventDates.length - 1]).week();
 const currentWeekIndex = dayjs().week();
-const todayKey = dayjs().format("YYYYMMDD");
+const todayKey = dayjs().tz("America/Chicago").format("YYYY-MM-DD");
 
 let calendar = [];
 
@@ -35,7 +39,7 @@ for (let weekIndex = startWeekIndex; weekIndex <= endWeekIndex; weekIndex++) {
 }
 
 const CalendarCell = ({ day, dayEvents }) => {
-  const dayKey = day.format("YYYYMMDD");
+  const dayKey = day.format("YYYY-MM-DD");
 
   return (
     <div key={dayKey} className={styles.calendarCell}>
@@ -72,7 +76,7 @@ const CalendarCell = ({ day, dayEvents }) => {
             {dayEvents.hasOwnProperty(ScheduleType.Lecture) && (
               <div className={clsx(styles.lecture, styles.box)}>
                 <h3 className={styles.lectureHeading}>
-                  Lecture {lectureNumberByDate[day.format("YYYYMMDD")]}
+                  Lecture {lectureNumberByDate[day.format("YYYY-MM-DD")]}
                 </h3>
 
                 <div className={styles.lectureTopics}>
@@ -123,7 +127,7 @@ const CalendarWeek = ({ week, show, isPrevWeek }) => {
     show && (
       <div key={`week-${week}`} className={styles.calendarRow}>
         {week.map((day) => {
-          const dayKey = day.format("YYYYMMDD");
+          const dayKey = day.format("YYYY-MM-DD");
           const dayEvents = eventsByDate[dayKey];
 
           return <CalendarCell key={dayKey} day={day} dayEvents={dayEvents} />;

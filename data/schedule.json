@@ -1,109 +1,109 @@
 [
   {
-    "date": "20210125",
+    "date": "2021-01-25",
     "type": "Lecture",
     "text": ["Welcome", "Course Overview"]
   },
   {
-    "date": "20210127",
+    "date": "2021-01-27",
     "type": "Lecture",
     "text": ["Intro to Python", "Print function", "Comment"]
   },
   {
-    "date": "20210201",
+    "date": "2021-02-01",
     "type": "Lecture",
     "text": ["Variables", "Primitive Data Types", "Operators"]
   },
   {
-    "date": "20210202",
+    "date": "2021-02-02",
     "type": "Exercise",
     "text": "Exercise 2"
   },
   {
-    "date": "20210203",
+    "date": "2021-02-03",
     "type": "Lecture",
     "text": ["Booleans", "Conditional Logic"]
   },
   {
-    "date": "20210204",
+    "date": "2021-02-04",
     "type": "Exercise",
     "text": "Exercise 3"
   },
 
   {
-    "date": "20210208",
+    "date": "2021-02-08",
     "type": "Lecture",
     "text": ["While Loops", "For Loops"]
   },
   {
-    "date": "20210209",
+    "date": "2021-02-09",
     "type": "Exercise",
     "text": "Exercise 4"
   },
   {
-    "date": "20210210",
+    "date": "2021-02-10",
     "type": "Quiz",
     "text": "Quiz 1"
   },
   {
-    "date": "20210210",
+    "date": "2021-02-10",
     "type": "Lecture",
     "text": ["Strings", "String Methods"]
   },
   {
-    "date": "20210211",
+    "date": "2021-02-11",
     "type": "Exercise",
     "text": "Exercise 5"
   },
 
   {
-    "date": "20210213",
+    "date": "2021-02-13",
     "type": "CaseStudy",
     "text": "Case Study 1"
   },
 
   {
-    "date": "20210215",
+    "date": "2021-02-15",
     "type": "Lecture",
     "text": ["Collections"]
   },
   {
-    "date": "20210216",
+    "date": "2021-02-16",
     "type": "Exercise",
     "text": "Exercise 6"
   },
   {
-    "date": "20210217",
+    "date": "2021-02-17",
     "type": "NoLecture",
     "text": "No Class (Break)"
   },
   {
-    "date": "20210222",
+    "date": "2021-02-22",
     "type": "Lecture",
     "text": ["Function"]
   },
   {
-    "date": "20210223",
+    "date": "2021-02-23",
     "type": "Exercise",
     "text": "Exercise 7"
   },
   {
-    "date": "20210224",
+    "date": "2021-02-24",
     "type": "Lecture",
     "text": ["Functions", "Import Packages"]
   },
   {
-    "date": "20210225",
+    "date": "2021-02-25",
     "type": "Exercise",
     "text": "Exercise 8"
   },
   {
-    "date": "20210301",
+    "date": "2021-03-01",
     "type": "Quiz",
     "text": "Quiz 2"
   },
   {
-    "date": "20210301",
+    "date": "2021-03-01",
     "type": "Lecture",
     "text": [
       "Intro to Jupyter Notebooks",
@@ -112,12 +112,12 @@
     ]
   },
   {
-    "date": "20210302",
+    "date": "2021-03-02",
     "type": "Exercise",
     "text": "Exercise 9"
   },
   {
-    "date": "20210303",
+    "date": "2021-03-03",
     "type": "Lecture",
     "text": [
       "Create, Read, Update Data",
@@ -127,22 +127,22 @@
     ]
   },
   {
-    "date": "20210304",
+    "date": "2021-03-04",
     "type": "Exercise",
     "text": "Exercise 10"
   },
   {
-    "date": "20210306",
+    "date": "2021-03-06",
     "type": "CaseStudy",
     "text": "Case Study 2"
   },
   {
-    "date": "20210308",
+    "date": "2021-03-08",
     "type": "Quiz",
     "text": "Quiz 3"
   },
   {
-    "date": "20210308",
+    "date": "2021-03-08",
     "type": "Lecture",
     "text": [
       "Pandas Indices",
@@ -152,193 +152,193 @@
     ]
   },
   {
-    "date": "20210309",
+    "date": "2021-03-09",
     "type": "Exercise",
     "text": "Exercise 11"
   },
   {
-    "date": "20210310",
+    "date": "2021-03-10",
     "type": "Lecture",
     "text": ["Filter Data", "Sort Data", "Read/Update a Cell"]
   },
   {
-    "date": "20210311",
+    "date": "2021-03-11",
     "type": "Exercise",
     "text": "Exercise 12"
   },
   {
-    "date": "20210315",
+    "date": "2021-03-15",
     "type": "Lecture",
     "text": ["Descriptive Statistics", "Group Data"]
   },
   {
-    "date": "20210316",
+    "date": "2021-03-16",
     "type": "Exercise",
     "text": "Exercise 13"
   },
   {
-    "date": "20210317",
+    "date": "2021-03-17",
     "type": "Quiz",
     "text": "Quiz 4"
   },
   {
-    "date": "20210317",
+    "date": "2021-03-17",
     "type": "Lecture",
     "text": ["Pivot Tables", "Linear Regression"]
   },
   {
-    "date": "20210320",
+    "date": "2021-03-20",
     "type": "CaseStudy",
     "text": "Case Study 3"
   },
   {
-    "date": "20210322",
+    "date": "2021-03-22",
     "type": "Lecture",
     "text": ["Joins"]
   },
   {
-    "date": "20210323",
+    "date": "2021-03-23",
     "type": "Exercise",
     "text": "Exercise 14"
   },
   {
-    "date": "20210324",
+    "date": "2021-03-24",
     "type": "NoLecture",
     "text": "No Class (Break)"
   },
   {
-    "date": "20210329",
+    "date": "2021-03-29",
     "type": "Lecture",
     "text": ["Intro to SQL", "Create Table", "Basic Querying"]
   },
   {
-    "date": "20210330",
+    "date": "2021-03-30",
     "type": "Exercise",
     "text": "Exercise 15"
   },
   {
-    "date": "20210331",
+    "date": "2021-03-31",
     "type": "Lecture",
     "text": ["Query Data", "Sort Results"]
   },
   {
-    "date": "20210401",
+    "date": "2021-04-01",
     "type": "Exercise",
     "text": "Exercise 16"
   },
   {
-    "date": "20210403",
+    "date": "2021-04-03",
     "type": "CaseStudy",
     "text": "Case Study 4"
   },
   {
-    "date": "20210405",
+    "date": "2021-04-05",
     "type": "Quiz",
     "text": "Quiz 5"
   },
   {
-    "date": "20210405",
+    "date": "2021-04-05",
     "type": "Lecture",
     "text": ["Intro to DataViz with Python", "Box Plots", "Histograms"]
   },
   {
-    "date": "20210406",
+    "date": "2021-04-06",
     "type": "Exercise",
     "text": "Exercise 17"
   },
   {
-    "date": "20210407",
+    "date": "2021-04-07",
     "type": "Lecture",
     "text": ["DataViz with Python", "Line Charts", "Bar Charts"]
   },
   {
-    "date": "20210408",
+    "date": "2021-04-08",
     "type": "Exercise",
     "text": "Exercise 18"
   },
   {
-    "date": "20210412",
+    "date": "2021-04-12",
     "type": "Lecture",
     "text": ["DataViz with Python", "Scatter Plots", "Heatmaps"]
   },
   {
-    "date": "20210413",
+    "date": "2021-04-13",
     "type": "Exercise",
     "text": "Exercise 19"
   },
   {
-    "date": "20210414",
+    "date": "2021-04-14",
     "type": "Lecture",
     "text": ["Intro to Tableau", "Box Plots", "Histograms"]
   },
   {
-    "date": "20210415",
+    "date": "2021-04-15",
     "type": "Exercise",
     "text": "Exercise 20"
   },
   {
-    "date": "20210417",
+    "date": "2021-04-17",
     "type": "CaseStudy",
     "text": "Case Study 5"
   },
   {
-    "date": "20210419",
+    "date": "2021-04-19",
     "type": "Lecture",
     "text": ["Tableau", "Line Charts", "Bar Charts"]
   },
   {
-    "date": "20210420",
+    "date": "2021-04-20",
     "type": "Exercise",
     "text": "Exercise 21"
   },
   {
-    "date": "20210421",
+    "date": "2021-04-21",
     "type": "Lecture",
     "text": ["Tableau", "Scatter Plots", "Heatmaps", "Geographic Maps"]
   },
   {
-    "date": "20210422",
+    "date": "2021-04-22",
     "type": "Exercise",
     "text": "Exercise 22"
   },
 
   {
-    "date": "20210426",
+    "date": "2021-04-26",
     "type": "Lecture",
     "text": ["Review: Python and Pandas"]
   },
   {
-    "date": "20210427",
+    "date": "2021-04-27",
     "type": "Exercise",
     "text": "Exercise 23"
   },
   {
-    "date": "20210428",
+    "date": "2021-04-28",
     "type": "Lecture",
     "text": ["Review: Pandas and SQL"]
   },
   {
-    "date": "20210429",
+    "date": "2021-04-29",
     "type": "Exercise",
     "text": "Exercise 24"
   },
   {
-    "date": "20210501",
+    "date": "2021-05-01",
     "type": "CaseStudy",
     "text": "Case Study 6"
   },
   {
-    "date": "20210503",
+    "date": "2021-05-03",
     "type": "Lecture",
     "text": ["Review: DataViz"]
   },
   {
-    "date": "20210505",
+    "date": "2021-05-05",
     "type": "Lecture",
     "text": ["Wrap Up", "Individual Feedback"]
   },
   {
-    "date": "20210514",
+    "date": "2021-05-14",
     "type": "CaseStudy",
     "text": "Case Study 7"
   }

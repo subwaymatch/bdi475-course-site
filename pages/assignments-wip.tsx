@@ -8,6 +8,16 @@ import styles from "styles/pages/assignments.module.scss";
 import { GetServerSidePropsContext } from "next";
 import nookies from "nookies";
 import { firebaseAdmin } from "firebase/firebaseAdmin";
+import dayjs from "dayjs";
+import localizedFormat from "dayjs/plugin/localizedFormat";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
+
+dayjs.extend(localizedFormat);
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
+dayjs.tz.setDefault("America/Chicago");
 
 export default function AssignmentsPage(props) {
   console.log(`AssignmentsPage props`);
@@ -34,7 +44,7 @@ export default function AssignmentsPage(props) {
 
                 <AssignmentItem
                   name="Exercise 1"
-                  dueDate="20210126"
+                  dueDate={dayjs("2021-01-26").tz().format("ll")}
                   pointsAvailable={8}
                   status={AssignmentStatus.Complete}
                   colorTheme={ColorTheme.Purple}
@@ -42,7 +52,7 @@ export default function AssignmentsPage(props) {
 
                 <AssignmentItem
                   name="Exercise 2"
-                  dueDate="20210131"
+                  dueDate={dayjs("2021-01-31").tz().format("ll")}
                   pointsAvailable={8}
                   status={AssignmentStatus.Complete}
                   colorTheme={ColorTheme.Purple}
@@ -50,7 +60,7 @@ export default function AssignmentsPage(props) {
 
                 <AssignmentItem
                   name="Exercise 3"
-                  dueDate="20210204"
+                  dueDate={dayjs("2021-02-04").tz().format("ll")}
                   pointsAvailable={8}
                   status={AssignmentStatus.Available}
                   colorTheme={ColorTheme.Purple}
@@ -58,7 +68,7 @@ export default function AssignmentsPage(props) {
 
                 <AssignmentItem
                   name="Exercise 4"
-                  dueDate="20210215"
+                  dueDate={dayjs("2021-02-15").tz().format("ll")}
                   pointsAvailable={10}
                   status={AssignmentStatus.Unavailable}
                   colorTheme={ColorTheme.Purple}
@@ -76,7 +86,7 @@ export default function AssignmentsPage(props) {
 
                 <AssignmentItem
                   name="Exercise 1"
-                  dueDate="20210126"
+                  dueDate={dayjs("2021-01-26").tz().format("ll")}
                   pointsAvailable={8}
                   status={AssignmentStatus.Complete}
                   colorTheme={ColorTheme.Pink}
@@ -84,7 +94,7 @@ export default function AssignmentsPage(props) {
 
                 <AssignmentItem
                   name="Exercise 2"
-                  dueDate="20210131"
+                  dueDate={dayjs("2021-01-31").tz().format("ll")}
                   pointsAvailable={8}
                   status={AssignmentStatus.Complete}
                   colorTheme={ColorTheme.Pink}
@@ -92,7 +102,7 @@ export default function AssignmentsPage(props) {
 
                 <AssignmentItem
                   name="Exercise 3"
-                  dueDate="20210204"
+                  dueDate={dayjs("2021-02-04").tz().format("ll")}
                   pointsAvailable={8}
                   status={AssignmentStatus.Available}
                   colorTheme={ColorTheme.Pink}
@@ -100,7 +110,7 @@ export default function AssignmentsPage(props) {
 
                 <AssignmentItem
                   name="Exercise 4"
-                  dueDate="20210215"
+                  dueDate={dayjs("2021-02-15").tz().format("ll")}
                   pointsAvailable={10}
                   status={AssignmentStatus.Unavailable}
                   colorTheme={ColorTheme.Pink}
@@ -123,7 +133,7 @@ export default function AssignmentsPage(props) {
             <Col md={6}>
               <CaseStudyItem
                 name="Uber Supply and Demand"
-                dueDate="20210131"
+                dueDate={dayjs("2021-01-31").tz().format("ll")}
                 pointsAvailable={8}
                 status={AssignmentStatus.Complete}
                 thumbnail={<img src="/images/placeholder_plates.jpg" />}
@@ -133,7 +143,7 @@ export default function AssignmentsPage(props) {
             <Col md={6}>
               <CaseStudyItem
                 name="AirBnB Analysis"
-                dueDate="20210204"
+                dueDate={dayjs("2021-02-04").tz().format("ll")}
                 pointsAvailable={8}
                 status={AssignmentStatus.Available}
                 thumbnail={<img src="/images/placeholder_lemon.jpg" />}
@@ -143,7 +153,7 @@ export default function AssignmentsPage(props) {
             <Col md={6}>
               <CaseStudyItem
                 name="DuPont Case"
-                dueDate="20210215"
+                dueDate={dayjs("2021-02-15").tz().format("ll")}
                 pointsAvailable={10}
                 status={AssignmentStatus.Unavailable}
                 thumbnail={<img src="/images/placeholder_grapefruits.jpg" />}
