@@ -3,14 +3,12 @@ import CodingQuestion from "components/coding-question/CodingQuestion";
 import styles from "styles/pages/coding-question/CodingQuestionPage.module.scss";
 import { Container, Row, Col } from "react-bootstrap";
 import { useRouter } from "next/router";
-import useAuth from "hooks/useAuth";
-import firebase from "firebase";
 import { useFirestoreDocData, useFirestore } from "reactfire";
 
 export default function EditCodingQuestionPage() {
   const router = useRouter();
   const { qid } = router.query;
-  const { user } = useAuth();
+  const user = null;
 
   const firestore = useFirestore();
 

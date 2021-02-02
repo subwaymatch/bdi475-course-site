@@ -4,8 +4,7 @@ import Link from "next/link";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "./Header.module.scss";
 import clsx from "clsx";
-import useAuth from "hooks/useAuth";
-import { firebaseClient } from "firebase/firebaseClient";
+import { AuthCheck, useAuth, useUser } from "reactfire";
 import { motion, AnimatePresence } from "framer-motion";
 import clickableVariants from "animations/clickableVariants";
 import { toast } from "react-toastify";
@@ -90,7 +89,8 @@ const SignInButton = forwardRef((props, ref: React.Ref<HTMLDivElement>) => {
 });
 
 const UserMenu = () => {
-  const { user } = useAuth();
+  const auth = useAuth();
+  const { data: user } = useUser();
   const router = useRouter();
   const isScreenDesktop = useMediaQuery(desktop);
 
@@ -102,7 +102,7 @@ const UserMenu = () => {
             <a
               className={styles.signOutButton}
               onClick={async () => {
-                await firebaseClient.auth().signOut();
+                await auth.signOut();
                 toast.success("Successfully signed out, bye!");
                 router.push("/");
               }}
