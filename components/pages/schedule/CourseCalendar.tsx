@@ -1,5 +1,6 @@
 import { useState } from "react";
-import moment from "moment";
+import dayjs from "dayjs";
+import weekOfYear from "dayjs/plugin/weekOfYear";
 import { eventsByDate, lectureNumberByDate } from "lib/schedule";
 import { ScheduleType } from "typings/schedule";
 import { BsChevronUp, BsChevronDown } from "react-icons/bs";
@@ -7,13 +8,15 @@ import { IoMdArrowDown } from "react-icons/io";
 import styles from "./CourseCalendar.module.scss";
 import clsx from "clsx";
 
+dayjs.extend(weekOfYear);
+
 const eventDates = Object.keys(eventsByDate).sort();
 // TODO: Refactor to enable events spanning through two or more years
 // Currently, only events in a single year is supported
-const startWeekIndex = moment("20210122").week();
-const endWeekIndex = moment(eventDates[eventDates.length - 1]).week();
-const currentWeekIndex = moment().week();
-const todayKey = moment().format("YYYYMMDD");
+const startWeekIndex = dayjs("2021-01-22").week();
+const endWeekIndex = dayjs(eventDates[eventDates.length - 1]).week();
+const currentWeekIndex = dayjs().week();
+const todayKey = dayjs().format("YYYYMMDD");
 
 let calendar = [];
 
@@ -22,7 +25,7 @@ for (let weekIndex = startWeekIndex; weekIndex <= endWeekIndex; weekIndex++) {
     Array(7)
       .fill(0)
       .map((n, i) =>
-        moment()
+        dayjs()
           .week(weekIndex)
           .startOf("week")
           .clone()

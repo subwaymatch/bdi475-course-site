@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Container, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import { motion } from "framer-motion";
 import clickableVariants from "animations/clickableVariants";
 import { toast } from "react-toastify";
