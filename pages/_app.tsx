@@ -10,24 +10,27 @@ import "styles/toastify.custom.scss";
 
 import "firebase/firestore";
 import { FirebaseAppProvider } from "reactfire";
+import FirebaseAuthProvider from "firebase/FirebaseAuthProvider";
 
 import { firebaseConfig } from "firebase/firebaseClient";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <FirebaseAppProvider firebaseConfig={firebaseConfig}>
-      <ToastContainer
-        position="top-center"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
-      <Component {...pageProps} />
+      <FirebaseAuthProvider>
+        <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+        <Component {...pageProps} />
+      </FirebaseAuthProvider>
     </FirebaseAppProvider>
   );
 }

@@ -4,13 +4,11 @@ import AssignmentItem from "components/pages/assignments/AssignmentItem";
 import CaseStudyItem from "components/pages/assignments/CaseStudyItem";
 import { AssignmentStatus } from "typings/assignment";
 import { ColorTheme } from "typings/color-theme";
-import { AuthCheck, useUser } from "reactfire";
+import { AuthCheck } from "reactfire";
 import styles from "styles/pages/assignments.module.scss";
 import Login from "components/Login";
 
 export default function AssignmentsPage(props) {
-  const { data: user } = useUser();
-
   return (
     <Layout>
       <AuthCheck fallback={<Login />}>
