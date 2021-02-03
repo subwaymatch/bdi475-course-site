@@ -50,6 +50,30 @@ h1.pageTitle {
   }
 }
 
+h1.pageTitleBorders {
+  font-size: 2.7rem;
+  line-height: 1.25;
+  font-weight: 500;
+  letter-spacing: -0.1rem;
+  padding: 1rem 0 4rem 0;
+  border-top: 1px solid black;
+  border-bottom: 1px solid $color-border-gray;
+
+  @include media-breakpoint-down(md) {
+    font-size: 2.5rem;
+    padding: 1rem 0 3rem 0;
+  }
+
+  @include media-breakpoint-down(sm) {
+    font-size: 2rem;
+    letter-spacing: -0.4rem;
+    padding: 1rem 0 2rem 0;
+  }
+
+  @include media-breakpoint-down(xs) {
+  }
+}
+
 h2.sectionTitle {
   font-size: 1.5rem;
   line-height: 1.5;
@@ -69,7 +93,7 @@ h2.sectionTitle {
   }
 
   @include media-breakpoint-down(md) {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     padding-bottom: 2.4rem;
   }
 }
@@ -139,6 +163,7 @@ h2.sectionTitle {
 }
 
 .label {
+  display: inline-block;
   font-size: 1rem;
   letter-spacing: -0.01rem;
   line-height: 1.2;

@@ -3,7 +3,7 @@ import CodingQuestion from "components/coding-question/CodingQuestion";
 import styles from "styles/pages/coding-question/CodingQuestionPage.module.scss";
 import { Container, Row, Col } from "react-bootstrap";
 import { useRouter } from "next/router";
-import { useFirestoreDocData, useFirestore } from "reactfire";
+import { useFirestoreDocDataOnce, useFirestore } from "reactfire";
 
 export default function EditCodingQuestionPage() {
   const router = useRouter();
@@ -21,8 +21,7 @@ export default function EditCodingQuestionPage() {
     .collection("userAttempts")
     .doc(qid as string);
 
-  // subscribe to a document for realtime updates. just one line!
-  const { status, data } = useFirestoreDocData(questionDocRef);
+  const { status, data } = useFirestoreDocDataOnce(questionDocRef);
 
   return (status as any) === "loading" ? (
     <Layout>
