@@ -4,6 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import styles from "styles/pages/notes/variables-and-data-types.module.scss";
 import Image from "next/image";
 import clsx from "clsx";
+import CodingQuestionById from "components/coding-question/CodingQuestionById";
 
 export default function NotesPage() {
   return (
@@ -91,7 +92,7 @@ export default function NotesPage() {
           <Row className={clsx(styles.boxItems)}>
             <Col>
               <h2 className="sectionTitle">
-                Naming Rules
+                Python Variable Naming Rules
                 <span className="accent blue" />
               </h2>
 
@@ -135,6 +136,16 @@ export default function NotesPage() {
                   </div>
                 </Col>
               </Row>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col>
+              <CodingQuestionById
+                qid="F7EJVQ"
+                onSubmit={() => {}}
+                wrapperClassName={styles.questionWrapper}
+              />
             </Col>
           </Row>
         </Container>

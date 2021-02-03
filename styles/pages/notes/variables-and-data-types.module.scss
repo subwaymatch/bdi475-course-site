@@ -57,6 +57,14 @@
     }
   }
 
+  .questionWrapper {
+    margin-top: 6rem;
+
+    @include media-breakpoint-down(md) {
+      margin-top: 4rem;
+    }
+  }
+
   .boxItems {
     margin-top: 6rem;
 

@@ -1,11 +1,11 @@
 import Layout from "components/Layout";
-import CodingQuestion from "components/coding-question/CodingQuestion";
+import CodingQuestionById from "components/coding-question/CodingQuestionById";
 import styles from "styles/pages/coding-question/CodingQuestionPage.module.scss";
 import { Container, Row, Col } from "react-bootstrap";
 import { useRouter } from "next/router";
 import { useFirestoreDocDataOnce, useFirestore } from "reactfire";
 
-export default function EditCodingQuestionPage() {
+export default function ViewCodingQuestionPage() {
   const router = useRouter();
   const { qid } = router.query;
   const user = null;
@@ -23,6 +23,23 @@ export default function EditCodingQuestionPage() {
 
   const { status, data } = useFirestoreDocDataOnce(questionDocRef);
 
+  const onSubmit = (isSuccess) => {
+    if (user) {
+      const netId = user.email.split("@")[0];
+
+      userAttemptsDoc.set(
+        {
+          [qid as string]: {
+            [netId]: isSuccess,
+          },
+        },
+        {
+          merge: true,
+        }
+      );
+    }
+  };
+
   return (status as any) === "loading" ? (
     <Layout>
       <main className={styles.page}>
@@ -37,28 +54,7 @@ export default function EditCodingQuestionPage() {
     <Layout>
       <main className={styles.page}>
         <Container>
-          <CodingQuestion
-            title={(data as any).title}
-            textMarkdown={(data as any).textMarkdown}
-            starterCode={(data as any).starterCode}
-            testCode={(data as any).testCode}
-            onSubmit={(isSuccess) => {
-              if (user) {
-                const netId = user.email.split("@")[0];
-
-                userAttemptsDoc.set(
-                  {
-                    [qid as string]: {
-                      [netId]: isSuccess,
-                    },
-                  },
-                  {
-                    merge: true,
-                  }
-                );
-              }
-            }}
-          />
+          <CodingQuestionById qid={qid as string} onSubmit={onSubmit} />
         </Container>
       </main>
     </Layout>
