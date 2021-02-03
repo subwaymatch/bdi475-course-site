@@ -1,12 +1,11 @@
-import Link from "next/link";
 import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
-import styles from "styles/pages/notes/variables-and-data-types.module.scss";
+import styles from "styles/pages/notes/common.module.scss";
 import Image from "next/image";
 import clsx from "clsx";
 import CodingQuestionById from "components/coding-question/CodingQuestionById";
 
-export default function NotesPage() {
+export default function VariablesAndDataTypesPage() {
   return (
     <Layout>
       <main className={styles.page}>
@@ -22,7 +21,7 @@ export default function NotesPage() {
 
           <Row className={styles.listBox}>
             <Col md={4}>
-              <h3>Objectives</h3>
+              <h3>Objectives ⟶</h3>
             </Col>
 
             <Col md={8}>
@@ -44,7 +43,7 @@ export default function NotesPage() {
             <Col>
               <div className={styles.coverImage}>
                 <Image
-                  src="/images/notes-thumbnail/1612327404248.png"
+                  src="/images/notes/1612358691500.png"
                   width={3000}
                   height={2000}
                   alt=""

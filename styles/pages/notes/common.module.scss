@@ -1,0 +1,136 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.page {
+  padding-bottom: 10rem;
+
+  @include media-breakpoint-down(md) {
+    font-size: 1.2rem;
+  }
+
+  h3 {
+    font-size: 1.6rem;
+    font-weight: 500;
+  }
+
+  .listBox {
+    margin-top: 6rem;
+    border-top: 1px solid black;
+    padding-top: 1.5rem;
+
+    &.objectives {
+      margin-top: 1rem;
+      border-top: none;
+      padding-top: 0;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+    }
+
+    ul {
+      @include media-breakpoint-down(sm) {
+        margin-top: 2rem;
+        font-size: 1.1rem;
+      }
+
+      li {
+        padding: 0.5rem 0;
+        border-bottom: 2px dotted $color-border-gray;
+
+        &:first-child {
+          padding-top: 0;
+        }
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+
+  .coverImage {
+    margin-top: 3rem;
+
+    @include media-breakpoint-down(sm) {
+      margin-top: 2rem;
+    }
+  }
+
+  .textBox {
+    margin-top: 6rem;
+
+    :global(.label) {
+      margin-top: 2rem;
+    }
+
+    p {
+      margin-top: 1.5rem;
+
+      &:first-of-type {
+        margin-top: 0.5rem;
+      }
+    }
+  }
+
+  .questionWrapper {
+    margin-top: 8rem;
+
+    @include media-breakpoint-down(md) {
+      margin-top: 6rem;
+    }
+  }
+
+  .boxItems {
+    margin-top: 6rem;
+
+    .item {
+      border-top: 1px solid $color-border-gray;
+      padding-top: 2rem;
+
+      p {
+        margin-top: 0.5rem;
+      }
+
+      @include media-breakpoint-down(sm) {
+        padding: 2rem 0;
+      }
+    }
+  }
+
+  .largeQuote {
+    margin-top: 6rem;
+
+    p {
+      font-size: 6rem;
+      letter-spacing: -0.2rem;
+      line-height: 1.1;
+      font-weight: 800;
+    }
+
+    @include media-breakpoint-down(md) {
+      margin-top: 4rem;
+
+      p {
+        font-size: 5rem;
+        letter-spacing: -0.15rem;
+      }
+    }
+    @include media-breakpoint-down(sm) {
+      margin-top: 3rem;
+
+      p {
+        font-size: 4rem;
+        letter-spacing: -0.12rem;
+      }
+    }
+    @include media-breakpoint-down(xs) {
+      margin-top: 3rem;
+
+      p {
+        font-size: 2.5rem;
+        letter-spacing: -0.1rem;
+      }
+    }
+  }
+}

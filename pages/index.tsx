@@ -3,8 +3,27 @@ import { Container, Row, Col } from "react-bootstrap";
 import { motion } from "framer-motion";
 import clickableVariants from "animations/clickableVariants";
 import styles from "styles/pages/index.module.scss";
+import { useAuth } from "reactfire";
+import { useEffect } from "react";
+import useFirebaseAuth from "hooks/useFirebaseAuth";
 
 export default function MainPage() {
+  const auth = useAuth();
+  const { user } = useFirebaseAuth();
+
+  useEffect(() => {
+    if (user) {
+      auth.currentUser
+        .getIdTokenResult()
+        .then((idTokenResult) => {
+          console.log(idTokenResult);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  }, []);
+
   return (
     <Layout>
       <main className={styles.mainPage}>
@@ -29,7 +48,7 @@ export default function MainPage() {
             <Row>
               <Col>
                 <div className={styles.item}>
-                  <p>No announcement posted</p>
+                  <p>Please check Compass or Discord for announcements.</p>
                 </div>
               </Col>
             </Row>

@@ -70,7 +70,7 @@
     line-height: 1.6;
     margin-top: 0.75rem;
     padding-bottom: 1rem;
-    white-space: normal;
+    white-space: pre;
 
     @include media-breakpoint-down(lg) {
       font-size: 1.1rem;

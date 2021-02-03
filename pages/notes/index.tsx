@@ -28,13 +28,26 @@ export default function NotesPage() {
               <Link href="/notes/variables-and-data-types">
                 <a className={styles.noteItem}>
                   <Image
-                    src="/images/notes-thumbnail/1612327404248.png"
-                    width={4860}
-                    height={3240}
+                    src="/images/notes/1612359825610.png"
+                    width={900}
+                    height={600}
                     alt=""
                   />
-
                   <h3>Variables and Data Types</h3>
+                </a>
+              </Link>
+            </Col>
+
+            <Col md={4} sm={6}>
+              <Link href="/notes/booleans-and-conditional-logic">
+                <a className={styles.noteItem}>
+                  <Image
+                    src="/images/notes/1612360485433.png"
+                    width={900}
+                    height={600}
+                    alt=""
+                  />
+                  <h3>Booleans and Conditional Logic</h3>
                 </a>
               </Link>
             </Col>
