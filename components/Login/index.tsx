@@ -66,88 +66,92 @@ export default function Login() {
     }
   };
 
+  const submit = (e) => {
+    e.preventDefault();
+    sendSignInLink(netId + "@illinois.edu");
+  };
+
   return (
     <main className={styles.login}>
-      <Container>
-        <Row>
-          <Col>
-            <h1 className="pageTitle">Sign In</h1>
-          </Col>
-        </Row>
+      <form onSubmit={submit}>
+        <Container>
+          <Row>
+            <Col>
+              <h1 className="pageTitle">Sign In</h1>
+            </Col>
+          </Row>
 
-        <Row>
-          <Col>
-            <h2
-              className={clsx(
-                "sectionTitle",
-                "grayBottomBorder",
-                styles.loginFormTitle
+          <Row>
+            <Col>
+              <h2
+                className={clsx(
+                  "sectionTitle",
+                  "grayBottomBorder",
+                  styles.loginFormTitle
+                )}
+              >
+                Using NetId <span className="accent green" />
+              </h2>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col>
+              <span className="greenLabel">NetID</span>
+            </Col>
+          </Row>
+
+          <Row className="align-items-center no-gutters">
+            <Col>
+              <div className={styles.inputWrapper}>
+                <input
+                  value={netId}
+                  onChange={(e) => setNetId(e.target.value)}
+                  placeholder="mynetid"
+                  className={styles.netIdInput}
+                />
+              </div>
+            </Col>
+
+            <Col>
+              <div className={styles.emailFormat}>@illinois.edu</div>
+            </Col>
+          </Row>
+
+          <Row className={clsx(styles.submitControls, "align-items-center")}>
+            <Col md={4} xs={12}>
+              {isEmailSent ? (
+                <a
+                  className="lightGray button disabled"
+                  onClick={(e) => {
+                    e.preventDefault();
+                  }}
+                >
+                  <span className={styles.label}>Check your Inbox</span>
+                  <MdDone className={styles.reactIcon} />
+                </a>
+              ) : (
+                <motion.a
+                  variants={clickableVariants}
+                  whileHover="hover"
+                  whileTap="tap"
+                  className="green button"
+                  onClick={submit}
+                >
+                  <span className={styles.label}>Email Me</span>
+                  <RiSendPlaneLine className={styles.reactIcon} />
+                </motion.a>
               )}
-            >
-              Using NetId <span className="accent green" />
-            </h2>
-          </Col>
-        </Row>
-
-        <Row>
-          <Col>
-            <span className="greenLabel">NetID</span>
-          </Col>
-        </Row>
-
-        <Row className="align-items-center no-gutters">
-          <Col>
-            <div className={styles.inputWrapper}>
-              <input
-                value={netId}
-                onChange={(e) => setNetId(e.target.value)}
-                placeholder="mynetid"
-                className={styles.netIdInput}
-              />
-            </div>
-          </Col>
-
-          <Col>
-            <div className={styles.emailFormat}>@illinois.edu</div>
-          </Col>
-        </Row>
-
-        <Row className={clsx(styles.submitControls, "align-items-center")}>
-          <Col md={4} xs={12}>
-            {isEmailSent ? (
-              <a
-                className="lightGray button disabled"
-                onClick={(e) => {
-                  e.preventDefault();
-                }}
-              >
-                <span className={styles.label}>Check your Inbox</span>
-                <MdDone className={styles.reactIcon} />
-              </a>
-            ) : (
-              <motion.a
-                variants={clickableVariants}
-                whileHover="hover"
-                whileTap="tap"
-                className="green button"
-                onClick={(e) => {
-                  e.preventDefault();
-                  sendSignInLink(netId + "@illinois.edu");
-                }}
-              >
-                <span className={styles.label}>Email Me</span>
-                <RiSendPlaneLine className={styles.reactIcon} />
-              </motion.a>
-            )}
-          </Col>
-          <Col md={8} xs={12}>
-            <p className={styles.note}>
-              This will send a sign-in link to your{" "}
-              <span className="green">@illinois.edu</span> email.
-            </p>
-          </Col>
-        </Row>
-      </Container>
+            </Col>
+            <Col md={8} xs={12}>
+              <p className={styles.note}>
+                This will send a sign-in link to your{" "}
+                <span className="green">@illinois.edu</span> email.
+              </p>
+            </Col>
+          </Row>
+        </Container>
+      </form>
     </main>
   );
 }
