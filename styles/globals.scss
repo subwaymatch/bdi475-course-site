@@ -120,6 +120,8 @@ h2.sectionTitle {
 .accent,
 .label,
 .button {
+  background-color: $color-lighter-gray;
+
   &.green {
     background-color: $color-green;
   }
@@ -145,11 +147,11 @@ h2.sectionTitle {
   }
 
   &.gray {
-    background-color: $color-gray;
+    background-color: $color-light-gray;
   }
 
   &.lightGray {
-    background-color: $color-light-gray;
+    background-color: $color-lighter-gray;
   }
 }
 
@@ -176,7 +178,7 @@ h2.sectionTitle {
   display: inline-flex;
   align-items: center;
   color: black;
-  background-color: $color-light-gray;
+  background-color: $color-lighter-gray;
   line-height: 1.5;
   padding: 1.25rem 1.75rem;
   border: none;
@@ -200,7 +202,7 @@ input {
 }
 
 ::placeholder {
-  color: $color-gray;
+  color: $color-light-gray;
 }
 
 code,

@@ -9,7 +9,7 @@
 
   .name {
     display: block;
-    color: $color-gray;
+    color: $color-light-gray;
 
     @include media-breakpoint-down(sm) {
       font-size: 2rem;
@@ -46,7 +46,7 @@
   }
   &.unavailable {
     .status {
-      color: $color-gray;
+      color: $color-light-gray;
     }
   }
 }

@@ -19,7 +19,7 @@
   .name {
     font-size: 2rem;
     display: block;
-    color: $color-gray;
+    color: $color-light-gray;
     margin-top: 0.5rem;
   }
 
@@ -38,7 +38,7 @@
   }
   &.unavailable {
     .status {
-      color: $color-gray;
+      color: $color-light-gray;
     }
   }
 }
