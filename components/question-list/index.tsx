@@ -8,10 +8,8 @@ interface QuestionListProps {
 }
 
 export default function QuestionList({ items }: QuestionListProps) {
-  console.log(items);
-
   return (
-    <>
+    <div className={styles.questionList}>
       <Row>
         <Col>
           <div className={styles.headerRow}>
@@ -49,6 +47,6 @@ export default function QuestionList({ items }: QuestionListProps) {
           </Row>
         );
       })}
-    </>
+    </div>
   );
 }

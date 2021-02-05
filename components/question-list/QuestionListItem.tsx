@@ -21,7 +21,7 @@ export interface QuestionListItemProps {
   onDelete: () => void;
 }
 
-export default function QuestionItem({
+export default function QuestionListItem({
   qid,
   permalink,
   title,
@@ -31,62 +31,69 @@ export default function QuestionItem({
   onDelete,
 }: QuestionListItemProps) {
   return (
-    <Row className="align-items-center">
-      <Col md={2}>
-        <Link href={`/coding-question/view/${qid}`}>{qid}</Link>
-
-        <CopyToClipboard
-          text={qid}
-          onCopy={() =>
-            toast.info(
-              <div>
-                Copied <code>{qid}</code> to clipboard
-              </div>
-            )
-          }
-        >
-          <motion.div
-            variants={clickableVariants}
-            whileHover="hover"
-            whileTap="tap"
-            className={clsx(styles.button, styles.copyId)}
-            onClick={(e) => {
-              e.preventDefault();
-            }}
+    <div className={styles.questionListItem}>
+      <Row className="align-items-center">
+        <Col md={2}>
+          <CopyToClipboard
+            text={qid}
+            onCopy={() =>
+              toast.info(
+                <div>
+                  Copied <code>{qid}</code> to clipboard
+                </div>
+              )
+            }
           >
-            <IoCopy className={styles.reactIcon} />
-            <span className={styles.label}>Copy ID</span>
-          </motion.div>
-        </CopyToClipboard>
-      </Col>
+            <motion.div
+              variants={clickableVariants}
+              whileHover="hover"
+              whileTap="tap"
+              className={clsx(styles.button, styles.qid)}
+              onClick={(e) => {
+                e.preventDefault();
+              }}
+            >
+              <span className={styles.label}>{qid}</span>
+              <IoCopy className={styles.reactIcon} />
+            </motion.div>
+          </CopyToClipboard>
+        </Col>
 
-      <Col md={4}>
-        <Link href={`/coding-question/view/${qid}`}>
-          <div className={styles.title}>{title}</div>
-        </Link>
-      </Col>
-
-      <Col md={2}>
-        <div className={styles.timestamp}>
-          {dayjs(createdAt).format("MMM D, YYYY")}
-        </div>
-      </Col>
-
-      <Col md={2}>
-        <div className={styles.timestamp}>
-          {dayjs(updatedAt).format("MMM D, YYYY")}
-        </div>
-      </Col>
-
-      <Col md={2}>
-        <div className={styles.actions}>
-          <Link href={`/coding-question/edit/${qid}`}>
-            <div className={styles.iconButton}>
-              <RiEditBoxLine className={styles.reactIcon} />
-            </div>
+        <Col md={4}>
+          <Link href={permalink}>
+            <motion.a
+              variants={clickableVariants}
+              whileHover="hover"
+              whileTap="tap"
+              className={styles.title}
+            >
+              {title}
+            </motion.a>
           </Link>
-        </div>
-      </Col>
-    </Row>
+        </Col>
+
+        <Col md={2}>
+          <span className={clsx("label", styles.timestamp)}>
+            {dayjs(createdAt).format("MMM D, YYYY")}
+          </span>
+        </Col>
+
+        <Col md={2}>
+          <span className={clsx("label", styles.timestamp)}>
+            {dayjs(updatedAt).format("MMM D, YYYY")}
+          </span>
+        </Col>
+
+        <Col md={2}>
+          <div className={styles.actions}>
+            <Link href={editLink}>
+              <a className={styles.iconButton}>
+                <RiEditBoxLine className={styles.reactIcon} />
+              </a>
+            </Link>
+          </div>
+        </Col>
+      </Row>
+    </div>
   );
 }

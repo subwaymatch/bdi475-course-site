@@ -14,7 +14,7 @@ enum QueryMode {
 }
 
 export default function CodingQuestionListPage() {
-  let pageSize = 4;
+  let pageSize = 20;
   const collectionRef = useFirestore().collection("codingQuestions");
   let defaultQuery = collectionRef
     .orderBy("updatedAt", "desc")
@@ -32,8 +32,6 @@ export default function CodingQuestionListPage() {
   const [status, setStatus] = useState("loading");
 
   const queryDocs = () => {
-    console.log(query);
-
     query.get().then((snapshot) => {
       const numDocs = snapshot.docs.length;
       const hasMore = numDocs > pageSize;
@@ -42,10 +40,6 @@ export default function CodingQuestionListPage() {
           ? snapshot.docs.slice(1)
           : snapshot.docs.slice(0, pageSize)
         : snapshot.docs;
-
-      console.log(
-        `queryMode=${queryMode}, numDocs=${numDocs}, hasMore=${hasMore}`
-      );
 
       if (numDocs > 0) {
         setFirstDoc(currentDocs[0]);
@@ -59,6 +53,7 @@ export default function CodingQuestionListPage() {
         setHasPrevPage(true);
         setHasNextPage(hasMore);
       } else {
+        // queryMode === QueryMode.InitialLoad
         setHasPrevPage(false);
         setHasNextPage(hasMore);
       }
