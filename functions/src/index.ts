@@ -25,7 +25,6 @@ export const mirrorCustomClaims = functions.firestore
       !beforeData._lastCommitted.isEqual(afterData._lastCommitted);
 
     if (skipUpdate) {
-      console.log("No changes");
       return;
     }
 
@@ -43,10 +42,8 @@ export const mirrorCustomClaims = functions.firestore
     }
 
     const uid = context.params.uid;
-    console.log(`Setting custom claims for ${uid}`, newClaims);
     await auth.setCustomUserClaims(uid, newClaims);
 
-    console.log("Updating document timestamp");
     await change.after.ref.update({
       _lastCommitted: admin.firestore.FieldValue.serverTimestamp(),
       ...newClaims,
@@ -129,11 +126,3 @@ export const autoTimestamp = functions.firestore
 
     return null;
   });
-
-// // Start writing Firebase Functions
-// // https://firebase.google.com/docs/functions/typescript
-//
-// export const helloWorld = functions.https.onRequest((request, response) => {
-//   functions.logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });

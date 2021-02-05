@@ -4,20 +4,20 @@ import { Row, Col } from "react-bootstrap";
 import { motion } from "framer-motion";
 import clickableVariants from "animations/clickableVariants";
 import { toast } from "react-toastify";
-import { IoCopy, IoLink } from "react-icons/io5";
+import { IoCopy } from "react-icons/io5";
 import { RiEditBoxLine } from "react-icons/ri";
-
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import clsx from "clsx";
-import styles from "./QuestionItem.module.scss";
+import styles from "./QuestionListItem.module.scss";
 import dayjs from "dayjs";
 
-export interface QuestionItemProps {
+export interface QuestionListItemProps {
   qid: string;
   permalink: string;
   title: string;
   createdAt: Date;
   updatedAt: Date;
+  editLink: string;
   onDelete: () => void;
 }
 
@@ -27,8 +27,9 @@ export default function QuestionItem({
   title,
   createdAt,
   updatedAt,
+  editLink,
   onDelete,
-}: QuestionItemProps) {
+}: QuestionListItemProps) {
   console.log(`questionItem qid=${qid}`);
 
   return (
