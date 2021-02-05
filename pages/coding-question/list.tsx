@@ -4,32 +4,66 @@ import { Col, Container, Row } from "react-bootstrap";
 import firebase from "firebase";
 import { useFirestore } from "reactfire";
 import QuestionList from "components/question-list";
-import styles from "styles/pages/coding-question/list.module.scss";
 import { QuestionListItemProps } from "components/question-list/QuestionListItem";
+import styles from "styles/pages/coding-question/list.module.scss";
+
+enum QueryMode {
+  InitialLoad = "InitialLoad",
+  ToPrevPage = "ToPrevPage",
+  ToNextPage = "ToNextPage",
+}
 
 export default function CodingQuestionListPage() {
-  const pageSize = 5;
+  let pageSize = 4;
+  const collectionRef = useFirestore().collection("codingQuestions");
+  let defaultQuery = collectionRef
+    .orderBy("updatedAt", "desc")
+    .limit(pageSize + 1);
+
+  const [queryMode, setQueryMode] = useState<QueryMode>(QueryMode.InitialLoad);
+  const [query, setQuery] = useState<
+    firebase.firestore.Query<firebase.firestore.DocumentData>
+  >(defaultQuery);
   const [questionListItems, setQuestionListItems] = useState([]);
-  const [firstDoc, setFirstDoc] = useState<firebase.firestore.DocumentData>({});
-  const [lastDoc, setLastDoc] = useState<firebase.firestore.DocumentData>({});
+  const [hasPrevPage, setHasPrevPage] = useState(false);
+  const [hasNextPage, setHasNextPage] = useState(false);
+  const [firstDoc, setFirstDoc] = useState<firebase.firestore.DocumentData>();
+  const [lastDoc, setLastDoc] = useState<firebase.firestore.DocumentData>();
   const [status, setStatus] = useState("loading");
 
-  let query = useFirestore()
-    .collection("codingQuestions")
-    .orderBy("updatedAt", "desc")
-    .limit(pageSize);
-
   const queryDocs = () => {
-    query.get().then((documentSnapshots) => {
-      console.log(`documentSnapshots`);
-      console.log(documentSnapshots);
+    console.log(query);
 
-      if (documentSnapshots.docs.length > 0) {
-        setFirstDoc(documentSnapshots.docs[0]);
-        setLastDoc(documentSnapshots.docs[documentSnapshots.docs.length - 1]);
+    query.get().then((snapshot) => {
+      const numDocs = snapshot.docs.length;
+      const hasMore = numDocs > pageSize;
+      const currentDocs = hasMore
+        ? queryMode === QueryMode.ToPrevPage
+          ? snapshot.docs.slice(1)
+          : snapshot.docs.slice(0, pageSize)
+        : snapshot.docs;
+
+      console.log(
+        `queryMode=${queryMode}, numDocs=${numDocs}, hasMore=${hasMore}`
+      );
+
+      if (numDocs > 0) {
+        setFirstDoc(currentDocs[0]);
+        setLastDoc(currentDocs[currentDocs.length - 1]);
       }
 
-      const docsData: QuestionListItemProps[] = documentSnapshots.docs.map(
+      if (queryMode === QueryMode.ToPrevPage) {
+        setHasPrevPage(hasMore);
+        setHasNextPage(true);
+      } else if (queryMode === QueryMode.ToNextPage) {
+        setHasPrevPage(true);
+        setHasNextPage(hasMore);
+      } else {
+        setHasPrevPage(false);
+        setHasNextPage(hasMore);
+      }
+
+      const docsData: QuestionListItemProps[] = currentDocs.map(
         (codingQuestion) => {
           const qid = codingQuestion.id;
           const data = codingQuestion.data();
@@ -53,7 +87,27 @@ export default function CodingQuestionListPage() {
 
   useEffect(() => {
     queryDocs();
-  }, []);
+  }, [query]);
+
+  const toPrevPage = () => {
+    setQueryMode(QueryMode.ToPrevPage);
+    setQuery(
+      collectionRef
+        .orderBy("updatedAt", "desc")
+        .endBefore(firstDoc)
+        .limitToLast(pageSize + 1)
+    );
+  };
+
+  const toNextPage = () => {
+    setQueryMode(QueryMode.ToNextPage);
+    setQuery(
+      collectionRef
+        .orderBy("updatedAt", "desc")
+        .startAfter(lastDoc)
+        .limit(pageSize + 1)
+    );
+  };
 
   return status === "loading" ? (
     <Layout excludeHeader={true}>
@@ -80,10 +134,10 @@ export default function CodingQuestionListPage() {
 
           <Row>
             <Col md={6}>
-              <div onClick={() => {}}>Prev</div>
+              {hasPrevPage && <div onClick={toPrevPage}>Prev</div>}
             </Col>
             <Col md={6}>
-              <div onClick={() => {}}>Next</div>
+              {hasNextPage && <div onClick={toNextPage}>Next</div>}
             </Col>
           </Row>
         </Container>

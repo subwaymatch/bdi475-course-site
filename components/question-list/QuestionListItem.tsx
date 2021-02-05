@@ -30,8 +30,6 @@ export default function QuestionItem({
   editLink,
   onDelete,
 }: QuestionListItemProps) {
-  console.log(`questionItem qid=${qid}`);
-
   return (
     <Row className="align-items-center">
       <Col md={2}>
