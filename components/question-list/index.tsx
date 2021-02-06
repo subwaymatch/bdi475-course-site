@@ -23,15 +23,15 @@ export default function QuestionList({ items }: QuestionListProps) {
               </Col>
 
               <Col md={2}>
+                <span className="label pink">Actions</span>
+              </Col>
+
+              <Col md={2}>
                 <span className="label green">Created</span>
               </Col>
 
               <Col md={2}>
                 <span className="label yellow">Modified</span>
-              </Col>
-
-              <Col md={2}>
-                <span className="label pink">Actions</span>
               </Col>
             </Row>
           </div>

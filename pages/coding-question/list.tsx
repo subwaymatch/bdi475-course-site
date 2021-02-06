@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import Layout from "components/Layout";
 import { Col, Container, Row } from "react-bootstrap";
 import firebase from "firebase";
-import { useFirestore } from "reactfire";
+import { AuthCheck, useFirestore } from "reactfire";
 import QuestionList from "components/question-list";
 import { QuestionListItemProps } from "components/question-list/QuestionListItem";
 import styles from "styles/pages/coding-question/list.module.scss";
+import { toast } from "react-toastify";
+import Login from "components/Login";
 
 enum QueryMode {
   InitialLoad = "InitialLoad",
@@ -15,7 +17,8 @@ enum QueryMode {
 
 export default function CodingQuestionListPage() {
   let pageSize = 20;
-  const collectionRef = useFirestore().collection("codingQuestions");
+  const firestore = useFirestore();
+  const collectionRef = firestore.collection("codingQuestions");
   let defaultQuery = collectionRef
     .orderBy("updatedAt", "desc")
     .limit(pageSize + 1);
@@ -70,7 +73,25 @@ export default function CodingQuestionListPage() {
             createdAt: data.createdAt ? data.createdAt.toDate() : null,
             updatedAt: data.updatedAt ? data.createdAt.toDate() : null,
             editLink: `/coding-question/edit/${qid}`,
-            onDelete: () => {},
+            onDelete: async () => {
+              if (
+                window.confirm(
+                  "Are you sure you want to delete this question? This cannot be undone."
+                )
+              ) {
+                try {
+                  await collectionRef.doc(qid).delete();
+
+                  toast.info(
+                    <div>
+                      Deleted question <code>{qid}</code>
+                    </div>
+                  );
+                } catch (err) {
+                  throw err;
+                }
+              }
+            },
           };
         }
       );
@@ -104,39 +125,41 @@ export default function CodingQuestionListPage() {
     );
   };
 
-  return status === "loading" ? (
-    <Layout excludeHeader={true}>
-      <Container>
-        <Row>
-          <Col>Loading...</Col>
-        </Row>
-      </Container>
-    </Layout>
-  ) : (
+  return (
     <Layout>
-      <main className={styles.page}>
-        <Container>
-          <Row>
-            <Col>
-              <h2 className="sectionTitle grayBottomBorder">
-                Coding question
-                <span className="accent pink" />
-              </h2>
-            </Col>
-          </Row>
+      <AuthCheck fallback={<Login />}>
+        {status === "loading" ? (
+          <Container>
+            <Row>
+              <Col>Loading...</Col>
+            </Row>
+          </Container>
+        ) : (
+          <main className={styles.page}>
+            <Container>
+              <Row>
+                <Col>
+                  <h2 className="sectionTitle grayBottomBorder">
+                    Coding Questions
+                    <span className="accent pink" />
+                  </h2>
+                </Col>
+              </Row>
 
-          <QuestionList items={questionListItems} />
+              <QuestionList items={questionListItems} />
 
-          <Row>
-            <Col md={6}>
-              {hasPrevPage && <div onClick={toPrevPage}>Prev</div>}
-            </Col>
-            <Col md={6}>
-              {hasNextPage && <div onClick={toNextPage}>Next</div>}
-            </Col>
-          </Row>
-        </Container>
-      </main>
+              <Row>
+                <Col md={6}>
+                  {hasPrevPage && <div onClick={toPrevPage}>Prev</div>}
+                </Col>
+                <Col md={6}>
+                  {hasNextPage && <div onClick={toNextPage}>Next</div>}
+                </Col>
+              </Row>
+            </Container>
+          </main>
+        )}
+      </AuthCheck>
     </Layout>
   );
 }

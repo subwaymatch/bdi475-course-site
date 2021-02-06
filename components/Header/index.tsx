@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "./Header.module.scss";
 import clsx from "clsx";
-import { AuthCheck, useAuth, useUser } from "reactfire";
+import { useAuth } from "reactfire";
 import { motion, AnimatePresence } from "framer-motion";
 import clickableVariants from "animations/clickableVariants";
 import { toast } from "react-toastify";

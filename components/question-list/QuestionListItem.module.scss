@@ -32,9 +32,29 @@
   .title {
     display: block;
     padding: 1rem 0;
+    transition: color 200ms linear;
 
     &:hover {
       color: $color-purple;
+    }
+  }
+
+  .actions {
+    position: relative;
+    left: -0.5rem;
+
+    .iconButton {
+      display: inline-block;
+      padding: 0.5rem;
+      transition: color 200ms linear;
+
+      &:hover {
+        color: $color-pink;
+      }
+    }
+
+    .delete {
+      margin-left: 0.5rem;
     }
   }
 }

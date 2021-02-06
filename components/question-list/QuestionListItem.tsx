@@ -4,8 +4,8 @@ import { Row, Col } from "react-bootstrap";
 import { motion } from "framer-motion";
 import clickableVariants from "animations/clickableVariants";
 import { toast } from "react-toastify";
-import { IoCopy } from "react-icons/io5";
-import { RiEditBoxLine } from "react-icons/ri";
+import { IoCopyOutline } from "react-icons/io5";
+import { RiEditBoxLine, RiDeleteBin6Line } from "react-icons/ri";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import clsx from "clsx";
 import styles from "./QuestionListItem.module.scss";
@@ -54,7 +54,7 @@ export default function QuestionListItem({
               }}
             >
               <span className={styles.label}>{qid}</span>
-              <IoCopy className={styles.reactIcon} />
+              <IoCopyOutline className={styles.reactIcon} />
             </motion.div>
           </CopyToClipboard>
         </Col>
@@ -73,6 +73,34 @@ export default function QuestionListItem({
         </Col>
 
         <Col md={2}>
+          <div className={styles.actions}>
+            <Link href={editLink}>
+              <motion.a
+                variants={clickableVariants}
+                whileHover="hover"
+                whileTap="tap"
+                className={clsx(styles.iconButton, styles.edit)}
+              >
+                <RiEditBoxLine className={styles.reactIcon} />
+              </motion.a>
+            </Link>
+
+            <motion.a
+              variants={clickableVariants}
+              whileHover="hover"
+              whileTap="tap"
+              className={clsx(styles.iconButton, styles.delete)}
+              onClick={(e) => {
+                e.preventDefault();
+                onDelete();
+              }}
+            >
+              <RiDeleteBin6Line className={styles.reactIcon} />
+            </motion.a>
+          </div>
+        </Col>
+
+        <Col md={2}>
           <span className={clsx("label", styles.timestamp)}>
             {dayjs(createdAt).format("MMM D, YYYY")}
           </span>
@@ -82,16 +110,6 @@ export default function QuestionListItem({
           <span className={clsx("label", styles.timestamp)}>
             {dayjs(updatedAt).format("MMM D, YYYY")}
           </span>
-        </Col>
-
-        <Col md={2}>
-          <div className={styles.actions}>
-            <Link href={editLink}>
-              <a className={styles.iconButton}>
-                <RiEditBoxLine className={styles.reactIcon} />
-              </a>
-            </Link>
-          </div>
         </Col>
       </Row>
     </div>
