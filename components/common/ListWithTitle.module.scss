@@ -1,0 +1,38 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.listBox {
+  margin-top: 6rem;
+  border-top: 1px solid black;
+  padding-top: 1.5rem;
+
+  &.objectives {
+    margin-top: 1rem;
+    border-top: none;
+    padding-top: 0;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+  }
+
+  ul {
+    @include media-breakpoint-down(sm) {
+      margin-top: 2rem;
+      font-size: 1.1rem;
+    }
+
+    li {
+      padding: 0.5rem 0;
+      border-bottom: 2px dotted $color-border-gray;
+
+      &:first-child {
+        padding-top: 0;
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+}

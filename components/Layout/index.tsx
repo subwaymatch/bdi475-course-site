@@ -1,12 +1,12 @@
 import Head from "next/head";
 import Header from "components/Header";
 
-type PropTypes = {
+interface LayoutProps {
   children: React.ReactNode;
   excludeHeader?: boolean;
-};
+}
 
-export default function Layout({ children, excludeHeader }: PropTypes) {
+export default function Layout({ children, excludeHeader }: LayoutProps) {
   return (
     <>
       <Head>

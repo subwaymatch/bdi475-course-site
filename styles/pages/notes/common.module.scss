@@ -4,6 +4,10 @@
 .page {
   padding-bottom: 10rem;
 
+  .block {
+    margin-top: 6rem;
+  }
+
   @include media-breakpoint-down(md) {
     font-size: 1.2rem;
   }
@@ -94,42 +98,6 @@
 
       @include media-breakpoint-down(sm) {
         padding: 2rem 0;
-      }
-    }
-  }
-
-  .largeQuote {
-    margin-top: 6rem;
-
-    p {
-      font-size: 6rem;
-      letter-spacing: -0.2rem;
-      line-height: 1.1;
-      font-weight: 800;
-    }
-
-    @include media-breakpoint-down(md) {
-      margin-top: 4rem;
-
-      p {
-        font-size: 5rem;
-        letter-spacing: -0.15rem;
-      }
-    }
-    @include media-breakpoint-down(sm) {
-      margin-top: 3rem;
-
-      p {
-        font-size: 4rem;
-        letter-spacing: -0.12rem;
-      }
-    }
-    @include media-breakpoint-down(xs) {
-      margin-top: 3rem;
-
-      p {
-        font-size: 2.5rem;
-        letter-spacing: -0.1rem;
       }
     }
   }

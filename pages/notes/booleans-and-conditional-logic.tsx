@@ -1,12 +1,15 @@
+import Image from "next/image";
 import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "styles/pages/notes/common.module.scss";
-import Image from "next/image";
 import clsx from "clsx";
+import ListWithTitle from "components/common/ListWithTitle";
+import CenteredColumn from "components/common/CenteredColumn";
 import CodingQuestionById from "components/coding-question/CodingQuestionById";
 import { FaWikipediaW } from "react-icons/fa";
-import { useFirestoreDocDataOnce, useFirestore } from "reactfire";
+import { useFirestore } from "reactfire";
 import useFirebaseAuth from "hooks/useFirebaseAuth";
+import LargeQuote from "components/common/LargeQuote";
 
 export default function BooleanAndConditionalLogicPage() {
   const { user } = useFirebaseAuth();
@@ -44,34 +47,23 @@ export default function BooleanAndConditionalLogicPage() {
             </Col>
           </Row>
 
-          <Row>
-            <Col>
-              <div className={clsx(styles.objectives, styles.listBox)}>
-                <Row>
-                  <Col md={4}>
-                    <h3>Objectives ⟶</h3>
-                  </Col>
-
-                  <Col md={8}>
-                    <ul>
-                      <li>
-                        Understand the <code>bool</code> data type.
-                      </li>
-                      <li>Why are booleans so important in programming?</li>
-                      <li>
-                        Discuss the{" "}
-                        <span className="color-purple">operators</span> that
-                        return boolean values.
-                      </li>
-                      <li>
-                        Understand <code>if</code>/<code>else</code> statements.
-                      </li>
-                    </ul>
-                  </Col>
-                </Row>
-              </div>
-            </Col>
-          </Row>
+          <ListWithTitle
+            title="Objectives ⟶"
+            items={[
+              <>
+                Understand the <code>bool</code> data type.
+              </>,
+              <>Why are booleans so important in programming?</>,
+              <>
+                Discuss the <span className="color-purple">operators</span> that
+                return boolean values.
+              </>,
+              <>
+                Understand <code>if</code>/<code>else</code> statements.
+              </>,
+            ]}
+            className={styles.block}
+          />
 
           <Row>
             <Col>
@@ -86,64 +78,44 @@ export default function BooleanAndConditionalLogicPage() {
             </Col>
           </Row>
 
-          <Row>
-            <Col
-              lg={{
-                span: 6,
-                offset: 3,
-              }}
-              md={{
-                span: 8,
-                offset: 2,
-              }}
-            >
-              <div className={styles.textBox}>
-                <h3>What are booleans?</h3>
+          <CenteredColumn className={styles.textBox}>
+            <h3>What are booleans?</h3>
 
-                <span className="label purple">Overview</span>
+            <span className="label purple">Overview</span>
 
-                <p>
-                  A <strong>boolean</strong> is a data type that can only
-                  represent two possible values - <code>True</code> or{" "}
-                  <code>False</code>. The name boolean originates from the
-                  English mathematician George Boole.
-                </p>
-                <p>
-                  Although having only two possible values makes booleans look
-                  trivial, booleans will end up playing a critical role in
-                  writing your code.
-                </p>
-                <p>
-                  Note that a boolean <code>True</code> is NOT the same as a
-                  string <code>"True"</code> (note the double quotes around the
-                  text).
-                </p>
+            <p>
+              A <strong>boolean</strong> is a data type that can only represent
+              two possible values - <code>True</code> or <code>False</code>. The
+              name boolean originates from the English mathematician George
+              Boole.
+            </p>
+            <p>
+              Although having only two possible values makes booleans look
+              trivial, booleans will end up playing a critical role in writing
+              your code.
+            </p>
+            <p>
+              A boolean <code>True</code> is NOT the same as a string{" "}
+              <code>"True"</code> (note the double quotes around the text in
+              string <code>"True"</code>).
+            </p>
+          </CenteredColumn>
 
-                <p></p>
-              </div>
-            </Col>
-          </Row>
-
-          <Row>
-            <Col>
-              <blockquote className={styles.largeQuote}>
-                <p>
-                  <span className="color-purple">Will you marry me?</span>{" "}
-                  <br className="d-none d-md-inline" />
-                  Heck{" "}
-                  <span
-                    className="color-green"
-                    style={{
-                      textDecoration: "line-through",
-                    }}
-                  >
-                    yes
-                  </span>{" "}
-                  True! I'll marry you.
-                </p>
-              </blockquote>
-            </Col>
-          </Row>
+          <LargeQuote className={styles.block}>
+            <p>
+              Will you marry me? <br className="d-none d-md-inline" />
+              Heck{" "}
+              <span
+                className="color-green"
+                style={{
+                  textDecoration: "line-through",
+                }}
+              >
+                yes
+              </span>{" "}
+              True! I'll marry you.
+            </p>
+          </LargeQuote>
 
           <Row>
             <Col>
@@ -210,16 +182,12 @@ export default function BooleanAndConditionalLogicPage() {
             </Col>
           </Row>
 
-          <Row>
-            <Col>
-              <blockquote className={styles.largeQuote}>
-                <p>
-                  If I have over $100 in my wallet, I will go grab a full Peking
-                  Duck.
-                </p>
-              </blockquote>
-            </Col>
-          </Row>
+          <LargeQuote className={styles.block}>
+            <p>
+              If I have over $100 in my wallet, I will go grab a full Peking
+              Duck.
+            </p>
+          </LargeQuote>
 
           <Row>
             <Col>
@@ -231,96 +199,69 @@ export default function BooleanAndConditionalLogicPage() {
             </Col>
           </Row>
 
-          <Row>
-            <Col
-              lg={{
-                span: 6,
-                offset: 3,
-              }}
-              md={{
-                span: 8,
-                offset: 2,
-              }}
-            >
-              <div className={styles.textBox}>
-                <h3>Boolean Expressions</h3>
+          <CenteredColumn className={styles.textBox}>
+            <h3>Boolean Expressions</h3>
 
-                <span className="label purple">Yes or No</span>
+            <span className="label purple">Yes or No</span>
 
-                <p>
-                  If you're new to programming, an{" "}
-                  <span className="color-blue">expression</span> may mean the
-                  look on your face, or a group of words used to signal how you
-                  feel.
-                </p>
-                <p>
-                  In the context of <strong>mathematics</strong>, an expression
-                  is{" "}
-                  <span className="color-pink">
-                    a combination of symbols that is well-formed according to
-                    the rules
-                  </span>{" "}
-                  that depend on the context (thank you <FaWikipediaW />{" "}
-                  Wikipedia).
-                </p>
-                <p>
-                  In the context of <strong>programming</strong>, an expression
-                  is{" "}
-                  <span className="color-pink">
-                    a unit of code that can be evaluated to determine its value
-                  </span>
-                  . This definition does not deviate far away from that of
-                  mathematics. We'll come back to how math and programming are
-                  intertwined. A{" "}
-                  <span className="color-pink">boolean expression</span> is any
-                  expression that evaluates to either <code>True</code> or{" "}
-                  <code>False</code>.
-                </p>
-              </div>
-            </Col>
-          </Row>
+            <p>
+              If you're new to programming, an{" "}
+              <span className="color-blue">expression</span> may mean the look
+              on your face, or a group of words used to signal how you feel.
+            </p>
+            <p>
+              In the context of <strong>mathematics</strong>, an expression is{" "}
+              <span className="color-pink">
+                a combination of symbols that is well-formed according to the
+                rules
+              </span>{" "}
+              that depend on the context (thank you <FaWikipediaW /> Wikipedia).
+            </p>
+            <p>
+              In the context of <strong>programming</strong>, an expression is{" "}
+              <span className="color-pink">
+                a unit of code that can be evaluated to determine its value
+              </span>
+              . This definition does not deviate far away from that of
+              mathematics. We'll come back to how math and programming are
+              intertwined. A{" "}
+              <span className="color-pink">boolean expression</span> is any
+              expression that evaluates to either <code>True</code> or{" "}
+              <code>False</code>.
+            </p>
+          </CenteredColumn>
 
-          <Row>
-            <Col>
-              <div className={styles.listBox}>
-                <Row>
-                  {" "}
-                  <Col md={4}>
-                    <h3>Examples of Expressions ⟶</h3>
-                  </Col>
-                  <Col md={8}>
-                    <ul>
-                      <li>
-                        <code>1 + 1</code> is an expression that evaluates to{" "}
-                        <code>2</code>.
-                      </li>
-                      <li>
-                        <code>575 &gt; 500</code> is an expression that
-                        evaluates to <code>True</code>.
-                      </li>
-                      <li>
-                        <code>"Five" + "Guys"</code> is an expression that
-                        evaluates to <code>"FiveGuys"</code>.
-                      </li>
-                      <li>
-                        <code>hometown == "Shanghai"</code> is an expression
-                        that evaluates to either <code>True</code>
-                        or <code>False</code> depending on the value of the{" "}
-                        <code>hometown</code> variable.
-                      </li>
-                      <li>
-                        <code>True</code> is an expression too.
-                      </li>
-                      <li>
-                        And yes, <code>1</code> is another expression.{" "}
-                        <em>Constants</em> themselves are expressions.
-                      </li>
-                    </ul>
-                  </Col>
-                </Row>
-              </div>
-            </Col>
-          </Row>
+          <ListWithTitle
+            title="Examples of Expressions ⟶"
+            items={[
+              <>
+                <code>1 + 1</code> is an expression that evaluates to{" "}
+                <code>2</code>.
+              </>,
+              <>
+                <code>575 &gt; 500</code> is an expression that evaluates to{" "}
+                <code>True</code>.
+              </>,
+              <>
+                <code>"Five" + "Guys"</code> is an expression that evaluates to{" "}
+                <code>"FiveGuys"</code>.
+              </>,
+              <>
+                <code>hometown == "Shanghai"</code> is an expression that
+                evaluates to either <code>True</code>
+                or <code>False</code> depending on the value of the{" "}
+                <code>hometown</code> variable.
+              </>,
+              <>
+                <code>True</code> is an expression too.
+              </>,
+              <>
+                And yes, <code>1</code> is another expression.{" "}
+                <em>Constants</em> themselves are expressions.
+              </>,
+            ]}
+            className={styles.block}
+          />
 
           <Row>
             <Col>
@@ -342,44 +283,27 @@ export default function BooleanAndConditionalLogicPage() {
             </Col>
           </Row>
 
-          <Row>
-            <Col
-              lg={{
-                span: 6,
-                offset: 3,
-              }}
-              md={{
-                span: 8,
-                offset: 2,
-              }}
-            >
-              <div className={styles.textBox}>
-                <h3>If...Else</h3>
-                <span className="label green">Conditional Blocks</span>
-                <p>
-                  Being able to use expressions to dynamically determine a value
-                  sounds... fancy. But how exactly is it <em>useful</em>?
-                </p>
-                <p>
-                  This is where the{" "}
-                  <span className="color-green">conditional statements</span>{" "}
-                  shine. Conditional statements allow your code to make
-                  decisions based on rules.
-                </p>
-              </div>
-            </Col>
-          </Row>
+          <CenteredColumn className={styles.textBox}>
+            <h3>If...Else</h3>
+            <span className="label green">Conditional Blocks</span>
+            <p>
+              Being able to use expressions to dynamically determine a value
+              sounds... fancy. But how exactly is it <em>useful</em>?
+            </p>
+            <p>
+              This is where the{" "}
+              <span className="color-green">conditional statements</span> shine.
+              Conditional statements allow your code to make decisions based on
+              rules.
+            </p>
+          </CenteredColumn>
 
-          <Row>
-            <Col>
-              <blockquote className={styles.largeQuote}>
-                <p>
-                  If I can't afford a full Pecking Duck, I'm heading to Panda
-                  Express.
-                </p>
-              </blockquote>
-            </Col>
-          </Row>
+          <LargeQuote className={styles.block}>
+            <p>
+              If I can't afford a full Pecking Duck, I'm heading to Panda
+              Express.
+            </p>
+          </LargeQuote>
 
           <Row>
             <Col>
@@ -391,37 +315,24 @@ export default function BooleanAndConditionalLogicPage() {
             </Col>
           </Row>
 
-          <Row>
-            <Col
-              lg={{
-                span: 6,
-                offset: 3,
-              }}
-              md={{
-                span: 8,
-                offset: 2,
-              }}
-            >
-              <div className={styles.textBox}>
-                <h3>Why are some lines indented?</h3>
-                <span className="label green">Code Blocks</span>
-                <p>
-                  Python uses indentation to define a block of code. What do you
-                  mean block of code? A block of code refers to{" "}
-                  <span className="color-purple">
-                    one or more lines of code that belong to if/elif/else
-                    statements, a function, or a loop.
-                  </span>
-                </p>
-                <p>
-                  You can use however many spaces you want. However, you must be{" "}
-                  <strong>consistent</strong> in the number of spaces you use.
-                  Python will throw an error if you mix the number of spaces
-                  used for indentation.
-                </p>
-              </div>
-            </Col>
-          </Row>
+          <CenteredColumn className={styles.textBox}>
+            <h3>Why are some lines indented?</h3>
+            <span className="label green">Code Blocks</span>
+            <p>
+              Python uses indentation to define a block of code. What do you
+              mean block of code? A block of code refers to{" "}
+              <span className="color-purple">
+                one or more lines of code that belong to if/elif/else
+                statements, a function, or a loop.
+              </span>
+            </p>
+            <p>
+              You can use however many spaces you want. However, you must be{" "}
+              <strong>consistent</strong> in the number of spaces you use.
+              Python will throw an error if you mix the number of spaces used
+              for indentation.
+            </p>
+          </CenteredColumn>
 
           <Row>
             <Col>
@@ -484,13 +395,9 @@ export default function BooleanAndConditionalLogicPage() {
             </Col>
           </Row>
 
-          <Row>
-            <Col>
-              <blockquote className={styles.largeQuote}>
-                <p>Since I have over $50, how does Biaggis sound?</p>
-              </blockquote>
-            </Col>
-          </Row>
+          <LargeQuote className={styles.block}>
+            <p>Since I have over $50, how does Biaggis sound?</p>
+          </LargeQuote>
 
           <Row>
             <Col>
