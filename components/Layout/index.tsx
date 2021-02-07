@@ -1,12 +1,12 @@
 import Head from "next/head";
 import Header from "components/Header";
 
-interface LayoutProps {
+interface ILayoutProps {
   children: React.ReactNode;
   excludeHeader?: boolean;
 }
 
-export default function Layout({ children, excludeHeader }: LayoutProps) {
+export default function Layout({ children, excludeHeader }: ILayoutProps) {
   return (
     <>
       <Head>

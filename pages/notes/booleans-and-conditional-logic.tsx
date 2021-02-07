@@ -6,6 +6,7 @@ import clsx from "clsx";
 import ListWithTitle from "components/common/ListWithTitle";
 import CenteredColumn from "components/common/CenteredColumn";
 import CodingQuestionById from "components/coding-question/CodingQuestionById";
+import RecordedCodingQuestion from "components/common/RecordedCodingQuestion";
 import { FaWikipediaW } from "react-icons/fa";
 import { useFirestore } from "reactfire";
 import useFirebaseAuth from "hooks/useFirebaseAuth";
@@ -127,15 +128,7 @@ export default function BooleanAndConditionalLogicPage() {
             </Col>
           </Row>
 
-          <Row>
-            <Col>
-              <CodingQuestionById
-                qid="CyHuSl"
-                onSubmit={() => {}}
-                wrapperClassName={styles.questionWrapper}
-              />
-            </Col>
-          </Row>
+          <RecordedCodingQuestion qid="CyHuSl" className={styles.block} />
 
           <Row>
             <Col>

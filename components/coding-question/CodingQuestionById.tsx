@@ -1,7 +1,7 @@
 import CodingQuestion from "components/coding-question/CodingQuestion";
 import { useFirestoreDocDataOnce, useFirestore } from "reactfire";
 
-interface CodingQuestionByIdProps {
+interface ICodingQuestionByIdProps {
   qid: string;
   onSubmit: (isSuccess: boolean, qid?: string) => void;
   wrapperClassName?: string;
@@ -11,7 +11,7 @@ export default function CodingQuestionById({
   qid,
   onSubmit,
   wrapperClassName,
-}: CodingQuestionByIdProps) {
+}: ICodingQuestionByIdProps) {
   const firestore = useFirestore();
   const questionDocRef = firestore.collection("codingQuestions").doc(qid);
   const { status, data } = useFirestoreDocDataOnce(questionDocRef);

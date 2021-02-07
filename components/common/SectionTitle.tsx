@@ -18,7 +18,7 @@ export default function SectionTitle({
       <Col>
         <div
           className={clsx("sectionTitle", {
-            grayBottomBorder: grayBottomBorder,
+            grayBottomBorder,
             [className]: !!className,
           })}
         >

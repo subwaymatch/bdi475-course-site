@@ -31,13 +31,13 @@ const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
 });
 
-type CodingQuestionEditorProps = {
+interface ICodingQuestionEditorProps {
   qid: string;
   savedData: ICodingQuestion;
   onSave: (v: ICodingQuestion) => void;
   onDelete: () => void;
   onClone: (v: ICodingQuestion) => void;
-};
+}
 
 export default function CodingQuestionEditor({
   qid,
@@ -45,7 +45,7 @@ export default function CodingQuestionEditor({
   onSave,
   onDelete,
   onClone,
-}: CodingQuestionEditorProps) {
+}: ICodingQuestionEditorProps) {
   const router = useRouter();
   const [questionData, setQuestionData] = useState<ICodingQuestion>(
     Object.assign(

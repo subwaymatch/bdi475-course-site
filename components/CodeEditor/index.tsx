@@ -5,14 +5,14 @@ import { sm, md } from "constants/media-query-strings";
 import styles from "./editor.module.scss";
 import customTheme from "./custom-theme.json";
 
-type CodeEditorProps = {
+interface ICodeEditorProps {
   editorValue: string;
   onChange: (v: string) => void;
   onRun?: () => void;
   onCheck?: () => void;
   language: string;
   height?: string | number;
-};
+}
 
 export default function CodeEditor({
   editorValue,
@@ -21,7 +21,7 @@ export default function CodeEditor({
   onCheck,
   language,
   height,
-}: CodeEditorProps) {
+}: ICodeEditorProps) {
   const [isThemeLoaded, setIsThemeLoaded] = useState(false);
   const isScreenSm = useMediaQuery(sm);
   const isScreenMd = useMediaQuery(md);

@@ -14,14 +14,14 @@ dayjs.extend(timezone);
 
 dayjs.tz.setDefault("America/Chicago");
 
-type AssignmentItemProps = {
+interface IAssignmentItemProps {
   name: string;
   dueDate: string;
   pointsAvailable: number;
   status: AssignmentStatus;
   link?: string;
   colorTheme: ColorTheme;
-};
+}
 
 export default function AssignmentItem({
   name,
@@ -30,7 +30,7 @@ export default function AssignmentItem({
   status,
   link,
   colorTheme,
-}: AssignmentItemProps) {
+}: IAssignmentItemProps) {
   return (
     <div
       className={clsx(

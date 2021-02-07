@@ -13,14 +13,14 @@ dayjs.extend(timezone);
 
 dayjs.tz.setDefault("America/Chicago");
 
-type CaseStudyItemProps = {
+interface ICaseStudyItemProps {
   name: string;
   dueDate: string;
   pointsAvailable: number;
   status: AssignmentStatus;
   link?: string;
   thumbnail: React.ReactNode;
-};
+}
 
 export default function CaseStudyItem({
   name,
@@ -29,7 +29,7 @@ export default function CaseStudyItem({
   status,
   link,
   thumbnail,
-}: CaseStudyItemProps) {
+}: ICaseStudyItemProps) {
   return (
     <div
       className={clsx(styles.caseStudyItem, {

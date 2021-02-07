@@ -18,13 +18,13 @@ const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
 });
 
-type Props = {
+interface ICodingQuestionProps {
   title: string;
   textMarkdown: string;
   starterCode?: string;
   testCode: string;
   onSubmit: (boolean) => void;
-};
+}
 
 export default function CodingQuestion({
   title,
@@ -32,7 +32,7 @@ export default function CodingQuestion({
   starterCode,
   testCode,
   onSubmit,
-}: Props) {
+}: ICodingQuestionProps) {
   const [userCode, setUserCode] = useState(starterCode);
   const [output, setOutput] = useState("");
   const [hasError, setHasError] = useState(false);
