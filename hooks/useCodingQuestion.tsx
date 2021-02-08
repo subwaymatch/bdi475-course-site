@@ -4,13 +4,15 @@ import { useEffect, useState } from "react";
 export default function useCodingQuestion(qid) {
   const { user } = useFirebaseAuth();
 
-  const [data, setData] = useState();
-  const [status, setStatus] = useState("loading");
-  const [error, setError] = useState("");
+  const [result, setResult] = useState({
+    status: "loading",
+    data: null,
+    error: "",
+  });
 
   useEffect(() => {
     fetchQuestionData();
-  }, []);
+  }, [user]);
 
   const fetchQuestionData = async () => {
     try {
@@ -24,20 +26,25 @@ export default function useCodingQuestion(qid) {
         : {};
 
       const res = await fetch(`/api/coding-question/${qid}`, options);
+      const data = await res.json();
 
-      setStatus("success");
-      setData(await res.json());
-      setError("");
+      setResult((prevResult) =>
+        Object.assign({}, prevResult, {
+          status: "success",
+          data,
+          error: "",
+        })
+      );
     } catch (err) {
-      setStatus("error");
-      setData(null);
-      setError(err.message);
+      setResult((prevResult) =>
+        Object.assign({}, prevResult, {
+          status: "error",
+          data: null,
+          error: err.message,
+        })
+      );
     }
   };
 
-  return {
-    status,
-    data,
-    error,
-  };
+  return result;
 }

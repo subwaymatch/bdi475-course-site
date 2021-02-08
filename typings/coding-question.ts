@@ -10,6 +10,12 @@ export default interface ICodingQuestion {
 
 export interface ICodingQuestionWithMeta extends ICodingQuestion {
   qid: string;
-  createdAt?: Date;
-  updatedAt?: Date;
+  createdAt?: firebase.firestore.Timestamp;
+  updatedAt?: firebase.firestore.Timestamp;
+}
+
+export interface ICodingQuestionAttempt {
+  isSuccess: boolean;
+  userCode: string;
+  submittedAt?: firebase.firestore.Timestamp;
 }

@@ -41,13 +41,8 @@ export async function isAdmin(req: NextApiRequest): Promise<boolean> {
   try {
     const userInfo: IVerifiedUserInfo = await getUserInfoFromRequest(req);
 
-    console.log(`userInfo`);
-    console.log(userInfo);
-
     return userInfo.admin;
   } catch {
-    console.log(`error getting userinfo`);
-
     return false;
   }
 }

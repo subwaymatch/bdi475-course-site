@@ -3,9 +3,10 @@ import dynamic from "next/dynamic";
 import styles from "./CodingQuestion.module.scss";
 import { Col, Row } from "react-bootstrap";
 import { BiReset } from "react-icons/bi";
-import { VscSymbolMethod } from "react-icons/vsc";
+import { VscSymbolMethod, VscRunAll } from "react-icons/vsc";
 import { IoPlay } from "react-icons/io5";
 import { BsCheckCircle } from "react-icons/bs";
+import { RiEditBoxLine } from "react-icons/ri";
 import clsx from "clsx";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { desktop } from "constants/media-query-strings";
@@ -13,6 +14,7 @@ import { toast } from "react-toastify";
 import marked from "marked";
 import Tippy from "@tippyjs/react";
 import { isMacOs } from "react-device-detect";
+import { ICodingQuestionAttempt } from "typings/coding-question";
 
 const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
@@ -23,7 +25,10 @@ interface ICodingQuestionProps {
   textMarkdown: string;
   starterCode?: string;
   testCode: string;
-  onSubmit: (boolean) => void;
+  solutionCode?: string;
+  editLink?: string;
+  history?: ICodingQuestionAttempt[];
+  onSubmit: (boolean, string?) => void;
 }
 
 export default function CodingQuestion({
@@ -31,6 +36,9 @@ export default function CodingQuestion({
   textMarkdown,
   starterCode,
   testCode,
+  solutionCode,
+  editLink,
+  history,
   onSubmit,
 }: ICodingQuestionProps) {
   const [userCode, setUserCode] = useState(starterCode);
@@ -71,10 +79,10 @@ export default function CodingQuestion({
 
         if (e.data.hasError) {
           toast.error("See the error message below.");
-          onSubmit(false);
+          onSubmit(false, userCode);
         } else {
           toast.success("Nice!");
-          onSubmit(true);
+          onSubmit(true, userCode);
         }
       }
     };
@@ -118,6 +126,22 @@ export default function CodingQuestion({
           <div className={styles.exerciseHeader}>
             <span className={styles.exerciseType}>Coding Exercise</span>
             <h2 className={styles.exerciseTitle}>{title}</h2>
+
+            <div className={styles.topControls}>
+              <a className={clsx(styles.iconButton, styles.editButton)}>
+                <RiEditBoxLine className={styles.reactIcon} />
+              </a>
+              <Tippy
+                content={"You have submitted a response"}
+                className="tippy"
+                placement="bottom"
+                theme="light"
+              >
+                <a className={clsx(styles.iconButton, styles.historyButton)}>
+                  <BsCheckCircle className={styles.reactIcon} />
+                </a>
+              </Tippy>
+            </div>
           </div>
         </Col>
       </Row>
@@ -279,7 +303,7 @@ export default function CodingQuestion({
                         runAndCheckCode();
                       }}
                     >
-                      <BsCheckCircle className={styles.reactIcon} />
+                      <VscRunAll className={styles.reactIcon} />
                       <span className={styles.label}>Check</span>
                     </div>
                   </Tippy>
