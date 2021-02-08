@@ -7,33 +7,9 @@ import ListWithTitle from "components/common/ListWithTitle";
 import CenteredColumn from "components/common/CenteredColumn";
 import RecordedCodingQuestion from "components/common/RecordedCodingQuestion";
 import { FaWikipediaW } from "react-icons/fa";
-import { useFirestore } from "reactfire";
-import useFirebaseAuth from "hooks/useFirebaseAuth";
 import LargeQuote from "components/common/LargeQuote";
 
 export default function BooleanAndConditionalLogicPage() {
-  const { user } = useFirebaseAuth();
-  const firestore = useFirestore();
-
-  const onSubmit = (isSuccess, qid) => {
-    if (user) {
-      const userAttemptsDoc = firestore.collection("userAttempts").doc(qid);
-
-      const netId = user.email.split("@")[0];
-
-      userAttemptsDoc.set(
-        {
-          [qid as string]: {
-            [netId]: isSuccess,
-          },
-        },
-        {
-          merge: true,
-        }
-      );
-    }
-  };
-
   return (
     <Layout>
       <main className={styles.page}>

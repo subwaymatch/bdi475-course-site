@@ -17,7 +17,7 @@ export default function SectionTitle({
     <Row>
       <Col>
         <div
-          className={clsx("sectionTitle", {
+          className={clsx(styles.sectionTitle, {
             grayBottomBorder,
             [className]: !!className,
           })}

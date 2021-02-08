@@ -61,7 +61,7 @@ export default function RecordedCodingQuestion({
   const getAttemptMessage = () => {
     if (!user) {
       return "You must be signed in to view your submission history";
-    } else if (attempts.length == 0) {
+    } else if (attempts.length === 0) {
       return "No submission";
     } else {
       const passCount = attempts.filter((o) => o.isSuccess).length;
@@ -76,7 +76,9 @@ export default function RecordedCodingQuestion({
   };
 
   const recordSubmission = async (isSuccess: boolean, userCode: string) => {
-    if (!user) return;
+    if (!user) {
+      return;
+    }
 
     try {
       const token = await user.getIdToken();
@@ -93,7 +95,7 @@ export default function RecordedCodingQuestion({
         }),
       };
 
-      const res = await fetch(`/api/coding-question/attempt/${qid}`, options);
+      await fetch(`/api/coding-question/attempt/${qid}`, options);
 
       updateAttempts();
     } catch (err) {

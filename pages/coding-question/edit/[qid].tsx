@@ -18,39 +18,27 @@ export default function EditCodingQuestionPage() {
   }: { status: string; data: ICodingQuestion } = useFirestoreDocData(docRef);
 
   const onDelete = async () => {
-    try {
-      await docRef.delete();
+    await docRef.delete();
 
-      router.push("/coding-question/list");
-    } catch (err) {
-      throw err;
-    }
+    router.push("/coding-question/list");
   };
 
   const onClone = async (v) => {
-    try {
-      const clonedDocRef = await firestore
-        .collection("codingQuestions")
-        .doc(randomstring.generate(6));
+    const clonedDocRef = await firestore
+      .collection("codingQuestions")
+      .doc(randomstring.generate(6));
 
-      const clonedData = Object.assign({}, _.cloneDeep(v), {
-        title: v.title + " (Clone)",
-      });
+    const clonedData = Object.assign({}, _.cloneDeep(v), {
+      title: v.title + " (Clone)",
+    });
 
-      await clonedDocRef.set(clonedData);
+    await clonedDocRef.set(clonedData);
 
-      router.push(`/coding-question/edit/${clonedDocRef.id}`);
-    } catch (err) {
-      throw err;
-    }
+    router.push(`/coding-question/edit/${clonedDocRef.id}`);
   };
 
   const saveDoc = async (v) => {
-    try {
-      await docRef.set(v, { merge: true });
-    } catch (err) {
-      throw err;
-    }
+    await docRef.set(v, { merge: true });
   };
 
   return status === "loading" ? (

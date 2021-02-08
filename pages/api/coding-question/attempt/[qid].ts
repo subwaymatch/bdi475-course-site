@@ -1,7 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { firebaseAdmin } from "firebase/firebaseAdmin";
 import { IVerifiedUserInfo, getUserInfoFromRequest } from "utils/api/auth";
-import _ from "lodash";
 
 export default async function handler(
   req: NextApiRequest,

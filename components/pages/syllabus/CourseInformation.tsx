@@ -1,6 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "./CourseInformation.module.scss";
-import { HiOutlineClipboardCopy } from "react-icons/hi";
 
 export default function CourseInformation() {
   return (

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import { toast } from "react-toastify";
 import { MdDone } from "react-icons/md";

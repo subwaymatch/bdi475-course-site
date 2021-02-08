@@ -79,17 +79,13 @@ export default function CodingQuestionListPage() {
                   "Are you sure you want to delete this question? This cannot be undone."
                 )
               ) {
-                try {
-                  await collectionRef.doc(qid).delete();
+                await collectionRef.doc(qid).delete();
 
-                  toast.info(
-                    <div>
-                      Deleted question <code>{qid}</code>
-                    </div>
-                  );
-                } catch (err) {
-                  throw err;
-                }
+                toast.info(
+                  <div>
+                    Deleted question <code>{qid}</code>
+                  </div>
+                );
               }
             },
           };

@@ -12,7 +12,6 @@ import Tippy from "@tippyjs/react";
 import { toast } from "react-toastify";
 import marked from "marked";
 import { isMacOs } from "react-device-detect";
-import { ICodingQuestionAttempt } from "typings/coding-question";
 
 const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
@@ -226,7 +225,9 @@ export default function CodingQuestion({
                         [styles.disabled]: !isPyodideReady,
                       })}
                       onClick={async (e) => {
-                        if (!isPyodideReady) return;
+                        if (!isPyodideReady) {
+                          return;
+                        }
 
                         e.preventDefault();
                         runCode();

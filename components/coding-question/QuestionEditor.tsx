@@ -1,6 +1,5 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { useState } from "react";
 import styles from "./QuestionEditor.module.scss";
 import clsx from "clsx";
@@ -46,7 +45,6 @@ export default function CodingQuestionEditor({
   onDelete,
   onClone,
 }: ICodingQuestionEditorProps) {
-  const router = useRouter();
   const [questionData, setQuestionData] = useState<ICodingQuestion>(
     Object.assign(
       {
@@ -70,8 +68,8 @@ export default function CodingQuestionEditor({
     setQuestionData(updatedQuestionData);
   };
 
-  const save = () => {
-    onSave(questionData);
+  const save = async () => {
+    await onSave(questionData);
   };
 
   return (
