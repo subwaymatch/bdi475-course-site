@@ -1,8 +1,23 @@
+@import "styles/variables";
+@import "styles/mixins";
+
 .page {
   padding-bottom: 10rem;
 
+  .noteItem {
+    display: block;
+    margin-top: 3rem;
+  }
+
   h3 {
-    font-size: 1.5rem;
-    margin-top: 0.5rem;
+    font-size: 1.3rem;
+    line-height: 1.4;
+    font-weight: 500;
+    margin-top: 0.4rem;
+    letter-spacing: -0.02rem;
+
+    @include media-breakpoint-down(md) {
+      font-size: 1.3rem;
+    }
   }
 }

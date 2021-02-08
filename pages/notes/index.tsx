@@ -24,7 +24,7 @@ export default function NotesPage() {
           </Row>
 
           <Row>
-            <Col md={4} sm={6}>
+            <Col lg={4} md={6}>
               <Link href="/notes/variables-and-data-types">
                 <a className={styles.noteItem}>
                   <Image
@@ -38,7 +38,7 @@ export default function NotesPage() {
               </Link>
             </Col>
 
-            <Col md={4} sm={6}>
+            <Col lg={4} md={6}>
               <Link href="/notes/booleans-and-conditional-logic">
                 <a className={styles.noteItem}>
                   <Image
@@ -48,6 +48,20 @@ export default function NotesPage() {
                     alt=""
                   />
                   <h3>Booleans and Conditional Logic</h3>
+                </a>
+              </Link>
+            </Col>
+
+            <Col lg={4} md={6}>
+              <Link href="/notes/lists-and-loops">
+                <a className={styles.noteItem}>
+                  <Image
+                    src="/images/notes/1612807284318.png"
+                    width={900}
+                    height={600}
+                    alt=""
+                  />
+                  <h3>Lists and Loops</h3>
                 </a>
               </Link>
             </Col>

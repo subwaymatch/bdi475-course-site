@@ -48,29 +48,22 @@
   {
     "date": "2021-02-10",
     "type": "Lecture",
-    "text": ["Strings", "String Methods"]
+    "text": ["Collections"]
   },
   {
     "date": "2021-02-11",
     "type": "Exercise",
     "text": "Exercise 5"
   },
-
-  {
-    "date": "2021-02-13",
-    "type": "CaseStudy",
-    "text": "Case Study 1"
-  },
-
   {
     "date": "2021-02-15",
     "type": "Lecture",
-    "text": ["Collections"]
+    "text": ["Strings", "String Methods"]
   },
   {
     "date": "2021-02-16",
-    "type": "Exercise",
-    "text": "Exercise 6"
+    "type": "CaseStudy",
+    "text": "Case Study 1"
   },
   {
     "date": "2021-02-17",
