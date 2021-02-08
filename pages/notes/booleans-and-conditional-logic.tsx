@@ -5,7 +5,6 @@ import styles from "styles/pages/notes/common.module.scss";
 import clsx from "clsx";
 import ListWithTitle from "components/common/ListWithTitle";
 import CenteredColumn from "components/common/CenteredColumn";
-import CodingQuestionById from "components/coding-question/CodingQuestionById";
 import RecordedCodingQuestion from "components/common/RecordedCodingQuestion";
 import { FaWikipediaW } from "react-icons/fa";
 import { useFirestore } from "reactfire";
@@ -118,27 +117,11 @@ export default function BooleanAndConditionalLogicPage() {
             </p>
           </LargeQuote>
 
-          <Row>
-            <Col>
-              <CodingQuestionById
-                qid="c6NgwO"
-                onSubmit={onSubmit}
-                wrapperClassName={styles.questionWrapper}
-              />
-            </Col>
-          </Row>
+          <RecordedCodingQuestion qid="c6NgwO" className={styles.block} />
 
           <RecordedCodingQuestion qid="CyHuSl" className={styles.block} />
 
-          <Row>
-            <Col>
-              <CodingQuestionById
-                qid="D0o7hU"
-                onSubmit={() => {}}
-                wrapperClassName={styles.questionWrapper}
-              />
-            </Col>
-          </Row>
+          <RecordedCodingQuestion qid="D0o7hU" className={styles.block} />
 
           <Row className={clsx(styles.boxItems)}>
             <Col xl={{ span: 8, offset: 2 }} lg={{ span: 10, offset: 1 }}>
@@ -182,15 +165,7 @@ export default function BooleanAndConditionalLogicPage() {
             </p>
           </LargeQuote>
 
-          <Row>
-            <Col>
-              <CodingQuestionById
-                qid="X0ekJl"
-                onSubmit={() => {}}
-                wrapperClassName={styles.questionWrapper}
-              />
-            </Col>
-          </Row>
+          <RecordedCodingQuestion qid="X0ekJl" className={styles.block} />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Boolean Expressions</h3>
@@ -256,25 +231,9 @@ export default function BooleanAndConditionalLogicPage() {
             className={styles.block}
           />
 
-          <Row>
-            <Col>
-              <CodingQuestionById
-                qid="vQ40L0"
-                onSubmit={() => {}}
-                wrapperClassName={styles.questionWrapper}
-              />
-            </Col>
-          </Row>
+          <RecordedCodingQuestion qid="vQ40L0" className={styles.block} />
 
-          <Row>
-            <Col>
-              <CodingQuestionById
-                qid="aPlxFK"
-                onSubmit={() => {}}
-                wrapperClassName={styles.questionWrapper}
-              />
-            </Col>
-          </Row>
+          <RecordedCodingQuestion qid="aPlxFK" className={styles.block} />
 
           <CenteredColumn className={styles.textBox}>
             <h3>If...Else</h3>
@@ -298,15 +257,7 @@ export default function BooleanAndConditionalLogicPage() {
             </p>
           </LargeQuote>
 
-          <Row>
-            <Col>
-              <CodingQuestionById
-                qid="06b664"
-                onSubmit={() => {}}
-                wrapperClassName={styles.questionWrapper}
-              />
-            </Col>
-          </Row>
+          <RecordedCodingQuestion qid="06b664" className={styles.block} />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Why are some lines indented?</h3>
@@ -327,15 +278,7 @@ export default function BooleanAndConditionalLogicPage() {
             </p>
           </CenteredColumn>
 
-          <Row>
-            <Col>
-              <CodingQuestionById
-                qid="qGB9SK"
-                onSubmit={() => {}}
-                wrapperClassName={styles.questionWrapper}
-              />
-            </Col>
-          </Row>
+          <RecordedCodingQuestion qid="qGB9SK" className={styles.block} />
 
           <Row className={clsx(styles.boxItems)}>
             <Col>
@@ -392,25 +335,9 @@ export default function BooleanAndConditionalLogicPage() {
             <p>Since I have over $50, how does Biaggis sound?</p>
           </LargeQuote>
 
-          <Row>
-            <Col>
-              <CodingQuestionById
-                qid="dSCsot"
-                onSubmit={() => {}}
-                wrapperClassName={styles.questionWrapper}
-              />
-            </Col>
-          </Row>
+          <RecordedCodingQuestion qid="dSCsot" className={styles.block} />
 
-          <Row>
-            <Col>
-              <CodingQuestionById
-                qid="XzNnHb"
-                onSubmit={() => {}}
-                wrapperClassName={styles.questionWrapper}
-              />
-            </Col>
-          </Row>
+          <RecordedCodingQuestion qid="XzNnHb" className={styles.block} />
         </Container>
       </main>
     </Layout>

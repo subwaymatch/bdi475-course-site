@@ -1,0 +1,50 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.recordedCodingQuestion {
+  .exerciseHeader {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    border-top: 1px solid black;
+    padding-top: 0.75rem;
+    padding-bottom: 2.5rem;
+    align-items: center;
+    position: relative;
+
+    .exerciseType {
+      display: block;
+      font-weight: 500;
+    }
+
+    .exerciseTitle {
+      color: $color-green;
+    }
+
+    .topControls {
+      position: absolute;
+      top: 1rem;
+      right: 0;
+      font-size: 1.1rem;
+
+      .iconButton {
+        padding: 0.5rem;
+
+        &.attemptsButton {
+          color: $color-gray;
+
+          &.hasSubmission {
+            color: black;
+
+            &.onlyFail {
+              color: $color-pink;
+            }
+
+            &.hasPass {
+              color: $color-green;
+            }
+          }
+        }
+      }
+    }
+  }
+}

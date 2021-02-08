@@ -7,16 +7,27 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  // Only accept POST requests
-  if (req.method !== "POST") return;
+  let userInfo: IVerifiedUserInfo = null;
 
+  // Only accept POST requests
+  if (req.method !== "POST") {
+    return;
+  }
+
+  // Get user information from Bearer token
+  try {
+    userInfo = await getUserInfoFromRequest(req);
+  } catch (err) {
+    return res.status(403).json({ message: err.message });
+  }
+
+  // Extract attempt information
   const {
     query: { qid },
     body: { isSuccess, userCode },
   } = req;
 
   try {
-    const userInfo: IVerifiedUserInfo = await getUserInfoFromRequest(req);
     const attemptInfo = {
       isSuccess,
       userCode,
@@ -33,6 +44,7 @@ export default async function handler(
       .collection("questionAttempts")
       .doc(qid as string);
 
+    // Run transactions
     await firebaseAdmin.firestore().runTransaction((transaction) => {
       return new Promise((resolve, reject) => {
         try {
@@ -63,9 +75,9 @@ export default async function handler(
       });
     });
 
-    return res.json({ status: "success" });
+    return res.json({ message: "success" });
   } catch (err) {
     console.error(err);
-    return res.status(500).end("Error recording attempt");
+    return res.status(500).json({ message: err.message });
   }
 }
