@@ -1,7 +1,10 @@
+import { useState, useEffect } from "react";
 import CodingQuestion from "components/coding-question/CodingQuestion";
 import firebase from "firebase/app";
 import { useFirestoreDocDataOnce, useFirestore } from "reactfire";
 import useFirebaseAuth from "hooks/useFirebaseAuth";
+import { Row, Col } from "react-bootstrap";
+import useCodingQuestion from "hooks/useCodingQuestion";
 
 interface IRecordedCodingQuestionProps {
   qid: string;
@@ -14,8 +17,11 @@ export default function RecordedCodingQuestion({
 }: IRecordedCodingQuestionProps) {
   const firestore = useFirestore();
   const questionDocRef = firestore.collection("codingQuestions").doc(qid);
-  const { status, data } = useFirestoreDocDataOnce(questionDocRef);
   const { user } = useFirebaseAuth();
+  const { status, data, error } = useCodingQuestion(qid);
+
+  console.log(`user in Recorded question`);
+  console.log(user);
 
   const onSubmit = async (isSuccess: boolean) => {
     if (user) {
@@ -41,17 +47,22 @@ export default function RecordedCodingQuestion({
     }
   };
 
-  return (status as any) === "loading" ? (
+  return (status as string) === "loading" ? (
     <>"Loading..."</>
   ) : (
-    <div className={className ? className : ""}>
-      <CodingQuestion
-        title={(data as any).title}
-        textMarkdown={(data as any).textMarkdown}
-        starterCode={(data as any).starterCode}
-        testCode={(data as any).testCode}
-        onSubmit={onSubmit}
-      />
-    </div>
+    <Row>
+      <Col>
+        {JSON.stringify(data)}
+        {/* <div className={className ? className : ""}>
+           <CodingQuestion
+             title={(data as any).title}
+             textMarkdown={(data as any).textMarkdown}
+             starterCode={(data as any).starterCode}
+             testCode={(data as any).testCode}
+             onSubmit={onSubmit}
+           />
+         </div> */}
+      </Col>
+    </Row>
   );
 }
