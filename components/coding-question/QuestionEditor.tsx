@@ -11,20 +11,10 @@ import ICodingQuestion from "typings/coding-question";
 import produce from "immer";
 import { Row, Col } from "react-bootstrap";
 import { motion } from "framer-motion";
-import clickableVariants from "animations/clickableVariants";
+import { smallClickableVariants } from "animations/clickableVariants";
 import { toast } from "react-toastify";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import _ from "lodash";
-
-// Tweaked clickable animation for small texts and buttons
-const buttonVariants = Object.assign({}, clickableVariants, {
-  hover: {
-    y: 1,
-  },
-  tap: {
-    scale: 0.96,
-  },
-});
 
 const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
@@ -79,7 +69,7 @@ export default function CodingQuestionEditor({
           <Col xs={4}>
             <Link href="/coding-question/list">
               <motion.a
-                variants={buttonVariants}
+                variants={smallClickableVariants}
                 whileHover="hover"
                 whileTap="tap"
                 className={styles.backButton}
@@ -103,7 +93,7 @@ export default function CodingQuestionEditor({
           <Col xs={4}>
             <div className={styles.controls}>
               <motion.div
-                variants={buttonVariants}
+                variants={smallClickableVariants}
                 whileHover="hover"
                 whileTap="tap"
                 className={clsx(styles.button, styles.save)}
@@ -123,7 +113,7 @@ export default function CodingQuestionEditor({
               </motion.div>
 
               <motion.div
-                variants={buttonVariants}
+                variants={smallClickableVariants}
                 whileHover="hover"
                 whileTap="tap"
                 className={clsx(styles.button, styles.clone)}
@@ -161,7 +151,7 @@ export default function CodingQuestionEditor({
                 }
               >
                 <motion.div
-                  variants={buttonVariants}
+                  variants={smallClickableVariants}
                   whileHover="hover"
                   whileTap="tap"
                   className={clsx(styles.button, styles.copyId)}
@@ -179,7 +169,7 @@ export default function CodingQuestionEditor({
                 onCopy={() => toast.info("Copied permalink to clipboard")}
               >
                 <motion.div
-                  variants={buttonVariants}
+                  variants={smallClickableVariants}
                   whileHover="hover"
                   whileTap="tap"
                   className={clsx(styles.button, styles.copyLink)}
@@ -193,7 +183,7 @@ export default function CodingQuestionEditor({
               </CopyToClipboard>
 
               <motion.div
-                variants={buttonVariants}
+                variants={smallClickableVariants}
                 whileHover="hover"
                 whileTap="tap"
                 className={clsx(styles.button, styles.delete)}

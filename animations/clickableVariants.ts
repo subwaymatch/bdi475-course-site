@@ -1,4 +1,4 @@
-const clickableVariants = {
+export const clickableVariants = {
   hover: {
     y: 2,
     transition: {
@@ -10,4 +10,12 @@ const clickableVariants = {
   },
 };
 
-export default clickableVariants;
+// Tweaked clickable animation for small texts and buttons
+export const smallClickableVariants = Object.assign({}, clickableVariants, {
+  hover: {
+    y: 1,
+  },
+  tap: {
+    scale: 0.96,
+  },
+});

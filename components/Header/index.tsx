@@ -6,7 +6,7 @@ import styles from "./Header.module.scss";
 import clsx from "clsx";
 import { useAuth } from "reactfire";
 import { motion, AnimatePresence } from "framer-motion";
-import clickableVariants from "animations/clickableVariants";
+import { clickableVariants } from "animations/clickableVariants";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 import { FiLogIn } from "react-icons/fi";

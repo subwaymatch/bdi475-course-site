@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { Row, Col } from "react-bootstrap";
 import { motion } from "framer-motion";
-import clickableVariants from "animations/clickableVariants";
+import { clickableVariants } from "animations/clickableVariants";
 import { toast } from "react-toastify";
 import { IoCopyOutline } from "react-icons/io5";
 import { RiEditBoxLine, RiDeleteBin6Line } from "react-icons/ri";
