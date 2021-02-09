@@ -19,7 +19,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "pages/coding-question/[qid].js"
+    "pages/coding-question/[qid].js",
+    "lib/pyodide/pyodide-bridge.js"
   ],
   "exclude": ["node_modules"]
 }
