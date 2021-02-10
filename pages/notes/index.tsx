@@ -66,6 +66,22 @@ export default function NotesPage() {
               </Link>
             </Col>
           </Row>
+
+          <Row>
+            <Col lg={4} md={6}>
+              <Link href="/notes/while-loops-and-collections">
+                <a className={styles.noteItem}>
+                  <Image
+                    src="/images/notes/1612973757417.png"
+                    width={900}
+                    height={600}
+                    alt=""
+                  />
+                  <h3>While Loops and Collections</h3>
+                </a>
+              </Link>
+            </Col>
+          </Row>
         </Container>
       </main>
     </Layout>
