@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import dynamic from "next/dynamic";
 import styles from "./CodingQuestion.module.scss";
 import { Col, Row } from "react-bootstrap";
@@ -38,15 +38,8 @@ export default function CodingQuestion({
   const [hasError, setHasError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const isScreenDesktop = useMediaQuery(desktop);
-  const pyodideWorkerRef = useRef<Worker>();
   const editorHeight = "400px";
-  const {
-    isExecutorLoaded,
-    isExecutorReady,
-    loadPackages,
-    runCode,
-    runAndCheckCode,
-  } = usePythonExecutor();
+  const { isExecutorReady, runCode, runAndCheckCode } = usePythonExecutor();
 
   const reset = async () => {
     setUserCode(starterCode);
@@ -186,9 +179,12 @@ export default function CodingQuestion({
                     content={
                       isExecutorReady ? (
                         <>
-                          <kbd>{isMacOs ? "Cmd" : "Ctrl"}</kbd>
+                          {/* <kbd>{isMacOs ? "Cmd" : "Ctrl"}</kbd>
                           <span className="color-blue"> + </span>
-                          <kbd>Enter ↵</kbd>
+                          <kbd>Enter ↵</kbd> */}
+                          Run your code{" "}
+                          <strong className="color-pink">without</strong>{" "}
+                          checking correctness
                         </>
                       ) : (
                         "Loading..."
@@ -222,11 +218,14 @@ export default function CodingQuestion({
                     content={
                       isExecutorReady ? (
                         <>
-                          <kbd>{isMacOs ? "Cmd" : "Ctrl"}</kbd>
+                          {/* <kbd>{isMacOs ? "Cmd" : "Ctrl"}</kbd>
                           <span className="color-blue"> + </span>
                           <kbd>Shift</kbd>
                           <span className="color-blue"> + </span>
-                          <kbd>Enter ↵</kbd>
+                          <kbd>Enter ↵</kbd> */}
+                          Run your code{" "}
+                          <strong className="color-purple">and</strong> check
+                          correctness
                         </>
                       ) : (
                         "Loading..."
@@ -243,7 +242,9 @@ export default function CodingQuestion({
                         [styles.disabled]: !isExecutorReady,
                       })}
                       onClick={(e) => {
-                        if (!isExecutorReady) return;
+                        if (!isExecutorReady) {
+                          return;
+                        }
                         e.preventDefault();
 
                         runAndCheckUserCode();

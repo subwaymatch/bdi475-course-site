@@ -1,12 +1,11 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useState } from "react";
-import styles from "./QuestionEditor.module.scss";
-import clsx from "clsx";
+import usePythonExecutor from "hooks/usePythonExecutor";
 import { MdDelete } from "react-icons/md";
-import { IoCopy, IoLink } from "react-icons/io5";
+import { IoCopy, IoLink, IoPlay } from "react-icons/io5";
 import { AiFillSave } from "react-icons/ai";
-import { VscRepoForked } from "react-icons/vsc";
+import { VscRepoForked, VscRunAll } from "react-icons/vsc";
 import ICodingQuestion from "typings/coding-question";
 import produce from "immer";
 import { Row, Col } from "react-bootstrap";
@@ -15,6 +14,9 @@ import { smallClickableVariants } from "animations/clickableVariants";
 import { toast } from "react-toastify";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import _ from "lodash";
+import styles from "./QuestionEditor.module.scss";
+import clsx from "clsx";
+import { ICodeExecutionResult } from "typings/pyodide";
 
 const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
@@ -42,13 +44,18 @@ export default function CodingQuestionEditor({
         textMarkdown: "",
         starterCode: "# YOUR CODE BEGINS\n\n\n\n# YOUR CODE ENDS\n\n",
         solutionCode: "# YOUR CODE BEGINS\n\n\n\n# YOUR CODE ENDS\n\n",
-        testCode: "import unittest\n\ntc=unittest.TestCase()\n",
+        testCode:
+          "import unittest\n\ntc=unittest.TestCase()\n\ntc.assertEqual(sys.stdout.getvalue(), ...)\n",
       },
       savedData
     )
   );
+  const { isExecutorReady, runCode, runAndCheckCode } = usePythonExecutor();
 
   const didChange = !_.isEqual(questionData, savedData);
+
+  console.log(`questionData`);
+  console.log(questionData);
 
   const update = (key, val) => {
     const updatedQuestionData = produce(questionData, (draft) => {
@@ -60,6 +67,56 @@ export default function CodingQuestionEditor({
 
   const save = async () => {
     await onSave(questionData);
+  };
+
+  const runStarterCode = async () => {
+    if (!isExecutorReady) {
+      return;
+    }
+
+    const result = await runCode(questionData.starterCode);
+    displayCodeExecutionResult(result);
+  };
+
+  const runAndCheckStarterCode = async () => {
+    if (!isExecutorReady) {
+      return;
+    }
+
+    const result = await runAndCheckCode(
+      questionData.starterCode,
+      questionData.testCode
+    );
+    displayCodeExecutionResult(result);
+  };
+
+  const runSolutionCode = async () => {
+    if (!isExecutorReady) {
+      return;
+    }
+
+    const result = await runCode(questionData.solutionCode);
+    displayCodeExecutionResult(result);
+  };
+
+  const runAndCheckSolutionCode = async () => {
+    if (!isExecutorReady) {
+      return;
+    }
+
+    const result = await runAndCheckCode(
+      questionData.solutionCode,
+      questionData.testCode
+    );
+    displayCodeExecutionResult(result);
+  };
+
+  const displayCodeExecutionResult = (result: ICodeExecutionResult) => {
+    if (result.hasError) {
+      window.alert(`Error\n\n${result.errorMessage}`);
+    } else {
+      window.alert(`Output\n\n${result.stdout}`);
+    }
   };
 
   return (
@@ -90,6 +147,7 @@ export default function CodingQuestionEditor({
               />
             </div>
           </Col>
+
           <Col xs={4}>
             <div className={styles.controls}>
               <motion.div
@@ -209,8 +267,10 @@ export default function CodingQuestionEditor({
       <div className={styles.questionAndTemplate}>
         <div className={clsx(styles.questionText, styles.editorBox)}>
           <div className={styles.boxHeader}>
-            <span className={styles.boxTitle}>Question Text</span>
-            <span className="accent purple" />
+            <div className={styles.boxTitle}>
+              <span className={styles.boxTitle}>Question Text</span>
+              <span className="accent purple" />
+            </div>
           </div>
 
           <div className={styles.codeEditorWrapper}>
@@ -224,15 +284,38 @@ export default function CodingQuestionEditor({
 
         <div className={clsx(styles.starter, styles.editorBox)}>
           <div className={styles.boxHeader}>
-            <span className={styles.boxTitle}>Starter</span>
-            <span className="accent blue" />
+            <div className={styles.boxTitle}>
+              <span>Starter</span>
+              <span className="accent blue" />
+            </div>
+
+            <div className={styles.boxControls}>
+              <span
+                className={clsx(styles.iconButton, {
+                  [styles.disabled]: !isExecutorReady,
+                })}
+                onClick={runStarterCode}
+              >
+                <IoPlay className={styles.reactIcon} />
+              </span>
+
+              <span
+                className={clsx(styles.iconButton, {
+                  [styles.disabled]: !isExecutorReady,
+                })}
+                onClick={runAndCheckStarterCode}
+              >
+                <VscRunAll className={styles.reactIcon} />
+              </span>
+            </div>
           </div>
 
           <div className={styles.codeEditorWrapper}>
             <CodeEditor
               editorValue={questionData.starterCode}
               onChange={(v) => update("starterCode", v)}
-              onRun={() => {}}
+              onRun={runStarterCode}
+              onCheck={runAndCheckStarterCode}
               language="python"
               height="calc(50vh - 55px)"
             />
@@ -243,15 +326,38 @@ export default function CodingQuestionEditor({
       <div className={styles.solutionAndCheck}>
         <div className={clsx(styles.solution, styles.editorBox)}>
           <div className={styles.boxHeader}>
-            <span className={styles.boxTitle}>Solution</span>
-            <span className="accent green" />
+            <div className={styles.boxTitle}>
+              <span>Solution</span>
+              <span className="accent green" />
+            </div>
+
+            <div className={styles.boxControls}>
+              <span
+                className={clsx(styles.iconButton, {
+                  [styles.disabled]: !isExecutorReady,
+                })}
+                onClick={runSolutionCode}
+              >
+                <IoPlay className={styles.reactIcon} />
+              </span>
+
+              <span
+                className={clsx(styles.iconButton, {
+                  [styles.disabled]: !isExecutorReady,
+                })}
+                onClick={runAndCheckSolutionCode}
+              >
+                <VscRunAll className={styles.reactIcon} />
+              </span>
+            </div>
           </div>
 
           <div className={styles.codeEditorWrapper}>
             <CodeEditor
               editorValue={questionData.solutionCode}
               onChange={(v) => update("solutionCode", v)}
-              onRun={() => {}}
+              onRun={runSolutionCode}
+              onCheck={runAndCheckSolutionCode}
               language="python"
               height="calc(50vh - 55px)"
             />
@@ -260,8 +366,10 @@ export default function CodingQuestionEditor({
 
         <div className={clsx(styles.testCases, styles.editorBox)}>
           <div className={styles.boxHeader}>
-            <span className={styles.boxTitle}>Test Cases</span>
-            <span className="accent pink" />
+            <div className={styles.boxTitle}>
+              <span>Test Cases</span>
+              <span className="accent pink" />
+            </div>
           </div>
 
           <div className={styles.codeEditorWrapper}>

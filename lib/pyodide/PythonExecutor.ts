@@ -1,3 +1,4 @@
+import _ from "lodash";
 import {
   ICodeExecutionResult,
   PyodideRequest,
@@ -31,13 +32,13 @@ class PythonExecutor {
     });
   }
 
-  async loadPackages(packages: Array<string> = []) {
+  async loadPackages(packages: Array<string> = []): Promise<void> {
     return new Promise((resolve, reject) => {
       this.pyodideWorker.onerror = reject;
 
       this.pyodideWorker.onmessage = (e) => {
         if (e.data.type === PyodideResponse.LoadPackagesComplete) {
-          resolve(e.data);
+          resolve();
         }
       };
 
@@ -54,7 +55,7 @@ class PythonExecutor {
 
       this.pyodideWorker.onmessage = (e) => {
         if (e.data.type === PyodideResponse.RunCodeComplete) {
-          resolve(e.data);
+          resolve(_.omit(e.data, "type"));
         }
       };
 

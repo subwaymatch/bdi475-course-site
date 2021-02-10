@@ -2,13 +2,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import usePythonExecutor from "hooks/usePythonExecutor";
 
 export default function PyodideTestPage() {
-  const {
-    isExecutorLoaded,
-    isExecutorReady,
-    loadPackages,
-    runCode,
-    runAndCheckCode,
-  } = usePythonExecutor();
+  const { isExecutorReady, loadPackages, runCode } = usePythonExecutor();
 
   const run = async (e) => {
     e.preventDefault();
@@ -26,13 +20,7 @@ export default function PyodideTestPage() {
   return (
     <Container>
       <Row>
-        <Col>
-          {isExecutorLoaded && isExecutorReady ? (
-            <a onClick={run}>Run</a>
-          ) : (
-            "Loading..."
-          )}
-        </Col>
+        <Col>{isExecutorReady ? <a onClick={run}>Run</a> : "Loading..."}</Col>
       </Row>
     </Container>
   );
