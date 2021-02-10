@@ -1,6 +1,4 @@
-import { useEffect, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import PythonExecutor from "lib/pyodide/PythonExecutor";
 import usePythonExecutor from "hooks/usePythonExecutor";
 
 export default function PyodideTestPage() {

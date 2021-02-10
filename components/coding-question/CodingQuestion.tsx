@@ -12,6 +12,7 @@ import Tippy from "@tippyjs/react";
 import { toast } from "react-toastify";
 import marked from "marked";
 import { isMacOs } from "react-device-detect";
+import usePythonExecutor from "hooks/usePythonExecutor";
 
 const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
@@ -38,54 +39,14 @@ export default function CodingQuestion({
   const [errorMessage, setErrorMessage] = useState("");
   const isScreenDesktop = useMediaQuery(desktop);
   const pyodideWorkerRef = useRef<Worker>();
-  const [isPyodideReady, setIsPyodideReady] = useState(false);
   const editorHeight = "400px";
-
-  useEffect(() => {
-    pyodideWorkerRef.current = new Worker("lib/pyodide/web-worker", {
-      type: "module",
-    });
-
-    pyodideWorkerRef.current!.onmessage = (e) => {
-      if (e.data.type === "INITIALIZE_COMPLETE") {
-        setIsPyodideReady(true);
-      } else if (e.data.type === "RUN_CODE_COMPLETE") {
-        setOutput(e.data.stdout);
-        setHasError(e.data.hasError);
-        setErrorMessage(e.data.errorMessage);
-
-        if (e.data.hasError) {
-          toast.error("See the error message below.");
-        } else {
-          toast("Run complete.");
-
-          if (!e.data.stdout) {
-            toast.warning("Your code did not print anything.");
-          }
-        }
-      } else if (e.data.type === "RUN_AND_CHECK_CODE_COMPLETE") {
-        setOutput(e.data.stdout);
-        setHasError(e.data.hasError);
-        setErrorMessage(e.data.errorMessage);
-
-        if (e.data.hasError) {
-          toast.error("See the error message below.");
-          onSubmit(false, userCode);
-        } else {
-          toast.success("Nice!");
-          onSubmit(true, userCode);
-        }
-      }
-    };
-
-    pyodideWorkerRef.current?.postMessage({
-      type: "INITIALIZE",
-    });
-
-    return () => {
-      pyodideWorkerRef.current?.terminate();
-    };
-  }, []);
+  const {
+    isExecutorLoaded,
+    isExecutorReady,
+    loadPackages,
+    runCode,
+    runAndCheckCode,
+  } = usePythonExecutor();
 
   const reset = async () => {
     setUserCode(starterCode);
@@ -95,19 +56,38 @@ export default function CodingQuestion({
     toast("Reset Complete!");
   };
 
-  const runCode = () => {
-    pyodideWorkerRef.current?.postMessage({
-      type: "RUN_CODE",
-      userCode,
-    });
+  const runUserCode = async () => {
+    const result = await runCode(userCode);
+
+    setOutput(result.stdout);
+    setHasError(result.hasError);
+    setErrorMessage(result.errorMessage);
+
+    if (result.hasError) {
+      toast.error("See the error message below.");
+    } else {
+      toast("Run complete.");
+
+      if (!result.stdout) {
+        toast.warning("Your code did not print anything.");
+      }
+    }
   };
 
-  const runAndCheckCode = () => {
-    pyodideWorkerRef.current?.postMessage({
-      type: "RUN_AND_CHECK_CODE",
-      userCode,
-      testCode,
-    });
+  const runAndCheckUserCode = async () => {
+    const result = await runAndCheckCode(userCode, testCode);
+
+    setOutput(result.stdout);
+    setHasError(result.hasError);
+    setErrorMessage(result.errorMessage);
+
+    if (result.hasError) {
+      toast.error("See the error message below.");
+      onSubmit(false, userCode);
+    } else {
+      toast.success("Nice!");
+      onSubmit(true, userCode);
+    }
   };
 
   return (
@@ -134,8 +114,8 @@ export default function CodingQuestion({
             <CodeEditor
               editorValue={userCode}
               onChange={setUserCode}
-              onRun={runCode}
-              onCheck={runAndCheckCode}
+              onRun={runUserCode}
+              onCheck={runAndCheckUserCode}
               language="python"
               height={editorHeight}
             />
@@ -204,7 +184,7 @@ export default function CodingQuestion({
                 <div className={styles.rightControls}>
                   <Tippy
                     content={
-                      isPyodideReady ? (
+                      isExecutorReady ? (
                         <>
                           <kbd>{isMacOs ? "Cmd" : "Ctrl"}</kbd>
                           <span className="color-blue"> + </span>
@@ -222,15 +202,15 @@ export default function CodingQuestion({
                   >
                     <div
                       className={clsx(styles.button, styles.runButton, {
-                        [styles.disabled]: !isPyodideReady,
+                        [styles.disabled]: !isExecutorReady,
                       })}
                       onClick={async (e) => {
-                        if (!isPyodideReady) {
+                        if (!isExecutorReady) {
                           return;
                         }
 
                         e.preventDefault();
-                        runCode();
+                        runUserCode();
                       }}
                     >
                       <IoPlay className={styles.reactIcon} />
@@ -240,7 +220,7 @@ export default function CodingQuestion({
 
                   <Tippy
                     content={
-                      isPyodideReady ? (
+                      isExecutorReady ? (
                         <>
                           <kbd>{isMacOs ? "Cmd" : "Ctrl"}</kbd>
                           <span className="color-blue"> + </span>
@@ -260,15 +240,13 @@ export default function CodingQuestion({
                   >
                     <div
                       className={clsx(styles.button, styles.checkButton, {
-                        [styles.disabled]: !isPyodideReady,
+                        [styles.disabled]: !isExecutorReady,
                       })}
                       onClick={(e) => {
-                        if (!isPyodideReady) return;
-
+                        if (!isExecutorReady) return;
                         e.preventDefault();
-                        console.log("Button Clicked");
 
-                        runAndCheckCode();
+                        runAndCheckUserCode();
                       }}
                     >
                       <VscRunAll className={styles.reactIcon} />
