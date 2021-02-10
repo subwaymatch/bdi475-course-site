@@ -84,8 +84,6 @@ export default function ListsAndLoopsPage() {
               first non-primitive data type we&#39;ve seen. Square brackets (
               <code>[]</code>) are used to denote a list type.
             </p>
-
-            <p>Let's first try creating an empty list.</p>
           </CenteredColumn>
 
           <RecordedCodingQuestion qid="AMl9MN" className={styles.block} />
@@ -96,12 +94,11 @@ export default function ListsAndLoopsPage() {
             <h3>Accessing list elements by index</h3>
             <span className="label blue">Zero-based Index</span>
             <p>
-              You may be asking, what does that <code>offers[0]</code> do? The
-              square brackets used in <code>offers[0]</code> denote the{" "}
-              <em>index</em> of the element you're trying to retrieve.{" "}
-              <code>offers[0]</code> retrieves the first value in the array,
-              which is <code>55000</code> in our code. But why does the index
-              start at zero, not one?
+              What does that <code>offers[0]</code> do? The square brackets used
+              in <code>offers[0]</code> denote the <em>index</em> of the element
+              you're trying to retrieve. <code>offers[0]</code> retrieves the
+              first value in the array, which is <code>55000</code> in our code.
+              But why does the index start at zero, not one?
             </p>
             <p>
               In many programming languages including Python, you start counting

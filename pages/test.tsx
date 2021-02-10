@@ -1,17 +1,39 @@
-import { asyncRun } from "lib/pyodide/pyodide-bridge";
+import { useEffect, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import PythonExecutor from "lib/pyodide/PythonExecutor";
+import usePythonExecutor from "hooks/usePythonExecutor";
 
 export default function PyodideTestPage() {
+  const {
+    isExecutorLoaded,
+    isExecutorReady,
+    loadPackages,
+    runCode,
+    runAndCheckCode,
+  } = usePythonExecutor();
+
   const run = async (e) => {
     e.preventDefault();
-    await asyncRun();
+
+    await loadPackages("numpy");
+
+    const result = await runCode(
+      "import numpy as np\nprint(np.mean([10, 20, 30]))\n"
+    );
+
+    console.log("Run");
+    console.log(result);
   };
 
   return (
     <Container>
       <Row>
         <Col>
-          <a onClick={run}>Run</a>
+          {isExecutorLoaded && isExecutorReady ? (
+            <a onClick={run}>Run</a>
+          ) : (
+            "Loading..."
+          )}
         </Col>
       </Row>
     </Container>

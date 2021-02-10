@@ -1,0 +1,73 @@
+import {
+  ICodeExecutionResult,
+  PyodideRequest,
+  PyodideResponse,
+} from "typings/pyodide";
+
+class PythonExecutor {
+  readonly pyodideWorker: Worker;
+
+  private constructor() {
+    this.pyodideWorker = new Worker("lib/pyodide/worker.js", {
+      type: "module",
+    });
+  }
+
+  static async create() {
+    const instance = new PythonExecutor();
+
+    return new Promise<PythonExecutor>((resolve, reject) => {
+      instance.pyodideWorker.onerror = reject;
+
+      instance.pyodideWorker.onmessage = (e) => {
+        if (e.data.type === PyodideResponse.InitializeComplete) {
+          resolve(instance);
+        }
+      };
+
+      instance.pyodideWorker.postMessage({
+        type: PyodideRequest.Initialize,
+      });
+    });
+  }
+
+  async loadPackages(packages: Array<string> = []) {
+    return new Promise((resolve, reject) => {
+      this.pyodideWorker.onerror = reject;
+
+      this.pyodideWorker.onmessage = (e) => {
+        if (e.data.type === PyodideResponse.LoadPackagesComplete) {
+          resolve(e.data);
+        }
+      };
+
+      this.pyodideWorker.postMessage({
+        type: PyodideRequest.LoadPackages,
+        packages,
+      });
+    });
+  }
+
+  async run(code): Promise<ICodeExecutionResult> {
+    return new Promise((resolve, reject) => {
+      this.pyodideWorker.onerror = reject;
+
+      this.pyodideWorker.onmessage = (e) => {
+        if (e.data.type === PyodideResponse.RunCodeComplete) {
+          resolve(e.data);
+        }
+      };
+
+      this.pyodideWorker.postMessage({
+        type: PyodideRequest.RunCode,
+        code,
+      });
+    });
+  }
+
+  destroy() {
+    this.pyodideWorker.terminate();
+  }
+}
+
+export default PythonExecutor;
