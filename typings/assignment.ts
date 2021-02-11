@@ -1,5 +1,5 @@
 export enum AssignmentStatus {
-  Unavailable = "UNAVAILABLE",
-  Available = "AVAILABLE",
-  Complete = "COMPLETE",
+  Unavailable = "Unavailable",
+  Available = "Available",
+  Complete = "Complete",
 }

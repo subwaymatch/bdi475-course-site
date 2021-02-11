@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Row, Col } from "react-bootstrap";
 import styles from "./AssignmentItem.module.scss";
 import { AssignmentStatus } from "typings/assignment";
@@ -63,13 +64,16 @@ export default function AssignmentItem({
         </Col>
 
         <Col md={{ span: 4, order: 1 }}>
-          <span
-            className={clsx(styles.name, {
-              [colorTheme.toLowerCase()]: status === AssignmentStatus.Available,
-            })}
-          >
-            {name}
-          </span>
+          <Link href={link}>
+            <a
+              className={clsx(styles.name, {
+                [colorTheme.toLowerCase()]:
+                  status === AssignmentStatus.Available,
+              })}
+            >
+              {name}
+            </a>
+          </Link>
         </Col>
 
         <Col md={{ span: 2, order: 3 }} sm={{ span: 12, order: 3 }}>
