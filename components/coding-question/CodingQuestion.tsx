@@ -164,7 +164,6 @@ export default function CodingQuestion({
                     className={clsx(styles.button, styles.solution)}
                     onClick={(e) => {
                       e.preventDefault();
-                      console.log("Button Clicked");
                     }}
                   >
                     <VscSymbolMethod className={styles.reactIcon} />

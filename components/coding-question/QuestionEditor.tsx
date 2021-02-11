@@ -54,9 +54,6 @@ export default function CodingQuestionEditor({
 
   const didChange = !_.isEqual(questionData, savedData);
 
-  console.log(`questionData`);
-  console.log(questionData);
-
   const update = (key, val) => {
     const updatedQuestionData = produce(questionData, (draft) => {
       draft[key] = val;
