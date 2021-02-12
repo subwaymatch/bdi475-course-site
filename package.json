@@ -34,6 +34,7 @@
     "react-tooltip": "^4.2.13",
     "reactfire": "^3.0.0-rc.0",
     "sass": "^1.32.4",
+    "victory": "^35.4.8",
     "worker-plugin": "^5.0.0"
   },
   "devDependencies": {

@@ -4,14 +4,11 @@ import { Container, Row, Col } from "react-bootstrap";
 import { AuthCheck } from "reactfire";
 import Login from "components/Login";
 import styles from "styles/pages/notes/common.module.scss";
-import clsx from "clsx";
 import ListWithTitle from "components/common/ListWithTitle";
 import CenteredColumn from "components/common/CenteredColumn";
 import RecordedCodingQuestion from "components/common/RecordedCodingQuestion";
-import { FaWikipediaW } from "react-icons/fa";
-import LargeQuote from "components/common/LargeQuote";
 
-export default function WhileLoopsAndCollectionsPage() {
+export default function QuizPage() {
   return (
     <Layout>
       <AuthCheck fallback={<Login />}>
