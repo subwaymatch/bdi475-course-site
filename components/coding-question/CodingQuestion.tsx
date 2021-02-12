@@ -1,18 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import dynamic from "next/dynamic";
-import styles from "./CodingQuestion.module.scss";
+import _ from 'lodash';
+import { desktop } from "constants/media-query-strings";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import usePythonExecutor from "hooks/usePythonExecutor";
+import useLocalStorage from "hooks/useLocalStorage";
 import { Col, Row } from "react-bootstrap";
 import { BiReset } from "react-icons/bi";
 import { VscSymbolMethod, VscRunAll } from "react-icons/vsc";
 import { IoPlay } from "react-icons/io5";
-import clsx from "clsx";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-import { desktop } from "constants/media-query-strings";
 import Tippy from "@tippyjs/react";
 import { toast } from "react-toastify";
 import marked from "marked";
-import { isMacOs } from "react-device-detect";
-import usePythonExecutor from "hooks/usePythonExecutor";
+// import { isMacOs } from "react-device-detect";
+import styles from "./CodingQuestion.module.scss";
+import clsx from "clsx";
+
 
 const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
@@ -23,6 +26,7 @@ interface ICodingQuestionProps {
   starterCode?: string;
   testCode: string;
   solutionCode?: string;
+  localStorageKey?: string;
   onSubmit: (boolean, string?) => void;
 }
 
@@ -31,6 +35,7 @@ export default function CodingQuestion({
   starterCode,
   testCode,
   solutionCode,
+  localStorageKey,
   onSubmit,
 }: ICodingQuestionProps) {
   const [userCode, setUserCode] = useState(starterCode);
@@ -39,6 +44,18 @@ export default function CodingQuestion({
   const [errorMessage, setErrorMessage] = useState("");
   const isScreenDesktop = useMediaQuery(desktop);
   const editorHeight = "400px";
+  const [savedUserCode, setSavedUserCode] = useLocalStorage<string>(
+    localStorageKey,
+    starterCode
+  );
+
+  useEffect(() => {
+    // Load user code from LocalStorage if key exists
+    if (savedUserCode) {
+      setUserCode(savedUserCode);
+    }
+  }, []);
+
   const { isExecutorReady, runCode, runAndCheckCode } = usePythonExecutor();
 
   const reset = async () => {
@@ -83,6 +100,18 @@ export default function CodingQuestion({
     }
   };
 
+  const saveUserCodeToLocalStorage = useCallback(
+    _.debounce((codeToSave) => {
+      setSavedUserCode(codeToSave);
+    }, 1000),
+    []
+  );
+
+  const onChange = (newUserCode) => {
+    setUserCode(newUserCode);
+    saveUserCodeToLocalStorage(newUserCode);
+  }
+
   return (
     <div className={styles.codingQuestionWrapper}>
       <Row className="no-gutters">
@@ -106,7 +135,7 @@ export default function CodingQuestion({
           <div className={styles.codeEditorWrapper}>
             <CodeEditor
               editorValue={userCode}
-              onChange={setUserCode}
+              onChange={onChange}
               onRun={runUserCode}
               onCheck={runAndCheckUserCode}
               language="python"

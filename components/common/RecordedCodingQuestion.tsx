@@ -158,6 +158,7 @@ export default function RecordedCodingQuestion({
             textMarkdown={(data as any).textMarkdown}
             starterCode={(data as any).starterCode}
             testCode={(data as any).testCode}
+            localStorageKey={`coding-question-${qid}`}
             onSubmit={recordSubmission}
           />
         </div>
