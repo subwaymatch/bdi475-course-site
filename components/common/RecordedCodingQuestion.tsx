@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import CodingQuestion from "components/coding-question/CodingQuestion";
 import { ICodingQuestionAttempt } from "typings/coding-question";
@@ -6,7 +6,7 @@ import { useFirestore } from "reactfire";
 import useFirebaseAuth from "hooks/useFirebaseAuth";
 import { Row, Col } from "react-bootstrap";
 import { BsCheckCircle } from "react-icons/bs";
-import { RiEditBoxLine } from "react-icons/ri";
+import { RiHistoryLine, RiEditBoxLine } from "react-icons/ri";
 import _ from "lodash";
 import useCodingQuestion from "hooks/useCodingQuestion";
 import Tippy from "@tippyjs/react";
@@ -26,6 +26,8 @@ export default function RecordedCodingQuestion({
   const firestore = useFirestore();
   const { status, data, error } = useCodingQuestion(qid);
   const [attempts, setAttempts] = useState<ICodingQuestionAttempt[]>([]);
+  const editLinkRef = useRef<HTMLAnchorElement>();
+  const historyLinkRef = useRef<HTMLAnchorElement>();
 
   useEffect(() => {
     if (!user) {
@@ -119,12 +121,47 @@ export default function RecordedCodingQuestion({
 
                 <div className={styles.topControls}>
                   {user && claims.admin && (
+                    <>
                     <Link href={`/coding-question/edit/${qid}`}>
-                      <a className={clsx(styles.iconButton, styles.editButton)}>
+                      <a className={clsx(styles.iconButton, styles.editButton)} ref={editLinkRef}>
                         <RiEditBoxLine className={styles.reactIcon} />
                       </a>
                     </Link>
+
+                    <Tippy
+                    content="Edit"
+                    className="tippy"
+                    placement="bottom"
+                    offset={[0, -2]}
+                    theme="light"
+                    reference={editLinkRef} />
+                    </>
                   )}
+
+                  {user && (
+                    <>
+                  
+                    <Link href={`/coding-question/history/${qid}`}>
+                    <a
+                      className={clsx(
+                        styles.iconButton,
+                        styles.historyButton,
+                        {
+                          [styles.disabled]: attempts.length == 0
+                        }
+                      )} ref={historyLinkRef}
+                    >
+                      <RiHistoryLine className={styles.reactIcon} />
+                    </a></Link>
+                    <Tippy
+                    content={attempts.length > 0 ? "View submission history" : "No history found"}
+                    className="tippy"
+                    placement="bottom"
+                    offset={[0, -2]}
+                    theme="light"
+                    reference={historyLinkRef}
+                   />
+                  </>)}
 
                   <Tippy
                     content={getAttemptMessage()}

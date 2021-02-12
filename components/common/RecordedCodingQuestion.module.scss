@@ -22,12 +22,12 @@
 
     .topControls {
       position: absolute;
-      top: 1rem;
-      right: 0;
-      font-size: 1.1rem;
+      top: 1.2rem;
+      right: 0.5rem;
+      font-size: 1.25rem;
 
       .iconButton {
-        padding: 0.5rem;
+        padding: 0.4rem;
 
         &.attemptsButton {
           color: $color-gray;
