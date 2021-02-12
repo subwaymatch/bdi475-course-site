@@ -51,7 +51,7 @@ export default function CodingQuestion({
 
   useEffect(() => {
     // Load user code from LocalStorage if key exists
-    if (savedUserCode) {
+    if (localStorageKey && savedUserCode) {
       setUserCode(savedUserCode);
     }
   }, []);
@@ -109,7 +109,10 @@ export default function CodingQuestion({
 
   const onChange = (newUserCode) => {
     setUserCode(newUserCode);
-    saveUserCodeToLocalStorage(newUserCode);
+
+    if (localStorageKey) {
+      saveUserCodeToLocalStorage(newUserCode);
+    }
   }
 
   return (
