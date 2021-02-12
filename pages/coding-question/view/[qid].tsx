@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 
 import RecordedCodingQuestion from "components/common/RecordedCodingQuestion";
 import Layout from "components/Layout";
-import { Col, Container, Row } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
 export default function ViewCodingQuestionPage() {
   const router = useRouter();

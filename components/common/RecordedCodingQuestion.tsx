@@ -122,46 +122,56 @@ export default function RecordedCodingQuestion({
                 <div className={styles.topControls}>
                   {user && claims.admin && (
                     <>
-                    <Link href={`/coding-question/edit/${qid}`}>
-                      <a className={clsx(styles.iconButton, styles.editButton)} ref={editLinkRef}>
-                        <RiEditBoxLine className={styles.reactIcon} />
-                      </a>
-                    </Link>
+                      <Link href={`/coding-question/edit/${qid}`}>
+                        <a
+                          className={clsx(styles.iconButton, styles.editButton)}
+                          ref={editLinkRef}
+                        >
+                          <RiEditBoxLine className={styles.reactIcon} />
+                        </a>
+                      </Link>
 
-                    <Tippy
-                    content="Edit"
-                    className="tippy"
-                    placement="bottom"
-                    offset={[0, -2]}
-                    theme="light"
-                    reference={editLinkRef} />
+                      <Tippy
+                        content="Edit"
+                        className="tippy"
+                        placement="bottom"
+                        offset={[0, -2]}
+                        theme="light"
+                        reference={editLinkRef}
+                      />
                     </>
                   )}
 
                   {user && (
                     <>
-                  
-                    <Link href={`/coding-question/history/${qid}`}>
-                    <a
-                      className={clsx(
-                        styles.iconButton,
-                        styles.historyButton,
-                        {
-                          [styles.disabled]: attempts.length == 0
+                      <Link href={`/coding-question/history/${qid}`}>
+                        <a
+                          className={clsx(
+                            styles.iconButton,
+                            styles.historyButton,
+                            {
+                              [styles.disabled]: attempts.length == 0,
+                            }
+                          )}
+                          ref={historyLinkRef}
+                        >
+                          <RiHistoryLine className={styles.reactIcon} />
+                        </a>
+                      </Link>
+                      <Tippy
+                        content={
+                          attempts.length > 0
+                            ? "View submission history"
+                            : "No history found"
                         }
-                      )} ref={historyLinkRef}
-                    >
-                      <RiHistoryLine className={styles.reactIcon} />
-                    </a></Link>
-                    <Tippy
-                    content={attempts.length > 0 ? "View submission history" : "No history found"}
-                    className="tippy"
-                    placement="bottom"
-                    offset={[0, -2]}
-                    theme="light"
-                    reference={historyLinkRef}
-                   />
-                  </>)}
+                        className="tippy"
+                        placement="bottom"
+                        offset={[0, -2]}
+                        theme="light"
+                        reference={historyLinkRef}
+                      />
+                    </>
+                  )}
 
                   <Tippy
                     content={getAttemptMessage()}

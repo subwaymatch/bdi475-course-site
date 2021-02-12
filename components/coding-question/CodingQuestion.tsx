@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import dynamic from "next/dynamic";
-import _ from 'lodash';
+import _ from "lodash";
 import { desktop } from "constants/media-query-strings";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import usePythonExecutor from "hooks/usePythonExecutor";
@@ -15,7 +15,6 @@ import marked from "marked";
 // import { isMacOs } from "react-device-detect";
 import styles from "./CodingQuestion.module.scss";
 import clsx from "clsx";
-
 
 const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
@@ -113,7 +112,7 @@ export default function CodingQuestion({
     if (localStorageKey) {
       saveUserCodeToLocalStorage(newUserCode);
     }
-  }
+  };
 
   return (
     <div className={styles.codingQuestionWrapper}>
