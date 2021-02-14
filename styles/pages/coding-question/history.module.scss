@@ -59,8 +59,10 @@
             color: $color-gray;
             display: inline-block;
             cursor: pointer;
-            margin-left: 0.25rem;
+            padding: 0.25rem;
+            margin-left: 0.5rem;
             font-size: 0.85em;
+            line-height: 1;
 
             &:hover {
               color: $color-blue;
