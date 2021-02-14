@@ -2,21 +2,13 @@ import useFirebaseAuth from "hooks/useFirebaseAuth";
 import { useEffect, useState } from "react";
 import { ICodingQuestionAttempt } from "typings/coding-question";
 import { useFirestore } from "reactfire";
+import { firebaseClient } from "firebase/firebaseClient";
 import _ from "lodash";
 
 export default function useCodingQuestionAttempts(qid) {
   const { user } = useFirebaseAuth();
   const firestore = useFirestore();
   const [attempts, setAttempts] = useState<ICodingQuestionAttempt[]>([]);
-
-  useEffect(() => {
-    if (!user || !qid) {
-      setAttempts([]);
-      return;
-    }
-
-    updateAttempts();
-  }, [user, qid]);
 
   const updateAttempts = () => {
     if (!user || !qid) {
@@ -31,7 +23,15 @@ export default function useCodingQuestionAttempts(qid) {
         const docData = doc.data();
 
         if (_.has(docData, qid)) {
-          const questionAttempts = docData[qid];
+          let questionAttempts = docData[qid].map((o) => {
+            o.submittedAt = o.submittedAt
+              ? o.submittedAt
+              : firebaseClient.firestore.Timestamp.now();
+
+            return o;
+          });
+
+          questionAttempts = [...questionAttempts].sort().reverse();
 
           setAttempts(questionAttempts);
         } else {
@@ -39,6 +39,15 @@ export default function useCodingQuestionAttempts(qid) {
         }
       });
   };
+
+  useEffect(() => {
+    if (!user || !qid) {
+      setAttempts([]);
+      return;
+    }
+
+    updateAttempts();
+  }, [user, qid]);
 
   return { attempts, updateAttempts };
 }
