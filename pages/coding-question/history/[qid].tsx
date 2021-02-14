@@ -15,12 +15,8 @@ import { HiOutlineBadgeCheck, HiOutlineBan } from "react-icons/hi";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import Tippy from "@tippyjs/react";
 import dayjs from "dayjs";
-import utc from "dayjs/plugin/utc"; // dependent on utc plugin
-import timezone from "dayjs/plugin/timezone";
 import relativeTime from "dayjs/plugin/relativeTime";
 
-dayjs.extend(utc);
-dayjs.extend(timezone);
 dayjs.extend(relativeTime);
 
 export default function CodingQuestionUserHistoryPage() {
