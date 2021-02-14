@@ -1,22 +1,26 @@
-import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { AuthCheck } from "reactfire";
 import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import { toast } from "react-toastify";
 import _ from "lodash";
 import Login from "components/Login";
 import Highlighter from "components/code-blocks/Highlighter";
 import styles from "styles/pages/coding-question/history.module.scss";
 import clsx from "clsx";
-import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
 import useCodingQuestionAttempts from "hooks/useCodingQuestionAttempts";
-import { BsCheck } from "react-icons/bs";
-import { BsXCircle, BsXOctagon, BsXSquare } from "react-icons/bs";
+import { IoCopyOutline } from "react-icons/io5";
 import { HiOutlineBadgeCheck, HiOutlineBan } from "react-icons/hi";
 import { IoIosCloseCircleOutline } from "react-icons/io";
-import { GrFormClose, GrStatusCritical } from "react-icons/gr";
+import Tippy from "@tippyjs/react";
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc"; // dependent on utc plugin
+import timezone from "dayjs/plugin/timezone";
+import relativeTime from "dayjs/plugin/relativeTime";
 
+dayjs.extend(utc);
+dayjs.extend(timezone);
 dayjs.extend(relativeTime);
 
 export default function CodingQuestionUserHistoryPage() {
@@ -46,7 +50,14 @@ export default function CodingQuestionUserHistoryPage() {
                       <Row>
                         <Col md={2} xs={6}>
                           <div className={styles.result}>
-                            <span className="label gray">Result</span>
+                            <span
+                              className={clsx(
+                                "label",
+                                o.isSuccess ? "green" : "pink"
+                              )}
+                            >
+                              Result
+                            </span>
 
                             <div className={styles.text}>
                               {o.isSuccess ? (
@@ -77,10 +88,21 @@ export default function CodingQuestionUserHistoryPage() {
                         <Col md={2} xs={6}>
                           {o.submittedAt && (
                             <div className={styles.timestamp}>
-                              <span className="label gray">Submitted</span>
+                              <span className="label yellow">Submitted</span>
 
                               <div className={styles.text}>
-                                {dayjs(o.submittedAt.toDate()).fromNow()}
+                                <Tippy
+                                  content={dayjs(o.submittedAt.toDate()).format(
+                                    "YYYY-MM-DD HH:hh:ss A"
+                                  )}
+                                  className="tippy"
+                                  placement="bottom"
+                                  theme="light"
+                                >
+                                  <span>
+                                    {dayjs(o.submittedAt.toDate()).fromNow()}
+                                  </span>
+                                </Tippy>
                               </div>
                             </div>
                           )}
@@ -88,7 +110,27 @@ export default function CodingQuestionUserHistoryPage() {
 
                         <Col md={8}>
                           <div className={styles.codeWrapper}>
-                            <span className="label blue">Code</span>
+                            <div className={styles.labelWrapper}>
+                              <span className="label blue">Code</span>
+
+                              <CopyToClipboard
+                                text={o.userCode}
+                                onCopy={() =>
+                                  toast.info(<div>Copied to clipboard</div>)
+                                }
+                              >
+                                <span className={styles.iconButton}>
+                                  <IoCopyOutline className={styles.reactIcon} />
+                                </span>
+                              </CopyToClipboard>
+
+                              <Tippy
+                                content="Copy to Clipboard"
+                                className="tippy"
+                                placement="bottom"
+                                theme="light"
+                              />
+                            </div>
                             <Highlighter
                               content={o.userCode}
                               language="python"

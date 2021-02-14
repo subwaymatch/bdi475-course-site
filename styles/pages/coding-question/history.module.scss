@@ -16,14 +16,22 @@
       }
 
       .text {
-        margin-top: 0.5rem;
+        margin-top: 0.75rem;
         display: flex;
         align-items: center;
-        font-size: 1.45rem;
+        font-size: 1.35rem;
         line-height: 1.3;
 
-        @include media-breakpoint-down(md) {
+        @include media-breakpoint-down(lg) {
           font-size: 1.3rem;
+        }
+
+        @include media-breakpoint-down(md) {
+          font-size: 1.2rem;
+        }
+
+        @include media-breakpoint-down(sm) {
+          font-size: 1.45rem;
         }
 
         .reactIcon {
@@ -41,13 +49,30 @@
 
       .codeWrapper {
         margin-top: 1rem;
+        margin-bottom: 4rem;
 
-        @include media-breakpoint-down(sm) {
-          margin-top: 2rem;
+        .labelWrapper {
+          display: flex;
+          align-items: center;
+
+          .iconButton {
+            color: $color-gray;
+            display: inline-block;
+            cursor: pointer;
+            margin-left: 0.25rem;
+            font-size: 0.85em;
+
+            &:hover {
+              color: $color-blue;
+            }
+          }
         }
 
         :global(.hljs) {
-          padding: 1rem 0 2rem 0;
+          padding: 1rem 1.2rem;
+          border: 1px solid $color-border-gray;
+          background-color: #f9f9f9;
+          margin-top: 1rem;
         }
       }
     }

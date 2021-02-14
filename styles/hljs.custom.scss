@@ -18,11 +18,11 @@
 
 .hljs-quote,
 .hljs-variable {
-  color: #00ff88;
+  color: $color-green;
 }
 
 .hljs-number {
-  color: #dc7fff;
+  color: $color-purple;
 }
 
 .hljs-keyword,
@@ -30,7 +30,7 @@
 .hljs-built_in,
 .hljs-name,
 .hljs-tag {
-  color: #43c1ff;
+  color: $color-blue;
 }
 
 .hljs-string,
@@ -42,7 +42,7 @@
 .hljs-template-variable,
 .hljs-type,
 .hljs-addition {
-  color: #ff75af;
+  color: $color-pink;
 }
 
 .hljs-deletion,
@@ -53,17 +53,17 @@
 }
 
 .hljs-doctag {
-  color: #808080;
+  color: $color-gray;
 }
 
 .hljs-attr {
-  color: #ff5c26;
+  color: $color-orange;
 }
 
 .hljs-symbol,
 .hljs-bullet,
 .hljs-link {
-  color: #43c1ff;
+  color: $color-blue;
 }
 
 .hljs-emphasis {
