@@ -3,6 +3,7 @@ import { ToastContainer } from "react-toastify";
 import "styles/globals.scss";
 import "tippy.js/dist/tippy.css";
 import "tippy.js/themes/light.css";
+import "styles/hljs.custom.scss";
 import "react-toastify/dist/ReactToastify.css";
 import "styles/toastify.custom.scss";
 

@@ -150,6 +150,11 @@ h2.sectionTitle {
   &.lightGray {
     background-color: $color-lighter-gray;
   }
+
+  &.black {
+    color: white;
+    background-color: black;
+  }
 }
 
 .accent {
@@ -202,7 +207,7 @@ input {
   color: $color-light-gray;
 }
 
-code,
+:not(pre) > code,
 kbd {
   font-family: $font-monospace;
   padding: 0.05em 0.2em;
@@ -211,10 +216,13 @@ kbd {
   border: 1px solid color.mix($color-blue, white, 20%);
   border-radius: 0.25rem;
   font-size: 0.9em;
+  white-space: nowrap;
 }
 
-code {
-  white-space: nowrap;
+pre {
+  code {
+    white-space: pre;
+  }
 }
 
 kbd {

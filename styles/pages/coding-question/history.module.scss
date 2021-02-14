@@ -1,0 +1,55 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.page {
+  padding-bottom: 10rem;
+
+  .attempts {
+    .item {
+      // border-top: 1px solid $color-border-gray;
+      border-top: 1px solid $color-border-gray;
+
+      .result,
+      .timestamp {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .text {
+        margin-top: 0.5rem;
+        display: flex;
+        align-items: center;
+        font-size: 1.45rem;
+        line-height: 1.3;
+
+        @include media-breakpoint-down(md) {
+          font-size: 1.3rem;
+        }
+
+        .reactIcon {
+          margin-left: 0.25rem;
+
+          &.pass {
+            color: $color-green;
+          }
+
+          &.fail {
+            color: $color-pink;
+          }
+        }
+      }
+
+      .codeWrapper {
+        margin-top: 1rem;
+
+        @include media-breakpoint-down(sm) {
+          margin-top: 2rem;
+        }
+
+        :global(.hljs) {
+          padding: 1rem 0 2rem 0;
+        }
+      }
+    }
+  }
+}
