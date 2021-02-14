@@ -1,14 +1,13 @@
-import { useState, useRef, useEffect } from "react";
+import { useRef } from "react";
 import Link from "next/link";
 import CodingQuestion from "components/coding-question/CodingQuestion";
-import { ICodingQuestionAttempt } from "typings/coding-question";
-import { useFirestore } from "reactfire";
 import useFirebaseAuth from "hooks/useFirebaseAuth";
 import { Row, Col } from "react-bootstrap";
 import { BsCheckCircle } from "react-icons/bs";
 import { RiHistoryLine, RiEditBoxLine } from "react-icons/ri";
 import _ from "lodash";
 import useCodingQuestion from "hooks/useCodingQuestion";
+import useCodingQuestionAttempts from "hooks/useCodingQuestionAttempts";
 import Tippy from "@tippyjs/react";
 import clsx from "clsx";
 import styles from "./RecordedCodingQuestion.module.scss";
@@ -23,42 +22,10 @@ export default function RecordedCodingQuestion({
   className,
 }: IRecordedCodingQuestionProps) {
   const { user, claims } = useFirebaseAuth();
-  const firestore = useFirestore();
   const { status, data, error } = useCodingQuestion(qid);
-  const [attempts, setAttempts] = useState<ICodingQuestionAttempt[]>([]);
+  const { attempts, updateAttempts } = useCodingQuestionAttempts(qid);
   const editLinkRef = useRef<HTMLAnchorElement>();
   const historyLinkRef = useRef<HTMLAnchorElement>();
-
-  useEffect(() => {
-    if (!user) {
-      setAttempts([]);
-      return;
-    }
-
-    updateAttempts();
-  }, [user]);
-
-  const updateAttempts = () => {
-    if (!user) {
-      return;
-    }
-
-    firestore
-      .collection("userAttempts")
-      .doc(user.uid)
-      .get()
-      .then((doc) => {
-        const docData = doc.data();
-
-        if (_.has(docData, qid)) {
-          const questionAttempts = docData[qid];
-
-          setAttempts(questionAttempts);
-        } else {
-          setAttempts([]);
-        }
-      });
-  };
 
   const getAttemptMessage = () => {
     if (!user) {

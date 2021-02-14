@@ -9,44 +9,12 @@ import { ICodingQuestionAttempt } from "typings/coding-question";
 import Login from "components/Login";
 import styles from "styles/pages/coding-question/history.module.scss";
 import clsx from "clsx";
+import useCodingQuestionAttempts from "hooks/useCodingQuestionAttempts";
 
 export default function CodingQuestionUserHistoryPage() {
   const router = useRouter();
   const { qid } = router.query;
-  const { user } = useFirebaseAuth();
-  const firestore = useFirestore();
-  const [attempts, setAttempts] = useState<ICodingQuestionAttempt[]>([]);
-
-  useEffect(() => {
-    if (!user) {
-      setAttempts([]);
-      return;
-    }
-
-    updateAttempts();
-  }, [user]);
-
-  const updateAttempts = () => {
-    if (!user) {
-      return;
-    }
-
-    firestore
-      .collection("userAttempts")
-      .doc(user.uid)
-      .get()
-      .then((doc) => {
-        const docData = doc.data();
-
-        if (_.has(docData, qid)) {
-          const questionAttempts = docData[qid as string];
-
-          setAttempts(questionAttempts);
-        } else {
-          setAttempts([]);
-        }
-      });
-  };
+  const { attempts, updateAttempts } = useCodingQuestionAttempts(qid);
 
   return (
     <AuthCheck fallback={<Login />}>
@@ -67,8 +35,17 @@ export default function CodingQuestionUserHistoryPage() {
                 <div className={styles.attempts}>
                   {attempts.map((o, index) => (
                     <div key={index} className={styles.item}>
-                      <h3>{o.isSuccess ? "Pass" : "Fail"}</h3>
-                      {o.userCode}
+                      <Row className="align-items-center">
+                        <Col>{o.isSuccess ? "Pass" : "Fail"}</Col>
+
+                        <Col>View Code</Col>
+
+                        <Col>
+                          {o.submittedAt && (
+                            <div>{JSON.stringify(o.submittedAt)}</div>
+                          )}
+                        </Col>
+                      </Row>
                     </div>
                   ))}
                 </div>

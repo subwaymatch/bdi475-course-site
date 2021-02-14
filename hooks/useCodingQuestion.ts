@@ -28,6 +28,8 @@ export default function useCodingQuestion(qid) {
       const res = await fetch(`/api/coding-question/${qid}`, options);
       const data = await res.json();
 
+      console.log(data);
+
       setResult((prevResult) =>
         Object.assign({}, prevResult, {
           status: "success",
