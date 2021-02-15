@@ -53,7 +53,7 @@ export default function CodingQuestionAttemptsPage() {
 
             return o;
           })
-          .sort((o1, o2) => o2.submittedAt.seconds - o1.submittedAt.seconds)
+          .sort((o1, o2) => o1.submittedAt.seconds - o2.submittedAt.seconds)
           .reverse();
 
         let passCount = 0;
@@ -80,7 +80,11 @@ export default function CodingQuestionAttemptsPage() {
         }
       });
 
-      setAttempts(tempAttempts);
+      setAttempts(
+        tempAttempts
+          .sort((o1, o2) => o1.submittedAt.seconds - o2.submittedAt.seconds)
+          .reverse()
+      );
     }
   }, [questionAttemptsData, users]);
 
