@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { firebaseAdmin } from "firebase/firebaseAdmin";
 import { IVerifiedUserInfo, getUserInfoFromRequest } from "utils/api/auth";
 
-export default async function handler(
+export default async function recordAttempt(
   req: NextApiRequest,
   res: NextApiResponse
 ) {

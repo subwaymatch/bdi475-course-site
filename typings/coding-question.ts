@@ -19,3 +19,8 @@ export interface ICodingQuestionAttempt {
   userCode: string;
   submittedAt?: firebase.firestore.Timestamp;
 }
+
+export interface ICodingQuestionAttemptWithUID extends ICodingQuestionAttempt {
+  uid: string;
+  displayName?: string;
+}

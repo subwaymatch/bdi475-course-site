@@ -3,7 +3,7 @@ import { firebaseAdmin } from "firebase/firebaseAdmin";
 import { isAdmin } from "utils/api/auth";
 import _ from "lodash";
 
-export default async function handler(
+export default async function getCodingQuestionData(
   req: NextApiRequest,
   res: NextApiResponse
 ) {

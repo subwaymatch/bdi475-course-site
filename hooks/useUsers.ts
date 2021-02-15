@@ -1,20 +1,20 @@
 import useFirebaseAuth from "hooks/useFirebaseAuth";
 import { useEffect, useState } from "react";
 
-export default function useCodingQuestion(qid) {
+export default function useUsers() {
   const { user } = useFirebaseAuth();
 
   const [result, setResult] = useState({
     status: "loading",
-    data: null,
+    data: {},
     error: "",
   });
 
   useEffect(() => {
-    fetchQuestionData();
+    fetchUsers();
   }, [user]);
 
-  const fetchQuestionData = async () => {
+  const fetchUsers = async () => {
     try {
       const token = user ? await user.getIdToken() : null;
       const options = user
@@ -25,7 +25,7 @@ export default function useCodingQuestion(qid) {
           }
         : {};
 
-      const res = await fetch(`/api/coding-question/${qid}`, options);
+      const res = await fetch(`/api/users/list`, options);
       const data = await res.json();
 
       setResult((prevResult) =>
