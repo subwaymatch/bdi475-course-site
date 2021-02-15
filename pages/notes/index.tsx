@@ -81,6 +81,20 @@ export default function NotesPage() {
                 </a>
               </Link>
             </Col>
+
+            <Col lg={4} md={6}>
+              <Link href="/notes/strings-and-string-methods">
+                <a className={styles.noteItem}>
+                  <Image
+                    src="/images/notes/1613412922600.png"
+                    width={900}
+                    height={600}
+                    alt=""
+                  />
+                  <h3>Strings and String Methods</h3>
+                </a>
+              </Link>
+            </Col>
           </Row>
         </Container>
       </main>

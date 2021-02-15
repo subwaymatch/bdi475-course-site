@@ -17,7 +17,6 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { useFirestore, useFirestoreDocData } from "reactfire";
 import { useEffect, useState } from "react";
-import useFirebaseAuth from "hooks/useFirebaseAuth";
 import { ICodingQuestionAttemptWithUID } from "typings/coding-question";
 import { firebaseClient } from "firebase/firebaseClient";
 import useUsers from "hooks/useUsers";
