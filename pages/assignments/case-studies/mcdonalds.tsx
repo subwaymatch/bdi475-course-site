@@ -14,6 +14,7 @@ import {
   VictoryStack,
   VictoryTheme,
 } from "victory";
+import colors from "styles/colors.module.scss";
 
 const mac_global_data = [
   {
@@ -186,7 +187,9 @@ export default function McDonaldsCasePage() {
                 dependentAxis
                 tickFormat={(x) => `$${x / 1000} bil.`}
               />
-              <VictoryStack colorScale={["#43C1FF", "#FF75AF", "#eee"]}>
+              <VictoryStack
+                colorScale={[colors.purple, colors.green, colors.yellow]}
+              >
                 {Object.keys(franchiseRevenuesStacked).map((o) => (
                   <VictoryBar
                     data={franchiseRevenuesStacked[o]}
