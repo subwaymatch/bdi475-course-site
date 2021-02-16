@@ -4,14 +4,7 @@ import CodingQuestion from "components/coding-question/CodingQuestion";
 import useFirebaseAuth from "hooks/useFirebaseAuth";
 import { Row, Col } from "react-bootstrap";
 import { BsCheckCircle } from "react-icons/bs";
-import {
-  RiHistoryLine,
-  RiEditBoxLine,
-  RiFileList3Line,
-  RiGroupLine,
-  RiFootprintLine,
-} from "react-icons/ri";
-import _ from "lodash";
+import { RiHistoryLine, RiEditBoxLine, RiGroupLine } from "react-icons/ri";
 import useCodingQuestion from "hooks/useCodingQuestion";
 import useCodingQuestionAttempts from "hooks/useCodingQuestionAttempts";
 import Tippy from "@tippyjs/react";

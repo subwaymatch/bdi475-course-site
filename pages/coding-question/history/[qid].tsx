@@ -4,7 +4,6 @@ import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { toast } from "react-toastify";
-import _ from "lodash";
 import Login from "components/Login";
 import Highlighter from "components/code-blocks/Highlighter";
 import styles from "styles/pages/coding-question/history.module.scss";

@@ -8,9 +8,9 @@ export default async function getAllUsers(
   res: NextApiResponse
 ) {
   // Only admin role should be able to retrieve the user list
-  // if (!(await isAdmin(req))) {
-  //   return res.status(403).end(`Insufficient permission to retrieve user list`);
-  // }
+  if (!(await isAdmin(req))) {
+    return res.status(403).end(`Insufficient permission to retrieve user list`);
+  }
 
   try {
     const userRecords = await firebaseAdmin.auth().listUsers();

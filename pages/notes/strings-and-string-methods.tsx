@@ -6,7 +6,6 @@ import clsx from "clsx";
 import ListWithTitle from "components/common/ListWithTitle";
 import CenteredColumn from "components/common/CenteredColumn";
 import RecordedCodingQuestion from "components/common/RecordedCodingQuestion";
-import { FaWikipediaW } from "react-icons/fa";
 import LargeQuote from "components/common/LargeQuote";
 
 export default function StringsAndStringsMethodPage() {
