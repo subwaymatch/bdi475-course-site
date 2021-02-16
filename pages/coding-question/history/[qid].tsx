@@ -25,8 +25,8 @@ export default function CodingQuestionUserHistoryPage() {
   const { attempts } = useCodingQuestionAttempts(qid);
 
   return (
-    <AuthCheck fallback={<Login />}>
-      <Layout>
+    <Layout>
+      <AuthCheck fallback={<Login />}>
         <main className={styles.page}>
           <Container>
             <Row>
@@ -89,7 +89,7 @@ export default function CodingQuestionUserHistoryPage() {
                               <div className={styles.text}>
                                 <Tippy
                                   content={dayjs(o.submittedAt.toDate()).format(
-                                    "YYYY-MM-DD HH:hh:ss A"
+                                    "YYYY-MM-DD HH:mm:ss A"
                                   )}
                                   className="tippy"
                                   placement="bottom"
@@ -141,7 +141,7 @@ export default function CodingQuestionUserHistoryPage() {
             </Row>
           </Container>
         </main>
-      </Layout>
-    </AuthCheck>
+      </AuthCheck>
+    </Layout>
   );
 }

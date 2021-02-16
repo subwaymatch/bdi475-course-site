@@ -49,5 +49,33 @@ export default function useCodingQuestionAttempts(qid) {
     updateAttempts();
   }, [user, qid]);
 
-  return { attempts, updateAttempts };
+  const recordSubmission = async (isSuccess: boolean, userCode: string) => {
+    if (!user || !qid) {
+      return;
+    }
+
+    try {
+      const token = await user.getIdToken();
+      const options = {
+        method: "POST",
+        headers: {
+          authorization: `Bearer ${token}`,
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          isSuccess,
+          userCode,
+        }),
+      };
+
+      await fetch(`/api/coding-question/attempt/${qid}`, options);
+
+      updateAttempts();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  return { attempts, updateAttempts, recordSubmission };
 }

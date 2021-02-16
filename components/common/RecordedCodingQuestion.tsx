@@ -4,7 +4,13 @@ import CodingQuestion from "components/coding-question/CodingQuestion";
 import useFirebaseAuth from "hooks/useFirebaseAuth";
 import { Row, Col } from "react-bootstrap";
 import { BsCheckCircle } from "react-icons/bs";
-import { RiHistoryLine, RiEditBoxLine } from "react-icons/ri";
+import {
+  RiHistoryLine,
+  RiEditBoxLine,
+  RiFileList3Line,
+  RiGroupLine,
+  RiFootprintLine,
+} from "react-icons/ri";
 import _ from "lodash";
 import useCodingQuestion from "hooks/useCodingQuestion";
 import useCodingQuestionAttempts from "hooks/useCodingQuestionAttempts";
@@ -23,8 +29,9 @@ export default function RecordedCodingQuestion({
 }: IRecordedCodingQuestionProps) {
   const { user, claims } = useFirebaseAuth();
   const { status, data, error } = useCodingQuestion(qid);
-  const { attempts, updateAttempts } = useCodingQuestionAttempts(qid);
+  const { attempts, recordSubmission } = useCodingQuestionAttempts(qid);
   const editLinkRef = useRef<HTMLAnchorElement>();
+  const attemptsLinkRef = useRef<HTMLAnchorElement>();
   const historyLinkRef = useRef<HTMLAnchorElement>();
 
   const getAttemptMessage = () => {
@@ -41,34 +48,6 @@ export default function RecordedCodingQuestion({
       } (${passCount} pass${passCount > 1 ? "es" : ""}, ${failCount} fail${
         failCount > 1 ? "s" : ""
       })`;
-    }
-  };
-
-  const recordSubmission = async (isSuccess: boolean, userCode: string) => {
-    if (!user) {
-      return;
-    }
-
-    try {
-      const token = await user.getIdToken();
-      const options = {
-        method: "POST",
-        headers: {
-          authorization: `Bearer ${token}`,
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          isSuccess,
-          userCode,
-        }),
-      };
-
-      await fetch(`/api/coding-question/attempt/${qid}`, options);
-
-      updateAttempts();
-    } catch (err) {
-      console.error(err);
     }
   };
 
@@ -105,6 +84,24 @@ export default function RecordedCodingQuestion({
                         offset={[0, -2]}
                         theme="light"
                         reference={editLinkRef}
+                      />
+
+                      <Link href={`/admin/coding-question/attempts/${qid}`}>
+                        <a
+                          className={clsx(styles.iconButton, styles.editButton)}
+                          ref={attemptsLinkRef}
+                        >
+                          <RiGroupLine className={styles.reactIcon} />
+                        </a>
+                      </Link>
+
+                      <Tippy
+                        content="View all user attempts"
+                        className="tippy"
+                        placement="bottom"
+                        offset={[0, -2]}
+                        theme="light"
+                        reference={attemptsLinkRef}
                       />
                     </>
                   )}

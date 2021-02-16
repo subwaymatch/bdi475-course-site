@@ -152,7 +152,7 @@ export default function CodingQuestionAttemptsPage() {
                               <div className={styles.text}>
                                 <Tippy
                                   content={dayjs(o.submittedAt.toDate()).format(
-                                    "YYYY-MM-DD HH:hh:ss A"
+                                    "YYYY-MM-DD HH:mm:ss A"
                                   )}
                                   className="tippy"
                                   placement="bottom"
