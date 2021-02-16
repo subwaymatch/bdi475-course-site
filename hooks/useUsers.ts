@@ -2,7 +2,7 @@ import useFirebaseAuth from "hooks/useFirebaseAuth";
 import { useEffect, useState } from "react";
 
 export default function useUsers() {
-  const { user } = useFirebaseAuth();
+  const { user, claims } = useFirebaseAuth();
 
   const [result, setResult] = useState({
     status: "loading",
@@ -15,6 +15,10 @@ export default function useUsers() {
   }, [user]);
 
   const fetchUsers = async () => {
+    if (!user || !claims.admin) {
+      return;
+    }
+
     try {
       const token = user ? await user.getIdToken() : null;
       const options = user
@@ -39,7 +43,7 @@ export default function useUsers() {
       setResult((prevResult) =>
         Object.assign({}, prevResult, {
           status: "error",
-          data: null,
+          data: {},
           error: err.message,
         })
       );
