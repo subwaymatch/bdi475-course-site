@@ -95,6 +95,20 @@ export default function NotesPage() {
                 </a>
               </Link>
             </Col>
+
+            <Col lg={4} md={6}>
+              <Link href="/notes/functions">
+                <a className={styles.noteItem}>
+                  <Image
+                    src="/images/notes/1614015120608.png"
+                    width={900}
+                    height={600}
+                    alt=""
+                  />
+                  <h3>Functions</h3>
+                </a>
+              </Link>
+            </Col>
           </Row>
         </Container>
       </main>
