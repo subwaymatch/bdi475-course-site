@@ -95,6 +95,20 @@ h2.sectionTitle {
   }
 }
 
+ul {
+  list-style-type: disc;
+  list-style-position: inside;
+
+  li ul {
+    list-style-type: circle;
+  }
+}
+
+ol {
+  list-style-type: decimal;
+  list-style-position: inside;
+}
+
 .color-green {
   color: $color-green;
 }
