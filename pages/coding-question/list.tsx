@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import Layout from "components/Layout";
 import { Col, Container, Row } from "react-bootstrap";
 import firebase from "firebase";
@@ -139,6 +140,14 @@ export default function CodingQuestionListPage() {
                     Coding Questions
                     <span className="accent pink" />
                   </h2>
+                </Col>
+              </Row>
+
+              <Row>
+                <Col>
+                  <Link href="/coding-question/new">
+                    <a className={styles.createButton}>+ Create</a>
+                  </Link>
                 </Col>
               </Row>
 

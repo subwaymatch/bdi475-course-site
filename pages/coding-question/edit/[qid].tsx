@@ -5,7 +5,7 @@ import { useFirestore, useFirestoreDocData } from "reactfire";
 import { Container, Row, Col } from "react-bootstrap";
 import ICodingQuestion from "typings/coding-question";
 import _ from "lodash";
-import randomstring from "randomstring";
+import { generateQuestionId } from "utils/question";
 
 export default function EditCodingQuestionPage() {
   const router = useRouter();
@@ -26,7 +26,7 @@ export default function EditCodingQuestionPage() {
   const onClone = async (v) => {
     const clonedDocRef = await firestore
       .collection("codingQuestions")
-      .doc(randomstring.generate(6));
+      .doc(generateQuestionId());
 
     const clonedData = Object.assign({}, _.cloneDeep(v), {
       title: v.title + " (Clone)",
