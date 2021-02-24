@@ -105,7 +105,23 @@ export default function NotesPage() {
                     height={600}
                     alt=""
                   />
-                  <h3>Functions</h3>
+                  <h3>Functions Part 1</h3>
+                </a>
+              </Link>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col lg={4} md={6}>
+              <Link href="/notes/functions-continued">
+                <a className={styles.noteItem}>
+                  <Image
+                    src="/images/notes/1614186667983.png"
+                    width={900}
+                    height={600}
+                    alt=""
+                  />
+                  <h3>Functions Part 2</h3>
                 </a>
               </Link>
             </Col>

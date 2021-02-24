@@ -61,11 +61,6 @@
     "text": "Exercise 6"
   },
   {
-    "date": "2021-02-27",
-    "type": "CASE_STUDY",
-    "text": "Case Study 1"
-  },
-  {
     "date": "2021-02-17",
     "type": "NO_LECTURE",
     "text": "No Class (Break)"
@@ -89,6 +84,11 @@
     "date": "2021-02-25",
     "type": "EXERCISE",
     "text": "Exercise 8"
+  },
+  {
+    "date": "2021-02-27",
+    "type": "CASE_STUDY",
+    "text": "Problem Set"
   },
   {
     "date": "2021-03-01",
