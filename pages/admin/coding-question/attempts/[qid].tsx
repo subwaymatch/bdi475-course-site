@@ -35,6 +35,9 @@ export default function CodingQuestionAttemptsPage() {
   const [attempts, setAttempts] = useState<ICodingQuestionAttemptWithUID[]>([]);
 
   useEffect(() => {
+    console.log(`useEffect()`);
+    console.log(`users.keys=${Object.keys(users).slice(5)}`);
+
     if (qStatus === "success") {
       let tempAttempts: ICodingQuestionAttemptWithUID[] = [];
 
