@@ -1,7 +1,7 @@
 import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
-import AssignmentItem from "components/pages/assignments/AssignmentItem";
-import CaseStudyItem from "components/pages/assignments/CaseStudyItem";
+import AssignmentItem from "components/pages/assignment/AssignmentItem";
+import CaseStudyItem from "components/pages/assignment/CaseStudyItem";
 import { AuthCheck } from "reactfire";
 import Login from "components/Login";
 import { AssignmentStatus } from "typings/assignment";

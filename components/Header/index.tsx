@@ -20,53 +20,37 @@ const HeaderMenu = () => (
   <Row className={clsx(styles.mainMenu, "align-items-center")}>
     <Col md={3}>
       <Link href="/syllabus">
-        <motion.a
-          variants={clickableVariants}
-          whileHover="hover"
-          whileTap="tap"
-        >
+        <a className={styles.menuLink}>
           Syllabus
           <span className="accent green" />
-        </motion.a>
+        </a>
       </Link>
     </Col>
 
     <Col md={3}>
       <Link href="/schedule">
-        <motion.a
-          variants={clickableVariants}
-          whileHover="hover"
-          whileTap="tap"
-        >
+        <a className={styles.menuLink}>
           Schedule
           <span className="accent purple" />
-        </motion.a>
+        </a>
       </Link>
     </Col>
 
     <Col md={3}>
       <Link href="/notes">
-        <motion.a
-          variants={clickableVariants}
-          whileHover="hover"
-          whileTap="tap"
-        >
+        <a className={styles.menuLink}>
           Notes
           <span className="accent blue" />
-        </motion.a>
+        </a>
       </Link>
     </Col>
 
     <Col md={3}>
       <Link href="/assignments">
-        <motion.a
-          variants={clickableVariants}
-          whileHover="hover"
-          whileTap="tap"
-        >
+        <a className={styles.menuLink}>
           Assignments
           <span className="accent pink" />
-        </motion.a>
+        </a>
       </Link>
     </Col>
   </Row>
