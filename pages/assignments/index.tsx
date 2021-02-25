@@ -44,8 +44,31 @@ export default function AssignmentsPage() {
                     dueDate={dayjs("2021-02-11").tz().format("ll")}
                     pointsAvailable={25}
                     link="/assignments/quiz-01"
-                    status={AssignmentStatus.Available}
+                    status={AssignmentStatus.Unavailable}
                     colorTheme={ColorTheme.Pink}
+                  />
+                </div>
+              </Col>
+            </Row>
+
+            <Row>
+              <Col>
+                <div
+                  className={styles.codingQuiz}
+                  style={{ marginTop: "40px" }}
+                >
+                  <h2 className="sectionTitle">
+                    Problem Sets
+                    <span className="accent blue" />
+                  </h2>
+
+                  <AssignmentItem
+                    name="Problem Set 1"
+                    dueDate={dayjs("2021-03-01").tz().format("ll")}
+                    pointsAvailable={25}
+                    link="/assignments/problem-set-01"
+                    status={AssignmentStatus.Available}
+                    colorTheme={ColorTheme.Blue}
                   />
                 </div>
               </Col>

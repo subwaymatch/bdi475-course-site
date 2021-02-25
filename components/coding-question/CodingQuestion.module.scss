@@ -61,9 +61,9 @@
     }
   }
 
-  .resultsWrapper {
+  .resultsWrapper,
+  .errorWrapper {
     border-top: 1px solid $color-border-gray;
-    padding: 0.75rem 2rem 0 0;
 
     &.hasOutput {
       pre {
@@ -90,17 +90,14 @@
     }
   }
 
+  .resultsWrapper {
+    padding: 0.75rem 2rem 0 0;
+  }
+
   .errorWrapper {
-    border-top: 1px solid $color-border-gray;
     border-left: 1px solid $color-border-gray;
     padding: 0.75rem 0 0 1rem;
     overflow: auto;
-
-    &.hasOutput {
-      pre {
-        color: #555;
-      }
-    }
   }
 
   @include media-breakpoint-down(sm) {
