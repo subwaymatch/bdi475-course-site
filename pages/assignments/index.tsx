@@ -58,7 +58,7 @@ export default function AssignmentsPage() {
                   style={{ marginTop: "40px" }}
                 >
                   <h2 className="sectionTitle">
-                    Problem Sets
+                    Problem Set
                     <span className="accent blue" />
                   </h2>
 
