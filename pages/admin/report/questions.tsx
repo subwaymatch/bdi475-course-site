@@ -1,4 +1,5 @@
 import Layout from "components/Layout";
+import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import clsx from "clsx";
@@ -6,7 +7,8 @@ import styles from "styles/pages/admin/report/questions.module.scss";
 import { RiDownloadLine } from "react-icons/ri";
 
 export default function QuestionsReportPage() {
-  const [ids, setIds] = useState("");
+  const [ids, setIds] = useState("IoPUN0\npAXDI1\nfveynH\n");
+  const router = useRouter();
 
   const updateIds = (idsStr) => {
     setIds(idsStr.split("\n").filter((s) => s.trim() !== ""));
@@ -37,6 +39,7 @@ export default function QuestionsReportPage() {
                 onChange={(e) => updateIds(e.target.value)}
                 cols={30}
                 rows={10}
+                defaultValue={"IoPUN0\npAXDI1\nfveynH\n".replace("\\n", "\n")}
               />
               <a className={clsx("button", "green", styles.submitButton)}>
                 <RiDownloadLine

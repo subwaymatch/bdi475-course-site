@@ -25,13 +25,9 @@ export default function FirebaseAuthProvider({ children }: any) {
   const [claims, setClaims] = useState<UserCustomClaims>(defaultClaims);
 
   useEffect(() => {
-    return firebaseClient.auth().onAuthStateChanged(async (user) => {
-      setUser(user);
-    });
-  }, []);
-
-  useEffect(() => {
     return firebaseClient.auth().onIdTokenChanged(async (user) => {
+      setUser(user);
+
       if (user) {
         user.getIdTokenResult(true).then((idTokenResult) => {
           setClaims(idTokenResult.claims as UserCustomClaims);
