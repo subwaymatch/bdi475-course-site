@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import nookies from "nookies";
-import { InferGetServerSidePropsType, GetServerSidePropsContext } from "next";
-import { firebaseAdmin } from "firebase/firebaseAdmin";
+// import nookies from "nookies";
+// import { InferGetServerSidePropsType, GetServerSidePropsContext } from "next";
+// import { firebaseAdmin } from "firebase/firebaseAdmin";
 import { Col, Container, Row } from "react-bootstrap";
 import Layout from "components/Layout";
 import clsx from "clsx";
