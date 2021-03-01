@@ -28,7 +28,7 @@ export default function QuestionsReportPage() {
         <Container>
           <Row>
             <Col>
-              <p>{props.message}</p>
+              {/* <p>{props.message}</p> */}
               <h2 className="sectionTitle grayBottomBorder">
                 Questions Report <span className="accent green" />
               </h2>
