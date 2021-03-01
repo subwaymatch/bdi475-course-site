@@ -1,5 +1,6 @@
 import { useState, useEffect, createContext } from "react";
 import { firebaseClient } from "./firebaseClient";
+import nookies from "nookies";
 
 interface UserCustomClaims {
   admin: boolean;
@@ -32,8 +33,11 @@ export default function FirebaseAuthProvider({ children }: any) {
         user.getIdTokenResult(true).then((idTokenResult) => {
           setClaims(idTokenResult.claims as UserCustomClaims);
         });
+        const token = await user.getIdToken();
+        nookies.set(undefined, "token", token, { path: "/" });
       } else {
         setClaims(defaultClaims);
+        nookies.set(undefined, "token", "", { path: "/" });
       }
     });
   }, []);
