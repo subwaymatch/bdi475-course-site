@@ -1,6 +1,7 @@
 const WorkerPlugin = require("worker-plugin");
 
 module.exports = {
+  target: "serverless",
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     if (!isServer) {
       config.plugins.push(
