@@ -22,7 +22,7 @@ export default function QuizPage() {
           <CenteredColumn className={styles.textBox}>
             <h3>Yeezy Sneakers</h3>
 
-            <span className="label purple">Price of Sneakers</span>
+            <span className="label purple">Yeezy.. Peezy?</span>
             <p>
               Have you ever heard of sneakers that cost over $1,000 in resale
               markets? 🔥🔥 I was stunned when I randomly ran into this list in{" "}

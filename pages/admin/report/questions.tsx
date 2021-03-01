@@ -9,9 +9,10 @@ import clsx from "clsx";
 import styles from "styles/pages/admin/report/questions.module.scss";
 import { RiDownloadLine } from "react-icons/ri";
 
-export default function QuestionsReportPage(
-  props: InferGetServerSidePropsType<typeof getServerSideProps>
-) {
+// export default function QuestionsReportPage(
+//   props: InferGetServerSidePropsType<typeof getServerSideProps>
+// ) {
+export default function QuestionsReportPage() {
   const [ids, setIds] = useState("IoPUN0\npAXDI1\nfveynH\n");
   const router = useRouter();
 
@@ -64,38 +65,38 @@ export default function QuestionsReportPage(
   );
 }
 
-export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
-  try {
-    const cookies = nookies.get(ctx);
-    const token = await firebaseAdmin.auth().verifyIdToken(cookies.token);
+// export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+//   try {
+//     const cookies = nookies.get(ctx);
+//     const token = await firebaseAdmin.auth().verifyIdToken(cookies.token);
 
-    console.log(`params: ${JSON.stringify(ctx.params)}`);
-    console.log(`query: ${JSON.stringify(ctx.query)}`);
+//     console.log(`params: ${JSON.stringify(ctx.params)}`);
+//     console.log(`query: ${JSON.stringify(ctx.query)}`);
 
-    const qids = ctx.query.qid;
+//     const qids = ctx.query.qid;
 
-    const questionAttemptDocRef = await firebaseAdmin
-      .firestore()
-      .collection("questionAttempts")
-      .where(firebaseAdmin.firestore.FieldPath.documentId(), "in", qids);
+//     const questionAttemptDocRef = await firebaseAdmin
+//       .firestore()
+//       .collection("questionAttempts")
+//       .where(firebaseAdmin.firestore.FieldPath.documentId(), "in", qids);
 
-    // The user is authenticated
-    const { uid, email } = token;
+//     // The user is authenticated
+//     const { uid, email } = token;
 
-    return {
-      props: { message: `Your email is ${email} and your UID is ${uid}.` },
-    };
-  } catch (err) {
-    // Either the `token` cookie didn't exist
-    // or token verification failed
-    // either way: redirect to the login page
-    ctx.res.writeHead(302, { Location: "/login" });
-    ctx.res.end();
+//     return {
+//       props: { message: `Your email is ${email} and your UID is ${uid}.` },
+//     };
+//   } catch (err) {
+//     // Either the `token` cookie didn't exist
+//     // or token verification failed
+//     // either way: redirect to the login page
+//     ctx.res.writeHead(302, { Location: "/login" });
+//     ctx.res.end();
 
-    // `as never` prevents inference issues
-    // with InferGetServerSidePropsType
-    // The props returned here don't matter since
-    // we are redirecting the user
-    return { props: {} as never };
-  }
-};
+//     // `as never` prevents inference issues
+//     // with InferGetServerSidePropsType
+//     // The props returned here don't matter since
+//     // we are redirecting the user
+//     return { props: {} as never };
+//   }
+// };
