@@ -1,12 +1,17 @@
-import Layout from "components/Layout";
-import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import nookies from "nookies";
+import { InferGetServerSidePropsType, GetServerSidePropsContext } from "next";
+import { firebaseAdmin } from "firebase/firebaseAdmin";
 import { Col, Container, Row } from "react-bootstrap";
+import Layout from "components/Layout";
 import clsx from "clsx";
 import styles from "styles/pages/admin/report/questions.module.scss";
 import { RiDownloadLine } from "react-icons/ri";
 
-export default function QuestionsReportPage() {
+export default function QuestionsReportPage(
+  props: InferGetServerSidePropsType<typeof getServerSideProps>
+) {
   const [ids, setIds] = useState("IoPUN0\npAXDI1\nfveynH\n");
   const router = useRouter();
 
@@ -22,6 +27,7 @@ export default function QuestionsReportPage() {
         <Container>
           <Row>
             <Col>
+              <p>{props.message}</p>
               <h2 className="sectionTitle grayBottomBorder">
                 Questions Report <span className="accent green" />
               </h2>
@@ -57,3 +63,41 @@ export default function QuestionsReportPage() {
     </Layout>
   );
 }
+
+export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+  try {
+    const cookies = nookies.get(ctx);
+    const token = await firebaseAdmin.auth().verifyIdToken(cookies.token);
+
+    console.log(`params: ${JSON.stringify(ctx.params)}`);
+    console.log(`query: ${JSON.stringify(ctx.query)}`);
+
+    const qids = ctx.query.qid;
+
+    if (typeof qids !== "undefined") {
+      const questionAttemptDocRef = await firebaseAdmin
+        .firestore()
+        .collection("questionAttempts")
+        .where(firebaseAdmin.firestore.FieldPath.documentId(), "in", qids);
+    }
+
+    // The user is authenticated
+    const { uid, email } = token;
+
+    return {
+      props: { message: `Your email is ${email} and your UID is ${uid}.` },
+    };
+  } catch (err) {
+    // Either the `token` cookie didn't exist
+    // or token verification failed
+    // either way: redirect to the login page
+    ctx.res.writeHead(302, { Location: "/login" });
+    ctx.res.end();
+
+    // `as never` prevents inference issues
+    // with InferGetServerSidePropsType
+    // The props returned here don't matter since
+    // we are redirecting the user
+    return { props: {} as never };
+  }
+};
