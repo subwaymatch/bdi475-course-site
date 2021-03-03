@@ -126,6 +126,36 @@ export default function NotesPage() {
               </Link>
             </Col>
           </Row>
+
+          <Row>
+            <Col>
+              <h2
+                className="sectionTitle"
+                style={{
+                  marginTop: "4rem",
+                }}
+              >
+                Pandas <span className="purple accent" />
+              </h2>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col lg={4} md={6}>
+              <a
+                href="https://www.notion.so/bdi475/Lecture-11-Intro-to-Pandas-49636dcca1f34d20963bd4fc43d567a6"
+                className={styles.noteItem}
+              >
+                <Image
+                  src="/images/notes/l11-pandas.png"
+                  width={900}
+                  height={600}
+                  alt=""
+                />
+                <h3>Introduction to Pandas</h3>
+              </a>
+            </Col>
+          </Row>
         </Container>
       </main>
     </Layout>
