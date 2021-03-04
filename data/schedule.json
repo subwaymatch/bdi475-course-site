@@ -115,19 +115,9 @@
     ]
   },
   {
-    "date": "2021-03-04",
+    "date": "2021-03-06",
     "type": "EXERCISE",
     "text": "Exercise 10"
-  },
-  {
-    "date": "2021-03-06",
-    "type": "CASE_STUDY",
-    "text": "Case Study 2"
-  },
-  {
-    "date": "2021-03-08",
-    "type": "QUIZ",
-    "text": "Quiz 3"
   },
   {
     "date": "2021-03-08",
@@ -141,8 +131,8 @@
   },
   {
     "date": "2021-03-09",
-    "type": "EXERCISE",
-    "text": "Exercise 11"
+    "type": "QUIZ",
+    "text": "Quiz 3 (Take Home)"
   },
   {
     "date": "2021-03-10",
@@ -153,6 +143,11 @@
     "date": "2021-03-11",
     "type": "EXERCISE",
     "text": "Exercise 12"
+  },
+  {
+    "date": "2021-03-13",
+    "type": "CASE_STUDY",
+    "text": "Case Study 2"
   },
   {
     "date": "2021-03-15",
