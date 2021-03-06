@@ -12,7 +12,7 @@ import { RiDownloadLine } from "react-icons/ri";
 export default function QuestionsReportPage(
   props: InferGetServerSidePropsType<typeof getServerSideProps>
 ) {
-  const [ids, setIds] = useState("IoPUN0\npAXDI1\nfveynH\n");
+  const [ids, setIds] = useState(props.qids ? props.qids : []);
   const router = useRouter();
 
   console.log(`props`);
@@ -72,12 +72,12 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 
   try {
     const cookies = nookies.get(ctx);
+
     const token = await firebaseAdmin.auth().verifyIdToken(cookies.token);
 
     // The user is authenticated
     const { uid, email } = token;
 
-    console.log(`params: ${JSON.stringify(ctx.params)}`);
     console.log(`query: ${JSON.stringify(ctx.query)}`);
 
     props.message = `Your email is ${email} and your UID is ${uid}.`;
@@ -96,24 +96,37 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   }
 
   try {
+    console.log(ctx.query.qid);
+
     if (ctx.query.qid) {
       const qids = Array.isArray(ctx.query.qid)
-        ? [ctx.query.qid]
-        : ctx.query.qid;
+        ? ctx.query.qid
+        : [ctx.query.qid];
 
       console.log(`qids`);
       console.log(qids);
 
-      const questionAttemptDocRef = await firebaseAdmin
+      props.qids = qids;
+
+      const querySnapshot = await firebaseAdmin
         .firestore()
         .collection("questionAttempts")
-        .where(firebaseAdmin.firestore.FieldPath.documentId(), "in", qids);
-    }
+        .where(firebaseAdmin.firestore.FieldPath.documentId(), "in", qids)
+        .get();
 
-    return {
-      props,
-    };
+      const docs = [];
+
+      querySnapshot.forEach((doc) => {
+        docs.push(doc.data());
+      });
+
+      console.log(docs);
+    }
   } catch (err) {
     console.error(err);
   }
+
+  return {
+    props,
+  };
 };
