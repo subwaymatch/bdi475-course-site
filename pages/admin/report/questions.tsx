@@ -12,8 +12,11 @@ import { RiDownloadLine } from "react-icons/ri";
 export default function QuestionsReportPage(
   props: InferGetServerSidePropsType<typeof getServerSideProps>
 ) {
-  const [ids, setIds] = useState("IoPUN0\npAXDI1\nfveynH\n");
+  const [ids, setIds] = useState(props.qids ? props.qids : []);
   const router = useRouter();
+
+  console.log(`props`);
+  console.log(props);
 
   const updateIds = (idsStr) => {
     setIds(idsStr.split("\n").filter((s) => s.trim() !== ""));
@@ -65,29 +68,20 @@ export default function QuestionsReportPage(
 }
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+  const props: any = {};
+
   try {
     const cookies = nookies.get(ctx);
+
     const token = await firebaseAdmin.auth().verifyIdToken(cookies.token);
-
-    console.log(`params: ${JSON.stringify(ctx.params)}`);
-    console.log(`query: ${JSON.stringify(ctx.query)}`);
-
-    const qids = ctx.query.qid;
-
-    if (typeof qids !== "undefined") {
-      const questionAttemptDocRef = await firebaseAdmin
-        .firestore()
-        .collection("questionAttempts")
-        .where(firebaseAdmin.firestore.FieldPath.documentId(), "in", qids);
-    }
 
     // The user is authenticated
     const { uid, email } = token;
 
-    return {
-      props: { message: `Your email is ${email} and your UID is ${uid}.` },
-    };
-  } catch (err) {
+    console.log(`query: ${JSON.stringify(ctx.query)}`);
+
+    props.message = `Your email is ${email} and your UID is ${uid}.`;
+  } catch {
     // Either the `token` cookie didn't exist
     // or token verification failed
     // either way: redirect to the login page
@@ -100,4 +94,39 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
     // we are redirecting the user
     return { props: {} as never };
   }
+
+  try {
+    console.log(ctx.query.qid);
+
+    if (ctx.query.qid) {
+      const qids = Array.isArray(ctx.query.qid)
+        ? ctx.query.qid
+        : [ctx.query.qid];
+
+      console.log(`qids`);
+      console.log(qids);
+
+      props.qids = qids;
+
+      const querySnapshot = await firebaseAdmin
+        .firestore()
+        .collection("questionAttempts")
+        .where(firebaseAdmin.firestore.FieldPath.documentId(), "in", qids)
+        .get();
+
+      const docs = [];
+
+      querySnapshot.forEach((doc) => {
+        docs.push(doc.data());
+      });
+
+      console.log(docs);
+    }
+  } catch (err) {
+    console.error(err);
+  }
+
+  return {
+    props,
+  };
 };
