@@ -122,12 +122,7 @@
   {
     "date": "2021-03-08",
     "type": "LECTURE",
-    "text": [
-      "Pandas Indices",
-      "Datetime Formats",
-      "Rename/reorder columns",
-      "Merge DataFrames"
-    ]
+    "text": ["Filter Data", "Sort Data", "Read/Update a Cell"]
   },
   {
     "date": "2021-03-09",
@@ -137,7 +132,12 @@
   {
     "date": "2021-03-10",
     "type": "LECTURE",
-    "text": ["Filter Data", "Sort Data", "Read/Update a Cell"]
+    "text": [
+      "Pandas Indices",
+      "Datetime Formats",
+      "Rename/reorder columns",
+      "Merge DataFrames"
+    ]
   },
   {
     "date": "2021-03-11",
