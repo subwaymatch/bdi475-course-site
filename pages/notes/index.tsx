@@ -157,7 +157,7 @@ export default function NotesPage() {
             </Col>
             <Col lg={4} md={6}>
               <a
-                href="https://nbviewer.jupyter.org/github/bdi475/notebooks/blob/main/L11-pandas-solution.ipynb"
+                href="https://nbviewer.jupyter.org/github/bdi475/notebooks/blob/e8ce4de7ad280c9286a6bd51b8dfeb492298db59/L11-pandas-solution.ipynb"
                 className={styles.noteItem}
               >
                 <Image
