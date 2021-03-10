@@ -169,6 +169,21 @@ export default function NotesPage() {
                 <h3>Pandas Filter and Sort</h3>
               </a>
             </Col>
+
+            <Col lg={4} md={6}>
+              <a
+                href="https://nbviewer.jupyter.org/github/bdi475/notebooks/blob/main/L13-pandas-SOLUTION.ipynb"
+                className={styles.noteItem}
+              >
+                <Image
+                  src="/images/notes/l11-pandas.png"
+                  width={900}
+                  height={600}
+                  alt=""
+                />
+                <h3>Pandas Filter and Sort, Again!</h3>
+              </a>
+            </Col>
           </Row>
         </Container>
       </main>
