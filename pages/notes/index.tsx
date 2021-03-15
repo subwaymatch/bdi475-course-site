@@ -99,7 +99,7 @@ export default function NotesPage() {
               }
               date="2021-02-15"
               title="Strings and String Methods"
-              colorTheme={ColorTheme.Yellow}
+              colorTheme={ColorTheme.Green}
             />
 
             <NoteItem
