@@ -83,7 +83,7 @@
   {
     "date": "2021-03-01",
     "type": "CASE_STUDY",
-    "text": "Problem Set 1"
+    "text": "Problem Set 1 - Loops, Lists, Dictionaries"
   },
   {
     "date": "2021-03-01",
@@ -165,6 +165,11 @@
     "text": ["Datetime Formats", "Descriptive Statistics", "Linear Regression"]
   },
   {
+    "date": "2021-03-21",
+    "type": "CASE_STUDY",
+    "text": "Case Study 3 - Chicago Rideshare Vehicles"
+  },
+  {
     "date": "2021-03-22",
     "type": "LECTURE",
     "text": ["Pivot Tables", "Grouping Data", "Joins"]
@@ -175,19 +180,14 @@
     "text": "Exercise 14"
   },
   {
-    "date": "2021-03-23",
-    "type": "CASE_STUDY",
-    "text": "Case Study 3"
-  },
-  {
     "date": "2021-03-24",
     "type": "NO_LECTURE",
     "text": "No Class (Break)"
   },
   {
-    "date": "2021-03-18",
+    "date": "2021-03-28",
     "type": "CASE_STUDY",
-    "text": "Case Study 3"
+    "text": "Case Study 4 - AirBnB Listings"
   },
   {
     "date": "2021-03-29",
@@ -212,7 +212,7 @@
   {
     "date": "2021-04-03",
     "type": "CASE_STUDY",
-    "text": "Case Study 4"
+    "text": "Problem Set 2 - SQL"
   },
   {
     "date": "2021-04-05",
