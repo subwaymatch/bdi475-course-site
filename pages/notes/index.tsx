@@ -193,7 +193,7 @@ export default function NotesPage() {
             />
 
             <NoteItem
-              href="https://nbviewer.jupyter.org/github/bdi475/notebooks/blob/main/L14-working-with-pandas-SOLUTION.ipynb"
+              href="https://nbviewer.jupyter.org/github/bdi475/notebooks/blob/48d75746b6367c574cd9787af02e6692193a5b54/L14-working-with-pandas-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/l11-pandas.png"
