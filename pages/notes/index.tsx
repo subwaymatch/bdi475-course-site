@@ -192,8 +192,8 @@ export default function NotesPage() {
               colorTheme={ColorTheme.Purple}
             />
 
-            {/* <NoteItem
-              href="https://nbviewer.jupyter.org/"
+            <NoteItem
+              href="https://nbviewer.jupyter.org/github/bdi475/notebooks/blob/main/L14-working-with-pandas-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/l11-pandas.png"
@@ -203,9 +203,9 @@ export default function NotesPage() {
                 />
               }
               date="2021-03-15"
-              title="Pandas Sort, Read/Update Values"
+              title="Pandas Sort, Rename/Drop/Select Columns"
               colorTheme={ColorTheme.Purple}
-            /> */}
+            />
           </Row>
         </Container>
       </main>
