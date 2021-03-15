@@ -1,0 +1,43 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.noteItem {
+  display: block;
+  margin-top: 3rem;
+  line-height: 1.4;
+
+  &:hover {
+  }
+
+  h3 {
+    font-size: 1.3rem;
+    font-weight: 500;
+    letter-spacing: -0.02rem;
+    margin-top: 0.5rem;
+  }
+
+  .dateWrapper {
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    margin-top: 0.25rem;
+    color: $color-gray;
+
+    .date {
+      .dateDivider {
+        display: inline-block;
+        padding: 0 0.2rem;
+      }
+    }
+
+    .divider {
+      display: inline-block;
+      margin: 0 0.3rem;
+    }
+
+    .weekday {
+      letter-spacing: 0;
+    }
+  }
+}
