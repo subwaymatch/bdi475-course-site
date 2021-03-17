@@ -76,7 +76,7 @@ export default function AssignmentsPage() {
                     dueDate={dayjs("2021-03-01").tz().format("ll")}
                     pointsAvailable={80}
                     link="/assignments/problem-set-01"
-                    status={AssignmentStatus.Available}
+                    status={AssignmentStatus.Unavailable}
                     colorTheme={ColorTheme.Blue}
                   />
                 </div>

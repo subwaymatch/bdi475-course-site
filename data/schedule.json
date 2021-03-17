@@ -172,7 +172,7 @@
   {
     "date": "2021-03-22",
     "type": "LECTURE",
-    "text": ["Pivot Tables", "Grouping Data", "Joins"]
+    "text": ["Grouping Data", "Merge DataFrames"]
   },
   {
     "date": "2021-03-23",
