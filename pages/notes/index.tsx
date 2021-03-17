@@ -217,7 +217,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2021-03-15"
+              date="2021-03-17"
               title="Pandas Datetime, Grouping and Aggregating Data"
               colorTheme={ColorTheme.Purple}
             />
