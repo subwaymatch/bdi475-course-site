@@ -206,6 +206,21 @@ export default function NotesPage() {
               title="Pandas Sort, Rename/Drop/Select Columns"
               colorTheme={ColorTheme.Purple}
             />
+
+            <NoteItem
+              href="https://nbviewer.jupyter.org/github/bdi475/notebooks/blob/5297a19ee6dc57b6df55b4550c3df54bbbe48101/L15-datetime-groupby-stats-SOLUTION.ipynb"
+              thumbnail={
+                <Image
+                  src="/images/notes/l11-pandas.png"
+                  width={900}
+                  height={600}
+                  alt=""
+                />
+              }
+              date="2021-03-15"
+              title="Pandas Datetime, Grouping and Aggregating Data"
+              colorTheme={ColorTheme.Purple}
+            />
           </Row>
         </Container>
       </main>

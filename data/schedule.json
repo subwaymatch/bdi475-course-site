@@ -162,7 +162,7 @@
   {
     "date": "2021-03-17",
     "type": "LECTURE",
-    "text": ["Datetime Formats", "Descriptive Statistics", "Linear Regression"]
+    "text": ["Datetime Formats", "Descriptive Statistics", "Groupby"]
   },
   {
     "date": "2021-03-21",
@@ -172,7 +172,7 @@
   {
     "date": "2021-03-22",
     "type": "LECTURE",
-    "text": ["Grouping Data", "Merge DataFrames"]
+    "text": ["Linear Regression"]
   },
   {
     "date": "2021-03-23",
