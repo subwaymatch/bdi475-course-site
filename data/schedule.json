@@ -172,22 +172,12 @@
   {
     "date": "2021-03-22",
     "type": "LECTURE",
-    "text": ["Linear Regression"]
-  },
-  {
-    "date": "2021-03-23",
-    "type": "EXERCISE",
-    "text": "Exercise 14"
+    "text": ["Optional Workday"]
   },
   {
     "date": "2021-03-24",
     "type": "NO_LECTURE",
     "text": "No Class (Break)"
-  },
-  {
-    "date": "2021-03-28",
-    "type": "CASE_STUDY",
-    "text": "Case Study 4 - AirBnB Listings"
   },
   {
     "date": "2021-03-29",
@@ -212,7 +202,7 @@
   {
     "date": "2021-04-03",
     "type": "CASE_STUDY",
-    "text": "Problem Set 2 - SQL"
+    "text": "Case Study 4 - AirBnB Listings"
   },
   {
     "date": "2021-04-05",
@@ -240,6 +230,11 @@
     "text": "Exercise 18"
   },
   {
+    "date": "2021-04-10",
+    "type": "CASE_STUDY",
+    "text": "Case Study 5"
+  },
+  {
     "date": "2021-04-12",
     "type": "LECTURE",
     "text": ["DataViz with Python", "Scatter Plots", "Heatmaps"]
@@ -262,7 +257,7 @@
   {
     "date": "2021-04-17",
     "type": "CASE_STUDY",
-    "text": "Case Study 5"
+    "text": "Case Study 6"
   },
   {
     "date": "2021-04-19",
@@ -308,7 +303,7 @@
   {
     "date": "2021-05-01",
     "type": "CASE_STUDY",
-    "text": "Case Study 6"
+    "text": "Case Study 7"
   },
   {
     "date": "2021-05-03",
@@ -323,6 +318,6 @@
   {
     "date": "2021-05-14",
     "type": "CASE_STUDY",
-    "text": "Case Study 7"
+    "text": "Case Study 8"
   }
 ]
