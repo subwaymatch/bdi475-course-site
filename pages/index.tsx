@@ -71,7 +71,7 @@ export default function MainPage() {
 
               <Col md={4}>
                 <div className={styles.displayBox}>
-                  <span className="label purple">Lecture Recordings</span>
+                  <span className="label green">Lecture Recordings</span>
                   <motion.div
                     variants={clickableVariants}
                     whileHover="hover"
@@ -87,7 +87,7 @@ export default function MainPage() {
 
               <Col md={4}>
                 <div className={styles.displayBox}>
-                  <span className="label blue">Discussion</span>
+                  <span className="label purple">Discussion</span>
                   <motion.div
                     variants={clickableVariants}
                     whileHover="hover"
@@ -106,7 +106,7 @@ export default function MainPage() {
               <Col>
                 <h2 className="sectionTitle">
                   Course Discord
-                  <span className="accent green" />
+                  <span className="accent purple" />
                 </h2>
                 <DiscordEmbed height={800} />
               </Col>
