@@ -1,11 +1,16 @@
+import dynamic from "next/dynamic";
+import { useEffect } from "react";
 import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import { motion } from "framer-motion";
 import { clickableVariants } from "animations/clickableVariants";
 import styles from "styles/pages/index.module.scss";
 import { useAuth } from "reactfire";
-import { useEffect } from "react";
 import useFirebaseAuth from "hooks/useFirebaseAuth";
+
+const DiscordEmbed = dynamic(() => import("components/DiscordEmbed"), {
+  ssr: false,
+});
 
 export default function MainPage() {
   const auth = useAuth();
@@ -27,36 +32,16 @@ export default function MainPage() {
   return (
     <Layout>
       <main className={styles.mainPage}>
-        <div className={styles.announcementsSection}>
-          <Container>
-            <Row>
-              <Col>
-                <h1 className="pageTitle">
-                  Introduction to Data Analytics Applications in Business
-                </h1>
-              </Col>
-            </Row>
+        <Container>
+          <Row>
+            <Col>
+              <h1 className="pageTitle">
+                Introduction to Data Analytics Applications in Business
+              </h1>
+            </Col>
+          </Row>
 
-            <Row>
-              <Col>
-                <h2 className="sectionTitle">
-                  Announcements <span className="green accent" />
-                </h2>
-              </Col>
-            </Row>
-
-            <Row>
-              <Col>
-                <div className={styles.item}>
-                  <p>Please check Compass or Discord for announcements.</p>
-                </div>
-              </Col>
-            </Row>
-          </Container>
-        </div>
-
-        <div className={styles.zoomLinkSection}>
-          <Container>
+          <div className={styles.linksSection}>
             <Row>
               <Col>
                 <h2 className="sectionTitle">
@@ -114,8 +99,20 @@ export default function MainPage() {
                 </div>
               </Col>
             </Row>
-          </Container>
-        </div>
+          </div>
+
+          <div className={styles.discordEmbedSection}>
+            <Row>
+              <Col>
+                <h2 className="sectionTitle">
+                  Course Discord
+                  <span className="accent green" />
+                </h2>
+                <DiscordEmbed height={800} />
+              </Col>
+            </Row>
+          </div>
+        </Container>
       </main>
     </Layout>
   );
