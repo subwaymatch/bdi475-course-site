@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.11.3",
-    "@monaco-editor/react": "^4.0.6",
+    "@monaco-editor/react": "^4.1.0",
     "@tippyjs/react": "^4.2.0",
     "@widgetbot/react-embed": "^1.4.0",
     "bootstrap": "^4.5.3",
@@ -32,7 +32,7 @@
     "react-copy-to-clipboard": "^5.0.3",
     "react-device-detect": "^1.15.0",
     "react-dom": "17.0.1",
-    "react-icons": "^4.1.0",
+    "react-icons": "^4.2.0",
     "react-toastify": "^6.2.0",
     "react-tooltip": "^4.2.13",
     "reactfire": "^3.0.0-rc.0",

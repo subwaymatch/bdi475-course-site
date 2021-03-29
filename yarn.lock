@@ -486,19 +486,19 @@
     prop-types "^15.7.2"
     react-is "^16.8.0 || ^17.0.0"
 
-"@monaco-editor/loader@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@monaco-editor/loader/-/loader-1.0.0.tgz#c7ea78ef07cebcae83d92bbfe2bddab563468102"
-  integrity sha512-CA35bf5Y7wFWfeJZfkLslOxiatln3oTBKkfbdo+TF5H+UdPP96qHvhOUjjd1DeQ2NWsRkVPSnoSYek7NE5B26w==
+"@monaco-editor/loader@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@monaco-editor/loader/-/loader-1.0.1.tgz#7068c9b07bbc65387c0e7a4df6dac0a326155905"
+  integrity sha512-hycGOhLqLYjnD0A/FHs56covEQWnDFrSnm/qLKkB/yoeayQ7ju+Vaj4SdTojGrXeY6jhMDx59map0+Jqwquh1Q==
   dependencies:
     state-local "^1.0.6"
 
-"@monaco-editor/react@^4.0.6":
-  version "4.0.10"
-  resolved "https://registry.yarnpkg.com/@monaco-editor/react/-/react-4.0.10.tgz#401d1832854687070be116e651f7308ce65d4c0e"
-  integrity sha512-qORktN6jrypnLrgzCuuKynNNVeHY98q7waSxP+XVXot7KZp3B+x7qokZa4KqI47CohhyamF2u1jqH0tQuX2kIA==
+"@monaco-editor/react@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@monaco-editor/react/-/react-4.1.0.tgz#9a362a4e0973c9958574551984a3c3eeeff06e5f"
+  integrity sha512-Hh895v/KfGgckDLXq8sdDGT4xS89+2hbQOP1l57sLd2XlJycChdzPiCj02nQDIduLmUIVHittjaj1/xmy94C3A==
   dependencies:
-    "@monaco-editor/loader" "^1.0.0"
+    "@monaco-editor/loader" "^1.0.1"
     prop-types "^15.7.2"
     state-local "^1.0.7"
 
@@ -3021,7 +3021,7 @@ react-fast-compare@^2.0.0:
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-2.0.4.tgz#e84b4d455b0fec113e0402c329352715196f81f9"
   integrity sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==
 
-react-icons@^4.1.0:
+react-icons@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.2.0.tgz#6dda80c8a8f338ff96a1851424d63083282630d0"
   integrity sha512-rmzEDFt+AVXRzD7zDE21gcxyBizD/3NqjbX6cmViAgdqfJ2UiLer8927/QhhrXQV7dEj/1EGuOTPp7JnLYVJKQ==
