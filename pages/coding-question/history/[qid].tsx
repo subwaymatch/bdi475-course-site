@@ -10,7 +10,7 @@ import styles from "styles/pages/coding-question/history.module.scss";
 import clsx from "clsx";
 import useCodingQuestionAttempts from "hooks/useCodingQuestionAttempts";
 import { IoCopyOutline } from "react-icons/io5";
-import { HiOutlineBadgeCheck, HiOutlineBan } from "react-icons/hi";
+import { HiOutlineBadgeCheck } from "react-icons/hi";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import Tippy from "@tippyjs/react";
 import dayjs from "dayjs";

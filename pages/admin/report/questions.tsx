@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
 import nookies from "nookies";
 import { InferGetServerSidePropsType, GetServerSidePropsContext } from "next";
 import { firebaseAdmin } from "firebase/firebaseAdmin";
@@ -13,7 +12,8 @@ export default function QuestionsReportPage(
   props: InferGetServerSidePropsType<typeof getServerSideProps>
 ) {
   const [ids, setIds] = useState(props.qids ? props.qids : []);
-  const router = useRouter();
+
+  console.log(ids);
 
   console.log(`props`);
   console.log(props);

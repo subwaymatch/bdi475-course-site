@@ -28,8 +28,6 @@ export default function Login() {
         .signInWithEmailLink(email, window.location.href)
         .then((isSignInWithEmailLink) => {
           window.localStorage.removeItem("emailForSignIn");
-          console.log("Sign in complete");
-          console.log(`isSignInWithEmailLink=${isSignInWithEmailLink}`);
 
           toast.success("Successfully signed in");
 

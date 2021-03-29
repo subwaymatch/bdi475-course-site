@@ -107,7 +107,7 @@ export default function RecordedCodingQuestion({
                             styles.iconButton,
                             styles.historyButton,
                             {
-                              [styles.disabled]: attempts.length == 0,
+                              [styles.disabled]: attempts.length === 0,
                             }
                           )}
                           ref={historyLinkRef}

@@ -5,30 +5,12 @@ import { Container, Row, Col } from "react-bootstrap";
 import { motion } from "framer-motion";
 import { clickableVariants } from "animations/clickableVariants";
 import styles from "styles/pages/index.module.scss";
-import { useAuth } from "reactfire";
-import useFirebaseAuth from "hooks/useFirebaseAuth";
 
 const DiscordEmbed = dynamic(() => import("components/DiscordEmbed"), {
   ssr: false,
 });
 
 export default function MainPage() {
-  const auth = useAuth();
-  const { user } = useFirebaseAuth();
-
-  useEffect(() => {
-    if (user) {
-      auth.currentUser
-        .getIdTokenResult()
-        .then((idTokenResult) => {
-          console.log(idTokenResult);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }
-  }, []);
-
   return (
     <Layout>
       <main className={styles.mainPage}>

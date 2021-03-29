@@ -10,10 +10,6 @@ export default function useCodingQuestion(qid) {
     error: "",
   });
 
-  useEffect(() => {
-    fetchQuestionData();
-  }, [user]);
-
   const fetchQuestionData = async () => {
     try {
       const token = user ? await user.getIdToken() : null;
@@ -45,6 +41,10 @@ export default function useCodingQuestion(qid) {
       );
     }
   };
+
+  useEffect(() => {
+    fetchQuestionData();
+  }, [user]);
 
   return result;
 }

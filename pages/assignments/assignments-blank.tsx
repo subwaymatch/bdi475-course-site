@@ -1,9 +1,5 @@
 import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
-import AssignmentItem from "components/pages/assignment/AssignmentItem";
-import CaseStudyItem from "components/pages/assignment/CaseStudyItem";
-import { AssignmentStatus } from "typings/assignment";
-import { ColorTheme } from "typings/color-theme";
 import { AuthCheck } from "reactfire";
 import styles from "styles/pages/assignments.module.scss";
 import Login from "components/Login";

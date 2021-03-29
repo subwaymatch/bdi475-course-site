@@ -31,7 +31,7 @@ export default function CodingQuestionAttemptsPage() {
     status: qStatus,
     data: questionAttemptsData,
   }: { status: string; data } = useFirestoreDocData(docRef);
-  const { status: uStatus, data: users } = useUsers();
+  const { data: users } = useUsers();
   const [attempts, setAttempts] = useState<ICodingQuestionAttemptWithUID[]>([]);
 
   useEffect(() => {
@@ -39,7 +39,7 @@ export default function CodingQuestionAttemptsPage() {
       let tempAttempts: ICodingQuestionAttemptWithUID[] = [];
 
       Object.keys(questionAttemptsData).forEach((uid) => {
-        if (uid == "NO_ID_FIELD") {
+        if (uid === "NO_ID_FIELD") {
           return;
         }
 
@@ -72,7 +72,7 @@ export default function CodingQuestionAttemptsPage() {
             failCount++;
           }
 
-          if (attempt.passCount == 1 && attempt.failCount == 1) {
+          if (attempt.passCount === 1 && attempt.failCount === 1) {
             break;
           }
         }

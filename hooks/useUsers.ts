@@ -20,14 +20,12 @@ export default function useUsers() {
     }
 
     try {
-      const token = user ? await user.getIdToken() : null;
-      const options = user
-        ? {
-            headers: {
-              authorization: `Bearer ${token}`,
-            },
-          }
-        : {};
+      const token = await user.getIdToken();
+      const options = {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      };
 
       const res = await fetch(`/api/users/list`, options);
       const data = await res.json();

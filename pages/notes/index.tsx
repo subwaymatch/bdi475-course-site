@@ -1,9 +1,7 @@
-import Link from "next/link";
 import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "styles/pages/notes/NotesPage.module.scss";
 import Image from "next/image";
-import dayjs from "dayjs";
 import NoteItem from "components/pages/notes/NoteItem";
 import { ColorTheme } from "typings/color-theme";
 

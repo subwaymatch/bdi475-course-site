@@ -66,6 +66,14 @@ export default function CodingQuestionEditor({
     await onSave(questionData);
   };
 
+  const displayCodeExecutionResult = (result: ICodeExecutionResult) => {
+    if (result.hasError) {
+      window.alert(`Error\n\n${result.errorMessage}`);
+    } else {
+      window.alert(`Output\n\n${result.stdout}`);
+    }
+  };
+
   const runStarterCode = async () => {
     if (!isExecutorReady) {
       return;
@@ -106,14 +114,6 @@ export default function CodingQuestionEditor({
       questionData.testCode
     );
     displayCodeExecutionResult(result);
-  };
-
-  const displayCodeExecutionResult = (result: ICodeExecutionResult) => {
-    if (result.hasError) {
-      window.alert(`Error\n\n${result.errorMessage}`);
-    } else {
-      window.alert(`Output\n\n${result.stdout}`);
-    }
   };
 
   return (
