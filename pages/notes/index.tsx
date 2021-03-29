@@ -220,6 +220,36 @@ export default function NotesPage() {
               colorTheme={ColorTheme.Purple}
             />
           </Row>
+
+          <Row>
+            <Col>
+              <h2
+                className="sectionTitle"
+                style={{
+                  marginTop: "4rem",
+                }}
+              >
+                SQL <span className="green accent" />
+              </h2>
+            </Col>
+          </Row>
+
+          <Row>
+            <NoteItem
+              href="https://nbviewer.jupyter.org/github/bdi475/notebooks/blob/b40fc7a921bb2497fa24e1dce4b663b14d2173f9/L17-intro-to-SQL.ipynb"
+              thumbnail={
+                <Image
+                  src="/images/notes/l17-sql.png"
+                  width={900}
+                  height={600}
+                  alt=""
+                />
+              }
+              date="2021-03-29"
+              title="Introduction to SQL"
+              colorTheme={ColorTheme.Green}
+            />
+          </Row>
         </Container>
       </main>
     </Layout>
