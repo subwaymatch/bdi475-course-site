@@ -9,9 +9,9 @@ class PythonExecutor {
   readonly pyodideWorker: Worker;
 
   private constructor() {
-    this.pyodideWorker = new Worker("lib/pyodide/worker.js", {
-      type: "module",
-    });
+    this.pyodideWorker = new Worker(
+      new URL("lib/pyodide/worker.js", import.meta.url)
+    );
   }
 
   static async create() {

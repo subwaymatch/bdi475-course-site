@@ -24,7 +24,7 @@
     "lodash": "^4.17.20",
     "marked": "^1.2.8",
     "monaco-editor": "^0.21.3",
-    "next": "10.0.5",
+    "next": "^10.0.9",
     "nookies": "^2.5.2",
     "randomstring": "^1.1.5",
     "react": "17.0.1",
@@ -37,8 +37,7 @@
     "react-tooltip": "^4.2.13",
     "reactfire": "^3.0.0-rc.0",
     "sass": "^1.32.4",
-    "victory": "^35.4.8",
-    "worker-plugin": "^5.0.0"
+    "victory": "^35.4.8"
   },
   "devDependencies": {
     "@types/node": "^14.14.20",
