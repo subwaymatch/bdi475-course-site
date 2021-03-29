@@ -1,5 +1,4 @@
 import dynamic from "next/dynamic";
-import { useEffect } from "react";
 import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import { motion } from "framer-motion";

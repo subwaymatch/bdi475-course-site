@@ -10,10 +10,6 @@ export default function useUsers() {
     error: "",
   });
 
-  useEffect(() => {
-    fetchUsers();
-  }, [user, claims]);
-
   const fetchUsers = async () => {
     if (!user || !claims.admin) {
       return;
@@ -47,6 +43,10 @@ export default function useUsers() {
       );
     }
   };
+
+  useEffect(() => {
+    fetchUsers();
+  }, [user, claims]);
 
   return result;
 }
