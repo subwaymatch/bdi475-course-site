@@ -5,7 +5,7 @@ import styles from "styles/pages/notes/common.module.scss";
 import clsx from "clsx";
 import ListWithTitle from "components/common/ListWithTitle";
 import CenteredColumn from "components/common/CenteredColumn";
-import RecordedCodingQuestion from "components/common/RecordedCodingQuestion";
+import RecordedPythonExercise from "components/common/RecordedPythonExercise";
 import LargeQuote from "components/common/LargeQuote";
 
 export default function ListsAndLoopsPage() {
@@ -57,9 +57,9 @@ export default function ListsAndLoopsPage() {
             </Col>
           </Row>
 
-          <RecordedCodingQuestion qid="B2Z3Nz" className={styles.block} />
+          <RecordedPythonExercise qid="B2Z3Nz" className={styles.block} />
 
-          <RecordedCodingQuestion qid="PZbhws" className={styles.block} />
+          <RecordedPythonExercise qid="PZbhws" className={styles.block} />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Introduction to Lists</h3>
@@ -85,9 +85,9 @@ export default function ListsAndLoopsPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedCodingQuestion qid="AMl9MN" className={styles.block} />
+          <RecordedPythonExercise qid="AMl9MN" className={styles.block} />
 
-          <RecordedCodingQuestion qid="JbjkgM" className={styles.block} />
+          <RecordedPythonExercise qid="JbjkgM" className={styles.block} />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Accessing list elements by index</h3>
@@ -107,9 +107,9 @@ export default function ListsAndLoopsPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedCodingQuestion qid="r4xjZt" className={styles.block} />
+          <RecordedPythonExercise qid="r4xjZt" className={styles.block} />
 
-          <RecordedCodingQuestion qid="f7DY43" className={styles.block} />
+          <RecordedPythonExercise qid="f7DY43" className={styles.block} />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Can a list have elements with non-uniform data types?</h3>
@@ -131,7 +131,7 @@ export default function ListsAndLoopsPage() {
             </p>
           </LargeQuote>
 
-          <RecordedCodingQuestion qid="f53Gw6" className={styles.block} />
+          <RecordedPythonExercise qid="f53Gw6" className={styles.block} />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Do we really want to keep copy-pasting stuff?</h3>
@@ -146,15 +146,15 @@ export default function ListsAndLoopsPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedCodingQuestion qid="tSheIA" className={styles.block} />
+          <RecordedPythonExercise qid="tSheIA" className={styles.block} />
 
-          <RecordedCodingQuestion qid="M5pUHB" className={styles.block} />
+          <RecordedPythonExercise qid="M5pUHB" className={styles.block} />
 
-          <RecordedCodingQuestion qid="iVUt8c" className={styles.block} />
+          <RecordedPythonExercise qid="iVUt8c" className={styles.block} />
 
-          <RecordedCodingQuestion qid="FCTXPT" className={styles.block} />
+          <RecordedPythonExercise qid="FCTXPT" className={styles.block} />
 
-          <RecordedCodingQuestion qid="aQOWTX" className={styles.block} />
+          <RecordedPythonExercise qid="aQOWTX" className={styles.block} />
 
           <Row className={clsx(styles.boxItems)}>
             <Col xl={{ span: 8, offset: 2 }} lg={{ span: 10, offset: 1 }}>
@@ -194,9 +194,9 @@ export default function ListsAndLoopsPage() {
             </Col>
           </Row>
 
-          <RecordedCodingQuestion qid="woLrZ7" className={styles.block} />
+          <RecordedPythonExercise qid="woLrZ7" className={styles.block} />
 
-          <RecordedCodingQuestion qid="549Yuv" className={styles.block} />
+          <RecordedPythonExercise qid="549Yuv" className={styles.block} />
         </Container>
       </main>
     </Layout>

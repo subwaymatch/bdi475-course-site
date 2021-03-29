@@ -4,7 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import styles from "styles/pages/notes/common.module.scss";
 import ListWithTitle from "components/common/ListWithTitle";
 import CenteredColumn from "components/common/CenteredColumn";
-import RecordedCodingQuestion from "components/common/RecordedCodingQuestion";
+import RecordedPythonExercise from "components/common/RecordedPythonExercise";
 
 export default function FunctionPage() {
   return (
@@ -54,17 +54,17 @@ export default function FunctionPage() {
             </Col>
           </Row>
 
-          <RecordedCodingQuestion qid="MAij4e" className={styles.block} />
+          <RecordedPythonExercise qid="MAij4e" className={styles.block} />
 
-          <RecordedCodingQuestion qid="aULgTB" className={styles.block} />
+          <RecordedPythonExercise qid="aULgTB" className={styles.block} />
 
-          <RecordedCodingQuestion qid="xAZehL" className={styles.block} />
+          <RecordedPythonExercise qid="xAZehL" className={styles.block} />
 
-          <RecordedCodingQuestion qid="bF23yB" className={styles.block} />
+          <RecordedPythonExercise qid="bF23yB" className={styles.block} />
 
-          <RecordedCodingQuestion qid="QDn300" className={styles.block} />
+          <RecordedPythonExercise qid="QDn300" className={styles.block} />
 
-          <RecordedCodingQuestion qid="2O1csh" className={styles.block} />
+          <RecordedPythonExercise qid="2O1csh" className={styles.block} />
 
           <CenteredColumn className={styles.textBox}>
             <h3>What are functions?</h3>
@@ -135,33 +135,33 @@ export default function FunctionPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedCodingQuestion qid="MSYxAM" className={styles.block} />
+          <RecordedPythonExercise qid="MSYxAM" className={styles.block} />
 
-          <RecordedCodingQuestion qid="3Ubagd" className={styles.block} />
+          <RecordedPythonExercise qid="3Ubagd" className={styles.block} />
 
-          <RecordedCodingQuestion qid="JnTExm" className={styles.block} />
+          <RecordedPythonExercise qid="JnTExm" className={styles.block} />
 
-          <RecordedCodingQuestion qid="DmaGpd" className={styles.block} />
+          <RecordedPythonExercise qid="DmaGpd" className={styles.block} />
 
-          <RecordedCodingQuestion qid="ThsXV0" className={styles.block} />
+          <RecordedPythonExercise qid="ThsXV0" className={styles.block} />
 
-          <RecordedCodingQuestion qid="N8pjpw" className={styles.block} />
+          <RecordedPythonExercise qid="N8pjpw" className={styles.block} />
 
-          <RecordedCodingQuestion qid="w4mn5F" className={styles.block} />
+          <RecordedPythonExercise qid="w4mn5F" className={styles.block} />
 
-          <RecordedCodingQuestion qid="IOeA2s" className={styles.block} />
+          <RecordedPythonExercise qid="IOeA2s" className={styles.block} />
 
-          <RecordedCodingQuestion qid="OAS9vf" className={styles.block} />
+          <RecordedPythonExercise qid="OAS9vf" className={styles.block} />
 
-          <RecordedCodingQuestion qid="jR3Wxg" className={styles.block} />
+          <RecordedPythonExercise qid="jR3Wxg" className={styles.block} />
 
-          <RecordedCodingQuestion qid="rr9KIl" className={styles.block} />
+          <RecordedPythonExercise qid="rr9KIl" className={styles.block} />
 
-          <RecordedCodingQuestion qid="6qiy24" className={styles.block} />
+          <RecordedPythonExercise qid="6qiy24" className={styles.block} />
 
-          <RecordedCodingQuestion qid="1iHGVQ" className={styles.block} />
+          <RecordedPythonExercise qid="1iHGVQ" className={styles.block} />
 
-          <RecordedCodingQuestion qid="MV0U9q" className={styles.block} />
+          <RecordedPythonExercise qid="MV0U9q" className={styles.block} />
         </Container>
       </main>
     </Layout>

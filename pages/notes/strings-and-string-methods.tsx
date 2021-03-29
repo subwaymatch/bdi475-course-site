@@ -4,7 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import styles from "styles/pages/notes/common.module.scss";
 import ListWithTitle from "components/common/ListWithTitle";
 import CenteredColumn from "components/common/CenteredColumn";
-import RecordedCodingQuestion from "components/common/RecordedCodingQuestion";
+import RecordedPythonExercise from "components/common/RecordedPythonExercise";
 import LargeQuote from "components/common/LargeQuote";
 
 export default function StringsAndStringsMethodPage() {
@@ -53,21 +53,21 @@ export default function StringsAndStringsMethodPage() {
             </Col>
           </Row>
 
-          <RecordedCodingQuestion qid="rZ8rOH" className={styles.block} />
+          <RecordedPythonExercise qid="rZ8rOH" className={styles.block} />
 
-          <RecordedCodingQuestion qid="OFKydi" className={styles.block} />
+          <RecordedPythonExercise qid="OFKydi" className={styles.block} />
 
-          <RecordedCodingQuestion qid="LFbn3g" className={styles.block} />
+          <RecordedPythonExercise qid="LFbn3g" className={styles.block} />
 
-          <RecordedCodingQuestion qid="la9oRa" className={styles.block} />
+          <RecordedPythonExercise qid="la9oRa" className={styles.block} />
 
-          <RecordedCodingQuestion qid="JywcpO" className={styles.block} />
+          <RecordedPythonExercise qid="JywcpO" className={styles.block} />
 
-          <RecordedCodingQuestion qid="fndC2H" className={styles.block} />
+          <RecordedPythonExercise qid="fndC2H" className={styles.block} />
 
-          <RecordedCodingQuestion qid="eF30nG" className={styles.block} />
+          <RecordedPythonExercise qid="eF30nG" className={styles.block} />
 
-          <RecordedCodingQuestion qid="SzjYaZ" className={styles.block} />
+          <RecordedPythonExercise qid="SzjYaZ" className={styles.block} />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Slicing a List</h3>
@@ -110,13 +110,13 @@ export default function StringsAndStringsMethodPage() {
             className={styles.block}
           />
 
-          <RecordedCodingQuestion qid="e07FQY" className={styles.block} />
+          <RecordedPythonExercise qid="e07FQY" className={styles.block} />
 
-          <RecordedCodingQuestion qid="9qJE5d" className={styles.block} />
+          <RecordedPythonExercise qid="9qJE5d" className={styles.block} />
 
-          <RecordedCodingQuestion qid="Sidyvz" className={styles.block} />
+          <RecordedPythonExercise qid="Sidyvz" className={styles.block} />
 
-          <RecordedCodingQuestion qid="ShuTgg" className={styles.block} />
+          <RecordedPythonExercise qid="ShuTgg" className={styles.block} />
 
           <LargeQuote className={styles.block}>
             <p>
@@ -124,21 +124,21 @@ export default function StringsAndStringsMethodPage() {
             </p>
           </LargeQuote>
 
-          <RecordedCodingQuestion qid="V3BU43" className={styles.block} />
+          <RecordedPythonExercise qid="V3BU43" className={styles.block} />
 
-          <RecordedCodingQuestion qid="usPdIu" className={styles.block} />
+          <RecordedPythonExercise qid="usPdIu" className={styles.block} />
 
-          <RecordedCodingQuestion qid="BmBkYk" className={styles.block} />
+          <RecordedPythonExercise qid="BmBkYk" className={styles.block} />
 
-          <RecordedCodingQuestion qid="6dPqws" className={styles.block} />
+          <RecordedPythonExercise qid="6dPqws" className={styles.block} />
 
-          <RecordedCodingQuestion qid="Arh1Ot" className={styles.block} />
+          <RecordedPythonExercise qid="Arh1Ot" className={styles.block} />
 
-          <RecordedCodingQuestion qid="LVN4bl" className={styles.block} />
+          <RecordedPythonExercise qid="LVN4bl" className={styles.block} />
 
-          <RecordedCodingQuestion qid="9frSZB" className={styles.block} />
+          <RecordedPythonExercise qid="9frSZB" className={styles.block} />
 
-          <RecordedCodingQuestion qid="zae2AY" className={styles.block} />
+          <RecordedPythonExercise qid="zae2AY" className={styles.block} />
         </Container>
       </main>
     </Layout>

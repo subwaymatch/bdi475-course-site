@@ -5,7 +5,7 @@ import styles from "styles/pages/notes/common.module.scss";
 import clsx from "clsx";
 import ListWithTitle from "components/common/ListWithTitle";
 import CenteredColumn from "components/common/CenteredColumn";
-import RecordedCodingQuestion from "components/common/RecordedCodingQuestion";
+import RecordedPythonExercise from "components/common/RecordedPythonExercise";
 import LargeQuote from "components/common/LargeQuote";
 
 export default function WhileLoopsAndCollectionsPage() {
@@ -56,13 +56,13 @@ export default function WhileLoopsAndCollectionsPage() {
             </Col>
           </Row>
 
-          <RecordedCodingQuestion qid="obNzHK" className={styles.block} />
+          <RecordedPythonExercise qid="obNzHK" className={styles.block} />
 
-          <RecordedCodingQuestion qid="XYmi8W" className={styles.block} />
+          <RecordedPythonExercise qid="XYmi8W" className={styles.block} />
 
-          <RecordedCodingQuestion qid="jeNfHw" className={styles.block} />
+          <RecordedPythonExercise qid="jeNfHw" className={styles.block} />
 
-          <RecordedCodingQuestion qid="IpDjaR" className={styles.block} />
+          <RecordedPythonExercise qid="IpDjaR" className={styles.block} />
 
           <Row className={clsx(styles.boxItems)}>
             <Col xl={{ span: 8, offset: 2 }} lg={{ span: 10, offset: 1 }}>
@@ -102,7 +102,7 @@ export default function WhileLoopsAndCollectionsPage() {
             </Col>
           </Row>
 
-          <RecordedCodingQuestion qid="7Bf7VZ" className={styles.block} />
+          <RecordedPythonExercise qid="7Bf7VZ" className={styles.block} />
 
           <CenteredColumn className={styles.textBox}>
             <h3>While Loops</h3>
@@ -152,7 +152,7 @@ export default function WhileLoopsAndCollectionsPage() {
             <p>A Python dictionary is... just like a real dictionary.</p>
           </LargeQuote>
 
-          <RecordedCodingQuestion qid="Lt10jp" className={styles.block} />
+          <RecordedPythonExercise qid="Lt10jp" className={styles.block} />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Dictionary</h3>
@@ -182,9 +182,9 @@ export default function WhileLoopsAndCollectionsPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedCodingQuestion qid="b49up1" className={styles.block} />
+          <RecordedPythonExercise qid="b49up1" className={styles.block} />
 
-          <RecordedCodingQuestion qid="9UsGYK" className={styles.block} />
+          <RecordedPythonExercise qid="9UsGYK" className={styles.block} />
 
           <LargeQuote className={styles.block}>
             <p>
@@ -242,17 +242,17 @@ export default function WhileLoopsAndCollectionsPage() {
             </Col>
           </Row>
 
-          <RecordedCodingQuestion qid="iR2yBE" className={styles.block} />
+          <RecordedPythonExercise qid="iR2yBE" className={styles.block} />
 
-          <RecordedCodingQuestion qid="6S3aJI" className={styles.block} />
+          <RecordedPythonExercise qid="6S3aJI" className={styles.block} />
 
-          <RecordedCodingQuestion qid="qskNt6" className={styles.block} />
+          <RecordedPythonExercise qid="qskNt6" className={styles.block} />
 
-          <RecordedCodingQuestion qid="5kKcWA" className={styles.block} />
+          <RecordedPythonExercise qid="5kKcWA" className={styles.block} />
 
-          <RecordedCodingQuestion qid="Cn11Co" className={styles.block} />
+          <RecordedPythonExercise qid="Cn11Co" className={styles.block} />
 
-          <RecordedCodingQuestion qid="2CxDZ5" className={styles.block} />
+          <RecordedPythonExercise qid="2CxDZ5" className={styles.block} />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Tuples</h3>
@@ -272,7 +272,7 @@ export default function WhileLoopsAndCollectionsPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedCodingQuestion qid="Sga7CT" className={styles.block} />
+          <RecordedPythonExercise qid="Sga7CT" className={styles.block} />
         </Container>
       </main>
     </Layout>

@@ -1,9 +1,9 @@
-import QuestionEditor from "components/coding-question/QuestionEditor";
+import PythonExerciseEditor from "components/python-exercise/PythonExerciseEditor";
 import Layout from "components/Layout";
 import { useRouter } from "next/router";
 import { useFirestore, useFirestoreDocData } from "reactfire";
 import { Container, Row, Col } from "react-bootstrap";
-import ICodingQuestion from "typings/coding-question";
+import IPythonExercise from "typings/coding-exercise";
 import _ from "lodash";
 import { generateQuestionId } from "utils/question";
 
@@ -15,12 +15,12 @@ export default function EditCodingQuestionPage() {
   const {
     status,
     data,
-  }: { status: string; data: ICodingQuestion } = useFirestoreDocData(docRef);
+  }: { status: string; data: IPythonExercise } = useFirestoreDocData(docRef);
 
   const onDelete = async () => {
     await docRef.delete();
 
-    router.push("/coding-question/list");
+    router.push("/python-exercise/list");
   };
 
   const onClone = async (v) => {
@@ -34,7 +34,7 @@ export default function EditCodingQuestionPage() {
 
     await clonedDocRef.set(clonedData);
 
-    router.push(`/coding-question/edit/${clonedDocRef.id}`);
+    router.push(`/python-exercise/edit/${clonedDocRef.id}`);
   };
 
   const saveDoc = async (v) => {
@@ -51,7 +51,7 @@ export default function EditCodingQuestionPage() {
     </Layout>
   ) : (
     <Layout excludeHeader={true}>
-      <QuestionEditor
+      <PythonExerciseEditor
         qid={docRef.id}
         savedData={_.omit(data, "NO_ID_FIELD")}
         onSave={(newData) => {

@@ -6,7 +6,7 @@ import Login from "components/Login";
 import styles from "styles/pages/notes/common.module.scss";
 import ListWithTitle from "components/common/ListWithTitle";
 import CenteredColumn from "components/common/CenteredColumn";
-import RecordedCodingQuestion from "components/common/RecordedCodingQuestion";
+import RecordedPythonExercise from "components/common/RecordedPythonExercise";
 
 export default function QuizPage() {
   return (
@@ -74,13 +74,13 @@ export default function QuizPage() {
               </p>
             </CenteredColumn>
 
-            <RecordedCodingQuestion qid="zWeBSE" className={styles.block} />
+            <RecordedPythonExercise qid="zWeBSE" className={styles.block} />
 
-            <RecordedCodingQuestion qid="qp1LzJ" className={styles.block} />
+            <RecordedPythonExercise qid="qp1LzJ" className={styles.block} />
 
-            <RecordedCodingQuestion qid="GYdI7m" className={styles.block} />
+            <RecordedPythonExercise qid="GYdI7m" className={styles.block} />
 
-            <RecordedCodingQuestion qid="dooYXm" className={styles.block} />
+            <RecordedPythonExercise qid="dooYXm" className={styles.block} />
           </Container>
         </main>
       </AuthCheck>

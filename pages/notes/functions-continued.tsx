@@ -4,7 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import styles from "styles/pages/notes/common.module.scss";
 import ListWithTitle from "components/common/ListWithTitle";
 import CenteredColumn from "components/common/CenteredColumn";
-import RecordedCodingQuestion from "components/common/RecordedCodingQuestion";
+import RecordedPythonExercise from "components/common/RecordedPythonExercise";
 
 export default function FunctionPage() {
   return (
@@ -47,29 +47,29 @@ export default function FunctionPage() {
             </Col>
           </Row>
 
-          <RecordedCodingQuestion qid="tgAqpi" className={styles.block} />
+          <RecordedPythonExercise qid="tgAqpi" className={styles.block} />
 
-          <RecordedCodingQuestion qid="u5kAW4" className={styles.block} />
+          <RecordedPythonExercise qid="u5kAW4" className={styles.block} />
 
-          <RecordedCodingQuestion qid="nP0VaY" className={styles.block} />
+          <RecordedPythonExercise qid="nP0VaY" className={styles.block} />
 
-          <RecordedCodingQuestion qid="Rz7WbO" className={styles.block} />
+          <RecordedPythonExercise qid="Rz7WbO" className={styles.block} />
 
-          <RecordedCodingQuestion qid="JrNKop" className={styles.block} />
+          <RecordedPythonExercise qid="JrNKop" className={styles.block} />
 
-          <RecordedCodingQuestion qid="hOutep" className={styles.block} />
+          <RecordedPythonExercise qid="hOutep" className={styles.block} />
 
-          <RecordedCodingQuestion qid="4DLeS7" className={styles.block} />
+          <RecordedPythonExercise qid="4DLeS7" className={styles.block} />
 
-          <RecordedCodingQuestion qid="zqDPpv" className={styles.block} />
+          <RecordedPythonExercise qid="zqDPpv" className={styles.block} />
 
-          <RecordedCodingQuestion qid="WLIt7B" className={styles.block} />
+          <RecordedPythonExercise qid="WLIt7B" className={styles.block} />
 
-          <RecordedCodingQuestion qid="elcwON" className={styles.block} />
+          <RecordedPythonExercise qid="elcwON" className={styles.block} />
 
-          <RecordedCodingQuestion qid="Ae23Hb" className={styles.block} />
+          <RecordedPythonExercise qid="Ae23Hb" className={styles.block} />
 
-          <RecordedCodingQuestion qid="UCKPKa" className={styles.block} />
+          <RecordedPythonExercise qid="UCKPKa" className={styles.block} />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Variable Scopes</h3>
@@ -91,7 +91,7 @@ export default function FunctionPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedCodingQuestion qid="RZsJ2C" className={styles.block} />
+          <RecordedPythonExercise qid="RZsJ2C" className={styles.block} />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Variable Scopes</h3>
@@ -114,9 +114,9 @@ export default function FunctionPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedCodingQuestion qid="Ydiw2T" className={styles.block} />
+          <RecordedPythonExercise qid="Ydiw2T" className={styles.block} />
 
-          <RecordedCodingQuestion qid="aeApjn" className={styles.block} />
+          <RecordedPythonExercise qid="aeApjn" className={styles.block} />
 
           <CenteredColumn className={styles.textBox}>
             <span className="label green">What happened?</span>
@@ -136,9 +136,9 @@ export default function FunctionPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedCodingQuestion qid="ifBxj5" className={styles.block} />
+          <RecordedPythonExercise qid="ifBxj5" className={styles.block} />
 
-          <RecordedCodingQuestion qid="WHohdq" className={styles.block} />
+          <RecordedPythonExercise qid="WHohdq" className={styles.block} />
         </Container>
       </main>
     </Layout>

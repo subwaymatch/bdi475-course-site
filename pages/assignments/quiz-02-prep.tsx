@@ -2,7 +2,7 @@ import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "styles/pages/notes/common.module.scss";
 import CenteredColumn from "components/common/CenteredColumn";
-import RecordedCodingQuestion from "components/common/RecordedCodingQuestion";
+import RecordedPythonExercise from "components/common/RecordedPythonExercise";
 
 export default function QuizPage() {
   return (
@@ -34,9 +34,9 @@ export default function QuizPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedCodingQuestion qid="SKRjpU" className={styles.block} />
+          <RecordedPythonExercise qid="SKRjpU" className={styles.block} />
 
-          <RecordedCodingQuestion qid="UsLyX7" className={styles.block} />
+          <RecordedPythonExercise qid="UsLyX7" className={styles.block} />
         </Container>
       </main>
     </Layout>

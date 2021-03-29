@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 
-import RecordedCodingQuestion from "components/common/RecordedCodingQuestion";
+import RecordedPythonExercise from "components/common/RecordedPythonExercise";
 import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 
@@ -14,7 +14,7 @@ export default function ViewCodingQuestionPage() {
         <Row>
           <Col>
             {qid ? (
-              <RecordedCodingQuestion qid={qid as string} />
+              <RecordedPythonExercise qid={qid as string} />
             ) : (
               <p>Loading...</p>
             )}

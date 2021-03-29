@@ -12,15 +12,14 @@ import { IoPlay } from "react-icons/io5";
 import Tippy from "@tippyjs/react";
 import { toast } from "react-toastify";
 import marked from "marked";
-// import { isMacOs } from "react-device-detect";
-import styles from "./CodingQuestion.module.scss";
+import styles from "./PythonExercise.module.scss";
 import clsx from "clsx";
 
 const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
 });
 
-interface ICodingQuestionProps {
+interface IPythonExerciseProps {
   textMarkdown: string;
   starterCode?: string;
   testCode: string;
@@ -29,14 +28,14 @@ interface ICodingQuestionProps {
   onSubmit: (boolean, string?) => void;
 }
 
-export default function CodingQuestion({
+export default function PythonExercise({
   textMarkdown,
   starterCode,
   testCode,
   solutionCode,
   localStorageKey,
   onSubmit,
-}: ICodingQuestionProps) {
+}: IPythonExerciseProps) {
   const [userCode, setUserCode] = useState(starterCode);
   const [output, setOutput] = useState("");
   const [hasError, setHasError] = useState(false);

@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import styles from "styles/pages/notes/common.module.scss";
 import Image from "next/image";
 import clsx from "clsx";
-import RecordedCodingQuestion from "components/common/RecordedCodingQuestion";
+import RecordedPythonExercise from "components/common/RecordedPythonExercise";
 
 export default function VariablesAndDataTypesPage() {
   return (
@@ -138,7 +138,7 @@ export default function VariablesAndDataTypesPage() {
             </Col>
           </Row>
 
-          <RecordedCodingQuestion
+          <RecordedPythonExercise
             qid="F7EJVQ"
             className={styles.questionWrapper}
           />

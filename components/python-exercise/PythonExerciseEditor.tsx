@@ -6,7 +6,7 @@ import { MdDelete } from "react-icons/md";
 import { IoCopy, IoLink, IoPlay } from "react-icons/io5";
 import { AiFillSave } from "react-icons/ai";
 import { VscRepoForked, VscRunAll } from "react-icons/vsc";
-import ICodingQuestion from "typings/coding-question";
+import IPythonExercise from "typings/coding-exercise";
 import produce from "immer";
 import { Row, Col } from "react-bootstrap";
 import { motion } from "framer-motion";
@@ -14,7 +14,7 @@ import { smallClickableVariants } from "animations/clickableVariants";
 import { toast } from "react-toastify";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import _ from "lodash";
-import styles from "./QuestionEditor.module.scss";
+import styles from "./PythonExerciseEditor.module.scss";
 import clsx from "clsx";
 import { ICodeExecutionResult } from "typings/pyodide";
 
@@ -24,10 +24,10 @@ const CodeEditor = dynamic(() => import("components/CodeEditor"), {
 
 interface ICodingQuestionEditorProps {
   qid: string;
-  savedData: ICodingQuestion;
-  onSave: (v: ICodingQuestion) => void;
+  savedData: IPythonExercise;
+  onSave: (v: IPythonExercise) => void;
   onDelete: () => void;
-  onClone: (v: ICodingQuestion) => void;
+  onClone: (v: IPythonExercise) => void;
 }
 
 export default function CodingQuestionEditor({
@@ -37,7 +37,7 @@ export default function CodingQuestionEditor({
   onDelete,
   onClone,
 }: ICodingQuestionEditorProps) {
-  const [questionData, setQuestionData] = useState<ICodingQuestion>(
+  const [questionData, setQuestionData] = useState<IPythonExercise>(
     Object.assign(
       {
         title: "",
@@ -121,7 +121,7 @@ export default function CodingQuestionEditor({
       <div className={styles.controlBar}>
         <Row className={clsx(styles.controlRow, "align-items-center")}>
           <Col xs={4}>
-            <Link href="/coding-question/list">
+            <Link href="/python-exercise/list">
               <motion.a
                 variants={smallClickableVariants}
                 whileHover="hover"
@@ -220,7 +220,7 @@ export default function CodingQuestionEditor({
               </CopyToClipboard>
 
               <CopyToClipboard
-                text={`${window.location.origin}/coding-question/view/${qid}`}
+                text={`${window.location.origin}/python-exercise/view/${qid}`}
                 onCopy={() => toast.info("Copied permalink to clipboard")}
               >
                 <motion.div

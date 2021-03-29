@@ -1,28 +1,28 @@
 import { useRef } from "react";
 import Link from "next/link";
-import CodingQuestion from "components/coding-question/CodingQuestion";
+import PythonExercise from "components/python-exercise/PythonExercise";
 import useFirebaseAuth from "hooks/useFirebaseAuth";
 import { Row, Col } from "react-bootstrap";
 import { BsCheckCircle } from "react-icons/bs";
 import { RiHistoryLine, RiEditBoxLine, RiGroupLine } from "react-icons/ri";
-import useCodingQuestion from "hooks/useCodingQuestion";
-import useCodingQuestionAttempts from "hooks/useCodingQuestionAttempts";
+import usePythonExercise from "hooks/usePythonExercise";
+import useCodingExerciseAttempts from "hooks/useCodingExerciseAttempts";
 import Tippy from "@tippyjs/react";
 import clsx from "clsx";
-import styles from "./RecordedCodingQuestion.module.scss";
+import styles from "./RecordedPythonExercise.module.scss";
 
-interface IRecordedCodingQuestionProps {
+interface IRecordedPythonExerciseProps {
   qid: string;
   className?: string;
 }
 
-export default function RecordedCodingQuestion({
+export default function RecordedPythonExercise({
   qid,
   className,
-}: IRecordedCodingQuestionProps) {
+}: IRecordedPythonExerciseProps) {
   const { user, claims } = useFirebaseAuth();
-  const { status, data, error } = useCodingQuestion(qid);
-  const { attempts, recordSubmission } = useCodingQuestionAttempts(qid);
+  const { status, data, error } = usePythonExercise(qid);
+  const { attempts, recordSubmission } = useCodingExerciseAttempts(qid);
   const editLinkRef = useRef<HTMLAnchorElement>();
   const attemptsLinkRef = useRef<HTMLAnchorElement>();
   const historyLinkRef = useRef<HTMLAnchorElement>();
@@ -61,7 +61,7 @@ export default function RecordedCodingQuestion({
                 <div className={styles.topControls}>
                   {user && claims.admin && (
                     <>
-                      <Link href={`/coding-question/edit/${qid}`}>
+                      <Link href={`/python-exercise/edit/${qid}`}>
                         <a
                           className={clsx(styles.iconButton, styles.editButton)}
                           ref={editLinkRef}
@@ -79,7 +79,7 @@ export default function RecordedCodingQuestion({
                         reference={editLinkRef}
                       />
 
-                      <Link href={`/admin/coding-question/attempts/${qid}`}>
+                      <Link href={`/admin/python-exercise/attempts/${qid}`}>
                         <a
                           className={clsx(styles.iconButton, styles.editButton)}
                           ref={attemptsLinkRef}
@@ -101,7 +101,7 @@ export default function RecordedCodingQuestion({
 
                   {user && (
                     <>
-                      <Link href={`/coding-question/history/${qid}`}>
+                      <Link href={`/python-exercise/history/${qid}`}>
                         <a
                           className={clsx(
                             styles.iconButton,
@@ -158,7 +158,7 @@ export default function RecordedCodingQuestion({
             </Col>
           </Row>
 
-          <CodingQuestion
+          <PythonExercise
             textMarkdown={(data as any).textMarkdown}
             starterCode={(data as any).starterCode}
             testCode={(data as any).testCode}

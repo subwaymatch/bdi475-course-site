@@ -4,9 +4,9 @@ import Layout from "components/Layout";
 import { Col, Container, Row } from "react-bootstrap";
 import firebase from "firebase";
 import { AuthCheck, useFirestore } from "reactfire";
-import QuestionList from "components/question-list";
-import { QuestionListItemProps } from "components/question-list/QuestionListItem";
-import styles from "styles/pages/coding-question/list.module.scss";
+import PythonExerciseList from "components/question-list/PythonExerciseList";
+import { QuestionListItemProps } from "components/question-list/ListItem";
+import styles from "styles/pages/python-exercise/list.module.scss";
 import { toast } from "react-toastify";
 import Login from "components/Login";
 
@@ -16,7 +16,7 @@ enum QueryMode {
   ToNextPage = "ToNextPage",
 }
 
-export default function CodingQuestionListPage() {
+export default function PythonExerciseListPage() {
   let pageSize = 20;
   const firestore = useFirestore();
   const collectionRef = firestore.collection("codingQuestions");
@@ -69,11 +69,11 @@ export default function CodingQuestionListPage() {
 
           return {
             qid,
-            permalink: `/coding-question/view/${qid}`,
+            permalink: `/python-exercise/view/${qid}`,
             title: data.title,
             createdAt: data.createdAt ? data.createdAt.toDate() : null,
             updatedAt: data.updatedAt ? data.createdAt.toDate() : null,
-            editLink: `/coding-question/edit/${qid}`,
+            editLink: `/python-exercise/edit/${qid}`,
             onDelete: async () => {
               if (
                 window.confirm(
@@ -142,17 +142,14 @@ export default function CodingQuestionListPage() {
                   </h2>
                 </Col>
               </Row>
-
               <Row>
                 <Col>
-                  <Link href="/coding-question/new">
+                  <Link href="/python-exercise/new">
                     <a className={styles.createButton}>+ Create</a>
                   </Link>
                 </Col>
               </Row>
-
-              <QuestionList items={questionListItems} />
-
+              <PythonExerciseList items={questionListItems} />
               <Row>
                 <Col md={6}>
                   {hasPrevPage && <div onClick={toPrevPage}>Prev</div>}

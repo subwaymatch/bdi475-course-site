@@ -1,14 +1,14 @@
 import useFirebaseAuth from "hooks/useFirebaseAuth";
 import { useEffect, useState } from "react";
-import { ICodingQuestionAttempt } from "typings/coding-question";
+import { ICodingExerciseAttempt } from "typings/coding-exercise";
 import { useFirestore } from "reactfire";
 import { firebaseClient } from "firebase/firebaseClient";
 import _ from "lodash";
 
-export default function useCodingQuestionAttempts(qid) {
+export default function useCodingExerciseAttempts(qid) {
   const { user } = useFirebaseAuth();
   const firestore = useFirestore();
-  const [attempts, setAttempts] = useState<ICodingQuestionAttempt[]>([]);
+  const [attempts, setAttempts] = useState<ICodingExerciseAttempt[]>([]);
 
   const updateAttempts = () => {
     if (!user || !qid) {
@@ -68,7 +68,7 @@ export default function useCodingQuestionAttempts(qid) {
       }),
     };
 
-    await fetch(`/api/coding-question/attempt/${qid}`, options);
+    await fetch(`/api/coding-exercise/attempt/${qid}`, options);
 
     updateAttempts();
   };

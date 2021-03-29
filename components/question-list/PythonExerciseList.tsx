@@ -1,13 +1,15 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
 import styles from "./QuestionList.module.scss";
-import QuestionListItem, { QuestionListItemProps } from "./QuestionListItem";
+import QuestionListItem, { QuestionListItemProps } from "./ListItem";
 
-interface QuestionListProps {
+interface IPythonExerciseListPageProps {
   items: QuestionListItemProps[];
 }
 
-export default function QuestionList({ items }: QuestionListProps) {
+export default function PythonExerciseList({
+  items,
+}: IPythonExerciseListPageProps) {
   return (
     <div className={styles.questionList}>
       <Row>

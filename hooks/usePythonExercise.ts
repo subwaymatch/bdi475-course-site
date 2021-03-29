@@ -1,7 +1,7 @@
 import useFirebaseAuth from "hooks/useFirebaseAuth";
 import { useEffect, useState } from "react";
 
-export default function useCodingQuestion(qid) {
+export default function usePythonExercise(qid) {
   const { user } = useFirebaseAuth();
 
   const [result, setResult] = useState({
@@ -21,7 +21,7 @@ export default function useCodingQuestion(qid) {
           }
         : {};
 
-      const res = await fetch(`/api/coding-question/${qid}`, options);
+      const res = await fetch(`/api/python-exercise/${qid}`, options);
       const data = await res.json();
 
       setResult((prevResult) =>

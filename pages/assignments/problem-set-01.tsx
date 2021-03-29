@@ -6,7 +6,7 @@ import Login from "components/Login";
 import styles from "styles/pages/notes/common.module.scss";
 import ListWithTitle from "components/common/ListWithTitle";
 import CenteredColumn from "components/common/CenteredColumn";
-import RecordedCodingQuestion from "components/common/RecordedCodingQuestion";
+import RecordedPythonExercise from "components/common/RecordedPythonExercise";
 
 export default function ProblemSetPage() {
   return (
@@ -98,19 +98,19 @@ export default function ProblemSetPage() {
               </p>
             </CenteredColumn>
 
-            <RecordedCodingQuestion qid="IoPUN0" className={styles.block} />
+            <RecordedPythonExercise qid="IoPUN0" className={styles.block} />
 
-            <RecordedCodingQuestion qid="pAXDI1" className={styles.block} />
+            <RecordedPythonExercise qid="pAXDI1" className={styles.block} />
 
-            <RecordedCodingQuestion qid="fveynH" className={styles.block} />
+            <RecordedPythonExercise qid="fveynH" className={styles.block} />
 
-            <RecordedCodingQuestion qid="ulmG64" className={styles.block} />
+            <RecordedPythonExercise qid="ulmG64" className={styles.block} />
 
-            <RecordedCodingQuestion qid="GemfF1" className={styles.block} />
+            <RecordedPythonExercise qid="GemfF1" className={styles.block} />
 
-            <RecordedCodingQuestion qid="8rzCEk" className={styles.block} />
+            <RecordedPythonExercise qid="8rzCEk" className={styles.block} />
 
-            <RecordedCodingQuestion qid="VnrUu9" className={styles.block} />
+            <RecordedPythonExercise qid="VnrUu9" className={styles.block} />
           </Container>
         </main>
       </AuthCheck>

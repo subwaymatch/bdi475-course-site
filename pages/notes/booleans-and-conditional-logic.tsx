@@ -5,7 +5,7 @@ import styles from "styles/pages/notes/common.module.scss";
 import clsx from "clsx";
 import ListWithTitle from "components/common/ListWithTitle";
 import CenteredColumn from "components/common/CenteredColumn";
-import RecordedCodingQuestion from "components/common/RecordedCodingQuestion";
+import RecordedPythonExercise from "components/common/RecordedPythonExercise";
 import { FaWikipediaW } from "react-icons/fa";
 import LargeQuote from "components/common/LargeQuote";
 
@@ -93,11 +93,11 @@ export default function BooleanAndConditionalLogicPage() {
             </p>
           </LargeQuote>
 
-          <RecordedCodingQuestion qid="c6NgwO" className={styles.block} />
+          <RecordedPythonExercise qid="c6NgwO" className={styles.block} />
 
-          <RecordedCodingQuestion qid="CyHuSl" className={styles.block} />
+          <RecordedPythonExercise qid="CyHuSl" className={styles.block} />
 
-          <RecordedCodingQuestion qid="D0o7hU" className={styles.block} />
+          <RecordedPythonExercise qid="D0o7hU" className={styles.block} />
 
           <Row className={clsx(styles.boxItems)}>
             <Col xl={{ span: 8, offset: 2 }} lg={{ span: 10, offset: 1 }}>
@@ -141,7 +141,7 @@ export default function BooleanAndConditionalLogicPage() {
             </p>
           </LargeQuote>
 
-          <RecordedCodingQuestion qid="X0ekJl" className={styles.block} />
+          <RecordedPythonExercise qid="X0ekJl" className={styles.block} />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Boolean Expressions</h3>
@@ -207,9 +207,9 @@ export default function BooleanAndConditionalLogicPage() {
             className={styles.block}
           />
 
-          <RecordedCodingQuestion qid="vQ40L0" className={styles.block} />
+          <RecordedPythonExercise qid="vQ40L0" className={styles.block} />
 
-          <RecordedCodingQuestion qid="aPlxFK" className={styles.block} />
+          <RecordedPythonExercise qid="aPlxFK" className={styles.block} />
 
           <CenteredColumn className={styles.textBox}>
             <h3>If...Else</h3>
@@ -233,7 +233,7 @@ export default function BooleanAndConditionalLogicPage() {
             </p>
           </LargeQuote>
 
-          <RecordedCodingQuestion qid="06b664" className={styles.block} />
+          <RecordedPythonExercise qid="06b664" className={styles.block} />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Why are some lines indented?</h3>
@@ -254,7 +254,7 @@ export default function BooleanAndConditionalLogicPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedCodingQuestion qid="qGB9SK" className={styles.block} />
+          <RecordedPythonExercise qid="qGB9SK" className={styles.block} />
 
           <Row className={clsx(styles.boxItems)}>
             <Col>
@@ -311,9 +311,9 @@ export default function BooleanAndConditionalLogicPage() {
             <p>Since I have over $50, how does Biaggis sound?</p>
           </LargeQuote>
 
-          <RecordedCodingQuestion qid="dSCsot" className={styles.block} />
+          <RecordedPythonExercise qid="dSCsot" className={styles.block} />
 
-          <RecordedCodingQuestion qid="XzNnHb" className={styles.block} />
+          <RecordedPythonExercise qid="XzNnHb" className={styles.block} />
         </Container>
       </main>
     </Layout>

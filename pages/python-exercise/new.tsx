@@ -4,11 +4,11 @@ import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import { generateQuestionId } from "utils/question";
 
-export default function NewCodingQuestionPage() {
+export default function CreatePythonExercisePage() {
   const router = useRouter();
 
   useEffect(() => {
-    router.push(`/coding-question/edit/${generateQuestionId()}`);
+    router.push(`/python-exercise/edit/${generateQuestionId()}`);
   });
 
   return (
