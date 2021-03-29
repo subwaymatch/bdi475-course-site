@@ -236,7 +236,7 @@ export default function NotesPage() {
 
           <Row>
             <NoteItem
-              href="https://nbviewer.jupyter.org/github/bdi475/notebooks/blob/b40fc7a921bb2497fa24e1dce4b663b14d2173f9/L17-intro-to-SQL.ipynb"
+              href="https://nbviewer.jupyter.org/github/bdi475/notebooks/blob/2c424e2255ab9620a31ccc4605ac40f229f26df8/L17-intro-to-SQL-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/l17-sql.png"
