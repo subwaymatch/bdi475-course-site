@@ -9,7 +9,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { clickableVariants } from "animations/clickableVariants";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
-import { FiLogIn } from "react-icons/fi";
+import { IoBookOutline } from "react-icons/io5";
+import { BiHomeAlt, BiNote } from "react-icons/bi";
+import { FiLogIn, FiBookOpen, FiCalendar, FiHexagon } from "react-icons/fi";
+import { RiBook3Line } from "react-icons/ri";
 import MenuButton from "components/Header/MenuButton";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { desktop } from "constants/media-query-strings";
@@ -18,38 +21,57 @@ import useFirebaseAuth from "hooks/useFirebaseAuth";
 
 const HeaderMenu = () => (
   <Row className={clsx(styles.mainMenu, "align-items-center")}>
-    <Col md={3}>
+    <Col>
+      <Link href="/">
+        <a className={styles.menuLink}>
+          <span className={styles.iconWrapper}>
+            <BiHomeAlt className={styles.reactIcon} />
+          </span>
+          <span>Home</span>
+        </a>
+      </Link>
+    </Col>
+
+    <Col>
       <Link href="/syllabus">
         <a className={styles.menuLink}>
-          Syllabus
-          <span className="accent green" />
+          <span className={styles.iconWrapper}>
+            <BiNote className={styles.reactIcon} />
+          </span>
+          <span>Syllabus</span>
         </a>
       </Link>
     </Col>
 
-    <Col md={3}>
+    <Col>
       <Link href="/schedule">
         <a className={styles.menuLink}>
-          Schedule
-          <span className="accent purple" />
+          <span className={styles.iconWrapper}>
+            <FiCalendar className={styles.reactIcon} />
+          </span>
+          <span>Schedule</span>
         </a>
       </Link>
     </Col>
 
-    <Col md={3}>
+    <Col>
       <Link href="/notes">
         <a className={styles.menuLink}>
-          Notes
-          <span className="accent blue" />
+          <span className={styles.iconWrapper}>
+            <RiBook3Line className={styles.reactIcon} />
+          </span>
+          <span>Notes</span>
         </a>
       </Link>
     </Col>
 
-    <Col md={3}>
+    <Col>
       <Link href="/assignments">
         <a className={styles.menuLink}>
-          Assignments
-          <span className="accent pink" />
+          <span className={styles.iconWrapper}>
+            <FiHexagon className={styles.reactIcon} />
+          </span>
+          <span>Assignments</span>
         </a>
       </Link>
     </Col>
@@ -137,26 +159,7 @@ export default function Header() {
       <header className={styles.header}>
         <Container>
           <Row className="align-items-center">
-            <Col md={2} xs={6}>
-              <div
-                style={{
-                  lineHeight: 0,
-                }}
-              >
-                <Link href="/">
-                  <a className={styles.logoLink}>
-                    <Image
-                      src="/images/logo_bdi475.svg"
-                      alt="BDI 475"
-                      width={124}
-                      height={25}
-                    />
-                  </a>
-                </Link>
-              </div>
-            </Col>
-
-            <Col md={8} className="d-none d-md-block">
+            <Col md={10} className="d-none d-md-block">
               <HeaderMenu />
             </Col>
 

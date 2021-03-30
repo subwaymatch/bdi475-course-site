@@ -1,3 +1,4 @@
+import Image from "next/image";
 import dynamic from "next/dynamic";
 import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
@@ -16,9 +17,15 @@ export default function MainPage() {
         <Container>
           <Row>
             <Col>
-              <h1 className="pageTitle">
-                Introduction to Data Analytics Applications in Business
-              </h1>
+              <div className={styles.courseTitleWrapper}>
+                <Row>
+                  <Col>
+                    <h1>
+                      Introduction to Data Analytics Applications in Business
+                    </h1>
+                  </Col>
+                </Row>
+              </div>
             </Col>
           </Row>
 

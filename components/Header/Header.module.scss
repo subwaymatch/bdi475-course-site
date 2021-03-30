@@ -17,36 +17,38 @@
 
   .logoLink {
     display: block;
+    display: none;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
   }
 }
 
 .mainMenu {
-  a {
-    color: black;
+  a.menuLink {
+    color: $color-dark-gray;
+    line-height: 1.2;
     display: flex;
     align-items: center;
     padding: 0.5rem 0;
 
-    :global(.accent) {
-      margin-left: 0.5rem;
-      transition: all 0.3s;
+    .iconWrapper {
+      display: inline-flex;
+      width: 2.5rem;
+      height: 2.5rem;
+      align-items: center;
+      justify-content: center;
+      color: $color-medium-gray;
+      background-color: $color-lighter-gray;
+      border-radius: 8rem;
+      margin-right: 0.75rem;
     }
 
     &:hover {
-      :global(.accent) {
-        transform: translateX(0.25rem);
-        width: 1.5rem;
-        height: 0.2rem;
-      }
-    }
+      color: $color-black;
 
-    &:active {
-      :global(.accent) {
-        transform: translateX(0);
-        width: 0.5rem;
-        height: 0.5rem;
+      .iconWrapper {
+        color: $color-black;
+        background-color: $color-yellow;
       }
     }
   }

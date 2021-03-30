@@ -5,7 +5,7 @@ import styles from "styles/pages/schedule.module.scss";
 
 export default function SchedulePage() {
   return (
-    <Layout>
+    <Layout hideSideFloatingBars={true}>
       <main className={styles.schedulePage}>
         <Container>
           <Row>
