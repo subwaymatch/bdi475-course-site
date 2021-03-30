@@ -10,14 +10,14 @@ import "styles/toastify.custom.scss";
 import "firebase/firestore";
 import { FirebaseAppProvider } from "reactfire";
 import FirebaseAuthProvider from "firebase/FirebaseAuthProvider";
-import PythonExecutorProvider from "lib/pyodide/PythonExecutorProvider";
+import PythonRuntimeProvider from "lib/pyodide/PythonRuntimeProvider";
 import { firebaseConfig } from "firebase/firebaseClient";
 
 function App({ Component, pageProps }: AppProps) {
   return (
     <FirebaseAppProvider firebaseConfig={firebaseConfig}>
       <FirebaseAuthProvider>
-        <PythonExecutorProvider>
+        <PythonRuntimeProvider>
           <ToastContainer
             position="top-center"
             autoClose={3000}
@@ -30,7 +30,7 @@ function App({ Component, pageProps }: AppProps) {
             pauseOnHover
           />
           <Component {...pageProps} />
-        </PythonExecutorProvider>
+        </PythonRuntimeProvider>
       </FirebaseAuthProvider>
     </FirebaseAppProvider>
   );

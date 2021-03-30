@@ -1,11 +1,10 @@
 import { useState, useEffect, createContext } from "react";
-import PythonExecutor from "lib/pyodide/PythonExecutor";
+import PythonRuntime from "lib/pyodide/PythonRuntime";
 import { ICodeExecutionResult } from "typings/pyodide";
 
-// Create a custom Firebase Auth context to sync sign-ins and sign-outs
-// across multiple tabs
-export const PythonExecutorContext = createContext<{
-  isExecutorLoaded: boolean;
+// Create a custom In-browser Python Runtime context
+// to enable Python code execution in the browser
+export const PythonRuntimeContext = createContext<{
   isExecutorReady: boolean;
   loadPackages: (packages: string | Array<string>) => Promise<void>;
   runCode: (code: string) => Promise<ICodeExecutionResult>;
@@ -14,22 +13,19 @@ export const PythonExecutorContext = createContext<{
     testCode: string
   ) => Promise<ICodeExecutionResult>;
 }>({
-  isExecutorLoaded: false,
   isExecutorReady: false,
   loadPackages: null,
   runCode: null,
   runAndCheckCode: null,
 });
 
-export default function PythonExecutorProvider({ children }: any) {
-  const [executor, setExecutor] = useState<PythonExecutor>(null);
-  const [isExecutorLoaded, setIsExecutorLoaded] = useState(false);
+export default function PythonRuntimeProvider({ children }: any) {
+  const [executor, setExecutor] = useState<PythonRuntime>(null);
   const [isExecutorReady, setIsExecutorReady] = useState(false);
 
   const initialize = async () => {
-    setExecutor(await PythonExecutor.create());
+    setExecutor(await PythonRuntime.create());
 
-    setIsExecutorLoaded(true);
     setIsExecutorReady(true);
   };
 
@@ -68,9 +64,8 @@ export default function PythonExecutorProvider({ children }: any) {
   }, []);
 
   return (
-    <PythonExecutorContext.Provider
+    <PythonRuntimeContext.Provider
       value={{
-        isExecutorLoaded,
         isExecutorReady,
         loadPackages,
         runCode,
@@ -78,6 +73,6 @@ export default function PythonExecutorProvider({ children }: any) {
       }}
     >
       {children}
-    </PythonExecutorContext.Provider>
+    </PythonRuntimeContext.Provider>
   );
 }

@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import _ from "lodash";
 import { desktop } from "constants/media-query-strings";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import usePythonExecutor from "hooks/usePythonExecutor";
+import usePythonRuntime from "hooks/usePythonRuntime";
 import useLocalStorage from "hooks/useLocalStorage";
 import { Col, Row } from "react-bootstrap";
 import { BiReset } from "react-icons/bi";
@@ -54,7 +54,7 @@ export default function PythonExercise({
     }
   }, []);
 
-  const { isExecutorReady, runCode, runAndCheckCode } = usePythonExecutor();
+  const { isExecutorReady, runCode, runAndCheckCode } = usePythonRuntime();
 
   const reset = async () => {
     setUserCode(starterCode);

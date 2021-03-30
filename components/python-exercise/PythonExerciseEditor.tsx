@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useState } from "react";
-import usePythonExecutor from "hooks/usePythonExecutor";
+import usePythonRuntime from "hooks/usePythonRuntime";
 import { MdDelete } from "react-icons/md";
 import { IoCopy, IoLink, IoPlay } from "react-icons/io5";
 import { AiFillSave } from "react-icons/ai";
@@ -50,7 +50,7 @@ export default function CodingQuestionEditor({
       savedData
     )
   );
-  const { isExecutorReady, runCode, runAndCheckCode } = usePythonExecutor();
+  const { isExecutorReady, runCode, runAndCheckCode } = usePythonRuntime();
 
   const didChange = !_.isEqual(questionData, savedData);
 
