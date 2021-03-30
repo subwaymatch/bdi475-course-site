@@ -4,8 +4,8 @@ import Layout from "components/Layout";
 import { Col, Container, Row } from "react-bootstrap";
 import firebase from "firebase";
 import { AuthCheck, useFirestore } from "reactfire";
-import PythonExerciseList from "components/question-list/PythonExerciseList";
-import { QuestionListItemProps } from "components/question-list/ListItem";
+import ExerciseList from "components/exercise-list/ExerciseList";
+import { IExerciseListItemProps } from "components/exercise-list/ExerciseListItem";
 import styles from "styles/pages/python-exercise/list.module.scss";
 import { toast } from "react-toastify";
 import Login from "components/Login";
@@ -62,7 +62,7 @@ export default function PythonExerciseListPage() {
         setHasNextPage(hasMore);
       }
 
-      const docsData: QuestionListItemProps[] = currentDocs.map(
+      const docsData: IExerciseListItemProps[] = currentDocs.map(
         (codingQuestion) => {
           const qid = codingQuestion.id;
           const data = codingQuestion.data();
@@ -149,7 +149,7 @@ export default function PythonExerciseListPage() {
                   </Link>
                 </Col>
               </Row>
-              <PythonExerciseList items={questionListItems} />
+              <ExerciseList items={questionListItems} />
               <Row>
                 <Col md={6}>
                   {hasPrevPage && <div onClick={toPrevPage}>Prev</div>}

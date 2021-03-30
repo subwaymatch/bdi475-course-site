@@ -8,10 +8,10 @@ import { IoCopyOutline } from "react-icons/io5";
 import { RiEditBoxLine, RiDeleteBin6Line } from "react-icons/ri";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import clsx from "clsx";
-import styles from "./QuestionListItem.module.scss";
+import styles from "./ExerciseListItem.module.scss";
 import dayjs from "dayjs";
 
-export interface QuestionListItemProps {
+export interface IExerciseListItemProps {
   qid: string;
   permalink: string;
   title: string;
@@ -21,7 +21,7 @@ export interface QuestionListItemProps {
   onDelete: () => void;
 }
 
-export default function QuestionListItem({
+export default function ExerciseListItem({
   qid,
   permalink,
   title,
@@ -29,7 +29,7 @@ export default function QuestionListItem({
   updatedAt,
   editLink,
   onDelete,
-}: QuestionListItemProps) {
+}: IExerciseListItemProps) {
   return (
     <div className={styles.questionListItem}>
       <Row className="align-items-center">

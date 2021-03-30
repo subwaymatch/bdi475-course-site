@@ -1,15 +1,15 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
-import styles from "./QuestionList.module.scss";
-import QuestionListItem, { QuestionListItemProps } from "./ListItem";
+import styles from "./ExerciseList.module.scss";
+import CodingExerciseListItem, {
+  IExerciseListItemProps,
+} from "./ExerciseListItem";
 
-interface IPythonExerciseListPageProps {
-  items: QuestionListItemProps[];
+interface IExerciseListProps {
+  items: IExerciseListItemProps[];
 }
 
-export default function PythonExerciseList({
-  items,
-}: IPythonExerciseListPageProps) {
+export default function ExerciseList({ items }: IExerciseListProps) {
   return (
     <div className={styles.questionList}>
       <Row>
@@ -44,7 +44,7 @@ export default function PythonExerciseList({
         return (
           <Row key={item.qid}>
             <Col>
-              <QuestionListItem {...item} />
+              <CodingExerciseListItem {...item} />
             </Col>
           </Row>
         );
