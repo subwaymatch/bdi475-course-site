@@ -54,7 +54,7 @@ export default function PythonExercise({
     }
   }, []);
 
-  const { isExecutorReady, runCode, runAndCheckCode } = usePythonRuntime();
+  const { isRuntimeReady, runCode, runAndCheckCode } = usePythonRuntime();
 
   const reset = async () => {
     setUserCode(starterCode);
@@ -206,7 +206,7 @@ export default function PythonExercise({
                 <div className={styles.rightControls}>
                   <Tippy
                     content={
-                      isExecutorReady ? (
+                      isRuntimeReady ? (
                         <>
                           {/* <kbd>{isMacOs ? "Cmd" : "Ctrl"}</kbd>
                           <span className="color-blue"> + </span>
@@ -227,10 +227,10 @@ export default function PythonExercise({
                   >
                     <div
                       className={clsx(styles.button, styles.runButton, {
-                        [styles.disabled]: !isExecutorReady,
+                        [styles.disabled]: !isRuntimeReady,
                       })}
                       onClick={async (e) => {
-                        if (!isExecutorReady) {
+                        if (!isRuntimeReady) {
                           return;
                         }
 
@@ -245,7 +245,7 @@ export default function PythonExercise({
 
                   <Tippy
                     content={
-                      isExecutorReady ? (
+                      isRuntimeReady ? (
                         <>
                           {/* <kbd>{isMacOs ? "Cmd" : "Ctrl"}</kbd>
                           <span className="color-blue"> + </span>
@@ -268,10 +268,10 @@ export default function PythonExercise({
                   >
                     <div
                       className={clsx(styles.button, styles.checkButton, {
-                        [styles.disabled]: !isExecutorReady,
+                        [styles.disabled]: !isRuntimeReady,
                       })}
                       onClick={(e) => {
-                        if (!isExecutorReady) {
+                        if (!isRuntimeReady) {
                           return;
                         }
                         e.preventDefault();

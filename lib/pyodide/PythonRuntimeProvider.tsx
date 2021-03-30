@@ -5,7 +5,7 @@ import { ICodeExecutionResult } from "typings/pyodide";
 // Create a custom In-browser Python Runtime context
 // to enable Python code execution in the browser
 export const PythonRuntimeContext = createContext<{
-  isExecutorReady: boolean;
+  isRuntimeReady: boolean;
   loadPackages: (packages: string | Array<string>) => Promise<void>;
   runCode: (code: string) => Promise<ICodeExecutionResult>;
   runAndCheckCode: (
@@ -13,40 +13,40 @@ export const PythonRuntimeContext = createContext<{
     testCode: string
   ) => Promise<ICodeExecutionResult>;
 }>({
-  isExecutorReady: false,
+  isRuntimeReady: false,
   loadPackages: null,
   runCode: null,
   runAndCheckCode: null,
 });
 
 export default function PythonRuntimeProvider({ children }: any) {
-  const [executor, setExecutor] = useState<PythonRuntime>(null);
-  const [isExecutorReady, setIsExecutorReady] = useState(false);
+  const [runtime, setRuntime] = useState<PythonRuntime>(null);
+  const [isRuntimeReady, setIsRuntimeReady] = useState(false);
 
   const initialize = async () => {
-    setExecutor(await PythonRuntime.create());
+    setRuntime(await PythonRuntime.create());
 
-    setIsExecutorReady(true);
+    setIsRuntimeReady(true);
   };
 
   const loadPackages = async (packages: string | Array<string> = []) => {
-    setIsExecutorReady(false);
+    setIsRuntimeReady(false);
 
     if (typeof packages === "string") {
       packages = [packages];
     }
 
-    await executor?.loadPackages(packages);
+    await runtime?.loadPackages(packages);
 
-    setIsExecutorReady(true);
+    setIsRuntimeReady(true);
   };
 
   const runCode = async (code) => {
-    setIsExecutorReady(false);
+    setIsRuntimeReady(false);
 
-    const result = await executor?.run(code);
+    const result = await runtime?.run(code);
 
-    setIsExecutorReady(true);
+    setIsRuntimeReady(true);
 
     return result;
   };
@@ -54,19 +54,19 @@ export default function PythonRuntimeProvider({ children }: any) {
   const runAndCheckCode = async (code, testCode) => {
     const concatenatedCode = code + "\n\n" + testCode;
 
-    return await executor?.run(concatenatedCode);
+    return await runtime?.run(concatenatedCode);
   };
 
   useEffect(() => {
     initialize();
 
-    return () => executor?.destroy();
+    return () => runtime?.destroy();
   }, []);
 
   return (
     <PythonRuntimeContext.Provider
       value={{
-        isExecutorReady,
+        isRuntimeReady: isRuntimeReady,
         loadPackages,
         runCode,
         runAndCheckCode,

@@ -5,7 +5,7 @@ import {
   PyodideResponse,
 } from "typings/pyodide";
 
-class PythonExecutor {
+class PythonRuntime {
   readonly pyodideWorker: Worker;
 
   private constructor() {
@@ -15,9 +15,9 @@ class PythonExecutor {
   }
 
   static async create() {
-    const instance = new PythonExecutor();
+    const instance = new PythonRuntime();
 
-    return new Promise<PythonExecutor>((resolve, reject) => {
+    return new Promise<PythonRuntime>((resolve, reject) => {
       instance.pyodideWorker.onerror = reject;
 
       instance.pyodideWorker.onmessage = (e) => {
@@ -71,4 +71,4 @@ class PythonExecutor {
   }
 }
 
-export default PythonExecutor;
+export default PythonRuntime;

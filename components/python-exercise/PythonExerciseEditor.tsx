@@ -50,7 +50,7 @@ export default function CodingQuestionEditor({
       savedData
     )
   );
-  const { isExecutorReady, runCode, runAndCheckCode } = usePythonRuntime();
+  const { isRuntimeReady, runCode, runAndCheckCode } = usePythonRuntime();
 
   const didChange = !_.isEqual(questionData, savedData);
 
@@ -75,7 +75,7 @@ export default function CodingQuestionEditor({
   };
 
   const runStarterCode = async () => {
-    if (!isExecutorReady) {
+    if (!isRuntimeReady) {
       return;
     }
 
@@ -84,7 +84,7 @@ export default function CodingQuestionEditor({
   };
 
   const runAndCheckStarterCode = async () => {
-    if (!isExecutorReady) {
+    if (!isRuntimeReady) {
       return;
     }
 
@@ -96,7 +96,7 @@ export default function CodingQuestionEditor({
   };
 
   const runSolutionCode = async () => {
-    if (!isExecutorReady) {
+    if (!isRuntimeReady) {
       return;
     }
 
@@ -105,7 +105,7 @@ export default function CodingQuestionEditor({
   };
 
   const runAndCheckSolutionCode = async () => {
-    if (!isExecutorReady) {
+    if (!isRuntimeReady) {
       return;
     }
 
@@ -289,7 +289,7 @@ export default function CodingQuestionEditor({
             <div className={styles.boxControls}>
               <span
                 className={clsx(styles.iconButton, {
-                  [styles.disabled]: !isExecutorReady,
+                  [styles.disabled]: !isRuntimeReady,
                 })}
                 onClick={runStarterCode}
               >
@@ -298,7 +298,7 @@ export default function CodingQuestionEditor({
 
               <span
                 className={clsx(styles.iconButton, {
-                  [styles.disabled]: !isExecutorReady,
+                  [styles.disabled]: !isRuntimeReady,
                 })}
                 onClick={runAndCheckStarterCode}
               >
@@ -331,7 +331,7 @@ export default function CodingQuestionEditor({
             <div className={styles.boxControls}>
               <span
                 className={clsx(styles.iconButton, {
-                  [styles.disabled]: !isExecutorReady,
+                  [styles.disabled]: !isRuntimeReady,
                 })}
                 onClick={runSolutionCode}
               >
@@ -340,7 +340,7 @@ export default function CodingQuestionEditor({
 
               <span
                 className={clsx(styles.iconButton, {
-                  [styles.disabled]: !isExecutorReady,
+                  [styles.disabled]: !isRuntimeReady,
                 })}
                 onClick={runAndCheckSolutionCode}
               >
