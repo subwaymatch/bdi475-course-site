@@ -66,7 +66,7 @@ export default function PythonRuntimeProvider({ children }: any) {
   return (
     <PythonRuntimeContext.Provider
       value={{
-        isRuntimeReady: isRuntimeReady,
+        isRuntimeReady,
         loadPackages,
         runCode,
         runAndCheckCode,
