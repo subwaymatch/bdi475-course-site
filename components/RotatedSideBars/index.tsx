@@ -13,13 +13,26 @@ import FullCircle from "components/shapes/FullCircle";
 import colors from "styles/colors.module.scss";
 
 const loaderVariants = {
-  animationBlockILogo: {},
   animationTopCircle: {
     scale: [0.9, 1],
     transition: {
       scale: {
         yoyo: Infinity,
         duration: 0.5,
+      },
+    },
+  },
+  animationBlockILogo: {
+    rotate: [86, 90, 94, 90, 86],
+    scale: [0.96, 1, 0.96],
+    transition: {
+      rotate: {
+        yoyo: Infinity,
+        duration: 3,
+      },
+      scale: {
+        yoyo: Infinity,
+        duration: 1.5,
       },
     },
   },
@@ -90,11 +103,15 @@ export default function RotatedSideBars() {
       <div className={styles.sideFloatingBar}>
         <span className={styles.univName}>
           University of Illinois at Urbana-Champaign
-        </span>{" "}
-        <motion.div className={styles.illinoisLogoWrapper}>
+        </span>
+        <motion.div
+          variants={loaderVariants}
+          animate="animationBlockILogo"
+          className={styles.illinoisLogoWrapper}
+        >
           <IllinoisBlockILogo color={colors.green} />
         </motion.div>
-        <span className={styles.courses}>Business Data &amp; Innovation</span>{" "}
+        <span className={styles.courses}>Business Data &amp; Innovation</span>
         <motion.div
           variants={loaderVariants}
           animate="animationTopCircle"

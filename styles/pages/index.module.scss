@@ -14,6 +14,26 @@
       font-weight: 700;
       color: $color-dark-gray;
       letter-spacing: -0.2rem;
+
+      @include media-breakpoint-down(lg) {
+        font-size: 4.3rem;
+        letter-spacing: -0.12rem;
+      }
+
+      @include media-breakpoint-down(md) {
+        font-size: 3.6rem;
+        letter-spacing: -0.1rem;
+      }
+
+      @include media-breakpoint-down(sm) {
+        font-size: 3rem;
+        letter-spacing: -0.08rem;
+      }
+
+      @include media-breakpoint-down(xs) {
+        font-size: 2.5rem;
+        letter-spacing: -0.05rem;
+      }
     }
   }
 

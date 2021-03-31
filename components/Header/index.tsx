@@ -19,62 +19,65 @@ import { desktop } from "constants/media-query-strings";
 import Tippy from "@tippyjs/react";
 import useFirebaseAuth from "hooks/useFirebaseAuth";
 
-const HeaderMenu = () => (
+const menuItems = [
+  {
+    href: "/",
+    label: "Home",
+    iconChild: <BiHomeAlt className={styles.reactIcon} />,
+  },
+  {
+    href: "/syllabus",
+    label: "Syllabus",
+    iconChild: <BiNote className={styles.reactIcon} />,
+  },
+  {
+    href: "/schedule",
+    label: "Schedule",
+    iconChild: <FiCalendar className={styles.reactIcon} />,
+  },
+  {
+    href: "/notes",
+    label: "Notes",
+    iconChild: <RiBook3Line className={styles.reactIcon} />,
+  },
+  {
+    href: "/assignments",
+    label: "Assignments",
+    iconChild: <FiHexagon className={styles.reactIcon} />,
+  },
+];
+
+const HeaderDesktopMenu = () => (
   <Row className={clsx(styles.mainMenu, "align-items-center")}>
-    <Col>
-      <Link href="/">
-        <a className={styles.menuLink}>
-          <span className={styles.iconWrapper}>
-            <BiHomeAlt className={styles.reactIcon} />
-          </span>
-          <span>Home</span>
-        </a>
-      </Link>
-    </Col>
+    {menuItems.map((item) => (
+      <Col key={item.href}>
+        <Link href={item.href}>
+          <a className={styles.menuLink}>
+            {item.iconChild && (
+              <span className={styles.iconWrapper}>{item.iconChild}</span>
+            )}
+            <span>{item.label}</span>
+          </a>
+        </Link>
+      </Col>
+    ))}
+  </Row>
+);
 
-    <Col>
-      <Link href="/syllabus">
-        <a className={styles.menuLink}>
-          <span className={styles.iconWrapper}>
-            <BiNote className={styles.reactIcon} />
-          </span>
-          <span>Syllabus</span>
-        </a>
-      </Link>
-    </Col>
-
-    <Col>
-      <Link href="/schedule">
-        <a className={styles.menuLink}>
-          <span className={styles.iconWrapper}>
-            <FiCalendar className={styles.reactIcon} />
-          </span>
-          <span>Schedule</span>
-        </a>
-      </Link>
-    </Col>
-
-    <Col>
-      <Link href="/notes">
-        <a className={styles.menuLink}>
-          <span className={styles.iconWrapper}>
-            <RiBook3Line className={styles.reactIcon} />
-          </span>
-          <span>Notes</span>
-        </a>
-      </Link>
-    </Col>
-
-    <Col>
-      <Link href="/assignments">
-        <a className={styles.menuLink}>
-          <span className={styles.iconWrapper}>
-            <FiHexagon className={styles.reactIcon} />
-          </span>
-          <span>Assignments</span>
-        </a>
-      </Link>
-    </Col>
+const HeaderMobileMenu = () => (
+  <Row className={clsx(styles.mainMenu, styles.mobile)}>
+    {menuItems.map((item) => (
+      <Col xs={12} key={item.href}>
+        <Link href={item.href}>
+          <a className={styles.menuLink}>
+            <span>{item.label}</span>
+            {item.iconChild && (
+              <span className={styles.iconWrapper}>{item.iconChild}</span>
+            )}
+          </a>
+        </Link>
+      </Col>
+    ))}
   </Row>
 );
 
@@ -160,7 +163,7 @@ export default function Header() {
         <Container>
           <Row className="align-items-center">
             <Col md={10} className="d-none d-md-block">
-              <HeaderMenu />
+              <HeaderDesktopMenu />
             </Col>
 
             <Col md={2} className="d-none d-md-block">
@@ -200,7 +203,7 @@ export default function Header() {
             }}
           >
             <Container>
-              <HeaderMenu />
+              <HeaderMobileMenu />
 
               <UserMenu />
             </Container>
