@@ -249,6 +249,21 @@ export default function NotesPage() {
               title="Introduction to SQL"
               colorTheme={ColorTheme.Green}
             />
+
+            <NoteItem
+              href="https://nbviewer.jupyter.org/github/bdi475/notebooks/blob/548a0fc7d27d820d76a606a75219224065f1d672/L18-SQL-SOLUTION.ipynb"
+              thumbnail={
+                <Image
+                  src="/images/notes/l17-sql.png"
+                  width={900}
+                  height={600}
+                  alt=""
+                />
+              }
+              date="2021-03-31"
+              title="More SQL Basics"
+              colorTheme={ColorTheme.Green}
+            />
           </Row>
         </Container>
       </main>
