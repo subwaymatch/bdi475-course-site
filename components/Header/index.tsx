@@ -1,5 +1,5 @@
 import React, { useState, useEffect, forwardRef } from "react";
-import Image from "next/image";
+
 import Link from "next/link";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "./Header.module.scss";
@@ -9,7 +9,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { clickableVariants } from "animations/clickableVariants";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
-import { IoBookOutline } from "react-icons/io5";
 import { BiHomeAlt, BiNote } from "react-icons/bi";
 import { FiLogIn, FiBookOpen, FiCalendar, FiHexagon } from "react-icons/fi";
 import { RiBook3Line } from "react-icons/ri";
@@ -24,45 +23,60 @@ const menuItems = [
     href: "/",
     label: "Home",
     iconChild: <BiHomeAlt className={styles.reactIcon} />,
+    isActive: (asPath: string) => asPath === "/",
   },
   {
     href: "/syllabus",
     label: "Syllabus",
     iconChild: <BiNote className={styles.reactIcon} />,
+    isActive: (asPath: string) => asPath.startsWith("/syllabus"),
   },
   {
     href: "/schedule",
     label: "Schedule",
     iconChild: <FiCalendar className={styles.reactIcon} />,
+    isActive: (asPath: string) => asPath.startsWith("/schedule"),
   },
   {
     href: "/notes",
     label: "Notes",
     iconChild: <RiBook3Line className={styles.reactIcon} />,
+    isActive: (asPath: string) => asPath.startsWith("/notes"),
   },
   {
     href: "/assignments",
     label: "Assignments",
     iconChild: <FiHexagon className={styles.reactIcon} />,
+    isActive: (asPath: string) => asPath.startsWith("/assignments"),
   },
 ];
 
-const HeaderDesktopMenu = () => (
-  <Row className={clsx(styles.mainMenu, "align-items-center")}>
-    {menuItems.map((item) => (
-      <Col key={item.href}>
-        <Link href={item.href}>
-          <a className={styles.menuLink}>
-            {item.iconChild && (
-              <span className={styles.iconWrapper}>{item.iconChild}</span>
-            )}
-            <span>{item.label}</span>
-          </a>
-        </Link>
-      </Col>
-    ))}
-  </Row>
-);
+const HeaderDesktopMenu = () => {
+  const router = useRouter();
+
+  return (
+    <Row className={clsx(styles.mainMenu, "align-items-center")}>
+      {menuItems.map((item) => (
+        <Col key={item.href}>
+          <Link href={item.href}>
+            <a
+              className={clsx(styles.menuLink, {
+                [styles.isActive]: item.isActive
+                  ? item.isActive(router.asPath)
+                  : false,
+              })}
+            >
+              {item.iconChild && (
+                <span className={styles.iconWrapper}>{item.iconChild}</span>
+              )}
+              <span>{item.label}</span>
+            </a>
+          </Link>
+        </Col>
+      ))}
+    </Row>
+  );
+};
 
 const HeaderMobileMenu = () => (
   <Row className={clsx(styles.mainMenu, styles.mobile)}>

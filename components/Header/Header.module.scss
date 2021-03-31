@@ -25,12 +25,14 @@
 
 .mainMenu {
   a.menuLink {
-    color: $color-dark-gray;
+    color: $color-gray;
+    font-size: 1.1rem;
     line-height: 1.2;
+    font-weight: 600;
     display: flex;
     align-items: center;
     padding: 0.5rem 0;
-    font-size: 1.1rem;
+    letter-spacing: -0.02rem;
 
     .iconWrapper {
       display: inline-flex;
@@ -38,7 +40,7 @@
       height: 2.25rem;
       align-items: center;
       justify-content: center;
-      color: $color-medium-gray;
+      color: $color-gray;
       background-color: $color-lighter-gray;
       border-radius: 8rem;
       margin-right: 0.6rem;
@@ -46,6 +48,15 @@
     }
 
     &:hover {
+      color: $color-dark-gray;
+
+      .iconWrapper {
+        color: $color-black;
+        background-color: $color-yellow;
+      }
+    }
+
+    &.isActive {
       color: $color-black;
 
       .iconWrapper {
@@ -55,7 +66,7 @@
     }
 
     @include media-breakpoint-down(lg) {
-      font-size: 0.95em;
+      font-size: 0.97em;
 
       .iconWrapper {
         width: 2rem;
@@ -65,8 +76,14 @@
     }
 
     @include media-breakpoint-down(md) {
-      font-size: 0.98rem;
+      font-size: 0.95rem;
       letter-spacing: -0.01rem;
+
+      .iconWrapper {
+        width: 1.8rem;
+        height: 1.8rem;
+        margin-right: 0.6rem;
+      }
     }
   }
 
@@ -75,7 +92,6 @@
     margin: 0 auto;
 
     a.menuLink {
-      letter-spacing: -0.04rem;
       display: flex;
       justify-content: space-between;
       border-bottom: 1px solid $color-border-gray;
