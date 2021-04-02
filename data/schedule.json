@@ -196,11 +196,6 @@
   },
   {
     "date": "2021-04-05",
-    "type": "CASE_STUDY",
-    "text": "Case Study 4 - AirBnB Listings"
-  },
-  {
-    "date": "2021-04-05",
     "type": "LECTURE",
     "text": ["Intro to DataViz with Python", "Box Plots", "Histograms"]
   },
@@ -208,6 +203,11 @@
     "date": "2021-04-06",
     "type": "EXERCISE",
     "text": "Exercise 17"
+  },
+  {
+    "date": "2021-04-07",
+    "type": "CASE_STUDY",
+    "text": "Case Study 4 - AirBnB Listings"
   },
   {
     "date": "2021-04-07",
