@@ -195,14 +195,9 @@
     "text": ["Query Data", "Sort Results"]
   },
   {
-    "date": "2021-04-04",
+    "date": "2021-04-05",
     "type": "CASE_STUDY",
     "text": "Case Study 4 - AirBnB Listings"
-  },
-  {
-    "date": "2021-04-05",
-    "type": "QUIZ",
-    "text": "Quiz 5"
   },
   {
     "date": "2021-04-05",
@@ -238,6 +233,11 @@
     "date": "2021-04-13",
     "type": "EXERCISE",
     "text": "Exercise 19"
+  },
+  {
+    "date": "2021-04-14",
+    "type": "QUIZ",
+    "text": "Quiz 5"
   },
   {
     "date": "2021-04-14",
