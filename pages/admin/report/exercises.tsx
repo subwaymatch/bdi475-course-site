@@ -8,7 +8,7 @@ import clsx from "clsx";
 import styles from "styles/pages/admin/report/questions.module.scss";
 import { RiDownloadLine } from "react-icons/ri";
 
-export default function QuestionsReportPage(
+export default function ExercisesReportPage(
   props: InferGetServerSidePropsType<typeof getServerSideProps>
 ) {
   const [ids, setIds] = useState(props.qids ? props.qids : []);
