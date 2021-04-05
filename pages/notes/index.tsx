@@ -265,6 +265,36 @@ export default function NotesPage() {
               colorTheme={ColorTheme.Green}
             />
           </Row>
+
+          <Row>
+            <Col>
+              <h2
+                className="sectionTitle"
+                style={{
+                  marginTop: "4rem",
+                }}
+              >
+                Data Visualization <span className="blue accent" />
+              </h2>
+            </Col>
+          </Row>
+
+          <Row>
+            <NoteItem
+              href="https://nbviewer.jupyter.org/github/bdi475/notebooks/blob/main/L19-intro-to-visualizations-SOLUTION.ipynb"
+              thumbnail={
+                <Image
+                  src="/images/notes/l19-dataviz.png"
+                  width={900}
+                  height={600}
+                  alt=""
+                />
+              }
+              date="2021-03-29"
+              title="Introduction to DataViz"
+              colorTheme={ColorTheme.Blue}
+            />
+          </Row>
         </Container>
       </main>
     </Layout>
