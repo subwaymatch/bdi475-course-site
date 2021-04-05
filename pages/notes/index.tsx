@@ -290,7 +290,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2021-03-29"
+              date="2021-04-05"
               title="Introduction to DataViz"
               colorTheme={ColorTheme.Blue}
             />
