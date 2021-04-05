@@ -281,7 +281,7 @@ export default function NotesPage() {
 
           <Row>
             <NoteItem
-              href="https://nbviewer.jupyter.org/github/bdi475/notebooks/blob/main/L19-intro-to-visualizations-SOLUTION.ipynb"
+              href="https://nbviewer.jupyter.org/github/bdi475/notebooks/blob/98537ad1c06cdc8c8a00165a0fd4943eebf521e8/L19-intro-to-visualizations-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/l19-dataviz.png"
