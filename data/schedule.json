@@ -220,11 +220,6 @@
     "text": "Exercise 18"
   },
   {
-    "date": "2021-04-10",
-    "type": "CASE_STUDY",
-    "text": "Case Study 5"
-  },
-  {
     "date": "2021-04-12",
     "type": "LECTURE",
     "text": ["DataViz with Python", "Scatter Plots", "Heatmaps"]
@@ -252,7 +247,7 @@
   {
     "date": "2021-04-17",
     "type": "CASE_STUDY",
-    "text": "Case Study 6"
+    "text": "Case Study 5"
   },
   {
     "date": "2021-04-19",
@@ -274,7 +269,11 @@
     "type": "EXERCISE",
     "text": "Exercise 22"
   },
-
+  {
+    "date": "2021-04-24",
+    "type": "CASE_STUDY",
+    "text": "Case Study 6"
+  },
   {
     "date": "2021-04-26",
     "type": "LECTURE",
