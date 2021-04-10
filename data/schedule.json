@@ -220,16 +220,6 @@
     "text": "Exercise 18"
   },
   {
-    "date": "2021-04-12",
-    "type": "LECTURE",
-    "text": ["DataViz with Python", "Scatter Plots", "Heatmaps"]
-  },
-  {
-    "date": "2021-04-13",
-    "type": "EXERCISE",
-    "text": "Exercise 19"
-  },
-  {
     "date": "2021-04-14",
     "type": "QUIZ",
     "text": "Quiz 5"
@@ -237,7 +227,7 @@
   {
     "date": "2021-04-14",
     "type": "LECTURE",
-    "text": ["Intro to Tableau", "Box Plots", "Histograms"]
+    "text": ["Theming Plotly", "Treemap", "Sunburst", "Heatmaps"]
   },
   {
     "date": "2021-04-15",
@@ -252,7 +242,7 @@
   {
     "date": "2021-04-19",
     "type": "LECTURE",
-    "text": ["Tableau", "Line Charts", "Bar Charts"]
+    "text": ["Intro to Tableau", "Box Plots", "Histograms", "Line/Bar Charts"]
   },
   {
     "date": "2021-04-20",
