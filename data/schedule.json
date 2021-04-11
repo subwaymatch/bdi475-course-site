@@ -197,7 +197,7 @@
   {
     "date": "2021-04-05",
     "type": "LECTURE",
-    "text": ["Intro to DataViz with Python", "Box Plots", "Histograms"]
+    "text": ["Intro to DataViz with Python", "Box Plot", "Histogram"]
   },
   {
     "date": "2021-04-06",
@@ -212,7 +212,7 @@
   {
     "date": "2021-04-07",
     "type": "LECTURE",
-    "text": ["DataViz with Python", "Line Charts", "Bar Charts"]
+    "text": ["DataViz with Python", "Line Chart", "Bar Chart"]
   },
   {
     "date": "2021-04-08",
@@ -227,7 +227,7 @@
   {
     "date": "2021-04-14",
     "type": "LECTURE",
-    "text": ["Theming Plotly", "Treemap", "Sunburst", "Heatmaps"]
+    "text": ["Theming Plotly", "Treemap", "Sunburst", "Heatmap"]
   },
   {
     "date": "2021-04-15",
@@ -242,7 +242,7 @@
   {
     "date": "2021-04-19",
     "type": "LECTURE",
-    "text": ["Intro to Tableau", "Box Plots", "Histograms", "Line/Bar Charts"]
+    "text": ["Intro to Tableau", "Box Plot", "Histogram", "Line/Bar Charts"]
   },
   {
     "date": "2021-04-20",
@@ -252,7 +252,7 @@
   {
     "date": "2021-04-21",
     "type": "LECTURE",
-    "text": ["Tableau", "Scatter Plots", "Heatmaps", "Geographic Maps"]
+    "text": ["Tableau", "Scatter Plot", "Heatmap", "Geographic Map"]
   },
   {
     "date": "2021-04-22",
