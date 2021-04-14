@@ -308,6 +308,20 @@ export default function NotesPage() {
               title="Line, Scatter, and Bar Plots"
               colorTheme={ColorTheme.Blue}
             />
+            <NoteItem
+              href="https://nbviewer.jupyter.org/github/bdi475/notebooks/blob/main/L21-advanced-visualizations-SOLUTION.ipynb"
+              thumbnail={
+                <Image
+                  src="/images/notes/l19-dataviz.png"
+                  width={900}
+                  height={600}
+                  alt=""
+                />
+              }
+              date="2021-04-14"
+              title="Advanced Visualizations"
+              colorTheme={ColorTheme.Blue}
+            />
           </Row>
         </Container>
       </main>
