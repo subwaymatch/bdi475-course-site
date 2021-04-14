@@ -309,7 +309,7 @@ export default function NotesPage() {
               colorTheme={ColorTheme.Blue}
             />
             <NoteItem
-              href="https://nbviewer.jupyter.org/github/bdi475/notebooks/blob/main/L21-advanced-visualizations-SOLUTION.ipynb"
+              href="https://nbviewer.jupyter.org/github/bdi475/notebooks/blob/e34f87dd89f2be33af1e519bf59485f4e764b855/L21-advanced-visualizations-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/l19-dataviz.png"
