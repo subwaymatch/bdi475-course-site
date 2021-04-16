@@ -7,19 +7,49 @@ import Layout from "components/Layout";
 import clsx from "clsx";
 import styles from "styles/pages/admin/report/questions.module.scss";
 import { RiDownloadLine } from "react-icons/ri";
+import useFirebaseAuth from "hooks/useFirebaseAuth";
+import saveAs from "file-saver";
 
 export default function ExercisesReportPage(
   props: InferGetServerSidePropsType<typeof getServerSideProps>
 ) {
-  const [ids, setIds] = useState(props.qids ? props.qids : []);
-
-  console.log(ids);
-
-  console.log(`props`);
-  console.log(props);
+  const [ids, setIds] = useState(
+    props.qids ? props.qids : ["zWeBSE", "qp1LzJ", "GYdI7m", "dooYXm"]
+  );
+  const [result, setResult] = useState("");
+  const { user, claims } = useFirebaseAuth();
 
   const updateIds = (idsStr) => {
-    setIds(idsStr.split("\n").filter((s) => s.trim() !== ""));
+    setIds(idsStr.split("\n"));
+  };
+
+  const fetchExerciseResults = async (ids) => {
+    if (!user || !claims.admin) {
+      return;
+    }
+
+    try {
+      const token = await user.getIdToken();
+      const options = {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      };
+
+      let params = new URLSearchParams("");
+      ids
+        .filter((s) => s.trim() !== "")
+        .forEach((id) => params.append("qid", id));
+
+      fetch(`/api/admin/report/exercises?${params.toString()}`, options)
+        .then((response) => response.blob())
+        .then((blob) => saveAs(blob, "test.csv"));
+
+      // setResult(JSON.stringify(data, null, 2));
+    } catch (err) {
+      console.error(err);
+      setResult(err.message);
+    }
   };
 
   useEffect(() => {});
@@ -30,9 +60,8 @@ export default function ExercisesReportPage(
         <Container>
           <Row>
             <Col>
-              <p>{props.message}</p>
               <h2 className="sectionTitle grayBottomBorder">
-                Questions Report <span className="accent green" />
+                Exercises Report <span className="accent green" />
               </h2>
             </Col>
           </Row>
@@ -48,9 +77,12 @@ export default function ExercisesReportPage(
                 onChange={(e) => updateIds(e.target.value)}
                 cols={30}
                 rows={10}
-                defaultValue={"IoPUN0\npAXDI1\nfveynH\n".replace("\\n", "\n")}
+                value={ids.join("\n")}
               />
-              <a className={clsx("button", "green", styles.submitButton)}>
+              <a
+                className={clsx("button", "green", styles.submitButton)}
+                onClick={() => fetchExerciseResults(ids)}
+              >
                 <RiDownloadLine
                   className={styles.reactIcon}
                   style={{
@@ -60,6 +92,10 @@ export default function ExercisesReportPage(
                 <span>Download Report</span>
               </a>
             </Col>
+          </Row>
+
+          <Row>
+            <pre style={{ whiteSpace: "pre-wrap" }}>{result}</pre>
           </Row>
         </Container>
       </main>
@@ -78,8 +114,6 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
     // The user is authenticated
     const { uid, email } = token;
 
-    console.log(`query: ${JSON.stringify(ctx.query)}`);
-
     props.message = `Your email is ${email} and your UID is ${uid}.`;
   } catch {
     // Either the `token` cookie didn't exist
@@ -93,37 +127,6 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
     // The props returned here don't matter since
     // we are redirecting the user
     return { props: {} as never };
-  }
-
-  try {
-    console.log(ctx.query.qid);
-
-    if (ctx.query.qid) {
-      const qids = Array.isArray(ctx.query.qid)
-        ? ctx.query.qid
-        : [ctx.query.qid];
-
-      console.log(`qids`);
-      console.log(qids);
-
-      props.qids = qids;
-
-      const querySnapshot = await firebaseAdmin
-        .firestore()
-        .collection("questionAttempts")
-        .where(firebaseAdmin.firestore.FieldPath.documentId(), "in", qids)
-        .get();
-
-      const docs = [];
-
-      querySnapshot.forEach((doc) => {
-        docs.push(doc.data());
-      });
-
-      console.log(docs);
-    }
-  } catch (err) {
-    console.error(err);
   }
 
   return {
