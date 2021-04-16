@@ -73,6 +73,7 @@ export default async function getUserExerciseResultsAsCSV(
           fail: userExerciseAttempts.reduce((acc, o) => {
             return o.isSuccess === false ? acc + 1 : acc;
           }, 0),
+          is_success: userExerciseAttempts.some((o) => o.isSuccess),
           attempt: userExerciseAttempts.length,
           first_success: firstSuccessAttempt
             ? dayjs(firstSuccessAttempt.submittedAt.toDate()).format(
@@ -96,6 +97,7 @@ export default async function getUserExerciseResultsAsCSV(
         "success",
         "fail",
         "attempt",
+        "is_success",
         "first_success",
         "last_success",
       ],
