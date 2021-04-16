@@ -5,7 +5,7 @@ import _ from "lodash";
 import stringify from "csv-stringify/lib/sync";
 import dayjs from "dayjs";
 
-export default async function exercisesReport(
+export default async function getUserExerciseResultsAsCSV(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -15,13 +15,14 @@ export default async function exercisesReport(
   }
 
   if (!(await isAdmin(req))) {
-    return res.status(403).end(`Insufficient permission to retrieve user list`);
+    return res.status(403).end(`Insufficient permission to download reports`);
   }
   // Extract attempt information
   const {
     query: { qid },
   } = req;
 
+  // If only one qid is supplied, convert it to an array
   const qids = qid ? [].concat(qid) : [];
 
   try {
@@ -101,6 +102,7 @@ export default async function exercisesReport(
       header: true,
     });
 
+    // 'Content-Type': 'text/csv' header is set in next.config.js since NextApiResponse object does not support setting custom headers
     return res.send(csvString);
   } catch (err) {
     console.error(err);

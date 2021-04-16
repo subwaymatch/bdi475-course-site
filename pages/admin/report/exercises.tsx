@@ -13,6 +13,8 @@ import saveAs from "file-saver";
 export default function ExercisesReportPage(
   props: InferGetServerSidePropsType<typeof getServerSideProps>
 ) {
+  console.log(props);
+
   const [ids, setIds] = useState(
     props.qids ? props.qids : ["zWeBSE", "qp1LzJ", "GYdI7m", "dooYXm"]
   );
@@ -41,9 +43,12 @@ export default function ExercisesReportPage(
         .filter((s) => s.trim() !== "")
         .forEach((id) => params.append("qid", id));
 
-      fetch(`/api/admin/report/exercises?${params.toString()}`, options)
+      fetch(
+        `/api/admin/export/user-exercise-results?${params.toString()}`,
+        options
+      )
         .then((response) => response.blob())
-        .then((blob) => saveAs(blob, "test.csv"));
+        .then((blob) => saveAs(blob, "report.csv"));
 
       // setResult(JSON.stringify(data, null, 2));
     } catch (err) {
@@ -89,7 +94,7 @@ export default function ExercisesReportPage(
                     marginRight: 12,
                   }}
                 />
-                <span>Download Report</span>
+                <span>Download CSV</span>
               </a>
             </Col>
           </Row>
@@ -115,6 +120,10 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
     const { uid, email } = token;
 
     props.message = `Your email is ${email} and your UID is ${uid}.`;
+
+    if (ctx.query.qid) {
+      props.qids = [].concat(ctx.query.qid);
+    }
   } catch {
     // Either the `token` cookie didn't exist
     // or token verification failed
