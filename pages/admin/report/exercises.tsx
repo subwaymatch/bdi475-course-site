@@ -13,8 +13,6 @@ import saveAs from "file-saver";
 export default function ExercisesReportPage(
   props: InferGetServerSidePropsType<typeof getServerSideProps>
 ) {
-  console.log(props);
-
   const [ids, setIds] = useState(
     props.qids ? props.qids : ["zWeBSE", "qp1LzJ", "GYdI7m", "dooYXm"]
   );

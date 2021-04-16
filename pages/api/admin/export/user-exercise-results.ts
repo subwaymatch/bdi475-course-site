@@ -48,9 +48,13 @@ export default async function getUserExerciseResultsAsCSV(
       Object.keys(docData).forEach((uid) => {
         // Sort user exercise attempts by submission timestamp
         const userExerciseAttempts = [...docData[uid]].sort((a, b) => {
-          if (a.submittedAt < b.submittedAt) return -1;
-          if (a.submittedAt > b.submittedAt) return 1;
-          return 0;
+          if (a.submittedAt < b.submittedAt) {
+            return -1;
+          } else if (a.submittedAt > b.submittedAt) {
+            return 1;
+          } else {
+            return 0;
+          }
         });
 
         const firstSuccessAttempt = _.find(

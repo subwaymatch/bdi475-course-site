@@ -1,4 +1,3 @@
-import Image from "next/image";
 import dynamic from "next/dynamic";
 import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";

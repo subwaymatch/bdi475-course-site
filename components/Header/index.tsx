@@ -10,7 +10,7 @@ import { clickableVariants } from "animations/clickableVariants";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 import { BiHomeAlt, BiNote } from "react-icons/bi";
-import { FiLogIn, FiBookOpen, FiCalendar, FiHexagon } from "react-icons/fi";
+import { FiLogIn, FiCalendar, FiHexagon } from "react-icons/fi";
 import { RiBook3Line } from "react-icons/ri";
 import MenuButton from "components/Header/MenuButton";
 import useMediaQuery from "@material-ui/core/useMediaQuery";

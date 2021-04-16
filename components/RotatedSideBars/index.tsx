@@ -1,15 +1,7 @@
-import Head from "next/head";
-import { Container, Row, Col } from "react-bootstrap";
 import { motion } from "framer-motion";
 import styles from "./RotatedSideBars.module.scss";
-import Triangle from "components/shapes/Triangle";
-import StackedRectangles from "components/shapes/StackedRectangles";
-import HalfCircleTilted from "components/shapes/HalfCircleTilted";
 import IllinoisBlockILogo from "components/shapes/IllinoisBlockILogo";
-import DonutCircleSmall from "components/shapes/DonutCircleSmall";
 import DonutCircleMedium from "components/shapes/DonutCircleMedium";
-import Rectangle01 from "components/shapes/Rectangle01";
-import FullCircle from "components/shapes/FullCircle";
 import colors from "styles/colors.module.scss";
 
 const loaderVariants = {
