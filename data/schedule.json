@@ -231,11 +231,6 @@
   },
   {
     "date": "2021-04-19",
-    "type": "CASE_STUDY",
-    "text": "Case Study 5"
-  },
-  {
-    "date": "2021-04-19",
     "type": "LECTURE",
     "text": ["Intro to Tableau", "Box Plot", "Histogram", "Line/Bar Charts"]
   },
@@ -243,6 +238,11 @@
     "date": "2021-04-20",
     "type": "EXERCISE",
     "text": "Exercise 21"
+  },
+  {
+    "date": "2021-04-20",
+    "type": "CASE_STUDY",
+    "text": "Case Study 5"
   },
   {
     "date": "2021-04-21",
