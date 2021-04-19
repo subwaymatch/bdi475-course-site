@@ -322,6 +322,20 @@ export default function NotesPage() {
               title="Advanced Visualizations"
               colorTheme={ColorTheme.Blue}
             />
+            <NoteItem
+              href="https://www.notion.so/bdi475/Lecture-22-Introduction-to-Tableau-15832a839f2146a59f36160bd7ce1450"
+              thumbnail={
+                <Image
+                  src="/images/notes/l19-dataviz.png"
+                  width={900}
+                  height={600}
+                  alt=""
+                />
+              }
+              date="2021-04-19"
+              title="Intro to Tableau"
+              colorTheme={ColorTheme.Blue}
+            />
           </Row>
         </Container>
       </main>
