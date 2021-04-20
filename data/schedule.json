@@ -235,7 +235,7 @@
     "text": ["Intro to Tableau", "Box Plot", "Histogram", "Line/Bar Charts"]
   },
   {
-    "date": "2021-04-20",
+    "date": "2021-04-22",
     "type": "EXERCISE",
     "text": "Exercise 21"
   },
@@ -262,7 +262,7 @@
   {
     "date": "2021-04-24",
     "type": "CASE_STUDY",
-    "text": "Case Study 6"
+    "text": "Case Study 6 - Fortune 1000 Companies"
   },
   {
     "date": "2021-04-26",
