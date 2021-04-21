@@ -336,6 +336,20 @@ export default function NotesPage() {
               title="Intro to Tableau"
               colorTheme={ColorTheme.Blue}
             />
+            <NoteItem
+              href="https://www.notion.so/bdi475/Lecture-23-Tableau-334bf4b89ffe4012b6b0fcb334da0178"
+              thumbnail={
+                <Image
+                  src="/images/notes/l19-dataviz.png"
+                  width={900}
+                  height={600}
+                  alt=""
+                />
+              }
+              date="2021-04-21"
+              title="Tableau Scatter Plot, Pie Chart, Geographic Map"
+              colorTheme={ColorTheme.Blue}
+            />
           </Row>
         </Container>
       </main>
