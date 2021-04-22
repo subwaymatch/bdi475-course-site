@@ -235,11 +235,6 @@
     "text": ["Intro to Tableau", "Box Plot", "Histogram", "Line/Bar Charts"]
   },
   {
-    "date": "2021-04-22",
-    "type": "EXERCISE",
-    "text": "Exercise 21"
-  },
-  {
     "date": "2021-04-20",
     "type": "CASE_STUDY",
     "text": "Case Study 5 - Chicago Rideshare Trips"
@@ -255,53 +250,38 @@
     "text": ["Tableau", "Scatter Plot", "Heatmap", "Geographic Map"]
   },
   {
-    "date": "2021-04-22",
-    "type": "EXERCISE",
-    "text": "Exercise 22"
-  },
-  {
-    "date": "2021-04-24",
+    "date": "2021-04-28",
     "type": "CASE_STUDY",
     "text": "Case Study 6 - Fortune 1000 Companies"
   },
   {
     "date": "2021-04-26",
     "type": "LECTURE",
-    "text": ["Review: Python and Pandas"]
-  },
-  {
-    "date": "2021-04-27",
-    "type": "EXERCISE",
-    "text": "Exercise 23"
+    "text": ["Workday"]
   },
   {
     "date": "2021-04-28",
     "type": "LECTURE",
-    "text": ["Review: Pandas and SQL"]
+    "text": ["Final Case Study Setup"]
   },
   {
-    "date": "2021-04-29",
-    "type": "EXERCISE",
-    "text": "Exercise 24"
-  },
-  {
-    "date": "2021-05-01",
+    "date": "2021-05-04",
     "type": "CASE_STUDY",
-    "text": "Case Study 7"
+    "text": "Final Case Study 1/2"
   },
   {
     "date": "2021-05-03",
     "type": "LECTURE",
-    "text": ["Review: DataViz"]
+    "text": ["Workday", "Individual Feedback"]
   },
   {
     "date": "2021-05-05",
     "type": "LECTURE",
-    "text": ["Wrap Up", "Individual Feedback"]
+    "text": ["Workday", "Individual Feedback"]
   },
   {
-    "date": "2021-05-14",
+    "date": "2021-05-12",
     "type": "CASE_STUDY",
-    "text": "Case Study 8"
+    "text": "Final Case Study 2/2"
   }
 ]
