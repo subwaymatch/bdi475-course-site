@@ -265,14 +265,14 @@
     "text": "Case Study 6 - Fortune 1000 Companies"
   },
   {
-    "date": "2021-05-04",
-    "type": "CASE_STUDY",
-    "text": "Final Case Study 1/2"
-  },
-  {
     "date": "2021-05-03",
     "type": "LECTURE",
     "text": ["Workday", "Individual Feedback"]
+  },
+  {
+    "date": "2021-05-05",
+    "type": "CASE_STUDY",
+    "text": "Final Case Study 1/2"
   },
   {
     "date": "2021-05-05",
