@@ -250,11 +250,6 @@
     "text": ["Tableau", "Scatter Plot", "Heatmap", "Geographic Map"]
   },
   {
-    "date": "2021-04-28",
-    "type": "CASE_STUDY",
-    "text": "Case Study 6 - Fortune 1000 Companies"
-  },
-  {
     "date": "2021-04-26",
     "type": "LECTURE",
     "text": ["Workday"]
@@ -263,6 +258,11 @@
     "date": "2021-04-28",
     "type": "LECTURE",
     "text": ["Final Case Study Setup"]
+  },
+  {
+    "date": "2021-04-30",
+    "type": "CASE_STUDY",
+    "text": "Case Study 6 - Fortune 1000 Companies"
   },
   {
     "date": "2021-05-04",
