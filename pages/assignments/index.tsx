@@ -81,6 +81,29 @@ export default function AssignmentsPage() {
                 </div>
               </Col>
             </Row>
+
+            <Row>
+              <Col>
+                <div
+                  className={styles.codingQuiz}
+                  style={{ marginTop: "80px" }}
+                >
+                  <h2 className="sectionTitle">
+                    Final Project
+                    <span className="accent green" />
+                  </h2>
+
+                  <AssignmentItem
+                    name="Final Case Study"
+                    dueDate={dayjs("2021-05-12").tz().format("ll")}
+                    pointsAvailable={160}
+                    link="https://www.notion.so/bdi475/Final-Case-Study-34c000e9f6ed4d21aa53943d06ea60bd"
+                    status={AssignmentStatus.Available}
+                    colorTheme={ColorTheme.Green}
+                  />
+                </div>
+              </Col>
+            </Row>
           </Container>
         </main>
       </AuthCheck>
