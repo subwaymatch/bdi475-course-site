@@ -161,7 +161,7 @@ export default function NotesPage() {
             />
 
             <NoteItem
-              href="https://nbviewer.jupyter.org/github/bdi475/notebooks/blob/e8ce4de7ad280c9286a6bd51b8dfeb492298db59/L11-pandas-solution.ipynb"
+              href="https://bdi475-jupyter-notebooks.netlify.app/l12-pandas-filter-sort-solution"
               thumbnail={
                 <Image
                   src="/images/notes/l11-pandas.png"
@@ -176,7 +176,7 @@ export default function NotesPage() {
             />
 
             <NoteItem
-              href="https://nbviewer.jupyter.org/github/bdi475/notebooks/blob/main/L13-pandas-SOLUTION.ipynb"
+              href="https://bdi475-jupyter-notebooks.netlify.app/l13-pandas-filter-recap-and-sort-solution"
               thumbnail={
                 <Image
                   src="/images/notes/l11-pandas.png"
@@ -191,7 +191,7 @@ export default function NotesPage() {
             />
 
             <NoteItem
-              href="https://nbviewer.jupyter.org/github/bdi475/notebooks/blob/48d75746b6367c574cd9787af02e6692193a5b54/L14-working-with-pandas-SOLUTION.ipynb"
+              href="https://bdi475-jupyter-notebooks.netlify.app/l14-working-with-pandas-solution"
               thumbnail={
                 <Image
                   src="/images/notes/l11-pandas.png"
@@ -206,7 +206,7 @@ export default function NotesPage() {
             />
 
             <NoteItem
-              href="https://nbviewer.jupyter.org/github/bdi475/notebooks/blob/5297a19ee6dc57b6df55b4550c3df54bbbe48101/L15-datetime-groupby-stats-SOLUTION.ipynb"
+              href="https://bdi475-jupyter-notebooks.netlify.app/l15-datetime-groupby-stats-solution"
               thumbnail={
                 <Image
                   src="/images/notes/l11-pandas.png"
@@ -236,7 +236,7 @@ export default function NotesPage() {
 
           <Row>
             <NoteItem
-              href="https://nbviewer.jupyter.org/github/bdi475/notebooks/blob/2c424e2255ab9620a31ccc4605ac40f229f26df8/L17-intro-to-SQL-SOLUTION.ipynb"
+              href="https://bdi475-jupyter-notebooks.netlify.app/l17-intro-to-sql-solution"
               thumbnail={
                 <Image
                   src="/images/notes/l17-sql.png"
@@ -251,7 +251,7 @@ export default function NotesPage() {
             />
 
             <NoteItem
-              href="https://nbviewer.jupyter.org/github/bdi475/notebooks/blob/548a0fc7d27d820d76a606a75219224065f1d672/L18-SQL-SOLUTION.ipynb"
+              href="https://bdi475-jupyter-notebooks.netlify.app/l18-more-sql-basics-solution"
               thumbnail={
                 <Image
                   src="/images/notes/l17-sql.png"
@@ -281,7 +281,7 @@ export default function NotesPage() {
 
           <Row>
             <NoteItem
-              href="https://nbviewer.jupyter.org/github/bdi475/notebooks/blob/98537ad1c06cdc8c8a00165a0fd4943eebf521e8/L19-intro-to-visualizations-SOLUTION.ipynb"
+              href="https://bdi475-jupyter-notebooks.netlify.app/l19-intro-to-dataviz-solution"
               thumbnail={
                 <Image
                   src="/images/notes/l19-dataviz.png"
@@ -295,7 +295,7 @@ export default function NotesPage() {
               colorTheme={ColorTheme.Blue}
             />
             <NoteItem
-              href="https://nbviewer.jupyter.org/github/bdi475/notebooks/blob/40f6f0408f49a069f3626dd010515eea12199395/L20-line-bar-scatter-plots-SOLUTION.ipynb"
+              href="https://bdi475-jupyter-notebooks.netlify.app/l20-line-bar-scatter-plots-solution"
               thumbnail={
                 <Image
                   src="/images/notes/l19-dataviz.png"
@@ -309,7 +309,7 @@ export default function NotesPage() {
               colorTheme={ColorTheme.Blue}
             />
             <NoteItem
-              href="https://nbviewer.jupyter.org/github/bdi475/notebooks/blob/e34f87dd89f2be33af1e519bf59485f4e764b855/L21-advanced-visualizations-SOLUTION.ipynb"
+              href="https://bdi475-jupyter-notebooks.netlify.app/l21-advanced-visualizations-solution"
               thumbnail={
                 <Image
                   src="/images/notes/l19-dataviz.png"

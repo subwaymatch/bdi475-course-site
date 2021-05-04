@@ -55,6 +55,15 @@ export default function AssignmentsPage() {
                     status={AssignmentStatus.Unavailable}
                     colorTheme={ColorTheme.Pink}
                   />
+
+                  <AssignmentItem
+                    name="Quiz 4 - Working with Pandas"
+                    dueDate={dayjs("2021-03-18").tz().format("ll")}
+                    pointsAvailable={25}
+                    link="https://bdi475-jupyter-notebooks.netlify.app/quiz-04-solution"
+                    status={AssignmentStatus.Complete}
+                    colorTheme={ColorTheme.Pink}
+                  />
                 </div>
               </Col>
             </Row>
@@ -89,9 +98,27 @@ export default function AssignmentsPage() {
                   style={{ marginTop: "80px" }}
                 >
                   <h2 className="sectionTitle">
-                    Final Project
+                    Case Studies
                     <span className="accent green" />
                   </h2>
+
+                  <AssignmentItem
+                    name="Uber/Lyft Vehicles with Pandas"
+                    dueDate={dayjs("2021-03-21").tz().format("ll")}
+                    pointsAvailable={80}
+                    link="https://bdi475-jupyter-notebooks.netlify.app/case-study-03-rideshare-vehicles-solution"
+                    status={AssignmentStatus.Complete}
+                    colorTheme={ColorTheme.Green}
+                  />
+
+                  <AssignmentItem
+                    name="Uber/Lyft Trips with Plotly"
+                    dueDate={dayjs("2021-04-20").tz().format("ll")}
+                    pointsAvailable={80}
+                    link="https://bdi475-jupyter-notebooks.netlify.app/case-study-05-rideshare-trips-solution"
+                    status={AssignmentStatus.Complete}
+                    colorTheme={ColorTheme.Green}
+                  />
 
                   <AssignmentItem
                     name="Final Case Study"
