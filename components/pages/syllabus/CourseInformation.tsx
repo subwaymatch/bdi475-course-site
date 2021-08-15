@@ -19,7 +19,7 @@ export default function CourseInformation() {
             <Col sm={4}>
               <div className={styles.displayBox}>
                 <span className="label green">Term</span>
-                <span className={styles.text}>Spring 2021</span>
+                <span className={styles.text}>Fall 2021</span>
               </div>
             </Col>
 
@@ -43,7 +43,7 @@ export default function CourseInformation() {
               <div className={styles.displayBox}>
                 <span className="label pink">Class Time</span>
                 <span className={styles.text}>
-                  Monday &amp; Wednesday 2:00-3:20PM
+                  Tues &amp; Thurs 3:30-4:50PM
                 </span>
               </div>
             </Col>
@@ -73,14 +73,14 @@ export default function CourseInformation() {
             <Col sm={4}>
               <div className={styles.displayBox}>
                 <span className="label yellow">Name</span>
-                <span className={styles.text}>Yang, Li</span>
+                <span className={styles.text}>TBD</span>
               </div>
             </Col>
 
             <Col sm={4}>
               <div className={styles.displayBox}>
                 <span className="label blue">Email</span>
-                <span className={styles.text}>liyang3@illinois.edu</span>
+                <span className={styles.text}>TBD@illinois.edu</span>
               </div>
             </Col>
           </Row>
