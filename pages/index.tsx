@@ -5,10 +5,6 @@ import { motion } from "framer-motion";
 import { clickableVariants } from "animations/clickableVariants";
 import styles from "styles/pages/index.module.scss";
 
-const DiscordEmbed = dynamic(() => import("components/DiscordEmbed"), {
-  ssr: false,
-});
-
 export default function MainPage() {
   return (
     <Layout>
@@ -84,18 +80,6 @@ export default function MainPage() {
                     <a href="https://discord.gg/jWF56zsQ7E">Discord ⟶</a>
                   </motion.div>
                 </div>
-              </Col>
-            </Row>
-          </div>
-
-          <div className={styles.discordEmbedSection}>
-            <Row>
-              <Col>
-                <h2 className="sectionTitle">
-                  Course Discord
-                  <span className="accent purple" />
-                </h2>
-                <DiscordEmbed height={800} />
               </Col>
             </Row>
           </div>
