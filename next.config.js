@@ -1,5 +1,5 @@
 module.exports = {
-  webpack: (config, { isServer, dev, webpack }) => {
+  webpack: (config, { isServer, webpack }) => {
     console.log(`Webpack version: ${webpack.version}`);
 
     /*
@@ -17,18 +17,5 @@ module.exports = {
     }
 
     return config;
-  },
-  async headers() {
-    return [
-      {
-        source: "/api/admin/report/exercises",
-        headers: [
-          {
-            key: "Content-Type",
-            value: "text/csv",
-          },
-        ],
-      },
-    ];
   },
 };
