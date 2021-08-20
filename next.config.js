@@ -9,8 +9,8 @@ module.exports = {
       This might lead to incorrect runtime behavior of the appl.hotUpdatied update.                                              eady on h
       To fix this, make sure to include [runtime] in the output.hotUpdateMainFilename option, or use the default config.
     */
-    config.output.hotUpdateMainFilename =
-      "static/webpack/[fullhash].[runtime].hot-update.json";
+    // config.output.hotUpdateMainFilename =
+    //   "static/webpack/[fullhash].[runtime].hot-update.json";
 
     if (!isServer) {
       config.resolve.fallback.fs = false;
