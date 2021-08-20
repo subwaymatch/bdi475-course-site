@@ -39,7 +39,7 @@
     "react-toastify": "^6.2.0",
     "react-tooltip": "^4.2.13",
     "reactfire": "^3.0.0-rc.0",
-    "sass": "^1.38.0",
+    "sass": "1.32.0",
     "victory": "^35.4.8"
   },
   "devDependencies": {

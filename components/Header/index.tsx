@@ -1,5 +1,6 @@
 import React, { useState, useEffect, forwardRef } from "react";
-
+import Image from "next/image";
+import logoImage from "public/images/logo_bdi475.png";
 import Link from "next/link";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "./Header.module.scss";
@@ -19,12 +20,6 @@ import Tippy from "@tippyjs/react";
 import useFirebaseAuth from "hooks/useFirebaseAuth";
 
 const menuItems = [
-  {
-    href: "/",
-    label: "Home",
-    iconChild: <BiHomeAlt className={styles.reactIcon} />,
-    isActive: (asPath: string) => asPath === "/",
-  },
   {
     href: "/syllabus",
     label: "Syllabus",
@@ -56,6 +51,12 @@ const HeaderDesktopMenu = () => {
 
   return (
     <Row className={clsx(styles.mainMenu, "align-items-center")}>
+      <Col>
+        <Link href="/">
+          <Image src={logoImage} alt="BDI 475" width={140} height={36} />
+        </Link>
+      </Col>
+
       {menuItems.map((item) => (
         <Col key={item.href}>
           <Link href={item.href}>
@@ -66,9 +67,6 @@ const HeaderDesktopMenu = () => {
                   : false,
               })}
             >
-              {item.iconChild && (
-                <span className={styles.iconWrapper}>{item.iconChild}</span>
-              )}
               <span>{item.label}</span>
             </a>
           </Link>

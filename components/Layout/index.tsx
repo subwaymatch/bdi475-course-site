@@ -46,7 +46,7 @@ export default function Layout({
         <meta name="theme-color" content={colors.green} />
       </Head>
 
-      {hideSideFloatingBars !== true && <RotatedSideBars />}
+      {/* {hideSideFloatingBars !== true && <RotatedSideBars />} */}
 
       {excludeHeader !== true && <Header />}
 
