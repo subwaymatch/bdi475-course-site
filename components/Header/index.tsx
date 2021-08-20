@@ -51,7 +51,10 @@ const HeaderDesktopMenu = () => {
 
   return (
     <Row className={clsx(styles.mainMenu, "align-items-center")}>
-      <Col>
+      <Col
+        className="align-items-center"
+        style={{ backgroundColor: "yellowgreen", height: "100%" }}
+      >
         <Link href="/">
           <Image src={logoImage} alt="BDI 475" width={140} height={36} />
         </Link>

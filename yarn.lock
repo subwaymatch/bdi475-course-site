@@ -42,7 +42,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.13.8", "@babel/runtime@^7.14.0", "@babel/runtime@^7.3.1", "@babel/runtime@^7.4.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.8.3", "@babel/runtime@^7.8.7":
+"@babel/runtime@^7.13.16", "@babel/runtime@^7.14.0", "@babel/runtime@^7.3.1", "@babel/runtime@^7.4.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.2", "@babel/runtime@^7.6.3", "@babel/runtime@^7.8.3", "@babel/runtime@^7.8.7":
   version "7.15.3"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.15.3.tgz#2e1c2880ca118e5b2f9988322bd8a7656a32502b"
   integrity sha512-OvwMLqNXkCXSz1kSm58sEsNuhqOx/fKpnUnKnFB5v8uDda5bLNEHNgKPvhDN6IU0LDcnHQ90LlJ0Q6jnyBSIBA==
@@ -556,7 +556,7 @@
   resolved "https://registry.yarnpkg.com/@panva/asn1.js/-/asn1.js-1.0.0.tgz#dd55ae7b8129e02049f009408b97c61ccf9032f6"
   integrity sha512-UdkG3mLEqXgnlKsWanWcgb6dOjUzJ+XC5f+aWw30qrtjxeNUSfKX1cd5FBzOaXQumoe9nIqeZUvrRJS03HCCtw==
 
-"@popperjs/core@^2.8.3", "@popperjs/core@^2.8.6":
+"@popperjs/core@^2.8.3", "@popperjs/core@^2.9.2":
   version "2.9.3"
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.9.3.tgz#8b68da1ebd7fc603999cf6ebee34a4899a14b88e"
   integrity sha512-xDu17cEfh7Kid/d95kB6tZsLOmSWKCZKtprnhVepjsSaCij+lM3mItSJDuuHDMbCWTh8Ejmebwb+KONcCJ0eXQ==
@@ -614,6 +614,13 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha1-p3c2C1s5oaLlEG+OhY8v0tBgxXA=
 
+"@react-aria/ssr@^3.0.1":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@react-aria/ssr/-/ssr-3.0.3.tgz#eabdb731374df07f361ca9ed5abb4601e0c8aefe"
+  integrity sha512-m7mFU1GGkdlSq++QdAcV6n21B0mc8TEqCSuMdhckkL4psMrnuj5rUoW8pI17LvIxB6RU2tGnjtjJeVBuiE86ow==
+  dependencies:
+    "@babel/runtime" "^7.6.2"
+
 "@restart/context@^2.1.4":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@restart/context/-/context-2.1.4.tgz#a99d87c299a34c28bd85bb489cb07bfd23149c02"
@@ -625,6 +632,29 @@
   integrity sha512-s984xV/EapUIfkjlf8wz9weP2O9TNKR96C68FfMEy2bE69+H4cNv3RD4Mf97lW7Htt7PjZrYTjSC8f3SB9VCXw==
   dependencies:
     dequal "^2.0.2"
+
+"@restart/hooks@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@restart/hooks/-/hooks-0.4.0.tgz#f923d7c96b9bce969de097dd458c822b5c8072ee"
+  integrity sha512-+RenTVobiCHPjUTbhQDV8m0PU1xEWqgloMIIOlf86oKnfghKR/l4tKto7TH543shEQZZa7ARSMTvT0cXN9u8+g==
+  dependencies:
+    dequal "^2.0.2"
+
+"@restart/ui@^0.2.1":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@restart/ui/-/ui-0.2.2.tgz#57067918a5ac5761848bb70a74aa020025cc91ce"
+  integrity sha512-PgNkiyOaWwx8ttQ45KNABXU3780fB/UxNFxcsCpC4RRAlaByZHHbNLOKfhuFs+ZUU0uLxEH9wYQEhDAZc6ajkA==
+  dependencies:
+    "@babel/runtime" "^7.13.16"
+    "@popperjs/core" "^2.9.2"
+    "@react-aria/ssr" "^3.0.1"
+    "@restart/hooks" "^0.4.0"
+    "@types/warning" "^3.0.0"
+    dequal "^2.0.2"
+    dom-helpers "^5.2.0"
+    prop-types "^15.7.2"
+    uncontrollable "^7.2.1"
+    warning "^4.0.3"
 
 "@supabase/gotrue-js@^1.17.0":
   version "1.17.0"
@@ -994,10 +1024,10 @@ body-parser@1.19.0:
     raw-body "2.4.0"
     type-is "~1.6.17"
 
-bootstrap@^4.5.3:
-  version "4.6.0"
-  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.6.0.tgz#97b9f29ac98f98dfa43bf7468262d84392552fd7"
-  integrity sha512-Io55IuQY3kydzHtbGvQya3H+KorS/M9rSNyfCGCg9WZ4pyT/lCxIlpJgG1GXW/PswzC84Tr2fBYi+7+jFVQQBw==
+bootstrap@5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-5.1.0.tgz#543ef8f44f4b9af67b0230f19508542fec38ef55"
+  integrity sha512-bs74WNI9BgBo3cEovmdMHikSKoXnDgA6VQjJ7TyTotU6L7d41ZyCEEelPwkYEzsG/Zjv3ie9IE3EMAje0W9Xew==
 
 braces@~3.0.2:
   version "3.0.2"
@@ -1172,7 +1202,7 @@ chokidar@3.5.1:
   optionalDependencies:
     fsevents "~2.3.1"
 
-"chokidar@>=2.0.0 <4.0.0":
+"chokidar@>=3.0.0 <4.0.0":
   version "3.5.2"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.5.2.tgz#dba3976fcadb016f66fd365021d91600d01c1e75"
   integrity sha512-ekGhOnNVPgT77r4K/U3GDhu+FQ2S8TnK/s2KbIGXi0SZWuwkZ2QNyfWdZW+TVfn84DpEP7rLeCt2UI6bJ8GwbQ==
@@ -3457,14 +3487,15 @@ raw-body@2.4.1:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
-react-bootstrap@^1.4.3:
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/react-bootstrap/-/react-bootstrap-1.6.1.tgz#c5493c028ede885826b72eb31e66f6f0a52ab007"
-  integrity sha512-ojEPQ6OtyIMdLg0Smofk+85PKN6MLKQX3bU0Vwmok/4yNa8DQ2vCGhO2IgHJvT+ERQZ4X+gAQcdn6msAHSwLBg==
+react-bootstrap@^2.0.0-beta.5:
+  version "2.0.0-beta.5"
+  resolved "https://registry.yarnpkg.com/react-bootstrap/-/react-bootstrap-2.0.0-beta.5.tgz#3bdb532cd8c13b360dd277102607e4ff7ca58013"
+  integrity sha512-vMRsO3akQ4utRZkMuWtJ82g0vOqzQUoHK7pZs7af3P7c43zrBWzFYM161aKBAIY6Kfhc9Wn2Ms7tZcdpc3pszA==
   dependencies:
     "@babel/runtime" "^7.14.0"
     "@restart/context" "^2.1.4"
     "@restart/hooks" "^0.3.26"
+    "@restart/ui" "^0.2.1"
     "@types/invariant" "^2.2.33"
     "@types/prop-types" "^15.7.3"
     "@types/react" ">=16.14.8"
@@ -3475,7 +3506,6 @@ react-bootstrap@^1.4.3:
     invariant "^2.2.4"
     prop-types "^15.7.2"
     prop-types-extra "^1.1.0"
-    react-overlays "^5.0.1"
     react-transition-group "^4.4.1"
     uncontrollable "^7.2.1"
     warning "^4.0.3"
@@ -3528,20 +3558,6 @@ react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
-
-react-overlays@^5.0.1:
-  version "5.1.1"
-  resolved "https://registry.yarnpkg.com/react-overlays/-/react-overlays-5.1.1.tgz#2e7cf49744b56537c7828ccb94cfc63dd778ae4f"
-  integrity sha512-eCN2s2/+GVZzpnId4XVWtvDPYYBD2EtOGP74hE+8yDskPzFy9+pV1H3ZZihxuRdEbQzzacySaaDkR7xE0ydl4Q==
-  dependencies:
-    "@babel/runtime" "^7.13.8"
-    "@popperjs/core" "^2.8.6"
-    "@restart/hooks" "^0.3.26"
-    "@types/warning" "^3.0.0"
-    dom-helpers "^5.2.0"
-    prop-types "^15.7.2"
-    uncontrollable "^7.2.1"
-    warning "^4.0.3"
 
 react-refresh@0.8.3:
   version "0.8.3"
@@ -3696,12 +3712,12 @@ safe-buffer@>=5.1.0, safe-buffer@^5.0.1, safe-buffer@^5.1.0, safe-buffer@^5.1.1,
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-sass@1.32.0:
-  version "1.32.0"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.32.0.tgz#10101a026c13080b14e2b374d4e15ee24400a4d3"
-  integrity sha512-fhyqEbMIycQA4blrz/C0pYhv2o4x2y6FYYAH0CshBw3DXh5D5wyERgxw0ptdau1orc/GhNrhF7DFN2etyOCEng==
+sass@^1.38.0:
+  version "1.38.0"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.38.0.tgz#2f3e60a1efdcdc910586fa79dc89d3399a145b4f"
+  integrity sha512-WBccZeMigAGKoI+NgD7Adh0ab1HUq+6BmyBUEaGxtErbUtWUevEbdgo5EZiJQofLUGcKtlNaO2IdN73AHEua5g==
   dependencies:
-    chokidar ">=2.0.0 <4.0.0"
+    chokidar ">=3.0.0 <4.0.0"
 
 scheduler@^0.20.2:
   version "0.20.2"
