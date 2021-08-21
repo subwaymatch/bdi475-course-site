@@ -98,7 +98,7 @@ export default function Login() {
             </Col>
           </Row>
 
-          <Row className="align-items-center no-gutters">
+          <Row className="align-items-center g-0">
             <Col>
               <div className={styles.inputWrapper}>
                 <input

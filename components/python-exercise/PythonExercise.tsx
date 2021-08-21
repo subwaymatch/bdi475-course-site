@@ -115,7 +115,7 @@ export default function PythonExercise({
 
   return (
     <div className={styles.codingQuestionWrapper}>
-      <Row className="no-gutters">
+      <Row className="g-0">
         <Col md={6}>
           <div
             className={styles.questionTextWrapper}
@@ -146,7 +146,7 @@ export default function PythonExercise({
         </Col>
       </Row>
 
-      <Row className="no-gutters">
+      <Row className="g-0">
         <Col md={6} className={styles.outputCol}>
           <div
             className={clsx(styles.resultsWrapper, {
