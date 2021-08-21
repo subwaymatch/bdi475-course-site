@@ -5,8 +5,8 @@
   margin: 1rem 0;
   padding: 1rem 0;
   font-size: 1.15rem;
-  letter-spacing: -0.03rem;
   background: #fc3;
+  letter-spacing: -0.03rem;
 
   @include media-breakpoint-down(lg) {
     font-size: 1.1rem;
@@ -18,10 +18,7 @@
   }
 
   .logoLink {
-    display: block;
-    display: none;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    display: inline-block;
   }
 }
 
@@ -31,10 +28,8 @@
     font-size: 1.1rem;
     line-height: 1.2;
     font-weight: 600;
-    display: flex;
-    align-items: center;
     padding: 0.5rem 0;
-    letter-spacing: -0.02rem;
+    letter-spacing: -0.01rem;
 
     .iconWrapper {
       display: inline-flex;

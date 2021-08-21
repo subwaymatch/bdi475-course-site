@@ -1,26 +1,26 @@
-// $grid-breakpoints: (
-//   xs: 0,
-//   sm: 768px,
-//   md: 992px,
-//   lg: 1240px,
-//   xl: 1400px,
-// );
+$grid-breakpoints: (
+  xs: 0,
+  sm: 768px,
+  md: 992px,
+  lg: 1240px,
+  xl: 1400px,
+);
 
 // Grid containers
 //
 // Define the maximum width of `.container` for different screen sizes.
 
-// $container-max-widths: (
-//   sm: 720px,
-//   md: 900px,
-//   lg: 1000px,
-//   xl: 1240px,
-// );
+$container-max-widths: (
+  sm: 720px,
+  md: 900px,
+  lg: 1000px,
+  xl: 1240px,
+);
 
 // Grid columns
 //
 // Set the number of columns and specify the width of the gutters.
 
-// $grid-columns: 12 !default;
-// $grid-gutter-width: 28px !default;
-// $grid-row-columns: 6 !default;
+$grid-columns: 12 !default;
+$grid-gutter-width: 28px !default;
+$grid-row-columns: 6 !default;
