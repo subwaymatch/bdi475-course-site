@@ -10,7 +10,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { clickableVariants } from "animations/clickableVariants";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
-import { BiHomeAlt, BiNote } from "react-icons/bi";
+import { BiNote } from "react-icons/bi";
 import { FiLogIn, FiCalendar, FiHexagon } from "react-icons/fi";
 import { RiBook3Line } from "react-icons/ri";
 import MenuButton from "components/Header/MenuButton";
@@ -51,7 +51,7 @@ const HeaderDesktopMenu = () => {
 
   return (
     <Row className={clsx(styles.mainMenu, "align-items-center")}>
-      <Col style={{ backgroundColor: "yellowgreen", lineHeight: 0 }}>
+      <Col style={{ lineHeight: 0 }}>
         <Link href="/">
           <a className={clsx(styles.logoLink)}>
             <Image src={logoImage} alt="BDI 475" width={140} height={36} />
