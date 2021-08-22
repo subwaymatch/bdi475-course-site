@@ -18,6 +18,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { desktop } from "constants/media-query-strings";
 import Tippy from "@tippyjs/react";
 import useFirebaseAuth from "hooks/useFirebaseAuth";
+import BootstrapBreakpoints from "components/debug/BootstrapBreakpoints";
 
 const menuItems = [
   {
@@ -172,6 +173,8 @@ export default function Header() {
           }}
         />
       )}
+
+      <BootstrapBreakpoints />
 
       <header className={styles.header}>
         <Container>

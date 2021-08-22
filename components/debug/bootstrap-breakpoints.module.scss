@@ -1,0 +1,151 @@
+@import "styles/mixins";
+
+.breakpointOnly {
+  background-color: black;
+  padding: 0.75rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  line-height: 1.2;
+  text-align: center;
+
+  span {
+    display: inline-block;
+
+    &.label {
+      color: #666;
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+.xs,
+.sm,
+.md,
+.lg,
+.xl,
+.xxl {
+  display: none;
+}
+
+@include media-breakpoint-only(xs) {
+  .xs {
+    display: block;
+  }
+}
+
+@include media-breakpoint-only(sm) {
+  .sm {
+    display: block;
+  }
+}
+
+@include media-breakpoint-only(md) {
+  .md {
+    display: block;
+  }
+}
+
+@include media-breakpoint-only(lg) {
+  .lg {
+    display: block;
+  }
+}
+
+@include media-breakpoint-only(xl) {
+  .xl {
+    display: block;
+  }
+}
+
+@include media-breakpoint-only(xxl) {
+  .xxl {
+    display: block;
+  }
+}
+
+.xs {
+  color: #999;
+}
+.sm {
+  color: yellow;
+}
+
+.md {
+  color: lightpink;
+}
+
+.lg {
+  color: lightcyan;
+}
+
+.xl {
+  color: orangered;
+}
+
+.xxl {
+  color: greenyellow;
+}
+
+.breakpointDown {
+  color: white;
+  background-color: #333;
+  border-bottom: 1px solid #222;
+  padding: 0.75rem;
+  font-size: 1.3rem;
+  line-height: 1.2;
+  text-align: center;
+
+  span {
+    display: inline-block;
+
+    &.label {
+      color: #666;
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+.xsDown,
+.smDown,
+.mdDown,
+.lgDown,
+.xlDown,
+.xxlDown {
+  display: none;
+}
+
+@include media-breakpoint-down(xs) {
+  .xsDown {
+    display: block;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .smDown {
+    display: block;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .mdDown {
+    display: block;
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .lgDown {
+    display: block;
+  }
+}
+
+@include media-breakpoint-down(xl) {
+  .xlDown {
+    display: block;
+  }
+}
+
+@include media-breakpoint-down(xxl) {
+  .xxlDown {
+    display: block;
+  }
+}

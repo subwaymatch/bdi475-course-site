@@ -1,8 +1,7 @@
 @import "~bootstrap/scss/_functions";
 @import "~bootstrap/scss/_variables";
+@import "~bootstrap/scss/mixins/_breakpoints";
 
 // Do not apply customizations
 // Bootstrap 5's default configuration works well
 // @import './bootstrap.custom';
-
-@import "~bootstrap/scss/mixins/_breakpoints";
