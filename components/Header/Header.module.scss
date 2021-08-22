@@ -5,15 +5,6 @@
   margin: 0.25rem 0 2rem 0;
   padding: 1rem 0;
 
-  @include media-breakpoint-down(lg) {
-    font-size: 1.1rem;
-  }
-
-  @include media-breakpoint-down(md) {
-    font-size: 1rem;
-    letter-spacing: -0.02rem;
-  }
-
   .logoLink {
     display: inline-block;
   }
@@ -22,7 +13,7 @@
 .mainMenu {
   a.menuLink {
     color: $color-gray;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     line-height: 1.2;
     font-weight: 600;
     padding: 0.5rem 0;
@@ -59,8 +50,8 @@
       }
     }
 
-    @include media-breakpoint-down(lg) {
-      font-size: 0.97em;
+    @include media-breakpoint-down(xxl) {
+      font-size: 1.2rem;
 
       .iconWrapper {
         width: 2rem;
@@ -69,9 +60,8 @@
       }
     }
 
-    @include media-breakpoint-down(md) {
-      font-size: 0.95rem;
-      letter-spacing: -0.01rem;
+    @include media-breakpoint-down(xl) {
+      font-size: 1.1rem;
 
       .iconWrapper {
         width: 1.8rem;
@@ -79,32 +69,9 @@
         margin-right: 0.6rem;
       }
     }
-  }
 
-  &.mobile {
-    max-width: 240px;
-    margin: 0 auto;
-
-    a.menuLink {
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 1px solid $color-border-gray;
+    @include media-breakpoint-down(lg) {
       font-size: 1rem;
-      color: $color-medium-gray;
-      letter-spacing: -0.01rem;
-      padding: 0.65rem 0;
-
-      &:hover {
-        color: $color-black;
-        border-bottom-color: $color-black;
-      }
-
-      .iconWrapper {
-        color: $color-purple;
-        background: transparent;
-        width: auto;
-        height: auto;
-      }
     }
   }
 }
@@ -113,7 +80,8 @@
   display: flex;
   justify-content: flex-end;
 
-  .signInButton {
+  .signInButton,
+  .signOutButton {
     display: inline-flex;
     align-items: center;
     font-size: 1rem;
@@ -126,13 +94,17 @@
     cursor: pointer;
     user-select: none;
 
-    @include media-breakpoint-down(md) {
-      font-size: 0.9rem;
-      padding: 0.7rem 1rem;
-    }
-
     .reactIcon {
       margin-left: 0.5rem;
+    }
+
+    @include media-breakpoint-down(lg) {
+      font-size: 0.9rem;
+      padding: 0.7rem 1rem;
+
+      .reactIcon {
+        display: none;
+      }
     }
 
     &:hover {
@@ -141,7 +113,7 @@
   }
 }
 
-.mobileMenu {
+.mobileMenuWrapper {
   position: fixed;
   left: 0;
   top: 0;
@@ -149,37 +121,43 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0.5rem 0;
+  padding: 0.5rem 0 1rem 0;
   background-color: white;
   z-index: 1050;
 
-  .mainMenu a {
-    display: block;
-    text-align: center;
-    padding: 0.5rem 0;
-    margin: 0;
-    font-size: 1.1rem;
+  .mobileMenu {
+    margin: 0 2rem;
+
+    a.menuLink {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1rem;
+      color: $color-medium-gray;
+      letter-spacing: -0.01rem;
+      padding: 0.65rem 0;
+
+      &:hover {
+        color: $color-black;
+        border-bottom-color: $color-black;
+      }
+
+      .iconWrapper {
+        color: $color-gray;
+        background: transparent;
+        width: auto;
+        height: auto;
+      }
+    }
   }
 
   .userMenu {
-    display: flex;
-    justify-content: center;
-    font-size: 1.1rem;
-
-    .signInButton {
-      color: black;
-      background-color: transparent;
-      display: flex;
-      font-size: inherit;
-      letter-spacing: -0.03rem;
-
-      .reactIcon {
-        color: $color-green;
-      }
-
-      &:hover {
-        box-shadow: none;
-      }
+    margin-top: 0.5rem;
+    .signInButton,
+    .signOutButton {
+      font-size: 1.1rem;
+      display: block;
+      text-align: center;
+      width: 100%;
     }
   }
 }

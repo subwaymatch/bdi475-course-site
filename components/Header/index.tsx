@@ -80,7 +80,7 @@ const HeaderDesktopMenu = () => {
 };
 
 const HeaderMobileMenu = () => (
-  <Row className={clsx(styles.mainMenu, styles.mobile)}>
+  <Row className={clsx(styles.mobileMenu)}>
     {menuItems.map((item) => (
       <Col xs={12} key={item.href}>
         <Link href={item.href}>
@@ -93,6 +93,10 @@ const HeaderMobileMenu = () => (
         </Link>
       </Col>
     ))}
+
+    <Col xs={12}>
+      <UserMenu />
+    </Col>
   </Row>
 );
 
@@ -113,29 +117,34 @@ const SignInButton = forwardRef((props, ref: React.Ref<HTMLDivElement>) => {
   );
 });
 
-const UserMenu = () => {
+const SignOutButton = forwardRef((props, ref: React.Ref<HTMLDivElement>) => {
   const auth = useAuth();
-  const { user } = useFirebaseAuth();
   const router = useRouter();
-  const isScreenDesktop = useMediaQuery(desktop);
 
-  console.log(`isScreenDesktop=${isScreenDesktop}`);
+  return (
+    <a
+      className={styles.signOutButton}
+      onClick={async () => {
+        await auth.signOut();
+        toast.success("Successfully signed out, bye!");
+        router.push("/");
+      }}
+    >
+      Sign Out
+    </a>
+  );
+});
+
+const UserMenu = () => {
+  const isScreenDesktop = useMediaQuery(desktop);
+  const { user } = useFirebaseAuth();
 
   return (
     <Row className="align-items-middle">
       <Col>
         <div className={styles.userMenu}>
           {user ? (
-            <a
-              className={styles.signOutButton}
-              onClick={async () => {
-                await auth.signOut();
-                toast.success("Successfully signed out, bye!");
-                router.push("/");
-              }}
-            >
-              Sign Out
-            </a>
+            <SignOutButton />
           ) : (
             <Tippy
               disabled={!isScreenDesktop}
@@ -206,7 +215,7 @@ export default function Header() {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            className={styles.mobileMenu}
+            className={styles.mobileMenuWrapper}
             initial="closed"
             animate="open"
             exit={{
@@ -223,8 +232,6 @@ export default function Header() {
           >
             <Container>
               <HeaderMobileMenu />
-
-              <UserMenu />
             </Container>
           </motion.div>
         )}

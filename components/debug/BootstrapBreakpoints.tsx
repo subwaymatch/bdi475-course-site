@@ -1,4 +1,3 @@
-import { Container, Row, Col } from "react-bootstrap";
 import styles from "./bootstrap-breakpoints.module.scss";
 import clsx from "clsx";
 
