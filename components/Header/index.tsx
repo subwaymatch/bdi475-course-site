@@ -119,6 +119,8 @@ const UserMenu = () => {
   const router = useRouter();
   const isScreenDesktop = useMediaQuery(desktop);
 
+  console.log(`isScreenDesktop=${isScreenDesktop}`);
+
   return (
     <Row className="align-items-middle">
       <Col>
