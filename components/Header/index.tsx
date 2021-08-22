@@ -54,7 +54,7 @@ const HeaderDesktopMenu = () => {
       <Col style={{ lineHeight: 0 }}>
         <Link href="/">
           <a className={clsx(styles.logoLink)}>
-            <Image src={logoImage} alt="BDI 475" width={140} height={36} />
+            <Image src={logoImage} alt="BDI 475" width={120} height={31} />
           </a>
         </Link>
       </Col>
