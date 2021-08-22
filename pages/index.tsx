@@ -1,4 +1,3 @@
-import dynamic from "next/dynamic";
 import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import { motion } from "framer-motion";
@@ -10,19 +9,13 @@ export default function MainPage() {
     <Layout>
       <main className={styles.mainPage}>
         <Container>
-          <Row>
-            <Col>
-              <div className={styles.courseTitleWrapper}>
-                <Row>
-                  <Col>
-                    <h1>
-                      Introduction to Data Analytics Applications in Business
-                    </h1>
-                  </Col>
-                </Row>
-              </div>
-            </Col>
-          </Row>
+          <div className={styles.courseTitleWrapper}>
+            <Row>
+              <Col>
+                <h1>Introduction to Data Analytics Applications in Business</h1>
+              </Col>
+            </Row>
+          </div>
 
           <div className={styles.linksSection}>
             <Row>

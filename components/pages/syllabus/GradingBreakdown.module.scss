@@ -27,7 +27,7 @@
 
   .itemRow,
   .footerRow {
-    @include media-breakpoint-down(xs) {
+    @include media-breakpoint-only(xs) {
       padding: 0.5rem 0;
     }
 
