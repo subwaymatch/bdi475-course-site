@@ -44,7 +44,7 @@ h1.pageTitle {
     padding: 1rem 0 2rem 0;
   }
 
-  @include media-breakpoint-down(xs) {
+  @include media-breakpoint-only(xs) {
     font-size: 3rem;
     letter-spacing: -0.07rem;
   }

@@ -25,7 +25,7 @@
       letter-spacing: -0.12rem;
     }
   }
-  @include media-breakpoint-down(xs) {
+  @include media-breakpoint-only(xs) {
     margin-top: 3rem;
 
     p {
