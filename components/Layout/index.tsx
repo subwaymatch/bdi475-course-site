@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Header from "components/Header";
+import BootstrapBreakpoints from "components/debug/BootstrapBreakpoints";
 import colors from "styles/colors.module.scss";
 
 interface ILayoutProps {
@@ -39,6 +40,8 @@ export default function Layout({ children, excludeHeader }: ILayoutProps) {
         <meta name="msapplication-TileColor" content="#00aba9" />
         <meta name="theme-color" content={colors.green} />
       </Head>
+
+      {process.env.NODE_ENV === "development" && <BootstrapBreakpoints />}
 
       {excludeHeader !== true && <Header />}
 

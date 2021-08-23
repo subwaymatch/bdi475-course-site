@@ -12,13 +12,13 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 import { BiNote } from "react-icons/bi";
 import { FiLogIn, FiCalendar, FiHexagon } from "react-icons/fi";
+import { HiOutlineMail } from "react-icons/hi";
 import { RiBook3Line } from "react-icons/ri";
 import MenuButton from "components/Header/MenuButton";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { desktop } from "constants/media-query-strings";
 import Tippy from "@tippyjs/react";
 import useFirebaseAuth from "hooks/useFirebaseAuth";
-import BootstrapBreakpoints from "components/debug/BootstrapBreakpoints";
 
 const menuItems = [
   {
@@ -111,7 +111,7 @@ const SignInButton = forwardRef((props, ref: React.Ref<HTMLDivElement>) => {
         className={styles.signInButton}
       >
         <span className={styles.label}>Sign In</span>
-        <FiLogIn className={styles.reactIcon} />
+        <HiOutlineMail className={styles.reactIcon} />
       </motion.div>
     </Link>
   );
@@ -130,7 +130,8 @@ const SignOutButton = forwardRef((props, ref: React.Ref<HTMLDivElement>) => {
         router.push("/");
       }}
     >
-      Sign Out
+      <span className={styles.label}>Sign Out</span>
+      <FiLogIn className={styles.reactIcon} />
     </a>
   );
 });
@@ -184,8 +185,6 @@ export default function Header() {
           }}
         />
       )}
-
-      <BootstrapBreakpoints />
 
       <header className={styles.header}>
         <Container>
