@@ -3,9 +3,10 @@ import { useEffect } from "react";
 import Layout from "components/Layout";
 import Login from "components/Login";
 import useFirebaseAuth from "hooks/useFirebaseAuth";
+import { useUser } from "context/UserContext";
 
 export default function LoginPage() {
-  const { user } = useFirebaseAuth();
+  const { user } = useUser();
   const router = useRouter();
 
   useEffect(() => {

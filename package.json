@@ -10,7 +10,7 @@
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@monaco-editor/react": "^4.2.2",
-    "@supabase/supabase-js": "^1.21.1",
+    "@supabase/supabase-js": "^1.22.2",
     "@tippyjs/react": "^4.2.0",
     "@widgetbot/react-embed": "^1.4.0",
     "bootstrap": "5.1.0",

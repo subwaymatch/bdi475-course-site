@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { toast } from "react-toastify";
 import { MdDone } from "react-icons/md";
@@ -7,53 +7,29 @@ import { motion } from "framer-motion";
 import { clickableVariants } from "animations/clickableVariants";
 import styles from "./Login.module.scss";
 import clsx from "clsx";
-import { useAuth } from "reactfire";
 import { useRouter } from "next/router";
+import { supabaseClient } from "lib/supabase/supabaseClient";
 
 export default function Login() {
   const [netId, setNetId] = useState("");
   const [isEmailSent, setIsEmailSent] = useState(false);
+  const [error, setError] = useState("");
   const router = useRouter();
-  const auth = useAuth();
-
-  useEffect(() => {
-    if (auth.isSignInWithEmailLink(window.location.href)) {
-      let email = window.localStorage.getItem("emailForSignIn");
-
-      if (!email) {
-        email = window.prompt("Please provide your email for confirmation");
-      }
-
-      auth
-        .signInWithEmailLink(email, window.location.href)
-        .then((isSignInWithEmailLink) => {
-          window.localStorage.removeItem("emailForSignIn");
-
-          toast.success("Successfully signed in");
-
-          window.scrollTo(0, 0);
-          router.push("/");
-        })
-        .catch((err) => {
-          console.error("Error signing in through email link");
-          toast.error(err.errorMessage);
-        });
-    }
-  }, []);
 
   const sendSignInLink = async (email: string) => {
-    const actionCodeSettings = {
-      // URL you want to redirect back to. The domain (www.example.com) for this
-      // URL must be in the authorized domains list in the Firebase Console.
-      url: location.href,
-      // This must be true.
-      handleCodeInApp: true,
-    };
-
     try {
-      await auth.sendSignInLinkToEmail(email, actionCodeSettings);
-      window.localStorage.setItem("emailForSignIn", email);
-      setIsEmailSent(true);
+      setError("");
+
+      const { error: signInError } = await supabaseClient.auth.signIn({
+        email,
+      });
+
+      if (signInError) {
+        setError(signInError.message);
+      } else {
+        window.localStorage.setItem("emailForSignIn", email);
+        setIsEmailSent(true);
+      }
 
       toast.success(`Successfully sent a sign-in link to ${email}`);
     } catch (err) {

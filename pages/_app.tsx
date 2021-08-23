@@ -12,25 +12,29 @@ import { FirebaseAppProvider } from "reactfire";
 import FirebaseAuthProvider from "firebase/FirebaseAuthProvider";
 import PythonRuntimeProvider from "lib/pyodide/PythonRuntimeProvider";
 import { firebaseConfig } from "firebase/firebaseClient";
+import { UserContextProvider } from "context/UserContext";
+import { supabaseClient } from "lib/supabase/supabaseClient";
 
 function App({ Component, pageProps }: AppProps) {
   return (
     <FirebaseAppProvider firebaseConfig={firebaseConfig}>
       <FirebaseAuthProvider>
-        <PythonRuntimeProvider>
-          <ToastContainer
-            position="top-center"
-            autoClose={3000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-          />
-          <Component {...pageProps} />
-        </PythonRuntimeProvider>
+        <UserContextProvider supabaseClient={supabaseClient}>
+          <PythonRuntimeProvider>
+            <ToastContainer
+              position="top-center"
+              autoClose={3000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+            />
+            <Component {...pageProps} />
+          </PythonRuntimeProvider>
+        </UserContextProvider>
       </FirebaseAuthProvider>
     </FirebaseAppProvider>
   );

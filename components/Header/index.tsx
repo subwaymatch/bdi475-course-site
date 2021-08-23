@@ -5,7 +5,6 @@ import Link from "next/link";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "./Header.module.scss";
 import clsx from "clsx";
-import { useAuth } from "reactfire";
 import { motion, AnimatePresence } from "framer-motion";
 import { clickableVariants } from "animations/clickableVariants";
 import { toast } from "react-toastify";
@@ -18,7 +17,8 @@ import MenuButton from "components/Header/MenuButton";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { desktop } from "constants/media-query-strings";
 import Tippy from "@tippyjs/react";
-import useFirebaseAuth from "hooks/useFirebaseAuth";
+import { useUser } from "context/UserContext";
+import { supabaseClient } from "lib/supabase/supabaseClient";
 
 const menuItems = [
   {
@@ -110,14 +110,13 @@ const SignInButton = forwardRef((props, ref: React.Ref<HTMLDivElement>) => {
 });
 
 const SignOutButton = forwardRef((props, ref: React.Ref<HTMLDivElement>) => {
-  const auth = useAuth();
   const router = useRouter();
 
   return (
     <a
       className={styles.signOutButton}
       onClick={async () => {
-        await auth.signOut();
+        await supabaseClient.auth.signOut();
         toast.success("Successfully signed out, bye!");
         router.push("/");
       }}
@@ -130,7 +129,7 @@ const SignOutButton = forwardRef((props, ref: React.Ref<HTMLDivElement>) => {
 
 const UserMenu = () => {
   const isScreenDesktop = useMediaQuery(desktop);
-  const { user } = useFirebaseAuth();
+  const { user } = useUser();
 
   return (
     <Row className="align-items-middle">
