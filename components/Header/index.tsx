@@ -52,14 +52,6 @@ const HeaderDesktopMenu = () => {
 
   return (
     <Row className={clsx(styles.mainMenu, "align-items-center")}>
-      <Col style={{ lineHeight: 0 }}>
-        <Link href="/">
-          <a className={clsx(styles.logoLink)}>
-            <Image src={logoImage} alt="BDI 475" width={120} height={31} />
-          </a>
-        </Link>
-      </Col>
-
       {menuItems.map((item) => (
         <Col key={item.href}>
           <Link href={item.href}>
@@ -189,7 +181,20 @@ export default function Header() {
       <header className={styles.header}>
         <Container>
           <Row className="align-items-center">
-            <Col md={10} className="d-none d-md-block">
+            <Col md={2} style={{ lineHeight: 0 }}>
+              <Link href="/">
+                <a className={clsx(styles.logoLink)}>
+                  <Image
+                    src={logoImage}
+                    alt="BDI 475"
+                    width={120}
+                    height={31}
+                  />
+                </a>
+              </Link>
+            </Col>
+
+            <Col md={8} className="d-none d-md-block">
               <HeaderDesktopMenu />
             </Col>
 
