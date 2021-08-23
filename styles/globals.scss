@@ -30,20 +30,24 @@ h1.pageTitle {
   line-height: 1.25;
   font-weight: 600;
   letter-spacing: -0.15rem;
-  padding: 1rem 0 3rem 0;
+  padding: 2rem 0 3rem 0;
+
+  @include media-breakpoint-down(xxl) {
+    font-size: 6rem;
+  }
+
+  @include media-breakpoint-down(xl) {
+    font-size: 5.5rem;
+    padding: 1.75rem 0 2.5rem 0;
+  }
 
   @include media-breakpoint-down(md) {
-    font-size: 6rem;
-    padding: 1.5rem 0 3rem 0;
+    font-size: 4rem;
+    padding: 1.5rem 0 2.25rem 0;
+    letter-spacing: -0.1rem;
   }
 
   @include media-breakpoint-down(sm) {
-    font-size: 5rem;
-    letter-spacing: -0.1rem;
-    padding: 1rem 0 2rem 0;
-  }
-
-  @include media-breakpoint-only(xs) {
     font-size: 3rem;
     letter-spacing: -0.07rem;
   }
