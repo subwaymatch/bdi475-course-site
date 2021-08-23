@@ -13,7 +13,7 @@
 .mainMenu {
   a.menuLink {
     color: $color-gray;
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     line-height: 1.2;
     font-weight: 600;
     padding: 0.5rem 0;
@@ -101,7 +101,9 @@
     @include media-breakpoint-down(lg) {
       font-size: 0.9rem;
       padding: 0.7rem 1rem;
+    }
 
+    @include media-breakpoint-only(md) {
       .reactIcon {
         display: none;
       }

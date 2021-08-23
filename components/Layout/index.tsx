@@ -1,19 +1,13 @@
 import Head from "next/head";
-import RotatedSideBars from "components/RotatedSideBars";
 import Header from "components/Header";
 import colors from "styles/colors.module.scss";
 
 interface ILayoutProps {
   children: React.ReactNode;
   excludeHeader?: boolean;
-  hideSideFloatingBars?: boolean;
 }
 
-export default function Layout({
-  children,
-  excludeHeader,
-  hideSideFloatingBars,
-}: ILayoutProps) {
+export default function Layout({ children, excludeHeader }: ILayoutProps) {
   return (
     <>
       <Head>
@@ -45,8 +39,6 @@ export default function Layout({
         <meta name="msapplication-TileColor" content="#00aba9" />
         <meta name="theme-color" content={colors.green} />
       </Head>
-
-      {/* {hideSideFloatingBars !== true && <RotatedSideBars />} */}
 
       {excludeHeader !== true && <Header />}
 
