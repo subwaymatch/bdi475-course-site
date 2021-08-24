@@ -137,7 +137,8 @@ export default function Login() {
           <Row>
             <Col>
               <p style={{ marginTop: "2rem" }} className="color-orange">
-                Sign-ins are temporarily disabled until the system is migrated.
+                Sign-ins are temporarily disabled until the system is migrated
+                to a new database.
               </p>
             </Col>
           </Row>
