@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { supabase } from "utils/supabaseClient";
+import { supabaseClient } from "lib/supabase/supabaseClient";
 
 export default function Account({ session }) {
   const [loading, setLoading] = useState(true);
@@ -14,9 +14,9 @@ export default function Account({ session }) {
   async function getProfile() {
     try {
       setLoading(true);
-      const user = supabase.auth.user();
+      const user = supabaseClient.auth.user();
 
-      let { data, error, status } = await supabase
+      let { data, error, status } = await supabaseClient
         .from("profiles")
         .select(`username, website, avatar_url`)
         .eq("id", user.id)
@@ -41,7 +41,7 @@ export default function Account({ session }) {
   async function updateProfile({ username, website, avatar_url }) {
     try {
       setLoading(true);
-      const user = supabase.auth.user();
+      const user = supabaseClient.auth.user();
 
       const updates = {
         id: user.id,
@@ -51,7 +51,7 @@ export default function Account({ session }) {
         updated_at: new Date(),
       };
 
-      let { error } = await supabase.from("profiles").upsert(updates, {
+      let { error } = await supabaseClient.from("profiles").upsert(updates, {
         returning: "minimal", // Don't return the value after inserting
       });
 
@@ -103,7 +103,7 @@ export default function Account({ session }) {
       <div>
         <button
           className="button block"
-          onClick={() => supabase.auth.signOut()}
+          onClick={() => supabaseClient.auth.signOut()}
         >
           Sign Out
         </button>
