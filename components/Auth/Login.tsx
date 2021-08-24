@@ -40,6 +40,8 @@ export default function Login() {
 
   const submit = (e) => {
     e.preventDefault();
+    toast.warning("Sign-ins are temporarily disabled.");
+    return;
 
     let userEmail;
 
