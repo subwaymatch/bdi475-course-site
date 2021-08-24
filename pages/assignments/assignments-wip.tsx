@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import AssignmentItem from "components/pages/assignment/AssignmentItem";
 import CaseStudyItem from "components/pages/assignment/CaseStudyItem";
 import { AuthCheck } from "reactfire";
-import Login from "components/Login";
+import Login from "components/Auth/Login";
 import { AssignmentStatus } from "typings/assignment";
 import { ColorTheme } from "typings/color-theme";
 import styles from "styles/pages/assignments.module.scss";

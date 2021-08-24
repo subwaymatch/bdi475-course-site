@@ -8,7 +8,7 @@ import ExerciseList from "components/exercise-list/ExerciseList";
 import { IExerciseListItemProps } from "components/exercise-list/ExerciseListItem";
 import styles from "styles/pages/python-exercise/list.module.scss";
 import { toast } from "react-toastify";
-import Login from "components/Login";
+import Login from "components/Auth/Login";
 
 enum QueryMode {
   InitialLoad = "InitialLoad",
@@ -25,9 +25,10 @@ export default function PythonExerciseListPage() {
     .limit(pageSize + 1);
 
   const [queryMode, setQueryMode] = useState<QueryMode>(QueryMode.InitialLoad);
-  const [query, setQuery] = useState<
-    firebase.firestore.Query<firebase.firestore.DocumentData>
-  >(defaultQuery);
+  const [query, setQuery] =
+    useState<firebase.firestore.Query<firebase.firestore.DocumentData>>(
+      defaultQuery
+    );
   const [questionListItems, setQuestionListItems] = useState([]);
   const [hasPrevPage, setHasPrevPage] = useState(false);
   const [hasNextPage, setHasNextPage] = useState(false);

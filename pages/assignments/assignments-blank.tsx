@@ -2,7 +2,7 @@ import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import { AuthCheck } from "reactfire";
 import styles from "styles/pages/assignments.module.scss";
-import Login from "components/Login";
+import Login from "components/Auth/Login";
 
 export default function AssignmentsPage(props) {
   return (

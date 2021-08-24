@@ -1,14 +1,15 @@
 @import "styles/variables";
 @import "styles/mixins";
 
-.login {
+.authPage {
   padding-bottom: 10rem;
 
-  .loginFormTitle {
+  .formTitle {
     margin-bottom: 4rem;
   }
 
   .netIdInput,
+  .passwordInput,
   .emailFormat {
     font-size: 2.25rem;
     line-height: 1.2;

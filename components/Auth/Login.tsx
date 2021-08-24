@@ -14,7 +14,6 @@ export default function Login() {
   const [netId, setNetId] = useState("");
   const [isEmailSent, setIsEmailSent] = useState(false);
   const [error, setError] = useState("");
-  const router = useRouter();
 
   const sendSignInLink = async (email: string) => {
     try {
@@ -41,11 +40,21 @@ export default function Login() {
 
   const submit = (e) => {
     e.preventDefault();
-    sendSignInLink(netId + "@illinois.edu");
+
+    let userEmail;
+
+    // If the user has typed a full email, do not append @illinois.edu to the end
+    if (netId.includes("@")) {
+      userEmail = netId;
+    } else {
+      userEmail = netId + "@illinois.edu";
+    }
+
+    sendSignInLink(userEmail);
   };
 
   return (
-    <main className={styles.login}>
+    <main className={styles.authPage}>
       <form onSubmit={submit}>
         <Container>
           <Row>
@@ -60,7 +69,7 @@ export default function Login() {
                 className={clsx(
                   "sectionTitle",
                   "grayBottomBorder",
-                  styles.loginFormTitle
+                  styles.formTitle
                 )}
               >
                 Using NetId <span className="accent green" />
@@ -78,6 +87,7 @@ export default function Login() {
             <Col>
               <div className={styles.inputWrapper}>
                 <input
+                  name="userEmail"
                   value={netId}
                   onChange={(e) => setNetId(e.target.value)}
                   placeholder="mynetid"
@@ -121,6 +131,12 @@ export default function Login() {
                 This will send a sign-in link to your{" "}
                 <span className="green">@illinois.edu</span> email.
               </p>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col>
+              <div style={{ color: "red" }}>This is an error message box.</div>
             </Col>
           </Row>
         </Container>

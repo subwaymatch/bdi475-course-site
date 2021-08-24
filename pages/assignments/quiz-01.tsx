@@ -2,7 +2,7 @@ import Image from "next/image";
 import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import { AuthCheck } from "reactfire";
-import Login from "components/Login";
+import Login from "components/Auth/Login";
 import styles from "styles/pages/notes/common.module.scss";
 import ListWithTitle from "components/common/ListWithTitle";
 import CenteredColumn from "components/common/CenteredColumn";

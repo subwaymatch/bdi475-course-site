@@ -4,7 +4,7 @@ import AssignmentItem from "components/pages/assignment/AssignmentItem";
 import { AssignmentStatus } from "typings/assignment";
 import { ColorTheme } from "typings/color-theme";
 import { AuthCheck } from "reactfire";
-import Login from "components/Login";
+import Login from "components/Auth/Login";
 import styles from "styles/pages/assignments.module.scss";
 import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
@@ -37,7 +37,7 @@ export default function AssignmentsPage() {
                   <h2 className="sectionTitle">
                     Coding Quiz <span className="accent pink" />
                   </h2>
-
+                  {/* 
                   <AssignmentItem
                     name="Quiz 1"
                     dueDate={dayjs("2021-02-11").tz().format("ll")}
@@ -127,7 +127,7 @@ export default function AssignmentsPage() {
                     link="https://www.notion.so/bdi475/Final-Case-Study-34c000e9f6ed4d21aa53943d06ea60bd"
                     status={AssignmentStatus.Available}
                     colorTheme={ColorTheme.Green}
-                  />
+                  /> */}
                 </div>
               </Col>
             </Row>

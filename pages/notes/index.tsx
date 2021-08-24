@@ -35,11 +35,11 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2021-02-01"
+              date="2021-08-26"
               title="Variables and Data Types"
               colorTheme={ColorTheme.Green}
             />
-
+            {/* 
             <NoteItem
               href="/notes/booleans-and-conditional-logic"
               thumbnail={
@@ -128,9 +128,9 @@ export default function NotesPage() {
               date="2021-02-24"
               title="Functions Part 2"
               colorTheme={ColorTheme.Pink}
-            />
+            /> */}
           </Row>
-
+          {/* 
           <Row>
             <Col>
               <h2
@@ -350,7 +350,7 @@ export default function NotesPage() {
               title="Tableau Scatter Plot, Pie Chart, Geographic Map"
               colorTheme={ColorTheme.Blue}
             />
-          </Row>
+          </Row> */}
         </Container>
       </main>
     </Layout>
