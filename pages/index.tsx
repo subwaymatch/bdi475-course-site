@@ -29,19 +29,18 @@ export default function MainPage() {
             <Row>
               <Col md={4}>
                 <div className={styles.displayBox}>
-                  <span className="label yellow">
-                    Lecture &amp; Office Hours
-                  </span>
+                  <span className="label yellow">Office Hours</span>
                   <motion.div
                     variants={clickableVariants}
                     whileHover="hover"
                     whileTap="tap"
                     className={styles.text}
                   >
-                    <a href="https://illinois.zoom.us/j/84904507698?pwd=QzZ2N3MrRTJDZjlXc0Z5NW8ycmtSZz09">
+                    <a href="https://illinois.zoom.us/j/88199992344?pwd=dTMvdnM3SHF4eE11NnBjZGJ6NGhMZz09">
                       Zoom Link ⟶
                     </a>
                   </motion.div>
+                  <div>Every Wednesday 3-4 PM</div>
                 </div>
               </Col>
 
@@ -63,14 +62,16 @@ export default function MainPage() {
 
               <Col md={4}>
                 <div className={styles.displayBox}>
-                  <span className="label purple">Discussion</span>
+                  <span className="label purple">Course Page</span>
                   <motion.div
                     variants={clickableVariants}
                     whileHover="hover"
                     whileTap="tap"
                     className={styles.text}
                   >
-                    <a href="https://discord.gg/jWF56zsQ7E">Discord ⟶</a>
+                    <a href="https://canvas.illinois.edu/courses/14860/">
+                      Canvas ⟶
+                    </a>
                   </motion.div>
                 </div>
               </Col>

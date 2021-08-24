@@ -70,28 +70,42 @@ export default function GradingBreakdown() {
           item="Participation"
           points={100}
           percentage="10%"
-          notes="Every class"
+          notes="Mostly in-class exercises"
         />
 
         <GradedItem
           item="Exercises"
-          points={240}
-          percentage="24%"
-          notes="24 @ 10 points each"
+          points={200}
+          percentage="20%"
+          notes="10 @ 20 points each"
         />
 
         <GradedItem
           item="Quizzes"
           points={100}
           percentage="10%"
-          notes="5 @ 2.5 points each (drop 1 lowest score)"
+          notes="5 @ 25 points each (drop 1 lowest score)"
+        />
+
+        <GradedItem
+          item="Problem Sets"
+          points={120}
+          percentage="12%"
+          notes="2 @ 60 points each"
         />
 
         <GradedItem
           item="Case Studies"
-          points={560}
-          percentage="56%"
-          notes="7 @ 80 points each"
+          points={320}
+          percentage="32%"
+          notes="4 @ 80 points each"
+        />
+
+        <GradedItem
+          item="Capstone Project"
+          points={160}
+          percentage="16%"
+          notes="Independent Final Project"
         />
 
         <GradedItem
@@ -110,11 +124,11 @@ export default function GradingBreakdown() {
             </Col>
 
             <Col sm={2} xs={3}>
-              <div className={clsx(styles.cell, styles.points)}>1000</div>
+              <div className={clsx(styles.cell, styles.points)}>1010</div>
             </Col>
 
             <Col sm={2} xs={3}>
-              <div className={clsx(styles.cell, styles.percentage)}>100%</div>
+              <div className={clsx(styles.cell, styles.percentage)}>101%</div>
             </Col>
           </Row>
         </div>

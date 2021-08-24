@@ -129,14 +129,16 @@ export default function Login() {
             <Col md={8} xs={12}>
               <p className={styles.note}>
                 This will send a sign-in link to your{" "}
-                <span className="green">@illinois.edu</span> email.
+                <span className="color-green">@illinois.edu</span> email.
               </p>
             </Col>
           </Row>
 
           <Row>
             <Col>
-              <div style={{ color: "red" }}>This is an error message box.</div>
+              <p style={{ marginTop: "2rem" }} className="color-orange">
+                Sign-ins are temporarily disabled until the system is migrated.
+              </p>
             </Col>
           </Row>
         </Container>
