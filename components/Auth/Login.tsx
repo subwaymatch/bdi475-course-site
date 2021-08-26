@@ -7,24 +7,23 @@ import { motion } from "framer-motion";
 import { clickableVariants } from "animations/clickableVariants";
 import styles from "./Login.module.scss";
 import clsx from "clsx";
-import { useRouter } from "next/router";
 import { supabaseClient } from "lib/supabase/supabaseClient";
 
 export default function Login() {
   const [netId, setNetId] = useState("");
   const [isEmailSent, setIsEmailSent] = useState(false);
-  const [error, setError] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const sendSignInLink = async (email: string) => {
     try {
-      setError("");
+      setErrorMessage("");
 
       const { error: signInError } = await supabaseClient.auth.signIn({
         email,
       });
 
       if (signInError) {
-        setError(signInError.message);
+        setErrorMessage(signInError.message);
       } else {
         window.localStorage.setItem("emailForSignIn", email);
         setIsEmailSent(true);
@@ -40,9 +39,6 @@ export default function Login() {
 
   const submit = (e) => {
     e.preventDefault();
-    toast.warning("Sign-ins are temporarily disabled.");
-    return;
-
     let userEmail;
 
     // If the user has typed a full email, do not append @illinois.edu to the end
@@ -138,10 +134,11 @@ export default function Login() {
 
           <Row>
             <Col>
-              <p style={{ marginTop: "2rem" }} className="color-orange">
-                Sign-ins are temporarily disabled until the system is migrated
-                to a new database.
-              </p>
+              {errorMessage && (
+                <p style={{ marginTop: "2rem" }} className="color-orange">
+                  {errorMessage}
+                </p>
+              )}
             </Col>
           </Row>
         </Container>
