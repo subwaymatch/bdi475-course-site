@@ -24,46 +24,51 @@ const CodeEditor = dynamic(() => import("components/CodeEditor"), {
 
 interface ICodingQuestionEditorProps {
   qid: string;
-  savedData: IPythonExercise;
-  onSave: (v: IPythonExercise) => void;
+  questionData: IPythonExercise;
+  solutionCode: string;
+  onSave: (questionData: IPythonExercise, solutionCode: string) => void;
   onDelete: () => void;
   onClone: (v: IPythonExercise) => void;
 }
 
 export default function CodingQuestionEditor({
   qid,
-  savedData,
+  questionData,
+  solutionCode,
   onSave,
   onDelete,
   onClone,
 }: ICodingQuestionEditorProps) {
-  const [questionData, setQuestionData] = useState<IPythonExercise>(
-    Object.assign(
-      {
-        title: "",
-        textMarkdown: "",
-        starterCode: "# YOUR CODE BEGINS\n\n\n\n# YOUR CODE ENDS\n\n",
-        solutionCode: "# YOUR CODE BEGINS\n\n\n\n# YOUR CODE ENDS\n\n",
-        testCode:
-          "import unittest\n\ntc=unittest.TestCase()\n\ntc.assertEqual(sys.stdout.getvalue(), ...)\n",
-      },
-      savedData
-    )
-  );
+  const [workingQuestionData, setWorkingQuestionData] =
+    useState<IPythonExercise>(
+      Object.assign(
+        {
+          title: "",
+          textMarkdown: "",
+          starterCode: "# YOUR CODE BEGINS\n\n\n\n# YOUR CODE ENDS\n\n",
+          testCode:
+            "import unittest\n\ntc=unittest.TestCase()\n\ntc.assertEqual(sys.stdout.getvalue(), ...)\n",
+        },
+        questionData
+      )
+    );
+  const [workingSolutionCode, setWorkingSolutionCode] = useState(solutionCode);
   const { isRuntimeReady, runCode, runAndCheckCode } = usePythonRuntime();
 
-  const didChange = !_.isEqual(questionData, savedData);
+  const didChange =
+    !_.isEqual(questionData, workingQuestionData) ||
+    !_.isEqual(solutionCode, workingSolutionCode);
 
   const update = (key, val) => {
-    const updatedQuestionData = produce(questionData, (draft) => {
+    const updatedQuestionData = produce(workingQuestionData, (draft) => {
       draft[key] = val;
     });
 
-    setQuestionData(updatedQuestionData);
+    setWorkingQuestionData(updatedQuestionData);
   };
 
   const save = async () => {
-    await onSave(questionData);
+    await onSave(workingQuestionData, workingSolutionCode);
   };
 
   const displayCodeExecutionResult = (result: ICodeExecutionResult) => {
@@ -79,7 +84,7 @@ export default function CodingQuestionEditor({
       return;
     }
 
-    const result = await runCode(questionData.starterCode);
+    const result = await runCode(workingQuestionData.starterCode);
     displayCodeExecutionResult(result);
   };
 
@@ -89,8 +94,8 @@ export default function CodingQuestionEditor({
     }
 
     const result = await runAndCheckCode(
-      questionData.starterCode,
-      questionData.testCode
+      workingQuestionData.starterCode,
+      workingQuestionData.testCode
     );
     displayCodeExecutionResult(result);
   };
@@ -100,7 +105,7 @@ export default function CodingQuestionEditor({
       return;
     }
 
-    const result = await runCode(questionData.solutionCode);
+    const result = await runCode(workingSolutionCode);
     displayCodeExecutionResult(result);
   };
 
@@ -110,8 +115,8 @@ export default function CodingQuestionEditor({
     }
 
     const result = await runAndCheckCode(
-      questionData.solutionCode,
-      questionData.testCode
+      workingSolutionCode,
+      workingQuestionData.testCode
     );
     displayCodeExecutionResult(result);
   };
@@ -137,7 +142,7 @@ export default function CodingQuestionEditor({
             <div className={styles.questionTitleWrapper}>
               <input
                 type="text"
-                value={questionData.title}
+                value={workingQuestionData.title}
                 onChange={(e) => update("title", e.target.value)}
                 placeholder="Question Title"
                 className={styles.questionTitleInput}
@@ -188,7 +193,7 @@ export default function CodingQuestionEditor({
                     }
                   }
 
-                  await onClone(questionData);
+                  await onClone(workingQuestionData);
                 }}
               >
                 <VscRepoForked className={styles.reactIcon} />
@@ -273,7 +278,7 @@ export default function CodingQuestionEditor({
           <div className={styles.codeEditorWrapper}>
             <textarea
               className={styles.questionTextarea}
-              value={questionData.textMarkdown}
+              value={workingQuestionData.textMarkdown}
               onChange={(e) => update("textMarkdown", e.target.value)}
             />
           </div>
@@ -309,7 +314,7 @@ export default function CodingQuestionEditor({
 
           <div className={styles.codeEditorWrapper}>
             <CodeEditor
-              editorValue={questionData.starterCode}
+              editorValue={workingQuestionData.starterCode}
               onChange={(v) => update("starterCode", v)}
               onRun={runStarterCode}
               onCheck={runAndCheckStarterCode}
@@ -351,8 +356,8 @@ export default function CodingQuestionEditor({
 
           <div className={styles.codeEditorWrapper}>
             <CodeEditor
-              editorValue={questionData.solutionCode}
-              onChange={(v) => update("solutionCode", v)}
+              editorValue={workingSolutionCode}
+              onChange={(v) => setWorkingSolutionCode(v)}
               onRun={runSolutionCode}
               onCheck={runAndCheckSolutionCode}
               language="python"
@@ -371,7 +376,7 @@ export default function CodingQuestionEditor({
 
           <div className={styles.codeEditorWrapper}>
             <CodeEditor
-              editorValue={questionData.testCode}
+              editorValue={workingQuestionData.testCode}
               onChange={(v) => update("testCode", v)}
               onRun={() => {}}
               language="python"

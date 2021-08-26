@@ -32,7 +32,6 @@ export default function PythonExercise({
   textMarkdown,
   starterCode,
   testCode,
-  solutionCode,
   localStorageKey,
   onSubmit,
 }: IPythonExerciseProps) {
