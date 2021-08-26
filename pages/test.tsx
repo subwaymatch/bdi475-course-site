@@ -8,10 +8,37 @@ import { useUser } from "context/UserContext";
 import useCodingExerciseAttempts from "hooks/useCodingExerciseAttempts";
 
 export default function TestPage() {
-  const qid = "a12345";
+  const qid = "F7EJVQ";
   const { user, roles } = useUser();
   const { status, data: codingQuestion, error } = usePythonExercise(qid);
   const { attempts, recordSubmission } = useCodingExerciseAttempts(qid);
+
+  const getAttempts = async () => {
+    const { data, error } = await supabaseClient
+      .from("coding_question_attempts")
+      .select(
+        `
+        submitted_at,
+        is_success,
+        user_code,
+        profiles (
+          display_name,
+          email
+        )
+      `
+      )
+      .match({
+        question_id: qid,
+      })
+      .order("submitted_at", { ascending: false });
+
+    console.log("Attempts");
+    console.log(data);
+
+    if (error) {
+      console.error(error);
+    }
+  };
 
   useEffect(() => {
     if (user) {
@@ -19,6 +46,8 @@ export default function TestPage() {
       console.log(`roles`);
       console.log(roles);
     }
+
+    getAttempts();
   }, [user]);
 
   console.log(`codingQuestion`);

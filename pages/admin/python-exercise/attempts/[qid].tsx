@@ -12,145 +12,208 @@ import { IoIosCloseCircleOutline } from "react-icons/io";
 import Tippy from "@tippyjs/react";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import { useFirestore, useFirestoreDocData } from "reactfire";
 import { useEffect, useState } from "react";
-import { ICodingExerciseAttemptWithUID } from "typings/coding-exercise";
-import { firebaseClient } from "firebase/firebaseClient";
-import { useUser } from "context/UserContext";
+import { supabaseClient } from "lib/supabase/supabaseClient";
 
 dayjs.extend(relativeTime);
 
 export default function CodingQuestionAttemptsPage() {
   const router = useRouter();
   const { qid } = router.query;
-  const { user } = useUser();
-  const [attempts, setAttempts] = useState<ICodingExerciseAttemptWithUID[]>([]);
+  const [attempts, setAttempts] = useState([]);
+
+  const getAttempts = async () => {
+    console.log(`getAttempts qid=${qid}`);
+
+    const { data, error } = await supabaseClient
+      .from("coding_question_attempts")
+      .select(
+        `
+        submitted_at,
+        is_success,
+        user_code,
+        profiles (
+          display_name
+        )
+      `
+      )
+      .match({
+        question_id: qid,
+      })
+      .limit(100)
+      .order("submitted_at", { ascending: false });
+
+    setAttempts(data);
+
+    if (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    if (!qid) {
+      return;
+    }
+
+    getAttempts();
+
+    const newAttemptSubscription = supabaseClient
+      .from(`coding_question_attempts:question_id=eq.${qid}`)
+      .on("INSERT", async (payload) => {
+        console.log("Change received!", payload);
+        const newData = payload.new;
+        const { data: profileData, error: profileError } = await supabaseClient
+          .from("profiles")
+          .select("display_name")
+          .eq("id", newData.user_id)
+          .single();
+
+        console.log(`profile data`);
+        console.log(profileData);
+
+        const newAttempt = {
+          submitted_at: newData.submitted_at,
+          is_success: newData.is_success,
+          user_code: newData.user_code,
+          profiles: {
+            display_name: profileData.display_name,
+          },
+        };
+
+        setAttempts((attempts) => {
+          return [newAttempt, ...attempts];
+        });
+      })
+      .subscribe();
+
+    return () => {
+      supabaseClient.removeSubscription(newAttemptSubscription);
+    };
+  }, [qid]);
 
   return (
     <Layout>
-        <main className={styles.page}>
-          <Container>
-            <Row>
-              <Col>
-                <h2 className="sectionTitle">
-                  Question Attempts
-                  <span className="accent blue" />
-                </h2>
-              </Col>
-            </Row>
+      <main className={styles.page}>
+        <Container>
+          <Row>
+            <Col>
+              <h2 className="sectionTitle">
+                Question Attempts
+                <span className="accent blue" />
+              </h2>
+            </Col>
+          </Row>
 
-            <Row>
-              <Col>
-                <div className={styles.attempts}>
-                  {attempts.map((o, index) => (
-                    <div key={index} className={styles.item}>
-                      <Row>
-                        <Col md={2} xs={6}>
-                          <div className={styles.result}>
-                            <span
-                              className={clsx(
-                                "label",
-                                o.isSuccess ? "green" : "pink"
-                              )}
-                            >
-                              Result
-                            </span>
+          <Row>
+            <Col>
+              <div className={styles.attempts}>
+                {attempts.map((o, index) => (
+                  <div key={index} className={styles.item}>
+                    <Row>
+                      <Col md={2} xs={6}>
+                        <div className={styles.result}>
+                          <span
+                            className={clsx(
+                              "label",
+                              o.is_success ? "green" : "pink"
+                            )}
+                          >
+                            Result
+                          </span>
+
+                          <div className={styles.text}>
+                            {o.is_success ? (
+                              <>
+                                Pass
+                                <HiOutlineBadgeCheck
+                                  className={clsx(
+                                    styles.reactIcon,
+                                    styles.pass
+                                  )}
+                                />
+                              </>
+                            ) : (
+                              <>
+                                Fail
+                                <IoIosCloseCircleOutline
+                                  className={clsx(
+                                    styles.reactIcon,
+                                    styles.fail
+                                  )}
+                                />
+                              </>
+                            )}
+                          </div>
+                        </div>
+                      </Col>
+
+                      <Col md={2} xs={6}>
+                        {o.submitted_at && (
+                          <div className={styles.timestamp}>
+                            <span className="label yellow">Submitted</span>
 
                             <div className={styles.text}>
-                              {o.isSuccess ? (
-                                <>
-                                  Pass
-                                  <HiOutlineBadgeCheck
-                                    className={clsx(
-                                      styles.reactIcon,
-                                      styles.pass
-                                    )}
-                                  />
-                                </>
-                              ) : (
-                                <>
-                                  Fail
-                                  <IoIosCloseCircleOutline
-                                    className={clsx(
-                                      styles.reactIcon,
-                                      styles.fail
-                                    )}
-                                  />
-                                </>
-                              )}
-                            </div>
-                          </div>
-                        </Col>
-
-                        <Col md={2} xs={6}>
-                          {o.submittedAt && (
-                            <div className={styles.timestamp}>
-                              <span className="label yellow">Submitted</span>
-
-                              <div className={styles.text}>
-                                <Tippy
-                                  content={dayjs(o.submittedAt.toDate()).format(
-                                    "YYYY-MM-DD HH:mm:ss A"
-                                  )}
-                                  className="tippy"
-                                  placement="bottom"
-                                  theme="light"
-                                >
-                                  <span>
-                                    {dayjs(o.submittedAt.toDate()).fromNow()}
-                                  </span>
-                                </Tippy>
-                              </div>
-                            </div>
-                          )}
-                        </Col>
-
-                        <Col md={8}>
-                          <div className={styles.codeWrapper}>
-                            <div className={styles.labelWrapper}>
-                              <span className="label blue">Code</span>
-                              <span
-                                className={clsx(
-                                  "label",
-                                  "purple",
-                                  styles.displayName
-                                )}
-                              >
-                                {o.displayName ? o.displayName : o.uid}
-                              </span>
-
-                              <CopyToClipboard
-                                text={o.userCode}
-                                onCopy={() =>
-                                  toast.info(<div>Copied to clipboard</div>)
-                                }
-                              >
-                                <span className={styles.iconButton}>
-                                  <IoCopyOutline className={styles.reactIcon} />
-                                </span>
-                              </CopyToClipboard>
-
                               <Tippy
-                                content="Copy to Clipboard"
+                                content={dayjs(o.submitted_at).format(
+                                  "YYYY-MM-DD HH:mm:ss A"
+                                )}
                                 className="tippy"
                                 placement="bottom"
                                 theme="light"
-                              />
+                              >
+                                <span>{dayjs(o.submitted_at).fromNow()}</span>
+                              </Tippy>
                             </div>
-                            <Highlighter
-                              content={o.userCode}
-                              language="python"
+                          </div>
+                        )}
+                      </Col>
+
+                      <Col md={8}>
+                        <div className={styles.codeWrapper}>
+                          <div className={styles.labelWrapper}>
+                            <span className="label blue">Code</span>
+                            <span
+                              className={clsx(
+                                "label",
+                                "purple",
+                                styles.displayName
+                              )}
+                            >
+                              {o.profiles.display_name}
+                            </span>
+
+                            <CopyToClipboard
+                              text={o.user_code}
+                              onCopy={() =>
+                                toast.info(<div>Copied to clipboard</div>)
+                              }
+                            >
+                              <span className={styles.iconButton}>
+                                <IoCopyOutline className={styles.reactIcon} />
+                              </span>
+                            </CopyToClipboard>
+
+                            <Tippy
+                              content="Copy to Clipboard"
+                              className="tippy"
+                              placement="bottom"
+                              theme="light"
                             />
                           </div>
-                        </Col>
-                      </Row>
-                    </div>
-                  ))}
-                </div>
-              </Col>
-            </Row>
-          </Container>
-        </main>
+                          <Highlighter
+                            content={o.user_code}
+                            language="python"
+                          />
+                        </div>
+                      </Col>
+                    </Row>
+                  </div>
+                ))}
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </main>
     </Layout>
   );
 }

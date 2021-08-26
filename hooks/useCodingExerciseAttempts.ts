@@ -21,7 +21,9 @@ export default function useCodingExerciseAttempts(qid) {
       .match({
         user_id: user.id,
         question_id: qid,
-      });
+      })
+      .limit(100)
+      .order("submitted_at", { ascending: false });
 
     const updatedAttempts = data.map((o) => ({
       isSuccess: o.is_success,
