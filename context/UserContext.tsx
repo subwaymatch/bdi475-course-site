@@ -16,8 +16,6 @@ export const UserContextProvider = (props) => {
   // Send session to /api/auth route to set the auth cookie.
   // NOTE: this is only needed if you're doing SSR (getServerSideProps)!
   const setAuthCookieOnServer = async (event: string, session: Session) => {
-    console.log(`CLIENT: setAuthCookieOnServer(event=${event})`);
-
     await fetch("/api/auth/setAuthCookie", {
       method: "POST",
       headers: new Headers({ "Content-Type": "application/json" }),
@@ -27,12 +25,9 @@ export const UserContextProvider = (props) => {
   };
 
   const handleStorageEvent = (e) => {
-    console.log(`handleStorageEvent key=${e.key}`);
     if (e.key === "supabase.auth.token") {
       const newSession = JSON.parse(e.newValue);
-      console.log(`newSession`);
       const session = newSession?.currentSession;
-      console.log(newSession);
       setSession(newSession?.currentSession);
       setUser(session?.user ?? null);
     }
@@ -55,8 +50,6 @@ export const UserContextProvider = (props) => {
 
     const { data: authListener } = supabaseClient.auth.onAuthStateChange(
       async (event, session) => {
-        console.log(`UserContext.onAuthStateChange event=${event}`);
-
         setSession(session);
         setUser(session?.user ?? null);
 
