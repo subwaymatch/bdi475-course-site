@@ -25,7 +25,6 @@ export default function Login() {
       if (signInError) {
         setErrorMessage(signInError.message);
       } else {
-        window.localStorage.setItem("emailForSignIn", email);
         setIsEmailSent(true);
       }
 

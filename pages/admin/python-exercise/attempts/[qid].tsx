@@ -1,10 +1,8 @@
 import { useRouter } from "next/router";
-import { AuthCheck } from "reactfire";
 import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { toast } from "react-toastify";
-import Login from "components/Auth/Login";
 import Highlighter from "components/code-blocks/Highlighter";
 import styles from "styles/pages/python-exercise/history.module.scss";
 import clsx from "clsx";
@@ -18,77 +16,18 @@ import { useFirestore, useFirestoreDocData } from "reactfire";
 import { useEffect, useState } from "react";
 import { ICodingExerciseAttemptWithUID } from "typings/coding-exercise";
 import { firebaseClient } from "firebase/firebaseClient";
-import useUsers from "hooks/useUsers";
+import { useUser } from "context/UserContext";
 
 dayjs.extend(relativeTime);
 
 export default function CodingQuestionAttemptsPage() {
   const router = useRouter();
   const { qid } = router.query;
-  const firestore = useFirestore();
-  const docRef = firestore.collection("questionAttempts").doc(qid as string);
-  const {
-    status: qStatus,
-    data: questionAttemptsData,
-  }: { status: string; data } = useFirestoreDocData(docRef);
-  const { data: users } = useUsers();
+  const { user } = useUser();
   const [attempts, setAttempts] = useState<ICodingExerciseAttemptWithUID[]>([]);
-
-  useEffect(() => {
-    if (qStatus === "success") {
-      let tempAttempts: ICodingExerciseAttemptWithUID[] = [];
-
-      Object.keys(questionAttemptsData).forEach((uid) => {
-        if (uid === "NO_ID_FIELD") {
-          return;
-        }
-
-        let userAttempts = [...questionAttemptsData[uid]]
-          .map((o) => {
-            if (!o.submittedAt) {
-              o.submittedAt = firebaseClient.firestore.Timestamp.now();
-            }
-
-            return o;
-          })
-          .sort((o1, o2) => o1.submittedAt.seconds - o2.submittedAt.seconds)
-          .reverse();
-
-        let passCount = 0;
-        let failCount = 0;
-
-        for (const attempt of userAttempts) {
-          let newAttempt = Object.assign({}, { uid }, attempt);
-
-          if (users.hasOwnProperty(uid)) {
-            newAttempt["displayName"] = users[uid].email;
-          }
-
-          if (attempt.isSuccess && passCount < 1) {
-            tempAttempts.push(newAttempt);
-            passCount++;
-          } else if (!attempt.isSuccess && failCount < 1) {
-            tempAttempts.push(newAttempt);
-            failCount++;
-          }
-
-          if (attempt.passCount === 1 && attempt.failCount === 1) {
-            break;
-          }
-        }
-      });
-
-      setAttempts(
-        tempAttempts
-          .sort((o1, o2) => o1.submittedAt.seconds - o2.submittedAt.seconds)
-          .reverse()
-      );
-    }
-  }, [questionAttemptsData, users]);
 
   return (
     <Layout>
-      <AuthCheck fallback={<Login />}>
         <main className={styles.page}>
           <Container>
             <Row>
@@ -212,7 +151,6 @@ export default function CodingQuestionAttemptsPage() {
             </Row>
           </Container>
         </main>
-      </AuthCheck>
     </Layout>
   );
 }

@@ -6,12 +6,13 @@ interface IAuthStateChangeBroadcast {
   date: string;
 }
 
-const UserContext = createContext({ user: null, session: null });
+const UserContext = createContext({ user: null, session: null, roles: [] });
 
 export const UserContextProvider = (props) => {
   const { supabaseClient }: { supabaseClient: SupabaseClient } = props;
   const [session, setSession] = useState(null);
   const [user, setUser] = useState(null);
+  const [roles, setRoles] = useState([]);
 
   // Send session to /api/auth route to set the auth cookie.
   // NOTE: this is only needed if you're doing SSR (getServerSideProps)!
@@ -24,21 +25,37 @@ export const UserContextProvider = (props) => {
     });
   };
 
+  const update = async (newSession) => {
+    setSession(newSession);
+
+    const newUser = newSession ? newSession.user : supabaseClient.auth.user();
+    setUser(newUser);
+
+    if (newUser) {
+      const selectResult = await supabaseClient
+        .from("profiles")
+        .select("roles")
+        .eq("id", newUser.id)
+        .single();
+
+      setRoles(selectResult.data.roles);
+    } else {
+      setRoles([]);
+    }
+  };
+
   const handleStorageEvent = (e) => {
     if (e.key === "supabase.auth.token") {
       const newSession = JSON.parse(e.newValue);
-      const session = newSession?.currentSession;
-      setSession(newSession?.currentSession);
-      setUser(session?.user ?? null);
+      const currentSession = newSession?.currentSession;
+      const roles = update(currentSession);
     }
   };
 
   useEffect(() => {
     const session = supabaseClient.auth.session();
-    const user = supabaseClient.auth.user();
 
-    setSession(session);
-    setUser(user);
+    update(session);
 
     // If a session user already exists,
     // manually register auth cookie
@@ -50,8 +67,7 @@ export const UserContextProvider = (props) => {
 
     const { data: authListener } = supabaseClient.auth.onAuthStateChange(
       async (event, session) => {
-        setSession(session);
-        setUser(session?.user ?? null);
+        update(session);
 
         await setAuthCookieOnServer(event, session);
       }
@@ -71,9 +87,14 @@ export const UserContextProvider = (props) => {
     };
   }, []);
 
-  const value = {
+  const value: {
+    session: Session;
+    user: User;
+    roles: string[];
+  } = {
     session,
     user,
+    roles,
   };
 
   return <UserContext.Provider value={value} {...props} />;

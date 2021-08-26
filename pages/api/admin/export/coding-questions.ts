@@ -42,7 +42,7 @@ export default async function getCodingQuestionsAsCSV(
         text_markdown: docData.textMarkdown,
         starter_code: docData.starterCode,
         solution_code: docData.solutionCode,
-        test_code: docData.solutionCode,
+        test_code: docData.testCode,
       });
     });
 

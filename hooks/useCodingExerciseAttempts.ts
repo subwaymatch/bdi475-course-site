@@ -1,43 +1,35 @@
-import useFirebaseAuth from "hooks/useFirebaseAuth";
 import { useEffect, useState } from "react";
 import { ICodingExerciseAttempt } from "typings/coding-exercise";
-import { useFirestore } from "reactfire";
-import { firebaseClient } from "firebase/firebaseClient";
 import _ from "lodash";
+import { useUser } from "context/UserContext";
+import { supabaseClient } from "lib/supabase/supabaseClient";
+import { User } from "@supabase/supabase-js";
 
 export default function useCodingExerciseAttempts(qid) {
-  const { user } = useFirebaseAuth();
-  const firestore = useFirestore();
+  const { user }: { user: User } = useUser();
+
   const [attempts, setAttempts] = useState<ICodingExerciseAttempt[]>([]);
 
-  const updateAttempts = () => {
+  const updateAttempts = async () => {
     if (!user || !qid) {
       return;
     }
 
-    firestore
-      .collection("userAttempts")
-      .doc(user.uid)
-      .get()
-      .then((doc) => {
-        const docData = doc.data();
-
-        if (_.has(docData, qid)) {
-          let questionAttempts = docData[qid].map((o) => {
-            o.submittedAt = o.submittedAt
-              ? o.submittedAt
-              : firebaseClient.firestore.Timestamp.now();
-
-            return o;
-          });
-
-          questionAttempts = [...questionAttempts].sort().reverse();
-
-          setAttempts(questionAttempts);
-        } else {
-          setAttempts([]);
-        }
+    const { data, error } = await supabaseClient
+      .from("coding_question_attempts")
+      .select()
+      .match({
+        user_id: user.id,
+        question_id: qid,
       });
+
+    const updatedAttempts = data.map((o) => ({
+      isSuccess: o.is_success,
+      userCode: o.user_code,
+      submittedAt: new Date(o.submitted_at),
+    }));
+
+    setAttempts(updatedAttempts);
   };
 
   useEffect(() => {
@@ -54,24 +46,24 @@ export default function useCodingExerciseAttempts(qid) {
       return;
     }
 
-    const token = await user.getIdToken();
-    const options = {
-      method: "POST",
-      headers: {
-        authorization: `Bearer ${token}`,
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        isSuccess,
-        userCode,
-      }),
-    };
+    const { data, error } = await supabaseClient
+      .from("coding_question_attempts")
+      .insert([
+        {
+          user_id: user.id,
+          question_id: qid,
+          is_success: isSuccess,
+          user_code: userCode,
+        },
+      ]);
 
-    await fetch(`/api/coding-exercise/attempt/${qid}`, options);
+    if (error) {
+      console.log("Error recording submission");
+      console.error(error);
+    }
 
     updateAttempts();
   };
 
-  return { attempts, updateAttempts, recordSubmission };
+  return { attempts, recordSubmission };
 }

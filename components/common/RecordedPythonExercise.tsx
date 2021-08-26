@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import Link from "next/link";
 import PythonExercise from "components/python-exercise/PythonExercise";
-import useFirebaseAuth from "hooks/useFirebaseAuth";
+import { useUser } from "context/UserContext";
 import { Row, Col } from "react-bootstrap";
 import { BsCheckCircle } from "react-icons/bs";
 import { RiHistoryLine, RiEditBoxLine, RiGroupLine } from "react-icons/ri";
@@ -20,7 +20,8 @@ export default function RecordedPythonExercise({
   qid,
   className,
 }: IRecordedPythonExerciseProps) {
-  const { user, claims } = useFirebaseAuth();
+  const { user, roles } = useUser();
+  const isAdmin = roles.includes("Admin");
   const { status, data, error } = usePythonExercise(qid);
   const { attempts, recordSubmission } = useCodingExerciseAttempts(qid);
   const editLinkRef = useRef<HTMLAnchorElement>();
@@ -59,7 +60,7 @@ export default function RecordedPythonExercise({
                 <h2 className={styles.exerciseTitle}>{data.title}</h2>
 
                 <div className={styles.topControls}>
-                  {user && claims.admin && (
+                  {user && isAdmin && (
                     <>
                       <Link href={`/python-exercise/edit/${qid}`}>
                         <a

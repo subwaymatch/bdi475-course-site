@@ -1,9 +1,7 @@
-import useFirebaseAuth from "hooks/useFirebaseAuth";
+import { supabaseClient } from "lib/supabase/supabaseClient";
 import { useEffect, useState } from "react";
 
 export default function usePythonExercise(qid) {
-  const { user } = useFirebaseAuth();
-
   const [result, setResult] = useState({
     status: "loading",
     data: null,
@@ -11,40 +9,31 @@ export default function usePythonExercise(qid) {
   });
 
   const fetchQuestionData = async () => {
-    try {
-      const token = user ? await user.getIdToken() : null;
-      const options = user
-        ? {
-            headers: {
-              authorization: `Bearer ${token}`,
-            },
-          }
-        : {};
+    const { data, error } = await supabaseClient
+      .from("coding_questions")
+      .select()
+      .eq("id", qid)
+      .single();
 
-      const res = await fetch(`/api/python-exercise/${qid}`, options);
-      const data = await res.json();
+    const codingQuestion = {
+      title: data.title,
+      textMarkdown: data.text_markdown,
+      starterCode: data.starter_code,
+      testCode: data.test_code,
+    };
 
-      setResult((prevResult) =>
-        Object.assign({}, prevResult, {
-          status: "success",
-          data,
-          error: "",
-        })
-      );
-    } catch (err) {
-      setResult((prevResult) =>
-        Object.assign({}, prevResult, {
-          status: "error",
-          data: null,
-          error: err.message,
-        })
-      );
-    }
+    setResult((prevResult) =>
+      Object.assign({}, prevResult, {
+        status: error ? "error" : "success",
+        data: codingQuestion,
+        error: error ? error.message : null,
+      })
+    );
   };
 
   useEffect(() => {
     fetchQuestionData();
-  }, [user]);
+  }, []);
 
   return result;
 }
