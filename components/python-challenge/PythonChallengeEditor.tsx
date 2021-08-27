@@ -6,7 +6,6 @@ import { MdDelete } from "react-icons/md";
 import { IoCopy, IoLink, IoPlay } from "react-icons/io5";
 import { AiFillSave } from "react-icons/ai";
 import { VscRepoForked, VscRunAll } from "react-icons/vsc";
-import IPythonExercise from "types/coding-exercise";
 import produce from "immer";
 import { Row, Col } from "react-bootstrap";
 import { motion } from "framer-motion";
@@ -17,6 +16,7 @@ import _ from "lodash";
 import styles from "./PythonChallengeEditor.module.scss";
 import clsx from "clsx";
 import { ICodeExecutionResult } from "types/pyodide";
+import { definitions } from "types/database";
 
 const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
@@ -24,51 +24,46 @@ const CodeEditor = dynamic(() => import("components/CodeEditor"), {
 
 interface IPythonChallengeEditorProps {
   qid: string;
-  questionData: IPythonExercise;
-  solutionCode: string;
-  onSave: (questionData: IPythonExercise, solutionCode: string) => void;
+  challengeData: definitions["coding_challenges"];
+  solutionData: definitions["coding_challenge_solutions"];
+  onSave: (
+    newChallengeData: definitions["coding_challenges"],
+    newSolutionData: definitions["coding_challenge_solutions"]
+  ) => void;
   onDelete: () => void;
-  onClone: (v: IPythonExercise) => void;
+  onClone: () => void;
 }
 
 export default function PythonChallengeEditor({
   qid,
-  questionData,
-  solutionCode,
+  challengeData,
+  solutionData,
   onSave,
   onDelete,
   onClone,
 }: IPythonChallengeEditorProps) {
-  const [workingQuestionData, setWorkingQuestionData] =
-    useState<IPythonExercise>(
-      Object.assign(
-        {
-          title: "",
-          textMarkdown: "",
-          starterCode: "# YOUR CODE BEGINS\n\n\n\n# YOUR CODE ENDS\n\n",
-          testCode:
-            "import unittest\n\ntc=unittest.TestCase()\n\ntc.assertEqual(sys.stdout.getvalue(), ...)\n",
-        },
-        questionData
-      )
-    );
-  const [workingSolutionCode, setWorkingSolutionCode] = useState(solutionCode);
+  const [workingChallengeData, setWorkingChallengeData] = useState<
+    definitions["coding_challenges"]
+  >(_.cloneDeep(challengeData));
+  const [workingSolutionData, setWorkingSolutionData] = useState<
+    definitions["coding_challenge_solutions"]
+  >(_.cloneDeep(solutionData));
   const { isRuntimeReady, runCode, runAndCheckCode } = usePythonRuntime();
 
   const didChange =
-    !_.isEqual(questionData, workingQuestionData) ||
-    !_.isEqual(solutionCode, workingSolutionCode);
+    !_.isEqual(challengeData, workingChallengeData) ||
+    !_.isEqual(solutionData, workingSolutionData);
 
   const update = (key, val) => {
-    const updatedQuestionData = produce(workingQuestionData, (draft) => {
+    const updatedChallengeData = produce(workingChallengeData, (draft) => {
       draft[key] = val;
     });
 
-    setWorkingQuestionData(updatedQuestionData);
+    setWorkingChallengeData(updatedChallengeData);
   };
 
   const save = async () => {
-    await onSave(workingQuestionData, workingSolutionCode);
+    await onSave(workingChallengeData, workingSolutionData);
   };
 
   const displayCodeExecutionResult = (result: ICodeExecutionResult) => {
@@ -84,7 +79,7 @@ export default function PythonChallengeEditor({
       return;
     }
 
-    const result = await runCode(workingQuestionData.starterCode);
+    const result = await runCode(workingChallengeData.starter_code);
     displayCodeExecutionResult(result);
   };
 
@@ -94,8 +89,8 @@ export default function PythonChallengeEditor({
     }
 
     const result = await runAndCheckCode(
-      workingQuestionData.starterCode,
-      workingQuestionData.testCode
+      workingChallengeData.starter_code,
+      workingChallengeData.test_code
     );
     displayCodeExecutionResult(result);
   };
@@ -105,7 +100,7 @@ export default function PythonChallengeEditor({
       return;
     }
 
-    const result = await runCode(workingSolutionCode);
+    const result = await runCode(workingSolutionData.solution_code);
     displayCodeExecutionResult(result);
   };
 
@@ -115,8 +110,8 @@ export default function PythonChallengeEditor({
     }
 
     const result = await runAndCheckCode(
-      workingSolutionCode,
-      workingQuestionData.testCode
+      workingSolutionData.solution_code,
+      workingChallengeData.test_code
     );
     displayCodeExecutionResult(result);
   };
@@ -142,7 +137,7 @@ export default function PythonChallengeEditor({
             <div className={styles.challengeTitleWrapper}>
               <input
                 type="text"
-                value={workingQuestionData.title}
+                value={workingChallengeData.title}
                 onChange={(e) => update("title", e.target.value)}
                 placeholder="Question Title"
                 className={styles.challengeTitleInput}
@@ -193,7 +188,7 @@ export default function PythonChallengeEditor({
                     }
                   }
 
-                  await onClone(workingQuestionData);
+                  await onClone();
                 }}
               >
                 <VscRepoForked className={styles.reactIcon} />
@@ -251,7 +246,7 @@ export default function PythonChallengeEditor({
                   e.preventDefault();
                   if (
                     window.confirm(
-                      "Are you sure you want to delete this question? This cannot be undone."
+                      "Are you sure you want to delete this challenge? This cannot be undone."
                     )
                   ) {
                     await onDelete();
@@ -278,7 +273,7 @@ export default function PythonChallengeEditor({
           <div className={styles.codeEditorWrapper}>
             <textarea
               className={styles.challengeTextarea}
-              value={workingQuestionData.textMarkdown}
+              value={workingChallengeData.text_markdown}
               onChange={(e) => update("textMarkdown", e.target.value)}
             />
           </div>
@@ -314,7 +309,7 @@ export default function PythonChallengeEditor({
 
           <div className={styles.codeEditorWrapper}>
             <CodeEditor
-              editorValue={workingQuestionData.starterCode}
+              editorValue={workingChallengeData.starter_code}
               onChange={(v) => update("starterCode", v)}
               onRun={runStarterCode}
               onCheck={runAndCheckStarterCode}
@@ -356,8 +351,14 @@ export default function PythonChallengeEditor({
 
           <div className={styles.codeEditorWrapper}>
             <CodeEditor
-              editorValue={workingSolutionCode}
-              onChange={(v) => setWorkingSolutionCode(v)}
+              editorValue={workingSolutionData.solution_code}
+              onChange={(v) =>
+                setWorkingSolutionData(
+                  Object.assign({}, workingSolutionData, {
+                    solution_code: v,
+                  })
+                )
+              }
               onRun={runSolutionCode}
               onCheck={runAndCheckSolutionCode}
               language="python"
@@ -376,7 +377,7 @@ export default function PythonChallengeEditor({
 
           <div className={styles.codeEditorWrapper}>
             <CodeEditor
-              editorValue={workingQuestionData.testCode}
+              editorValue={workingChallengeData.test_code}
               onChange={(v) => update("testCode", v)}
               onRun={() => {}}
               language="python"

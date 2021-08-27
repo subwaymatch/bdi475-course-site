@@ -14,17 +14,14 @@ export default function EditCodingQuestionPage() {
   const router = useRouter();
   const { user, roles } = useUser();
   const { cid } = router.query;
-  const [questionData, setQuestionData] = useState<IPythonExercise>({
-    title: null,
-    textMarkdown: null,
-    starterCode: null,
-    testCode: null,
-  });
+  const [challengeData, setChallengeData] =
+    useState<definitions["coding_challenges"]>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [solutionCode, setSolutionCode] = useState("");
+  const [solutionData, setSolutionData] =
+    useState<definitions["coding_challenge_solutions"]>(null);
 
   const loadQuestionData = async () => {
-    const { data: questionData, error: questionError } = await supabaseClient
+    const { data: challengeData, error: challengeError } = await supabaseClient
       .from<definitions["coding_challenges"]>("coding_challenges")
       .select()
       .eq("id", cid as string)
@@ -38,16 +35,8 @@ export default function EditCodingQuestionPage() {
       .eq("challenge_id", cid as string)
       .single();
 
-    console.log(`solutionData`);
-    console.log(solutionData);
-
-    setQuestionData({
-      title: questionData.title,
-      textMarkdown: questionData.text_markdown,
-      starterCode: questionData.starter_code,
-      testCode: questionData.test_code,
-    });
-    setSolutionCode(solutionData.solution_code);
+    setChallengeData(challengeData);
+    setSolutionData(solutionData);
 
     setIsLoading(false);
   };
@@ -61,7 +50,7 @@ export default function EditCodingQuestionPage() {
     router.push("/python-challenge/list");
   };
 
-  const onClone = async (v) => {
+  const onClone = async () => {
     // const clonedDocRef = await firestore
     //   .collection("codingQuestions")
     //   .doc(generateQuestionId());
@@ -98,8 +87,8 @@ export default function EditCodingQuestionPage() {
     <Layout excludeHeader={true}>
       <PythonChallengeEditor
         qid={cid as string}
-        questionData={questionData}
-        solutionCode={solutionCode}
+        challengeData={challengeData}
+        solutionData={solutionData}
         onSave={(questionData, solutionCode) => {
           saveQuestionData(questionData);
           saveSolutionCode(solutionCode);

@@ -228,9 +228,9 @@ input {
 kbd {
   font-family: $font-monospace;
   padding: 0.05em 0.2em;
-  color: $color-blue;
-  background-color: color.mix($color-blue, white, 6%);
-  border: 1px solid color.mix($color-blue, white, 20%);
+  color: $color-darker-blue;
+  background-color: color.mix($color-blue, white, 10%);
+  border: 1px solid color.mix($color-blue, white, 30%);
   border-radius: 0.25rem;
   font-size: 0.9em;
   white-space: nowrap;
@@ -255,5 +255,61 @@ kbd {
   .tippy-content {
     font-size: 0.95rem;
     line-height: 1.6;
+  }
+}
+
+.paginationContainer {
+  display: flex;
+  width: 100%;
+  margin-top: 3rem;
+  justify-content: center;
+}
+
+ul.pagination {
+  list-style: none;
+  display: inline-block;
+  font-size: 1.1rem;
+
+  li {
+    display: inline-block;
+    font-weight: 600;
+
+    a {
+      color: $color-dark-gray;
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+
+      &:hover {
+        color: $color-black;
+        background: #f9f9f9;
+      }
+    }
+
+    &.disabled a {
+      color: $color-light-gray;
+      cursor: not-allowed;
+
+      &:hover {
+        background: none;
+      }
+    }
+
+    &.previous {
+      margin-left: 0;
+    }
+
+    &.next {
+      margin-right: 0;
+    }
+
+    &.page {
+      &.active {
+        a {
+          color: $color-purple;
+          background-color: color.adjust($color-purple, $lightness: 50%);
+          background-color: yellowgreen;
+        }
+      }
+    }
   }
 }

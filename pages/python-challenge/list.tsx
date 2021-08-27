@@ -12,7 +12,7 @@ import { definitions } from "types/database";
 
 export default function PythonChallengeListPage() {
   const [totalNumberOfPages, setTotalNumberOfPages] = useState(1);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPageIndex, setCurrentPageIndex] = useState(0);
   const [pageSize, setPageSize] = useState(20);
   const [listItems, setListItems] = useState<IChallengeListItemProps[]>([]);
   const [status, setStatus] = useState("loading");
@@ -61,18 +61,15 @@ export default function PythonChallengeListPage() {
       .select()
       .eq("language", "Python")
       .order("updated_at", { ascending: false })
-      .range(currentPage * pageSize + 1, (currentPage + 1) * pageSize);
+      .range(
+        currentPageIndex * pageSize + 1,
+        (currentPageIndex + 1) * pageSize
+      );
 
     if (!error) {
       setListItems(data.map((o) => toListItem(o)));
       setStatus("success");
     }
-  };
-
-  const handlePageClick = (data) => {
-    let selected = data.selected;
-
-    setCurrentPage(data.selected);
   };
 
   useEffect(() => {
@@ -81,7 +78,7 @@ export default function PythonChallengeListPage() {
 
   useEffect(() => {
     loadPage();
-  }, [currentPage]);
+  }, [currentPageIndex]);
 
   return (
     <Layout>
@@ -102,26 +99,40 @@ export default function PythonChallengeListPage() {
                 </h2>
               </Col>
             </Row>
+
             <Row>
-              <Col>
+              <Col md={4}>
                 <Link href="/python-challenge/new">
                   <a className={styles.createButton}>+ Create</a>
                 </Link>
               </Col>
+
+              <Col md={4}>Page {currentPageIndex + 1}</Col>
             </Row>
+
             <ChallengeList items={listItems} />
+
             <Row>
               <Col md={12}>
-                <ReactPaginate
-                  pageCount={totalNumberOfPages}
-                  marginPagesDisplayed={2}
-                  pageRangeDisplayed={5}
-                  onPageChange={(data) => {
-                    console.log(`onPageChange`);
-                    console.log(data);
-                    setCurrentPage(data.selected);
-                  }}
-                />
+                <div className="paginationContainer">
+                  <ReactPaginate
+                    pageCount={totalNumberOfPages}
+                    marginPagesDisplayed={2}
+                    pageRangeDisplayed={5}
+                    onPageChange={(data) => {
+                      console.log(`onPageChange`);
+                      console.log(data);
+                      setCurrentPageIndex(data.selected);
+                    }}
+                    containerClassName="pagination"
+                    activeClassName="active"
+                    pageClassName="page"
+                    previousLabel="←"
+                    previousClassName="previous"
+                    nextLabel="→"
+                    nextClassName="next"
+                  />
+                </div>
               </Col>
             </Row>
           </Container>
