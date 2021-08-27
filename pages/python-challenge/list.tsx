@@ -2,125 +2,86 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Layout from "components/Layout";
 import { Col, Container, Row } from "react-bootstrap";
-import firebase from "firebase";
-import { useFirestore } from "reactfire";
 import ChallengeList from "components/challenge-list/ChallengeList";
+import ReactPaginate from "react-paginate";
 import { IChallengeListItemProps } from "components/challenge-list/ChallengeListItem";
 import styles from "styles/pages/python-challenge/list.module.scss";
+import { supabaseClient } from "lib/supabase/supabaseClient";
 import { toast } from "react-toastify";
-
-enum QueryMode {
-  InitialLoad = "InitialLoad",
-  ToPrevPage = "ToPrevPage",
-  ToNextPage = "ToNextPage",
-}
+import { definitions } from "types/database";
 
 export default function PythonChallengeListPage() {
-  let pageSize = 20;
-  const firestore = useFirestore();
-  const collectionRef = firestore.collection("codingQuestions");
-  let defaultQuery = collectionRef
-    .orderBy("updatedAt", "desc")
-    .limit(pageSize + 1);
-
-  const [queryMode, setQueryMode] = useState<QueryMode>(QueryMode.InitialLoad);
-  const [query, setQuery] =
-    useState<firebase.firestore.Query<firebase.firestore.DocumentData>>(
-      defaultQuery
-    );
-  const [questionListItems, setQuestionListItems] = useState([]);
-  const [hasPrevPage, setHasPrevPage] = useState(false);
-  const [hasNextPage, setHasNextPage] = useState(false);
-  const [firstDoc, setFirstDoc] = useState<firebase.firestore.DocumentData>();
-  const [lastDoc, setLastDoc] = useState<firebase.firestore.DocumentData>();
+  const [totalNumberOfPages, setTotalNumberOfPages] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(20);
+  const [listItems, setListItems] = useState<IChallengeListItemProps[]>([]);
   const [status, setStatus] = useState("loading");
 
-  const queryDocs = () => {
-    query.get().then((snapshot) => {
-      const numDocs = snapshot.docs.length;
-      const hasMore = numDocs > pageSize;
-      const currentDocs = hasMore
-        ? queryMode === QueryMode.ToPrevPage
-          ? snapshot.docs.slice(1)
-          : snapshot.docs.slice(0, pageSize)
-        : snapshot.docs;
+  const calculatePageCount = async () => {
+    const { count } = await supabaseClient
+      .from<definitions["coding_challenges"]>("coding_challenges")
+      .select("id", { head: true, count: "exact" });
 
-      if (numDocs > 0) {
-        setFirstDoc(currentDocs[0]);
-        setLastDoc(currentDocs[currentDocs.length - 1]);
-      }
+    setTotalNumberOfPages(Math.ceil(count / pageSize));
+  };
 
-      if (queryMode === QueryMode.ToPrevPage) {
-        setHasPrevPage(hasMore);
-        setHasNextPage(true);
-      } else if (queryMode === QueryMode.ToNextPage) {
-        setHasPrevPage(true);
-        setHasNextPage(hasMore);
-      } else {
-        // queryMode === QueryMode.InitialLoad
-        setHasPrevPage(false);
-        setHasNextPage(hasMore);
-      }
+  const toListItem = (challengeData: definitions["coding_challenges"]) => {
+    const item: IChallengeListItemProps = {
+      id: challengeData.id,
+      title: challengeData.title,
+      createdAt: new Date(challengeData.created_at),
+      updatedAt: new Date(challengeData.updated_at),
+      permalink: `/python-challenge/view/${challengeData.id}`,
+      editLink: `/python-challenge/edit/${challengeData.id}`,
+      onDelete: async () => {
+        if (
+          window.confirm(
+            "Are you sure you want to delete this question? This cannot be undone."
+          )
+        ) {
+          // await collectionRef.doc(cid).delete();
 
-      const docsData: IChallengeListItemProps[] = currentDocs.map(
-        (codingQuestion) => {
-          const qid = codingQuestion.id;
-          const data = codingQuestion.data();
-
-          return {
-            qid,
-            permalink: `/python-challenge/view/${qid}`,
-            title: data.title,
-            createdAt: data.createdAt ? data.createdAt.toDate() : null,
-            updatedAt: data.updatedAt ? data.createdAt.toDate() : null,
-            editLink: `/python-challenge/edit/${qid}`,
-            onDelete: async () => {
-              if (
-                window.confirm(
-                  "Are you sure you want to delete this question? This cannot be undone."
-                )
-              ) {
-                await collectionRef.doc(qid).delete();
-
-                toast.info(
-                  <div>
-                    Deleted question <code>{qid}</code>
-                  </div>
-                );
-              }
-            },
-          };
+          toast.info(
+            <div>
+              Deleted question <code>{challengeData.id}</code>
+            </div>
+          );
         }
-      );
+      },
+    };
 
-      setQuestionListItems(docsData);
+    return item;
+  };
+
+  const loadPage = async () => {
+    setStatus("loading");
+
+    const { data, error } = await supabaseClient
+      .from<definitions["coding_challenges"]>("coding_challenges")
+      .select()
+      .eq("language", "Python")
+      .order("updated_at", { ascending: false })
+      .range(currentPage * pageSize + 1, (currentPage + 1) * pageSize);
+
+    if (!error) {
+      setListItems(data.map((o) => toListItem(o)));
       setStatus("success");
-    });
+    }
+  };
+
+  const handlePageClick = (data) => {
+    let selected = data.selected;
+
+    setCurrentPage(data.selected);
   };
 
   useEffect(() => {
-    queryDocs();
-  }, [query]);
+    calculatePageCount();
+  }, []);
 
-  const toPrevPage = () => {
-    setQueryMode(QueryMode.ToPrevPage);
-    setQuery(
-      collectionRef
-        .orderBy("updatedAt", "desc")
-        .endBefore(firstDoc)
-        .limitToLast(pageSize + 1)
-    );
-  };
-
-  const toNextPage = () => {
-    setQueryMode(QueryMode.ToNextPage);
-    setQuery(
-      collectionRef
-        .orderBy("updatedAt", "desc")
-        .startAfter(lastDoc)
-        .limit(pageSize + 1)
-    );
-  };
+  useEffect(() => {
+    loadPage();
+  }, [currentPage]);
 
   return (
     <Layout>
@@ -136,7 +97,7 @@ export default function PythonChallengeListPage() {
             <Row>
               <Col>
                 <h2 className="sectionTitle grayBottomBorder">
-                  Coding Questions
+                  Python Challenges
                   <span className="accent pink" />
                 </h2>
               </Col>
@@ -148,13 +109,19 @@ export default function PythonChallengeListPage() {
                 </Link>
               </Col>
             </Row>
-            <ChallengeList items={questionListItems} />
+            <ChallengeList items={listItems} />
             <Row>
-              <Col md={6}>
-                {hasPrevPage && <div onClick={toPrevPage}>Prev</div>}
-              </Col>
-              <Col md={6}>
-                {hasNextPage && <div onClick={toNextPage}>Next</div>}
+              <Col md={12}>
+                <ReactPaginate
+                  pageCount={totalNumberOfPages}
+                  marginPagesDisplayed={2}
+                  pageRangeDisplayed={5}
+                  onPageChange={(data) => {
+                    console.log(`onPageChange`);
+                    console.log(data);
+                    setCurrentPage(data.selected);
+                  }}
+                />
               </Col>
             </Row>
           </Container>

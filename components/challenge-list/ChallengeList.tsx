@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
 import styles from "./ChallengeList.module.scss";
-import CodingExerciseListItem, {
+import ChallengeListItem, {
   IChallengeListItemProps,
 } from "./ChallengeListItem";
 
@@ -17,7 +17,7 @@ export default function ChallengeList({ items }: IChallengeListProps) {
           <div className={styles.headerRow}>
             <Row>
               <Col md={2}>
-                <span className="label blue">Question ID</span>
+                <span className="label blue">Challenge ID</span>
               </Col>
 
               <Col md={4}>
@@ -42,9 +42,9 @@ export default function ChallengeList({ items }: IChallengeListProps) {
 
       {items.map((item) => {
         return (
-          <Row key={item.qid}>
+          <Row key={item.id}>
             <Col>
-              <CodingExerciseListItem {...item} />
+              <ChallengeListItem {...item} />
             </Col>
           </Row>
         );

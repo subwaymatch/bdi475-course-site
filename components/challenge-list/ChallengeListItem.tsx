@@ -12,7 +12,7 @@ import styles from "./ChallengeListItem.module.scss";
 import dayjs from "dayjs";
 
 export interface IChallengeListItemProps {
-  qid: string;
+  id: string;
   permalink: string;
   title: string;
   createdAt: Date;
@@ -22,7 +22,7 @@ export interface IChallengeListItemProps {
 }
 
 export default function ChallengeListItem({
-  qid,
+  id,
   permalink,
   title,
   createdAt,
@@ -35,11 +35,11 @@ export default function ChallengeListItem({
       <Row className="align-items-center">
         <Col md={2}>
           <CopyToClipboard
-            text={qid}
+            text={id}
             onCopy={() =>
               toast.info(
                 <div>
-                  Copied <code>{qid}</code> to clipboard
+                  Copied <code>{id}</code> to clipboard
                 </div>
               )
             }
@@ -53,7 +53,7 @@ export default function ChallengeListItem({
                 e.preventDefault();
               }}
             >
-              <span className={styles.label}>{qid}</span>
+              <span className={styles.label}>{id}</span>
               <IoCopyOutline className={styles.reactIcon} />
             </motion.div>
           </CopyToClipboard>
