@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { Row, Col } from "react-bootstrap";
 import styles from "./AssignmentItem.module.scss";
-import { AssignmentStatus } from "typings/assignment";
-import { ColorTheme } from "typings/color-theme";
+import { AssignmentStatus } from "types/assignment";
+import { ColorTheme } from "types/color-theme";
 import clsx from "clsx";
 import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";

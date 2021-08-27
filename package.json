@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "update-types": "npx openapi-typescript https://hrnkyfflkojpububxuxh.supabase.co/rest/v1/?apikey=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyODE3MzE2NywiZXhwIjoxOTQzNzQ5MTY3fQ.LiS_21tbgjTv04Cb0GX6dhcyZDGVFxz1Nt44Xzn3jb4 --output types/database/index.ts"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.3",

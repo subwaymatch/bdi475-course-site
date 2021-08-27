@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { ScheduleType } from "typings/schedule";
+import { ScheduleType } from "types/schedule";
 import events from "data/schedule.json";
 
 // Sort the events list by date

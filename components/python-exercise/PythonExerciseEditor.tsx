@@ -6,7 +6,7 @@ import { MdDelete } from "react-icons/md";
 import { IoCopy, IoLink, IoPlay } from "react-icons/io5";
 import { AiFillSave } from "react-icons/ai";
 import { VscRepoForked, VscRunAll } from "react-icons/vsc";
-import IPythonExercise from "typings/coding-exercise";
+import IPythonExercise from "types/coding-exercise";
 import produce from "immer";
 import { Row, Col } from "react-bootstrap";
 import { motion } from "framer-motion";
@@ -16,7 +16,7 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import _ from "lodash";
 import styles from "./PythonExerciseEditor.module.scss";
 import clsx from "clsx";
-import { ICodeExecutionResult } from "typings/pyodide";
+import { ICodeExecutionResult } from "types/pyodide";
 
 const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,

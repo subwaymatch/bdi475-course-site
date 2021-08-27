@@ -1,8 +1,8 @@
 import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import AssignmentItem from "components/pages/assignment/AssignmentItem";
-import { AssignmentStatus } from "typings/assignment";
-import { ColorTheme } from "typings/color-theme";
+import { AssignmentStatus } from "types/assignment";
+import { ColorTheme } from "types/color-theme";
 import { AuthCheck } from "reactfire";
 import Login from "components/Auth/Login";
 import styles from "styles/pages/assignments.module.scss";

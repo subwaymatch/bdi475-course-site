@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { eventsByDate, lectureNumberByDate } from "lib/schedule";
-import { ScheduleType } from "typings/schedule";
+import { ScheduleType } from "types/schedule";
 import { BsChevronUp, BsChevronDown } from "react-icons/bs";
 import { IoMdArrowDown } from "react-icons/io";
 import styles from "./CourseCalendar.module.scss";

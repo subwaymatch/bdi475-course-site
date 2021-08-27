@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Col } from "react-bootstrap";
 import dayjs from "dayjs";
 import styles from "./NoteItem.module.scss";
-import { ColorTheme } from "typings/color-theme";
+import { ColorTheme } from "types/color-theme";
 import clsx from "clsx";
 
 interface NoteItemProps {

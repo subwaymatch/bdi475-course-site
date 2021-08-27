@@ -3,7 +3,7 @@ import Link from "next/link";
 import Layout from "components/Layout";
 import { Col, Container, Row } from "react-bootstrap";
 import firebase from "firebase";
-import { AuthCheck, useFirestore } from "reactfire";
+import { useFirestore } from "reactfire";
 import ExerciseList from "components/exercise-list/ExerciseList";
 import { IExerciseListItemProps } from "components/exercise-list/ExerciseListItem";
 import styles from "styles/pages/python-exercise/list.module.scss";
@@ -125,44 +125,42 @@ export default function PythonExerciseListPage() {
 
   return (
     <Layout>
-      <AuthCheck fallback={<Login />}>
-        {status === "loading" ? (
+      {status === "loading" ? (
+        <Container>
+          <Row>
+            <Col>Loading...</Col>
+          </Row>
+        </Container>
+      ) : (
+        <main className={styles.page}>
           <Container>
             <Row>
-              <Col>Loading...</Col>
+              <Col>
+                <h2 className="sectionTitle grayBottomBorder">
+                  Coding Questions
+                  <span className="accent pink" />
+                </h2>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Link href="/python-exercise/new">
+                  <a className={styles.createButton}>+ Create</a>
+                </Link>
+              </Col>
+            </Row>
+            <ExerciseList items={questionListItems} />
+            <Row>
+              <Col md={6}>
+                {hasPrevPage && <div onClick={toPrevPage}>Prev</div>}
+              </Col>
+              <Col md={6}>
+                {hasNextPage && <div onClick={toNextPage}>Next</div>}
+              </Col>
             </Row>
           </Container>
-        ) : (
-          <main className={styles.page}>
-            <Container>
-              <Row>
-                <Col>
-                  <h2 className="sectionTitle grayBottomBorder">
-                    Coding Questions
-                    <span className="accent pink" />
-                  </h2>
-                </Col>
-              </Row>
-              <Row>
-                <Col>
-                  <Link href="/python-exercise/new">
-                    <a className={styles.createButton}>+ Create</a>
-                  </Link>
-                </Col>
-              </Row>
-              <ExerciseList items={questionListItems} />
-              <Row>
-                <Col md={6}>
-                  {hasPrevPage && <div onClick={toPrevPage}>Prev</div>}
-                </Col>
-                <Col md={6}>
-                  {hasNextPage && <div onClick={toNextPage}>Next</div>}
-                </Col>
-              </Row>
-            </Container>
-          </main>
-        )}
-      </AuthCheck>
+        </main>
+      )}
     </Layout>
   );
 }

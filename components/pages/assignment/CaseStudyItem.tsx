@@ -1,6 +1,6 @@
 import { Row, Col } from "react-bootstrap";
 import styles from "./CaseStudyItem.module.scss";
-import { AssignmentStatus } from "typings/assignment";
+import { AssignmentStatus } from "types/assignment";
 import clsx from "clsx";
 import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";

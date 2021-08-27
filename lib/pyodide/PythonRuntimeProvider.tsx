@@ -1,6 +1,6 @@
 import { useState, useEffect, createContext } from "react";
 import PythonRuntime from "lib/pyodide/PythonRuntime";
-import { ICodeExecutionResult } from "typings/pyodide";
+import { ICodeExecutionResult } from "types/pyodide";
 
 // Create a custom In-browser Python Runtime context
 // to enable Python code execution in the browser

@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import styles from "styles/pages/notes/NotesPage.module.scss";
 import Image from "next/image";
 import NoteItem from "components/pages/notes/NoteItem";
-import { ColorTheme } from "typings/color-theme";
+import { ColorTheme } from "types/color-theme";
 
 export default function NotesPage() {
   return (

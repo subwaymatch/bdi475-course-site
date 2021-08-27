@@ -3,7 +3,7 @@ import {
   ICodeExecutionResult,
   PyodideRequest,
   PyodideResponse,
-} from "typings/pyodide";
+} from "types/pyodide";
 
 class PythonRuntime {
   readonly pyodideWorker: Worker;

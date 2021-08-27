@@ -3,7 +3,7 @@ import Layout from "components/Layout";
 import { useRouter } from "next/router";
 import { Container, Row, Col } from "react-bootstrap";
 import { supabaseClient } from "lib/supabase/supabaseClient";
-import IPythonExercise from "typings/coding-exercise";
+import IPythonExercise from "types/coding-exercise";
 import _ from "lodash";
 import { generateQuestionId } from "utils/question";
 import { useEffect, useState } from "react";
