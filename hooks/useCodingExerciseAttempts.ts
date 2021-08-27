@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { ICodingExerciseAttempt } from "types/coding-exercise";
-import _ from "lodash";
 import { useUser } from "context/UserContext";
 import { supabaseClient } from "lib/supabase/supabaseClient";
 import { User } from "@supabase/supabase-js";

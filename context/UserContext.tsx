@@ -1,11 +1,6 @@
 import React, { useEffect, useState, createContext, useContext } from "react";
 import { SupabaseClient, Session, User } from "@supabase/supabase-js";
 
-interface IAuthStateChangeBroadcast {
-  event: string;
-  date: string;
-}
-
 const UserContext = createContext({ user: null, session: null, roles: [] });
 
 export const UserContextProvider = (props) => {
@@ -48,7 +43,7 @@ export const UserContextProvider = (props) => {
     if (e.key === "supabase.auth.token") {
       const newSession = JSON.parse(e.newValue);
       const currentSession = newSession?.currentSession;
-      const roles = update(currentSession);
+      update(currentSession);
     }
   };
 
@@ -103,7 +98,7 @@ export const UserContextProvider = (props) => {
 export const useUser = () => {
   const context = useContext(UserContext);
 
-  if (context === undefined) {
+  if (typeof context === "undefined") {
     throw new Error(`useUser must be used within a UserContextProvider.`);
   }
 
