@@ -11,7 +11,7 @@ import { definitions } from "types/database";
 export default function TestPage() {
   const qid = "F7EJVQ";
   const { user, roles } = useUser();
-  const { status, data: codingQuestion, error } = usePythonChallenge(qid);
+  const { status, data: challengeData, error } = usePythonChallenge(qid);
   const { attempts, recordSubmission } = useCodingChallengeAttempts(qid);
 
   const getAttempts = async () => {
@@ -31,12 +31,9 @@ export default function TestPage() {
       `
       )
       .match({
-        question_id: qid,
+        challenge_id: qid,
       })
       .order("submitted_at", { ascending: false });
-
-    console.log("Attempts");
-    console.log(data);
 
     if (error) {
       console.error(error);
@@ -54,7 +51,7 @@ export default function TestPage() {
   }, [user]);
 
   console.log(`codingQuestion`);
-  console.log(codingQuestion);
+  console.log(challengeData);
 
   return (
     <Layout>

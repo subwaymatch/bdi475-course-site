@@ -15,19 +15,21 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import { useEffect, useState } from "react";
 import { supabaseClient } from "lib/supabase/supabaseClient";
 import { definitions } from "types/database";
+import { useUser } from "context/UserContext";
 
 dayjs.extend(relativeTime);
 
 export default function CodingChallengeAttemptsPage() {
   const router = useRouter();
   const { cid } = router.query;
+  const { user, roles } = useUser();
   const [attempts, setAttempts] = useState([]);
 
   const getAttempts = async () => {
-    console.log(`getAttempts cid=${cid}`);
-
     const { data, error } = await supabaseClient
-      .from("coding_challenge_attempts")
+      .from<definitions["coding_challenge_attempts"]>(
+        "coding_challenge_attempts"
+      )
       .select(
         `
         submitted_at,
@@ -39,10 +41,10 @@ export default function CodingChallengeAttemptsPage() {
       `
       )
       .match({
-        question_id: cid,
+        challenge_id: cid,
       })
-      .limit(100)
-      .order("submitted_at", { ascending: false });
+      .order("submitted_at", { ascending: false })
+      .limit(100);
 
     setAttempts(data);
 
@@ -66,13 +68,10 @@ export default function CodingChallengeAttemptsPage() {
         console.log("Change received!", payload);
         const newData = payload.new;
         const { data: profileData, error: profileError } = await supabaseClient
-          .from("profiles")
+          .from<definitions["profiles"]>("profiles")
           .select("display_name")
           .eq("id", newData.user_id)
           .single();
-
-        console.log(`profile data`);
-        console.log(profileData);
 
         const newAttempt = {
           submitted_at: newData.submitted_at,

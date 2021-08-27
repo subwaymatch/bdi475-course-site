@@ -24,8 +24,8 @@ export default function useCodingChallengeAttempts(challengeId) {
         user_id: user.id,
         challenge_id: challengeId,
       })
-      .limit(100)
-      .order("submitted_at", { ascending: false });
+      .order("submitted_at", { ascending: false })
+      .limit(100);
 
     setAttempts(data);
   };
@@ -37,6 +37,24 @@ export default function useCodingChallengeAttempts(challengeId) {
     }
 
     updateAttempts();
+
+    const newAttemptSubscription = supabaseClient
+      .from<definitions["coding_challenge_attempts"]>(
+        `coding_challenge_attempts:user_id=eq.${user.id}`
+      )
+      .on("INSERT", async (payload) => {
+        console.log("Change received!", payload);
+        const newData = payload.new;
+
+        if (newData.challenge_id === challengeId) {
+          setAttempts((previousAttempts) => [newData, ...previousAttempts]);
+        }
+      })
+      .subscribe();
+
+    return () => {
+      supabaseClient.removeSubscription(newAttemptSubscription);
+    };
   }, [user, challengeId]);
 
   const recordSubmission = async (isSuccess: boolean, userCode: string) => {
