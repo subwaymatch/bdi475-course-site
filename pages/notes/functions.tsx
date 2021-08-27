@@ -4,7 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import styles from "styles/pages/notes/common.module.scss";
 import ListWithTitle from "components/common/ListWithTitle";
 import CenteredColumn from "components/common/CenteredColumn";
-import RecordedPythonExercise from "components/common/RecordedPythonExercise";
+import RecordedPythonChallenge from "components/common/RecordedPythonChallenge";
 
 export default function FunctionPage() {
   return (
@@ -54,17 +54,35 @@ export default function FunctionPage() {
             </Col>
           </Row>
 
-          <RecordedPythonExercise qid="MAij4e" className={styles.block} />
+          <RecordedPythonChallenge
+            challengeId="MAij4e"
+            className={styles.block}
+          />
 
-          <RecordedPythonExercise qid="aULgTB" className={styles.block} />
+          <RecordedPythonChallenge
+            challengeId="aULgTB"
+            className={styles.block}
+          />
 
-          <RecordedPythonExercise qid="xAZehL" className={styles.block} />
+          <RecordedPythonChallenge
+            challengeId="xAZehL"
+            className={styles.block}
+          />
 
-          <RecordedPythonExercise qid="bF23yB" className={styles.block} />
+          <RecordedPythonChallenge
+            challengeId="bF23yB"
+            className={styles.block}
+          />
 
-          <RecordedPythonExercise qid="QDn300" className={styles.block} />
+          <RecordedPythonChallenge
+            challengeId="QDn300"
+            className={styles.block}
+          />
 
-          <RecordedPythonExercise qid="2O1csh" className={styles.block} />
+          <RecordedPythonChallenge
+            challengeId="2O1csh"
+            className={styles.block}
+          />
 
           <CenteredColumn className={styles.textBox}>
             <h3>What are functions?</h3>
@@ -135,33 +153,75 @@ export default function FunctionPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedPythonExercise qid="MSYxAM" className={styles.block} />
+          <RecordedPythonChallenge
+            challengeId="MSYxAM"
+            className={styles.block}
+          />
 
-          <RecordedPythonExercise qid="3Ubagd" className={styles.block} />
+          <RecordedPythonChallenge
+            challengeId="3Ubagd"
+            className={styles.block}
+          />
 
-          <RecordedPythonExercise qid="JnTExm" className={styles.block} />
+          <RecordedPythonChallenge
+            challengeId="JnTExm"
+            className={styles.block}
+          />
 
-          <RecordedPythonExercise qid="DmaGpd" className={styles.block} />
+          <RecordedPythonChallenge
+            challengeId="DmaGpd"
+            className={styles.block}
+          />
 
-          <RecordedPythonExercise qid="ThsXV0" className={styles.block} />
+          <RecordedPythonChallenge
+            challengeId="ThsXV0"
+            className={styles.block}
+          />
 
-          <RecordedPythonExercise qid="N8pjpw" className={styles.block} />
+          <RecordedPythonChallenge
+            challengeId="N8pjpw"
+            className={styles.block}
+          />
 
-          <RecordedPythonExercise qid="w4mn5F" className={styles.block} />
+          <RecordedPythonChallenge
+            challengeId="w4mn5F"
+            className={styles.block}
+          />
 
-          <RecordedPythonExercise qid="IOeA2s" className={styles.block} />
+          <RecordedPythonChallenge
+            challengeId="IOeA2s"
+            className={styles.block}
+          />
 
-          <RecordedPythonExercise qid="OAS9vf" className={styles.block} />
+          <RecordedPythonChallenge
+            challengeId="OAS9vf"
+            className={styles.block}
+          />
 
-          <RecordedPythonExercise qid="jR3Wxg" className={styles.block} />
+          <RecordedPythonChallenge
+            challengeId="jR3Wxg"
+            className={styles.block}
+          />
 
-          <RecordedPythonExercise qid="rr9KIl" className={styles.block} />
+          <RecordedPythonChallenge
+            challengeId="rr9KIl"
+            className={styles.block}
+          />
 
-          <RecordedPythonExercise qid="6qiy24" className={styles.block} />
+          <RecordedPythonChallenge
+            challengeId="6qiy24"
+            className={styles.block}
+          />
 
-          <RecordedPythonExercise qid="1iHGVQ" className={styles.block} />
+          <RecordedPythonChallenge
+            challengeId="1iHGVQ"
+            className={styles.block}
+          />
 
-          <RecordedPythonExercise qid="MV0U9q" className={styles.block} />
+          <RecordedPythonChallenge
+            challengeId="MV0U9q"
+            className={styles.block}
+          />
         </Container>
       </main>
     </Layout>

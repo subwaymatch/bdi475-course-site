@@ -8,10 +8,10 @@ import { IoCopyOutline } from "react-icons/io5";
 import { RiEditBoxLine, RiDeleteBin6Line } from "react-icons/ri";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import clsx from "clsx";
-import styles from "./ExerciseListItem.module.scss";
+import styles from "./ChallengeListItem.module.scss";
 import dayjs from "dayjs";
 
-export interface IExerciseListItemProps {
+export interface IChallengeListItemProps {
   qid: string;
   permalink: string;
   title: string;
@@ -21,7 +21,7 @@ export interface IExerciseListItemProps {
   onDelete: () => void;
 }
 
-export default function ExerciseListItem({
+export default function ChallengeListItem({
   qid,
   permalink,
   title,
@@ -29,9 +29,9 @@ export default function ExerciseListItem({
   updatedAt,
   editLink,
   onDelete,
-}: IExerciseListItemProps) {
+}: IChallengeListItemProps) {
   return (
-    <div className={styles.questionListItem}>
+    <div className={styles.listItem}>
       <Row className="align-items-center">
         <Col md={2}>
           <CopyToClipboard

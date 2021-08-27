@@ -12,30 +12,26 @@ import { IoPlay } from "react-icons/io5";
 import Tippy from "@tippyjs/react";
 import { toast } from "react-toastify";
 import marked from "marked";
-import styles from "./PythonExercise.module.scss";
+import styles from "./PythonChallenge.module.scss";
 import clsx from "clsx";
+import { definitions } from "types/database";
 
 const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
 });
 
 interface IPythonExerciseProps {
-  textMarkdown: string;
-  starterCode?: string;
-  testCode: string;
-  solutionCode?: string;
+  challengeData: definitions["coding_challenges"];
   localStorageKey?: string;
   onSubmit: (boolean, string?) => void;
 }
 
-export default function PythonExercise({
-  textMarkdown,
-  starterCode,
-  testCode,
+export default function PythonChallenge({
+  challengeData,
   localStorageKey,
   onSubmit,
 }: IPythonExerciseProps) {
-  const [userCode, setUserCode] = useState(starterCode);
+  const [userCode, setUserCode] = useState(challengeData.starter_code);
   const [output, setOutput] = useState("");
   const [hasError, setHasError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -43,7 +39,7 @@ export default function PythonExercise({
   const editorHeight = "400px";
   const [savedUserCode, setSavedUserCode] = useLocalStorage<string>(
     localStorageKey,
-    starterCode
+    challengeData.starter_code
   );
 
   useEffect(() => {
@@ -56,7 +52,7 @@ export default function PythonExercise({
   const { isRuntimeReady, runCode, runAndCheckCode } = usePythonRuntime();
 
   const reset = async () => {
-    setUserCode(starterCode);
+    setUserCode(challengeData.starter_code);
     setOutput("");
     setHasError(false);
     setErrorMessage("");
@@ -82,7 +78,7 @@ export default function PythonExercise({
   };
 
   const runAndCheckUserCode = async () => {
-    const result = await runAndCheckCode(userCode, testCode);
+    const result = await runAndCheckCode(userCode, challengeData.test_code);
 
     setOutput(result.stdout);
     setHasError(result.hasError);
@@ -125,7 +121,9 @@ export default function PythonExercise({
 
               <div
                 className={styles.textMarkdown}
-                dangerouslySetInnerHTML={{ __html: marked(textMarkdown) }}
+                dangerouslySetInnerHTML={{
+                  __html: marked(challengeData.text_markdown),
+                }}
               />
             </div>
           </div>

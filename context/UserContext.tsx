@@ -1,7 +1,17 @@
 import React, { useEffect, useState, createContext, useContext } from "react";
 import { SupabaseClient, Session, User } from "@supabase/supabase-js";
 
-const UserContext = createContext({ user: null, session: null, roles: [] });
+export interface IUserContext {
+  user: User;
+  session: Session;
+  roles: string[];
+}
+
+const UserContext = createContext<IUserContext>({
+  user: null,
+  session: null,
+  roles: [],
+});
 
 export const UserContextProvider = (props) => {
   const { supabaseClient }: { supabaseClient: SupabaseClient } = props;
@@ -82,11 +92,7 @@ export const UserContextProvider = (props) => {
     };
   }, []);
 
-  const value: {
-    session: Session;
-    user: User;
-    roles: string[];
-  } = {
+  const value: IUserContext = {
     session,
     user,
     roles,

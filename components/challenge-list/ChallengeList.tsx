@@ -1,17 +1,17 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
-import styles from "./ExerciseList.module.scss";
+import styles from "./ChallengeList.module.scss";
 import CodingExerciseListItem, {
-  IExerciseListItemProps,
-} from "./ExerciseListItem";
+  IChallengeListItemProps,
+} from "./ChallengeListItem";
 
-interface IExerciseListProps {
-  items: IExerciseListItemProps[];
+interface IChallengeListProps {
+  items: IChallengeListItemProps[];
 }
 
-export default function ExerciseList({ items }: IExerciseListProps) {
+export default function ChallengeList({ items }: IChallengeListProps) {
   return (
-    <div className={styles.questionList}>
+    <div className={styles.exerciseList}>
       <Row>
         <Col>
           <div className={styles.headerRow}>

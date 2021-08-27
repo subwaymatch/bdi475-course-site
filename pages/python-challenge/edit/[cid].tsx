@@ -1,4 +1,4 @@
-import PythonExerciseEditor from "components/python-exercise/PythonExerciseEditor";
+import PythonChallengeEditor from "components/python-challenge/PythonChallengeEditor";
 import Layout from "components/Layout";
 import { useRouter } from "next/router";
 import { Container, Row, Col } from "react-bootstrap";
@@ -8,11 +8,12 @@ import _ from "lodash";
 import { generateQuestionId } from "utils/question";
 import { useEffect, useState } from "react";
 import { useUser } from "context/UserContext";
+import { definitions } from "types/database";
 
 export default function EditCodingQuestionPage() {
   const router = useRouter();
   const { user, roles } = useUser();
-  const { qid } = router.query;
+  const { cid } = router.query;
   const [questionData, setQuestionData] = useState<IPythonExercise>({
     title: null,
     textMarkdown: null,
@@ -24,15 +25,17 @@ export default function EditCodingQuestionPage() {
 
   const loadQuestionData = async () => {
     const { data: questionData, error: questionError } = await supabaseClient
-      .from("coding_questions")
+      .from<definitions["coding_challenges"]>("coding_challenges")
       .select()
-      .eq("id", qid)
+      .eq("id", cid as string)
       .single();
 
     const { data: solutionData, error: solutionError } = await supabaseClient
-      .from("coding_question_solutions")
+      .from<definitions["coding_challenge_solutions"]>(
+        "coding_challenge_solutions"
+      )
       .select()
-      .eq("qid", qid)
+      .eq("challenge_id", cid as string)
       .single();
 
     console.log(`solutionData`);
@@ -53,9 +56,9 @@ export default function EditCodingQuestionPage() {
     const { data, error } = await supabaseClient
       .from("coding_questions")
       .delete()
-      .match({ id: qid });
+      .match({ id: cid });
 
-    router.push("/python-exercise/list");
+    router.push("/python-challenge/list");
   };
 
   const onClone = async (v) => {
@@ -66,7 +69,7 @@ export default function EditCodingQuestionPage() {
     //   title: v.title + " (Clone)",
     // });
     // await clonedDocRef.set(clonedData);
-    // router.push(`/python-exercise/edit/${clonedDocRef.id}`);
+    // router.push(`/python-challenge/edit/${clonedDocRef.id}`);
   };
 
   const saveQuestionData = async (v) => {
@@ -76,12 +79,12 @@ export default function EditCodingQuestionPage() {
   const saveSolutionCode = async (solutionCode) => {};
 
   useEffect(() => {
-    if (!qid || !user) {
+    if (!cid || !user) {
       return;
     }
 
     loadQuestionData();
-  }, [qid, user, roles]);
+  }, [cid, user, roles]);
 
   return isLoading ? (
     <Layout excludeHeader={true}>
@@ -93,8 +96,8 @@ export default function EditCodingQuestionPage() {
     </Layout>
   ) : (
     <Layout excludeHeader={true}>
-      <PythonExerciseEditor
-        qid={qid as string}
+      <PythonChallengeEditor
+        qid={cid as string}
         questionData={questionData}
         solutionCode={solutionCode}
         onSave={(questionData, solutionCode) => {

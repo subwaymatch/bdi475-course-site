@@ -1,8 +1,13 @@
 import { supabaseClient } from "lib/supabase/supabaseClient";
 import { useEffect, useState } from "react";
+import { definitions } from "types/database";
 
-export default function usePythonExercise(qid) {
-  const [result, setResult] = useState({
+export default function usePythonChallenge(challengeId) {
+  const [result, setResult] = useState<{
+    status: string;
+    data: definitions["coding_challenges"];
+    error: string;
+  }>({
     status: "loading",
     data: null,
     error: "",
@@ -10,22 +15,15 @@ export default function usePythonExercise(qid) {
 
   const fetchQuestionData = async () => {
     const { data, error } = await supabaseClient
-      .from("coding_questions")
+      .from<definitions["coding_challenges"]>("coding_challenges")
       .select()
-      .eq("id", qid)
+      .eq("id", challengeId)
       .single();
-
-    const codingQuestion = {
-      title: data.title,
-      textMarkdown: data.text_markdown,
-      starterCode: data.starter_code,
-      testCode: data.test_code,
-    };
 
     setResult((prevResult) =>
       Object.assign({}, prevResult, {
         status: error ? "error" : "success",
-        data: codingQuestion,
+        data,
         error: error ? error.message : null,
       })
     );

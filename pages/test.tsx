@@ -2,20 +2,23 @@ import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { supabaseClient } from "lib/supabase/supabaseClient";
-import usePythonExercise from "hooks/usePythonExercise";
+import usePythonChallenge from "hooks/usePythonChallenge";
 import { User } from "@supabase/supabase-js";
 import { useUser } from "context/UserContext";
-import useCodingExerciseAttempts from "hooks/useCodingExerciseAttempts";
+import useCodingChallengeAttempts from "hooks/useCodingChallengeAttempts";
+import { definitions } from "types/database";
 
 export default function TestPage() {
   const qid = "F7EJVQ";
   const { user, roles } = useUser();
-  const { status, data: codingQuestion, error } = usePythonExercise(qid);
-  const { attempts, recordSubmission } = useCodingExerciseAttempts(qid);
+  const { status, data: codingQuestion, error } = usePythonChallenge(qid);
+  const { attempts, recordSubmission } = useCodingChallengeAttempts(qid);
 
   const getAttempts = async () => {
     const { data, error } = await supabaseClient
-      .from("coding_question_attempts")
+      .from<definitions["coding_challenge_attempts"]>(
+        "coding_challenge_attempts"
+      )
       .select(
         `
         submitted_at,

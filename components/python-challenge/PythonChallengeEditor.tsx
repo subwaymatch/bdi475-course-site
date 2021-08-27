@@ -14,7 +14,7 @@ import { smallClickableVariants } from "animations/clickableVariants";
 import { toast } from "react-toastify";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import _ from "lodash";
-import styles from "./PythonExerciseEditor.module.scss";
+import styles from "./PythonChallengeEditor.module.scss";
 import clsx from "clsx";
 import { ICodeExecutionResult } from "types/pyodide";
 
@@ -22,7 +22,7 @@ const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
 });
 
-interface ICodingQuestionEditorProps {
+interface IPythonChallengeEditorProps {
   qid: string;
   questionData: IPythonExercise;
   solutionCode: string;
@@ -31,14 +31,14 @@ interface ICodingQuestionEditorProps {
   onClone: (v: IPythonExercise) => void;
 }
 
-export default function CodingQuestionEditor({
+export default function PythonChallengeEditor({
   qid,
   questionData,
   solutionCode,
   onSave,
   onDelete,
   onClone,
-}: ICodingQuestionEditorProps) {
+}: IPythonChallengeEditorProps) {
   const [workingQuestionData, setWorkingQuestionData] =
     useState<IPythonExercise>(
       Object.assign(
@@ -122,11 +122,11 @@ export default function CodingQuestionEditor({
   };
 
   return (
-    <div className={styles.questionEditPage}>
+    <div className={styles.challengeEditPage}>
       <div className={styles.controlBar}>
         <Row className={clsx(styles.controlRow, "align-items-center")}>
           <Col xs={4}>
-            <Link href="/python-exercise/list">
+            <Link href="/python-challenge/list">
               <motion.a
                 variants={smallClickableVariants}
                 whileHover="hover"
@@ -139,13 +139,13 @@ export default function CodingQuestionEditor({
           </Col>
 
           <Col xs={4}>
-            <div className={styles.questionTitleWrapper}>
+            <div className={styles.challengeTitleWrapper}>
               <input
                 type="text"
                 value={workingQuestionData.title}
                 onChange={(e) => update("title", e.target.value)}
                 placeholder="Question Title"
-                className={styles.questionTitleInput}
+                className={styles.challengeTitleInput}
               />
             </div>
           </Col>
@@ -225,7 +225,7 @@ export default function CodingQuestionEditor({
               </CopyToClipboard>
 
               <CopyToClipboard
-                text={`${window.location.origin}/python-exercise/view/${qid}`}
+                text={`${window.location.origin}/python-challenge/view/${qid}`}
                 onCopy={() => toast.info("Copied permalink to clipboard")}
               >
                 <motion.div
@@ -266,8 +266,8 @@ export default function CodingQuestionEditor({
         </Row>
       </div>
 
-      <div className={styles.questionAndTemplate}>
-        <div className={clsx(styles.questionText, styles.editorBox)}>
+      <div className={styles.challengeAndTemplate}>
+        <div className={clsx(styles.challengeText, styles.editorBox)}>
           <div className={styles.boxHeader}>
             <div className={styles.boxTitle}>
               <span className={styles.boxTitle}>Question Text</span>
@@ -277,7 +277,7 @@ export default function CodingQuestionEditor({
 
           <div className={styles.codeEditorWrapper}>
             <textarea
-              className={styles.questionTextarea}
+              className={styles.challengeTextarea}
               value={workingQuestionData.textMarkdown}
               onChange={(e) => update("textMarkdown", e.target.value)}
             />

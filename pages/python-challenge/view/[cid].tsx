@@ -1,20 +1,19 @@
 import { useRouter } from "next/router";
-
-import RecordedPythonExercise from "components/common/RecordedPythonExercise";
+import RecordedPythonChallenge from "components/common/RecordedPythonChallenge";
 import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 
-export default function ViewCodingQuestionPage() {
+export default function ViewCodingChallengePage() {
   const router = useRouter();
-  const { qid } = router.query;
+  const { cid } = router.query;
 
   return (
     <Layout>
       <Container>
         <Row>
           <Col>
-            {qid ? (
-              <RecordedPythonExercise qid={qid as string} />
+            {cid ? (
+              <RecordedPythonChallenge challengeId={cid as string} />
             ) : (
               <p>Loading...</p>
             )}

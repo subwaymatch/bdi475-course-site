@@ -4,7 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { toast } from "react-toastify";
 import Highlighter from "components/code-blocks/Highlighter";
-import styles from "styles/pages/python-exercise/history.module.scss";
+import styles from "styles/pages/python-challenge/history.module.scss";
 import clsx from "clsx";
 import { IoCopyOutline } from "react-icons/io5";
 import { HiOutlineBadgeCheck } from "react-icons/hi";
@@ -14,19 +14,20 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { useEffect, useState } from "react";
 import { supabaseClient } from "lib/supabase/supabaseClient";
+import { definitions } from "types/database";
 
 dayjs.extend(relativeTime);
 
-export default function CodingQuestionAttemptsPage() {
+export default function CodingChallengeAttemptsPage() {
   const router = useRouter();
-  const { qid } = router.query;
+  const { cid } = router.query;
   const [attempts, setAttempts] = useState([]);
 
   const getAttempts = async () => {
-    console.log(`getAttempts qid=${qid}`);
+    console.log(`getAttempts cid=${cid}`);
 
     const { data, error } = await supabaseClient
-      .from("coding_question_attempts")
+      .from("coding_challenge_attempts")
       .select(
         `
         submitted_at,
@@ -38,7 +39,7 @@ export default function CodingQuestionAttemptsPage() {
       `
       )
       .match({
-        question_id: qid,
+        question_id: cid,
       })
       .limit(100)
       .order("submitted_at", { ascending: false });
@@ -51,14 +52,16 @@ export default function CodingQuestionAttemptsPage() {
   };
 
   useEffect(() => {
-    if (!qid) {
+    if (!cid) {
       return;
     }
 
     getAttempts();
 
     const newAttemptSubscription = supabaseClient
-      .from(`coding_question_attempts:question_id=eq.${qid}`)
+      .from<definitions["coding_challenge_attempts"]>(
+        `coding_challenge_attempts:challenge_id=eq.${cid}`
+      )
       .on("INSERT", async (payload) => {
         console.log("Change received!", payload);
         const newData = payload.new;
@@ -89,7 +92,7 @@ export default function CodingQuestionAttemptsPage() {
     return () => {
       supabaseClient.removeSubscription(newAttemptSubscription);
     };
-  }, [qid]);
+  }, [cid]);
 
   return (
     <Layout>

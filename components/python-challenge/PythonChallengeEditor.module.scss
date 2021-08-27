@@ -1,6 +1,6 @@
 @import "styles/variables";
 
-.questionEditPage {
+.challengeEditPage {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -32,8 +32,8 @@
       }
     }
 
-    .questionTitleWrapper {
-      .questionTitleInput {
+    .challengeTitleWrapper {
+      .challengeTitleInput {
         font-family: $font-sans-serif;
         letter-spacing: -0.01rem;
         font-size: 1rem;
@@ -152,11 +152,11 @@
     }
   }
 
-  .questionAndTemplate {
+  .challengeAndTemplate {
     display: flex;
     flex-grow: 1;
 
-    .questionText {
+    .challengeText {
       width: 50%;
 
       .boxHeader {
@@ -167,7 +167,7 @@
         border-right: 1px solid $color-border-gray;
       }
 
-      textarea.questionTextarea {
+      textarea.challengeTextarea {
         width: 100%;
         height: 100%;
         padding: 0.8rem 1rem;

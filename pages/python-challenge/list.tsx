@@ -4,11 +4,10 @@ import Layout from "components/Layout";
 import { Col, Container, Row } from "react-bootstrap";
 import firebase from "firebase";
 import { useFirestore } from "reactfire";
-import ExerciseList from "components/exercise-list/ExerciseList";
-import { IExerciseListItemProps } from "components/exercise-list/ExerciseListItem";
-import styles from "styles/pages/python-exercise/list.module.scss";
+import ChallengeList from "components/challenge-list/ChallengeList";
+import { IChallengeListItemProps } from "components/challenge-list/ChallengeListItem";
+import styles from "styles/pages/python-challenge/list.module.scss";
 import { toast } from "react-toastify";
-import Login from "components/Auth/Login";
 
 enum QueryMode {
   InitialLoad = "InitialLoad",
@@ -16,7 +15,7 @@ enum QueryMode {
   ToNextPage = "ToNextPage",
 }
 
-export default function PythonExerciseListPage() {
+export default function PythonChallengeListPage() {
   let pageSize = 20;
   const firestore = useFirestore();
   const collectionRef = firestore.collection("codingQuestions");
@@ -63,18 +62,18 @@ export default function PythonExerciseListPage() {
         setHasNextPage(hasMore);
       }
 
-      const docsData: IExerciseListItemProps[] = currentDocs.map(
+      const docsData: IChallengeListItemProps[] = currentDocs.map(
         (codingQuestion) => {
           const qid = codingQuestion.id;
           const data = codingQuestion.data();
 
           return {
             qid,
-            permalink: `/python-exercise/view/${qid}`,
+            permalink: `/python-challenge/view/${qid}`,
             title: data.title,
             createdAt: data.createdAt ? data.createdAt.toDate() : null,
             updatedAt: data.updatedAt ? data.createdAt.toDate() : null,
-            editLink: `/python-exercise/edit/${qid}`,
+            editLink: `/python-challenge/edit/${qid}`,
             onDelete: async () => {
               if (
                 window.confirm(
@@ -144,12 +143,12 @@ export default function PythonExerciseListPage() {
             </Row>
             <Row>
               <Col>
-                <Link href="/python-exercise/new">
+                <Link href="/python-challenge/new">
                   <a className={styles.createButton}>+ Create</a>
                 </Link>
               </Col>
             </Row>
-            <ExerciseList items={questionListItems} />
+            <ChallengeList items={questionListItems} />
             <Row>
               <Col md={6}>
                 {hasPrevPage && <div onClick={toPrevPage}>Prev</div>}

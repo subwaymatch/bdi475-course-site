@@ -1,29 +1,30 @@
 import { useRef } from "react";
 import Link from "next/link";
-import PythonExercise from "components/python-exercise/PythonExercise";
+import PythonChallenge from "components/python-challenge/PythonChallenge";
 import { useUser } from "context/UserContext";
 import { Row, Col } from "react-bootstrap";
 import { BsCheckCircle } from "react-icons/bs";
 import { RiHistoryLine, RiEditBoxLine, RiGroupLine } from "react-icons/ri";
-import usePythonExercise from "hooks/usePythonExercise";
-import useCodingExerciseAttempts from "hooks/useCodingExerciseAttempts";
+import usePythonChallenge from "hooks/usePythonChallenge";
+import useCodingChallengeAttempts from "hooks/useCodingChallengeAttempts";
 import Tippy from "@tippyjs/react";
 import clsx from "clsx";
-import styles from "./RecordedPythonExercise.module.scss";
+import styles from "./RecordedPythonChallenge.module.scss";
 
-interface IRecordedPythonExerciseProps {
-  qid: string;
+interface IRecordedPythonChallengeProps {
+  challengeId: string;
   className?: string;
 }
 
-export default function RecordedPythonExercise({
-  qid,
+export default function RecordedPythonChallenge({
+  challengeId,
   className,
-}: IRecordedPythonExerciseProps) {
+}: IRecordedPythonChallengeProps) {
   const { user, roles } = useUser();
   const isAdmin = roles.includes("Admin");
-  const { status, data, error } = usePythonExercise(qid);
-  const { attempts, recordSubmission } = useCodingExerciseAttempts(qid);
+  const { status, data, error } = usePythonChallenge(challengeId);
+  const { attempts, recordSubmission } =
+    useCodingChallengeAttempts(challengeId);
   const editLinkRef = useRef<HTMLAnchorElement>();
   const attemptsLinkRef = useRef<HTMLAnchorElement>();
   const historyLinkRef = useRef<HTMLAnchorElement>();
@@ -34,8 +35,8 @@ export default function RecordedPythonExercise({
     } else if (attempts.length === 0) {
       return "No submission";
     } else {
-      const passCount = attempts.filter((o) => o.isSuccess).length;
-      const failCount = attempts.filter((o) => !o.isSuccess).length;
+      const passCount = attempts.filter((o) => o.is_success).length;
+      const failCount = attempts.filter((o) => !o.is_success).length;
 
       return `${attempts.length} submission${
         attempts.length > 1 ? "s" : ""
@@ -49,20 +50,20 @@ export default function RecordedPythonExercise({
     <Row>
       <Col>
         <div
-          className={clsx(styles.recordedCodingQuestion, {
+          className={clsx(styles.recordedPythonChallenge, {
             [className]: !!className,
           })}
         >
           <Row>
             <Col>
               <div className={styles.exerciseHeader}>
-                <span className={styles.exerciseType}>Coding Exercise</span>
+                <span className={styles.exerciseType}>Python Challenge</span>
                 <h2 className={styles.exerciseTitle}>{data.title}</h2>
 
                 <div className={styles.topControls}>
                   {user && isAdmin && (
                     <>
-                      <Link href={`/python-exercise/edit/${qid}`}>
+                      <Link href={`/python-challenge/edit/${challengeId}`}>
                         <a
                           className={clsx(styles.iconButton, styles.editButton)}
                           ref={editLinkRef}
@@ -80,7 +81,9 @@ export default function RecordedPythonExercise({
                         reference={editLinkRef}
                       />
 
-                      <Link href={`/admin/python-exercise/attempts/${qid}`}>
+                      <Link
+                        href={`/admin/python-challenge/attempts/${challengeId}`}
+                      >
                         <a
                           className={clsx(styles.iconButton, styles.editButton)}
                           ref={attemptsLinkRef}
@@ -102,7 +105,7 @@ export default function RecordedPythonExercise({
 
                   {user && (
                     <>
-                      <Link href={`/python-exercise/history/${qid}`}>
+                      <Link href={`/python-challenge/history/${challengeId}`}>
                         <a
                           className={clsx(
                             styles.iconButton,
@@ -146,8 +149,8 @@ export default function RecordedPythonExercise({
                           [styles.hasSubmission]: attempts.length > 0,
                           [styles.onlyFail]:
                             attempts.length > 0 &&
-                            attempts.every((o) => !o.isSuccess),
-                          [styles.hasPass]: attempts.some((o) => o.isSuccess),
+                            attempts.every((o) => !o.is_success),
+                          [styles.hasPass]: attempts.some((o) => o.is_success),
                         }
                       )}
                     >
@@ -159,11 +162,9 @@ export default function RecordedPythonExercise({
             </Col>
           </Row>
 
-          <PythonExercise
-            textMarkdown={(data as any).textMarkdown}
-            starterCode={(data as any).starterCode}
-            testCode={(data as any).testCode}
-            localStorageKey={`coding-question-${qid}`}
+          <PythonChallenge
+            challengeData={data}
+            localStorageKey={`coding-question-${challengeId}`}
             onSubmit={recordSubmission}
           />
         </div>

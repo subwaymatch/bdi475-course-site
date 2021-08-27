@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Layout from "components/Layout";
 import clsx from "clsx";
-import styles from "styles/pages/admin/report/questions.module.scss";
+import styles from "styles/pages/admin/report/challenges.module.scss";
 import { RiDownloadLine } from "react-icons/ri";
 import useFirebaseAuth from "hooks/useFirebaseAuth";
 import saveAs from "file-saver";

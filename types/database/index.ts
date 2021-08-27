@@ -12,16 +12,16 @@ export interface paths {
       };
     };
   };
-  "/coding_question_attempts": {
+  "/coding_challenge_attempts": {
     get: {
       parameters: {
         query: {
-          id?: parameters["rowFilter.coding_question_attempts.id"];
-          user_id?: parameters["rowFilter.coding_question_attempts.user_id"];
-          question_id?: parameters["rowFilter.coding_question_attempts.question_id"];
-          submitted_at?: parameters["rowFilter.coding_question_attempts.submitted_at"];
-          is_success?: parameters["rowFilter.coding_question_attempts.is_success"];
-          user_code?: parameters["rowFilter.coding_question_attempts.user_code"];
+          id?: parameters["rowFilter.coding_challenge_attempts.id"];
+          user_id?: parameters["rowFilter.coding_challenge_attempts.user_id"];
+          challenge_id?: parameters["rowFilter.coding_challenge_attempts.challenge_id"];
+          submitted_at?: parameters["rowFilter.coding_challenge_attempts.submitted_at"];
+          is_success?: parameters["rowFilter.coding_challenge_attempts.is_success"];
+          user_code?: parameters["rowFilter.coding_challenge_attempts.user_code"];
           /** Filtering Columns */
           select?: parameters["select"];
           /** Ordering */
@@ -43,7 +43,7 @@ export interface paths {
       responses: {
         /** OK */
         200: {
-          schema: definitions["coding_question_attempts"][];
+          schema: definitions["coding_challenge_attempts"][];
         };
         /** Partial Content */
         206: unknown;
@@ -52,8 +52,8 @@ export interface paths {
     post: {
       parameters: {
         body: {
-          /** coding_question_attempts */
-          coding_question_attempts?: definitions["coding_question_attempts"];
+          /** coding_challenge_attempts */
+          coding_challenge_attempts?: definitions["coding_challenge_attempts"];
         };
         query: {
           /** Filtering Columns */
@@ -72,12 +72,12 @@ export interface paths {
     delete: {
       parameters: {
         query: {
-          id?: parameters["rowFilter.coding_question_attempts.id"];
-          user_id?: parameters["rowFilter.coding_question_attempts.user_id"];
-          question_id?: parameters["rowFilter.coding_question_attempts.question_id"];
-          submitted_at?: parameters["rowFilter.coding_question_attempts.submitted_at"];
-          is_success?: parameters["rowFilter.coding_question_attempts.is_success"];
-          user_code?: parameters["rowFilter.coding_question_attempts.user_code"];
+          id?: parameters["rowFilter.coding_challenge_attempts.id"];
+          user_id?: parameters["rowFilter.coding_challenge_attempts.user_id"];
+          challenge_id?: parameters["rowFilter.coding_challenge_attempts.challenge_id"];
+          submitted_at?: parameters["rowFilter.coding_challenge_attempts.submitted_at"];
+          is_success?: parameters["rowFilter.coding_challenge_attempts.is_success"];
+          user_code?: parameters["rowFilter.coding_challenge_attempts.user_code"];
         };
         header: {
           /** Preference */
@@ -92,16 +92,16 @@ export interface paths {
     patch: {
       parameters: {
         query: {
-          id?: parameters["rowFilter.coding_question_attempts.id"];
-          user_id?: parameters["rowFilter.coding_question_attempts.user_id"];
-          question_id?: parameters["rowFilter.coding_question_attempts.question_id"];
-          submitted_at?: parameters["rowFilter.coding_question_attempts.submitted_at"];
-          is_success?: parameters["rowFilter.coding_question_attempts.is_success"];
-          user_code?: parameters["rowFilter.coding_question_attempts.user_code"];
+          id?: parameters["rowFilter.coding_challenge_attempts.id"];
+          user_id?: parameters["rowFilter.coding_challenge_attempts.user_id"];
+          challenge_id?: parameters["rowFilter.coding_challenge_attempts.challenge_id"];
+          submitted_at?: parameters["rowFilter.coding_challenge_attempts.submitted_at"];
+          is_success?: parameters["rowFilter.coding_challenge_attempts.is_success"];
+          user_code?: parameters["rowFilter.coding_challenge_attempts.user_code"];
         };
         body: {
-          /** coding_question_attempts */
-          coding_question_attempts?: definitions["coding_question_attempts"];
+          /** coding_challenge_attempts */
+          coding_challenge_attempts?: definitions["coding_challenge_attempts"];
         };
         header: {
           /** Preference */
@@ -114,12 +114,12 @@ export interface paths {
       };
     };
   };
-  "/coding_question_solutions": {
+  "/coding_challenge_solutions": {
     get: {
       parameters: {
         query: {
-          qid?: parameters["rowFilter.coding_question_solutions.qid"];
-          solution_code?: parameters["rowFilter.coding_question_solutions.solution_code"];
+          challenge_id?: parameters["rowFilter.coding_challenge_solutions.challenge_id"];
+          solution_code?: parameters["rowFilter.coding_challenge_solutions.solution_code"];
           /** Filtering Columns */
           select?: parameters["select"];
           /** Ordering */
@@ -141,7 +141,7 @@ export interface paths {
       responses: {
         /** OK */
         200: {
-          schema: definitions["coding_question_solutions"][];
+          schema: definitions["coding_challenge_solutions"][];
         };
         /** Partial Content */
         206: unknown;
@@ -150,8 +150,8 @@ export interface paths {
     post: {
       parameters: {
         body: {
-          /** coding_question_solutions */
-          coding_question_solutions?: definitions["coding_question_solutions"];
+          /** coding_challenge_solutions */
+          coding_challenge_solutions?: definitions["coding_challenge_solutions"];
         };
         query: {
           /** Filtering Columns */
@@ -170,8 +170,8 @@ export interface paths {
     delete: {
       parameters: {
         query: {
-          qid?: parameters["rowFilter.coding_question_solutions.qid"];
-          solution_code?: parameters["rowFilter.coding_question_solutions.solution_code"];
+          challenge_id?: parameters["rowFilter.coding_challenge_solutions.challenge_id"];
+          solution_code?: parameters["rowFilter.coding_challenge_solutions.solution_code"];
         };
         header: {
           /** Preference */
@@ -186,12 +186,12 @@ export interface paths {
     patch: {
       parameters: {
         query: {
-          qid?: parameters["rowFilter.coding_question_solutions.qid"];
-          solution_code?: parameters["rowFilter.coding_question_solutions.solution_code"];
+          challenge_id?: parameters["rowFilter.coding_challenge_solutions.challenge_id"];
+          solution_code?: parameters["rowFilter.coding_challenge_solutions.solution_code"];
         };
         body: {
-          /** coding_question_solutions */
-          coding_question_solutions?: definitions["coding_question_solutions"];
+          /** coding_challenge_solutions */
+          coding_challenge_solutions?: definitions["coding_challenge_solutions"];
         };
         header: {
           /** Preference */
@@ -204,17 +204,19 @@ export interface paths {
       };
     };
   };
-  "/coding_questions": {
+  "/coding_challenges": {
     get: {
       parameters: {
         query: {
-          created_at?: parameters["rowFilter.coding_questions.created_at"];
-          starter_code?: parameters["rowFilter.coding_questions.starter_code"];
-          test_code?: parameters["rowFilter.coding_questions.test_code"];
-          text_markdown?: parameters["rowFilter.coding_questions.text_markdown"];
-          title?: parameters["rowFilter.coding_questions.title"];
-          updated_at?: parameters["rowFilter.coding_questions.updated_at"];
-          id?: parameters["rowFilter.coding_questions.id"];
+          created_at?: parameters["rowFilter.coding_challenges.created_at"];
+          starter_code?: parameters["rowFilter.coding_challenges.starter_code"];
+          test_code?: parameters["rowFilter.coding_challenges.test_code"];
+          text_markdown?: parameters["rowFilter.coding_challenges.text_markdown"];
+          title?: parameters["rowFilter.coding_challenges.title"];
+          updated_at?: parameters["rowFilter.coding_challenges.updated_at"];
+          id?: parameters["rowFilter.coding_challenges.id"];
+          /** Programming language used for the challenge (e.g., Python, Java, C) */
+          language?: parameters["rowFilter.coding_challenges.language"];
           /** Filtering Columns */
           select?: parameters["select"];
           /** Ordering */
@@ -236,7 +238,7 @@ export interface paths {
       responses: {
         /** OK */
         200: {
-          schema: definitions["coding_questions"][];
+          schema: definitions["coding_challenges"][];
         };
         /** Partial Content */
         206: unknown;
@@ -245,8 +247,8 @@ export interface paths {
     post: {
       parameters: {
         body: {
-          /** coding_questions */
-          coding_questions?: definitions["coding_questions"];
+          /** coding_challenges */
+          coding_challenges?: definitions["coding_challenges"];
         };
         query: {
           /** Filtering Columns */
@@ -265,13 +267,15 @@ export interface paths {
     delete: {
       parameters: {
         query: {
-          created_at?: parameters["rowFilter.coding_questions.created_at"];
-          starter_code?: parameters["rowFilter.coding_questions.starter_code"];
-          test_code?: parameters["rowFilter.coding_questions.test_code"];
-          text_markdown?: parameters["rowFilter.coding_questions.text_markdown"];
-          title?: parameters["rowFilter.coding_questions.title"];
-          updated_at?: parameters["rowFilter.coding_questions.updated_at"];
-          id?: parameters["rowFilter.coding_questions.id"];
+          created_at?: parameters["rowFilter.coding_challenges.created_at"];
+          starter_code?: parameters["rowFilter.coding_challenges.starter_code"];
+          test_code?: parameters["rowFilter.coding_challenges.test_code"];
+          text_markdown?: parameters["rowFilter.coding_challenges.text_markdown"];
+          title?: parameters["rowFilter.coding_challenges.title"];
+          updated_at?: parameters["rowFilter.coding_challenges.updated_at"];
+          id?: parameters["rowFilter.coding_challenges.id"];
+          /** Programming language used for the challenge (e.g., Python, Java, C) */
+          language?: parameters["rowFilter.coding_challenges.language"];
         };
         header: {
           /** Preference */
@@ -286,17 +290,19 @@ export interface paths {
     patch: {
       parameters: {
         query: {
-          created_at?: parameters["rowFilter.coding_questions.created_at"];
-          starter_code?: parameters["rowFilter.coding_questions.starter_code"];
-          test_code?: parameters["rowFilter.coding_questions.test_code"];
-          text_markdown?: parameters["rowFilter.coding_questions.text_markdown"];
-          title?: parameters["rowFilter.coding_questions.title"];
-          updated_at?: parameters["rowFilter.coding_questions.updated_at"];
-          id?: parameters["rowFilter.coding_questions.id"];
+          created_at?: parameters["rowFilter.coding_challenges.created_at"];
+          starter_code?: parameters["rowFilter.coding_challenges.starter_code"];
+          test_code?: parameters["rowFilter.coding_challenges.test_code"];
+          text_markdown?: parameters["rowFilter.coding_challenges.text_markdown"];
+          title?: parameters["rowFilter.coding_challenges.title"];
+          updated_at?: parameters["rowFilter.coding_challenges.updated_at"];
+          id?: parameters["rowFilter.coding_challenges.id"];
+          /** Programming language used for the challenge (e.g., Python, Java, C) */
+          language?: parameters["rowFilter.coding_challenges.language"];
         };
         body: {
-          /** coding_questions */
-          coding_questions?: definitions["coding_questions"];
+          /** coding_challenges */
+          coding_challenges?: definitions["coding_challenges"];
         };
         header: {
           /** Preference */
@@ -450,7 +456,7 @@ export interface paths {
 }
 
 export interface definitions {
-  coding_question_attempts: {
+  coding_challenge_attempts: {
     /**
      * Note:
      * This is a Primary Key.<pk/>
@@ -463,23 +469,23 @@ export interface definitions {
     user_id: string;
     /**
      * Note:
-     * This is a Foreign Key to `coding_questions.id`.<fk table='coding_questions' column='id'/>
+     * This is a Foreign Key to `coding_challenges.id`.<fk table='coding_challenges' column='id'/>
      */
-    question_id: string;
+    challenge_id: string;
     submitted_at: string;
     is_success: boolean;
     user_code?: string;
   };
-  coding_question_solutions: {
+  coding_challenge_solutions: {
     /**
      * Note:
      * This is a Primary Key.<pk/>
-     * This is a Foreign Key to `coding_questions.id`.<fk table='coding_questions' column='id'/>
+     * This is a Foreign Key to `coding_challenges.id`.<fk table='coding_challenges' column='id'/>
      */
-    qid: string;
+    challenge_id: string;
     solution_code?: string;
   };
-  coding_questions: {
+  coding_challenges: {
     created_at?: string;
     starter_code?: string;
     test_code?: string;
@@ -491,6 +497,8 @@ export interface definitions {
      * This is a Primary Key.<pk/>
      */
     id: string;
+    /** Programming language used for the challenge (e.g., Python, Java, C) */
+    language?: string;
   };
   profiles: {
     /**
@@ -527,27 +535,29 @@ export interface parameters {
   offset: string;
   /** Limiting and Pagination */
   limit: string;
-  /** coding_question_attempts */
-  "body.coding_question_attempts": definitions["coding_question_attempts"];
-  "rowFilter.coding_question_attempts.id": string;
-  "rowFilter.coding_question_attempts.user_id": string;
-  "rowFilter.coding_question_attempts.question_id": string;
-  "rowFilter.coding_question_attempts.submitted_at": string;
-  "rowFilter.coding_question_attempts.is_success": string;
-  "rowFilter.coding_question_attempts.user_code": string;
-  /** coding_question_solutions */
-  "body.coding_question_solutions": definitions["coding_question_solutions"];
-  "rowFilter.coding_question_solutions.qid": string;
-  "rowFilter.coding_question_solutions.solution_code": string;
-  /** coding_questions */
-  "body.coding_questions": definitions["coding_questions"];
-  "rowFilter.coding_questions.created_at": string;
-  "rowFilter.coding_questions.starter_code": string;
-  "rowFilter.coding_questions.test_code": string;
-  "rowFilter.coding_questions.text_markdown": string;
-  "rowFilter.coding_questions.title": string;
-  "rowFilter.coding_questions.updated_at": string;
-  "rowFilter.coding_questions.id": string;
+  /** coding_challenge_attempts */
+  "body.coding_challenge_attempts": definitions["coding_challenge_attempts"];
+  "rowFilter.coding_challenge_attempts.id": string;
+  "rowFilter.coding_challenge_attempts.user_id": string;
+  "rowFilter.coding_challenge_attempts.challenge_id": string;
+  "rowFilter.coding_challenge_attempts.submitted_at": string;
+  "rowFilter.coding_challenge_attempts.is_success": string;
+  "rowFilter.coding_challenge_attempts.user_code": string;
+  /** coding_challenge_solutions */
+  "body.coding_challenge_solutions": definitions["coding_challenge_solutions"];
+  "rowFilter.coding_challenge_solutions.challenge_id": string;
+  "rowFilter.coding_challenge_solutions.solution_code": string;
+  /** coding_challenges */
+  "body.coding_challenges": definitions["coding_challenges"];
+  "rowFilter.coding_challenges.created_at": string;
+  "rowFilter.coding_challenges.starter_code": string;
+  "rowFilter.coding_challenges.test_code": string;
+  "rowFilter.coding_challenges.text_markdown": string;
+  "rowFilter.coding_challenges.title": string;
+  "rowFilter.coding_challenges.updated_at": string;
+  "rowFilter.coding_challenges.id": string;
+  /** Programming language used for the challenge (e.g., Python, Java, C) */
+  "rowFilter.coding_challenges.language": string;
   /** profiles */
   "body.profiles": definitions["profiles"];
   "rowFilter.profiles.id": string;

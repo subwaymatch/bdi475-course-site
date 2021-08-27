@@ -5,16 +5,16 @@ import { firebaseAdmin } from "firebase/firebaseAdmin";
 import { Col, Container, Row } from "react-bootstrap";
 import Layout from "components/Layout";
 import clsx from "clsx";
-import styles from "styles/pages/admin/report/questions.module.scss";
+import styles from "styles/pages/admin/report/challenges.module.scss";
 import { RiDownloadLine } from "react-icons/ri";
 import useFirebaseAuth from "hooks/useFirebaseAuth";
 import saveAs from "file-saver";
 
-export default function ExercisesReportPage(
+export default function ChallengesReportPage(
   props: InferGetServerSidePropsType<typeof getServerSideProps>
 ) {
   const [ids, setIds] = useState(
-    props.qids ? props.qids : ["zWeBSE", "qp1LzJ", "GYdI7m", "dooYXm"]
+    props.cids ? props.cids : ["zWeBSE", "qp1LzJ", "GYdI7m", "dooYXm"]
   );
   const [result, setResult] = useState("");
   const { user, claims } = useFirebaseAuth();
@@ -39,10 +39,10 @@ export default function ExercisesReportPage(
       let params = new URLSearchParams("");
       ids
         .filter((s) => s.trim() !== "")
-        .forEach((id) => params.append("qid", id));
+        .forEach((id) => params.append("cid", id));
 
       fetch(
-        `/api/admin/export/user-exercise-results?${params.toString()}`,
+        `/api/admin/export/user-challenge-results?${params.toString()}`,
         options
       )
         .then((response) => response.blob())
@@ -71,7 +71,7 @@ export default function ExercisesReportPage(
 
           <Row>
             <Col md={4}>
-              <h3>Questions IDs</h3>
+              <h3>Challenge IDs</h3>
             </Col>
 
             <Col md={8}>
@@ -119,8 +119,8 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 
     props.message = `Your email is ${email} and your UID is ${uid}.`;
 
-    if (ctx.query.qid) {
-      props.qids = [].concat(ctx.query.qid);
+    if (ctx.query.cid) {
+      props.cids = [].concat(ctx.query.cid);
     }
   } catch {
     // Either the `token` cookie didn't exist

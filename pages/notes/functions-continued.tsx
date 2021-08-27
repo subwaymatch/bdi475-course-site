@@ -4,7 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import styles from "styles/pages/notes/common.module.scss";
 import ListWithTitle from "components/common/ListWithTitle";
 import CenteredColumn from "components/common/CenteredColumn";
-import RecordedPythonExercise from "components/common/RecordedPythonExercise";
+import RecordedPythonChallenge from "components/common/RecordedPythonChallenge";
 
 export default function FunctionPage() {
   return (
@@ -47,29 +47,65 @@ export default function FunctionPage() {
             </Col>
           </Row>
 
-          <RecordedPythonExercise qid="tgAqpi" className={styles.block} />
+          <RecordedPythonChallenge
+            challengeId="tgAqpi"
+            className={styles.block}
+          />
 
-          <RecordedPythonExercise qid="u5kAW4" className={styles.block} />
+          <RecordedPythonChallenge
+            challengeId="u5kAW4"
+            className={styles.block}
+          />
 
-          <RecordedPythonExercise qid="nP0VaY" className={styles.block} />
+          <RecordedPythonChallenge
+            challengeId="nP0VaY"
+            className={styles.block}
+          />
 
-          <RecordedPythonExercise qid="Rz7WbO" className={styles.block} />
+          <RecordedPythonChallenge
+            challengeId="Rz7WbO"
+            className={styles.block}
+          />
 
-          <RecordedPythonExercise qid="JrNKop" className={styles.block} />
+          <RecordedPythonChallenge
+            challengeId="JrNKop"
+            className={styles.block}
+          />
 
-          <RecordedPythonExercise qid="hOutep" className={styles.block} />
+          <RecordedPythonChallenge
+            challengeId="hOutep"
+            className={styles.block}
+          />
 
-          <RecordedPythonExercise qid="4DLeS7" className={styles.block} />
+          <RecordedPythonChallenge
+            challengeId="4DLeS7"
+            className={styles.block}
+          />
 
-          <RecordedPythonExercise qid="zqDPpv" className={styles.block} />
+          <RecordedPythonChallenge
+            challengeId="zqDPpv"
+            className={styles.block}
+          />
 
-          <RecordedPythonExercise qid="WLIt7B" className={styles.block} />
+          <RecordedPythonChallenge
+            challengeId="WLIt7B"
+            className={styles.block}
+          />
 
-          <RecordedPythonExercise qid="elcwON" className={styles.block} />
+          <RecordedPythonChallenge
+            challengeId="elcwON"
+            className={styles.block}
+          />
 
-          <RecordedPythonExercise qid="Ae23Hb" className={styles.block} />
+          <RecordedPythonChallenge
+            challengeId="Ae23Hb"
+            className={styles.block}
+          />
 
-          <RecordedPythonExercise qid="UCKPKa" className={styles.block} />
+          <RecordedPythonChallenge
+            challengeId="UCKPKa"
+            className={styles.block}
+          />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Variable Scopes</h3>
@@ -91,7 +127,10 @@ export default function FunctionPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedPythonExercise qid="RZsJ2C" className={styles.block} />
+          <RecordedPythonChallenge
+            challengeId="RZsJ2C"
+            className={styles.block}
+          />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Variable Scopes</h3>
@@ -114,9 +153,15 @@ export default function FunctionPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedPythonExercise qid="Ydiw2T" className={styles.block} />
+          <RecordedPythonChallenge
+            challengeId="Ydiw2T"
+            className={styles.block}
+          />
 
-          <RecordedPythonExercise qid="aeApjn" className={styles.block} />
+          <RecordedPythonChallenge
+            challengeId="aeApjn"
+            className={styles.block}
+          />
 
           <CenteredColumn className={styles.textBox}>
             <span className="label green">What happened?</span>
@@ -136,9 +181,15 @@ export default function FunctionPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedPythonExercise qid="ifBxj5" className={styles.block} />
+          <RecordedPythonChallenge
+            challengeId="ifBxj5"
+            className={styles.block}
+          />
 
-          <RecordedPythonExercise qid="WHohdq" className={styles.block} />
+          <RecordedPythonChallenge
+            challengeId="WHohdq"
+            className={styles.block}
+          />
         </Container>
       </main>
     </Layout>

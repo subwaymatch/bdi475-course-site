@@ -6,7 +6,7 @@ import Login from "components/Auth/Login";
 import styles from "styles/pages/notes/common.module.scss";
 import ListWithTitle from "components/common/ListWithTitle";
 import CenteredColumn from "components/common/CenteredColumn";
-import RecordedPythonExercise from "components/common/RecordedPythonExercise";
+import RecordedPythonChallenge from "components/common/RecordedPythonChallenge";
 
 export default function QuizPage() {
   return (
@@ -74,13 +74,25 @@ export default function QuizPage() {
               </p>
             </CenteredColumn>
 
-            <RecordedPythonExercise qid="zWeBSE" className={styles.block} />
+            <RecordedPythonChallenge
+              challengeId="zWeBSE"
+              className={styles.block}
+            />
 
-            <RecordedPythonExercise qid="qp1LzJ" className={styles.block} />
+            <RecordedPythonChallenge
+              challengeId="qp1LzJ"
+              className={styles.block}
+            />
 
-            <RecordedPythonExercise qid="GYdI7m" className={styles.block} />
+            <RecordedPythonChallenge
+              challengeId="GYdI7m"
+              className={styles.block}
+            />
 
-            <RecordedPythonExercise qid="dooYXm" className={styles.block} />
+            <RecordedPythonChallenge
+              challengeId="dooYXm"
+              className={styles.block}
+            />
           </Container>
         </main>
       </AuthCheck>

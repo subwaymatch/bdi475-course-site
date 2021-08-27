@@ -5,7 +5,7 @@ import _ from "lodash";
 import stringify from "csv-stringify/lib/sync";
 import dayjs from "dayjs";
 
-export default async function getUserExerciseResultsAsCSV(
+export default async function getUserChallengeAttemptsAsCSV(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -19,11 +19,11 @@ export default async function getUserExerciseResultsAsCSV(
   }
   // Extract attempt information
   const {
-    query: { qid },
+    query: { cid },
   } = req;
 
   // If only one qid is supplied, convert it to an array
-  const qids = qid ? [].concat(qid) : [];
+  const challengeIds = cid ? [].concat(cid) : [];
 
   try {
     const userRecords = await firebaseAdmin.auth().listUsers();
@@ -36,7 +36,7 @@ export default async function getUserExerciseResultsAsCSV(
     const querySnapshot = await firebaseAdmin
       .firestore()
       .collection("questionAttempts")
-      .where(firebaseAdmin.firestore.FieldPath.documentId(), "in", qids)
+      .where(firebaseAdmin.firestore.FieldPath.documentId(), "in", challengeIds)
       .get();
 
     const userExerciseResults = [];

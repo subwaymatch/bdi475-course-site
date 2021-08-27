@@ -8,7 +8,7 @@ export default function CreatePythonExercisePage() {
   const router = useRouter();
 
   useEffect(() => {
-    router.push(`/python-exercise/edit/${generateQuestionId()}`);
+    router.push(`/python-challenge/edit/${generateQuestionId()}`);
   });
 
   return (

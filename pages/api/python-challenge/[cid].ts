@@ -8,19 +8,19 @@ export default async function getCodingQuestionData(
   res: NextApiResponse
 ) {
   const {
-    query: { qid },
+    query: { cid },
   } = req;
 
   try {
     const snapshot = await firebaseAdmin
       .firestore()
       .collection("codingQuestions")
-      .doc(qid as string)
+      .doc(cid as string)
       .get();
 
     // Throw error if question document does not exist
     if (!snapshot.exists) {
-      return res.status(404).end(`Question ID: ${qid} does not exist`);
+      return res.status(404).end(`Question ID: ${cid} does not exist`);
     }
 
     let questionData = snapshot.data();
@@ -34,6 +34,6 @@ export default async function getCodingQuestionData(
   } catch (err) {
     return res
       .status(500)
-      .end(`Error fetching Question ID: ${qid} - ${err.message}`);
+      .end(`Error fetching Question ID: ${cid} - ${err.message}`);
   }
 }
