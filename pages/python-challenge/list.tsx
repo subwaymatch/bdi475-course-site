@@ -9,13 +9,16 @@ import styles from "styles/pages/python-challenge/list.module.scss";
 import { supabaseClient } from "lib/supabase/supabaseClient";
 import { toast } from "react-toastify";
 import { definitions } from "types/database";
+import { useRouter } from "next/router";
 
-export default function PythonChallengeListPage() {
+export default function PythonChallengeListPage({ page }) {
+  const initialPage = Number(page);
   const [totalNumberOfPages, setTotalNumberOfPages] = useState(1);
-  const [currentPageIndex, setCurrentPageIndex] = useState(0);
+  // zero-based page number
+  const [currentPageIndex, setCurrentPageIndex] = useState(initialPage - 1);
   const [pageSize, setPageSize] = useState(20);
   const [listItems, setListItems] = useState<IChallengeListItemProps[]>([]);
-
+  const router = useRouter();
   const calculatePageCount = async () => {
     const { count } = await supabaseClient
       .from<definitions["coding_challenges"]>("coding_challenges")
@@ -52,21 +55,19 @@ export default function PythonChallengeListPage() {
     return item;
   };
 
-  const initialize = async () => {
-    await calculatePageCount();
-    await loadPage();
-  };
+  const loadPage = async (pageIndex: number) => {
+    console.log(
+      `loadPage range from ${pageIndex * pageSize + 1} to ${
+        (pageIndex + 1) * pageSize
+      }`
+    );
 
-  const loadPage = async () => {
     const { data, error } = await supabaseClient
       .from<definitions["coding_challenges"]>("coding_challenges")
       .select()
       .eq("language", "Python")
       .order("updated_at", { ascending: false })
-      .range(
-        currentPageIndex * pageSize + 1,
-        (currentPageIndex + 1) * pageSize
-      );
+      .range(pageIndex * pageSize + 1, (pageIndex + 1) * pageSize);
 
     if (!error) {
       setListItems(data.map((o) => toListItem(o)));
@@ -75,14 +76,20 @@ export default function PythonChallengeListPage() {
     }
   };
 
-  useEffect(() => {
-    initialize();
-  }, []);
+  const handlePageChange = async (pageIndex: number) => {
+    console.log(`handlePageChange(pageIndex=${pageIndex})`);
+    setCurrentPageIndex(pageIndex);
+    loadPage(pageIndex);
 
-  const handlePageClick = async (data) => {
-    setCurrentPageIndex(data.selected);
-    await loadPage();
+    router.push({
+      pathname: router.pathname,
+      query: { page: pageIndex + 1 },
+    });
   };
+
+  useEffect(() => {
+    calculatePageCount();
+  }, []);
 
   return (
     <Layout>
@@ -116,7 +123,8 @@ export default function PythonChallengeListPage() {
                   pageCount={totalNumberOfPages}
                   marginPagesDisplayed={2}
                   pageRangeDisplayed={5}
-                  onPageChange={handlePageClick}
+                  initialPage={initialPage - 1}
+                  onPageChange={(data) => handlePageChange(data.selected)}
                   containerClassName="pagination"
                   activeClassName="active"
                   pageClassName="page"
@@ -133,4 +141,12 @@ export default function PythonChallengeListPage() {
       </main>
     </Layout>
   );
+}
+
+export async function getServerSideProps({ query }) {
+  return {
+    props: {
+      page: query.page ? query.page : "1",
+    }, // will be passed to the page component as props
+  };
 }

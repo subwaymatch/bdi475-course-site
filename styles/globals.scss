@@ -278,6 +278,7 @@ ul.pagination {
       color: $color-dark-gray;
       display: inline-block;
       padding: 0.8rem 1.5rem;
+      border-radius: 4px;
 
       &:hover {
         color: $color-black;
@@ -305,9 +306,8 @@ ul.pagination {
     &.page {
       &.active {
         a {
-          color: $color-purple;
-          background-color: color.adjust($color-purple, $lightness: 50%);
-          background-color: yellowgreen;
+          color: color.adjust($color-green, $lightness: -10%);
+          background-color: color.adjust($color-green, $lightness: 25%);
         }
       }
     }
