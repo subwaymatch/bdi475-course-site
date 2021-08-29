@@ -56,12 +56,6 @@ export default function PythonChallengeListPage({ page }) {
   };
 
   const loadPage = async (pageIndex: number) => {
-    console.log(
-      `loadPage range from ${pageIndex * pageSize + 1} to ${
-        (pageIndex + 1) * pageSize
-      }`
-    );
-
     const { data, error } = await supabaseClient
       .from<definitions["coding_challenges"]>("coding_challenges")
       .select()
@@ -77,7 +71,6 @@ export default function PythonChallengeListPage({ page }) {
   };
 
   const handlePageChange = async (pageIndex: number) => {
-    console.log(`handlePageChange(pageIndex=${pageIndex})`);
     setCurrentPageIndex(pageIndex);
     loadPage(pageIndex);
 
@@ -147,6 +140,6 @@ export async function getServerSideProps({ query }) {
   return {
     props: {
       page: query.page ? query.page : "1",
-    }, // will be passed to the page component as props
+    },
   };
 }

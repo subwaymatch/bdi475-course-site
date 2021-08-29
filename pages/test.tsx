@@ -8,6 +8,13 @@ import { useUser } from "context/UserContext";
 import { definitions } from "types/database";
 
 export default function TestPage() {
+  useEffect(() => {
+    console.log(process.env);
+    console.log(
+      `process.env.NEXT_PUBLIC_BLACK_LAMBDA_ENDPOINT=${process.env.NEXT_PUBLIC_BLACK_LAMBDA_ENDPOINT}`
+    );
+  }, []);
+
   return (
     <Layout>
       <Container>

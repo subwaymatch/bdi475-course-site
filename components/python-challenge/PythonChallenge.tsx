@@ -7,6 +7,8 @@ import usePythonRuntime from "hooks/usePythonRuntime";
 import useLocalStorage from "hooks/useLocalStorage";
 import { Col, Row } from "react-bootstrap";
 import { BiReset } from "react-icons/bi";
+import { BsLightning } from "react-icons/bs";
+import { FaPython } from "react-icons/fa";
 import { VscSymbolMethod, VscRunAll } from "react-icons/vsc";
 import { IoPlay } from "react-icons/io5";
 import Tippy from "@tippyjs/react";
@@ -15,6 +17,7 @@ import marked from "marked";
 import styles from "./PythonChallenge.module.scss";
 import clsx from "clsx";
 import { definitions } from "types/database";
+import { useUser } from "context/UserContext";
 
 const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
@@ -31,6 +34,7 @@ export default function PythonChallenge({
   localStorageKey,
   onSubmit,
 }: IPythonExerciseProps) {
+  const { user } = useUser();
   const [userCode, setUserCode] = useState(challengeData.starter_code);
   const [output, setOutput] = useState("");
   const [hasError, setHasError] = useState(false);
@@ -93,6 +97,32 @@ export default function PythonChallenge({
     }
   };
 
+  const autoformatCode = async () => {
+    console.log(
+      `NEXT_PUBLIC_BLACK_LAMBDA_ENDPOINT=${process.env.NEXT_PUBLIC_BLACK_LAMBDA_ENDPOINT}`
+    );
+
+    const response = await fetch(
+      process.env.NEXT_PUBLIC_BLACK_LAMBDA_ENDPOINT,
+      {
+        method: "POST",
+        mode: "cors",
+        credentials: "same-origin",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          source: userCode,
+        }),
+      }
+    );
+
+    const result = await response.json();
+    setUserCode(result.formatted_code);
+
+    toast.success("Your code has been formatted");
+  };
+
   const saveUserCodeToLocalStorage = useCallback(
     _.debounce((codeToSave) => {
       setSavedUserCode(codeToSave);
@@ -109,14 +139,14 @@ export default function PythonChallenge({
   };
 
   return (
-    <div className={styles.codingQuestionWrapper}>
+    <div className={styles.codingChallengeWrapper}>
       <Row className="g-0">
         <Col md={6}>
           <div
-            className={styles.questionTextWrapper}
+            className={styles.instructionTextWrapper}
             style={{ height: isScreenDesktop ? editorHeight : "auto" }}
           >
-            <div className={styles.questionTextInner}>
+            <div className={styles.instructionTextInner}>
               <span className="label green">Task</span>
 
               <div
@@ -166,7 +196,7 @@ export default function PythonChallenge({
         </Col>
       </Row>
 
-      <Row>
+      <Row className="g-0">
         <Col>
           <div className={styles.controlsWrapper}>
             <Row>
@@ -203,6 +233,39 @@ export default function PythonChallenge({
                 <div className={styles.rightControls}>
                   <Tippy
                     content={
+                      user ? (
+                        <>Autoformat your code using a Python code formatter</>
+                      ) : (
+                        <>You must be signed in to use the autoformat feature</>
+                      )
+                    }
+                    className="tippy"
+                    placement="bottom"
+                    offset={[0, -4]}
+                    theme="light"
+                    disabled={!isScreenDesktop}
+                  >
+                    <div
+                      className={clsx(styles.button, styles.runButton, {
+                        [styles.disabled]: !user,
+                      })}
+                      onClick={async (e) => {
+                        e.preventDefault();
+
+                        if (!user) {
+                          return;
+                        }
+
+                        await autoformatCode();
+                      }}
+                    >
+                      <FaPython className={styles.reactIcon} />
+                      <span className={styles.label}>Format</span>
+                    </div>
+                  </Tippy>
+
+                  <Tippy
+                    content={
                       isRuntimeReady ? (
                         <>
                           {/* <kbd>{isMacOs ? "Cmd" : "Ctrl"}</kbd>
@@ -210,7 +273,7 @@ export default function PythonChallenge({
                           <kbd>Enter ↵</kbd> */}
                           Run your code{" "}
                           <strong className="color-pink">without</strong>{" "}
-                          checking correctness
+                          submitting
                         </>
                       ) : (
                         "Loading..."
@@ -249,7 +312,7 @@ export default function PythonChallenge({
                           <kbd>Shift</kbd>
                           <span className="color-blue"> + </span>
                           <kbd>Enter ↵</kbd> */}
-                          Run your code{" "}
+                          Submit your code{" "}
                           <strong className="color-purple">and</strong> check
                           correctness
                         </>
@@ -277,7 +340,7 @@ export default function PythonChallenge({
                       }}
                     >
                       <VscRunAll className={styles.reactIcon} />
-                      <span className={styles.label}>Check</span>
+                      <span className={styles.label}>Submit</span>
                     </div>
                   </Tippy>
                 </div>

@@ -96,7 +96,7 @@ export default function PythonChallengeEditor({
   };
 
   const runSolutionCode = async () => {
-    if (!isRuntimeReady) { 
+    if (!isRuntimeReady) {
       return;
     }
 

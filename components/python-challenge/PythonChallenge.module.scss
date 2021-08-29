@@ -2,10 +2,11 @@
 @import "styles/variables";
 @import "styles/mixins";
 
-.codingQuestionWrapper {
+.codingChallengeWrapper {
   border-top: 1px solid $color-border-gray;
+  background-color: #f5f5f5;
 
-  .questionTextWrapper {
+  .instructionTextWrapper {
     overflow-y: auto;
 
     pre {
@@ -16,7 +17,7 @@
       padding: 0.5rem 0.8rem;
     }
 
-    .questionTextInner {
+    .instructionTextInner {
       padding: 1rem 2rem 2rem 0;
 
       @include media-breakpoint-down(sm) {
@@ -47,6 +48,7 @@
   .codeEditorWrapper {
     border-left: 1px solid $color-border-gray;
     border-right: 1px solid $color-border-gray;
+    background-color: palegoldenrod;
 
     @include media-breakpoint-down(sm) {
       border: none;

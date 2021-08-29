@@ -30,7 +30,6 @@
     "monaco-editor": "^0.27.0",
     "next": "^11.1.0",
     "nookies": "^2.5.2",
-    "randomstring": "^1.1.5",
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.0-beta.5",
     "react-copy-to-clipboard": "^5.0.4",
