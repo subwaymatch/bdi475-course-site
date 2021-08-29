@@ -12,7 +12,7 @@ import clsx from "clsx";
 import styles from "./RecordedPythonChallenge.module.scss";
 
 interface IRecordedPythonChallengeProps {
-  challengeId: string;
+  challengeId: number;
   className?: string;
 }
 

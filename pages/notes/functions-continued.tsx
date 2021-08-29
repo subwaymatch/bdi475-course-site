@@ -47,65 +47,29 @@ export default function FunctionPage() {
             </Col>
           </Row>
 
-          <RecordedPythonChallenge
-            challengeId="tgAqpi"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={55} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="u5kAW4"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={79} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="nP0VaY"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={83} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="Rz7WbO"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={115} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="JrNKop"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={103} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="hOutep"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={104} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="4DLeS7"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={105} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="zqDPpv"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={76} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="WLIt7B"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={108} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="elcwON"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={109} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="Ae23Hb"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={106} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="UCKPKa"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={107} className={styles.block} />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Variable Scopes</h3>
@@ -127,10 +91,7 @@ export default function FunctionPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedPythonChallenge
-            challengeId="RZsJ2C"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={110} className={styles.block} />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Variable Scopes</h3>
@@ -153,15 +114,9 @@ export default function FunctionPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedPythonChallenge
-            challengeId="Ydiw2T"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={112} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="aeApjn"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={111} className={styles.block} />
 
           <CenteredColumn className={styles.textBox}>
             <span className="label green">What happened?</span>
@@ -181,15 +136,9 @@ export default function FunctionPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedPythonChallenge
-            challengeId="ifBxj5"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={113} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="WHohdq"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={114} className={styles.block} />
         </Container>
       </main>
     </Layout>

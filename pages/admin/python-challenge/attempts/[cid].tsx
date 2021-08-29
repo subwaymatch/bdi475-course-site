@@ -26,6 +26,8 @@ export default function CodingChallengeAttemptsPage() {
   const [attempts, setAttempts] = useState([]);
 
   const getAttempts = async () => {
+    const challengeId = Array.isArray(cid) ? Number(cid[0]) : Number(cid);
+
     const { data, error } = await supabaseClient
       .from<definitions["coding_challenge_attempts"]>(
         "coding_challenge_attempts"
@@ -41,7 +43,7 @@ export default function CodingChallengeAttemptsPage() {
       `
       )
       .match({
-        challenge_id: cid,
+        challenge_id: challengeId,
       })
       .order("submitted_at", { ascending: false })
       .limit(100);

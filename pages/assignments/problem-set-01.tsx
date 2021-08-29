@@ -99,37 +99,37 @@ export default function ProblemSetPage() {
             </CenteredColumn>
 
             <RecordedPythonChallenge
-              challengeId="IoPUN0"
+              challengeId={116}
               className={styles.block}
             />
 
             <RecordedPythonChallenge
-              challengeId="pAXDI1"
+              challengeId={117}
               className={styles.block}
             />
 
             <RecordedPythonChallenge
-              challengeId="fveynH"
+              challengeId={118}
               className={styles.block}
             />
 
             <RecordedPythonChallenge
-              challengeId="ulmG64"
+              challengeId={119}
               className={styles.block}
             />
 
             <RecordedPythonChallenge
-              challengeId="GemfF1"
+              challengeId={120}
               className={styles.block}
             />
 
             <RecordedPythonChallenge
-              challengeId="8rzCEk"
+              challengeId={121}
               className={styles.block}
             />
 
             <RecordedPythonChallenge
-              challengeId="VnrUu9"
+              challengeId={122}
               className={styles.block}
             />
           </Container>

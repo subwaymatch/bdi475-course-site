@@ -29,7 +29,7 @@ export default function PythonChallengeListPage({ page }) {
 
   const toListItem = (challengeData: definitions["coding_challenges"]) => {
     const item: IChallengeListItemProps = {
-      id: challengeData.id,
+      id: String(challengeData.id),
       title: challengeData.title,
       createdAt: new Date(challengeData.created_at),
       updatedAt: new Date(challengeData.updated_at),

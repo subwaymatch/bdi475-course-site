@@ -56,25 +56,13 @@ export default function WhileLoopsAndCollectionsPage() {
             </Col>
           </Row>
 
-          <RecordedPythonChallenge
-            challengeId="obNzHK"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={32} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="XYmi8W"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={24} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="jeNfHw"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={31} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="IpDjaR"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={19} className={styles.block} />
 
           <Row className={clsx(styles.boxItems)}>
             <Col xl={{ span: 8, offset: 2 }} lg={{ span: 10, offset: 1 }}>
@@ -114,10 +102,7 @@ export default function WhileLoopsAndCollectionsPage() {
             </Col>
           </Row>
 
-          <RecordedPythonChallenge
-            challengeId="7Bf7VZ"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={38} className={styles.block} />
 
           <CenteredColumn className={styles.textBox}>
             <h3>While Loops</h3>
@@ -167,10 +152,7 @@ export default function WhileLoopsAndCollectionsPage() {
             <p>A Python dictionary is... just like a real dictionary.</p>
           </LargeQuote>
 
-          <RecordedPythonChallenge
-            challengeId="Lt10jp"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={43} className={styles.block} />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Dictionary</h3>
@@ -200,15 +182,9 @@ export default function WhileLoopsAndCollectionsPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedPythonChallenge
-            challengeId="b49up1"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={47} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="9UsGYK"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={41} className={styles.block} />
 
           <LargeQuote className={styles.block}>
             <p>
@@ -266,35 +242,17 @@ export default function WhileLoopsAndCollectionsPage() {
             </Col>
           </Row>
 
-          <RecordedPythonChallenge
-            challengeId="iR2yBE"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={50} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="6S3aJI"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={59} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="qskNt6"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={60} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="5kKcWA"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={58} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="Cn11Co"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={51} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="2CxDZ5"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={61} className={styles.block} />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Tuples</h3>
@@ -314,10 +272,7 @@ export default function WhileLoopsAndCollectionsPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedPythonChallenge
-            challengeId="Sga7CT"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={52} className={styles.block} />
         </Container>
       </main>
     </Layout>

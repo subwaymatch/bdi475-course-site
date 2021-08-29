@@ -139,7 +139,7 @@ export default function VariablesAndDataTypesPage() {
           </Row>
 
           <RecordedPythonChallenge
-            challengeId="F7EJVQ"
+            challengeId={13}
             className={styles.questionWrapper}
           />
         </Container>

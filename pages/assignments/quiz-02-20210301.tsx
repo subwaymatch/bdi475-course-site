@@ -45,15 +45,9 @@ export default function QuizPage() {
             </Col>
           </Row>
 
-          <RecordedPythonChallenge
-            challengeId="xQ9xiU"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={56} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="eJleeD"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={123} className={styles.block} />
         </Container>
       </main>
     </Layout>

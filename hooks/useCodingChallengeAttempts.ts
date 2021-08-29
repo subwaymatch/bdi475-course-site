@@ -3,7 +3,7 @@ import { useUser } from "context/UserContext";
 import { supabaseClient } from "lib/supabase/supabaseClient";
 import { definitions } from "types/database";
 
-export default function useCodingChallengeAttempts(challengeId) {
+export default function useCodingChallengeAttempts(challengeId: number) {
   const { user } = useUser();
 
   const [attempts, setAttempts] = useState<

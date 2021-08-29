@@ -93,20 +93,11 @@ export default function BooleanAndConditionalLogicPage() {
             </p>
           </LargeQuote>
 
-          <RecordedPythonChallenge
-            challengeId="c6NgwO"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={10} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="CyHuSl"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={8} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="D0o7hU"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={9} className={styles.block} />
 
           <Row className={clsx(styles.boxItems)}>
             <Col xl={{ span: 8, offset: 2 }} lg={{ span: 10, offset: 1 }}>
@@ -150,10 +141,7 @@ export default function BooleanAndConditionalLogicPage() {
             </p>
           </LargeQuote>
 
-          <RecordedPythonChallenge
-            challengeId="X0ekJl"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={23} className={styles.block} />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Boolean Expressions</h3>
@@ -219,15 +207,9 @@ export default function BooleanAndConditionalLogicPage() {
             className={styles.block}
           />
 
-          <RecordedPythonChallenge
-            challengeId="vQ40L0"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={5} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="aPlxFK"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={36} className={styles.block} />
 
           <CenteredColumn className={styles.textBox}>
             <h3>If...Else</h3>
@@ -251,10 +233,7 @@ export default function BooleanAndConditionalLogicPage() {
             </p>
           </LargeQuote>
 
-          <RecordedPythonChallenge
-            challengeId="06b664"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={3} className={styles.block} />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Why are some lines indented?</h3>
@@ -275,10 +254,7 @@ export default function BooleanAndConditionalLogicPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedPythonChallenge
-            challengeId="qGB9SK"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={33} className={styles.block} />
 
           <Row className={clsx(styles.boxItems)}>
             <Col>
@@ -335,15 +311,9 @@ export default function BooleanAndConditionalLogicPage() {
             <p>Since I have over $50, how does Biaggis sound?</p>
           </LargeQuote>
 
-          <RecordedPythonChallenge
-            challengeId="dSCsot"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={27} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="XzNnHb"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={25} className={styles.block} />
         </Container>
       </main>
     </Layout>

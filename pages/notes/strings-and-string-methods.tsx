@@ -53,45 +53,21 @@ export default function StringsAndStringsMethodPage() {
             </Col>
           </Row>
 
-          <RecordedPythonChallenge
-            challengeId="rZ8rOH"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={54} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="OFKydi"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={69} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="LFbn3g"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={67} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="la9oRa"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={74} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="JywcpO"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={66} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="fndC2H"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={73} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="eF30nG"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={72} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="SzjYaZ"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={77} className={styles.block} />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Slicing a List</h3>
@@ -134,25 +110,13 @@ export default function StringsAndStringsMethodPage() {
             className={styles.block}
           />
 
-          <RecordedPythonChallenge
-            challengeId="e07FQY"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={78} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="9qJE5d"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={80} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="Sidyvz"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={82} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="ShuTgg"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={81} className={styles.block} />
 
           <LargeQuote className={styles.block}>
             <p>
@@ -160,45 +124,21 @@ export default function StringsAndStringsMethodPage() {
             </p>
           </LargeQuote>
 
-          <RecordedPythonChallenge
-            challengeId="V3BU43"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={84} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="usPdIu"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={85} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="BmBkYk"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={86} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="6dPqws"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={87} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="Arh1Ot"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={88} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="LVN4bl"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={89} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="9frSZB"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={91} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="zae2AY"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={90} className={styles.block} />
         </Container>
       </main>
     </Layout>

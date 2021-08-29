@@ -10,48 +10,19 @@ import { definitions } from "types/database";
 
 export default function TestPage() {
   const qid = "F7EJVQ";
-  const { user, roles } = useUser();
-  const { status, data: challengeData, error } = usePythonChallenge(qid);
-  const { attempts, recordSubmission } = useCodingChallengeAttempts(qid);
 
-  const getAttempts = async () => {
+  const createChallenge = async () => {
     const { data, error } = await supabaseClient
-      .from<definitions["coding_challenge_attempts"]>(
-        "coding_challenge_attempts"
-      )
-      .select(
-        `
-        submitted_at,
-        is_success,
-        user_code,
-        profiles (
-          display_name,
-          email
-        )
-      `
-      )
-      .match({
-        challenge_id: qid,
-      })
-      .order("submitted_at", { ascending: false });
+      .from<definitions["coding_challenges"]>("coding_challenges")
+      .insert([{}]);
 
     if (error) {
       console.error(error);
+    } else {
+      console.log("Insert result");
+      console.log(data);
     }
   };
-
-  useEffect(() => {
-    if (user) {
-      console.log(`user=${user.id}`);
-      console.log(`roles`);
-      console.log(roles);
-    }
-
-    getAttempts();
-  }, [user]);
-
-  console.log(`codingQuestion`);
-  console.log(challengeData);
 
   return (
     <Layout>
@@ -67,10 +38,10 @@ export default function TestPage() {
             <button
               onClick={async (e) => {
                 e.preventDefault();
-                await recordSubmission(true, "my code 1");
+                await createChallenge();
               }}
             >
-              Add Attempt
+              Create a new row in coding_challenges table
             </button>
           </Col>
         </Row>

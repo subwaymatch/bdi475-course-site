@@ -19,7 +19,14 @@ dayjs.extend(relativeTime);
 export default function PythonChallengeUserHistoryPage() {
   const router = useRouter();
   const { cid } = router.query;
-  const { attempts } = useCodingChallengeAttempts(cid);
+
+  let challengeId = cid
+    ? Array.isArray(cid)
+      ? Number(cid[0])
+      : Number(cid)
+    : null;
+
+  const { attempts } = useCodingChallengeAttempts(challengeId);
 
   return (
     <Layout>

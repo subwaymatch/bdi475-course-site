@@ -57,15 +57,9 @@ export default function ListsAndLoopsPage() {
             </Col>
           </Row>
 
-          <RecordedPythonChallenge
-            challengeId="B2Z3Nz"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={1} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="PZbhws"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={22} className={styles.block} />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Introduction to Lists</h3>
@@ -91,15 +85,9 @@ export default function ListsAndLoopsPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedPythonChallenge
-            challengeId="AMl9MN"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={4} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="JbjkgM"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={20} className={styles.block} />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Accessing list elements by index</h3>
@@ -119,15 +107,9 @@ export default function ListsAndLoopsPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedPythonChallenge
-            challengeId="r4xjZt"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={34} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="f7DY43"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={29} className={styles.block} />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Can a list have elements with non-uniform data types?</h3>
@@ -149,10 +131,7 @@ export default function ListsAndLoopsPage() {
             </p>
           </LargeQuote>
 
-          <RecordedPythonChallenge
-            challengeId="f53Gw6"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={28} className={styles.block} />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Do we really want to keep copy-pasting stuff?</h3>
@@ -167,30 +146,15 @@ export default function ListsAndLoopsPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedPythonChallenge
-            challengeId="tSheIA"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={35} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="M5pUHB"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={21} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="iVUt8c"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={30} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="FCTXPT"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={39} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="aQOWTX"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={26} className={styles.block} />
 
           <Row className={clsx(styles.boxItems)}>
             <Col xl={{ span: 8, offset: 2 }} lg={{ span: 10, offset: 1 }}>
@@ -230,15 +194,9 @@ export default function ListsAndLoopsPage() {
             </Col>
           </Row>
 
-          <RecordedPythonChallenge
-            challengeId="woLrZ7"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={40} className={styles.block} />
 
-          <RecordedPythonChallenge
-            challengeId="549Yuv"
-            className={styles.block}
-          />
+          <RecordedPythonChallenge challengeId={37} className={styles.block} />
         </Container>
       </main>
     </Layout>

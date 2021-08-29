@@ -75,22 +75,22 @@ export default function QuizPage() {
             </CenteredColumn>
 
             <RecordedPythonChallenge
-              challengeId="zWeBSE"
+              challengeId={57}
               className={styles.block}
             />
 
             <RecordedPythonChallenge
-              challengeId="qp1LzJ"
+              challengeId={53}
               className={styles.block}
             />
 
             <RecordedPythonChallenge
-              challengeId="GYdI7m"
+              challengeId={42}
               className={styles.block}
             />
 
             <RecordedPythonChallenge
-              challengeId="dooYXm"
+              challengeId={49}
               className={styles.block}
             />
           </Container>
