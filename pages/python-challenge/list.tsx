@@ -15,7 +15,6 @@ export default function PythonChallengeListPage() {
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
   const [pageSize, setPageSize] = useState(20);
   const [listItems, setListItems] = useState<IChallengeListItemProps[]>([]);
-  const [status, setStatus] = useState("loading");
 
   const calculatePageCount = async () => {
     const { count } = await supabaseClient
@@ -59,8 +58,6 @@ export default function PythonChallengeListPage() {
   };
 
   const loadPage = async () => {
-    console.log(`loadPage currentPageIndex=${currentPageIndex}`);
-    setStatus("loading");
     const { data, error } = await supabaseClient
       .from<definitions["coding_challenges"]>("coding_challenges")
       .select()
@@ -73,7 +70,8 @@ export default function PythonChallengeListPage() {
 
     if (!error) {
       setListItems(data.map((o) => toListItem(o)));
-      setStatus("success");
+    } else {
+      toast.error("Error loading data: " + error.message);
     }
   };
 
@@ -82,8 +80,6 @@ export default function PythonChallengeListPage() {
   }, []);
 
   const handlePageClick = async (data) => {
-    console.log(`handlePageClick`);
-    console.log(data);
     setCurrentPageIndex(data.selected);
     await loadPage();
   };
@@ -111,13 +107,7 @@ export default function PythonChallengeListPage() {
             <Col md={4}>Page {currentPageIndex + 1}</Col>
           </Row>
 
-          {status === "loading" ? (
-            <Row>
-              <Col>Loading...</Col>
-            </Row>
-          ) : (
-            <ChallengeList items={listItems} />
-          )}
+          <ChallengeList items={listItems} />
 
           <Row>
             <Col md={12}>
