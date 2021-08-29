@@ -118,8 +118,9 @@ export interface paths {
     get: {
       parameters: {
         query: {
-          challenge_id?: parameters["rowFilter.coding_challenge_solutions.challenge_id"];
+          old_challenge_id?: parameters["rowFilter.coding_challenge_solutions.old_challenge_id"];
           solution_code?: parameters["rowFilter.coding_challenge_solutions.solution_code"];
+          challenge_id?: parameters["rowFilter.coding_challenge_solutions.challenge_id"];
           /** Filtering Columns */
           select?: parameters["select"];
           /** Ordering */
@@ -170,8 +171,9 @@ export interface paths {
     delete: {
       parameters: {
         query: {
-          challenge_id?: parameters["rowFilter.coding_challenge_solutions.challenge_id"];
+          old_challenge_id?: parameters["rowFilter.coding_challenge_solutions.old_challenge_id"];
           solution_code?: parameters["rowFilter.coding_challenge_solutions.solution_code"];
+          challenge_id?: parameters["rowFilter.coding_challenge_solutions.challenge_id"];
         };
         header: {
           /** Preference */
@@ -186,8 +188,9 @@ export interface paths {
     patch: {
       parameters: {
         query: {
-          challenge_id?: parameters["rowFilter.coding_challenge_solutions.challenge_id"];
+          old_challenge_id?: parameters["rowFilter.coding_challenge_solutions.old_challenge_id"];
           solution_code?: parameters["rowFilter.coding_challenge_solutions.solution_code"];
+          challenge_id?: parameters["rowFilter.coding_challenge_solutions.challenge_id"];
         };
         body: {
           /** coding_challenge_solutions */
@@ -214,9 +217,11 @@ export interface paths {
           text_markdown?: parameters["rowFilter.coding_challenges.text_markdown"];
           title?: parameters["rowFilter.coding_challenges.title"];
           updated_at?: parameters["rowFilter.coding_challenges.updated_at"];
-          id?: parameters["rowFilter.coding_challenges.id"];
+          old_id?: parameters["rowFilter.coding_challenges.old_id"];
           /** Programming language used for the challenge (e.g., Python, Java, C) */
           language?: parameters["rowFilter.coding_challenges.language"];
+          /** Primary ID in int8 format for coding challenges */
+          id?: parameters["rowFilter.coding_challenges.id"];
           /** Filtering Columns */
           select?: parameters["select"];
           /** Ordering */
@@ -273,9 +278,11 @@ export interface paths {
           text_markdown?: parameters["rowFilter.coding_challenges.text_markdown"];
           title?: parameters["rowFilter.coding_challenges.title"];
           updated_at?: parameters["rowFilter.coding_challenges.updated_at"];
-          id?: parameters["rowFilter.coding_challenges.id"];
+          old_id?: parameters["rowFilter.coding_challenges.old_id"];
           /** Programming language used for the challenge (e.g., Python, Java, C) */
           language?: parameters["rowFilter.coding_challenges.language"];
+          /** Primary ID in int8 format for coding challenges */
+          id?: parameters["rowFilter.coding_challenges.id"];
         };
         header: {
           /** Preference */
@@ -296,9 +303,11 @@ export interface paths {
           text_markdown?: parameters["rowFilter.coding_challenges.text_markdown"];
           title?: parameters["rowFilter.coding_challenges.title"];
           updated_at?: parameters["rowFilter.coding_challenges.updated_at"];
-          id?: parameters["rowFilter.coding_challenges.id"];
+          old_id?: parameters["rowFilter.coding_challenges.old_id"];
           /** Programming language used for the challenge (e.g., Python, Java, C) */
           language?: parameters["rowFilter.coding_challenges.language"];
+          /** Primary ID in int8 format for coding challenges */
+          id?: parameters["rowFilter.coding_challenges.id"];
         };
         body: {
           /** coding_challenges */
@@ -471,19 +480,19 @@ export interface definitions {
      * Note:
      * This is a Foreign Key to `coding_challenges.id`.<fk table='coding_challenges' column='id'/>
      */
-    challenge_id: string;
+    challenge_id: number;
     submitted_at: string;
     is_success: boolean;
     user_code?: string;
   };
   coding_challenge_solutions: {
+    old_challenge_id: string;
+    solution_code?: string;
     /**
      * Note:
-     * This is a Primary Key.<pk/>
      * This is a Foreign Key to `coding_challenges.id`.<fk table='coding_challenges' column='id'/>
      */
-    challenge_id: string;
-    solution_code?: string;
+    challenge_id: number;
   };
   coding_challenges: {
     created_at?: string;
@@ -492,13 +501,16 @@ export interface definitions {
     text_markdown?: string;
     title?: string;
     updated_at?: string;
+    old_id?: string;
+    /** Programming language used for the challenge (e.g., Python, Java, C) */
+    language: string;
     /**
+     * Primary ID in int8 format for coding challenges
+     *
      * Note:
      * This is a Primary Key.<pk/>
      */
-    id: string;
-    /** Programming language used for the challenge (e.g., Python, Java, C) */
-    language?: string;
+    id: number;
   };
   profiles: {
     /**
@@ -545,8 +557,9 @@ export interface parameters {
   "rowFilter.coding_challenge_attempts.user_code": string;
   /** coding_challenge_solutions */
   "body.coding_challenge_solutions": definitions["coding_challenge_solutions"];
-  "rowFilter.coding_challenge_solutions.challenge_id": string;
+  "rowFilter.coding_challenge_solutions.old_challenge_id": string;
   "rowFilter.coding_challenge_solutions.solution_code": string;
+  "rowFilter.coding_challenge_solutions.challenge_id": string;
   /** coding_challenges */
   "body.coding_challenges": definitions["coding_challenges"];
   "rowFilter.coding_challenges.created_at": string;
@@ -555,9 +568,11 @@ export interface parameters {
   "rowFilter.coding_challenges.text_markdown": string;
   "rowFilter.coding_challenges.title": string;
   "rowFilter.coding_challenges.updated_at": string;
-  "rowFilter.coding_challenges.id": string;
+  "rowFilter.coding_challenges.old_id": string;
   /** Programming language used for the challenge (e.g., Python, Java, C) */
   "rowFilter.coding_challenges.language": string;
+  /** Primary ID in int8 format for coding challenges */
+  "rowFilter.coding_challenges.id": string;
   /** profiles */
   "body.profiles": definitions["profiles"];
   "rowFilter.profiles.id": string;
