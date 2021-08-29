@@ -3,9 +3,7 @@ import Layout from "components/Layout";
 import { useRouter } from "next/router";
 import { Container, Row, Col } from "react-bootstrap";
 import { supabaseClient } from "lib/supabase/supabaseClient";
-import IPythonExercise from "types/coding-exercise";
 import _ from "lodash";
-import { generateQuestionId } from "utils/question";
 import { useEffect, useState } from "react";
 import { useUser } from "context/UserContext";
 import { definitions } from "types/database";
@@ -21,6 +19,8 @@ export default function EditCodingQuestionPage() {
     useState<definitions["coding_challenge_solutions"]>(null);
 
   const loadQuestionData = async () => {
+    setIsLoading(true);
+
     const { data: challengeData, error: challengeError } = await supabaseClient
       .from<definitions["coding_challenges"]>("coding_challenges")
       .select()
