@@ -7,11 +7,13 @@ import _ from "lodash";
 import { useEffect, useState } from "react";
 import { useUser } from "context/UserContext";
 import { definitions } from "types/database";
+import { getChallengeIdAsNumberFromQuery } from "utils/challenge";
 
 export default function EditCodingQuestionPage() {
   const router = useRouter();
   const { user, roles } = useUser();
   const { cid } = router.query;
+  const challengeId = getChallengeIdAsNumberFromQuery(cid);
   const [challengeData, setChallengeData] =
     useState<definitions["coding_challenges"]>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -24,7 +26,7 @@ export default function EditCodingQuestionPage() {
     const { data: challengeData, error: challengeError } = await supabaseClient
       .from<definitions["coding_challenges"]>("coding_challenges")
       .select()
-      .eq("id", cid as string)
+      .eq("id", challengeId)
       .single();
 
     const { data: solutionData, error: solutionError } = await supabaseClient
@@ -32,7 +34,7 @@ export default function EditCodingQuestionPage() {
         "coding_challenge_solutions"
       )
       .select()
-      .eq("challenge_id", cid as string)
+      .eq("challenge_id", challengeId)
       .single();
 
     setChallengeData(challengeData);
@@ -45,7 +47,7 @@ export default function EditCodingQuestionPage() {
     const { data, error } = await supabaseClient
       .from("coding_questions")
       .delete()
-      .match({ id: cid });
+      .match({ id: challengeId });
 
     router.push("/python-challenge/list");
   };
@@ -68,12 +70,12 @@ export default function EditCodingQuestionPage() {
   const saveSolutionCode = async (solutionCode) => {};
 
   useEffect(() => {
-    if (!cid || !user) {
+    if (!challengeId || !user) {
       return;
     }
 
     loadQuestionData();
-  }, [cid, user, roles]);
+  }, [challengeId, user, roles]);
 
   return isLoading ? (
     <Layout excludeHeader={true}>
@@ -86,7 +88,7 @@ export default function EditCodingQuestionPage() {
   ) : (
     <Layout excludeHeader={true}>
       <PythonChallengeEditor
-        qid={cid as string}
+        qid={challengeId}
         challengeData={challengeData}
         solutionData={solutionData}
         onSave={(questionData, solutionCode) => {

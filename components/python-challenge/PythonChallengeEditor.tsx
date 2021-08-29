@@ -23,7 +23,7 @@ const CodeEditor = dynamic(() => import("components/CodeEditor"), {
 });
 
 interface IPythonChallengeEditorProps {
-  qid: string;
+  qid: number;
   challengeData: definitions["coding_challenges"];
   solutionData: definitions["coding_challenge_solutions"];
   onSave: (
@@ -96,7 +96,7 @@ export default function PythonChallengeEditor({
   };
 
   const runSolutionCode = async () => {
-    if (!isRuntimeReady) {
+    if (!isRuntimeReady) { 
       return;
     }
 

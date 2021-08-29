@@ -13,19 +13,14 @@ import { IoIosCloseCircleOutline } from "react-icons/io";
 import Tippy from "@tippyjs/react";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import { getChallengeIdAsNumberFromQuery } from "utils/challenge";
 
 dayjs.extend(relativeTime);
 
 export default function PythonChallengeUserHistoryPage() {
   const router = useRouter();
   const { cid } = router.query;
-
-  let challengeId = cid
-    ? Array.isArray(cid)
-      ? Number(cid[0])
-      : Number(cid)
-    : null;
-
+  let challengeId = getChallengeIdAsNumberFromQuery(cid);
   const { attempts } = useCodingChallengeAttempts(challengeId);
 
   return (

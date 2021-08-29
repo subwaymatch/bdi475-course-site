@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
-import { generateQuestionId } from "utils/question";
 import { supabaseClient } from "lib/supabase/supabaseClient";
 import { definitions } from "types/database";
 import { toast } from "react-toastify";

@@ -16,18 +16,18 @@ import { useEffect, useState } from "react";
 import { supabaseClient } from "lib/supabase/supabaseClient";
 import { definitions } from "types/database";
 import { useUser } from "context/UserContext";
+import { getChallengeIdAsNumberFromQuery } from "utils/challenge";
 
 dayjs.extend(relativeTime);
 
 export default function CodingChallengeAttemptsPage() {
   const router = useRouter();
   const { cid } = router.query;
+  let challengeId = getChallengeIdAsNumberFromQuery(cid);
   const { user, roles } = useUser();
   const [attempts, setAttempts] = useState([]);
 
   const getAttempts = async () => {
-    const challengeId = Array.isArray(cid) ? Number(cid[0]) : Number(cid);
-
     const { data, error } = await supabaseClient
       .from<definitions["coding_challenge_attempts"]>(
         "coding_challenge_attempts"
@@ -64,7 +64,7 @@ export default function CodingChallengeAttemptsPage() {
 
     const newAttemptSubscription = supabaseClient
       .from<definitions["coding_challenge_attempts"]>(
-        `coding_challenge_attempts:challenge_id=eq.${cid}`
+        `coding_challenge_attempts:challenge_id=eq.${challengeId}`
       )
       .on("INSERT", async (payload) => {
         console.log("Change received!", payload);
