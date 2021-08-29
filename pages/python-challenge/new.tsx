@@ -38,7 +38,7 @@ export default function CreatePythonExercisePage() {
       console.error(solutionError);
 
       toast.error(
-        `Error creating a solution entry for ${newChallengeId}: ${challengeError.message}`
+        `Error creating a solution entry for ${newChallengeId}: ${solutionError.message}`
       );
       return;
     }
