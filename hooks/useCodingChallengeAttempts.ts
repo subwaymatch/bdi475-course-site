@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { useUser } from "context/UserContext";
+import useSupabaseAuth from "hooks/useSupabaseAuth";
 import { supabaseClient } from "lib/supabase/supabaseClient";
 import { definitions } from "types/database";
 
 export default function useCodingChallengeAttempts(challengeId: number) {
-  const { user } = useUser();
+  const { user } = useSupabaseAuth();
 
   const [attempts, setAttempts] = useState<
     definitions["coding_challenge_attempts"][]

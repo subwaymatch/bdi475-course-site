@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { supabaseClient } from "lib/supabase/supabaseClient";
 import usePythonChallenge from "hooks/usePythonChallenge";
 import { User } from "@supabase/supabase-js";
-import { useUser } from "context/UserContext";
+import useSupabaseAuth from "hooks/useSupabaseAuth";
 import { definitions } from "types/database";
 
 export default function TestPage() {

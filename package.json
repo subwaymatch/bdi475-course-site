@@ -41,7 +41,8 @@
     "react-tooltip": "^4.2.13",
     "reactfire": "^3.0.0-rc.0",
     "sass": "^1.38.0",
-    "victory": "^35.4.8"
+    "victory": "^35.4.8",
+    "zustand": "^3.5.10"
   },
   "devDependencies": {
     "@types/node": "^14.14.20",

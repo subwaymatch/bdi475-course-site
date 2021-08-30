@@ -15,7 +15,7 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import { useEffect, useState } from "react";
 import { supabaseClient } from "lib/supabase/supabaseClient";
 import { definitions } from "types/database";
-import { useUser } from "context/UserContext";
+import useSupabaseAuth from "hooks/useSupabaseAuth";
 import { getChallengeIdAsNumberFromQuery } from "utils/challenge";
 
 dayjs.extend(relativeTime);
@@ -24,7 +24,7 @@ export default function CodingChallengeAttemptsPage() {
   const router = useRouter();
   const { cid } = router.query;
   let challengeId = getChallengeIdAsNumberFromQuery(cid);
-  const { user, roles } = useUser();
+  const { user, roles } = useSupabaseAuth();
   const [attempts, setAttempts] = useState([]);
 
   const getAttempts = async () => {

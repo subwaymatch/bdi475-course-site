@@ -5,13 +5,13 @@ import { Container, Row, Col } from "react-bootstrap";
 import { supabaseClient } from "lib/supabase/supabaseClient";
 import _ from "lodash";
 import { useEffect, useState } from "react";
-import { useUser } from "context/UserContext";
+import useSupabaseAuth from "hooks/useSupabaseAuth";
 import { definitions } from "types/database";
 import { getChallengeIdAsNumberFromQuery } from "utils/challenge";
 
 export default function EditCodingQuestionPage() {
   const router = useRouter();
-  const { user, roles } = useUser();
+  const { user, roles } = useSupabaseAuth();
   const { cid } = router.query;
   const challengeId = getChallengeIdAsNumberFromQuery(cid);
   const [challengeData, setChallengeData] =

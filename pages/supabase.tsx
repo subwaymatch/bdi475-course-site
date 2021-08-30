@@ -1,13 +1,13 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import Layout from "components/Layout";
-import { useUser } from "context/UserContext";
+import useSupabaseAuth from "hooks/useSupabaseAuth";
 import { Auth } from "@supabase/ui";
 import { supabaseClient } from "lib/supabase/supabaseClient";
 import { Container, Row, Col } from "react-bootstrap";
 
 export default function LoginPage() {
-  const { user } = useUser();
+  const { user } = useSupabaseAuth();
   const router = useRouter();
 
   useEffect(() => {

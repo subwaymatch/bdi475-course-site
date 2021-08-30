@@ -17,7 +17,7 @@ import MenuButton from "components/Header/MenuButton";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { desktop } from "constants/media-query-strings";
 import Tippy from "@tippyjs/react";
-import { useUser } from "context/UserContext";
+import useSupabaseAuth from "hooks/useSupabaseAuth";
 import { supabaseClient } from "lib/supabase/supabaseClient";
 
 const menuItems = [
@@ -129,7 +129,7 @@ const SignOutButton = forwardRef((props, ref: React.Ref<HTMLDivElement>) => {
 
 const UserMenu = () => {
   const isScreenDesktop = useMediaQuery(desktop);
-  const { user } = useUser();
+  const { user } = useSupabaseAuth();
 
   return (
     <Row className="align-items-middle">
