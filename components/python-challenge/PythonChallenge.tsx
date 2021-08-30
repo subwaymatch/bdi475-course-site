@@ -17,6 +17,7 @@ import styles from "./PythonChallenge.module.scss";
 import clsx from "clsx";
 import { definitions } from "types/database";
 import useSupabaseAuth from "hooks/useSupabaseAuth";
+import FormatterDiffModal from "components/CodeEditor/FormatterDiffModal";
 
 const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
@@ -35,6 +36,7 @@ export default function PythonChallenge({
 }: IPythonExerciseProps) {
   const { user } = useSupabaseAuth();
   const [userCode, setUserCode] = useState(challengeData.starter_code);
+  const [showFormattedModal, setShowFormattedModal] = useState(false);
   const [output, setOutput] = useState("");
   const [hasError, setHasError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -107,30 +109,10 @@ export default function PythonChallenge({
 
     if (runResult.hasError) {
       toast.error("Please fix the error before formatting your code");
-    } else {
+      return;
     }
 
-    const response = await fetch(
-      process.env.NEXT_PUBLIC_BLACK_LAMBDA_ENDPOINT,
-      {
-        method: "POST",
-        mode: "cors",
-        credentials: "same-origin",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          source: userCode,
-        }),
-      }
-    );
-
-    const formatResult = await response.json();
-
-    console.log("BLACK RESULT");
-    console.log(formatResult);
-
-    onChange(formatResult.formatted_code);
+    setShowFormattedModal(true);
   };
 
   const saveUserCodeToLocalStorage = useCallback(
@@ -257,12 +239,12 @@ export default function PythonChallenge({
                   >
                     <div
                       className={clsx(styles.button, styles.runButton, {
-                        [styles.disabled]: !user,
+                        [styles.disabled]: !user || !isRuntimeReady,
                       })}
                       onClick={async (e) => {
                         e.preventDefault();
 
-                        if (!user) {
+                        if (!user || !isRuntimeReady) {
                           return;
                         }
 
@@ -359,6 +341,17 @@ export default function PythonChallenge({
           </div>
         </Col>
       </Row>
+
+      <FormatterDiffModal
+        isOpen={showFormattedModal}
+        onAccept={(formattedCode) => {
+          onChange(formattedCode);
+          setShowFormattedModal(false);
+        }}
+        onClose={() => setShowFormattedModal(false)}
+        original={userCode}
+        language="python"
+      />
     </div>
   );
 }
