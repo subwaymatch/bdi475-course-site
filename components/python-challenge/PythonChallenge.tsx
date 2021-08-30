@@ -7,8 +7,7 @@ import usePythonRuntime from "hooks/usePythonRuntime";
 import useLocalStorage from "hooks/useLocalStorage";
 import { Col, Row } from "react-bootstrap";
 import { BiReset } from "react-icons/bi";
-import { BsLightning } from "react-icons/bs";
-import { FaPython } from "react-icons/fa";
+import { IoColorWandOutline } from "react-icons/io5";
 import { VscSymbolMethod, VscRunAll } from "react-icons/vsc";
 import { IoPlay } from "react-icons/io5";
 import Tippy from "@tippyjs/react";
@@ -17,7 +16,7 @@ import marked from "marked";
 import styles from "./PythonChallenge.module.scss";
 import clsx from "clsx";
 import { definitions } from "types/database";
-import { useUser } from "context/UserContext";
+import useSupabaseAuth from "hooks/useSupabaseAuth";
 
 const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
@@ -34,7 +33,7 @@ export default function PythonChallenge({
   localStorageKey,
   onSubmit,
 }: IPythonExerciseProps) {
-  const { user } = useUser();
+  const { user } = useSupabaseAuth();
   const [userCode, setUserCode] = useState(challengeData.starter_code);
   const [output, setOutput] = useState("");
   const [hasError, setHasError] = useState(false);
@@ -73,11 +72,13 @@ export default function PythonChallenge({
     if (result.hasError) {
       toast.error("See the error message below.");
     } else {
-      toast("Run complete.");
+      let message = "Run complete";
 
       if (!result.stdout) {
-        toast.warning("Your code did not print anything.");
+        message += " - your code did not print anything.";
       }
+
+      toast(message);
     }
   };
 
@@ -98,9 +99,16 @@ export default function PythonChallenge({
   };
 
   const autoformatCode = async () => {
-    console.log(
-      `NEXT_PUBLIC_BLACK_LAMBDA_ENDPOINT=${process.env.NEXT_PUBLIC_BLACK_LAMBDA_ENDPOINT}`
-    );
+    const runResult = await runCode(userCode);
+
+    setOutput(runResult.stdout);
+    setHasError(runResult.hasError);
+    setErrorMessage(runResult.errorMessage);
+
+    if (runResult.hasError) {
+      toast.error("Please fix the error before formatting your code");
+    } else {
+    }
 
     const response = await fetch(
       process.env.NEXT_PUBLIC_BLACK_LAMBDA_ENDPOINT,
@@ -117,10 +125,12 @@ export default function PythonChallenge({
       }
     );
 
-    const result = await response.json();
-    setUserCode(result.formatted_code);
+    const formatResult = await response.json();
 
-    toast.success("Your code has been formatted");
+    console.log("BLACK RESULT");
+    console.log(formatResult);
+
+    onChange(formatResult.formatted_code);
   };
 
   const saveUserCodeToLocalStorage = useCallback(
@@ -234,7 +244,7 @@ export default function PythonChallenge({
                   <Tippy
                     content={
                       user ? (
-                        <>Autoformat your code using a Python code formatter</>
+                        <>Autoformat your code using a formatter</>
                       ) : (
                         <>You must be signed in to use the autoformat feature</>
                       )
@@ -259,7 +269,7 @@ export default function PythonChallenge({
                         await autoformatCode();
                       }}
                     >
-                      <FaPython className={styles.reactIcon} />
+                      <IoColorWandOutline className={styles.reactIcon} />
                       <span className={styles.label}>Format</span>
                     </div>
                   </Tippy>

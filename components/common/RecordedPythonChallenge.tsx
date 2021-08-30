@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import Link from "next/link";
 import PythonChallenge from "components/python-challenge/PythonChallenge";
-import { useUser } from "context/UserContext";
+import useSupabaseAuth from "hooks/useSupabaseAuth";
 import { Row, Col } from "react-bootstrap";
 import { BsCheckCircle } from "react-icons/bs";
 import { RiHistoryLine, RiEditBoxLine, RiGroupLine } from "react-icons/ri";
@@ -20,7 +20,7 @@ export default function RecordedPythonChallenge({
   challengeId,
   className,
 }: IRecordedPythonChallengeProps) {
-  const { user, roles } = useUser();
+  const { user, roles } = useSupabaseAuth();
   const isAdmin = roles.includes("Admin");
   const { status, data, error } = usePythonChallenge(challengeId);
   const { attempts, recordSubmission } =
