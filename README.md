@@ -7,6 +7,12 @@ Introduction to Data Analytics Applications in Business
 
 This is a course site for UIUC's BDI 475 - Introduction to Data Analytics Applications in Business.
 
+## Link to Spring 2021 Version
+
+Spring 2021 deployment uses Firebase Auth and Firestore. The link here is only for an archival purpose.
+
+[https://bdi475-course-site-fgr8lwjf7-subwaymatch.vercel.app/](https://bdi475-course-site-fgr8lwjf7-subwaymatch.vercel.app/)
+
 ## Preview (Development) and Production Branches
 
 - `main` branch is used for all development activities. `main` branch can be viewed at [https://bdi475-course-site-git-main.subwaymatch.vercel.app/](https://bdi475-course-site-git-main.subwaymatch.vercel.app/).
