@@ -139,7 +139,7 @@ export default function PythonChallengeEditor({
                 type="text"
                 value={workingChallengeData.title}
                 onChange={(e) => update("title", e.target.value)}
-                placeholder="Question Title"
+                placeholder="Challenge Title"
                 className={styles.challengeTitleInput}
               />
             </div>
@@ -159,7 +159,7 @@ export default function PythonChallengeEditor({
                     await save();
                     toast.success("Save successful");
                   } catch (err) {
-                    toast.error("Error saving question");
+                    toast.error("Error saving challenge");
                   }
                 }}
               >
@@ -178,12 +178,11 @@ export default function PythonChallengeEditor({
                   if (didChange) {
                     if (
                       window.confirm(
-                        "You must save your changes to clone this question. Save and continue?"
+                        "You must save your changes to clone this challenge. Save and continue?"
                       )
                     ) {
                       await save();
                     } else {
-                      //
                       return;
                     }
                   }

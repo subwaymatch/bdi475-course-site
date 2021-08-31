@@ -41,13 +41,24 @@ export default function PythonChallengeListPage({ page }) {
             "Are you sure you want to delete this challenge? This cannot be undone."
           )
         ) {
-          // await collectionRef.doc(cid).delete();
+          const { data, error } = await supabaseClient
+            .from("coding_challenges")
+            .delete()
+            .match({ id: challengeData.id });
 
-          toast.info(
-            <div>
-              Deleted challenge <code>{challengeData.id}</code>
-            </div>
-          );
+          if (!error) {
+            setListItems((prevItems) =>
+              prevItems.filter((o) => o.id !== String(challengeData.id))
+            );
+
+            toast.info(
+              <div>
+                Deleted challenge <code>{challengeData.id}</code>
+              </div>
+            );
+          } else {
+            toast.error(`Error deleting ${challengeData.id}: ${error.message}`);
+          }
         }
       },
     };
@@ -61,7 +72,7 @@ export default function PythonChallengeListPage({ page }) {
       .select()
       .eq("language", "Python")
       .order("updated_at", { ascending: false })
-      .range(pageIndex * pageSize + 1, (pageIndex + 1) * pageSize);
+      .range(pageIndex * pageSize, (pageIndex + 1) * pageSize);
 
     if (!error) {
       setListItems(data.map((o) => toListItem(o)));
@@ -78,6 +89,45 @@ export default function PythonChallengeListPage({ page }) {
       pathname: router.pathname,
       query: { page: pageIndex + 1 },
     });
+  };
+
+  const createNewChallenge = async () => {
+    const { data: challengeData, error: challengeError } = await supabaseClient
+      .from<definitions["coding_challenges"]>("coding_challenges")
+      .insert([{}]);
+
+    if (challengeError) {
+      console.error(challengeError);
+
+      toast.error("Error creating a new challenge: " + challengeError.message);
+      return;
+    }
+
+    const newChallengeId = challengeData[0].id;
+
+    const { data: solutionData, error: solutionError } = await supabaseClient
+      .from<definitions["coding_challenge_solutions"]>(
+        "coding_challenge_solutions"
+      )
+      .insert([
+        {
+          challenge_id: newChallengeId,
+        },
+      ]);
+
+    if (solutionError) {
+      console.error(solutionError);
+
+      toast.error(
+        `Error creating a solution entry for ${newChallengeId}: ${solutionError.message}`
+      );
+      return;
+    }
+
+    console.log("Insert result");
+    console.log(challengeData[0].id);
+
+    router.push(`/python-challenge/edit/${challengeData[0].id}`);
   };
 
   useEffect(() => {
@@ -99,9 +149,12 @@ export default function PythonChallengeListPage({ page }) {
 
           <Row>
             <Col md={4}>
-              <Link href="/python-challenge/new">
-                <a className={styles.createButton}>+ Create</a>
-              </Link>
+              <button
+                onClick={createNewChallenge}
+                className={styles.createButton}
+              >
+                + Create
+              </button>
             </Col>
 
             <Col md={4}>Page {currentPageIndex + 1}</Col>

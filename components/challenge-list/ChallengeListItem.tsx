@@ -33,7 +33,7 @@ export default function ChallengeListItem({
   return (
     <div className={styles.listItem}>
       <Row className="align-items-center">
-        <Col md={2}>
+        <Col md={1}>
           <CopyToClipboard
             text={id}
             onCopy={() =>
@@ -48,7 +48,7 @@ export default function ChallengeListItem({
               variants={clickableVariants}
               whileHover="hover"
               whileTap="tap"
-              className={clsx(styles.button, styles.qid)}
+              className={clsx(styles.button, styles.cid)}
               onClick={(e) => {
                 e.preventDefault();
               }}
@@ -59,7 +59,7 @@ export default function ChallengeListItem({
           </CopyToClipboard>
         </Col>
 
-        <Col md={4}>
+        <Col md={5}>
           <Link href={permalink}>
             <motion.a
               variants={clickableVariants}
@@ -101,13 +101,13 @@ export default function ChallengeListItem({
         </Col>
 
         <Col md={2}>
-          <span className={clsx("label", styles.timestamp)}>
+          <span className={clsx("label", styles.date)}>
             {dayjs(createdAt).format("MMM D, YYYY")}
           </span>
         </Col>
 
         <Col md={2}>
-          <span className={clsx("label", styles.timestamp)}>
+          <span className={clsx("label", styles.date)}>
             {dayjs(updatedAt).format("MMM D, YYYY")}
           </span>
         </Col>

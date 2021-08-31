@@ -3,8 +3,9 @@
 .listItem {
   border-top: 1px solid $color-border-gray;
   padding: 0.25rem 0;
+  font-size: 1.15rem;
 
-  .qid {
+  .cid {
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -30,6 +31,9 @@
   }
 
   .title {
+    color: $color-dark-gray;
+    font-size: 1.05em;
+    font-weight: 500;
     display: block;
     padding: 1rem 0;
     transition: color 200ms linear;
@@ -56,5 +60,9 @@
     .delete {
       margin-left: 0.5rem;
     }
+  }
+
+  .date {
+    color: #999;
   }
 }

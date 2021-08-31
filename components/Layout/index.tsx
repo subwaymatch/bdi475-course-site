@@ -41,7 +41,7 @@ export default function Layout({ children, excludeHeader }: ILayoutProps) {
         <meta name="theme-color" content={colors.green} />
       </Head>
 
-      {process.env.NODE_ENV === "development" && <BootstrapBreakpoints />}
+      {/* {process.env.NODE_ENV === "development" && <BootstrapBreakpoints />} */}
 
       {excludeHeader !== true && <Header />}
 

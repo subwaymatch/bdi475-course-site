@@ -16,11 +16,11 @@ export default function ChallengeList({ items }: IChallengeListProps) {
         <Col>
           <div className={styles.headerRow}>
             <Row>
-              <Col md={2}>
-                <span className="label blue">Challenge ID</span>
+              <Col md={1}>
+                <span className="label blue">ID</span>
               </Col>
 
-              <Col md={4}>
+              <Col md={5}>
                 <span className="label purple">Title</span>
               </Col>
 

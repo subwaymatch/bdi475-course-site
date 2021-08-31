@@ -45,7 +45,7 @@ export default function EditCodingQuestionPage() {
 
   const onDelete = async () => {
     const { data, error } = await supabaseClient
-      .from("coding_questions")
+      .from("coding_challenges")
       .delete()
       .match({ id: challengeId });
 
