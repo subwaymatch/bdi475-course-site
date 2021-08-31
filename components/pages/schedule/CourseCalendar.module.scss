@@ -8,15 +8,15 @@
   line-height: 1.6;
   padding: 0 1rem;
 
-  @include media-breakpoint-only(md) {
-    font-size: 0.9rem;
+  @include media-breakpoint-only(lg) {
+    font-size: 0.95rem;
   }
 
-  @include media-breakpoint-only(sm) {
+  @include media-breakpoint-only(md) {
     font-size: 1.2rem;
   }
 
-  @include media-breakpoint-only(xs) {
+  @include media-breakpoint-only(sm) {
     font-size: 1.1rem;
   }
 
@@ -38,7 +38,7 @@
   .calendarRow {
     display: flex;
 
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(lg) {
       padding: 0;
       flex-direction: column;
     }
@@ -62,7 +62,7 @@
       padding-right: 0.25rem;
     }
 
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(md) {
       padding-left: 0;
       padding-right: 0;
     }
