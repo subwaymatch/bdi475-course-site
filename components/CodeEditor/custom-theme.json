@@ -40,7 +40,7 @@
   "colors": {
     "editor.foreground": "#000000",
     "editor.background": "#FFFFFF",
-    "editor.selectionBackground": "#ffff55",
+    "editor.selectionBackground": "#ffff77",
     "editor.lineHighlightBackground": "#f9f9f9",
     "editorCursor.foreground": "#00ff88"
   }

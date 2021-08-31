@@ -3,9 +3,19 @@ import { DiffEditor } from "@monaco-editor/react";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { sm, md } from "constants/media-query-strings";
 import ReactModal from "react-modal";
-import styles from "./editor.module.scss";
+import styles from "./FormatterDiffModal.module.scss";
 import customTheme from "./custom-theme.json";
 import _ from "lodash";
+import clsx from "clsx";
+import { Row, Col } from "react-bootstrap";
+import { BiShapeTriangle } from "react-icons/bi";
+import { CgClose } from "react-icons/cg";
+
+enum CodeFormatStatusEnum {
+  LOADING,
+  SUCCESS,
+  ERROR,
+}
 
 interface IFormatterDiffModal {
   isOpen: boolean;
@@ -26,7 +36,10 @@ export default function FormatterDiffModal({
 }: IFormatterDiffModal) {
   const LOADING_MESSAGE = "Loading";
   const [isThemeLoaded, setIsThemeLoaded] = useState(false);
-  const [formattedCode, setFormattedCode] = useState(LOADING_MESSAGE);
+
+  // loading, success, error
+  const [status, setStatus] = useState(CodeFormatStatusEnum.LOADING);
+  const [formattedCode, setFormattedCode] = useState("");
   const isScreenSm = useMediaQuery(sm);
   const isScreenMd = useMediaQuery(md);
 
@@ -54,6 +67,8 @@ export default function FormatterDiffModal({
     const formatResult = await response.json();
 
     setFormattedCode(formatResult.formatted_code);
+    setStatus(CodeFormatStatusEnum.SUCCESS);
+
     console.log(`formatResult`);
     console.log(formatResult);
   };
@@ -69,41 +84,87 @@ export default function FormatterDiffModal({
   };
 
   const handleClose = async () => {
-    setFormattedCode(LOADING_MESSAGE);
+    setFormattedCode("");
+    setStatus(CodeFormatStatusEnum.LOADING);
 
     onClose();
   };
 
   return (
-    <ReactModal isOpen={isOpen} onRequestClose={handleClose}>
-      <div
-        style={{
-          height: "100%",
-        }}
-      >
-        <DiffEditor
-          original={original}
-          modified={formattedCode}
-          height="80%"
-          beforeMount={handleEditorWillMount}
-          language={language}
-          theme={isThemeLoaded ? "CustomTheme" : "light"}
-          options={{
-            folding: false,
-            fontSize: isScreenSm ? 18 : isScreenMd ? 19 : 20,
-            wordWrap: "on",
-            minimap: {
-              enabled: false,
-            },
-            extraEditorClassName: styles.codeEditor,
-            scrollBeyondLastLine: false,
-          }}
-        />
-      </div>
+    <ReactModal
+      isOpen={isOpen}
+      style={{
+        overlay: {
+          backgroundColor: "rgba(0, 0, 0, 0.75)",
+        },
+        content: {
+          top: "50px",
+          left: "50px",
+          right: "50px",
+          bottom: "50px",
+          border: "1px solid #ccc",
+          padding: "16px",
+        },
+      }}
+      ariaHideApp={false}
+      onRequestClose={handleClose}
+    >
+      <div className={styles.modalContent}>
+        {status === CodeFormatStatusEnum.SUCCESS && (
+          <>
+            <div className={styles.beforeAfter}>
+              <Row className="g-0">
+                <Col>
+                  <div className={clsx(styles.diffBoxHeader, styles.before)}>
+                    <span className="label pink">Original</span>
+                    <span className={styles.desc}>Before formatting</span>
+                  </div>
+                </Col>
+                <Col>
+                  <div className={clsx(styles.diffBoxHeader, styles.after)}>
+                    <span className="label green">Modified</span>
+                    <span className={styles.desc}>After formatting</span>
+                  </div>
+                </Col>
+              </Row>
+            </div>
+            <DiffEditor
+              original={original}
+              modified={formattedCode}
+              height="60vh"
+              beforeMount={handleEditorWillMount}
+              language={language}
+              theme={isThemeLoaded ? "CustomTheme" : "light"}
+              options={{
+                folding: false,
+                fontSize: 20,
+                wordWrap: "on",
+                minimap: {
+                  enabled: false,
+                },
+                extraEditorClassName: styles.codeEditor,
+                scrollBeyondLastLine: false,
+              }}
+            />
+          </>
+        )}
 
-      <div>
-        <button onClick={handleAccept}>Accept Changes</button>
-        <button onClick={handleClose}>Close</button>
+        <div className={styles.controls}>
+          <button
+            onClick={handleAccept}
+            className={clsx(styles.acceptButton, styles.button)}
+          >
+            <BiShapeTriangle className={styles.reactIcon} />
+            <span className={styles.label}>Apply Changes</span>
+          </button>
+          <button
+            onClick={handleClose}
+            className={clsx(styles.closeButton, styles.button)}
+          >
+            <CgClose className={styles.reactIcon} />
+            <span className={styles.label}>Close</span>
+          </button>
+        </div>
       </div>
     </ReactModal>
   );
