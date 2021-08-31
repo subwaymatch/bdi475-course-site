@@ -35,6 +35,8 @@
   }
 
   &.open {
+    background: $color-yellow;
+
     .menuIcon {
       &::before {
         transform: rotate(45deg);
@@ -48,7 +50,7 @@
       &::after {
         top: 19px;
         transition: top ease 0.2s, transform ease 0.2s 0.2s;
-        background-color: $color-light-gray;
+        background-color: black;
       }
     }
   }

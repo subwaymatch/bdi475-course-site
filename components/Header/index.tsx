@@ -109,7 +109,7 @@ const SignInButton = forwardRef((props, ref: React.Ref<HTMLDivElement>) => {
   );
 });
 
-const SignOutButton = forwardRef((props, ref: React.Ref<HTMLDivElement>) => {
+const SignOutButton = () => {
   const router = useRouter();
 
   return (
@@ -125,7 +125,7 @@ const SignOutButton = forwardRef((props, ref: React.Ref<HTMLDivElement>) => {
       <FiLogIn className={styles.reactIcon} />
     </a>
   );
-});
+};
 
 const UserMenu = () => {
   const isScreenDesktop = useMediaQuery(desktop);
