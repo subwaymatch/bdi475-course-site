@@ -148,14 +148,22 @@ export default function FormatterDiffModal({
           </>
         )}
 
+        {status === CodeFormatStatusEnum.LOADING && (
+          <div className={styles.loadingBox} style={{ height: "60vh" }}>
+            <p>Formatting Code</p>
+          </div>
+        )}
+
         <div className={styles.controls}>
-          <button
-            onClick={handleAccept}
-            className={clsx(styles.acceptButton, styles.button)}
-          >
-            <BiShapeTriangle className={styles.reactIcon} />
-            <span className={styles.label}>Apply Changes</span>
-          </button>
+          {status === CodeFormatStatusEnum.SUCCESS && (
+            <button
+              onClick={handleAccept}
+              className={clsx(styles.acceptButton, styles.button)}
+            >
+              <BiShapeTriangle className={styles.reactIcon} />
+              <span className={styles.label}>Apply Changes</span>
+            </button>
+          )}
           <button
             onClick={handleClose}
             className={clsx(styles.closeButton, styles.button)}

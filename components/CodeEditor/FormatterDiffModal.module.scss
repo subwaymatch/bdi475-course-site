@@ -7,6 +7,15 @@
     margin-bottom: 0.75rem;
   }
 
+  .loadingBox {
+    color: $color-gray;
+    font-size: 1.6rem;
+    font-weight: 300;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .diffBoxHeader {
     display: flex;
     align-items: center;
