@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import dynamic from "next/dynamic";
 import _ from "lodash";
-import { desktop } from "constants/media-query-strings";
+import { largeDesktop } from "constants/media-query-strings";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import usePythonRuntime from "hooks/usePythonRuntime";
 import useLocalStorage from "hooks/useLocalStorage";
@@ -40,12 +40,14 @@ export default function PythonChallenge({
   const [output, setOutput] = useState("");
   const [hasError, setHasError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const isScreenDesktop = useMediaQuery(desktop);
+  const isScreenLargeDesktop = useMediaQuery(largeDesktop);
   const editorHeight = "400px";
   const [savedUserCode, setSavedUserCode] = useLocalStorage<string>(
     localStorageKey,
     challengeData.starter_code
   );
+
+  console.log(`isScreenDesktop=${isScreenLargeDesktop}`);
 
   useEffect(() => {
     // Load user code from LocalStorage if key exists
@@ -133,10 +135,10 @@ export default function PythonChallenge({
   return (
     <div className={styles.codingChallengeWrapper}>
       <Row className="g-0">
-        <Col md={6}>
+        <Col lg={6}>
           <div
             className={styles.instructionTextWrapper}
-            style={{ height: isScreenDesktop ? editorHeight : "auto" }}
+            style={{ height: isScreenLargeDesktop ? editorHeight : "auto" }}
           >
             <div className={styles.instructionTextInner}>
               <span className="label green">Task</span>
@@ -151,7 +153,7 @@ export default function PythonChallenge({
           </div>
         </Col>
 
-        <Col md={6}>
+        <Col lg={6}>
           <div className={styles.codeEditorWrapper}>
             <CodeEditor
               editorValue={userCode}
@@ -166,7 +168,7 @@ export default function PythonChallenge({
       </Row>
 
       <Row className="g-0">
-        <Col md={6} className={styles.outputCol}>
+        <Col lg={6} md={12} className={styles.outputCol}>
           <div
             className={clsx(styles.resultsWrapper, {
               [styles.hasOutput]: !!output,
@@ -176,7 +178,7 @@ export default function PythonChallenge({
             <pre>{output ? output : "No Output"}</pre>
           </div>
         </Col>
-        <Col md={6} className={styles.outputCol}>
+        <Col lg={6} md={12} className={styles.outputCol}>
           <div
             className={clsx(styles.errorWrapper, {
               [styles.hasOutput]: hasError,
@@ -235,7 +237,7 @@ export default function PythonChallenge({
                     placement="bottom"
                     offset={[0, -4]}
                     theme="light"
-                    disabled={!isScreenDesktop}
+                    disabled={!isScreenLargeDesktop}
                   >
                     <div
                       className={clsx(styles.button, styles.runButton, {
@@ -275,7 +277,7 @@ export default function PythonChallenge({
                     placement="bottom"
                     offset={[0, -4]}
                     theme="light"
-                    disabled={!isScreenDesktop}
+                    disabled={!isScreenLargeDesktop}
                   >
                     <div
                       className={clsx(styles.button, styles.runButton, {
@@ -316,7 +318,7 @@ export default function PythonChallenge({
                     placement="bottom"
                     offset={[0, -4]}
                     theme="light"
-                    disabled={!isScreenDesktop}
+                    disabled={!isScreenLargeDesktop}
                   >
                     <div
                       className={clsx(styles.button, styles.checkButton, {

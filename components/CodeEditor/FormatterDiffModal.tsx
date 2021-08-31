@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { DiffEditor } from "@monaco-editor/react";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-import { sm, md } from "constants/media-query-strings";
 import ReactModal from "react-modal";
 import styles from "./FormatterDiffModal.module.scss";
 import customTheme from "./custom-theme.json";
@@ -23,7 +21,6 @@ interface IFormatterDiffModal {
   onClose: () => void;
   original: string;
   language: string;
-  height?: string | number;
 }
 
 export default function FormatterDiffModal({
@@ -32,16 +29,12 @@ export default function FormatterDiffModal({
   onClose,
   original,
   language,
-  height,
 }: IFormatterDiffModal) {
-  const LOADING_MESSAGE = "Loading";
   const [isThemeLoaded, setIsThemeLoaded] = useState(false);
 
   // loading, success, error
   const [status, setStatus] = useState(CodeFormatStatusEnum.LOADING);
   const [formattedCode, setFormattedCode] = useState("");
-  const isScreenSm = useMediaQuery(sm);
-  const isScreenMd = useMediaQuery(md);
 
   const handleEditorWillMount = (monaco) => {
     monaco.editor.defineTheme("CustomTheme", customTheme);
@@ -80,7 +73,13 @@ export default function FormatterDiffModal({
   }, [isOpen]);
 
   const handleAccept = async () => {
-    await onAccept(_.cloneDeep(formattedCode));
+    if (status === CodeFormatStatusEnum.SUCCESS) {
+      await onAccept(_.cloneDeep(formattedCode));
+    } else {
+      onClose();
+    }
+
+    setStatus(CodeFormatStatusEnum.LOADING);
   };
 
   const handleClose = async () => {

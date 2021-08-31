@@ -12,3 +12,6 @@ export const lg = "(max-width: 1199.98px)";
 
 // Desktop only
 export const desktop = "(min-width: 992px)";
+
+// Large desktop only
+export const largeDesktop = "(min-width: 1120px)";
