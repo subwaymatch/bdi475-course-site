@@ -8,15 +8,16 @@ import { useEffect, useState } from "react";
 import useSupabaseAuth from "hooks/useSupabaseAuth";
 import { definitions } from "types/database";
 import { getChallengeIdAsNumberFromQuery } from "utils/challenge";
+import { toast } from "react-toastify";
 
 export default function EditCodingQuestionPage() {
   const router = useRouter();
   const { user, roles } = useSupabaseAuth();
   const { cid } = router.query;
+  const [isLoading, setIsLoading] = useState(true);
   const challengeId = getChallengeIdAsNumberFromQuery(cid);
   const [challengeData, setChallengeData] =
     useState<definitions["coding_challenges"]>(null);
-  const [isLoading, setIsLoading] = useState(true);
   const [solutionData, setSolutionData] =
     useState<definitions["coding_challenge_solutions"]>(null);
 
@@ -53,21 +54,79 @@ export default function EditCodingQuestionPage() {
   };
 
   const onClone = async () => {
-    // const clonedDocRef = await firestore
-    //   .collection("codingQuestions")
-    //   .doc(generateQuestionId());
-    // const clonedData = Object.assign({}, _.cloneDeep(v), {
-    //   title: v.title + " (Clone)",
-    // });
-    // await clonedDocRef.set(clonedData);
+    const challengeDataClone = _.cloneDeep(challengeData);
+    delete challengeDataClone.id;
+
+    const { data: challengeCloneResult, error: challengeCloneError } =
+      await supabaseClient
+        .from<definitions["coding_challenges"]>("coding_challenges")
+        .insert([challengeDataClone]);
+
+    if (challengeCloneError) {
+      console.error(challengeCloneError);
+
+      toast.error("Error cloning challenge: " + challengeCloneError.message);
+      return;
+    }
+
+    const clonedChallengeId = challengeCloneResult[0].id;
+
+    const { data: clonedSolutionData, error: solutionCloneError } =
+      await supabaseClient
+        .from<definitions["coding_challenge_solutions"]>(
+          "coding_challenge_solutions"
+        )
+        .insert([
+          Object.assign({}, solutionData, {
+            challenge_id: clonedChallengeId,
+          }),
+        ]);
+
+    if (solutionCloneError) {
+      console.error(solutionCloneError);
+
+      toast.error(
+        `Error cloning the solution entry for ${clonedChallengeId}: ${solutionCloneError.message}`
+      );
+
+      return;
+    }
+
+    console.log("Clone result");
+    console.log(challengeCloneResult[0].id);
+
+    router.push(`/python-challenge/edit/${challengeCloneResult[0].id}`);
+
     // router.push(`/python-challenge/edit/${clonedDocRef.id}`);
   };
 
-  const saveQuestionData = async (v) => {
-    // await docRef.set(v, { merge: true });
-  };
+  const save = async (
+    updatedChallengeData: definitions["coding_challenges"],
+    updatedSolutionData: definitions["coding_challenge_solutions"]
+  ) => {
+    setChallengeData(updatedChallengeData);
+    setSolutionData(updatedSolutionData);
 
-  const saveSolutionCode = async (solutionCode) => {};
+    const { data: challengeUpdateResult, error: challengeUpdateError } =
+      await supabaseClient
+        .from<definitions["coding_challenges"]>("coding_challenges")
+        .update(updatedChallengeData)
+        .match({ id: updatedChallengeData.id });
+
+    console.log(`save updatedChallengeData`);
+    console.log(challengeUpdateResult);
+
+    const { data: solutionUpdateResult, error: solutionUpdateError } =
+      await supabaseClient
+        .from<definitions["coding_challenge_solutions"]>(
+          "coding_challenge_solutions"
+        )
+        .update(updatedSolutionData)
+        .match({ challenge_id: updatedSolutionData.challenge_id });
+
+    console.log(`save updatedSolutionData`);
+    console.log(solutionUpdateResult);
+  };
 
   useEffect(() => {
     if (!challengeId || !user) {
@@ -91,10 +150,7 @@ export default function EditCodingQuestionPage() {
         qid={challengeId}
         challengeData={challengeData}
         solutionData={solutionData}
-        onSave={(questionData, solutionCode) => {
-          saveQuestionData(questionData);
-          saveSolutionCode(solutionCode);
-        }}
+        onSave={save}
         onClone={onClone}
         onDelete={onDelete}
       />

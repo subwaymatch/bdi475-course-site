@@ -54,12 +54,20 @@ export default function PythonChallengeEditor({
     !_.isEqual(challengeData, workingChallengeData) ||
     !_.isEqual(solutionData, workingSolutionData);
 
-  const update = (key, val) => {
+  const updateWorkingChallengeData = (key, val) => {
     const updatedChallengeData = produce(workingChallengeData, (draft) => {
       draft[key] = val;
     });
 
     setWorkingChallengeData(updatedChallengeData);
+  };
+
+  const updateWorkingSolutionData = (key, val) => {
+    const updateSolutionData = produce(workingSolutionData, (draft) => {
+      draft[key] = val;
+    });
+
+    setWorkingSolutionData(updateSolutionData);
   };
 
   const save = async () => {
@@ -138,7 +146,9 @@ export default function PythonChallengeEditor({
               <input
                 type="text"
                 value={workingChallengeData.title}
-                onChange={(e) => update("title", e.target.value)}
+                onChange={(e) =>
+                  updateWorkingChallengeData("title", e.target.value)
+                }
                 placeholder="Challenge Title"
                 className={styles.challengeTitleInput}
               />
@@ -264,7 +274,7 @@ export default function PythonChallengeEditor({
         <div className={clsx(styles.challengeText, styles.editorBox)}>
           <div className={styles.boxHeader}>
             <div className={styles.boxTitle}>
-              <span className={styles.boxTitle}>Question Text</span>
+              <span className={styles.boxTitle}>Challenge Text</span>
               <span className="accent purple" />
             </div>
           </div>
@@ -273,7 +283,9 @@ export default function PythonChallengeEditor({
             <textarea
               className={styles.challengeTextarea}
               value={workingChallengeData.text_markdown}
-              onChange={(e) => update("textMarkdown", e.target.value)}
+              onChange={(e) =>
+                updateWorkingChallengeData("text_markdown", e.target.value)
+              }
             />
           </div>
         </div>
@@ -309,7 +321,7 @@ export default function PythonChallengeEditor({
           <div className={styles.codeEditorWrapper}>
             <CodeEditor
               editorValue={workingChallengeData.starter_code}
-              onChange={(v) => update("starterCode", v)}
+              onChange={(v) => updateWorkingChallengeData("starter_code", v)}
               onRun={runStarterCode}
               onCheck={runAndCheckStarterCode}
               language="python"
@@ -351,13 +363,7 @@ export default function PythonChallengeEditor({
           <div className={styles.codeEditorWrapper}>
             <CodeEditor
               editorValue={workingSolutionData.solution_code}
-              onChange={(v) =>
-                setWorkingSolutionData(
-                  Object.assign({}, workingSolutionData, {
-                    solution_code: v,
-                  })
-                )
-              }
+              onChange={(v) => updateWorkingSolutionData("solution_code", v)}
               onRun={runSolutionCode}
               onCheck={runAndCheckSolutionCode}
               language="python"
@@ -377,7 +383,7 @@ export default function PythonChallengeEditor({
           <div className={styles.codeEditorWrapper}>
             <CodeEditor
               editorValue={workingChallengeData.test_code}
-              onChange={(v) => update("testCode", v)}
+              onChange={(v) => updateWorkingChallengeData("test_code", v)}
               onRun={() => {}}
               language="python"
               height="calc(50vh - 55px)"
