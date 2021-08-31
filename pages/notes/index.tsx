@@ -35,7 +35,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2021-08-26"
+              date="2021-08-31"
               title="Variables and Data Types"
               colorTheme={ColorTheme.Green}
             />
