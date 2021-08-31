@@ -100,7 +100,7 @@
     overflow: auto;
   }
 
-  @include media-breakpoint-down(md) {
+  @include media-breakpoint-down(lg) {
     .resultsWrapper,
     .errorWrapper {
       padding: 1rem 0;
