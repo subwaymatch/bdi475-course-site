@@ -193,6 +193,14 @@ export default function VariablesAndDataTypesPage() {
                   A variable is a nickname for a stored value that can{" "}
                   <em className="color-pink">change</em>.
                 </p>
+
+                <span className="label green">Creating a Variable</span>
+                <p>
+                  The syntax to create a new variable is{" "}
+                  <code>my_variable = some_value</code>. The <code>=</code>{" "}
+                  symbol here is an <strong>assignment operator</strong> and NOT
+                  a symbol for equality.
+                </p>
               </div>
             </Col>
           </Row>
@@ -248,6 +256,41 @@ export default function VariablesAndDataTypesPage() {
           </Row>
 
           <RecordedPythonChallenge challengeId={13} className={styles.block} />
+
+          <RecordedPythonChallenge challengeId={155} className={styles.block} />
+
+          <RecordedPythonChallenge challengeId={156} className={styles.block} />
+
+          <RecordedPythonChallenge challengeId={157} className={styles.block} />
+
+          <Row>
+            <Col
+              lg={{
+                span: 6,
+                offset: 3,
+              }}
+              md={{
+                span: 8,
+                offset: 2,
+              }}
+            >
+              <div className={styles.textBox}>
+                <h3>Updating Variables</h3>
+
+                <span className="label blue">Too Easy</span>
+                <p>
+                  The syntax for updating a variable is{" "}
+                  <strong>the same as creating a new variable</strong>.
+                </p>
+
+                <p>
+                  <code>my_variable = updated_value</code>
+                </p>
+              </div>
+            </Col>
+          </Row>
+
+          <RecordedPythonChallenge challengeId={158} className={styles.block} />
         </Container>
       </main>
     </Layout>
