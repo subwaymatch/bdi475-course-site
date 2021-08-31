@@ -121,6 +121,7 @@ export default function PythonChallengeEditor({
       workingSolutionData.solution_code,
       workingChallengeData.test_code
     );
+
     displayCodeExecutionResult(result);
   };
 

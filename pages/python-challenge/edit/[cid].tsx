@@ -96,8 +96,6 @@ export default function EditCodingQuestionPage() {
     console.log(challengeCloneResult[0].id);
 
     router.push(`/python-challenge/edit/${challengeCloneResult[0].id}`);
-
-    // router.push(`/python-challenge/edit/${clonedDocRef.id}`);
   };
 
   const save = async (

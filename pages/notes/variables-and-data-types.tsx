@@ -27,14 +27,14 @@ export default function VariablesAndDataTypesPage() {
             <Col md={8}>
               <ul>
                 <li>
+                  What are <span className="color-green">data types</span>?
+                </li>
+                <li>Understand basic data types.</li>
+                <li>
                   Understand what{" "}
                   <span className="color-purple">variables</span> are.
                 </li>
                 <li>Why do we need variables?</li>
-                <li>
-                  What are <span className="color-green">data types</span>?
-                </li>
-                <li>Understand basic data types.</li>
               </ul>
             </Col>
           </Row>
@@ -51,6 +51,115 @@ export default function VariablesAndDataTypesPage() {
               </div>
             </Col>
           </Row>
+
+          <RecordedPythonChallenge challengeId={6} className={styles.block} />
+
+          <RecordedPythonChallenge challengeId={152} className={styles.block} />
+
+          <RecordedPythonChallenge challengeId={154} className={styles.block} />
+
+          <Row>
+            <Col
+              lg={{
+                span: 6,
+                offset: 3,
+              }}
+              md={{
+                span: 8,
+                offset: 2,
+              }}
+            >
+              <div className={styles.textBox}>
+                <h3>Python Data Types</h3>
+
+                <span className="label purple">What is it?</span>
+                <p>
+                  In Python, ALL values have{" "}
+                  <span className="color-purple">data types</span>. We'll go
+                  over the few <strong>built-in</strong> types.
+                  <ul>
+                    <li>
+                      <code>Text "Hello World"</code> is a text type (
+                      <code>str</code>).
+                    </li>
+                    <li>
+                      Number <code>475</code> is an integer type (
+                      <code>int</code>
+                      ).
+                    </li>
+                    <li>
+                      Number <code>1.99</code> is a float type (
+                      <code>float</code>).
+                    </li>
+                    <li>
+                      Logical <code>True</code> is a boolean type (
+                      <code>bool</code>).
+                    </li>
+                  </ul>
+                </p>
+
+                <span className="label green">Primitive vs Non-primitive</span>
+                <p>
+                  Data types can be categorized into two types -{" "}
+                  <em className="color-green">primitive</em> and{" "}
+                  <em className="color-green">non-primitive</em> types.
+                  Technically speaking, Python only has <em>non-primitive</em>{" "}
+                  types as everything is an object in Python. For the purpose of
+                  this course, you do not have to worry about differentiating
+                  between primitive and non-primitive types.
+                </p>
+              </div>
+            </Col>
+          </Row>
+
+          <Row className={clsx(styles.boxItems)}>
+            <Col>
+              <h2 className="sectionTitle">
+                Basic Data Types
+                <span className="accent blue" />
+              </h2>
+
+              <Row>
+                <Col md={4}>
+                  <div className={styles.item}>
+                    <span className="label yellow">Text</span>
+
+                    <p>
+                      Strings (<code>str</code>) are text types. They are always
+                      enclosed in single or double quotes.
+                    </p>
+                  </div>
+                </Col>
+                <Col md={4}>
+                  <div className={styles.item}>
+                    <span className="label yellow">Numbers</span>
+
+                    <p>
+                      Integers (<code>int</code>) and decimals (
+                      <code>float</code> are numeric types. There is also
+                      another numeric type (<code>complex</code>) that we won't
+                      talk about.
+                    </p>
+                  </div>
+                </Col>
+                <Col md={4}>
+                  <div className={styles.item}>
+                    <span className="label yellow">Logical Yes/No</span>
+
+                    <p>
+                      Booleans (<code>bool</code>) can only have two possible
+                      values - <code>True</code> or <code>False</code>.
+                      Technically speaking, booleans are a subtype of integers.
+                    </p>
+                  </div>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+
+          <RecordedPythonChallenge challengeId={151} className={styles.block} />
+
+          <RecordedPythonChallenge challengeId={153} className={styles.block} />
 
           <Row>
             <Col
@@ -138,10 +247,7 @@ export default function VariablesAndDataTypesPage() {
             </Col>
           </Row>
 
-          <RecordedPythonChallenge
-            challengeId={13}
-            className={styles.questionWrapper}
-          />
+          <RecordedPythonChallenge challengeId={13} className={styles.block} />
         </Container>
       </main>
     </Layout>
