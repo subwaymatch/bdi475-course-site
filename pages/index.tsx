@@ -53,7 +53,7 @@ export default function MainPage() {
                     whileTap="tap"
                     className={styles.text}
                   >
-                    <a href="https://mediaspace.illinois.edu/channel/BDI%2B475%2BSpring%2B2020%2BSection%2BDAA/">
+                    <a href="https://mediaspace.illinois.edu/channel/Intro+to+Data+Analytics+Apps+in+Business+%28BDI+475%29+Fall+2021/227356363">
                       Mediaspace ⟶
                     </a>
                   </motion.div>
