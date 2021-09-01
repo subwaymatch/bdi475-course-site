@@ -39,7 +39,7 @@ export default function NotesPage() {
               title="Variables and Data Types"
               colorTheme={ColorTheme.Green}
             />
-            {/* 
+
             <NoteItem
               href="/notes/booleans-and-conditional-logic"
               thumbnail={
@@ -50,11 +50,12 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2021-02-03"
+              date="2021-09-02"
               title="Booleans and Conditional Logic"
               colorTheme={ColorTheme.Green}
             />
 
+            {/* 
             <NoteItem
               href="/notes/lists-and-loops"
               thumbnail={
