@@ -29,7 +29,7 @@ export default function NotesPage() {
               href="/notes/variables-and-data-types"
               thumbnail={
                 <Image
-                  src="/images/notes/1612359825610.png"
+                  src="/images/notes/1630532795833.png"
                   width={900}
                   height={600}
                   alt=""

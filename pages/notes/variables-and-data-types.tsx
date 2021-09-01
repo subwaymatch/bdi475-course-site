@@ -43,7 +43,7 @@ export default function VariablesAndDataTypesPage() {
             <Col>
               <div className={styles.coverImage}>
                 <Image
-                  src="/images/notes/1612358691500.png"
+                  src="/images/notes/1630532795833.png"
                   width={3000}
                   height={2000}
                   alt=""
