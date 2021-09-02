@@ -9,17 +9,14 @@ import RecordedPythonChallenge from "components/common/RecordedPythonChallenge";
 import { FaWikipediaW } from "react-icons/fa";
 import LargeQuote from "components/common/LargeQuote";
 
-export default function BooleanAndConditionalLogicPage() {
+export default function BooleansAndConditionalsPage() {
   return (
     <Layout>
       <main className={styles.page}>
         <Container>
           <Row>
             <Col>
-              <h2 className="sectionTitle grayBottomBorder">
-                Booleans and Conditional Logic
-                <span className="accent purple" />
-              </h2>
+              <h1 className={styles.noteTitle}>Booleans and Conditionals</h1>
             </Col>
           </Row>
 
@@ -29,7 +26,7 @@ export default function BooleanAndConditionalLogicPage() {
               <>
                 Understand the <code>bool</code> data type.
               </>,
-              <>Why are booleans so important in programming?</>,
+              <>Understand why booleans are important in programming.</>,
               <>
                 Discuss the <span className="color-purple">operators</span> that
                 return boolean values.
@@ -38,7 +35,6 @@ export default function BooleanAndConditionalLogicPage() {
                 Understand <code>if</code>/<code>else</code> statements.
               </>,
             ]}
-            className={styles.block}
           />
 
           <Row>
@@ -82,14 +78,14 @@ export default function BooleanAndConditionalLogicPage() {
               Will you marry me? <br className="d-none d-md-inline" />
               Heck{" "}
               <span
-                className="color-green"
                 style={{
+                  color: "#aaa",
                   textDecoration: "line-through",
                 }}
               >
                 yes
               </span>{" "}
-              True! I'll marry you.
+              <span className="color-green">True</span>! I'll marry you.
             </p>
           </LargeQuote>
 
@@ -136,17 +132,20 @@ export default function BooleanAndConditionalLogicPage() {
 
           <LargeQuote className={styles.block}>
             <p>
-              If I have over $100 in my wallet, I will go grab a full Peking
-              Duck.
+              If I have over $100 in my wallet, I will go grab a Ribeye steak.
             </p>
           </LargeQuote>
 
           <RecordedPythonChallenge challengeId={23} className={styles.block} />
 
-          <CenteredColumn className={styles.textBox}>
-            <h3>Boolean Expressions</h3>
+          <RecordedPythonChallenge challengeId={159} className={styles.block} />
 
-            <span className="label purple">Yes or No</span>
+          <RecordedPythonChallenge challengeId={160} className={styles.block} />
+
+          <CenteredColumn className={styles.textBox}>
+            <h3>Expressions</h3>
+
+            <span className="label purple">Evaluated Chunk of Code</span>
 
             <p>
               If you're new to programming, an{" "}
@@ -161,15 +160,20 @@ export default function BooleanAndConditionalLogicPage() {
               </span>{" "}
               that depend on the context (thank you <FaWikipediaW /> Wikipedia).
             </p>
+
+            <span className="label green">For Us</span>
             <p>
               In the context of <strong>programming</strong>, an expression is{" "}
-              <span className="color-pink">
+              <span className="color-green">
                 a unit of code that can be evaluated to determine its value
               </span>
               . This definition does not deviate far away from that of
               mathematics. We'll come back to how math and programming are
-              intertwined. A{" "}
-              <span className="color-pink">boolean expression</span> is any
+              intertwined.
+            </p>
+
+            <p>
+              A <span className="color-green">boolean expression</span> is any
               expression that evaluates to either <code>True</code> or{" "}
               <code>False</code>.
             </p>
@@ -191,7 +195,7 @@ export default function BooleanAndConditionalLogicPage() {
                 <code>"FiveGuys"</code>.
               </>,
               <>
-                <code>hometown == "Shanghai"</code> is an expression that
+                <code>hometown == "Taipei"</code> is an expression that
                 evaluates to either <code>True</code>
                 or <code>False</code> depending on the value of the{" "}
                 <code>hometown</code> variable.
@@ -208,6 +212,8 @@ export default function BooleanAndConditionalLogicPage() {
           />
 
           <RecordedPythonChallenge challengeId={5} className={styles.block} />
+
+          <RecordedPythonChallenge challengeId={161} className={styles.block} />
 
           <RecordedPythonChallenge challengeId={36} className={styles.block} />
 
@@ -228,12 +234,15 @@ export default function BooleanAndConditionalLogicPage() {
 
           <LargeQuote className={styles.block}>
             <p>
-              If I can't afford a full Pecking Duck, I'm heading to Panda
-              Express.
+              If I can't afford a Ribeye steak, I'm heading to Panda Express.
             </p>
           </LargeQuote>
 
           <RecordedPythonChallenge challengeId={3} className={styles.block} />
+
+          <RecordedPythonChallenge challengeId={162} className={styles.block} />
+
+          <RecordedPythonChallenge challengeId={163} className={styles.block} />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Why are some lines indented?</h3>
@@ -308,12 +317,12 @@ export default function BooleanAndConditionalLogicPage() {
           </Row>
 
           <LargeQuote className={styles.block}>
-            <p>Since I have over $50, how does Biaggis sound?</p>
+            <p>How does Biaggis sound?</p>
           </LargeQuote>
 
-          <RecordedPythonChallenge challengeId={27} className={styles.block} />
-
           <RecordedPythonChallenge challengeId={25} className={styles.block} />
+
+          <RecordedPythonChallenge challengeId={27} className={styles.block} />
         </Container>
       </main>
     </Layout>

@@ -41,7 +41,7 @@ export default function NotesPage() {
             />
 
             <NoteItem
-              href="/notes/booleans-and-conditional-logic"
+              href="/notes/booleans-and-conditionals"
               thumbnail={
                 <Image
                   src="/images/notes/1612360485433.png"
@@ -51,7 +51,7 @@ export default function NotesPage() {
                 />
               }
               date="2021-09-02"
-              title="Booleans and Conditional Logic"
+              title="Booleans and Conditionals"
               colorTheme={ColorTheme.Green}
             />
             {/* 

@@ -2,7 +2,6 @@
 @import "styles/mixins";
 
 .listBox {
-  margin-top: 6rem;
   border-top: 1px solid black;
   padding-top: 1.5rem;
 
@@ -13,18 +12,23 @@
   }
 
   h3 {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
+    font-weight: 600;
   }
 
   ul {
-    @include media-breakpoint-down(sm) {
+    font-size: 1.2rem;
+
+    @include media-breakpoint-down(md) {
       margin-top: 2rem;
       font-size: 1.1rem;
     }
 
+    list-style: none;
+
     li {
-      padding: 0.5rem 0;
-      border-bottom: 2px dotted $color-border-gray;
+      padding: 0.75rem 0;
+      border-bottom: 1px dotted $color-border-gray;
 
       &:first-child {
         padding-top: 0;

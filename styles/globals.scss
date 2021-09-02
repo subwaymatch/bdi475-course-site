@@ -16,7 +16,7 @@ html {
 body {
   font-size: 1.25rem;
   line-height: 1.8;
-  letter-spacing: -0.03rem;
+  letter-spacing: -0.02rem;
 }
 
 a {
@@ -113,7 +113,7 @@ ol {
 }
 
 .color-green {
-  color: $color-green;
+  color: color.adjust($color-green, $lightness: -16%);
 }
 .color-purple {
   color: $color-purple;
@@ -125,7 +125,7 @@ ol {
   color: $color-pink;
 }
 .color-blue {
-  color: $color-blue;
+  color: color.adjust($color-blue, $lightness: -12%);
 }
 .color-orange {
   color: $color-orange;

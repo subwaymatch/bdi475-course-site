@@ -7,9 +7,11 @@
 
   .instructionTextWrapper {
     overflow-y: auto;
+    font-size: 1.15rem;
+    color: $color-dark-gray;
 
     pre {
-      color: $color-purple;
+      color: color.adjust($color-purple, $lightness: -12%);
       line-height: 1.6;
       background: color.scale($color-purple, $lightness: 90%);
       margin-top: 0.5rem;
