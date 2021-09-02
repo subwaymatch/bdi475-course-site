@@ -92,9 +92,6 @@ export default function EditCodingQuestionPage() {
       return;
     }
 
-    console.log("Clone result");
-    console.log(challengeCloneResult[0].id);
-
     router.push(`/python-challenge/edit/${challengeCloneResult[0].id}`);
   };
 
@@ -111,9 +108,6 @@ export default function EditCodingQuestionPage() {
         .update(updatedChallengeData)
         .match({ id: updatedChallengeData.id });
 
-    console.log(`save updatedChallengeData`);
-    console.log(challengeUpdateResult);
-
     const { data: solutionUpdateResult, error: solutionUpdateError } =
       await supabaseClient
         .from<definitions["coding_challenge_solutions"]>(
@@ -121,9 +115,6 @@ export default function EditCodingQuestionPage() {
         )
         .update(updatedSolutionData)
         .match({ challenge_id: updatedSolutionData.challenge_id });
-
-    console.log(`save updatedSolutionData`);
-    console.log(solutionUpdateResult);
   };
 
   useEffect(() => {

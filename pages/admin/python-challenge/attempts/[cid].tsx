@@ -67,7 +67,6 @@ export default function CodingChallengeAttemptsPage() {
         `coding_challenge_attempts:challenge_id=eq.${challengeId}`
       )
       .on("INSERT", async (payload) => {
-        console.log("Change received!", payload);
         const newData = payload.new;
         const { data: profileData, error: profileError } = await supabaseClient
           .from<definitions["profiles"]>("profiles")

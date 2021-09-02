@@ -61,9 +61,6 @@ export default function FormatterDiffModal({
 
     setFormattedCode(formatResult.formatted_code);
     setStatus(CodeFormatStatusEnum.SUCCESS);
-
-    console.log(`formatResult`);
-    console.log(formatResult);
   };
 
   useEffect(() => {

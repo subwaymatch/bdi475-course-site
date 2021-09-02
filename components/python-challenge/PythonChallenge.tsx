@@ -47,8 +47,6 @@ export default function PythonChallenge({
     challengeData.starter_code
   );
 
-  console.log(`isScreenDesktop=${isScreenLargeDesktop}`);
-
   useEffect(() => {
     // Load user code from LocalStorage if key exists
     if (localStorageKey && savedUserCode) {

@@ -43,7 +43,6 @@ export default function useCodingChallengeAttempts(challengeId: number) {
         `coding_challenge_attempts:user_id=eq.${user.id}`
       )
       .on("INSERT", async (payload) => {
-        console.log("Change received!", payload);
         const newData = payload.new;
 
         if (newData.challenge_id === challengeId) {

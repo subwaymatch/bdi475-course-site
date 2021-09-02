@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
 import Layout from "components/Layout";
 import { Col, Container, Row } from "react-bootstrap";
 import ChallengeList from "components/challenge-list/ChallengeList";
@@ -41,7 +40,7 @@ export default function PythonChallengeListPage({ page }) {
             "Are you sure you want to delete this challenge? This cannot be undone."
           )
         ) {
-          const { data, error } = await supabaseClient
+          const { data: deleteResultData, error } = await supabaseClient
             .from("coding_challenges")
             .delete()
             .match({ id: challengeData.id });
@@ -123,9 +122,6 @@ export default function PythonChallengeListPage({ page }) {
       );
       return;
     }
-
-    console.log("Insert result");
-    console.log(challengeData[0].id);
 
     router.push(`/python-challenge/edit/${challengeData[0].id}`);
   };
