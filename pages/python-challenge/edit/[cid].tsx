@@ -135,7 +135,7 @@ export default function EditCodingQuestionPage() {
   }, [challengeId, user, roles]);
 
   return isLoading ? (
-    <Layout excludeHeader={true}>
+    <Layout excludeHeader={true} excludeFooter={true}>
       <Container>
         <Row>
           <Col>Loading...</Col>
@@ -143,7 +143,7 @@ export default function EditCodingQuestionPage() {
       </Container>
     </Layout>
   ) : (
-    <Layout excludeHeader={true}>
+    <Layout excludeHeader={true} excludeFooter={true}>
       <PythonChallengeEditor
         qid={challengeId}
         challengeData={challengeData}

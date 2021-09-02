@@ -1,0 +1,81 @@
+@import "styles/_variables";
+
+.footer {
+  color: white;
+  background: #111;
+  padding: 5rem 0;
+  font-size: 1.05rem;
+  letter-spacing: 0;
+
+  h2 {
+    color: #555;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  a {
+    color: white;
+
+    &:hover {
+      color: $color-purple;
+    }
+  }
+
+  .iconLinks {
+    display: flex;
+    justify-content: flex-end;
+
+    a {
+      display: inline-block;
+      line-height: 1;
+      color: #777;
+
+      &:hover {
+        color: $color-gray;
+      }
+
+      .reactIcon {
+        font-size: 2rem;
+      }
+
+      .label {
+        margin-left: 0.5rem;
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .linksBox {
+    ul {
+      list-style: none;
+
+      li {
+        margin: 0.1rem 0;
+
+        a {
+          display: inline-block;
+          line-height: 1.5;
+          padding: 0.4rem 0;
+          color: #ddd;
+
+          &:hover {
+            color: $color-purple;
+          }
+        }
+      }
+    }
+  }
+
+  .sponsorBox {
+    h2 {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .bottomBox {
+    margin-top: 4rem;
+    border-top: 1px solid #222;
+    padding-top: 2rem;
+  }
+}

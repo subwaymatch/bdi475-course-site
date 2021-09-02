@@ -3,7 +3,7 @@ import Image from "next/image";
 import logoImage from "public/images/logo_bdi475.png";
 import Link from "next/link";
 import { Container, Row, Col } from "react-bootstrap";
-import styles from "./Header.module.scss";
+import styles from "./SiteHeader.module.scss";
 import clsx from "clsx";
 import { motion, AnimatePresence } from "framer-motion";
 import { clickableVariants } from "animations/clickableVariants";
@@ -13,7 +13,7 @@ import { BiNote } from "react-icons/bi";
 import { FiLogIn, FiCalendar, FiHexagon } from "react-icons/fi";
 import { HiOutlineMail } from "react-icons/hi";
 import { RiBook3Line } from "react-icons/ri";
-import MenuButton from "components/Header/MenuButton";
+import MenuButton from "components/SiteHeader/MenuButton";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { desktop } from "constants/media-query-strings";
 import Tippy from "@tippyjs/react";
@@ -154,7 +154,7 @@ const UserMenu = () => {
   );
 };
 
-export default function Header() {
+export default function SiteHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isScreenDesktop = useMediaQuery(desktop);
 

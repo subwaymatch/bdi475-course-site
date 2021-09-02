@@ -1,14 +1,20 @@
 import Head from "next/head";
-import Header from "components/Header";
 import BootstrapBreakpoints from "components/debug/BootstrapBreakpoints";
 import colors from "styles/colors.module.scss";
+import SiteHeader from "components/SiteHeader";
+import SiteFooter from "components/SiteFooter";
 
 interface ILayoutProps {
   children: React.ReactNode;
   excludeHeader?: boolean;
+  excludeFooter?: boolean;
 }
 
-export default function Layout({ children, excludeHeader }: ILayoutProps) {
+export default function Layout({
+  children,
+  excludeHeader,
+  excludeFooter,
+}: ILayoutProps) {
   return (
     <>
       <Head>
@@ -43,9 +49,11 @@ export default function Layout({ children, excludeHeader }: ILayoutProps) {
 
       {/* {process.env.NODE_ENV === "development" && <BootstrapBreakpoints />} */}
 
-      {excludeHeader !== true && <Header />}
+      {excludeHeader !== true && <SiteHeader />}
 
       {children}
+
+      {excludeFooter !== true && <SiteFooter />}
     </>
   );
 }
