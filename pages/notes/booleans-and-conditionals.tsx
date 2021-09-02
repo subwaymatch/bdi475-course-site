@@ -323,6 +323,12 @@ export default function BooleansAndConditionalsPage() {
           <RecordedPythonChallenge challengeId={25} className={styles.block} />
 
           <RecordedPythonChallenge challengeId={27} className={styles.block} />
+
+          <RecordedPythonChallenge challengeId={164} className={styles.block} />
+
+          <RecordedPythonChallenge challengeId={165} className={styles.block} />
+
+          <RecordedPythonChallenge challengeId={166} className={styles.block} />
         </Container>
       </main>
     </Layout>

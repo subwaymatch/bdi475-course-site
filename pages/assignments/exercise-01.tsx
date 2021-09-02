@@ -6,7 +6,7 @@ import ListWithTitle from "components/common/ListWithTitle";
 import CenteredColumn from "components/common/CenteredColumn";
 import RecordedPythonChallenge from "components/common/RecordedPythonChallenge";
 
-export default function QuizPage() {
+export default function Exercise() {
   return (
     <Layout>
       <main className={styles.page}>
@@ -14,14 +14,14 @@ export default function QuizPage() {
           <Row>
             <Col>
               <h2 className="sectionTitle grayBottomBorder">
-                Quiz 1
+                Exercise 1
                 <span className="accent purple" />
               </h2>
             </Col>
           </Row>
 
           <ListWithTitle
-            title="Quiz Details ⟶"
+            title="Exercise Details ⟶"
             items={[
               <>
                 You have until{" "}
@@ -33,11 +33,6 @@ export default function QuizPage() {
               </>,
               <>Passing the test cases does not guarantee you full points.</>,
               <>We will manually review your code.</>,
-              <>
-                If you make a{" "}
-                <span className="color-purple">late submission</span>,{" "}
-                <strong>we will deduct 50% of your grade</strong>.
-              </>,
             ]}
             className={styles.block}
           />

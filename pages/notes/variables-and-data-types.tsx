@@ -4,6 +4,7 @@ import styles from "styles/pages/notes/common.module.scss";
 import Image from "next/image";
 import clsx from "clsx";
 import RecordedPythonChallenge from "components/common/RecordedPythonChallenge";
+import ListWithTitle from "components/common/ListWithTitle";
 
 export default function VariablesAndDataTypesPage() {
   return (
@@ -12,32 +13,24 @@ export default function VariablesAndDataTypesPage() {
         <Container>
           <Row>
             <Col>
-              <h2 className="sectionTitle grayBottomBorder">
-                Variables and Data Types
-                <span className="accent purple" />
-              </h2>
+              <h1 className={styles.noteTitle}>Variables and Data Types</h1>
             </Col>
           </Row>
 
-          <Row className={styles.listBox}>
-            <Col md={4}>
-              <h3>Objectives ⟶</h3>
-            </Col>
-
-            <Col md={8}>
-              <ul>
-                <li>
-                  What are <span className="color-green">data types</span>?
-                </li>
-                <li>Understand basic data types.</li>
-                <li>
-                  Understand what{" "}
-                  <span className="color-purple">variables</span> are.
-                </li>
-                <li>Why do we need variables?</li>
-              </ul>
-            </Col>
-          </Row>
+          <ListWithTitle
+            title="Objectives ⟶"
+            items={[
+              <>
+                What are <span className="color-green">data types</span>?
+              </>,
+              <>Understand basic data types.</>,
+              <>
+                Understand what <span className="color-purple">variables</span>{" "}
+                are.
+              </>,
+              <>Why do we need variables?</>,
+            ]}
+          />
 
           <Row>
             <Col>
