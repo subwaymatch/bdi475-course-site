@@ -45,7 +45,7 @@ export default function BooleanAndConditionalLogicPage() {
             <Col>
               <div className={styles.coverImage}>
                 <Image
-                  src="/images/notes/1612360567295.png"
+                  src="/images/notes/1612360485433.png"
                   width={3000}
                   height={2000}
                   alt=""
