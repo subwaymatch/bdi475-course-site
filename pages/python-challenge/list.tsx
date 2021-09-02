@@ -69,7 +69,7 @@ export default function PythonChallengeListPage({ page }) {
     const { data, error } = await supabaseClient
       .from<definitions["coding_challenges"]>("coding_challenges")
       .select()
-      .eq("language", "Python")
+      .eq("language", "python")
       .order("updated_at", { ascending: false })
       .range(pageIndex * pageSize, (pageIndex + 1) * pageSize);
 
