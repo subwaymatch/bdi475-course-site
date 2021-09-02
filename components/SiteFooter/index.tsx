@@ -64,9 +64,9 @@ export default function SiteFooter() {
           <Col>
             <div className={styles.bottomBox}>
               <Row>
-                <Col>University of Illinois at Urbana-Champaign</Col>
+                <Col xs={10}>University of Illinois at Urbana-Champaign</Col>
 
-                <Col>
+                <Col xs={2}>
                   <div className={styles.iconLinks}>
                     <a href="https://github.com/subwaymatch/bdi475-course-site">
                       <FaGithub className={styles.reactIcon} />
