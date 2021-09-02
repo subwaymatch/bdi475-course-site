@@ -55,7 +55,6 @@ export default function NotesPage() {
               colorTheme={ColorTheme.Green}
             />
 
-            {/* 
             <NoteItem
               href="/notes/lists-and-loops"
               thumbnail={
@@ -129,7 +128,7 @@ export default function NotesPage() {
               date="2021-02-24"
               title="Functions Part 2"
               colorTheme={ColorTheme.Pink}
-            /> */}
+            />
           </Row>
           {/* 
           <Row>
