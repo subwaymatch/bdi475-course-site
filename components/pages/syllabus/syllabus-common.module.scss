@@ -1,0 +1,17 @@
+p.text {
+  color: $color-medium-gray;
+  font-size: 1.4rem;
+  font-weight: 300;
+
+  @include media-breakpoint-down(xl) {
+    font-size: 1.25rem;
+  }
+
+  @include media-breakpoint-down(lg) {
+    font-size: 1.2rem;
+  }
+
+  @include media-breakpoint-down(md) {
+    padding-top: 1.5rem;
+  }
+}

@@ -1,0 +1,100 @@
+@import "styles/variables";
+@import "styles/mixins";
+@import "./syllabus-common.module.scss";
+
+.gradingDetails {
+  margin-top: 6rem;
+
+  .gradingComponentDetails {
+    .componentBox {
+      margin-top: 3rem;
+
+      &.first {
+        margin-top: 0;
+      }
+
+      h3 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid $color-dark-gray;
+        padding: 1.5rem 0;
+        border-bottom: 1px solid $color-border-gray;
+
+        .title {
+        }
+
+        .number {
+          font-size: 0.9rem;
+          font-weight: 700;
+          background-color: $color-yellow;
+          border-radius: 10rem;
+          padding: 0.25rem 0.8rem;
+        }
+      }
+
+      p {
+        margin-top: 1.5rem;
+      }
+    }
+  }
+
+  .letterGradeRange {
+    @include media-breakpoint-down(lg) {
+      margin-top: 6rem;
+    }
+
+    .header {
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .letterBox {
+      .item {
+        border-top: 1px solid $color-border-gray;
+        padding: 1rem 0;
+        font-size: 1.4rem;
+
+        .letter {
+          color: $color-purple;
+        }
+
+        &:first-child {
+          border-top: 1px solid black;
+
+          .letter {
+            font-weight: 600;
+          }
+        }
+      }
+
+      &.A {
+        .range {
+          color: #666;
+        }
+      }
+
+      &.B {
+        .range {
+          color: #888;
+        }
+      }
+
+      &.C {
+        .range {
+          color: #aaa;
+        }
+      }
+      &.D {
+        .range {
+          color: #ccc;
+        }
+      }
+      &.F {
+        .range {
+          color: #ddd;
+        }
+      }
+    }
+  }
+}
