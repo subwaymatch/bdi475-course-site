@@ -1,6 +1,6 @@
 import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
-import Syllabus from "components/pages/Syllabus";
+import Syllabus from "components/Syllabus";
 import styles from "styles/pages/syllabus.module.scss";
 
 export default function SyllabusPage() {
