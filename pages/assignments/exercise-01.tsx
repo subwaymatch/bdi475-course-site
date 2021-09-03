@@ -30,7 +30,9 @@ export default function Exercise() {
                 (Sep 7, 3:30 PM CST) to complete this exercise.
               </>,
               <>
-                You get <span className="color-blue">unlimited attempts</span>.
+                You get{" "}
+                <span className="color-blue">unlimited number of attempts</span>
+                .
               </>,
               <>
                 Passing the test cases (
