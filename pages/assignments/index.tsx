@@ -32,8 +32,17 @@ export default function AssignmentsPage() {
             <Col>
               <div className={styles.exercises}>
                 <h2 className="sectionTitle">
-                  No Exercises Posted <span className="accent purple" />
+                  Exercises <span className="accent purple" />
                 </h2>
+
+                <AssignmentItem
+                  name="Exercise 1"
+                  dueDate={dayjs("2021-09-07").tz().format("ll")}
+                  pointsAvailable={20}
+                  status={AssignmentStatus.Available}
+                  link="/assignments/exercise-01"
+                  colorTheme={ColorTheme.Purple}
+                />
               </div>
             </Col>
           </Row>

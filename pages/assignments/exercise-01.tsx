@@ -7,16 +7,15 @@ import CenteredColumn from "components/common/CenteredColumn";
 import RecordedPythonChallenge from "components/common/RecordedPythonChallenge";
 
 export default function Exercise() {
+  const codingChallengeIds = [177, 173, 174, 175, 172, 176, 171, 168, 169, 170];
+
   return (
     <Layout>
       <main className={styles.page}>
         <Container>
           <Row>
             <Col>
-              <h2 className="sectionTitle grayBottomBorder">
-                Exercise 1
-                <span className="accent purple" />
-              </h2>
+              <h1 className="pageTitle">Exercise 1</h1>
             </Col>
           </Row>
 
@@ -25,25 +24,30 @@ export default function Exercise() {
             items={[
               <>
                 You have until{" "}
-                <span className="color-pink">Thursday end of the day</span> (Feb
-                11, 11:59 PM CST) to complete this quiz.
+                <strong className="color-purple">
+                  Tuesday before the beginning of the class
+                </strong>{" "}
+                (Sep 7, 3:30 PM CST) to complete this exercise.
               </>,
               <>
                 You get <span className="color-blue">unlimited attempts</span>.
               </>,
-              <>Passing the test cases does not guarantee you full points.</>,
-              <>We will manually review your code.</>,
+              <>
+                Passing the test cases (
+                <span className="color-green">Green Checkmarks</span>) usually
+                equates to full points.
+              </>,
+              <>However, we may deduct points upon a manual code review.</>,
             ]}
-            className={styles.block}
           />
 
           <Row>
             <Col>
               <div className={styles.coverImage}>
                 <Image
-                  src="/images/notes/1612327404248.png"
-                  width={3000}
-                  height={2000}
+                  src="/images/exercises/exercise_01_cover_image.jpg"
+                  width={1600}
+                  height={600}
                   alt=""
                 />
               </div>
@@ -51,27 +55,29 @@ export default function Exercise() {
           </Row>
 
           <CenteredColumn className={styles.textBox}>
-            <h3>Before you begin...</h3>
+            <h3>How to Complete Your Assignment</h3>
 
-            <span className="label purple">Plagiarism Policy</span>
+            <span className="label green">Green Checkmarks</span>
             <p>
-              <strong>Please don't plagiarize.</strong>{" "}
-              <span className="color-pink">
-                Don't show your code to others, and don't ask to see others'
-                code.
-              </span>{" "}
-              If you're lost, email me at ypark32@illinois.edu and I will do{" "}
-              <strong>everything I can do</strong> to help you.
+              You will have to complete the coding challenges below. There is no
+              time limit or a submit button. You only need to check whether you
+              see a <span className="color-green">green checkmark</span> on the
+              top-right corner of each challenge. You must be signed in to
+              record your submission.
             </p>
+
+            <span className="label purple">Grading</span>
+
+            <p>We will only look at your final successful attempt.</p>
           </CenteredColumn>
 
-          <RecordedPythonChallenge challengeId={57} className={styles.block} />
-
-          <RecordedPythonChallenge challengeId={53} className={styles.block} />
-
-          <RecordedPythonChallenge challengeId={42} className={styles.block} />
-
-          <RecordedPythonChallenge challengeId={49} className={styles.block} />
+          {codingChallengeIds.map((challengeId) => (
+            <RecordedPythonChallenge
+              key={challengeId}
+              challengeId={challengeId}
+              className={styles.block}
+            />
+          ))}
         </Container>
       </main>
     </Layout>
