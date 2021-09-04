@@ -68,7 +68,10 @@ export default function CodingChallengeAttemptsPage() {
       )
       .on("INSERT", async (payload) => {
         const newData = payload.new;
-        const { data: profileData, error: profileError } = await supabaseClient
+        const {
+          data: profileData,
+          error: profileError,
+        } = await supabaseClient
           .from<definitions["profiles"]>("profiles")
           .select("display_name")
           .eq("id", newData.user_id)
@@ -101,7 +104,7 @@ export default function CodingChallengeAttemptsPage() {
           <Row>
             <Col>
               <h2 className="sectionTitle">
-                Question Attempts
+                Challenge Attempts
                 <span className="accent blue" />
               </h2>
             </Col>

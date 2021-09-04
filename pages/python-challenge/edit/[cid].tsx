@@ -10,27 +10,35 @@ import { definitions } from "types/database";
 import { getChallengeIdAsNumberFromQuery } from "utils/challenge";
 import { toast } from "react-toastify";
 
-export default function EditCodingQuestionPage() {
+export default function EditCodingChallengePage() {
   const router = useRouter();
   const { user, roles } = useSupabaseAuth();
   const { cid } = router.query;
   const [isLoading, setIsLoading] = useState(true);
   const challengeId = getChallengeIdAsNumberFromQuery(cid);
-  const [challengeData, setChallengeData] =
-    useState<definitions["coding_challenges"]>(null);
-  const [solutionData, setSolutionData] =
-    useState<definitions["coding_challenge_solutions"]>(null);
+  const [challengeData, setChallengeData] = useState<
+    definitions["coding_challenges"]
+  >(null);
+  const [solutionData, setSolutionData] = useState<
+    definitions["coding_challenge_solutions"]
+  >(null);
 
-  const loadQuestionData = async () => {
+  const loadChallengeData = async () => {
     setIsLoading(true);
 
-    const { data: challengeData, error: challengeError } = await supabaseClient
+    const {
+      data: challengeData,
+      error: challengeError,
+    } = await supabaseClient
       .from<definitions["coding_challenges"]>("coding_challenges")
       .select()
       .eq("id", challengeId)
       .single();
 
-    const { data: solutionData, error: solutionError } = await supabaseClient
+    const {
+      data: solutionData,
+      error: solutionError,
+    } = await supabaseClient
       .from<definitions["coding_challenge_solutions"]>(
         "coding_challenge_solutions"
       )
@@ -57,10 +65,12 @@ export default function EditCodingQuestionPage() {
     const challengeDataClone = _.cloneDeep(challengeData);
     delete challengeDataClone.id;
 
-    const { data: challengeCloneResult, error: challengeCloneError } =
-      await supabaseClient
-        .from<definitions["coding_challenges"]>("coding_challenges")
-        .insert([challengeDataClone]);
+    const {
+      data: challengeCloneResult,
+      error: challengeCloneError,
+    } = await supabaseClient
+      .from<definitions["coding_challenges"]>("coding_challenges")
+      .insert([challengeDataClone]);
 
     if (challengeCloneError) {
       console.error(challengeCloneError);
@@ -71,16 +81,18 @@ export default function EditCodingQuestionPage() {
 
     const clonedChallengeId = challengeCloneResult[0].id;
 
-    const { data: clonedSolutionData, error: solutionCloneError } =
-      await supabaseClient
-        .from<definitions["coding_challenge_solutions"]>(
-          "coding_challenge_solutions"
-        )
-        .insert([
-          Object.assign({}, solutionData, {
-            challenge_id: clonedChallengeId,
-          }),
-        ]);
+    const {
+      data: clonedSolutionData,
+      error: solutionCloneError,
+    } = await supabaseClient
+      .from<definitions["coding_challenge_solutions"]>(
+        "coding_challenge_solutions"
+      )
+      .insert([
+        Object.assign({}, solutionData, {
+          challenge_id: clonedChallengeId,
+        }),
+      ]);
 
     if (solutionCloneError) {
       console.error(solutionCloneError);
@@ -102,19 +114,23 @@ export default function EditCodingQuestionPage() {
     setChallengeData(updatedChallengeData);
     setSolutionData(updatedSolutionData);
 
-    const { data: challengeUpdateResult, error: challengeUpdateError } =
-      await supabaseClient
-        .from<definitions["coding_challenges"]>("coding_challenges")
-        .update(updatedChallengeData)
-        .match({ id: updatedChallengeData.id });
+    const {
+      data: challengeUpdateResult,
+      error: challengeUpdateError,
+    } = await supabaseClient
+      .from<definitions["coding_challenges"]>("coding_challenges")
+      .update(updatedChallengeData)
+      .match({ id: updatedChallengeData.id });
 
-    const { data: solutionUpdateResult, error: solutionUpdateError } =
-      await supabaseClient
-        .from<definitions["coding_challenge_solutions"]>(
-          "coding_challenge_solutions"
-        )
-        .update(updatedSolutionData)
-        .match({ challenge_id: updatedSolutionData.challenge_id });
+    const {
+      data: solutionUpdateResult,
+      error: solutionUpdateError,
+    } = await supabaseClient
+      .from<definitions["coding_challenge_solutions"]>(
+        "coding_challenge_solutions"
+      )
+      .update(updatedSolutionData)
+      .match({ challenge_id: updatedSolutionData.challenge_id });
   };
 
   useEffect(() => {
@@ -122,7 +138,7 @@ export default function EditCodingQuestionPage() {
       return;
     }
 
-    loadQuestionData();
+    loadChallengeData();
   }, [challengeId, user, roles]);
 
   return isLoading ? (

@@ -324,15 +324,106 @@ export interface paths {
       };
     };
   };
+  "/multiple_choice_options": {
+    get: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.multiple_choice_options.id"];
+          question_id?: parameters["rowFilter.multiple_choice_options.question_id"];
+          text_markdown?: parameters["rowFilter.multiple_choice_options.text_markdown"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["multiple_choice_options"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** multiple_choice_options */
+          multiple_choice_options?: definitions["multiple_choice_options"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.multiple_choice_options.id"];
+          question_id?: parameters["rowFilter.multiple_choice_options.question_id"];
+          text_markdown?: parameters["rowFilter.multiple_choice_options.text_markdown"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.multiple_choice_options.id"];
+          question_id?: parameters["rowFilter.multiple_choice_options.question_id"];
+          text_markdown?: parameters["rowFilter.multiple_choice_options.text_markdown"];
+        };
+        body: {
+          /** multiple_choice_options */
+          multiple_choice_options?: definitions["multiple_choice_options"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
   "/multiple_choice_question_solutions": {
     get: {
       parameters: {
         query: {
           question_id?: parameters["rowFilter.multiple_choice_question_solutions.question_id"];
-          created_at?: parameters["rowFilter.multiple_choice_question_solutions.created_at"];
-          updated_at?: parameters["rowFilter.multiple_choice_question_solutions.updated_at"];
-          /** An array of boolean values to indicate whether each option is correct or not */
-          options_correctness?: parameters["rowFilter.multiple_choice_question_solutions.options_correctness"];
+          /** IDs of the correct options for multiple choice questions */
+          correct_option_ids?: parameters["rowFilter.multiple_choice_question_solutions.correct_option_ids"];
           /** Filtering Columns */
           select?: parameters["select"];
           /** Ordering */
@@ -384,10 +475,8 @@ export interface paths {
       parameters: {
         query: {
           question_id?: parameters["rowFilter.multiple_choice_question_solutions.question_id"];
-          created_at?: parameters["rowFilter.multiple_choice_question_solutions.created_at"];
-          updated_at?: parameters["rowFilter.multiple_choice_question_solutions.updated_at"];
-          /** An array of boolean values to indicate whether each option is correct or not */
-          options_correctness?: parameters["rowFilter.multiple_choice_question_solutions.options_correctness"];
+          /** IDs of the correct options for multiple choice questions */
+          correct_option_ids?: parameters["rowFilter.multiple_choice_question_solutions.correct_option_ids"];
         };
         header: {
           /** Preference */
@@ -403,10 +492,8 @@ export interface paths {
       parameters: {
         query: {
           question_id?: parameters["rowFilter.multiple_choice_question_solutions.question_id"];
-          created_at?: parameters["rowFilter.multiple_choice_question_solutions.created_at"];
-          updated_at?: parameters["rowFilter.multiple_choice_question_solutions.updated_at"];
-          /** An array of boolean values to indicate whether each option is correct or not */
-          options_correctness?: parameters["rowFilter.multiple_choice_question_solutions.options_correctness"];
+          /** IDs of the correct options for multiple choice questions */
+          correct_option_ids?: parameters["rowFilter.multiple_choice_question_solutions.correct_option_ids"];
         };
         body: {
           /** multiple_choice_question_solutions */
@@ -433,8 +520,6 @@ export interface paths {
           title?: parameters["rowFilter.multiple_choice_questions.title"];
           /** Question text in markdown format */
           text_markdown?: parameters["rowFilter.multiple_choice_questions.text_markdown"];
-          /** Array of available options for learners to choose from in markdown format */
-          options?: parameters["rowFilter.multiple_choice_questions.options"];
           /** Filtering Columns */
           select?: parameters["select"];
           /** Ordering */
@@ -491,8 +576,6 @@ export interface paths {
           title?: parameters["rowFilter.multiple_choice_questions.title"];
           /** Question text in markdown format */
           text_markdown?: parameters["rowFilter.multiple_choice_questions.text_markdown"];
-          /** Array of available options for learners to choose from in markdown format */
-          options?: parameters["rowFilter.multiple_choice_questions.options"];
         };
         header: {
           /** Preference */
@@ -513,8 +596,6 @@ export interface paths {
           title?: parameters["rowFilter.multiple_choice_questions.title"];
           /** Question text in markdown format */
           text_markdown?: parameters["rowFilter.multiple_choice_questions.text_markdown"];
-          /** Array of available options for learners to choose from in markdown format */
-          options?: parameters["rowFilter.multiple_choice_questions.options"];
         };
         body: {
           /** multiple_choice_questions */
@@ -721,18 +802,29 @@ export interface definitions {
      */
     id: number;
   };
+  /** Options for multiple choice questions */
+  multiple_choice_options: {
+    /**
+     * Note:
+     * This is a Primary Key.<pk/>
+     */
+    id: number;
+    /**
+     * Note:
+     * This is a Foreign Key to `multiple_choice_questions.id`.<fk table='multiple_choice_questions' column='id'/>
+     */
+    question_id: number;
+    text_markdown: string;
+  };
   /** Solutions for the multiple choice questions */
   multiple_choice_question_solutions: {
     /**
      * Note:
-     * This is a Primary Key.<pk/>
      * This is a Foreign Key to `multiple_choice_questions.id`.<fk table='multiple_choice_questions' column='id'/>
      */
     question_id: number;
-    created_at?: string;
-    updated_at?: string;
-    /** An array of boolean values to indicate whether each option is correct or not */
-    options_correctness: string;
+    /** IDs of the correct options for multiple choice questions */
+    correct_option_ids: string;
   };
   /** Multiple choice questions */
   multiple_choice_questions: {
@@ -746,8 +838,6 @@ export interface definitions {
     title: string;
     /** Question text in markdown format */
     text_markdown: string;
-    /** Array of available options for learners to choose from in markdown format */
-    options: string;
   };
   profiles: {
     /**
@@ -810,13 +900,16 @@ export interface parameters {
   "rowFilter.coding_challenges.language": string;
   /** Primary ID in int8 format for coding challenges */
   "rowFilter.coding_challenges.id": string;
+  /** multiple_choice_options */
+  "body.multiple_choice_options": definitions["multiple_choice_options"];
+  "rowFilter.multiple_choice_options.id": string;
+  "rowFilter.multiple_choice_options.question_id": string;
+  "rowFilter.multiple_choice_options.text_markdown": string;
   /** multiple_choice_question_solutions */
   "body.multiple_choice_question_solutions": definitions["multiple_choice_question_solutions"];
   "rowFilter.multiple_choice_question_solutions.question_id": string;
-  "rowFilter.multiple_choice_question_solutions.created_at": string;
-  "rowFilter.multiple_choice_question_solutions.updated_at": string;
-  /** An array of boolean values to indicate whether each option is correct or not */
-  "rowFilter.multiple_choice_question_solutions.options_correctness": string;
+  /** IDs of the correct options for multiple choice questions */
+  "rowFilter.multiple_choice_question_solutions.correct_option_ids": string;
   /** multiple_choice_questions */
   "body.multiple_choice_questions": definitions["multiple_choice_questions"];
   "rowFilter.multiple_choice_questions.id": string;
@@ -825,8 +918,6 @@ export interface parameters {
   "rowFilter.multiple_choice_questions.title": string;
   /** Question text in markdown format */
   "rowFilter.multiple_choice_questions.text_markdown": string;
-  /** Array of available options for learners to choose from in markdown format */
-  "rowFilter.multiple_choice_questions.options": string;
   /** profiles */
   "body.profiles": definitions["profiles"];
   "rowFilter.profiles.id": string;
