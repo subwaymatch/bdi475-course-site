@@ -3,7 +3,7 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/705f981145c54b278af0066fad01f505)](https://www.codacy.com/gh/subwaymatch/bdi475-course-site/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=subwaymatch/bdi475-course-site&amp;utm_campaign=Badge_Grade)
 [![DeepScan grade](https://deepscan.io/api/teams/10181/projects/15454/branches/308854/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=10181&pid=15454&bid=308854)
 
-Introduction to Data Analytics Applications in Business
+# Introduction to Data Analytics Applications in Business
 
 This is a course site for UIUC's BDI 475 - Introduction to Data Analytics Applications in Business.
 
@@ -22,7 +22,30 @@ Spring 2021 deployment uses Firebase Auth and Firestore. The link here is only f
 
 ![bdi475_course_site_diagram](https://user-images.githubusercontent.com/1064036/131784149-649b5d86-a074-41ba-af66-f1a6f2489bcf.png)
 
-## Development
+## Changelogs
+
+### Fall 2021
+
+- Updated [Pyodide](https://github.com/pyodide/pyodide) to version `0.18` to support Safari and mobile browsers.
+- Updated [Next.js](https://github.com/vercel/next.js/) to version `11.1` for `webpack` v5 support, faster builds, and web fonts optimizations.
+- Updated [Bootstrap](https://getbootstrap.com/) to v5. No noticeable change other than a few breaking classnames.
+- Switched all [Google Firebase](https://firebase.google.com) services (auth, firestore, functions) to [Supabase](https://supabase.io/) due to the following issues.
+  - Students in China could not use the site without using a VPN since Google services are blocked in China.
+  - Firebase is proprietary. Supabase is open-source.
+  - Pagination with Firestore is unnecessarily complicated.
+  - Supabase uses Postgres as a backing database. This makes it easy to make joined queries.
+  - Supabase provides a [type generator](https://supabase.io/docs/reference/javascript/generating-types) that works seamlessly with Typescript.
+
+## Roadmap 🦜
+
+These are features I'm looking to add.
+
+- Multiple choice questions
+- SQLite coding challenge support using [sql.js](https://github.com/sql-js/sql.js/)
+- [MDX](https://mdxjs.com/) support
+- Live polling feature
+
+## Local development
 
 Clone the repository and run the development server using one of the commands below:
 
