@@ -218,7 +218,7 @@ export interface paths {
           title?: parameters["rowFilter.coding_challenges.title"];
           updated_at?: parameters["rowFilter.coding_challenges.updated_at"];
           old_id?: parameters["rowFilter.coding_challenges.old_id"];
-          /** Programming language used for the challenge (e.g., Python, Java, C) */
+          /** Programming language used for the challenge (e.g., python, java, c) */
           language?: parameters["rowFilter.coding_challenges.language"];
           /** Primary ID in int8 format for coding challenges */
           id?: parameters["rowFilter.coding_challenges.id"];
@@ -279,7 +279,7 @@ export interface paths {
           title?: parameters["rowFilter.coding_challenges.title"];
           updated_at?: parameters["rowFilter.coding_challenges.updated_at"];
           old_id?: parameters["rowFilter.coding_challenges.old_id"];
-          /** Programming language used for the challenge (e.g., Python, Java, C) */
+          /** Programming language used for the challenge (e.g., python, java, c) */
           language?: parameters["rowFilter.coding_challenges.language"];
           /** Primary ID in int8 format for coding challenges */
           id?: parameters["rowFilter.coding_challenges.id"];
@@ -304,7 +304,7 @@ export interface paths {
           title?: parameters["rowFilter.coding_challenges.title"];
           updated_at?: parameters["rowFilter.coding_challenges.updated_at"];
           old_id?: parameters["rowFilter.coding_challenges.old_id"];
-          /** Programming language used for the challenge (e.g., Python, Java, C) */
+          /** Programming language used for the challenge (e.g., python, java, c) */
           language?: parameters["rowFilter.coding_challenges.language"];
           /** Primary ID in int8 format for coding challenges */
           id?: parameters["rowFilter.coding_challenges.id"];
@@ -312,6 +312,213 @@ export interface paths {
         body: {
           /** coding_challenges */
           coding_challenges?: definitions["coding_challenges"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
+  "/multiple_choice_question_solutions": {
+    get: {
+      parameters: {
+        query: {
+          question_id?: parameters["rowFilter.multiple_choice_question_solutions.question_id"];
+          created_at?: parameters["rowFilter.multiple_choice_question_solutions.created_at"];
+          updated_at?: parameters["rowFilter.multiple_choice_question_solutions.updated_at"];
+          /** An array of boolean values to indicate whether each option is correct or not */
+          options_correctness?: parameters["rowFilter.multiple_choice_question_solutions.options_correctness"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["multiple_choice_question_solutions"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** multiple_choice_question_solutions */
+          multiple_choice_question_solutions?: definitions["multiple_choice_question_solutions"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          question_id?: parameters["rowFilter.multiple_choice_question_solutions.question_id"];
+          created_at?: parameters["rowFilter.multiple_choice_question_solutions.created_at"];
+          updated_at?: parameters["rowFilter.multiple_choice_question_solutions.updated_at"];
+          /** An array of boolean values to indicate whether each option is correct or not */
+          options_correctness?: parameters["rowFilter.multiple_choice_question_solutions.options_correctness"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          question_id?: parameters["rowFilter.multiple_choice_question_solutions.question_id"];
+          created_at?: parameters["rowFilter.multiple_choice_question_solutions.created_at"];
+          updated_at?: parameters["rowFilter.multiple_choice_question_solutions.updated_at"];
+          /** An array of boolean values to indicate whether each option is correct or not */
+          options_correctness?: parameters["rowFilter.multiple_choice_question_solutions.options_correctness"];
+        };
+        body: {
+          /** multiple_choice_question_solutions */
+          multiple_choice_question_solutions?: definitions["multiple_choice_question_solutions"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
+  "/multiple_choice_questions": {
+    get: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.multiple_choice_questions.id"];
+          created_at?: parameters["rowFilter.multiple_choice_questions.created_at"];
+          updated_at?: parameters["rowFilter.multiple_choice_questions.updated_at"];
+          title?: parameters["rowFilter.multiple_choice_questions.title"];
+          /** Question text in markdown format */
+          text_markdown?: parameters["rowFilter.multiple_choice_questions.text_markdown"];
+          /** Array of available options for learners to choose from in markdown format */
+          options?: parameters["rowFilter.multiple_choice_questions.options"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["multiple_choice_questions"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** multiple_choice_questions */
+          multiple_choice_questions?: definitions["multiple_choice_questions"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.multiple_choice_questions.id"];
+          created_at?: parameters["rowFilter.multiple_choice_questions.created_at"];
+          updated_at?: parameters["rowFilter.multiple_choice_questions.updated_at"];
+          title?: parameters["rowFilter.multiple_choice_questions.title"];
+          /** Question text in markdown format */
+          text_markdown?: parameters["rowFilter.multiple_choice_questions.text_markdown"];
+          /** Array of available options for learners to choose from in markdown format */
+          options?: parameters["rowFilter.multiple_choice_questions.options"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.multiple_choice_questions.id"];
+          created_at?: parameters["rowFilter.multiple_choice_questions.created_at"];
+          updated_at?: parameters["rowFilter.multiple_choice_questions.updated_at"];
+          title?: parameters["rowFilter.multiple_choice_questions.title"];
+          /** Question text in markdown format */
+          text_markdown?: parameters["rowFilter.multiple_choice_questions.text_markdown"];
+          /** Array of available options for learners to choose from in markdown format */
+          options?: parameters["rowFilter.multiple_choice_questions.options"];
+        };
+        body: {
+          /** multiple_choice_questions */
+          multiple_choice_questions?: definitions["multiple_choice_questions"];
         };
         header: {
           /** Preference */
@@ -426,13 +633,11 @@ export interface paths {
       };
     };
   };
-  "/rpc/generate_uid": {
+  "/rpc/create_profile_for_new_user": {
     post: {
       parameters: {
         body: {
-          args: {
-            size: number;
-          };
+          args: { [key: string]: unknown };
         };
         header: {
           /** Preference */
@@ -445,11 +650,13 @@ export interface paths {
       };
     };
   };
-  "/rpc/create_profile_for_new_user": {
+  "/rpc/generate_uid": {
     post: {
       parameters: {
         body: {
-          args: { [key: string]: unknown };
+          args: {
+            size: number;
+          };
         };
         header: {
           /** Preference */
@@ -485,8 +692,9 @@ export interface definitions {
     is_success: boolean;
     user_code?: string;
   };
+  /** Coding challenge solutions - the solutions are separated to a separate table to prevent non-authorized users accessing the solutions */
   coding_challenge_solutions: {
-    old_challenge_id: string;
+    old_challenge_id?: string;
     solution_code?: string;
     /**
      * Note:
@@ -494,15 +702,16 @@ export interface definitions {
      */
     challenge_id: number;
   };
+  /** Coding challenges */
   coding_challenges: {
     created_at?: string;
     starter_code?: string;
-    test_code?: string;
+    test_code: string;
     text_markdown?: string;
     title?: string;
     updated_at?: string;
     old_id?: string;
-    /** Programming language used for the challenge (e.g., Python, Java, C) */
+    /** Programming language used for the challenge (e.g., python, java, c) */
     language: string;
     /**
      * Primary ID in int8 format for coding challenges
@@ -511,6 +720,34 @@ export interface definitions {
      * This is a Primary Key.<pk/>
      */
     id: number;
+  };
+  /** Solutions for the multiple choice questions */
+  multiple_choice_question_solutions: {
+    /**
+     * Note:
+     * This is a Primary Key.<pk/>
+     * This is a Foreign Key to `multiple_choice_questions.id`.<fk table='multiple_choice_questions' column='id'/>
+     */
+    question_id: number;
+    created_at?: string;
+    updated_at?: string;
+    /** An array of boolean values to indicate whether each option is correct or not */
+    options_correctness: string;
+  };
+  /** Multiple choice questions */
+  multiple_choice_questions: {
+    /**
+     * Note:
+     * This is a Primary Key.<pk/>
+     */
+    id: number;
+    created_at: string;
+    updated_at: string;
+    title: string;
+    /** Question text in markdown format */
+    text_markdown: string;
+    /** Array of available options for learners to choose from in markdown format */
+    options: string;
   };
   profiles: {
     /**
@@ -569,10 +806,27 @@ export interface parameters {
   "rowFilter.coding_challenges.title": string;
   "rowFilter.coding_challenges.updated_at": string;
   "rowFilter.coding_challenges.old_id": string;
-  /** Programming language used for the challenge (e.g., Python, Java, C) */
+  /** Programming language used for the challenge (e.g., python, java, c) */
   "rowFilter.coding_challenges.language": string;
   /** Primary ID in int8 format for coding challenges */
   "rowFilter.coding_challenges.id": string;
+  /** multiple_choice_question_solutions */
+  "body.multiple_choice_question_solutions": definitions["multiple_choice_question_solutions"];
+  "rowFilter.multiple_choice_question_solutions.question_id": string;
+  "rowFilter.multiple_choice_question_solutions.created_at": string;
+  "rowFilter.multiple_choice_question_solutions.updated_at": string;
+  /** An array of boolean values to indicate whether each option is correct or not */
+  "rowFilter.multiple_choice_question_solutions.options_correctness": string;
+  /** multiple_choice_questions */
+  "body.multiple_choice_questions": definitions["multiple_choice_questions"];
+  "rowFilter.multiple_choice_questions.id": string;
+  "rowFilter.multiple_choice_questions.created_at": string;
+  "rowFilter.multiple_choice_questions.updated_at": string;
+  "rowFilter.multiple_choice_questions.title": string;
+  /** Question text in markdown format */
+  "rowFilter.multiple_choice_questions.text_markdown": string;
+  /** Array of available options for learners to choose from in markdown format */
+  "rowFilter.multiple_choice_questions.options": string;
   /** profiles */
   "body.profiles": definitions["profiles"];
   "rowFilter.profiles.id": string;
