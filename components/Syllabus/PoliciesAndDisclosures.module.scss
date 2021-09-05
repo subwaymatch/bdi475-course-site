@@ -1,0 +1,72 @@
+@import "./syllabus-common.module.scss";
+@import "styles/variables";
+@import "styles/mixins";
+
+.policies,
+.disclosures {
+  h2 {
+    color: $color-orange;
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-top: 6rem;
+    border-top: 2px solid $color-orange;
+    padding-top: 0.25rem;
+    padding-bottom: 4rem;
+  }
+
+  h3 {
+    color: $color-orange;
+    font-size: 1.8rem;
+    font-weight: 500;
+    padding-bottom: 1rem;
+
+    @include media-breakpoint-down(xl) {
+      font-size: 1.6rem;
+    }
+  }
+
+  .item {
+    border-top: 1px solid $color-orange;
+    padding-top: 1.5rem;
+    padding-bottom: 4rem;
+
+    @include media-breakpoint-down(lg) {
+      padding-top: 1rem;
+      padding-bottom: 4rem;
+    }
+  }
+}
+
+.resourceItem {
+  border-top: 1px solid black;
+  font-size: 1.1rem;
+  padding-top: 1rem;
+  padding-bottom: 4rem;
+  letter-spacing: 0;
+
+  h4 {
+    font-weight: 600;
+  }
+
+  span.phoneNumber {
+    display: block;
+    color: $color-orange;
+  }
+
+  span.address {
+    display: block;
+    color: $color-gray;
+  }
+
+  h4,
+  span.phoneNumber,
+  span.address {
+    line-height: 1.6;
+  }
+
+  p {
+    color: $color-medium-gray;
+    margin-top: 1.5rem;
+    font-size: 1.05rem;
+  }
+}

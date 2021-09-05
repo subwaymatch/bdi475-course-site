@@ -4,6 +4,7 @@ import clsx from "clsx";
 import Image from "next/image";
 import GradingBreakdown from "./GradingBreakdown";
 import GradingDetails from "./GradingDetails";
+import PoliciesAndDisclosures from "./PoliciesAndDisclosures";
 
 export default function CourseInformation() {
   return (
@@ -142,6 +143,10 @@ export default function CourseInformation() {
             </Col>
 
             <Col
+              xl={{
+                span: 3,
+                order: 2,
+              }}
               md={{
                 span: 4,
                 order: 2,
@@ -166,6 +171,8 @@ export default function CourseInformation() {
       <GradingBreakdown />
 
       <GradingDetails />
+
+      <PoliciesAndDisclosures />
     </section>
   );
 }

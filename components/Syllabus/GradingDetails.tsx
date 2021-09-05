@@ -17,7 +17,7 @@ const GradingComponentDetails = () => (
       <p className={styles.text}>
         During the live lectures, you will work on coding exercises. Your
         participation is measured by a mix of the correctness and efforts in
-        those exercises. It’s perfectly okay to get a few questions wrong.
+        those exercises. It's perfectly okay to get a few questions wrong. 🤠
       </p>
     </div>
 
@@ -28,10 +28,9 @@ const GradingComponentDetails = () => (
       </h3>
 
       <p className={styles.text}>
-        During the last few weeks of this course, you will work on an
-        independent capstone project. The goal is to create a portfolio that
-        showcases your data analytic skills. You will publish your work on
-        GitHub.
+        These exercises aim to reinforce your understanding of topics we discuss
+        in lectures. 🐌 The challenges are highly similar to the ones you see in
+        lectures. You will get an unlimited number of attempts.
       </p>
     </div>
 
@@ -43,8 +42,9 @@ const GradingComponentDetails = () => (
 
       <p className={styles.text}>
         Each quiz will test your understanding of the topics we discuss in
-        lectures. All quizzes are open note and open internet (able to search).
-        However, no P2P discussions are allowed.
+        lectures. All quizzes are{" "}
+        <span className="color-green w-500">open note and open search</span>{" "}
+        (able to search). However, no P2P discussions are allowed.
       </p>
     </div>
 
@@ -55,8 +55,9 @@ const GradingComponentDetails = () => (
       </h3>
 
       <p className={styles.text}>
-        Each problem set is consisted of coding challenges. You will be able to
-        check whether your code is correct before submission.
+        Similar to after-class exercises, each problem set is consisted of
+        coding challenges. These challenges will be closely related to business
+        applications. Consider these a preview of the case studies. 🦜
       </p>
     </div>
 
@@ -67,8 +68,14 @@ const GradingComponentDetails = () => (
       </h3>
 
       <p className={styles.text}>
-        You will work with a real-world dataset to load, clean, transform, and
-        derive insights.
+        Case studies will bring together all topics we discuss in lectures. You
+        will work with real-world datasets to load, clean, transform, and derive
+        insights. Unlike the previous coding challenges, you will complete these
+        case studies in a Jupyter notebook environment (e.g.,{" "}
+        <a href="https://jupyter.org/">JupyterLab</a>,{" "}
+        <a href="https://colab.google.com">Google Colab</a>,{" "}
+        <a href="https://jupyterlite.rtfd.io/en/latest/try/lab">JupyterLite</a>
+        ).
       </p>
     </div>
     <div className={styles.componentBox}>
@@ -80,8 +87,7 @@ const GradingComponentDetails = () => (
       <p className={styles.text}>
         During the last few weeks of this course, you will work on an
         independent capstone project. The goal is to create a portfolio that
-        showcases your data analytic skills. You will publish your work on
-        GitHub.
+        showcases your data analytic skills. To encourage
       </p>
     </div>
   </div>

@@ -2,11 +2,30 @@ import { Container, Row, Col } from "react-bootstrap";
 import styles from "./GradingBreakdown.module.scss";
 import clsx from "clsx";
 
-const GradedItem = ({ item, points, percentage, notes }) => (
+interface IGradedItemProps {
+  item: string;
+  footnoteNumber?: number;
+  points: number;
+  percentage: number;
+  notes: string;
+}
+
+const GradedItem = ({
+  item,
+  footnoteNumber,
+  points,
+  percentage,
+  notes,
+}: IGradedItemProps) => (
   <div className={styles.itemRow}>
     <Row>
       <Col sm={4} xs={6}>
-        <div className={clsx(styles.cell, styles.componentName)}>{item}</div>
+        <div className={clsx(styles.cell, styles.componentName)}>
+          <span className={styles.name}>{item}</span>
+          {footnoteNumber && (
+            <span className={styles.footnoteNumber}>{footnoteNumber}</span>
+          )}
+        </div>
       </Col>
 
       <Col sm={2} xs={3}>
@@ -14,7 +33,9 @@ const GradedItem = ({ item, points, percentage, notes }) => (
       </Col>
 
       <Col sm={2} xs={3}>
-        <div className={clsx(styles.cell, styles.percentage)}>{percentage}</div>
+        <div className={clsx(styles.cell, styles.percentage)}>
+          {percentage}%
+        </div>
       </Col>
 
       <Col sm={4} xs={12}>
@@ -68,50 +89,56 @@ export default function GradingBreakdown() {
 
         <GradedItem
           item="Participation"
+          footnoteNumber={1}
           points={100}
-          percentage="10%"
+          percentage={10}
           notes="Mostly in-class exercises"
         />
 
         <GradedItem
           item="Exercises"
+          footnoteNumber={2}
           points={200}
-          percentage="20%"
+          percentage={20}
           notes="10 @ 20 points each"
         />
 
         <GradedItem
           item="Quizzes"
+          footnoteNumber={3}
           points={100}
-          percentage="10%"
+          percentage={10}
           notes="5 @ 25 points each (drop 1 lowest score)"
         />
 
         <GradedItem
           item="Problem Sets"
+          footnoteNumber={4}
           points={120}
-          percentage="12%"
+          percentage={12}
           notes="2 @ 60 points each"
         />
 
         <GradedItem
           item="Case Studies"
+          footnoteNumber={5}
           points={320}
-          percentage="32%"
+          percentage={32}
           notes="4 @ 80 points each"
         />
 
         <GradedItem
           item="Capstone Project"
+          footnoteNumber={6}
           points={160}
-          percentage="16%"
+          percentage={16}
           notes="Independent Final Project"
         />
 
         <GradedItem
           item="Extra Credit"
           points={10}
-          percentage="1%"
+          percentage={1}
           notes="ARL Subject Pool"
         />
 

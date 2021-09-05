@@ -1,11 +1,17 @@
 @import "styles/variables";
 @import "styles/mixins";
+@import "./syllabus-common.module.scss";
 
 .gradingBreakdownSection {
   font-size: 1.25rem;
-  margin-top: 4rem;
+  margin-top: 6rem;
 
-  @include media-breakpoint-down(md) {
+  @include media-breakpoint-down(xl) {
+    font-size: 1.15rem;
+    letter-spacing: -0.01rem;
+  }
+
+  @include media-breakpoint-down(lg) {
     font-size: 1.05rem;
     letter-spacing: -0.01rem;
   }
@@ -13,10 +19,14 @@
   .headerRow,
   .itemRow,
   .footerRow {
-    padding: 1rem 0;
+    padding: 1.25rem 0;
     border-bottom: 1px solid $color-border-gray;
 
-    @include media-breakpoint-down(md) {
+    @include media-breakpoint-down(xl) {
+      padding: 1rem 0;
+    }
+
+    @include media-breakpoint-down(lg) {
       padding: 0.75rem 0;
     }
   }
@@ -29,6 +39,7 @@
   .footerRow {
     @include media-breakpoint-only(xs) {
       padding: 0.5rem 0;
+      letter-spacing: 0;
     }
 
     .points {
@@ -41,12 +52,33 @@
 
     .notes {
       color: #818181;
+      font-size: 0.95em;
     }
   }
 
   .itemRow {
     .componentName {
+      color: $color-dark-gray;
       font-weight: 500;
+      display: flex;
+      align-items: flex-start;
+
+      .name {
+        display: inline-block;
+      }
+
+      .footnoteNumber {
+        font-size: 0.75rem;
+        font-weight: 600;
+        background-color: $color-yellow;
+        border-radius: 50%;
+        width: 1.2rem;
+        height: 1.2rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 0.3rem;
+      }
     }
   }
 

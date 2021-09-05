@@ -1,3 +1,4 @@
+@use "sass:color";
 @import "styles/variables";
 @import "styles/mixins";
 
@@ -6,13 +7,8 @@
   margin-top: 3rem;
   line-height: 1.4;
 
-  &:hover {
-    .dateWrapper {
-      color: $color-medium-gray;
-    }
-  }
-
   h3 {
+    color: $color-dark-gray;
     font-size: 1.3rem;
     font-weight: 500;
     letter-spacing: -0.02rem;
@@ -41,6 +37,16 @@
 
     .weekday {
       letter-spacing: 0;
+    }
+  }
+
+  &:hover {
+    h3 {
+      color: $color-black;
+    }
+
+    .dateWrapper {
+      color: color.adjust($color-gray, $lightness: -12%);
     }
   }
 }

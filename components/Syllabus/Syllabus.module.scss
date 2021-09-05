@@ -24,8 +24,12 @@
     .largeText {
       display: block;
       font-size: 2rem;
-      line-height: 1.5;
+      line-height: 1.4;
       margin-top: 1rem;
+
+      @include media-breakpoint-down(xxl) {
+        font-size: 1.75rem;
+      }
 
       @include media-breakpoint-down(lg) {
         font-size: 1.5rem;
@@ -82,13 +86,13 @@
 
     .memberDesc {
       border-top: 1px solid $color-border-gray;
-      padding-top: 1rem;
 
       p {
         margin-top: 1.5rem;
+        padding: 0;
 
-        @include media-breakpoint-down(lg) {
-          margin-top: 1rem;
+        @include media-breakpoint-down(xl) {
+          margin-top: 1.25rem;
         }
       }
     }
