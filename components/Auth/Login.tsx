@@ -111,7 +111,7 @@ export default function Login() {
                   <MdDone className={styles.reactIcon} />
                 </a>
               ) : (
-                <motion.a
+                <motion.span
                   variants={clickableVariants}
                   whileHover="hover"
                   whileTap="tap"
@@ -120,7 +120,7 @@ export default function Login() {
                 >
                   <span className={styles.label}>Email Me</span>
                   <RiSendPlaneLine className={styles.reactIcon} />
-                </motion.a>
+                </motion.span>
               )}
             </Col>
             <Col md={8} xs={12}>
