@@ -56,6 +56,10 @@
         padding: 1rem 0;
         font-size: 1.4rem;
 
+        @include media-breakpoint-down(md) {
+          font-size: 1.2rem;
+        }
+
         .letter {
           color: $color-purple;
         }

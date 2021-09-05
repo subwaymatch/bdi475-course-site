@@ -137,16 +137,19 @@
       letter-spacing: -0.01rem;
       padding: 0.65rem 0;
 
-      &:hover {
-        color: $color-black;
-        border-bottom-color: $color-black;
-      }
-
       .iconWrapper {
         color: $color-gray;
         background: transparent;
         width: auto;
         height: auto;
+      }
+
+      &:hover {
+        color: $color-black;
+
+        .iconWrapper {
+          color: $color-black;
+        }
       }
     }
   }

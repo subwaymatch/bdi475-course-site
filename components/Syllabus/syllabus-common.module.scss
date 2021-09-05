@@ -23,6 +23,9 @@ p.text {
   }
 
   @include media-breakpoint-down(md) {
-    padding-top: 1.5rem;
+  }
+
+  @include media-breakpoint-down(sm) {
+    font-size: 1.1rem;
   }
 }
