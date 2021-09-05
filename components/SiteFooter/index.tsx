@@ -33,6 +33,11 @@ export default function SiteFooter() {
                   </a>
                 </li>
                 <li>
+                  <a href="https://cscircles.cemc.uwaterloo.ca/visualize">
+                    Visualize Code Execution
+                  </a>
+                </li>
+                <li>
                   <a href="https://www.datacamp.com/">DataCamp</a>
                 </li>
                 <li>
