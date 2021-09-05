@@ -1,0 +1,96 @@
+@import "styles/variables";
+@import "styles/mixins";
+@import "./syllabus-common.module.scss";
+
+.syllabus {
+  h3 {
+    font-weight: 500;
+    font-size: 1.4rem;
+
+    @include media-breakpoint-down(lg) {
+      font-size: 1.3rem;
+    }
+  }
+
+  .displayBox {
+    border-top: 1px solid $color-border-gray;
+    padding-top: 1.5rem;
+    padding-bottom: 3.25rem;
+
+    @include media-breakpoint-down(md) {
+      padding: 2rem 0;
+    }
+
+    .largeText {
+      display: block;
+      font-size: 2rem;
+      line-height: 1.5;
+      margin-top: 1rem;
+
+      @include media-breakpoint-down(lg) {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  .about {
+    border-top: 1px solid $color-border-gray;
+    padding-top: 2.5rem;
+    padding-bottom: 3rem;
+
+    @include media-breakpoint-down(md) {
+      padding: 2rem 0;
+    }
+  }
+
+  .instructionalTeam {
+    margin-top: 4rem;
+
+    .memberHeader {
+      border-top: 1px solid black;
+      padding: 1rem 0;
+
+      @include media-breakpoint-down(md) {
+        border: none;
+        padding-top: 0.5rem;
+      }
+
+      .name,
+      .role,
+      .title {
+        font-weight: 500;
+        display: block;
+
+        @include media-breakpoint-down(lg) {
+        }
+      }
+
+      .role {
+        color: $color-orange;
+      }
+
+      .title {
+        font-weight: 400;
+        text-align: right;
+
+        @include media-breakpoint-down(lg) {
+          color: $color-gray;
+          text-align: left;
+        }
+      }
+    }
+
+    .memberDesc {
+      border-top: 1px solid $color-border-gray;
+      padding-top: 1rem;
+
+      p {
+        margin-top: 1.5rem;
+
+        @include media-breakpoint-down(lg) {
+          margin-top: 1rem;
+        }
+      }
+    }
+  }
+}

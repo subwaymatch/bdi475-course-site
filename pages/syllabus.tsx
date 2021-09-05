@@ -1,7 +1,6 @@
 import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
-import CourseInformation from "components/pages/syllabus/CourseInformation";
-import GradingBreakdown from "components/pages/syllabus/GradingBreakdown";
+import Syllabus from "components/Syllabus";
 import styles from "styles/pages/syllabus.module.scss";
 
 export default function SyllabusPage() {
@@ -16,11 +15,7 @@ export default function SyllabusPage() {
           </Row>
         </Container>
 
-        <CourseInformation />
-
-        <GradingBreakdown />
-
-        {/* <Participation /> */}
+        <Syllabus />
       </main>
     </Layout>
   );
