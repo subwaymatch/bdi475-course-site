@@ -47,7 +47,7 @@ export default function Layout({
         <meta name="theme-color" content={colors.green} />
       </Head>
 
-      {process.env.NODE_ENV === "development" && <BootstrapBreakpoints />}
+      {/* {process.env.NODE_ENV === "development" && <BootstrapBreakpoints />} */}
 
       {excludeHeader !== true && <SiteHeader />}
 

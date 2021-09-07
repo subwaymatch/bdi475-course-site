@@ -108,7 +108,7 @@
     border-radius: 0.75rem;
     overflow: hidden;
     margin-bottom: 1.5rem;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 
     @include media-breakpoint-only(lg) {
       height: 170px;
@@ -121,7 +121,11 @@
 
     &:hover {
       box-shadow: 0 0 1rem rgba(black, 6%);
-      top: 2px;
+      transform: translateY(2px);
+    }
+
+    &:active {
+      box-shadow: 0 0 2rem rgba(black, 12%);
     }
 
     .linkText {

@@ -15,10 +15,7 @@ export default function ListsAndLoopsPage() {
         <Container>
           <Row>
             <Col>
-              <h2 className="sectionTitle grayBottomBorder">
-                Lists and Loops
-                <span className="accent blue" />
-              </h2>
+              <h1 className={styles.noteTitle}>Lists and Loops</h1>
             </Col>
           </Row>
 
@@ -41,14 +38,13 @@ export default function ListsAndLoopsPage() {
                 satisfied.
               </>,
             ]}
-            className={styles.block}
           />
 
           <Row>
             <Col>
               <div className={styles.coverImage}>
                 <Image
-                  src="/images/notes/1612807674326.png"
+                  src="/images/notes/1612807284318.png"
                   width={3000}
                   height={2000}
                   alt=""
@@ -57,9 +53,15 @@ export default function ListsAndLoopsPage() {
             </Col>
           </Row>
 
+          <RecordedPythonChallenge challengeId={178} className={styles.block} />
+
           <RecordedPythonChallenge challengeId={1} className={styles.block} />
 
+          <RecordedPythonChallenge challengeId={179} className={styles.block} />
+
           <RecordedPythonChallenge challengeId={22} className={styles.block} />
+
+          <RecordedPythonChallenge challengeId={180} className={styles.block} />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Introduction to Lists</h3>
@@ -68,24 +70,25 @@ export default function ListsAndLoopsPage() {
 
             <p>
               The code you wrote above is great. But with a degree from the U of
-              I, you will likely get more than one job offer. As an example,
-              assume you get three offers. Can you <em>reuse</em> the logic
-              you've already written? Yes! But we'll first need to cover a new
-              data type (<code>list</code>) and a new syntax (<code>for</code>{" "}
-              loops).
+              I, you will likely get more than one job offer. Assume you get
+              three offers. Can you <em>reuse</em> the logic you've already
+              written? Yes! But we'll first need to cover a new data type (
+              <code>list</code>) and a new syntax (<code>for</code> loops).
             </p>
 
             <p>
-              Last time, we talked about <code>int</code>, <code>float</code>,{" "}
-              and <code>str</code> types. Variables with these three types can
-              only contain a single value. That&#39;s why they are called{" "}
-              <em>primitive</em> data types. The <code>list</code> type is the
-              first non-primitive data type we&#39;ve seen. Square brackets (
+              Last time, we talked about <code>bool</code>, <code>int</code>,{" "}
+              <code>float</code>, and <code>str</code> types. Variables with
+              these three types can only contain a single value. That&#39;s why
+              they are called basic types. The <code>list</code> type is the
+              first non-basic data type we&#39;ve seen. Square brackets (
               <code>[]</code>) are used to denote a list type.
             </p>
           </CenteredColumn>
 
           <RecordedPythonChallenge challengeId={4} className={styles.block} />
+
+          <RecordedPythonChallenge challengeId={181} className={styles.block} />
 
           <RecordedPythonChallenge challengeId={20} className={styles.block} />
 
@@ -107,13 +110,74 @@ export default function ListsAndLoopsPage() {
             </p>
           </CenteredColumn>
 
+          <RecordedPythonChallenge challengeId={183} className={styles.block} />
+
+          <RecordedPythonChallenge challengeId={182} className={styles.block} />
+
           <RecordedPythonChallenge challengeId={34} className={styles.block} />
 
-          <RecordedPythonChallenge challengeId={29} className={styles.block} />
+          <CenteredColumn className={styles.textBox}>
+            <h3>Negative list indices</h3>
+            <span className="label blue">From the end of the list</span>
+            <p>
+              You can also access elements from the end of the array using a
+              negative index. Negative indices begin at <code>-1</code>.{" "}
+              <code>my_list[-1]</code> will select the{" "}
+              <strong>last element</strong> in <code>my_list</code>.
+            </p>
+            <p>
+              Similarly, <code>my_list[-2]</code> will select the second to the
+              last element in <code>my_list</code>.
+            </p>
+          </CenteredColumn>
+
+          <RecordedPythonChallenge challengeId={184} className={styles.block} />
+
+          <RecordedPythonChallenge challengeId={185} className={styles.block} />
+
+          <CenteredColumn className={styles.textBox}>
+            <h3>How many elements are in a list?</h3>
+
+            <span className="label yellow">Length of a list</span>
+            <p>
+              You can retrieve the number of items in a list by using{" "}
+              <code>len(my_list)</code> syntax.
+            </p>
+          </CenteredColumn>
+
+          <RecordedPythonChallenge challengeId={186} className={styles.block} />
+
+          <RecordedPythonChallenge challengeId={187} className={styles.block} />
+
+          <CenteredColumn className={styles.textBox}>
+            <h3>Working with lists</h3>
+            <span className="label purple">List methods</span>
+            <p>
+              Python provides multiple list methods (if you're not familiar with
+              what a "method" is, think of it as some operation on a list - like
+              adding or removing an item).
+            </p>
+
+            <p>
+              A common operation is to add an item to an existing list. You can
+              append an item to a list using{" "}
+              <code>my_list.append(new_value)</code> syntax.
+            </p>
+
+            <p>
+              If you'd like to take a look at all available methods, refer to{" "}
+              <a href="https://docs.python.org/3/tutorial/datastructures.html">
+                https://docs.python.org/3/tutorial/datastructures.html
+              </a>
+              .
+            </p>
+          </CenteredColumn>
+
+          <RecordedPythonChallenge challengeId={188} className={styles.block} />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Can a list have elements with non-uniform data types?</h3>
-            <span className="label pink">You Bet</span>
+            <span className="label pink">Mixed Types</span>
             <p>
               From the previous coding question, we're able to see that a list
               can have elements with mixed data types. A list can hold{" "}
@@ -130,6 +194,8 @@ export default function ListsAndLoopsPage() {
               another list... and so on.
             </p>
           </LargeQuote>
+
+          <RecordedPythonChallenge challengeId={29} className={styles.block} />
 
           <RecordedPythonChallenge challengeId={28} className={styles.block} />
 
@@ -148,11 +214,40 @@ export default function ListsAndLoopsPage() {
 
           <RecordedPythonChallenge challengeId={35} className={styles.block} />
 
+          <RecordedPythonChallenge challengeId={189} className={styles.block} />
+
           <RecordedPythonChallenge challengeId={21} className={styles.block} />
 
           <RecordedPythonChallenge challengeId={30} className={styles.block} />
 
           <RecordedPythonChallenge challengeId={39} className={styles.block} />
+
+          <CenteredColumn className={styles.textBox}>
+            <h3>Another way to retrieve elements</h3>
+
+            <span className="label orange">A second syntax</span>
+            <p>
+              You can also use <code>for x in my_list</code> to iterate over
+              each value in <code>my_list</code>. Note that <code>x</code> is an
+              arbitrary name you pick. You can use any name. Any of the code
+              below will work.
+            </p>
+
+            <ul>
+              <li>
+                <code>for x in my_list</code>
+              </li>
+              <li>
+                <code>for a in my_list</code>
+              </li>
+              <li>
+                <code>for my_value in my_list</code>
+              </li>
+              <li>
+                <code>for any_variable_name in my_list</code>
+              </li>
+            </ul>
+          </CenteredColumn>
 
           <RecordedPythonChallenge challengeId={26} className={styles.block} />
 
