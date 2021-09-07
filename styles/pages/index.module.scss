@@ -1,9 +1,8 @@
+@use 'sass:color';
 @import "styles/variables";
 @import "styles/mixins";
 
 .mainPage {
-  padding-bottom: 10rem;
-
   .courseTitleWrapper {
     padding: 4rem 0 6rem 0;
     line-height: 1.3;
@@ -90,6 +89,98 @@
 
     @include media-breakpoint-down(md) {
       font-size: 1.5rem;
+    }
+  }
+}
+
+.linksSection {
+  background: color.adjust($color-gray, $lightness: 22%);
+  padding: 6rem 0;
+
+  .linkItem {
+    color: $color-dark-gray;
+    background-color: white;
+    padding: 2rem 2.5rem;
+    display: flex;
+    height: 180px;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+
+    @include media-breakpoint-only(lg) {
+      height: 170px;
+    }
+
+    @include media-breakpoint-down(lg) {
+      height: auto;
+      padding: 1.25rem 1.75rem;
+    }
+
+    &:hover {
+      box-shadow: 0 0 1rem rgba(black, 6%);
+      top: 2px;
+    }
+
+    .linkText {
+      padding-right: 2rem;
+
+      @include media-breakpoint-down(xl) {
+        padding-right: 1.5rem;
+      }
+
+      @include media-breakpoint-down(md) {
+        padding-right: 1rem;
+      }
+
+      .title {
+        font-size: 1.4rem;
+        font-weight: 500;
+        padding-bottom: 0.5rem;
+
+        @include media-breakpoint-down(lg) {
+          font-size: 1.3rem;
+        }
+
+        @include media-breakpoint-down(md) {
+          font-size: 1.1rem;
+        }
+      }
+
+      .desc {
+        color: $color-gray;
+        margin-top: 0.5rem;
+        font-size: 1.2rem;
+        font-weight: 300;
+
+        @include media-breakpoint-only(lg) {
+          font-size: 1.1rem;
+        }
+
+        @include media-breakpoint-down(md) {
+          font-size: 1rem;
+        }
+      }
+    }
+
+    .linkImage {
+      max-width: 100px;
+
+      @include media-breakpoint-down(xl) {
+        max-width: 80px;
+      }
+    }
+
+    &:hover {
+      color: black;
+
+      .linkText {
+        .desc {
+          color: $color-medium-gray;
+        }
+      }
     }
   }
 }
