@@ -90,7 +90,7 @@ export default function MainPage() {
                   <div className={styles.linkText}>
                     <span className={styles.title}>DataCamp Invitation ⟶</span>
                     <p className={styles.desc}>
-                      Practice outside the classroom on a wide range of topics.
+                      Practice outside the classroom on a wide range of topics
                     </p>
                   </div>
 
