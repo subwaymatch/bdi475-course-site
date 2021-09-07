@@ -40,6 +40,11 @@ export default function SiteFooter() {
                     PDF Syllabus
                   </a>
                 </li>
+                <li>
+                  <a href="https://cscircles.cemc.uwaterloo.ca/visualize">
+                    Visualize Python Code Execution
+                  </a>
+                </li>
               </ul>
             </div>
           </Col>
