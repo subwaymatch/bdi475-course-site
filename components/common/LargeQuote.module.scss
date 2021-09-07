@@ -9,7 +9,7 @@
     font-weight: 800;
   }
 
-  @include media-breakpoint-down(md) {
+  @include media-breakpoint-down(lg) {
     margin-top: 4rem;
 
     p {
@@ -17,7 +17,7 @@
       letter-spacing: -0.15rem;
     }
   }
-  @include media-breakpoint-down(sm) {
+  @include media-breakpoint-down(md) {
     margin-top: 3rem;
 
     p {
