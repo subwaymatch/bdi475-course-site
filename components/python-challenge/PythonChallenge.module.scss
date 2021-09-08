@@ -50,7 +50,7 @@
     border-left: 1px solid $color-border-gray;
     border-right: 1px solid $color-border-gray;
 
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(md) {
       border: none;
       border: 1px solid $color-border-gray;
     }
@@ -94,12 +94,14 @@
 
   .resultsWrapper {
     padding: 0.75rem 2rem 0 0;
+    height: 100%;
   }
 
   .errorWrapper {
     border-left: 1px solid $color-border-gray;
     padding: 0.75rem 0 0 1rem;
     overflow: auto;
+    height: 100%;
   }
 
   @include media-breakpoint-down(lg) {
