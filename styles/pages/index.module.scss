@@ -62,40 +62,13 @@
   }
 }
 
-.displayBox {
-  border-top: 1px solid $color-border-gray;
-  padding-top: 1.5rem;
-  padding-bottom: 3.25rem;
-
-  @include media-breakpoint-down(sm) {
-    padding-top: 1rem;
-    padding-bottom: 2rem;
-  }
-
-  .text {
-    display: block;
-    font-size: 2.25rem;
-    margin-top: 0.5rem;
-
-    a {
-      &:hover {
-        color: #333;
-      }
-    }
-
-    @include media-breakpoint-down(md) {
-      font-size: 1.75rem;
-    }
-
-    @include media-breakpoint-down(md) {
-      font-size: 1.5rem;
-    }
-  }
-}
-
 .linksSection {
   background: color.adjust($color-gray, $lightness: 22%);
   padding: 6rem 0;
+
+  @include media-breakpoint-down(lg) {
+    padding: 3rem 0;
+  }
 
   .linkItem {
     color: $color-dark-gray;
