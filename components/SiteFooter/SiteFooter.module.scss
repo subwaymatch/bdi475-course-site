@@ -8,6 +8,16 @@
   font-size: 1.05rem;
   letter-spacing: 0;
 
+  .logoImageWrapper {
+    display: inline-block;
+    transition: all 0.2s ease;
+    cursor: pointer;
+
+    &:hover {
+      transform: translateX(2px);
+    }
+  }
+
   h2 {
     color: #555;
     font-weight: 600;

@@ -100,6 +100,7 @@
     border-radius: 0.25rem;
     cursor: pointer;
     user-select: none;
+    transition: all 0.2s ease;
 
     .reactIcon {
       margin-left: 0.5rem;
@@ -118,6 +119,7 @@
 
     &:hover {
       box-shadow: 0 0 1rem rgba(black, 0.2);
+      transform: translateY(2px);
     }
   }
 }

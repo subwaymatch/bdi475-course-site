@@ -6,7 +6,6 @@ import { Container, Row, Col } from "react-bootstrap";
 import styles from "./SiteHeader.module.scss";
 import clsx from "clsx";
 import { motion, AnimatePresence } from "framer-motion";
-import { clickableVariants } from "animations/clickableVariants";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 import { BiNote } from "react-icons/bi";
@@ -92,22 +91,14 @@ const HeaderMobileMenu = () => (
   </Row>
 );
 
-const SignInButton = forwardRef((props, ref: React.Ref<HTMLDivElement>) => {
-  return (
-    <Link href="/login">
-      <motion.div
-        ref={ref}
-        variants={clickableVariants}
-        whileHover="hover"
-        whileTap="tap"
-        className={styles.signInButton}
-      >
-        <span className={styles.label}>Sign In</span>
-        <HiOutlineMail className={styles.reactIcon} />
-      </motion.div>
-    </Link>
-  );
-});
+const SignInButton = forwardRef((props, ref: React.Ref<HTMLDivElement>) => (
+  <Link href="/login">
+    <div ref={ref} className={styles.signInButton}>
+      <span className={styles.label}>Sign In</span>
+      <HiOutlineMail className={styles.reactIcon} />
+    </div>
+  </Link>
+));
 
 const SignOutButton = () => {
   const router = useRouter();

@@ -13,12 +13,14 @@ export default function SiteFooter() {
         <Row>
           <Col lg={4} md={12}>
             <Link href="/">
-              <Image
-                src={courseLogoWhiteImage}
-                alt="BDI 475"
-                width={120}
-                height={31}
-              />
+              <a className={styles.logoImageWrapper}>
+                <Image
+                  src={courseLogoWhiteImage}
+                  alt="BDI 475"
+                  width={120}
+                  height={31}
+                />
+              </a>
             </Link>
           </Col>
 
