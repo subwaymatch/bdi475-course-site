@@ -1,7 +1,5 @@
 import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
-import { motion } from "framer-motion";
-import { clickableVariants } from "animations/clickableVariants";
 import styles from "styles/pages/index.module.scss";
 import geometricImage1 from "public/images/geometric_01.png";
 import geometricImage2 from "public/images/geometric_02.png";
