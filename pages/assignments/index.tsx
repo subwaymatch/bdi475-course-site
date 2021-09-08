@@ -43,6 +43,15 @@ export default function AssignmentsPage() {
                   link="/assignments/exercise-01"
                   colorTheme={ColorTheme.Purple}
                 />
+
+                <AssignmentItem
+                  name="Exercise 2"
+                  dueDate={dayjs("2021-09-09").tz().format("ll")}
+                  pointsAvailable={20}
+                  status={AssignmentStatus.Available}
+                  link="/assignments/exercise-02"
+                  colorTheme={ColorTheme.Purple}
+                />
               </div>
             </Col>
           </Row>
