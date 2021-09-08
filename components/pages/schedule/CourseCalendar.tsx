@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { eventsByDate, lectureNumberByDate } from "lib/schedule";
 import { ScheduleType } from "types/schedule";
+import { motion, AnimatePresence } from "framer-motion";
+
 import { BsChevronUp, BsChevronDown } from "react-icons/bs";
 import { IoMdArrowDown } from "react-icons/io";
 import styles from "./CourseCalendar.module.scss";
@@ -122,18 +124,33 @@ const CalendarCell = ({ day, dayEvents }) => {
   );
 };
 
-const CalendarWeek = ({ week, show, isPrevWeek }) => {
+const CalendarWeek = ({ week, show }) => {
   return (
-    show && (
-      <div key={`week-${week}`} className={styles.calendarRow}>
-        {week.map((day) => {
-          const dayKey = day.format("YYYY-MM-DD");
-          const dayEvents = eventsByDate[dayKey];
+    <AnimatePresence>
+      {show && (
+        <motion.div
+          key={`week-${week}`}
+          className={styles.calendarRow}
+          initial="collapsed"
+          animate="open"
+          exit="collapsed"
+          variants={{
+            open: { opacity: 1, height: "auto" },
+            collapsed: { opacity: 0, height: 0 },
+          }}
+          transition={{ duration: 0.6, ease: [0.04, 0.62, 0.23, 0.98] }}
+        >
+          {week.map((day) => {
+            const dayKey = day.format("YYYY-MM-DD");
+            const dayEvents = eventsByDate[dayKey];
 
-          return <CalendarCell key={dayKey} day={day} dayEvents={dayEvents} />;
-        })}
-      </div>
-    )
+            return (
+              <CalendarCell key={dayKey} day={day} dayEvents={dayEvents} />
+            );
+          })}
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 
@@ -177,7 +194,6 @@ export default function CourseCalendar() {
           show={
             showPrev ? true : weekIndex >= currentWeekIndex - startWeekIndex
           }
-          isPrevWeek={weekIndex < currentWeekIndex - startWeekIndex}
         />
       ))}
     </div>
