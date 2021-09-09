@@ -6,8 +6,8 @@ import ListWithTitle from "components/common/ListWithTitle";
 import CenteredColumn from "components/common/CenteredColumn";
 import RecordedPythonChallenge from "components/common/RecordedPythonChallenge";
 
-export default function QuizPage() {
-  const codingChallengeIds = [210, 211, 212, 213];
+export default function Exercise() {
+  const codingChallengeIds = [57, 53, 42, 49];
 
   return (
     <Layout>
@@ -15,17 +15,19 @@ export default function QuizPage() {
         <Container>
           <Row>
             <Col>
-              <h1 className="pageTitle">Quiz 1</h1>
+              <h1 className="pageTitle">Exercise 3</h1>
             </Col>
           </Row>
 
           <ListWithTitle
-            title="Quiz Details ⟶"
+            title="Exercise Details ⟶"
             items={[
               <>
                 You have until{" "}
-                <span className="color-purple">end of the day Friday</span> (Sep
-                10, 11:59 PM CST) to complete this quiz.
+                <span className="color-purple">
+                  Tuesday before the beginning of the class
+                </span>{" "}
+                (Sep 14, 3:30 PM CST) to complete this exercise.
               </>,
               <>
                 You get{" "}
@@ -47,9 +49,9 @@ export default function QuizPage() {
             <Col>
               <div className={styles.coverImage}>
                 <Image
-                  src="/images/notes/1612327404248.png"
-                  width={1500}
-                  height={500}
+                  src="/images/exercises/exercise_03_cover_image.jpg"
+                  width={1600}
+                  height={600}
                   alt=""
                 />
               </div>

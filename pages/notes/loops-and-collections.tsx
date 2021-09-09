@@ -8,17 +8,14 @@ import CenteredColumn from "components/common/CenteredColumn";
 import RecordedPythonChallenge from "components/common/RecordedPythonChallenge";
 import LargeQuote from "components/common/LargeQuote";
 
-export default function WhileLoopsAndCollectionsPage() {
+export default function LoopsAndCollectionsPage() {
   return (
     <Layout>
       <main className={styles.page}>
         <Container>
           <Row>
             <Col>
-              <h2 className="sectionTitle grayBottomBorder">
-                While Loops and Collections
-                <span className="accent purple" />
-              </h2>
+              <h1 className={styles.noteTitle}>Loops and Collections</h1>
             </Col>
           </Row>
 
@@ -30,7 +27,7 @@ export default function WhileLoopsAndCollectionsPage() {
                 loops.
               </>,
               <>
-                Introduce <code>while</code> loops.
+                Review <code>while</code> loops.
               </>,
               <>
                 How are <code>for</code> loops and <code>while</code> loops
@@ -40,14 +37,13 @@ export default function WhileLoopsAndCollectionsPage() {
                 Introduce <code>dict</code>, <code>tuple</code> data types.
               </>,
             ]}
-            className={styles.block}
           />
 
           <Row>
             <Col>
               <div className={styles.coverImage}>
                 <Image
-                  src="/images/notes/1612976054318.png"
+                  src="/images/notes/1612973757417.png"
                   width={3000}
                   height={2000}
                   alt=""
@@ -136,9 +132,9 @@ export default function WhileLoopsAndCollectionsPage() {
             <p>
               Although <code>while</code> loops can be useful at times, we won't
               find many uses for the purpose of this course. For now, you only
-              need to remember that <code>while</code> loops{" "}
-              <em>can be used</em> to keep iterating when you don't know how
-              many times to loop in advance.
+              need to remember that <code>while</code> loops <em>can be</em>{" "}
+              used to keep iterating when you don't know how many times to loop
+              in advance.
             </p>
 
             <p>
@@ -148,29 +144,25 @@ export default function WhileLoopsAndCollectionsPage() {
             </p>
           </CenteredColumn>
 
-          <LargeQuote className={styles.block}>
-            <p>A Python dictionary is... just like a real dictionary.</p>
-          </LargeQuote>
-
-          <RecordedPythonChallenge challengeId={43} className={styles.block} />
-
           <CenteredColumn className={styles.textBox}>
             <h3>Dictionary</h3>
 
             <span className="label green">Key-Value Pairs</span>
             <p>
-              Do you know what <span className="color-pink">terpsichorean</span>{" "}
-              means? How about <span className="color-blue">appoggiatura</span>?
-              If you know... you must read dictionaries for entertainment. If
-              you don't, you're on the same boat as me. Let's look these up in
-              an English dictionary.
+              Do you know what <em className="color-green">terpsichorean</em>{" "}
+              means? How about <em className="color-purple">appoggiatura</em>?
+              If you know... you must read dictionaries for fun. 🤡 If you
+              don't, you're on the same boat as me. Let's look these up in an
+              English dictionary (
+              <a href="https://dictionary.com">https://www.dictionary.com/</a>
+              ).
             </p>
             <p>
-              <span className="color-pink">Terpsichorean</span> is defined in
+              <span className="color-green">Terpsichorean</span> is defined in
               the dictionary as{" "}
-              <em className="color-pink">"pertaining to dancing"</em>.{" "}
-              <span className="color-blue">Appoggiatura</span> is defined as{" "}
-              <em className="color-blue">
+              <em className="color-green">"pertaining to dancing"</em>.{" "}
+              <span className="color-purple">Appoggiatura</span> is defined as{" "}
+              <em className="color-purple">
                 "a note of embellishment preceding another note and taking a
                 portion of its time"
               </em>
@@ -184,15 +176,44 @@ export default function WhileLoopsAndCollectionsPage() {
 
           <RecordedPythonChallenge challengeId={47} className={styles.block} />
 
+          <LargeQuote className={styles.block}>
+            <p>A Python dictionary is... just like a real dictionary.</p>
+          </LargeQuote>
+
+          <CenteredColumn className={styles.textBox}>
+            <span className="label yellow">Creating an empty dictionary</span>
+            <p>
+              You can create an empty dictionary using the following syntax:{" "}
+              <code>my_dict = &#123;&#125;</code>.
+            </p>
+
+            <span className="label blue">Dictionary with initial values</span>
+            <p>
+              You can create a dictionary with initial values using the
+              following syntax:{" "}
+              <code>
+                my_dict = &#123; "my_key1": "my_value1", "my_key2": "my_value2"
+                &#125;
+              </code>
+              .
+            </p>
+          </CenteredColumn>
+
+          <RecordedPythonChallenge challengeId={43} className={styles.block} />
+
+          <RecordedPythonChallenge challengeId={201} className={styles.block} />
+
+          <RecordedPythonChallenge challengeId={200} className={styles.block} />
+
           <RecordedPythonChallenge challengeId={41} className={styles.block} />
+
+          <RecordedPythonChallenge challengeId={202} className={styles.block} />
 
           <LargeQuote className={styles.block}>
             <p>
-              <span className="color-purple">What was the joke?</span>
+              <span className="color-green">I’m so good at finance...</span>
               <br />
-              You had to be there.
-              <br />
-              <span className="color-purple">Oh, Geography joke!</span>
+              Even my bank says my balance is outstanding.
             </p>
           </LargeQuote>
 
@@ -210,7 +231,7 @@ export default function WhileLoopsAndCollectionsPage() {
                     <p>
                       Assume we're working with a dictionary named{" "}
                       <code>my_dict</code>. To retrieve a value by a key, use
-                      square brackets (e.g., <code>my_dict['name']</code>).
+                      square brackets (e.g., <code>my_dict["name"]</code>).
                     </p>
                   </div>
                 </Col>
@@ -220,7 +241,7 @@ export default function WhileLoopsAndCollectionsPage() {
                     <p>
                       To add a new key-value pair, use square brackets with an
                       assignment operation (e.g.,{" "}
-                      <code>my_dict['gpa'] = 2.0</code>).
+                      <code>my_dict["gpa"] = 2.0</code>).
                     </p>
                   </div>
                 </Col>
@@ -230,7 +251,7 @@ export default function WhileLoopsAndCollectionsPage() {
                     <p>
                       To update an existing key-value pair, use square brackets
                       with an assignment operation (e.g.,{" "}
-                      <code>my_dict['gpa'] = 3.66</code>).{" "}
+                      <code>my_dict["gpa"] = 3.66</code>).{" "}
                       <span className="color-pink">
                         This syntax is identical that of creating a new
                         key-value pair.
@@ -244,7 +265,13 @@ export default function WhileLoopsAndCollectionsPage() {
 
           <RecordedPythonChallenge challengeId={50} className={styles.block} />
 
+          <RecordedPythonChallenge challengeId={203} className={styles.block} />
+
           <RecordedPythonChallenge challengeId={59} className={styles.block} />
+
+          <RecordedPythonChallenge challengeId={204} className={styles.block} />
+
+          <RecordedPythonChallenge challengeId={205} className={styles.block} />
 
           <RecordedPythonChallenge challengeId={60} className={styles.block} />
 
@@ -253,6 +280,14 @@ export default function WhileLoopsAndCollectionsPage() {
           <RecordedPythonChallenge challengeId={51} className={styles.block} />
 
           <RecordedPythonChallenge challengeId={61} className={styles.block} />
+
+          <RecordedPythonChallenge challengeId={206} className={styles.block} />
+
+          <RecordedPythonChallenge challengeId={207} className={styles.block} />
+
+          <RecordedPythonChallenge challengeId={208} className={styles.block} />
+
+          <RecordedPythonChallenge challengeId={209} className={styles.block} />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Tuples</h3>
@@ -267,7 +302,7 @@ export default function WhileLoopsAndCollectionsPage() {
             </p>
 
             <p>
-              <strong>TL;DR</strong>: It's EXACTLY like a list, but you can't
+              <strong>TL;DR</strong> It's EXACTLY like a list, but you can't
               update an element once you create it.
             </p>
           </CenteredColumn>

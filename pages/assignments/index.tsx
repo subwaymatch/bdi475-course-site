@@ -3,8 +3,6 @@ import { Container, Row, Col } from "react-bootstrap";
 import AssignmentItem from "components/pages/assignment/AssignmentItem";
 import { AssignmentStatus } from "types/assignment";
 import { ColorTheme } from "types/color-theme";
-import { AuthCheck } from "reactfire";
-import Login from "components/Auth/Login";
 import styles from "styles/pages/assignments.module.scss";
 import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
@@ -51,6 +49,34 @@ export default function AssignmentsPage() {
                   status={AssignmentStatus.Available}
                   link="/assignments/exercise-02"
                   colorTheme={ColorTheme.Purple}
+                />
+
+                <AssignmentItem
+                  name="Exercise 3"
+                  dueDate={dayjs("2021-09-14").tz().format("ll")}
+                  pointsAvailable={20}
+                  status={AssignmentStatus.Available}
+                  link="/assignments/exercise-03"
+                  colorTheme={ColorTheme.Purple}
+                />
+              </div>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col>
+              <div className={styles.codingQuiz}>
+                <h2 className="sectionTitle">
+                  Coding Quiz <span className="accent green" />
+                </h2>
+
+                <AssignmentItem
+                  name="Quiz 1"
+                  dueDate={dayjs("2021-09-10").tz().format("ll")}
+                  pointsAvailable={25}
+                  status={AssignmentStatus.Available}
+                  link="/assignments/quiz-01"
+                  colorTheme={ColorTheme.Green}
                 />
               </div>
             </Col>

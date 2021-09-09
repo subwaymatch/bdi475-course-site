@@ -19,7 +19,7 @@ dayjs.extend(timezone);
 const eventDates = Object.keys(eventsByDate).sort();
 // TODO: Refactor to enable events spanning through two or more years
 // Currently, only events in a single year is supported
-const startWeekIndex = dayjs("2021-08-17").week();
+const startWeekIndex = dayjs(eventDates[0]).week();
 const endWeekIndex = dayjs(eventDates[eventDates.length - 1]).week();
 const currentWeekIndex = dayjs().week();
 const todayKey = dayjs().tz("America/Chicago").format("YYYY-MM-DD");
@@ -157,30 +157,36 @@ const CalendarWeek = ({ week, show }) => {
 export default function CourseCalendar() {
   const [showPrev, setShowPrev] = useState(false);
 
+  console.log(
+    `startWeekIndex=${startWeekIndex}, currentWeekIndex=${currentWeekIndex}`
+  );
+
   return (
     <div
       className={clsx(styles.calendar, {
         [styles.hidePrev]: !showPrev,
       })}
     >
-      <div
-        className={styles.togglePrevButton}
-        onClick={() => {
-          setShowPrev(!showPrev);
-        }}
-      >
-        {showPrev ? (
-          <>
-            <BsChevronUp className={styles.reactIcon} />
-            <span>Hide Previous Weeks</span>
-          </>
-        ) : (
-          <>
-            <BsChevronDown className={styles.reactIcon} />
-            <span>Show Previous Weeks</span>
-          </>
-        )}
-      </div>
+      {currentWeekIndex > startWeekIndex && (
+        <div
+          className={styles.togglePrevButton}
+          onClick={() => {
+            setShowPrev(!showPrev);
+          }}
+        >
+          {showPrev ? (
+            <>
+              <BsChevronUp className={styles.reactIcon} />
+              <span>Hide Previous Weeks</span>
+            </>
+          ) : (
+            <>
+              <BsChevronDown className={styles.reactIcon} />
+              <span>Show Previous Weeks</span>
+            </>
+          )}
+        </div>
+      )}
 
       <h2 className="sectionTitle">
         2021

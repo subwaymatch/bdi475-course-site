@@ -69,9 +69,9 @@ export default function NotesPage() {
               title="Lists and Loops"
               colorTheme={ColorTheme.Pink}
             />
-            {/* 
+
             <NoteItem
-              href="/notes/while-loops-and-collections"
+              href="/notes/loops-and-collections"
               thumbnail={
                 <Image
                   src="/images/notes/1612973757417.png"
@@ -80,11 +80,11 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2021-02-10"
-              title="While Loops and Collections"
+              date="2021-09-09"
+              title="Loops and Collections"
               colorTheme={ColorTheme.Purple}
             />
-
+            {/* 
             <NoteItem
               href="/notes/strings-and-string-methods"
               thumbnail={
