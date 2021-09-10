@@ -1,6 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "./PoliciesAndDisclosures.module.scss";
-import clsx from "clsx";
 
 export default function PoliciesAndDisclosures() {
   return (

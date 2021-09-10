@@ -6,7 +6,6 @@ p.text {
   font-size: 1.3rem;
   line-height: 1.9;
   font-weight: 300;
-
   margin-top: 1.5rem;
 
   &:first-of-type {
@@ -20,9 +19,6 @@ p.text {
   @include media-breakpoint-down(lg) {
     font-size: 1.2rem;
     line-height: 1.8;
-  }
-
-  @include media-breakpoint-down(md) {
   }
 
   @include media-breakpoint-down(sm) {

@@ -1,6 +1,6 @@
 <img src="https://user-images.githubusercontent.com/1064036/131784194-5ef26a86-684b-4362-91fc-fa5dbcaf396e.png" alt="BDI 475" width="520" />
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/705f981145c54b278af0066fad01f505)](https://www.codacy.com/gh/subwaymatch/bdi475-course-site/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=subwaymatch/bdi475-course-site&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/705f981145c54b278af0066fad01f505)](https://www.codacy.com/gh/subwaymatch/bdi475-course-site/dashboard?utm_source=github.com&utm_medium=referral&utm_content=subwaymatch/bdi475-course-site&utm_campaign=Badge_Grade)
 [![DeepScan grade](https://deepscan.io/api/teams/10181/projects/15454/branches/308854/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=10181&pid=15454&bid=308854)
 
 # Introduction to Data Analytics Applications in Business
@@ -27,8 +27,11 @@ Spring 2021 deployment uses Firebase Auth and Firestore. The link here is only f
 ### Fall 2021
 
 - Updated [Pyodide](https://github.com/pyodide/pyodide) to version `0.18` to support Safari and mobile browsers.
+
 - Updated [Next.js](https://github.com/vercel/next.js/) to version `11.1` for `webpack` v5 support, faster builds, and web fonts optimizations.
+
 - Updated [Bootstrap](https://getbootstrap.com/) to v5. No noticeable change other than a few breaking classnames.
+
 - Switched all [Google Firebase](https://firebase.google.com) services (auth, firestore, functions) to [Supabase](https://supabase.io/) due to the following issues.
   - Students in China could not use the site without using a VPN since Google services are blocked in China.
   - Firebase is proprietary. Supabase is open-source.
@@ -56,7 +59,6 @@ yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
 
 ## Built with
 

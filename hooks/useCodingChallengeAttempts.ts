@@ -84,17 +84,21 @@ export default function useCodingChallengeAttempts(challengeId: number) {
       .from<definitions["coding_challenge_attempts"]>(
         "coding_challenge_attempts"
       )
-      .insert([
+      .insert(
+        [
+          {
+            user_id: user.id,
+            challenge_id: challengeId,
+            is_success: isSuccess,
+            user_code: userCode,
+          },
+        ],
         {
-          user_id: user.id,
-          challenge_id: challengeId,
-          is_success: isSuccess,
-          user_code: userCode,
-        },
-      ]);
+          returning: "minimal",
+        }
+      );
 
     if (error) {
-      console.log("Error recording submission");
       console.error(error);
     }
 

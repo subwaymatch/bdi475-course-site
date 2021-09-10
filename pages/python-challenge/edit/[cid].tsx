@@ -16,35 +16,35 @@ export default function EditCodingChallengePage() {
   const { cid } = router.query;
   const [isLoading, setIsLoading] = useState(true);
   const challengeId = getChallengeIdAsNumberFromQuery(cid);
-  const [challengeData, setChallengeData] = useState<
-    definitions["coding_challenges"]
-  >(null);
-  const [solutionData, setSolutionData] = useState<
-    definitions["coding_challenge_solutions"]
-  >(null);
+  const [challengeData, setChallengeData] =
+    useState<definitions["coding_challenges"]>(null);
+  const [solutionData, setSolutionData] =
+    useState<definitions["coding_challenge_solutions"]>(null);
 
   const loadChallengeData = async () => {
     setIsLoading(true);
 
-    const {
-      data: challengeData,
-      error: challengeError,
-    } = await supabaseClient
+    const { data: challengeData, error: challengeError } = await supabaseClient
       .from<definitions["coding_challenges"]>("coding_challenges")
       .select()
       .eq("id", challengeId)
       .single();
 
-    const {
-      data: solutionData,
-      error: solutionError,
-    } = await supabaseClient
+    if (challengeError) {
+      console.error(challengeError);
+    }
+
+    const { data: solutionData, error: solutionError } = await supabaseClient
       .from<definitions["coding_challenge_solutions"]>(
         "coding_challenge_solutions"
       )
       .select()
       .eq("challenge_id", challengeId)
       .single();
+
+    if (solutionError) {
+      console.error(solutionError);
+    }
 
     setChallengeData(challengeData);
     setSolutionData(solutionData);
@@ -53,10 +53,14 @@ export default function EditCodingChallengePage() {
   };
 
   const onDelete = async () => {
-    const { data, error } = await supabaseClient
-      .from("coding_challenges")
+    const { data, error: deleteError } = await supabaseClient
+      .from<definitions["coding_challenges"]>("coding_challenges")
       .delete()
       .match({ id: challengeId });
+
+    if (deleteError) {
+      console.error(deleteError);
+    }
 
     router.push("/python-challenge/list");
   };
@@ -65,12 +69,10 @@ export default function EditCodingChallengePage() {
     const challengeDataClone = _.cloneDeep(challengeData);
     delete challengeDataClone.id;
 
-    const {
-      data: challengeCloneResult,
-      error: challengeCloneError,
-    } = await supabaseClient
-      .from<definitions["coding_challenges"]>("coding_challenges")
-      .insert([challengeDataClone]);
+    const { data: challengeCloneResult, error: challengeCloneError } =
+      await supabaseClient
+        .from<definitions["coding_challenges"]>("coding_challenges")
+        .insert([challengeDataClone]);
 
     if (challengeCloneError) {
       console.error(challengeCloneError);
@@ -81,18 +83,21 @@ export default function EditCodingChallengePage() {
 
     const clonedChallengeId = challengeCloneResult[0].id;
 
-    const {
-      data: clonedSolutionData,
-      error: solutionCloneError,
-    } = await supabaseClient
-      .from<definitions["coding_challenge_solutions"]>(
-        "coding_challenge_solutions"
-      )
-      .insert([
-        Object.assign({}, solutionData, {
-          challenge_id: clonedChallengeId,
-        }),
-      ]);
+    const { data: clonedSolutionData, error: solutionCloneError } =
+      await supabaseClient
+        .from<definitions["coding_challenge_solutions"]>(
+          "coding_challenge_solutions"
+        )
+        .insert(
+          [
+            Object.assign({}, solutionData, {
+              challenge_id: clonedChallengeId,
+            }),
+          ],
+          {
+            returning: "minimal",
+          }
+        );
 
     if (solutionCloneError) {
       console.error(solutionCloneError);
@@ -114,23 +119,31 @@ export default function EditCodingChallengePage() {
     setChallengeData(updatedChallengeData);
     setSolutionData(updatedSolutionData);
 
-    const {
-      data: challengeUpdateResult,
-      error: challengeUpdateError,
-    } = await supabaseClient
-      .from<definitions["coding_challenges"]>("coding_challenges")
-      .update(updatedChallengeData)
-      .match({ id: updatedChallengeData.id });
+    const { data: challengeUpdateResult, error: challengeUpdateError } =
+      await supabaseClient
+        .from<definitions["coding_challenges"]>("coding_challenges")
+        .update(updatedChallengeData, {
+          returning: "minimal",
+        })
+        .match({ id: updatedChallengeData.id });
 
-    const {
-      data: solutionUpdateResult,
-      error: solutionUpdateError,
-    } = await supabaseClient
-      .from<definitions["coding_challenge_solutions"]>(
-        "coding_challenge_solutions"
-      )
-      .update(updatedSolutionData)
-      .match({ challenge_id: updatedSolutionData.challenge_id });
+    if (challengeUpdateError) {
+      console.error(challengeUpdateError);
+    }
+
+    const { data: solutionUpdateResult, error: solutionUpdateError } =
+      await supabaseClient
+        .from<definitions["coding_challenge_solutions"]>(
+          "coding_challenge_solutions"
+        )
+        .update(updatedSolutionData, {
+          returning: "minimal",
+        })
+        .match({ challenge_id: updatedSolutionData.challenge_id });
+
+    if (solutionUpdateError) {
+      console.error(solutionUpdateError);
+    }
   };
 
   useEffect(() => {

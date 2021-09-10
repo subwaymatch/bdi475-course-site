@@ -46,51 +46,6 @@ const menuItems = [
   },
 ];
 
-const HeaderDesktopMenu = () => {
-  const router = useRouter();
-
-  return (
-    <Row className={clsx(styles.mainMenu, "align-items-center")}>
-      {menuItems.map((item) => (
-        <Col key={item.href}>
-          <Link href={item.href}>
-            <a
-              className={clsx(styles.menuLink, {
-                [styles.isActive]: item.isActive
-                  ? item.isActive(router.asPath)
-                  : false,
-              })}
-            >
-              <span>{item.label}</span>
-            </a>
-          </Link>
-        </Col>
-      ))}
-    </Row>
-  );
-};
-
-const HeaderMobileMenu = () => (
-  <Row className={clsx(styles.mobileMenu)}>
-    {menuItems.map((item) => (
-      <Col xs={12} key={item.href}>
-        <Link href={item.href}>
-          <a className={styles.menuLink}>
-            <span>{item.label}</span>
-            {item.iconChild && (
-              <span className={styles.iconWrapper}>{item.iconChild}</span>
-            )}
-          </a>
-        </Link>
-      </Col>
-    ))}
-
-    <Col xs={12}>
-      <UserMenu />
-    </Col>
-  </Row>
-);
-
 const SignInButton = forwardRef((props, ref: React.Ref<HTMLDivElement>) => (
   <Link href="/login">
     <div ref={ref} className={styles.signInButton}>
@@ -144,6 +99,51 @@ const UserMenu = () => {
     </Row>
   );
 };
+
+const HeaderDesktopMenu = () => {
+  const router = useRouter();
+
+  return (
+    <Row className={clsx(styles.mainMenu, "align-items-center")}>
+      {menuItems.map((item) => (
+        <Col key={item.href}>
+          <Link href={item.href}>
+            <a
+              className={clsx(styles.menuLink, {
+                [styles.isActive]: item.isActive
+                  ? item.isActive(router.asPath)
+                  : false,
+              })}
+            >
+              <span>{item.label}</span>
+            </a>
+          </Link>
+        </Col>
+      ))}
+    </Row>
+  );
+};
+
+const HeaderMobileMenu = () => (
+  <Row className={clsx(styles.mobileMenu)}>
+    {menuItems.map((item) => (
+      <Col xs={12} key={item.href}>
+        <Link href={item.href}>
+          <a className={styles.menuLink}>
+            <span>{item.label}</span>
+            {item.iconChild && (
+              <span className={styles.iconWrapper}>{item.iconChild}</span>
+            )}
+          </a>
+        </Link>
+      </Col>
+    ))}
+
+    <Col xs={12}>
+      <UserMenu />
+    </Col>
+  </Row>
+);
 
 export default function SiteHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

@@ -69,27 +69,27 @@ export default function VariablesAndDataTypesPage() {
                 <p>
                   In Python, ALL values have{" "}
                   <span className="color-purple">data types</span>. We'll go
-                  over the few <strong>built-in</strong> types.
-                  <ul>
-                    <li>
-                      <code>Text "Hello World"</code> is a text type (
-                      <code>str</code>).
-                    </li>
-                    <li>
-                      Number <code>475</code> is an integer type (
-                      <code>int</code>
-                      ).
-                    </li>
-                    <li>
-                      Number <code>1.99</code> is a float type (
-                      <code>float</code>).
-                    </li>
-                    <li>
-                      Logical <code>True</code> is a boolean type (
-                      <code>bool</code>).
-                    </li>
-                  </ul>
+                  over a few <strong>built-in</strong> types.
                 </p>
+
+                <ul>
+                  <li>
+                    <code>Text "Hello World"</code> is a text type (
+                    <code>str</code>).
+                  </li>
+                  <li>
+                    Number <code>475</code> is an integer type (<code>int</code>
+                    ).
+                  </li>
+                  <li>
+                    Number <code>1.99</code> is a float type (<code>float</code>
+                    ).
+                  </li>
+                  <li>
+                    Logical <code>True</code> is a boolean type (
+                    <code>bool</code>).
+                  </li>
+                </ul>
 
                 <span className="label green">Primitive vs Non-primitive</span>
                 <p>

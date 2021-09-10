@@ -4,11 +4,12 @@ import { supabaseClient } from "lib/supabase/supabaseClient";
 const getUser = async (req, res) => {
   const token = req.headers.token;
 
-  console.log(`getUser API call`);
-
   const { data: user, error } = await supabaseClient.auth.api.getUser(token);
 
-  if (error) return res.status(401).json({ error: error.message });
+  if (error) {
+    return res.status(401).json({ error: error.message });
+  }
+
   return res.status(200).json(user);
 };
 
