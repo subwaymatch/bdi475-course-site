@@ -2,16 +2,22 @@
 @import "styles/mixins";
 
 .assignmentItem {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   line-height: 1.5;
   border-top: 1px solid $color-border-gray;
-  padding: 1.25rem 0;
+  padding: 1.5rem 0;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-top-color: $color-gray;
+    transform: translateX(2px);
+  }
 
   .name {
     display: block;
     color: $color-light-gray;
 
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(md) {
       font-size: 2rem;
       margin-top: 0.5rem;
     }
@@ -28,9 +34,7 @@
   }
 
   .status {
-    @include media-breakpoint-down(sm) {
-      font-size: 1.2rem;
-    }
+    font-size: 0.9em;
   }
 
   &.complete {
@@ -41,7 +45,11 @@
   }
   &.available {
     .name {
-      color: black;
+      color: $color-medium-gray;
+    }
+
+    .status {
+      color: $color-green;
     }
   }
   &.unavailable {

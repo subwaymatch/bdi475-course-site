@@ -13,12 +13,14 @@ export default function SiteFooter() {
         <Row>
           <Col lg={4} md={12}>
             <Link href="/">
-              <Image
-                src={courseLogoWhiteImage}
-                alt="BDI 475"
-                width={120}
-                height={31}
-              />
+              <a className={styles.logoImageWrapper}>
+                <Image
+                  src={courseLogoWhiteImage}
+                  alt="BDI 475"
+                  width={120}
+                  height={31}
+                />
+              </a>
             </Link>
           </Col>
 
@@ -43,6 +45,11 @@ export default function SiteFooter() {
                 <li>
                   <a href="https://hrnkyfflkojpububxuxh.supabase.in/storage/v1/object/public/distributed-materials/bdi475-syllabus-fa2021.pdf">
                     PDF Syllabus
+                  </a>
+                </li>
+                <li>
+                  <a href="https://cscircles.cemc.uwaterloo.ca/visualize">
+                    Visualize Python Code Execution
                   </a>
                 </li>
               </ul>

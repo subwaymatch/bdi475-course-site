@@ -6,17 +6,24 @@
 
   .logoLink {
     display: inline-block;
+    transition: all 0.2s ease;
+
+    &:hover {
+      transform: translateY(2px);
+    }
   }
 }
 
 .mainMenu {
   a.menuLink {
+    display: flex;
     color: $color-gray;
     font-size: 1.25rem;
     line-height: 1.2;
     font-weight: 600;
     padding: 0.5rem 0;
     letter-spacing: -0.01rem;
+    transition: all 0.2s ease;
 
     .iconWrapper {
       display: inline-flex;
@@ -32,7 +39,8 @@
     }
 
     &:hover {
-      color: $color-dark-gray;
+      color: $color-medium-gray;
+      transform: translateY(2px);
 
       .iconWrapper {
         color: $color-black;
@@ -92,6 +100,7 @@
     border-radius: 0.25rem;
     cursor: pointer;
     user-select: none;
+    transition: all 0.2s ease;
 
     .reactIcon {
       margin-left: 0.5rem;
@@ -110,6 +119,7 @@
 
     &:hover {
       box-shadow: 0 0 1rem rgba(black, 0.2);
+      transform: translateY(2px);
     }
   }
 }

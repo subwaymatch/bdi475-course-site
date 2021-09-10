@@ -54,7 +54,7 @@ export default function NotesPage() {
               title="Booleans and Conditionals"
               colorTheme={ColorTheme.Green}
             />
-            {/* 
+
             <NoteItem
               href="/notes/lists-and-loops"
               thumbnail={
@@ -65,11 +65,11 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2021-02-08"
+              date="2021-09-07"
               title="Lists and Loops"
               colorTheme={ColorTheme.Pink}
             />
-
+            {/* 
             <NoteItem
               href="/notes/while-loops-and-collections"
               thumbnail={
