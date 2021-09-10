@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { eventsByDate, lectureNumberByDate } from "lib/schedule";
 import { ScheduleType } from "types/schedule";
+import { motion, AnimatePresence } from "framer-motion";
+
 import { BsChevronUp, BsChevronDown } from "react-icons/bs";
 import { IoMdArrowDown } from "react-icons/io";
 import styles from "./CourseCalendar.module.scss";
@@ -17,7 +19,7 @@ dayjs.extend(timezone);
 const eventDates = Object.keys(eventsByDate).sort();
 // TODO: Refactor to enable events spanning through two or more years
 // Currently, only events in a single year is supported
-const startWeekIndex = dayjs("2021-08-17").week();
+const startWeekIndex = dayjs(eventDates[0]).week();
 const endWeekIndex = dayjs(eventDates[eventDates.length - 1]).week();
 const currentWeekIndex = dayjs().week();
 const todayKey = dayjs().tz("America/Chicago").format("YYYY-MM-DD");
@@ -122,23 +124,42 @@ const CalendarCell = ({ day, dayEvents }) => {
   );
 };
 
-const CalendarWeek = ({ week, show, isPrevWeek }) => {
+const CalendarWeek = ({ week, show }) => {
   return (
-    show && (
-      <div key={`week-${week}`} className={styles.calendarRow}>
-        {week.map((day) => {
-          const dayKey = day.format("YYYY-MM-DD");
-          const dayEvents = eventsByDate[dayKey];
+    <AnimatePresence>
+      {show && (
+        <motion.div
+          key={`week-${week}`}
+          className={styles.calendarRow}
+          initial="collapsed"
+          animate="open"
+          exit="collapsed"
+          variants={{
+            open: { opacity: 1, height: "auto" },
+            collapsed: { opacity: 0, height: 0 },
+          }}
+          transition={{ duration: 0.6, ease: [0.04, 0.62, 0.23, 0.98] }}
+        >
+          {week.map((day) => {
+            const dayKey = day.format("YYYY-MM-DD");
+            const dayEvents = eventsByDate[dayKey];
 
-          return <CalendarCell key={dayKey} day={day} dayEvents={dayEvents} />;
-        })}
-      </div>
-    )
+            return (
+              <CalendarCell key={dayKey} day={day} dayEvents={dayEvents} />
+            );
+          })}
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 
 export default function CourseCalendar() {
   const [showPrev, setShowPrev] = useState(false);
+
+  console.log(
+    `startWeekIndex=${startWeekIndex}, currentWeekIndex=${currentWeekIndex}`
+  );
 
   return (
     <div
@@ -146,24 +167,26 @@ export default function CourseCalendar() {
         [styles.hidePrev]: !showPrev,
       })}
     >
-      <div
-        className={styles.togglePrevButton}
-        onClick={() => {
-          setShowPrev(!showPrev);
-        }}
-      >
-        {showPrev ? (
-          <>
-            <BsChevronUp className={styles.reactIcon} />
-            <span>Hide Previous Weeks</span>
-          </>
-        ) : (
-          <>
-            <BsChevronDown className={styles.reactIcon} />
-            <span>Show Previous Weeks</span>
-          </>
-        )}
-      </div>
+      {currentWeekIndex > startWeekIndex && (
+        <div
+          className={styles.togglePrevButton}
+          onClick={() => {
+            setShowPrev(!showPrev);
+          }}
+        >
+          {showPrev ? (
+            <>
+              <BsChevronUp className={styles.reactIcon} />
+              <span>Hide Previous Weeks</span>
+            </>
+          ) : (
+            <>
+              <BsChevronDown className={styles.reactIcon} />
+              <span>Show Previous Weeks</span>
+            </>
+          )}
+        </div>
+      )}
 
       <h2 className="sectionTitle">
         2021
@@ -177,7 +200,6 @@ export default function CourseCalendar() {
           show={
             showPrev ? true : weekIndex >= currentWeekIndex - startWeekIndex
           }
-          isPrevWeek={weekIndex < currentWeekIndex - startWeekIndex}
         />
       ))}
     </div>

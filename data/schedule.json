@@ -1,5 +1,10 @@
 [
   {
+    "date": "2020-08-14",
+    "type": "LECTURE",
+    "text": ["Welcome", "Course Overview"]
+  },
+  {
     "date": "2021-08-24",
     "type": "LECTURE",
     "text": ["Welcome", "Course Overview"]
@@ -45,14 +50,14 @@
     "text": "Quiz 1"
   },
   {
-    "date": "2021-09-13",
-    "type": "CASE_STUDY",
-    "text": "Problem Set 1 - Variables, Data Types, Conditional Logic"
-  },
-  {
     "date": "2021-09-14",
     "type": "LECTURE",
     "text": ["Strings", "String Methods"]
+  },
+  {
+    "date": "2021-09-15",
+    "type": "CASE_STUDY",
+    "text": "Problem Set 1 - Variables, Data Types, Conditional Logic"
   },
   {
     "date": "2021-09-16",
