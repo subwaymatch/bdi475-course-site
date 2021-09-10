@@ -72,7 +72,7 @@ export default function AssignmentsPage() {
 
                 <AssignmentItem
                   name="Quiz 1"
-                  dueDate={dayjs("2021-09-10").tz().format("ll")}
+                  dueDate={dayjs("2021-09-13").tz().format("ll")}
                   pointsAvailable={25}
                   status={AssignmentStatus.Available}
                   link="/assignments/quiz-01"

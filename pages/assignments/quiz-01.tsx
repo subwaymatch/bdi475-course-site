@@ -24,8 +24,8 @@ export default function QuizPage() {
             items={[
               <>
                 You have until{" "}
-                <span className="color-purple">end of the day Friday</span> (Sep
-                10, 11:59 PM CST) to complete this quiz.
+                <span className="color-purple">end of the day Monday</span> (Sep
+                13, 11:59 PM CST) to complete this quiz.
               </>,
               <>
                 You get{" "}
