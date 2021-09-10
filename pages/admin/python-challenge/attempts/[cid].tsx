@@ -17,6 +17,7 @@ import { supabaseClient } from "lib/supabase/supabaseClient";
 import { definitions } from "types/database";
 import useSupabaseAuth from "hooks/useSupabaseAuth";
 import { getChallengeIdAsNumberFromQuery } from "utils/challenge";
+import _ from "lodash";
 
 dayjs.extend(relativeTime);
 
@@ -68,14 +69,15 @@ export default function CodingChallengeAttemptsPage() {
       )
       .on("INSERT", async (payload) => {
         const newData = payload.new;
-        const {
-          data: profileData,
-          error: profileError,
-        } = await supabaseClient
+        const { data: profileData, error: profileError } = await supabaseClient
           .from<definitions["profiles"]>("profiles")
           .select("display_name")
           .eq("id", newData.user_id)
           .single();
+
+        if (profileError) {
+          console.error(profileError);
+        }
 
         const newAttempt = {
           submitted_at: newData.submitted_at,
@@ -86,8 +88,16 @@ export default function CodingChallengeAttemptsPage() {
           },
         };
 
+        // Simultaneous broadcast of attempts from multiple users do not necessarily arrive sequentially
+        // Sort the attempts manually before setting state
         setAttempts((attempts) => {
-          return [newAttempt, ...attempts];
+          const newAttempts = _.orderBy(
+            [newAttempt, ...attempts],
+            ["submitted_at"],
+            ["desc"]
+          );
+
+          return newAttempts;
         });
       })
       .subscribe();
