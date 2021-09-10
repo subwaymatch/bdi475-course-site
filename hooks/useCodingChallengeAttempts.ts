@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import useSupabaseAuth from "hooks/useSupabaseAuth";
 import { supabaseClient } from "lib/supabase/supabaseClient";
 import { definitions } from "types/database";
+import _ from "lodash";
 
 export default function useCodingChallengeAttempts(challengeId: number) {
   const { user } = useSupabaseAuth();
@@ -46,7 +47,15 @@ export default function useCodingChallengeAttempts(challengeId: number) {
         const newData = payload.new;
 
         if (newData.challenge_id === challengeId) {
-          setAttempts((previousAttempts) => [newData, ...previousAttempts]);
+          setAttempts((previousAttempts) => {
+            const updatedAttempts = _.orderBy(
+              [newData, ...previousAttempts],
+              ["submitted_at"],
+              ["desc"]
+            );
+
+            return updatedAttempts;
+          });
         }
       })
       .subscribe();
@@ -58,6 +67,16 @@ export default function useCodingChallengeAttempts(challengeId: number) {
 
   const recordSubmission = async (isSuccess: boolean, userCode: string) => {
     if (!user || !challengeId) {
+      return;
+    }
+
+    const lastRecordedAttempt = attempts[0];
+
+    if (
+      lastRecordedAttempt.is_success === isSuccess &&
+      lastRecordedAttempt.user_code === userCode
+    ) {
+      console.log(`Duplicate attempt entry will not be recorded`);
       return;
     }
 
