@@ -324,6 +324,204 @@ export interface paths {
       };
     };
   };
+  "/multiple_choice_answers": {
+    get: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.multiple_choice_answers.id"];
+          question_id?: parameters["rowFilter.multiple_choice_answers.question_id"];
+          option_id?: parameters["rowFilter.multiple_choice_answers.option_id"];
+          is_correct?: parameters["rowFilter.multiple_choice_answers.is_correct"];
+          explanation?: parameters["rowFilter.multiple_choice_answers.explanation"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["multiple_choice_answers"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** multiple_choice_answers */
+          multiple_choice_answers?: definitions["multiple_choice_answers"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.multiple_choice_answers.id"];
+          question_id?: parameters["rowFilter.multiple_choice_answers.question_id"];
+          option_id?: parameters["rowFilter.multiple_choice_answers.option_id"];
+          is_correct?: parameters["rowFilter.multiple_choice_answers.is_correct"];
+          explanation?: parameters["rowFilter.multiple_choice_answers.explanation"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.multiple_choice_answers.id"];
+          question_id?: parameters["rowFilter.multiple_choice_answers.question_id"];
+          option_id?: parameters["rowFilter.multiple_choice_answers.option_id"];
+          is_correct?: parameters["rowFilter.multiple_choice_answers.is_correct"];
+          explanation?: parameters["rowFilter.multiple_choice_answers.explanation"];
+        };
+        body: {
+          /** multiple_choice_answers */
+          multiple_choice_answers?: definitions["multiple_choice_answers"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
+  "/multiple_choice_attempts": {
+    get: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.multiple_choice_attempts.id"];
+          user_id?: parameters["rowFilter.multiple_choice_attempts.user_id"];
+          question_id?: parameters["rowFilter.multiple_choice_attempts.question_id"];
+          submitted_at?: parameters["rowFilter.multiple_choice_attempts.submitted_at"];
+          is_success?: parameters["rowFilter.multiple_choice_attempts.is_success"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["multiple_choice_attempts"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** multiple_choice_attempts */
+          multiple_choice_attempts?: definitions["multiple_choice_attempts"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.multiple_choice_attempts.id"];
+          user_id?: parameters["rowFilter.multiple_choice_attempts.user_id"];
+          question_id?: parameters["rowFilter.multiple_choice_attempts.question_id"];
+          submitted_at?: parameters["rowFilter.multiple_choice_attempts.submitted_at"];
+          is_success?: parameters["rowFilter.multiple_choice_attempts.is_success"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.multiple_choice_attempts.id"];
+          user_id?: parameters["rowFilter.multiple_choice_attempts.user_id"];
+          question_id?: parameters["rowFilter.multiple_choice_attempts.question_id"];
+          submitted_at?: parameters["rowFilter.multiple_choice_attempts.submitted_at"];
+          is_success?: parameters["rowFilter.multiple_choice_attempts.is_success"];
+        };
+        body: {
+          /** multiple_choice_attempts */
+          multiple_choice_attempts?: definitions["multiple_choice_attempts"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
   "/multiple_choice_options": {
     get: {
       parameters: {
@@ -405,99 +603,6 @@ export interface paths {
         body: {
           /** multiple_choice_options */
           multiple_choice_options?: definitions["multiple_choice_options"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-  };
-  "/multiple_choice_question_solutions": {
-    get: {
-      parameters: {
-        query: {
-          question_id?: parameters["rowFilter.multiple_choice_question_solutions.question_id"];
-          /** IDs of the correct options for multiple choice questions */
-          correct_option_ids?: parameters["rowFilter.multiple_choice_question_solutions.correct_option_ids"];
-          /** Filtering Columns */
-          select?: parameters["select"];
-          /** Ordering */
-          order?: parameters["order"];
-          /** Limiting and Pagination */
-          offset?: parameters["offset"];
-          /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
-        header: {
-          /** Limiting and Pagination */
-          Range?: parameters["range"];
-          /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
-          /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
-      responses: {
-        /** OK */
-        200: {
-          schema: definitions["multiple_choice_question_solutions"][];
-        };
-        /** Partial Content */
-        206: unknown;
-      };
-    };
-    post: {
-      parameters: {
-        body: {
-          /** multiple_choice_question_solutions */
-          multiple_choice_question_solutions?: definitions["multiple_choice_question_solutions"];
-        };
-        query: {
-          /** Filtering Columns */
-          select?: parameters["select"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** Created */
-        201: unknown;
-      };
-    };
-    delete: {
-      parameters: {
-        query: {
-          question_id?: parameters["rowFilter.multiple_choice_question_solutions.question_id"];
-          /** IDs of the correct options for multiple choice questions */
-          correct_option_ids?: parameters["rowFilter.multiple_choice_question_solutions.correct_option_ids"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-    patch: {
-      parameters: {
-        query: {
-          question_id?: parameters["rowFilter.multiple_choice_question_solutions.question_id"];
-          /** IDs of the correct options for multiple choice questions */
-          correct_option_ids?: parameters["rowFilter.multiple_choice_question_solutions.correct_option_ids"];
-        };
-        body: {
-          /** multiple_choice_question_solutions */
-          multiple_choice_question_solutions?: definitions["multiple_choice_question_solutions"];
         };
         header: {
           /** Preference */
@@ -802,6 +907,30 @@ export interface definitions {
      */
     id: number;
   };
+  /** Answers and explanations to multiple choice question options */
+  multiple_choice_answers: {
+    /**
+     * Note:
+     * This is a Primary Key.<pk/>
+     */
+    id: number;
+    question_id: number;
+    option_id: number;
+    is_correct: boolean;
+    explanation?: string;
+  };
+  /** Recorded attempts of multiple choice questions */
+  multiple_choice_attempts: {
+    /**
+     * Note:
+     * This is a Primary Key.<pk/>
+     */
+    id: number;
+    user_id: string;
+    question_id: number;
+    submitted_at?: string;
+    is_success: boolean;
+  };
   /** Options for multiple choice questions */
   multiple_choice_options: {
     /**
@@ -815,16 +944,6 @@ export interface definitions {
      */
     question_id: number;
     text_markdown: string;
-  };
-  /** Solutions for the multiple choice questions */
-  multiple_choice_question_solutions: {
-    /**
-     * Note:
-     * This is a Foreign Key to `multiple_choice_questions.id`.<fk table='multiple_choice_questions' column='id'/>
-     */
-    question_id: number;
-    /** IDs of the correct options for multiple choice questions */
-    correct_option_ids: string;
   };
   /** Multiple choice questions */
   multiple_choice_questions: {
@@ -900,16 +1019,25 @@ export interface parameters {
   "rowFilter.coding_challenges.language": string;
   /** Primary ID in int8 format for coding challenges */
   "rowFilter.coding_challenges.id": string;
+  /** multiple_choice_answers */
+  "body.multiple_choice_answers": definitions["multiple_choice_answers"];
+  "rowFilter.multiple_choice_answers.id": string;
+  "rowFilter.multiple_choice_answers.question_id": string;
+  "rowFilter.multiple_choice_answers.option_id": string;
+  "rowFilter.multiple_choice_answers.is_correct": string;
+  "rowFilter.multiple_choice_answers.explanation": string;
+  /** multiple_choice_attempts */
+  "body.multiple_choice_attempts": definitions["multiple_choice_attempts"];
+  "rowFilter.multiple_choice_attempts.id": string;
+  "rowFilter.multiple_choice_attempts.user_id": string;
+  "rowFilter.multiple_choice_attempts.question_id": string;
+  "rowFilter.multiple_choice_attempts.submitted_at": string;
+  "rowFilter.multiple_choice_attempts.is_success": string;
   /** multiple_choice_options */
   "body.multiple_choice_options": definitions["multiple_choice_options"];
   "rowFilter.multiple_choice_options.id": string;
   "rowFilter.multiple_choice_options.question_id": string;
   "rowFilter.multiple_choice_options.text_markdown": string;
-  /** multiple_choice_question_solutions */
-  "body.multiple_choice_question_solutions": definitions["multiple_choice_question_solutions"];
-  "rowFilter.multiple_choice_question_solutions.question_id": string;
-  /** IDs of the correct options for multiple choice questions */
-  "rowFilter.multiple_choice_question_solutions.correct_option_ids": string;
   /** multiple_choice_questions */
   "body.multiple_choice_questions": definitions["multiple_choice_questions"];
   "rowFilter.multiple_choice_questions.id": string;

@@ -51,13 +51,13 @@
   },
   {
     "date": "2021-09-14",
-    "type": "LECTURE",
-    "text": ["Strings", "String Methods"]
+    "type": "EXERCISE",
+    "text": "Exercise 3"
   },
   {
-    "date": "2021-09-15",
-    "type": "CASE_STUDY",
-    "text": "Problem Set 1 - Variables, Data Types, Conditional Logic"
+    "date": "2021-09-14",
+    "type": "LECTURE",
+    "text": ["Strings", "String Methods"]
   },
   {
     "date": "2021-09-16",
@@ -65,14 +65,14 @@
     "text": ["Intro to Functions"]
   },
   {
-    "date": "2021-09-19",
-    "type": "EXERCISE",
-    "text": "Exercise 3"
-  },
-  {
     "date": "2021-09-21",
     "type": "LECTURE",
     "text": ["Functions(continued)", "Import Packages"]
+  },
+  {
+    "date": "2021-09-20",
+    "type": "CASE_STUDY",
+    "text": "Problem Set 1 - Variables, Data Types, Conditional Logic"
   },
   {
     "date": "2021-09-22",
