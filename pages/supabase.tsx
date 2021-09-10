@@ -18,22 +18,32 @@ export default function LoginPage() {
 
   return (
     <Layout>
-      <Container>
-        <Row>
-          <Col md={{ span: 6, offset: 3 }} sm={{ span: 8, offset: 2 }}>
-            <h3
-              style={{
-                fontSize: "2rem",
-                fontWeight: 600,
-                marginTop: "4rem",
-              }}
-            >
-              Supabase Auth
-            </h3>
-            <Auth supabaseClient={supabaseClient} providers={[]} />
-          </Col>
-        </Row>
-      </Container>
+      <section style={{ marginBottom: "8rem" }}>
+        <Container>
+          <Row>
+            <Col md={{ span: 6, offset: 3 }} sm={{ span: 8, offset: 2 }}>
+              <h3
+                style={{
+                  fontSize: "2rem",
+                  fontWeight: 600,
+                  marginTop: "4rem",
+                }}
+              >
+                Supabase Auth
+              </h3>
+              <p
+                style={{
+                  color: "#aaa",
+                  marginBottom: "2rem",
+                }}
+              >
+                Password sign-ins are for isntructors, TAs, and admins only.
+              </p>
+              <Auth supabaseClient={supabaseClient} providers={[]} />
+            </Col>
+          </Row>
+        </Container>
+      </section>
     </Layout>
   );
 }
