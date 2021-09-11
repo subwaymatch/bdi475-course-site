@@ -7,10 +7,9 @@ import { User } from "@supabase/supabase-js";
 import useSupabaseAuth from "hooks/useSupabaseAuth";
 import { definitions } from "types/database";
 import useMultipleChoiceQuestion from "hooks/useMultipleChoiceQuestion";
+import RecordedMultipleChoiceQuestion from "components/common/RecordedMultipleChoiceQuestion";
 
 export default function TestPage() {
-  const { questionData, optionsData } = useMultipleChoiceQuestion(1);
-
   return (
     <Layout>
       <Container>
@@ -22,23 +21,7 @@ export default function TestPage() {
 
         <Row>
           <Col>
-            {questionData.status === "success" &&
-            optionsData.status === "success" ? (
-              <div>
-                <h3>{questionData.data.title}</h3>
-                <span>ID: {questionData.data.id}</span>
-
-                <p>{questionData.data.text_markdown}</p>
-
-                {optionsData.data.map((o) => (
-                  <div key={o.id}>
-                    <p>{o.text_markdown}</p>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              "Loading"
-            )}
+            <RecordedMultipleChoiceQuestion questionId={1} />
           </Col>
         </Row>
       </Container>

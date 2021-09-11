@@ -10,47 +10,32 @@ import useCodingChallengeAttempts from "hooks/useCodingChallengeAttempts";
 import Tippy from "@tippyjs/react";
 import clsx from "clsx";
 import styles from "./RecordedPythonChallenge.module.scss";
+import useMultipleChoiceQuestion from "hooks/useMultipleChoiceQuestion";
+import MultipleChoiceQuestion from "components/challenges/MultipleChoiceQuestion";
 
-interface IRecordedPythonChallengeProps {
-  challengeId: number;
+interface IRecordedMultipleChoiceQuestionProps {
+  questionId: number;
   className?: string;
 }
 
-export default function RecordedPythonChallenge({
-  challengeId,
+export default function RecordedMultipleChoiceQuestion({
+  questionId,
   className,
-}: IRecordedPythonChallengeProps) {
+}: IRecordedMultipleChoiceQuestionProps) {
   const { user, roles } = useSupabaseAuth();
   const isAdmin = roles.includes("Admin");
-  const { status, data, error } = usePythonChallenge(challengeId);
-  const { attempts, recordSubmission } =
-    useCodingChallengeAttempts(challengeId);
+  const { status, questionData, optionsData, error } =
+    useMultipleChoiceQuestion(questionId);
   const editLinkRef = useRef<HTMLAnchorElement>();
   const attemptsLinkRef = useRef<HTMLAnchorElement>();
   const historyLinkRef = useRef<HTMLAnchorElement>();
-
-  const getAttemptMessage = () => {
-    if (!user) {
-      return "You must be signed in to view your submission history";
-    } else if (attempts.length === 0) {
-      return "No submission";
-    } else {
-      const passCount = attempts.filter((o) => o.is_success).length;
-      const failCount = attempts.filter((o) => !o.is_success).length;
-
-      return `${attempts.length} submission${
-        attempts.length > 1 ? "s" : ""
-      } (${passCount} pass${passCount > 1 ? "es" : ""}, ${failCount} fail${
-        failCount > 1 ? "s" : ""
-      })`;
-    }
-  };
+  const attempts = [];
 
   return status === "success" ? (
     <Row>
       <Col>
         <div
-          className={clsx(styles.recordedPythonChallenge, {
+          className={clsx(styles.recordedMultipleChoiceQuestion, {
             [className]: !!className,
           })}
         >
@@ -58,12 +43,12 @@ export default function RecordedPythonChallenge({
             <Col>
               <div className={styles.exerciseHeader}>
                 <span className={styles.exerciseType}>Python Challenge</span>
-                <h2 className={styles.exerciseTitle}>{data.title}</h2>
+                <h2 className={styles.exerciseTitle}>{questionData.title}</h2>
 
                 <div className={styles.topControls}>
                   {user && isAdmin && (
                     <>
-                      <Link href={`/python-challenge/edit/${challengeId}`}>
+                      <Link href={`/multiple-choice/edit/${questionId}`}>
                         <a
                           className={clsx(styles.iconButton, styles.editButton)}
                           ref={editLinkRef}
@@ -82,7 +67,7 @@ export default function RecordedPythonChallenge({
                       />
 
                       <Link
-                        href={`/admin/python-challenge/attempts/${challengeId}`}
+                        href={`/admin/multiple-choice/attempts/${questionId}`}
                       >
                         <a
                           className={clsx(styles.iconButton, styles.editButton)}
@@ -105,7 +90,7 @@ export default function RecordedPythonChallenge({
 
                   {user && (
                     <>
-                      <Link href={`/python-challenge/history/${challengeId}`}>
+                      <Link href={`/multiple-choice/history/${questionId}`}>
                         <a
                           className={clsx(
                             styles.iconButton,
@@ -135,7 +120,7 @@ export default function RecordedPythonChallenge({
                   )}
 
                   <Tippy
-                    content={getAttemptMessage()}
+                    content={"TODO: ATTEMPTS MESSAGE"}
                     className="tippy"
                     placement="bottom"
                     offset={[0, -2]}
@@ -162,10 +147,11 @@ export default function RecordedPythonChallenge({
             </Col>
           </Row>
 
-          <PythonChallenge
-            challengeData={data}
-            localStorageKey={`coding-question-${challengeId}`}
-            onSubmit={recordSubmission}
+          <MultipleChoiceQuestion
+            questionData={questionData}
+            optionsData={optionsData}
+            localStorageKey={`multiple-choice-${questionId}`}
+            onSubmit={() => {}}
           />
         </div>
       </Col>

@@ -3,25 +3,30 @@ import { useEffect, useState } from "react";
 import { definitions } from "types/database";
 
 export default function useMultipleChoiceQuestion(questionId: number) {
-  const [questionDataResult, setQuestionDataResult] = useState<{
+  const [result, setResult] = useState<{
     status: string;
-    data: definitions["multiple_choice_questions"];
+    questionData: definitions["multiple_choice_questions"];
+    optionsData: definitions["multiple_choice_options"][];
     error: string;
   }>({
     status: "loading",
-    data: null,
+    questionData: null,
+    optionsData: null,
     error: "",
   });
 
-  const [optionsDataResult, setOptionsDataResult] = useState<{
-    status: string;
-    data: definitions["multiple_choice_options"][];
-    error: string;
-  }>({
-    status: "loading",
-    data: null,
-    error: "",
-  });
+  const fetchData = async () => {
+    setResult(
+      Object.assign({}, result, {
+        status: "loading",
+      })
+    );
+
+    await fetchQuestionData();
+    await fetchOptionsData();
+
+    console.log(`fetchDataComplete`);
+  };
 
   const fetchQuestionData = async () => {
     const { data, error } = await supabaseClient
@@ -32,13 +37,24 @@ export default function useMultipleChoiceQuestion(questionId: number) {
       .eq("id", questionId)
       .single();
 
-    setQuestionDataResult((prevResult) =>
-      Object.assign({}, prevResult, {
-        status: error ? "error" : "success",
-        data,
-        error: error ? error.message : null,
-      })
-    );
+    if (error && result.status !== "error") {
+      console.error(error);
+      setResult((prevResult) =>
+        Object.assign({}, prevResult, {
+          status: "error",
+          questionData: null,
+          error: error.message,
+        })
+      );
+    } else {
+      setResult((prevResult) =>
+        Object.assign({}, prevResult, {
+          status: prevResult.optionsData ? "success" : "loading",
+          questionData: data,
+          error: "",
+        })
+      );
+    }
   };
 
   const fetchOptionsData = async () => {
@@ -47,22 +63,34 @@ export default function useMultipleChoiceQuestion(questionId: number) {
       .select()
       .eq("question_id", questionId);
 
-    setOptionsDataResult((prevResult) =>
-      Object.assign({}, prevResult, {
-        status: error ? "error" : "success",
-        data,
-        error: error ? error.message : null,
-      })
-    );
+    if (error && result.status !== "error") {
+      console.error(error);
+      setResult((prevResult) =>
+        Object.assign({}, prevResult, {
+          status: "error",
+          optionsData: null,
+          error: error.message,
+        })
+      );
+    } else {
+      setResult((prevResult) =>
+        Object.assign({}, prevResult, {
+          status: prevResult.questionData ? "success" : "loading",
+          optionsData: data,
+          error: "",
+        })
+      );
+    }
   };
 
   useEffect(() => {
-    fetchQuestionData();
-    fetchOptionsData();
+    if (result.status !== "success") {
+      fetchData();
+    }
   }, []);
 
-  return {
-    questionData: questionDataResult,
-    optionsData: optionsDataResult,
-  };
+  console.log(`useMultipleChoiceQuestion`);
+  console.log(result);
+
+  return result;
 }

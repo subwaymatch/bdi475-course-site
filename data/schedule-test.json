@@ -1,0 +1,32 @@
+[
+  {
+    "date": "2020-01-01",
+    "type": "LECTURE",
+    "text": ["Welcome", "Course Overview"]
+  },
+  {
+    "date": "2020-08-14",
+    "type": "LECTURE",
+    "text": ["Welcome", "Course Overview"]
+  },
+  {
+    "date": "2020-12-31",
+    "type": "EXERCISE",
+    "text": "LAST DAY OF 2020"
+  },
+  {
+    "date": "2021-09-13",
+    "type": "QUIZ",
+    "text": "Quiz 1"
+  },
+  {
+    "date": "2021-12-17",
+    "type": "CASE_STUDY",
+    "text": "Final Case Study Due"
+  },
+  {
+    "date": "2021-12-31",
+    "type": "CASE_STUDY",
+    "text": "Final Case Study Due"
+  }
+]
