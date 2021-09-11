@@ -28,7 +28,11 @@ export default function useCodingChallengeAttempts(challengeId: number) {
       .order("submitted_at", { ascending: false })
       .limit(100);
 
-    setAttempts(data);
+    if (error) {
+      console.error(error);
+    } else {
+      setAttempts(data);
+    }
   };
 
   useEffect(() => {
