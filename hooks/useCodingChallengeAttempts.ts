@@ -74,14 +74,16 @@ export default function useCodingChallengeAttempts(challengeId: number) {
       return;
     }
 
-    const lastRecordedAttempt = attempts[0];
+    if (attempts.length > 0) {
+      const lastRecordedAttempt = attempts[0];
 
-    if (
-      lastRecordedAttempt.is_success === isSuccess &&
-      lastRecordedAttempt.user_code === userCode
-    ) {
-      console.log(`Duplicate attempt entry will not be recorded`);
-      return;
+      if (
+        lastRecordedAttempt.is_success === isSuccess &&
+        lastRecordedAttempt.user_code === userCode
+      ) {
+        console.log(`Duplicate attempt entry will not be recorded`);
+        return;
+      }
     }
 
     const { data, error } = await supabaseClient
