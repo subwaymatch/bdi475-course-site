@@ -15,8 +15,9 @@ Spring 2021 deployment uses Firebase Auth and Firestore. The link here is only f
 
 ## Preview (Development) and Production Branches
 
-- `main` branch is used for all development activities. `main` branch can be viewed at [https://bdi475-course-site-git-main.subwaymatch.vercel.app/](https://bdi475-course-site-git-main.subwaymatch.vercel.app/).
-- `production` is the branch that the course site ([https://bdi475.org](https://bdi475.org)) points to. Merging changes from `main` to `production` will automatically deploy all changes to the production site.
+- `development` branch is used for all development activities. `development` branch can be viewed at [https://bdi475-course-site.vercel.app/](https://bdi475-course-site.vercel.app/).
+- `main` branch points to the the production site ([https://bdi475.org](https://bdi475.org)). Any pushes to the `main` branch will trigger a deployment through Vercel.
+- `production` branch is not used anymore.
 
 ## High-level Architecture
 
@@ -32,7 +33,7 @@ Spring 2021 deployment uses Firebase Auth and Firestore. The link here is only f
 
 - Updated [Bootstrap](https://getbootstrap.com/) to v5. No noticeable change other than a few breaking classnames.
 
-- Switched all [Google Firebase](https://firebase.google.com) services (auth, firestore, functions) to [Supabase](https://supabase.io/) due to the following issues.
+- Switched all [Google Firebase](https://firebase.google.com) services (auth, firestore, functions) to [Supabase](https://supabase.io/) because:
   - Students in China could not use the site without using a VPN since Google services are blocked in China.
   - Firebase is proprietary. Supabase is open-source.
   - Pagination with Firestore is unnecessarily complicated.
