@@ -1,14 +1,18 @@
 import _ from "lodash";
-import { ScheduleType } from "types/schedule";
-// import events from "data/schedule.json";
-import events from "data/schedule-test.json";
+import {
+  ScheduleType,
+  ICalendarEvent,
+  ILectureNumberMap,
+  IWeeklyDayjsObjectsByYear,
+  IYearAndWeek,
+  IEventsByYear,
+} from "types/schedule";
+import dayjs from "dayjs";
+import weekYear from "dayjs/plugin/weekYear";
+import weekOfYear from "dayjs/plugin/weekOfYear";
 
-// Sort the events list by date
-events.sort((a, b) => (a.date > b.date ? 1 : -1));
-
-export interface LectureNumberMap {
-  [key: string]: number;
-}
+dayjs.extend(weekYear);
+dayjs.extend(weekOfYear);
 
 // Returns a map of lecture date strings and corresponding numbers
 // Sample output:
@@ -17,15 +21,24 @@ export interface LectureNumberMap {
 //   "2021-08-24": 2,
 //   "2021-08-26": 3,
 // }
-export const lectureNumberByDate: LectureNumberMap = events
-  .filter((evt) => evt.type === ScheduleType.Lecture)
-  .reduce((acc, evt, index) => {
-    acc[evt.date] = index + 1;
+export function getLectureNumberByDate(
+  events: ICalendarEvent[]
+): ILectureNumberMap {
+  return events
+    .filter((evt) => evt.type === ScheduleType.Lecture)
+    .reduce((acc, evt, index) => {
+      acc[evt.date] = index + 1;
 
-    return acc;
-  }, {});
+      return acc;
+    }, {});
+}
 
-const organizeEventsByYearAndDate = (events) => {
+export function organizeEventsByYearAndDate(
+  events: ICalendarEvent[]
+): IEventsByYear {
+  // Sort the events list by date
+  events.sort((a, b) => (a.date > b.date ? 1 : -1));
+
   const organizedEvents = {};
 
   events.forEach((event) => {
@@ -47,6 +60,75 @@ const organizeEventsByYearAndDate = (events) => {
   });
 
   return organizedEvents;
-};
+}
 
-export const eventsByYear = organizeEventsByYearAndDate(events);
+export function getWeeklyDayjsObjectsByYear(
+  events: ICalendarEvent[]
+): IWeeklyDayjsObjectsByYear {
+  const eventsByYear = organizeEventsByYearAndDate(events);
+
+  const eventYears = Object.keys(eventsByYear)
+    .map((y) => Number.parseInt(y))
+    .sort();
+  const weeklyDayjsObjectsByYear: IWeeklyDayjsObjectsByYear = {};
+
+  eventYears.forEach((year) => {
+    const eventDates = Object.keys(eventsByYear[year]).sort();
+    const startDate =
+      year === eventYears[0]
+        ? dayjs(eventDates[0])
+        : dayjs().year(year).startOf("year");
+    const startWeekYear = startDate.weekYear();
+    const endDate =
+      year === eventYears[eventYears.length - 1]
+        ? dayjs(eventDates[eventDates.length - 1])
+        : dayjs()
+            .year(year + 1)
+            .startOf("year")
+            .subtract(1, "day");
+    const endWeekYear = endDate.weekYear();
+    const displayFirstWeekOfNextYear = endWeekYear > startWeekYear;
+    const startWeekIndex = startDate.week();
+    const endWeekIndex = displayFirstWeekOfNextYear
+      ? endDate.subtract(1, "week").week()
+      : endDate.week();
+    const yearAndWeeks: IYearAndWeek[] = [];
+    const weeklyEvents = [];
+
+    for (let week = startWeekIndex; week <= endWeekIndex; week++) {
+      yearAndWeeks.push({
+        year,
+        week,
+      });
+    }
+
+    if (displayFirstWeekOfNextYear) {
+      yearAndWeeks.push({
+        year: year + 1,
+        week: 1,
+      });
+    }
+
+    yearAndWeeks.forEach((o) => {
+      weeklyEvents.push(
+        Array(7)
+          .fill(0)
+          .map((n, i) =>
+            dayjs()
+              .year(o.year)
+              .week(o.week)
+              .startOf("week")
+              .clone()
+              .add(i, "day")
+          )
+          .map((dayjsObject) =>
+            dayjsObject.year() === year ? dayjsObject : null
+          )
+      );
+    });
+
+    weeklyDayjsObjectsByYear[year] = weeklyEvents;
+  });
+
+  return weeklyDayjsObjectsByYear;
+}

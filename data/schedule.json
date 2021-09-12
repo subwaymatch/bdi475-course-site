@@ -1,15 +1,5 @@
 [
   {
-    "date": "2020-08-14",
-    "type": "LECTURE",
-    "text": ["Welcome", "Course Overview"]
-  },
-  {
-    "date": "2020-12-31",
-    "type": "EXERCISE",
-    "text": "LAST DAY OF 2020"
-  },
-  {
     "date": "2021-08-24",
     "type": "LECTURE",
     "text": ["Welcome", "Course Overview"]
