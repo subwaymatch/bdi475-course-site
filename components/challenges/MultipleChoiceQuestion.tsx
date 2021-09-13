@@ -15,6 +15,7 @@ import styles from "./MultipleChoiceQuestion.module.scss";
 import clsx from "clsx";
 import { definitions } from "types/database";
 import useSupabaseAuth from "hooks/useSupabaseAuth";
+import InstructionText from "./InstructionText";
 
 interface IMultipleChoiceQuestionProps {
   localStorageKey?: string;
@@ -71,24 +72,24 @@ export default function MultipleChoiceQuestion({
     <div className={styles.questionWrapper}>
       <Row className="g-0">
         <Col lg={6}>
-          <div className={styles.instructionTextWrapper}>
-            <div className={styles.instructionTextInner}>
-              <span className="label green">Task</span>
-
-              <div
-                className={styles.textMarkdown}
-                dangerouslySetInnerHTML={{
-                  __html: marked(questionData.text_markdown),
-                }}
-              />
-            </div>
-          </div>
+          <InstructionText
+            labelText="Question"
+            textMarkdown={questionData.text_markdown}
+          />
         </Col>
 
         <Col lg={6}>
           <div className={styles.optionsWrapper}>
+            <span className="label yellow">Select 1</span>
+
             {optionsData.map((o) => (
-              <div key={o.id}>{o.text_markdown}</div>
+              <div
+                key={o.id}
+                className={styles.optionMarkdown}
+                dangerouslySetInnerHTML={{
+                  __html: marked(o.text_markdown),
+                }}
+              />
             ))}
           </div>
         </Col>

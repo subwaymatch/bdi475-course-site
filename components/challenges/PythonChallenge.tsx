@@ -18,6 +18,7 @@ import clsx from "clsx";
 import { definitions } from "types/database";
 import useSupabaseAuth from "hooks/useSupabaseAuth";
 import FormatterDiffModal from "components/CodeEditor/FormatterDiffModal";
+import InstructionText from "./InstructionText";
 
 const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
@@ -131,24 +132,13 @@ export default function PythonChallenge({
   };
 
   return (
-    <div className={styles.codingChallengeWrapper}>
+    <div className={styles.challengeWrapper}>
       <Row className="g-0">
         <Col lg={6}>
-          <div
-            className={styles.instructionTextWrapper}
-            style={{ height: isScreenLargeDesktop ? editorHeight : "auto" }}
-          >
-            <div className={styles.instructionTextInner}>
-              <span className="label green">Task</span>
-
-              <div
-                className={styles.textMarkdown}
-                dangerouslySetInnerHTML={{
-                  __html: marked(challengeData.text_markdown),
-                }}
-              />
-            </div>
-          </div>
+          <InstructionText
+            labelText="Task"
+            textMarkdown={challengeData.text_markdown}
+          />
         </Col>
 
         <Col lg={6}>

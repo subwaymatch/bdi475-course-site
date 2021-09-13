@@ -11,17 +11,23 @@ export default function ViewCodingChallengePage() {
 
   return (
     <Layout>
-      <Container>
-        <Row>
-          <Col>
-            {cid ? (
-              <RecordedPythonChallenge challengeId={challengeId} />
-            ) : (
-              <p>Loading...</p>
-            )}
-          </Col>
-        </Row>
-      </Container>
+      <main
+        style={{
+          paddingBottom: "10rem",
+        }}
+      >
+        <Container>
+          <Row>
+            <Col>
+              {cid ? (
+                <RecordedPythonChallenge challengeId={challengeId} />
+              ) : (
+                <p>Loading...</p>
+              )}
+            </Col>
+          </Row>
+        </Container>
+      </main>
     </Layout>
   );
 }

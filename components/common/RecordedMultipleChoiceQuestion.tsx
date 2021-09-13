@@ -1,15 +1,12 @@
 import { useRef } from "react";
 import Link from "next/link";
-import PythonChallenge from "components/challenges/PythonChallenge";
 import useSupabaseAuth from "hooks/useSupabaseAuth";
 import { Row, Col } from "react-bootstrap";
 import { BsCheckCircle } from "react-icons/bs";
 import { RiHistoryLine, RiEditBoxLine, RiGroupLine } from "react-icons/ri";
-import usePythonChallenge from "hooks/usePythonChallenge";
-import useCodingChallengeAttempts from "hooks/useCodingChallengeAttempts";
 import Tippy from "@tippyjs/react";
 import clsx from "clsx";
-import styles from "./RecordedPythonChallenge.module.scss";
+import styles from "./RecordedChallenge.module.scss";
 import useMultipleChoiceQuestion from "hooks/useMultipleChoiceQuestion";
 import MultipleChoiceQuestion from "components/challenges/MultipleChoiceQuestion";
 
@@ -35,14 +32,16 @@ export default function RecordedMultipleChoiceQuestion({
     <Row>
       <Col>
         <div
-          className={clsx(styles.recordedMultipleChoiceQuestion, {
+          className={clsx(styles.recordedChallenge, {
             [className]: !!className,
           })}
         >
           <Row>
             <Col>
               <div className={styles.exerciseHeader}>
-                <span className={styles.exerciseType}>Python Challenge</span>
+                <span className={styles.exerciseType}>
+                  Multiple Choice Question
+                </span>
                 <h2 className={styles.exerciseTitle}>{questionData.title}</h2>
 
                 <div className={styles.topControls}>

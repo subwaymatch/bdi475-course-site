@@ -1,0 +1,82 @@
+@use 'sass:color';
+@import "styles/variables";
+@import "styles/mixins";
+
+.questionWrapper {
+  border-top: 1px solid $color-border-gray;
+
+  .controlsWrapper {
+    border-top: 1px solid $color-border-gray;
+    border-bottom: 1px solid $color-border-gray;
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      padding: 1rem 0;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 1.1rem;
+
+      @include media-breakpoint-down(lg) {
+        font-size: 1rem;
+      }
+
+      &.disabled {
+        cursor: not-allowed;
+        color: #aaa;
+      }
+
+      &.solution {
+        display: none;
+      }
+
+      .reactIcon {
+        font-size: 1rem;
+      }
+
+      .label {
+        margin-left: 0.5rem;
+      }
+
+      &:hover {
+        transform: translateY(2px);
+      }
+    }
+
+    .leftControls,
+    .rightControls {
+      display: flex;
+    }
+
+    .leftControls {
+      .button {
+        margin-left: 2.5rem;
+
+        &:first-child {
+          margin-left: 0;
+        }
+
+        @include media-breakpoint-down(lg) {
+          margin-left: 2rem;
+        }
+      }
+    }
+
+    .rightControls {
+      justify-content: flex-end;
+
+      .button {
+        margin-right: 2.5rem;
+
+        &:last-child {
+          margin-right: 0;
+          padding-right: 1.5rem;
+        }
+
+        @include media-breakpoint-down(lg) {
+          margin-right: 2rem;
+        }
+      }
+    }
+  }
+}

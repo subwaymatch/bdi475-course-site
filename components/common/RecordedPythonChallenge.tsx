@@ -9,7 +9,7 @@ import usePythonChallenge from "hooks/usePythonChallenge";
 import useCodingChallengeAttempts from "hooks/useCodingChallengeAttempts";
 import Tippy from "@tippyjs/react";
 import clsx from "clsx";
-import styles from "./RecordedPythonChallenge.module.scss";
+import styles from "./RecordedChallenge.module.scss";
 
 interface IRecordedPythonChallengeProps {
   challengeId: number;
@@ -50,7 +50,7 @@ export default function RecordedPythonChallenge({
     <Row>
       <Col>
         <div
-          className={clsx(styles.recordedPythonChallenge, {
+          className={clsx(styles.recordedChallenge, {
             [className]: !!className,
           })}
         >
