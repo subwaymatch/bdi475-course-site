@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import dynamic from "next/dynamic";
 import _ from "lodash";
+import { useMeasure } from "react-use";
 import { largeDesktop } from "constants/media-query-strings";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import usePythonRuntime from "hooks/usePythonRuntime";
@@ -12,7 +13,6 @@ import { VscSymbolMethod, VscRunAll } from "react-icons/vsc";
 import { IoPlay } from "react-icons/io5";
 import Tippy from "@tippyjs/react";
 import { toast } from "react-toastify";
-import marked from "marked";
 import styles from "./PythonChallenge.module.scss";
 import clsx from "clsx";
 import { definitions } from "types/database";
@@ -42,11 +42,16 @@ export default function PythonChallenge({
   const [hasError, setHasError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const isScreenLargeDesktop = useMediaQuery(largeDesktop);
-  const editorHeight = "400px";
   const [savedUserCode, setSavedUserCode] = useLocalStorage<string>(
     localStorageKey,
     challengeData.starter_code
   );
+  const [ref, { height: instructionTextHeight }] = useMeasure();
+  const editorHeight = isScreenLargeDesktop
+    ? Math.max(instructionTextHeight, 400)
+    : 400;
+
+  console.log(`instructionTextHeight=${instructionTextHeight}`);
 
   useEffect(() => {
     // Load user code from LocalStorage if key exists
@@ -136,6 +141,7 @@ export default function PythonChallenge({
       <Row className="g-0">
         <Col lg={6}>
           <InstructionText
+            ref={ref}
             labelText="Task"
             textMarkdown={challengeData.text_markdown}
           />
@@ -149,7 +155,7 @@ export default function PythonChallenge({
               onRun={runUserCode}
               onCheck={runAndCheckUserCode}
               language="python"
-              height={editorHeight}
+              height={`${editorHeight}px`}
             />
           </div>
         </Col>
@@ -162,7 +168,7 @@ export default function PythonChallenge({
               [styles.hasOutput]: !!output,
             })}
           >
-            <span className="label yellow">Output</span>
+            <span className="label small whiteText green">Output</span>
             <pre>{output ? output : "No Output"}</pre>
           </div>
         </Col>
@@ -172,7 +178,7 @@ export default function PythonChallenge({
               [styles.hasOutput]: hasError,
             })}
           >
-            <span className="label pink">Error</span>
+            <span className="label small whiteText pink">Error</span>
             <pre>{errorMessage ? errorMessage : "No Error"}</pre>
           </div>
         </Col>
@@ -322,7 +328,7 @@ export default function PythonChallenge({
                       }}
                     >
                       <VscRunAll className={styles.reactIcon} />
-                      <span className={styles.label}>Submit</span>
+                      <span className={styles.label}>Check</span>
                     </div>
                   </Tippy>
                 </div>

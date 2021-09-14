@@ -10,6 +10,7 @@
     border-bottom: 1px solid $color-border-gray;
 
     .button {
+      color: $color-gray;
       display: inline-flex;
       align-items: center;
       padding: 1rem 0;
@@ -24,10 +25,6 @@
       &.disabled {
         cursor: not-allowed;
         color: #aaa;
-      }
-
-      &.solution {
-        display: none;
       }
 
       .reactIcon {

@@ -9,7 +9,7 @@
     border-left: 1px solid $color-border-gray;
     border-right: 1px solid $color-border-gray;
 
-    @include media-breakpoint-down(md) {
+    @include media-breakpoint-down(lg) {
       border: none;
       border: 1px solid $color-border-gray;
     }
@@ -85,11 +85,8 @@
       padding: 1rem 0;
       cursor: pointer;
       transition: all 0.3s;
-      font-size: 1.1rem;
-
-      @include media-breakpoint-down(lg) {
-        font-size: 1rem;
-      }
+      font-size: 1rem;
+      letter-spacing: 0rem;
 
       &.disabled {
         cursor: not-allowed;
@@ -97,11 +94,10 @@
       }
 
       &.solution {
-        display: none;
       }
 
       .reactIcon {
-        font-size: 1rem;
+        font-size: 0.9em;
       }
 
       .label {

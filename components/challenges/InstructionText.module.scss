@@ -4,8 +4,8 @@
 
 .instructionTextWrapper {
   overflow-y: auto;
-  font-size: 1.15rem;
-  color: $color-dark-gray;
+  font-size: 1.1rem;
+  color: #555;
 
   pre {
     color: color.adjust($color-purple, $lightness: -12%);
@@ -28,16 +28,24 @@
       p,
       ul,
       ol {
-        margin-top: 0.75rem;
+        margin-top: 1rem;
+
+        &:first-child {
+          margin-top: 0.75rem;
+        }
+      }
+
+      @include media-breakpoint-down(xl) {
+        font-size: 1.05rem;
       }
 
       @include media-breakpoint-down(lg) {
-        font-size: 1.15rem;
+        font-size: 1.05rem;
+        letter-spacing: -0.01rem;
       }
 
       @include media-breakpoint-down(md) {
-        font-size: 1.05rem;
-        letter-spacing: -0.02rem;
+        font-size: 1rem;
       }
     }
   }
