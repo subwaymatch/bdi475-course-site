@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import dynamic from "next/dynamic";
 import _ from "lodash";
 import { useMeasure } from "react-use";
-import { largeDesktop } from "constants/media-query-strings";
+import { desktop } from "constants/media-query-strings";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import usePythonRuntime from "hooks/usePythonRuntime";
 import useLocalStorage from "hooks/useLocalStorage";
@@ -42,13 +42,13 @@ export default function PythonChallenge({
   const [output, setOutput] = useState("");
   const [hasError, setHasError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const isScreenLargeDesktop = useMediaQuery(largeDesktop);
+  const isScreenDesktop = useMediaQuery(desktop);
   const [savedUserCode, setSavedUserCode] = useLocalStorage<string>(
     localStorageKey,
     challengeData.starter_code
   );
   const [ref, { height: instructionTextHeight }] = useMeasure();
-  const editorHeight = isScreenLargeDesktop
+  const editorHeight = isScreenDesktop
     ? Math.max(instructionTextHeight, 400)
     : 400;
 
