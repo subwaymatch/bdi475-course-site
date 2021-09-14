@@ -8,10 +8,10 @@ import usePythonRuntime from "hooks/usePythonRuntime";
 import useLocalStorage from "hooks/useLocalStorage";
 import { Col, Row } from "react-bootstrap";
 import { BiReset } from "react-icons/bi";
-import { IoColorWandOutline } from "react-icons/io5";
-import { VscSymbolMethod, VscRunAll } from "react-icons/vsc";
+import { IoCodeSharp } from "react-icons/io5";
+import { RiUploadLine } from "react-icons/ri";
+import { MdFormatShapes } from "react-icons/md";
 import { IoPlay } from "react-icons/io5";
-import Tippy from "@tippyjs/react";
 import { toast } from "react-toastify";
 import styles from "./PythonChallenge.module.scss";
 import clsx from "clsx";
@@ -19,6 +19,7 @@ import { definitions } from "types/database";
 import useSupabaseAuth from "hooks/useSupabaseAuth";
 import FormatterDiffModal from "components/CodeEditor/FormatterDiffModal";
 import InstructionText from "./InstructionText";
+import ChallengeButton from "./ChallengeButton";
 
 const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
@@ -153,7 +154,7 @@ export default function PythonChallenge({
               onRun={runUserCode}
               onCheck={runAndCheckUserCode}
               language="python"
-              height={`${editorHeight}px`}
+              height={editorHeight}
             />
           </div>
         </Col>
@@ -188,9 +189,9 @@ export default function PythonChallenge({
             <Row>
               <Col>
                 <div className={styles.leftControls}>
-                  <div
-                    className={clsx(styles.button, styles.reset)}
-                    onClick={(e) => {
+                  <ChallengeButton
+                    className={styles.button}
+                    onClick={() => {
                       if (
                         window.confirm(
                           "Do you really want to reset your code? Your code will be lost."
@@ -199,59 +200,46 @@ export default function PythonChallenge({
                         reset();
                       }
                     }}
-                  >
-                    <BiReset className={styles.reactIcon} />
-                    <span className={styles.label}>Reset</span>
-                  </div>
-                  <div
-                    className={clsx(styles.button, styles.solution)}
-                    onClick={(e) => {
-                      e.preventDefault();
-                    }}
-                  >
-                    <VscSymbolMethod className={styles.reactIcon} />
-                    <span className={styles.label}>Solution</span>
-                  </div>
+                    tooltip={<>Restore initial state</>}
+                    label="Reset"
+                    IconComponent={BiReset}
+                  />
+
+                  <ChallengeButton
+                    className={styles.button}
+                    onClick={() => {}}
+                    tooltip={<>View an example of correct code</>}
+                    label="Solution"
+                    IconComponent={IoCodeSharp}
+                  />
                 </div>
               </Col>
 
               <Col>
                 <div className={styles.rightControls}>
-                  <Tippy
-                    content={
+                  <ChallengeButton
+                    className={styles.button}
+                    onClick={async () => {
+                      await autoformatCode();
+                    }}
+                    tooltip={
                       user ? (
                         <>Autoformat your code using a formatter</>
                       ) : (
                         <>You must be signed in to use the autoformat feature</>
                       )
                     }
-                    className="tippy"
-                    placement="bottom"
-                    offset={[0, -4]}
-                    theme="light"
-                    disabled={!isScreenLargeDesktop}
-                  >
-                    <div
-                      className={clsx(styles.button, styles.runButton, {
-                        [styles.disabled]: !user || !isRuntimeReady,
-                      })}
-                      onClick={async (e) => {
-                        e.preventDefault();
+                    disabled={!user || !isRuntimeReady}
+                    label="Format"
+                    IconComponent={MdFormatShapes}
+                  />
 
-                        if (!user || !isRuntimeReady) {
-                          return;
-                        }
-
-                        await autoformatCode();
-                      }}
-                    >
-                      <IoColorWandOutline className={styles.reactIcon} />
-                      <span className={styles.label}>Format</span>
-                    </div>
-                  </Tippy>
-
-                  <Tippy
-                    content={
+                  <ChallengeButton
+                    className={styles.button}
+                    onClick={async () => {
+                      await runUserCode();
+                    }}
+                    tooltip={
                       isRuntimeReady ? (
                         <>
                           {/* <kbd>{isMacOs ? "Cmd" : "Ctrl"}</kbd>
@@ -265,32 +253,17 @@ export default function PythonChallenge({
                         "Loading..."
                       )
                     }
-                    className="tippy"
-                    placement="bottom"
-                    offset={[0, -4]}
-                    theme="light"
-                    disabled={!isScreenLargeDesktop}
-                  >
-                    <div
-                      className={clsx(styles.button, styles.runButton, {
-                        [styles.disabled]: !isRuntimeReady,
-                      })}
-                      onClick={async (e) => {
-                        if (!isRuntimeReady) {
-                          return;
-                        }
+                    disabled={!isRuntimeReady}
+                    label="Run"
+                    IconComponent={IoPlay}
+                  />
 
-                        e.preventDefault();
-                        runUserCode();
-                      }}
-                    >
-                      <IoPlay className={styles.reactIcon} />
-                      <span className={styles.label}>Run</span>
-                    </div>
-                  </Tippy>
-
-                  <Tippy
-                    content={
+                  <ChallengeButton
+                    className={styles.button}
+                    onClick={async () => {
+                      await runAndCheckUserCode();
+                    }}
+                    tooltip={
                       isRuntimeReady ? (
                         <>
                           {/* <kbd>{isMacOs ? "Cmd" : "Ctrl"}</kbd>
@@ -306,29 +279,10 @@ export default function PythonChallenge({
                         "Loading..."
                       )
                     }
-                    className="tippy"
-                    placement="bottom"
-                    offset={[0, -4]}
-                    theme="light"
-                    disabled={!isScreenLargeDesktop}
-                  >
-                    <div
-                      className={clsx(styles.button, styles.checkButton, {
-                        [styles.disabled]: !isRuntimeReady,
-                      })}
-                      onClick={(e) => {
-                        if (!isRuntimeReady) {
-                          return;
-                        }
-                        e.preventDefault();
-
-                        runAndCheckUserCode();
-                      }}
-                    >
-                      <VscRunAll className={styles.reactIcon} />
-                      <span className={styles.label}>Check</span>
-                    </div>
-                  </Tippy>
+                    disabled={!isRuntimeReady}
+                    label="Check"
+                    IconComponent={RiUploadLine}
+                  />
                 </div>
               </Col>
             </Row>

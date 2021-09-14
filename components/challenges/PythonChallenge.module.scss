@@ -79,36 +79,6 @@
     border-top: 1px solid $color-border-gray;
     border-bottom: 1px solid $color-border-gray;
 
-    .button {
-      display: inline-flex;
-      align-items: center;
-      padding: 1rem 0;
-      cursor: pointer;
-      transition: all 0.3s;
-      font-size: 1rem;
-      letter-spacing: 0rem;
-
-      &.disabled {
-        cursor: not-allowed;
-        color: #aaa;
-      }
-
-      &.solution {
-      }
-
-      .reactIcon {
-        font-size: 0.9em;
-      }
-
-      .label {
-        margin-left: 0.5rem;
-      }
-
-      &:hover {
-        transform: translateY(2px);
-      }
-    }
-
     .leftControls,
     .rightControls {
       display: flex;
@@ -139,8 +109,14 @@
           padding-right: 1.5rem;
         }
 
-        @include media-breakpoint-down(lg) {
+        @include media-breakpoint-down(xl) {
           margin-right: 2rem;
+          padding-right: 1rem;
+
+          &:last-child {
+            margin-right: 0;
+            padding-right: 0.75rem;
+          }
         }
       }
     }

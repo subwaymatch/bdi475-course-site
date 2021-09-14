@@ -1,0 +1,36 @@
+@use 'sass:color';
+@import "styles/variables";
+@import "styles/mixins";
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  padding: 1rem 0;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 1rem;
+  letter-spacing: 0rem;
+  color: #555;
+
+  @include media-breakpoint-down(xl) {
+    font-size: 0.95rem;
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    color: #aaa;
+  }
+
+  .reactIcon {
+    font-size: 0.9em;
+  }
+
+  .label {
+    margin-left: 0.5rem;
+  }
+
+  &:hover {
+    color: $color-black;
+    transform: translateY(2px);
+  }
+}
