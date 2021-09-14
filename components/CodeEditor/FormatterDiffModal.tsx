@@ -103,7 +103,7 @@ export default function FormatterDiffModal({
           left: "50px",
           right: "50px",
           bottom: "50px",
-          border: "1px solid #ccc",
+          border: "1px solid black",
           padding: "16px",
         },
       }}
@@ -121,7 +121,7 @@ export default function FormatterDiffModal({
             </Col>
             <Col>
               <div className={clsx(styles.diffBoxHeader, styles.after)}>
-                <span className="label small whiteText green">Modified</span>
+                <span className="label small whiteText blue">Modified</span>
                 <span className={styles.desc}>After formatting</span>
               </div>
             </Col>
