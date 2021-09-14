@@ -22,11 +22,11 @@ export default function ListWithTitle({
           })}
         >
           <Row>
-            <Col md={4}>
+            <Col lg={4}>
               <h3>{title}</h3>
             </Col>
 
-            <Col md={8}>
+            <Col lg={8}>
               <ul>
                 {items.map((item, idx) => (
                   <li key={idx}>{item}</li>
