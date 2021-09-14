@@ -36,6 +36,7 @@ export default function ChallengeButton({
       <div
         className={clsx(styles.button, {
           [className]: !!className,
+          [styles.disabled]: disabled,
         })}
         onClick={async (e) => {
           e.preventDefault();
