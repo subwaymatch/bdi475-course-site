@@ -5,6 +5,7 @@ import styles from "./FormatterDiffModal.module.scss";
 import customTheme from "./custom-theme.json";
 import _ from "lodash";
 import clsx from "clsx";
+import { useMeasure } from "react-use";
 import { Row, Col } from "react-bootstrap";
 import { BiShapeTriangle } from "react-icons/bi";
 import { CgClose } from "react-icons/cg";
@@ -35,6 +36,10 @@ export default function FormatterDiffModal({
   // loading, success, error
   const [status, setStatus] = useState(CodeFormatStatusEnum.LOADING);
   const [formattedCode, setFormattedCode] = useState("");
+
+  const [diffEditorWrapperRef, { height: modalContentHeight }] = useMeasure();
+
+  console.log(`modalContentHeight=${modalContentHeight}`);
 
   const handleEditorWillMount = (monaco) => {
     monaco.editor.defineTheme("CustomTheme", customTheme);
@@ -106,28 +111,29 @@ export default function FormatterDiffModal({
       onRequestClose={handleClose}
     >
       <div className={styles.modalContent}>
-        {status === CodeFormatStatusEnum.SUCCESS && (
-          <>
-            <div className={styles.beforeAfter}>
-              <Row className="g-0">
-                <Col>
-                  <div className={clsx(styles.diffBoxHeader, styles.before)}>
-                    <span className="label pink">Original</span>
-                    <span className={styles.desc}>Before formatting</span>
-                  </div>
-                </Col>
-                <Col>
-                  <div className={clsx(styles.diffBoxHeader, styles.after)}>
-                    <span className="label green">Modified</span>
-                    <span className={styles.desc}>After formatting</span>
-                  </div>
-                </Col>
-              </Row>
-            </div>
+        <div className={styles.beforeAfter}>
+          <Row className="g-0">
+            <Col>
+              <div className={clsx(styles.diffBoxHeader, styles.before)}>
+                <span className="label small whiteText pink">Original</span>
+                <span className={styles.desc}>Before formatting</span>
+              </div>
+            </Col>
+            <Col>
+              <div className={clsx(styles.diffBoxHeader, styles.after)}>
+                <span className="label small whiteText green">Modified</span>
+                <span className={styles.desc}>After formatting</span>
+              </div>
+            </Col>
+          </Row>
+        </div>
+
+        <div ref={diffEditorWrapperRef} className={styles.diffEditorWrapper}>
+          {status === CodeFormatStatusEnum.SUCCESS && (
             <DiffEditor
               original={original}
               modified={formattedCode}
-              height="60vh"
+              height={modalContentHeight}
               beforeMount={handleEditorWillMount}
               language={language}
               theme={isThemeLoaded ? "CustomTheme" : "light"}
@@ -142,15 +148,14 @@ export default function FormatterDiffModal({
                 scrollBeyondLastLine: false,
               }}
             />
-          </>
-        )}
+          )}
 
-        {status === CodeFormatStatusEnum.LOADING && (
-          <div className={styles.loadingBox} style={{ height: "60vh" }}>
-            <p>Formatting Code</p>
-          </div>
-        )}
-
+          {status === CodeFormatStatusEnum.LOADING && (
+            <div className={styles.loadingBox}>
+              <p>Formatting Code</p>
+            </div>
+          )}
+        </div>
         <div className={styles.controls}>
           {status === CodeFormatStatusEnum.SUCCESS && (
             <button

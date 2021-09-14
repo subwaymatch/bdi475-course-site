@@ -51,8 +51,6 @@ export default function PythonChallenge({
     ? Math.max(instructionTextHeight, 400)
     : 400;
 
-  console.log(`instructionTextHeight=${instructionTextHeight}`);
-
   useEffect(() => {
     // Load user code from LocalStorage if key exists
     if (localStorageKey && savedUserCode) {
