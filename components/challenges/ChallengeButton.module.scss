@@ -16,11 +16,6 @@
     font-size: 0.95rem;
   }
 
-  &.disabled {
-    cursor: not-allowed;
-    color: #aaa;
-  }
-
   .reactIcon {
     font-size: 0.9em;
   }
@@ -32,5 +27,12 @@
   &:hover {
     color: $color-black;
     transform: translateY(2px);
+  }
+
+  &.disabled,
+  &:hover.disabled {
+    cursor: not-allowed;
+    color: #aaa;
+    transform: none;
   }
 }

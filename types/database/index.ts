@@ -625,6 +625,8 @@ export interface paths {
           title?: parameters["rowFilter.multiple_choice_questions.title"];
           /** Question text in markdown format */
           text_markdown?: parameters["rowFilter.multiple_choice_questions.text_markdown"];
+          /** Number of correct options */
+          num_correct_options?: parameters["rowFilter.multiple_choice_questions.num_correct_options"];
           /** Filtering Columns */
           select?: parameters["select"];
           /** Ordering */
@@ -681,6 +683,8 @@ export interface paths {
           title?: parameters["rowFilter.multiple_choice_questions.title"];
           /** Question text in markdown format */
           text_markdown?: parameters["rowFilter.multiple_choice_questions.text_markdown"];
+          /** Number of correct options */
+          num_correct_options?: parameters["rowFilter.multiple_choice_questions.num_correct_options"];
         };
         header: {
           /** Preference */
@@ -701,6 +705,8 @@ export interface paths {
           title?: parameters["rowFilter.multiple_choice_questions.title"];
           /** Question text in markdown format */
           text_markdown?: parameters["rowFilter.multiple_choice_questions.text_markdown"];
+          /** Number of correct options */
+          num_correct_options?: parameters["rowFilter.multiple_choice_questions.num_correct_options"];
         };
         body: {
           /** multiple_choice_questions */
@@ -957,6 +963,8 @@ export interface definitions {
     title: string;
     /** Question text in markdown format */
     text_markdown: string;
+    /** Number of correct options */
+    num_correct_options: number;
   };
   profiles: {
     /**
@@ -1046,6 +1054,8 @@ export interface parameters {
   "rowFilter.multiple_choice_questions.title": string;
   /** Question text in markdown format */
   "rowFilter.multiple_choice_questions.text_markdown": string;
+  /** Number of correct options */
+  "rowFilter.multiple_choice_questions.num_correct_options": string;
   /** profiles */
   "body.profiles": definitions["profiles"];
   "rowFilter.profiles.id": string;

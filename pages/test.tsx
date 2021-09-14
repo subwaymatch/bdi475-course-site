@@ -12,19 +12,21 @@ import RecordedMultipleChoiceQuestion from "components/common/RecordedMultipleCh
 export default function TestPage() {
   return (
     <Layout>
-      <Container>
-        <Row>
-          <Col>
-            <h1 className="pageTitle">Test Page</h1>
-          </Col>
-        </Row>
+      <main style={{ marginBottom: "8rem" }}>
+        <Container>
+          <Row>
+            <Col>
+              <h1 className="pageTitle">Test Page</h1>
+            </Col>
+          </Row>
 
-        <Row>
-          <Col>
-            <RecordedMultipleChoiceQuestion questionId={1} />
-          </Col>
-        </Row>
-      </Container>
+          <Row>
+            <Col>
+              <RecordedMultipleChoiceQuestion questionId={1} />
+            </Col>
+          </Row>
+        </Container>
+      </main>
     </Layout>
   );
 }

@@ -1,15 +1,8 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 import _ from "lodash";
-import { largeDesktop } from "constants/media-query-strings";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-import useLocalStorage from "hooks/useLocalStorage";
 import { Col, Row } from "react-bootstrap";
-import { BiReset } from "react-icons/bi";
-import { IoColorWandOutline } from "react-icons/io5";
-import { VscSymbolMethod, VscRunAll } from "react-icons/vsc";
-import { IoPlay } from "react-icons/io5";
-import Tippy from "@tippyjs/react";
-import { toast } from "react-toastify";
+import { RiUploadLine } from "react-icons/ri";
+import ChallengeButton from "./ChallengeButton";
 import marked from "marked";
 import styles from "./MultipleChoiceQuestion.module.scss";
 import clsx from "clsx";
@@ -18,53 +11,33 @@ import useSupabaseAuth from "hooks/useSupabaseAuth";
 import InstructionText from "./InstructionText";
 
 interface IMultipleChoiceQuestionProps {
-  localStorageKey?: string;
   questionData: definitions["multiple_choice_questions"];
   optionsData: definitions["multiple_choice_options"][];
   onSubmit: (boolean, string?) => void;
 }
 
 export default function MultipleChoiceQuestion({
-  localStorageKey,
   questionData,
   optionsData,
   onSubmit,
 }: IMultipleChoiceQuestionProps) {
   const { user } = useSupabaseAuth();
   const [userSelections, setUserSelections] = useState<number[]>([]);
-  const [hasError, setHasError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-  const isScreenLargeDesktop = useMediaQuery(largeDesktop);
-  const [savedUserSelections, setSavedUserSelections] = useLocalStorage<
-    number[]
-  >(localStorageKey, userSelections);
 
-  useEffect(() => {
-    // Load user code from LocalStorage if key exists
-    if (localStorageKey && savedUserSelections) {
-      setUserSelections(savedUserSelections);
-    }
-  }, []);
+  console.log(`userSelections`);
+  console.log(userSelections);
 
-  const reset = async () => {
-    setUserSelections([]);
-    setHasError(false);
-    setErrorMessage("");
-    toast("Reset Complete!");
-  };
+  const onToggle = (optionId) => {
+    console.log(`onToggle(optionId=${optionId})`);
 
-  const saveUserSelectionsToLocalStorage = useCallback(
-    _.debounce((updatedSelections) => {
-      setSavedUserSelections(updatedSelections);
-    }, 1000),
-    []
-  );
-
-  const onChange = (newUserCode) => {
-    setUserSelections(newUserCode);
-
-    if (localStorageKey) {
-      saveUserSelectionsToLocalStorage(newUserCode);
+    if (userSelections.includes(optionId)) {
+      setUserSelections((prevSelections) =>
+        prevSelections.filter((id) => id !== optionId)
+      );
+    } else if (questionData.num_correct_options === 1) {
+      setUserSelections([optionId]);
+    } else {
+      setUserSelections((prevSelections) => [...prevSelections, optionId]);
     }
   };
 
@@ -80,17 +53,34 @@ export default function MultipleChoiceQuestion({
 
         <Col lg={6}>
           <div className={styles.optionsWrapper}>
-            <span className="label yellow">Select 1</span>
+            <span className="label small yellow">
+              Select {questionData.num_correct_options}
+            </span>
 
-            {optionsData.map((o) => (
-              <div
-                key={o.id}
-                className={styles.optionMarkdown}
-                dangerouslySetInnerHTML={{
-                  __html: marked(o.text_markdown),
-                }}
-              />
-            ))}
+            {optionsData.map((o) => {
+              const isSelected = userSelections.includes(o.id);
+
+              return (
+                <div
+                  className={clsx(styles.optionItem, {
+                    [styles.isSelected]: isSelected,
+                  })}
+                  onClick={() => onToggle(o.id)}
+                  key={o.id}
+                >
+                  <div className={styles.optionCheckbox}>
+                    {isSelected && <span>→</span>}
+                  </div>
+
+                  <div
+                    className={styles.optionMarkdown}
+                    dangerouslySetInnerHTML={{
+                      __html: marked(o.text_markdown),
+                    }}
+                  />
+                </div>
+              );
+            })}
           </div>
         </Col>
       </Row>
@@ -100,45 +90,27 @@ export default function MultipleChoiceQuestion({
           <div className={styles.controlsWrapper}>
             <Row>
               <Col>
-                <div className={styles.leftControls}>
-                  <div
-                    className={clsx(styles.button, styles.reset)}
-                    onClick={(e) => {
-                      if (
-                        window.confirm(
-                          "Do you really want to reset your selections?"
-                        )
-                      ) {
-                        reset();
-                      }
-                    }}
-                  >
-                    <BiReset className={styles.reactIcon} />
-                    <span className={styles.label}>Reset</span>
-                  </div>
-                </div>
-              </Col>
-
-              <Col>
                 <div className={styles.rightControls}>
-                  <Tippy
-                    content={<>Submit your selection(s)</>}
-                    className="tippy"
-                    placement="bottom"
-                    offset={[0, -4]}
-                    theme="light"
-                    disabled={!isScreenLargeDesktop}
-                  >
-                    <div
-                      className={clsx(styles.button, styles.checkButton)}
-                      onClick={(e) => {
-                        e.preventDefault();
-                      }}
-                    >
-                      <VscRunAll className={styles.reactIcon} />
-                      <span className={styles.label}>Submit</span>
-                    </div>
-                  </Tippy>
+                  <ChallengeButton
+                    className={styles.button}
+                    onClick={async () => {
+                      // Do nothing
+                      console.log(`Check`);
+                    }}
+                    tooltip={
+                      userSelections.length !== questionData.num_correct_options
+                        ? `Select ${
+                            questionData.num_correct_options -
+                            userSelections.length
+                          } more`
+                        : `Submit`
+                    }
+                    disabled={
+                      userSelections.length !== questionData.num_correct_options
+                    }
+                    label="Check"
+                    IconComponent={RiUploadLine}
+                  />
                 </div>
               </Col>
             </Row>
