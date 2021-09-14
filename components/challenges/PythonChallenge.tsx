@@ -63,6 +63,7 @@ export default function PythonChallenge({
 
   const reset = async () => {
     setUserCode(challengeData.starter_code);
+    setSavedUserCode(challengeData.starter_code);
     setOutput("");
     setHasError(false);
     setErrorMessage("");

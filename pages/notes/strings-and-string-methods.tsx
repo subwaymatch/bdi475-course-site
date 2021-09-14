@@ -14,10 +14,7 @@ export default function StringsAndStringsMethodPage() {
         <Container>
           <Row>
             <Col>
-              <h2 className="sectionTitle grayBottomBorder">
-                Strings and String Methods
-                <span className="accent blue" />
-              </h2>
+              <h1 className={styles.noteTitle}>Strings and String Methods</h1>
             </Col>
           </Row>
 
@@ -37,14 +34,13 @@ export default function StringsAndStringsMethodPage() {
               </>,
               <>Learn string utility methods.</>,
             ]}
-            className={styles.block}
           />
 
           <Row>
             <Col>
               <div className={styles.coverImage}>
                 <Image
-                  src="/images/notes/1613413146477.png"
+                  src="/images/notes/1613412922600.png"
                   width={3000}
                   height={2000}
                   alt=""
@@ -53,7 +49,15 @@ export default function StringsAndStringsMethodPage() {
             </Col>
           </Row>
 
+          <RecordedPythonChallenge challengeId={216} className={styles.block} />
+
+          <RecordedPythonChallenge challengeId={217} className={styles.block} />
+
           <RecordedPythonChallenge challengeId={54} className={styles.block} />
+
+          <RecordedPythonChallenge challengeId={214} className={styles.block} />
+
+          <RecordedPythonChallenge challengeId={215} className={styles.block} />
 
           <RecordedPythonChallenge challengeId={69} className={styles.block} />
 
@@ -68,6 +72,8 @@ export default function StringsAndStringsMethodPage() {
           <RecordedPythonChallenge challengeId={72} className={styles.block} />
 
           <RecordedPythonChallenge challengeId={77} className={styles.block} />
+
+          <RecordedPythonChallenge challengeId={218} className={styles.block} />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Slicing a List</h3>

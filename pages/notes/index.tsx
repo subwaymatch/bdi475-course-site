@@ -84,7 +84,7 @@ export default function NotesPage() {
               title="Loops and Collections"
               colorTheme={ColorTheme.Purple}
             />
-            {/* 
+
             <NoteItem
               href="/notes/strings-and-string-methods"
               thumbnail={
@@ -95,11 +95,11 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2021-02-15"
+              date="2021-09-14"
               title="Strings and String Methods"
               colorTheme={ColorTheme.Green}
             />
-
+            {/* 
             <NoteItem
               href="/notes/functions"
               thumbnail={
