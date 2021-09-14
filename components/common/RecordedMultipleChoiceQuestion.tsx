@@ -149,7 +149,6 @@ export default function RecordedMultipleChoiceQuestion({
           <MultipleChoiceQuestion
             questionData={questionData}
             optionsData={optionsData}
-            localStorageKey={`multiple-choice-${questionId}`}
             onSubmit={() => {}}
           />
         </div>

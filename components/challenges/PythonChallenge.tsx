@@ -205,13 +205,13 @@ export default function PythonChallenge({
                     IconComponent={BiReset}
                   />
 
-                  <ChallengeButton
+                  {/* <ChallengeButton
                     className={styles.button}
                     onClick={() => {}}
                     tooltip={<>View an example of correct code</>}
                     label="Solution"
                     IconComponent={IoCodeSharp}
-                  />
+                  /> */}
                 </div>
               </Col>
 

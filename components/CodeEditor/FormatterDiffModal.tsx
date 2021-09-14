@@ -5,7 +5,6 @@ import styles from "./FormatterDiffModal.module.scss";
 import customTheme from "./custom-theme.json";
 import _ from "lodash";
 import clsx from "clsx";
-import { useMeasure } from "react-use";
 import { Row, Col } from "react-bootstrap";
 import { BiShapeTriangle } from "react-icons/bi";
 import { CgClose } from "react-icons/cg";
@@ -36,10 +35,6 @@ export default function FormatterDiffModal({
   // loading, success, error
   const [status, setStatus] = useState(CodeFormatStatusEnum.LOADING);
   const [formattedCode, setFormattedCode] = useState("");
-
-  const [diffEditorWrapperRef, { height: modalContentHeight }] = useMeasure();
-
-  console.log(`modalContentHeight=${modalContentHeight}`);
 
   const handleEditorWillMount = (monaco) => {
     monaco.editor.defineTheme("CustomTheme", customTheme);
@@ -128,12 +123,12 @@ export default function FormatterDiffModal({
           </Row>
         </div>
 
-        <div ref={diffEditorWrapperRef} className={styles.diffEditorWrapper}>
+        <div className={styles.diffEditorWrapper}>
           {status === CodeFormatStatusEnum.SUCCESS && (
             <DiffEditor
               original={original}
               modified={formattedCode}
-              height={modalContentHeight}
+              height={"100%"}
               beforeMount={handleEditorWillMount}
               language={language}
               theme={isThemeLoaded ? "CustomTheme" : "light"}
