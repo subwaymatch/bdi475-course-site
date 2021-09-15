@@ -109,7 +109,7 @@ export default function SolutionCodeModal({
               margin: 0,
               padding: "1rem 1.25rem",
             }}
-            wrapLines={true}
+            wrapLongLines={true}
           >
             {status === RequestStatusEnum.SUCCESS
               ? solutionData.solution_code
