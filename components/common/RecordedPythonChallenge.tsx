@@ -14,11 +14,13 @@ import styles from "./RecordedChallenge.module.scss";
 interface IRecordedPythonChallengeProps {
   challengeId: number;
   className?: string;
+  showSolution?: boolean;
 }
 
 export default function RecordedPythonChallenge({
   challengeId,
   className,
+  showSolution = true,
 }: IRecordedPythonChallengeProps) {
   const { user, roles } = useSupabaseAuth();
   const isAdmin = roles.includes("Admin");
@@ -165,6 +167,7 @@ export default function RecordedPythonChallenge({
           <PythonChallenge
             challengeData={data}
             localStorageKey={`coding-question-${challengeId}`}
+            showSolution={showSolution}
             onSubmit={recordSubmission}
           />
         </div>

@@ -20,6 +20,7 @@ import useSupabaseAuth from "hooks/useSupabaseAuth";
 import FormatterDiffModal from "components/CodeEditor/FormatterDiffModal";
 import InstructionText from "./InstructionText";
 import ChallengeButton from "./ChallengeButton";
+import SolutionCodeModal from "./SolutionCodeModal";
 
 const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
@@ -28,16 +29,19 @@ const CodeEditor = dynamic(() => import("components/CodeEditor"), {
 interface IPythonExerciseProps {
   challengeData: definitions["coding_challenges"];
   localStorageKey?: string;
+  showSolution?: boolean;
   onSubmit: (boolean, string?) => void;
 }
 
 export default function PythonChallenge({
   challengeData,
   localStorageKey,
+  showSolution = true,
   onSubmit,
 }: IPythonExerciseProps) {
   const { user } = useSupabaseAuth();
   const [userCode, setUserCode] = useState(challengeData.starter_code);
+  const [showSolutionModal, setShowSolutionModal] = useState(false);
   const [showFormattedModal, setShowFormattedModal] = useState(false);
   const [output, setOutput] = useState("");
   const [hasError, setHasError] = useState(false);
@@ -206,13 +210,15 @@ export default function PythonChallenge({
                     IconComponent={BiReset}
                   />
 
-                  {/* <ChallengeButton
-                    className={styles.button}
-                    onClick={() => {}}
-                    tooltip={<>View an example of correct code</>}
-                    label="Solution"
-                    IconComponent={IoCodeSharp}
-                  /> */}
+                  {showSolution && (
+                    <ChallengeButton
+                      className={styles.button}
+                      onClick={() => setShowSolutionModal(true)}
+                      tooltip={<>View solution code</>}
+                      label="Solution"
+                      IconComponent={IoCodeSharp}
+                    />
+                  )}
                 </div>
               </Col>
 
@@ -290,6 +296,13 @@ export default function PythonChallenge({
           </div>
         </Col>
       </Row>
+
+      <SolutionCodeModal
+        isOpen={showSolutionModal}
+        onClose={() => setShowSolutionModal(false)}
+        cid={challengeData.id}
+        language="python"
+      />
 
       <FormatterDiffModal
         isOpen={showFormattedModal}

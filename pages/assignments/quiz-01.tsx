@@ -78,6 +78,7 @@ export default function QuizPage() {
               key={challengeId}
               challengeId={challengeId}
               className={styles.block}
+              showSolution={false}
             />
           ))}
         </Container>

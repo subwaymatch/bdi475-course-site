@@ -80,6 +80,7 @@ export default function Exercise() {
               key={challengeId}
               challengeId={challengeId}
               className={styles.block}
+              showSolution={false}
             />
           ))}
         </Container>
