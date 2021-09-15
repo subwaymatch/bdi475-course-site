@@ -104,6 +104,7 @@ export default function FormatterDiffModal({
       }}
       ariaHideApp={false}
       onRequestClose={handleClose}
+      closeTimeoutMS={200}
     >
       <div className={styles.modalContent}>
         <div className={styles.beforeAfter}>

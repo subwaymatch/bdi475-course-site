@@ -85,6 +85,7 @@ export default function SolutionCodeModal({
         },
       }}
       ariaHideApp={false}
+      closeTimeoutMS={200}
       onRequestClose={handleClose}
     >
       <div className={styles.modalContent}>
