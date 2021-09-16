@@ -99,7 +99,7 @@ export default function NotesPage() {
               title="Strings and String Methods"
               colorTheme={ColorTheme.Green}
             />
-            {/* 
+
             <NoteItem
               href="/notes/functions"
               thumbnail={
@@ -110,11 +110,11 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2021-02-22"
+              date="2021-09-16"
               title="Functions Part 1"
               colorTheme={ColorTheme.Blue}
             />
-
+            {/* 
             <NoteItem
               href="/notes/functions-continued"
               thumbnail={

@@ -13,10 +13,10 @@ export default function FunctionPage() {
         <Container>
           <Row>
             <Col>
-              <h2 className="sectionTitle grayBottomBorder">
+              <h1 className={styles.noteTitle}>
                 Introduction to Functions
                 <span className="accent pink" />
-              </h2>
+              </h1>
             </Col>
           </Row>
 
@@ -38,14 +38,13 @@ export default function FunctionPage() {
               </>,
               <>Learn parameters and return values.</>,
             ]}
-            className={styles.block}
           />
 
           <Row>
             <Col>
               <div className={styles.coverImage}>
                 <Image
-                  src="/images/notes/1614015382392.png"
+                  src="/images/notes/1614015120608.png"
                   width={3000}
                   height={2000}
                   alt=""
@@ -119,7 +118,7 @@ export default function FunctionPage() {
 
             <p>
               A function can also take more than one input (e.g.,{" "}
-              <code>add(a, b) = a + b</code>).
+              <code>add_three(a, b) = a + b</code>).
             </p>
 
             <p>
@@ -135,15 +134,23 @@ export default function FunctionPage() {
             </p>
           </CenteredColumn>
 
+          <RecordedPythonChallenge challengeId={221} className={styles.block} />
+
+          <RecordedPythonChallenge challengeId={222} className={styles.block} />
+
           <RecordedPythonChallenge challengeId={68} className={styles.block} />
 
           <RecordedPythonChallenge challengeId={64} className={styles.block} />
+
+          <RecordedPythonChallenge challengeId={219} className={styles.block} />
 
           <RecordedPythonChallenge challengeId={65} className={styles.block} />
 
           <RecordedPythonChallenge challengeId={92} className={styles.block} />
 
           <RecordedPythonChallenge challengeId={94} className={styles.block} />
+
+          <RecordedPythonChallenge challengeId={220} className={styles.block} />
 
           <RecordedPythonChallenge challengeId={93} className={styles.block} />
 
