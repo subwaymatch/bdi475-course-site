@@ -83,7 +83,11 @@
     margin-top: 6rem;
 
     :global(.label) {
-      margin-top: 2rem;
+      &:first-of-type {
+        margin-top: 2rem;
+      }
+
+      margin-top: 4rem;
     }
 
     a {
@@ -92,9 +96,14 @@
 
     p {
       margin-top: 1.5rem;
+    }
 
-      &:first-of-type {
-        margin-top: 0.5rem;
+    p:first-of-type,
+    :global(.label) + p {
+      margin-top: 0.5rem;
+
+      @include media-breakpoint-down(lg) {
+        margin-top: 0.75rem;
       }
     }
 

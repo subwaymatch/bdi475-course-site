@@ -14,7 +14,11 @@
 
     .textMarkdown {
       margin-top: 0.5rem;
-      font-size: 1.1rem;
+
+      @include media-breakpoint-up(lg) {
+        font-size: 0.95em;
+        letter-spacing: -0.015rem;
+      }
 
       p,
       ul,
