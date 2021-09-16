@@ -2,7 +2,7 @@
   "base": "vs",
   "inherit": true,
   "rules": [
-    { "token": "", "foreground": "000000", "background": "ffffff" },
+    { "token": "", "foreground": "181818", "background": "ffffff" },
     { "token": "invalid", "foreground": "ff5c26" },
     { "token": "emphasis", "fontStyle": "italic" },
     { "token": "strong", "fontStyle": "bold" },

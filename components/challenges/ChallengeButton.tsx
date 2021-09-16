@@ -1,8 +1,7 @@
 import Tippy from "@tippyjs/react";
 import clsx from "clsx";
 import { IconType } from "react-icons";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-import { largeDesktop } from "constants/media-query-strings";
+import { isMobile } from "react-device-detect";
 import styles from "./ChallengeButton.module.scss";
 
 interface IChallengeButtonProps {
@@ -22,8 +21,6 @@ export default function ChallengeButton({
   onClick,
   IconComponent,
 }: IChallengeButtonProps) {
-  const isScreenLargeDesktop = useMediaQuery(largeDesktop);
-
   return (
     <Tippy
       content={tooltip}
@@ -31,7 +28,7 @@ export default function ChallengeButton({
       placement="bottom"
       offset={[0, -4]}
       theme="light"
-      disabled={!tooltip || !isScreenLargeDesktop}
+      disabled={!tooltip || isMobile}
     >
       <div
         className={clsx(styles.button, {

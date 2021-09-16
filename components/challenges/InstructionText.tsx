@@ -9,31 +9,6 @@ interface IInstructionTextProps {
   className?: string;
 }
 
-// export default function InstructionText({
-//   labelText,
-//   textMarkdown,
-//   className,
-// }: IInstructionTextProps) {
-//   return (
-//     <div
-//       className={clsx(styles.instructionTextWrapper, {
-//         [className]: !!className,
-//       })}
-//     >
-//       <div className={styles.instructionTextInner}>
-//         <span className="label small whiteText blue">{labelText}</span>
-
-//         <div
-//           className={styles.textMarkdown}
-//           dangerouslySetInnerHTML={{
-//             __html: marked(textMarkdown),
-//           }}
-//         />
-//       </div>
-//     </div>
-//   );
-// }
-
 const InstructionText = forwardRef<HTMLDivElement, IInstructionTextProps>(
   ({ labelText, textMarkdown, className }, ref) => (
     <div

@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import _ from "lodash";
 import { Col, Row } from "react-bootstrap";
 import { RiUploadLine } from "react-icons/ri";
@@ -44,14 +44,16 @@ export default function MultipleChoiceQuestion({
   return (
     <div className={styles.questionWrapper}>
       <Row className="g-0">
-        <Col lg={6}>
-          <InstructionText
-            labelText="Question"
-            textMarkdown={questionData.text_markdown}
-          />
+        <Col lg={6} className={styles.equalHeightCol}>
+          <div className={styles.instructionsWrapper}>
+            <InstructionText
+              labelText="Question"
+              textMarkdown={questionData.text_markdown}
+            />
+          </div>
         </Col>
 
-        <Col lg={6}>
+        <Col lg={6} className={styles.equalHeightCol}>
           <div className={styles.optionsWrapper}>
             <span className="label small yellow">
               Select {questionData.num_correct_options}
@@ -88,9 +90,9 @@ export default function MultipleChoiceQuestion({
       <Row className="g-0">
         <Col>
           <div className={styles.controlsWrapper}>
-            <Row>
+            <Row className="g-0">
               <Col>
-                <div className={styles.rightControls}>
+                <div className={styles.controls}>
                   <ChallengeButton
                     className={styles.button}
                     onClick={async () => {

@@ -6,9 +6,33 @@
   font-size: 1.1rem;
   border-top: 1px solid $color-border-gray;
 
+  @include media-breakpoint-down(xl) {
+    font-size: 1.05rem;
+    letter-spacing: -0.01rem;
+  }
+
+  @include media-breakpoint-down(md) {
+    font-size: 1rem;
+  }
+
+  .equalHeightCol {
+    flex: 1;
+  }
+
+  .instructionsWrapper,
+  .optionsWrapper {
+    height: 100%;
+  }
+
   .optionsWrapper {
     padding: 1rem 1rem 2rem 1.5rem;
     border-left: 1px solid $color-border-gray;
+
+    @include media-breakpoint-down(lg) {
+      padding: 1rem 0 2rem 0;
+      border: none;
+      border-top: 1px solid $color-border-gray;
+    }
 
     .optionItem {
       display: flex;
@@ -16,6 +40,11 @@
       margin-top: 0.5rem;
       padding: 0.25rem 0;
       cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover {
+        transform: translateX(2px);
+      }
 
       .optionCheckbox {
         display: flex;
@@ -31,12 +60,26 @@
       }
 
       .optionMarkdown {
+        width: 100%;
         opacity: 0.9;
         color: $color-medium-gray;
         transition: all 0.2s ease;
       }
 
+      &:hover {
+        .optionCheckbox {
+          background-color: #eee;
+          border-color: $color-gray;
+        }
+
+        .optionMarkdown {
+          color: $color-dark-gray;
+        }
+      }
+
       &.isSelected {
+        transform: translateX(10px);
+
         .optionCheckbox {
           color: white;
           font-weight: 600;
@@ -56,45 +99,16 @@
     border-top: 1px solid $color-border-gray;
     border-bottom: 1px solid $color-border-gray;
 
-    .leftControls,
-    .rightControls {
+    .controls {
       display: flex;
-    }
+      justify-content: center;
+      padding-left: 1.5rem;
 
-    .leftControls {
-      .button {
-        margin-left: 2.5rem;
-
-        &:first-child {
-          margin-left: 0;
-        }
-
-        @include media-breakpoint-down(lg) {
-          margin-left: 2rem;
-        }
+      @include media-breakpoint-down(lg) {
+        padding-left: 0;
       }
-    }
-
-    .rightControls {
-      justify-content: flex-end;
 
       .button {
-        margin-right: 2.5rem;
-
-        &:last-child {
-          margin-right: 0;
-          padding-right: 1.5rem;
-        }
-
-        @include media-breakpoint-down(xl) {
-          margin-right: 2rem;
-          padding-right: 1rem;
-
-          &:last-child {
-            margin-right: 0;
-            padding-right: 0.75rem;
-          }
-        }
       }
     }
   }

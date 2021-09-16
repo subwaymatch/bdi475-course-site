@@ -4,16 +4,7 @@
 
 .instructionTextWrapper {
   overflow-y: auto;
-  font-size: 1.1rem;
   color: #555;
-
-  pre {
-    color: color.adjust($color-purple, $lightness: -12%);
-    line-height: 1.6;
-    background: color.scale($color-purple, $lightness: 90%);
-    margin-top: 0.5rem;
-    padding: 0.5rem 0.8rem;
-  }
 
   .instructionTextInner {
     padding: 1rem 2rem 2rem 0;
@@ -24,6 +15,7 @@
 
     .textMarkdown {
       margin-top: 0.5rem;
+      font-size: 1.1rem;
 
       p,
       ul,
@@ -35,11 +27,27 @@
         }
       }
 
-      @include media-breakpoint-down(xl) {
-        font-size: 1.05rem;
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        color: $color-dark-gray;
+        font-weight: 500;
+        letter-spacing: -0.01rem;
+        margin-top: 1rem;
+
+        & + p {
+          margin-top: 0.25rem;
+        }
       }
 
-      @include media-breakpoint-down(lg) {
+      pre {
+        margin-top: 0.5rem;
+      }
+
+      @include media-breakpoint-down(xl) {
         font-size: 1.05rem;
         letter-spacing: -0.01rem;
       }
