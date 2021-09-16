@@ -5,13 +5,14 @@
   .exerciseHeader {
     font-size: 1.2rem;
     line-height: 1.4;
-    border-top: 1px solid black;
+    border-top: 1px solid $color-dark-gray;
     padding-top: 0.75rem;
     padding-bottom: 2rem;
     align-items: center;
     position: relative;
 
     .exerciseType {
+      color: $color-dark-gray;
       display: block;
       font-weight: 500;
     }

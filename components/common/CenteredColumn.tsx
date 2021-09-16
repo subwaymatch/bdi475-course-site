@@ -12,13 +12,17 @@ export default function CenteredColumn({
   return (
     <Row>
       <Col
-        lg={{
+        xl={{
           span: 6,
           offset: 3,
         }}
-        md={{
+        lg={{
           span: 8,
           offset: 2,
+        }}
+        md={{
+          span: 12,
+          offset: 0,
         }}
       >
         <div className={className}>{children}</div>

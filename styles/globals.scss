@@ -14,14 +14,27 @@ html {
 }
 
 body {
-  color: $color-dark-gray;
-  font-size: 1.15rem;
+  color: $color-text-gray;
+  font-size: 1.2rem;
   line-height: 1.8;
   letter-spacing: -0.02rem;
+
+  @include media-breakpoint-down(xl) {
+    font-size: 1.15rem;
+  }
+
+  @include media-breakpoint-down(md) {
+    font-size: 1.1rem;
+    letter-spacing: -0.01rem;
+  }
+
+  @include media-breakpoint-down(md) {
+    font-size: 1.05rem;
+  }
 }
 
 a {
-  color: black;
+  color: $color-dark-gray;
   cursor: pointer;
   text-decoration: none;
 
@@ -31,6 +44,7 @@ a {
 }
 
 h1.pageTitle {
+  color: $color-dark-gray;
   font-size: 7rem;
   line-height: 1.25;
   font-weight: 600;
@@ -80,10 +94,11 @@ h1.pageTitleBorders {
 }
 
 h2.sectionTitle {
+  color: $color-dark-gray;
   font-size: 1.5rem;
   line-height: 1.5;
   font-weight: 600;
-  border-top: 1px solid black;
+  border-top: 1px solid $color-dark-gray;
   padding-top: 0.75rem;
   padding-bottom: 3rem;
   display: flex;
@@ -285,7 +300,7 @@ kbd {
   background-color: color.mix($color-blue, white, 10%);
   border: 1px solid color.mix($color-blue, white, 30%);
   border-radius: 0.25rem;
-  font-size: 0.9em;
+  font-size: 0.95em;
   white-space: nowrap;
 }
 

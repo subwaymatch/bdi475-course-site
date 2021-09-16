@@ -4,13 +4,12 @@
 
 .instructionTextWrapper {
   overflow-y: auto;
-  color: #555;
 
   .instructionTextInner {
     padding: 1rem 2rem 2rem 0;
 
     @include media-breakpoint-down(md) {
-      padding-top: 1.5rem;
+      padding: 1.5rem 0 2rem 0;
     }
 
     .textMarkdown {
@@ -53,15 +52,6 @@
 
       pre {
         margin-top: 0.5rem;
-      }
-
-      @include media-breakpoint-down(xl) {
-        font-size: 1.05rem;
-        letter-spacing: -0.01rem;
-      }
-
-      @include media-breakpoint-down(md) {
-        font-size: 1rem;
       }
     }
   }

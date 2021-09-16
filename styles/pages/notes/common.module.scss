@@ -5,6 +5,7 @@
   padding-bottom: 10rem;
 
   h1.noteTitle {
+    color: $color-dark-gray;
     font-size: 4rem;
     line-height: 1.2;
     font-weight: 600;
@@ -28,11 +29,8 @@
     margin-top: 6rem;
   }
 
-  @include media-breakpoint-down(lg) {
-    font-size: 1.2rem;
-  }
-
   h3 {
+    color: $color-dark-gray;
     font-size: 1.6rem;
     font-weight: 500;
   }
