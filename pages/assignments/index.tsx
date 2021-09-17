@@ -65,9 +65,28 @@ export default function AssignmentsPage() {
 
           <Row>
             <Col>
-              <div className={styles.codingQuiz}>
+              <div className={styles.problemSets}>
                 <h2 className="sectionTitle">
-                  Coding Quiz <span className="accent green" />
+                  Problem Sets <span className="accent blue" />
+                </h2>
+
+                <AssignmentItem
+                  name="Problem Set 1"
+                  dueDate={dayjs("2021-09-21").tz().format("ll")}
+                  pointsAvailable={80}
+                  status={AssignmentStatus.Available}
+                  link="/assignments/problem-set-01"
+                  colorTheme={ColorTheme.Blue}
+                />
+              </div>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col>
+              <div className={styles.codingQuizzes}>
+                <h2 className="sectionTitle">
+                  Coding Quizzes <span className="accent green" />
                 </h2>
 
                 <AssignmentItem

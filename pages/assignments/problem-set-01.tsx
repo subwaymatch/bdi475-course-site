@@ -13,10 +13,7 @@ export default function ProblemSetPage() {
         <Container>
           <Row>
             <Col>
-              <h2 className="sectionTitle grayBottomBorder">
-                Problem Set 1
-                <span className="accent purple" />
-              </h2>
+              <h1 className="pageTitle">Problem Set 1</h1>
             </Col>
           </Row>
 
@@ -24,41 +21,31 @@ export default function ProblemSetPage() {
             title="Problem Set 1 ⟶"
             items={[
               <>
-                This is a substitute assignment for the first case study. The
-                questions on Monday's Quiz 2 will be{" "}
-                <strong>very similar</strong> to some of these questions.
-              </>,
-              <>
                 You have until{" "}
-                <span className="color-pink">
-                  Monday before the beginning of the class
+                <span className="color-purple">
+                  Tuesday before the beginning of the class
                 </span>{" "}
-                (Mar 1, 1:59 PM CST) to complete this problem set.
+                (Sep 21, 3:30 PM CST) to complete this exercise.
               </>,
               <>
-                You get <span className="color-blue">unlimited attempts</span>.
+                You get{" "}
+                <span className="color-blue">
+                  an unlimited number of attempts
+                </span>
+                .
               </>,
               <>
-                There is no separate submit button. Your code is automatically
-                submitted when you hit the <strong>Check</strong> button.
+                Make sure to see{" "}
+                <span className="color-green">green checkmarks</span> for each
+                challenge.
               </>,
+              <>We may deduct points upon a manual code review.</>,
               <>
                 There are <span className="color-purple">80 points</span>{" "}
-                available.
-              </>,
-              <>
-                Passing the test cases does not guarantee you full points. We
-                will manually review your code.
-              </>,
-              <>
-                If you make a{" "}
-                <span className="color-purple">late submission</span>,{" "}
-                <strong>
-                  we will deduct 10% of the total available points per day.
-                </strong>
+                available (10 points for each question except the last one which
+                accounts for 20 points).
               </>,
             ]}
-            className={styles.block}
           />
 
           <Row>
@@ -81,16 +68,32 @@ export default function ProblemSetPage() {
             <p>
               All exercises in this problem set is designed to challenge you. 👽
               If you're stuck, I encourage you to post your question along with
-              the code on{" "}
-              <a href="https://discord.gg/jWF56zsQ7E">course discord</a> to get
-              help.
+              the code on the{" "}
+              <a href="https://canvas.illinois.edu/courses/14860/discussion_topics/99898">
+                Problem Set 1 Canvas discussion forum
+              </a>{" "}
+              to get help.
             </p>
 
             <span className="label yellow">Extra Office Hours</span>
+            <p>I will be holding two extra office hours over Zoom. 📺</p>
+            <ul>
+              <li>
+                Sunday <span className="color-gray">9/19</span> 8-9 PM
+              </li>
+              <li>
+                Monday <span className="color-gray">9/20</span> 8-9 PM
+              </li>
+              <li>
+                <a href="https://illinois.zoom.us/j/88199992344?pwd=dTMvdnM3SHF4eE11NnBjZGJ6NGhMZz09">
+                  Office Hours Zoom Link ⟶
+                </a>
+              </li>
+            </ul>
             <p>
-              I also plan to hold extra office hours on the weekend. If you are
-              lost and need help, please email me at{" "}
-              <a href="mailto:ypark32@illinois.edu">ypark32@illinois.edu</a>.
+              If both time slots don't work and you'd like to set up a separate
+              Zoom session, please email me at{" "}
+              <a href="mailto:ypark32@illinois.edu">ypark32@illinois.edu</a>. 👋
             </p>
           </CenteredColumn>
 
