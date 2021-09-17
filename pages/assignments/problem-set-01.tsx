@@ -7,6 +7,8 @@ import CenteredColumn from "components/common/CenteredColumn";
 import RecordedPythonChallenge from "components/common/RecordedPythonChallenge";
 
 export default function ProblemSetPage() {
+  const codingChallengeIds = [116, 117, 118, 119, 120, 121, 122];
+
   return (
     <Layout>
       <main className={styles.page}>
@@ -97,19 +99,14 @@ export default function ProblemSetPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedPythonChallenge challengeId={116} className={styles.block} />
-
-          <RecordedPythonChallenge challengeId={117} className={styles.block} />
-
-          <RecordedPythonChallenge challengeId={118} className={styles.block} />
-
-          <RecordedPythonChallenge challengeId={119} className={styles.block} />
-
-          <RecordedPythonChallenge challengeId={120} className={styles.block} />
-
-          <RecordedPythonChallenge challengeId={121} className={styles.block} />
-
-          <RecordedPythonChallenge challengeId={122} className={styles.block} />
+          {codingChallengeIds.map((challengeId) => (
+            <RecordedPythonChallenge
+              key={challengeId}
+              challengeId={challengeId}
+              className={styles.block}
+              showSolution={false}
+            />
+          ))}
         </Container>
       </main>
     </Layout>
