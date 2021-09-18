@@ -38,7 +38,7 @@
       display: flex;
       align-items: center;
       margin-top: 0.5rem;
-      padding: 0.25rem 0;
+      padding: 0.5rem 0;
       cursor: pointer;
       transition: all 0.2s ease;
 
@@ -60,10 +60,16 @@
       }
 
       .optionMarkdown {
+        font-size: 0.95em;
         width: 100%;
         opacity: 0.9;
-        color: $color-medium-gray;
+        color: $color-dark-gray;
         transition: all 0.2s ease;
+
+        :global(.hljs) {
+          font-size: 0.9em;
+          line-height: 1.6;
+        }
       }
 
       &:hover {
@@ -88,8 +94,13 @@
         }
 
         .optionMarkdown {
-          color: $color-dark-gray;
+          color: $color-black;
           opacity: 1;
+
+          :global(.hljs) {
+            border: 1px solid
+              color.adjust($color-blue, $lightness: 16%, $saturation: -60%);
+          }
         }
       }
     }

@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
-import marked from "marked";
 import styles from "./InstructionText.module.scss";
 import clsx from "clsx";
+import parseMarkdown from "lib/unified";
 
 interface IInstructionTextProps {
   labelText: string;
@@ -23,7 +23,7 @@ const InstructionText = forwardRef<HTMLDivElement, IInstructionTextProps>(
         <div
           className={styles.textMarkdown}
           dangerouslySetInnerHTML={{
-            __html: marked(textMarkdown),
+            __html: parseMarkdown(textMarkdown),
           }}
         />
       </div>

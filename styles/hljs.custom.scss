@@ -10,9 +10,11 @@
     $lightness: 21%,
     $saturation: -60%
   );
-  font-size: 1.05rem;
+  border: 1px solid
+    color.adjust($color-blue, $lightness: 21%, $saturation: -60%);
   line-height: 1.65;
   font-family: $font-monospace;
+  letter-spacing: 0;
   padding: 0.6rem 1rem;
   border-radius: 0.25rem;
 }

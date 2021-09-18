@@ -1,18 +1,13 @@
 import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
-import { useEffect, useState } from "react";
-import { supabaseClient } from "lib/supabase/supabaseClient";
-import usePythonChallenge from "hooks/usePythonChallenge";
-import { User } from "@supabase/supabase-js";
-import useSupabaseAuth from "hooks/useSupabaseAuth";
-import { definitions } from "types/database";
-import useMultipleChoiceQuestion from "hooks/useMultipleChoiceQuestion";
+import styles from "styles/pages/notes/common.module.scss";
 import RecordedMultipleChoiceQuestion from "components/common/RecordedMultipleChoiceQuestion";
+import RecordedPythonChallenge from "components/common/RecordedPythonChallenge";
 
 export default function TestPage() {
   return (
     <Layout>
-      <main style={{ marginBottom: "8rem" }}>
+      <main className={styles.page}>
         <Container>
           <Row>
             <Col>
@@ -23,6 +18,13 @@ export default function TestPage() {
           <Row>
             <Col>
               <RecordedMultipleChoiceQuestion questionId={1} />
+
+              <RecordedMultipleChoiceQuestion questionId={2} />
+
+              <RecordedPythonChallenge
+                challengeId={211}
+                className={styles.block}
+              />
             </Col>
           </Row>
         </Container>

@@ -3,12 +3,12 @@ import _ from "lodash";
 import { Col, Row } from "react-bootstrap";
 import { RiUploadLine } from "react-icons/ri";
 import ChallengeButton from "./ChallengeButton";
-import marked from "marked";
 import styles from "./MultipleChoiceQuestion.module.scss";
 import clsx from "clsx";
 import { definitions } from "types/database";
 import useSupabaseAuth from "hooks/useSupabaseAuth";
 import InstructionText from "./InstructionText";
+import parseMarkdown from "lib/unified";
 
 interface IMultipleChoiceQuestionProps {
   questionData: definitions["multiple_choice_questions"];
@@ -24,21 +24,37 @@ export default function MultipleChoiceQuestion({
   const { user } = useSupabaseAuth();
   const [userSelections, setUserSelections] = useState<number[]>([]);
 
-  console.log(`userSelections`);
-  console.log(userSelections);
-
   const onToggle = (optionId) => {
-    console.log(`onToggle(optionId=${optionId})`);
-
-    if (userSelections.includes(optionId)) {
+    if (questionData.num_correct_options === 1) {
+      if (!userSelections.includes(optionId)) {
+        setUserSelections([optionId]);
+      }
+    } else if (userSelections.includes(optionId)) {
       setUserSelections((prevSelections) =>
         prevSelections.filter((id) => id !== optionId)
       );
-    } else if (questionData.num_correct_options === 1) {
-      setUserSelections([optionId]);
     } else {
       setUserSelections((prevSelections) => [...prevSelections, optionId]);
     }
+  };
+
+  const getSubmitButtonMessage = () => {
+    let submitButtonMessage = "";
+    let diff = userSelections.length - questionData.num_correct_options;
+
+    if (diff > 0) {
+      submitButtonMessage = `Unselect ${diff} option${
+        diff > 1 ? "s" : ""
+      } to submit ${"•".repeat(diff)}`;
+    } else if (diff < 0) {
+      submitButtonMessage = `Select ${-diff} more to submit ${"•".repeat(
+        -diff
+      )}`;
+    } else {
+      submitButtonMessage = "Submit";
+    }
+
+    return submitButtonMessage;
   };
 
   return (
@@ -77,7 +93,7 @@ export default function MultipleChoiceQuestion({
                   <div
                     className={styles.optionMarkdown}
                     dangerouslySetInnerHTML={{
-                      __html: marked(o.text_markdown),
+                      __html: parseMarkdown(o.text_markdown),
                     }}
                   />
                 </div>
@@ -110,8 +126,12 @@ export default function MultipleChoiceQuestion({
                     disabled={
                       userSelections.length !== questionData.num_correct_options
                     }
-                    label="Check"
-                    IconComponent={RiUploadLine}
+                    label={getSubmitButtonMessage()}
+                    IconComponent={
+                      userSelections.length === questionData.num_correct_options
+                        ? RiUploadLine
+                        : null
+                    }
                   />
                 </div>
               </Col>
