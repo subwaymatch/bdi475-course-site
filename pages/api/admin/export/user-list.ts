@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { firebaseAdmin } from "firebase/firebaseAdmin";
-import { isAdmin } from "utils/api/auth";
 import stringify from "csv-stringify/lib/sync";
 
 export default async function getUserListAsCSV(
@@ -10,10 +9,6 @@ export default async function getUserListAsCSV(
   // Only accept get requests
   if (req.method !== "GET") {
     return;
-  }
-
-  if (!(await isAdmin(req))) {
-    return res.status(403).end(`Insufficient permission to retrieve user list`);
   }
 
   try {

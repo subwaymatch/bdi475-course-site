@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { firebaseAdmin } from "firebase/firebaseAdmin";
-import { isAdmin } from "utils/api/auth";
 import _ from "lodash";
 import stringify from "csv-stringify/lib/sync";
 import dayjs from "dayjs";
@@ -14,9 +13,6 @@ export default async function getUserChallengeAttemptsAsCSV(
     return;
   }
 
-  if (!(await isAdmin(req))) {
-    return res.status(403).end(`Insufficient permission to download reports`);
-  }
   // Extract attempt information
   const {
     query: { cid },

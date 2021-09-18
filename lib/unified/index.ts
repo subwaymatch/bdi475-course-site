@@ -6,7 +6,7 @@ import rehypeKatex from "rehype-katex";
 import rehypeHighlight from "rehype-highlight";
 import rehypeStringify from "rehype-stringify";
 
-export default function parseMarkdown(markdownText: string): string {
+export function parseMarkdown(markdownText: string): string {
   try {
     const processedVFile = unified()
       .use(remarkParse)

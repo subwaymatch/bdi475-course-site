@@ -19,7 +19,10 @@ export default function TestPage() {
             <Col>
               <RecordedMultipleChoiceQuestion questionId={1} />
 
-              <RecordedMultipleChoiceQuestion questionId={2} />
+              <RecordedMultipleChoiceQuestion
+                questionId={2}
+                className={styles.block}
+              />
 
               <RecordedPythonChallenge
                 challengeId={211}

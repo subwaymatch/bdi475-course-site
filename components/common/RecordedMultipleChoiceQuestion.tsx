@@ -28,6 +28,28 @@ export default function RecordedMultipleChoiceQuestion({
   const historyLinkRef = useRef<HTMLAnchorElement>();
   const attempts = [];
 
+  const onSubmit = async (userSelections: number[]) => {
+    const response = await fetch(
+      `/api/multiple-choice-question/submit/${questionId}`,
+      {
+        method: "POST",
+        mode: "cors",
+        credentials: "same-origin",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userSelections,
+        }),
+      }
+    );
+
+    const submitResult = await response.json();
+
+    console.log(`submitResult`);
+    console.log(submitResult);
+  };
+
   return status === "success" ? (
     <Row>
       <Col>
@@ -149,7 +171,7 @@ export default function RecordedMultipleChoiceQuestion({
           <MultipleChoiceQuestion
             questionData={questionData}
             optionsData={optionsData}
-            onSubmit={() => {}}
+            onSubmit={onSubmit}
           />
         </div>
       </Col>

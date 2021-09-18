@@ -15,8 +15,10 @@
     font-size: 1rem;
   }
 
-  .equalHeightCol {
-    flex: 1;
+  @include media-breakpoint-up(lg) {
+    .equalHeightCol {
+      flex: 1;
+    }
   }
 
   .instructionsWrapper,
@@ -55,8 +57,12 @@
         height: 1rem;
         border-radius: 3rem;
         border: 2px solid $color-border-gray;
-        margin-right: 0.5rem;
+        margin-right: 1rem;
         transition: all 0.2s ease;
+
+        @include media-breakpoint-down(xl) {
+          margin-right: 0.75rem;
+        }
       }
 
       .optionMarkdown {
@@ -120,6 +126,8 @@
       }
 
       .button {
+        padding-left: 2rem;
+        padding-right: 2rem;
       }
     }
   }

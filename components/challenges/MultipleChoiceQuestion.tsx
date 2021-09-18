@@ -8,12 +8,12 @@ import clsx from "clsx";
 import { definitions } from "types/database";
 import useSupabaseAuth from "hooks/useSupabaseAuth";
 import InstructionText from "./InstructionText";
-import parseMarkdown from "lib/unified";
+import { parseMarkdown } from "lib/unified";
 
 interface IMultipleChoiceQuestionProps {
   questionData: definitions["multiple_choice_questions"];
   optionsData: definitions["multiple_choice_options"][];
-  onSubmit: (boolean, string?) => void;
+  onSubmit: (userSelectionIds: number[]) => Promise<void>;
 }
 
 export default function MultipleChoiceQuestion({
@@ -111,10 +111,7 @@ export default function MultipleChoiceQuestion({
                 <div className={styles.controls}>
                   <ChallengeButton
                     className={styles.button}
-                    onClick={async () => {
-                      // Do nothing
-                      console.log(`Check`);
-                    }}
+                    onClick={() => onSubmit(userSelections)}
                     tooltip={
                       userSelections.length !== questionData.num_correct_options
                         ? `Select ${
