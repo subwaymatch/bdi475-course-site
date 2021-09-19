@@ -920,7 +920,15 @@ export interface definitions {
      * This is a Primary Key.<pk/>
      */
     id: number;
+    /**
+     * Note:
+     * This is a Foreign Key to `multiple_choice_questions.id`.<fk table='multiple_choice_questions' column='id'/>
+     */
     question_id: number;
+    /**
+     * Note:
+     * This is a Foreign Key to `multiple_choice_options.id`.<fk table='multiple_choice_options' column='id'/>
+     */
     option_id: number;
     is_correct: boolean;
     explanation?: string;

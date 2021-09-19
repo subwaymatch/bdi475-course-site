@@ -1,6 +1,7 @@
 import { NextApiRequest } from "next";
 import { User } from "@supabase/supabase-js";
 import { supabaseServiceClient } from "lib/supabase/supabaseServiceClient";
+import { definitions } from "types/database";
 
 export async function getUserFromRequest(req: NextApiRequest): Promise<User> {
   if (
@@ -31,12 +32,12 @@ export async function getUserRolesFromRequest(
   const user = await getUserFromRequest(req);
 
   const selectResult = await supabaseServiceClient
-    .from("profiles")
+    .from<definitions["profiles"]>("profiles")
     .select("roles")
     .eq("id", user.id)
     .single();
 
-  return selectResult.data.roles;
+  return selectResult.data.roles as any;
 }
 
 export async function isRequestFromAdmin(

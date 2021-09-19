@@ -177,8 +177,8 @@ export default function SiteHeader() {
                   <Image
                     src={logoImage}
                     alt="BDI 475"
-                    width={120}
-                    height={31}
+                    width={110}
+                    height={28}
                   />
                 </a>
               </Link>
