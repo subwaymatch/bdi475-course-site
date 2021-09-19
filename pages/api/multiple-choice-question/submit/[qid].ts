@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { supabaseClient } from "lib/supabase/supabaseClient";
 import { definitions } from "types/database";
 import isEqual from "lodash/isEqual";
+import { getUserFromRequest } from "utils/api/auth";
 
 export default async function recordAttempt(
   req: NextApiRequest,
@@ -12,18 +13,7 @@ export default async function recordAttempt(
     return;
   }
 
-  let user = null;
-
-  // Get user information from Bearer token
-  try {
-    const token = req.headers.token;
-    const { data: userData, error: userError } =
-      await supabaseClient.auth.api.getUser(token as string);
-
-    user = userData;
-  } catch (err) {
-    return res.status(403).json({ message: err.message });
-  }
+  const user = getUserFromRequest(req);
 
   // Extract attempt information
   const {

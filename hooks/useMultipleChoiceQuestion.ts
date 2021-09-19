@@ -89,8 +89,5 @@ export default function useMultipleChoiceQuestion(questionId: number) {
     }
   }, []);
 
-  console.log(`useMultipleChoiceQuestion`);
-  console.log(result);
-
   return result;
 }

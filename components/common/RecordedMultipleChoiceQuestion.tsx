@@ -19,7 +19,7 @@ export default function RecordedMultipleChoiceQuestion({
   questionId,
   className,
 }: IRecordedMultipleChoiceQuestionProps) {
-  const { user, roles } = useSupabaseAuth();
+  const { user, session, roles } = useSupabaseAuth();
   const isAdmin = roles.includes("Admin");
   const { status, questionData, optionsData, error } =
     useMultipleChoiceQuestion(questionId);
@@ -29,6 +29,10 @@ export default function RecordedMultipleChoiceQuestion({
   const attempts = [];
 
   const onSubmit = async (userSelections: number[]) => {
+    if (!session) {
+      return;
+    }
+
     const response = await fetch(
       `/api/multiple-choice-question/submit/${questionId}`,
       {
@@ -37,6 +41,7 @@ export default function RecordedMultipleChoiceQuestion({
         credentials: "same-origin",
         headers: {
           "Content-Type": "application/json",
+          authorization: `Bearer ${session.access_token}`,
         },
         body: JSON.stringify({
           userSelections,
