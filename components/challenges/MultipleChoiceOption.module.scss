@@ -1,0 +1,78 @@
+@use 'sass:color';
+@import "styles/variables";
+@import "styles/mixins";
+
+.optionItem {
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: translateX(2px);
+  }
+
+  .optionCheckbox {
+    display: flex;
+    font-size: 0.8rem;
+    align-items: center;
+    justify-content: center;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 3rem;
+    border: 2px solid $color-border-gray;
+    margin-right: 1rem;
+    transition: all 0.2s ease;
+
+    @include media-breakpoint-down(xl) {
+      margin-right: 0.75rem;
+    }
+  }
+
+  .optionMarkdown {
+    font-size: 0.95em;
+    width: 100%;
+    opacity: 0.9;
+    color: $color-dark-gray;
+    transition: all 0.2s ease;
+
+    :global(.hljs) {
+      font-size: 0.95em;
+      line-height: 1.6;
+    }
+  }
+
+  &:hover {
+    .optionCheckbox {
+      background-color: #eee;
+      border-color: $color-gray;
+    }
+
+    .optionMarkdown {
+      color: $color-dark-gray;
+    }
+  }
+
+  &.isSelected {
+    transform: translateX(10px);
+
+    .optionCheckbox {
+      color: white;
+      font-weight: 600;
+      background-color: $color-dark-gray;
+      border-color: $color-dark-gray;
+    }
+
+    .optionMarkdown {
+      color: $color-black;
+      opacity: 1;
+
+      :global(.hljs) {
+        border: 1px solid
+          color.adjust($color-blue, $lightness: 16%, $saturation: -60%);
+      }
+    }
+  }
+}

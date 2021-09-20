@@ -4,11 +4,10 @@ import { Col, Row } from "react-bootstrap";
 import { RiUploadLine } from "react-icons/ri";
 import ChallengeButton from "./ChallengeButton";
 import styles from "./MultipleChoiceQuestion.module.scss";
-import clsx from "clsx";
 import { definitions } from "types/database";
 import useSupabaseAuth from "hooks/useSupabaseAuth";
 import InstructionText from "./InstructionText";
-import { parseMarkdown } from "lib/unified";
+import MultipleChoiceOption from "./MultipleChoiceOption";
 
 interface IMultipleChoiceQuestionProps {
   questionData: definitions["multiple_choice_questions"];
@@ -23,6 +22,15 @@ export default function MultipleChoiceQuestion({
 }: IMultipleChoiceQuestionProps) {
   const { user } = useSupabaseAuth();
   const [userSelections, setUserSelections] = useState<number[]>([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const submit = async () => {
+    setIsSubmitting(true);
+
+    await onSubmit(userSelections);
+
+    setIsSubmitting(false);
+  };
 
   const onToggle = (optionId) => {
     if (questionData.num_correct_options === 1) {
@@ -75,30 +83,17 @@ export default function MultipleChoiceQuestion({
               Select {questionData.num_correct_options}
             </span>
 
-            {optionsData.map((o) => {
-              const isSelected = userSelections.includes(o.id);
-
-              return (
-                <div
-                  className={clsx(styles.optionItem, {
-                    [styles.isSelected]: isSelected,
-                  })}
-                  onClick={() => onToggle(o.id)}
-                  key={o.id}
-                >
-                  <div className={styles.optionCheckbox}>
-                    {isSelected && <span>→</span>}
-                  </div>
-
-                  <div
-                    className={styles.optionMarkdown}
-                    dangerouslySetInnerHTML={{
-                      __html: parseMarkdown(o.text_markdown),
-                    }}
-                  />
-                </div>
-              );
-            })}
+            {optionsData.map((o) => (
+              <MultipleChoiceOption
+                key={o.id}
+                isSelected={userSelections.includes(o.id)}
+                disabled={isSubmitting}
+                textMarkdown={o.text_markdown}
+                onClick={() => onToggle(o.id)}
+                showResult={false}
+                isCorrectAnswer={true}
+              />
+            ))}
           </div>
         </Col>
       </Row>
@@ -111,7 +106,7 @@ export default function MultipleChoiceQuestion({
                 <div className={styles.controls}>
                   <ChallengeButton
                     className={styles.button}
-                    onClick={() => onSubmit(userSelections)}
+                    onClick={submit}
                     tooltip={
                       userSelections.length !== questionData.num_correct_options
                         ? `Select ${
@@ -121,6 +116,7 @@ export default function MultipleChoiceQuestion({
                         : `Submit`
                     }
                     disabled={
+                      isSubmitting ||
                       userSelections.length !== questionData.num_correct_options
                     }
                     label={getSubmitButtonMessage()}
