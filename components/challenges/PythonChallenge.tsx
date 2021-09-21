@@ -146,6 +146,7 @@ export default function PythonChallenge({
         <Col lg={6}>
           <InstructionText
             ref={ref}
+            isLoading={false}
             labelText="Task"
             textMarkdown={challengeData.text_markdown}
           />
