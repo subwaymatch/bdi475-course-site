@@ -9,6 +9,7 @@ import clsx from "clsx";
 import styles from "./RecordedChallenge.module.scss";
 import useMultipleChoiceQuestion from "hooks/useMultipleChoiceQuestion";
 import MultipleChoiceQuestion from "components/challenges/MultipleChoiceQuestion";
+import { QueryStatusEnum } from "types";
 
 interface IRecordedMultipleChoiceQuestionProps {
   questionId: number;
@@ -55,7 +56,7 @@ export default function RecordedMultipleChoiceQuestion({
     console.log(submitResult);
   };
 
-  return status === "success" ? (
+  return (
     <Row>
       <Col>
         <div
@@ -69,7 +70,11 @@ export default function RecordedMultipleChoiceQuestion({
                 <span className={styles.exerciseType}>
                   Multiple Choice Question
                 </span>
-                <h2 className={styles.exerciseTitle}>{questionData.title}</h2>
+                <h2 className={styles.exerciseTitle}>
+                  {status === QueryStatusEnum.SUCCESS
+                    ? questionData.title
+                    : "Loading"}
+                </h2>
 
                 <div className={styles.topControls}>
                   {user && isAdmin && (
@@ -174,17 +179,12 @@ export default function RecordedMultipleChoiceQuestion({
           </Row>
 
           <MultipleChoiceQuestion
+            status={status}
             questionData={questionData}
             optionsData={optionsData}
             onSubmit={onSubmit}
           />
         </div>
-      </Col>
-    </Row>
-  ) : (
-    <Row>
-      <Col>
-        <p>{status === "error" ? error : "Loading..."}</p>
       </Col>
     </Row>
   );

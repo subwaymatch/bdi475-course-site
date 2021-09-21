@@ -41,7 +41,7 @@ export default function AssignmentItem({
           [styles.available]: status === AssignmentStatus.Available,
           [styles.unavailable]: status === AssignmentStatus.Unavailable,
         },
-        styles[colorTheme.toLowerCase()]
+        `color-${colorTheme.toLowerCase()}`
       )}
     >
       <Row>
@@ -65,14 +65,7 @@ export default function AssignmentItem({
 
         <Col md={{ span: 4, order: 1 }}>
           <Link href={link}>
-            <a
-              className={clsx(styles.name, {
-                [colorTheme.toLowerCase()]:
-                  status === AssignmentStatus.Available,
-              })}
-            >
-              {name}
-            </a>
+            <a className={clsx(styles.name)}>{name}</a>
           </Link>
         </Col>
 

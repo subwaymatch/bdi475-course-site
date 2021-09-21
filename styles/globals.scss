@@ -32,12 +32,12 @@ body {
 }
 
 a {
-  color: $color-dark-gray;
+  color: $color-darker-blue;
   cursor: pointer;
   text-decoration: none;
 
   &:hover {
-    color: $color-medium-gray;
+    color: color.adjust($color-darker-blue, $lightness: -8%, $saturation: -10%);
   }
 }
 

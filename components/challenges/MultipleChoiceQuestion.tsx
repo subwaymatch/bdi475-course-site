@@ -8,14 +8,17 @@ import { definitions } from "types/database";
 import useSupabaseAuth from "hooks/useSupabaseAuth";
 import InstructionText from "./InstructionText";
 import MultipleChoiceOption from "./MultipleChoiceOption";
+import { QueryStatusEnum } from "types";
 
 interface IMultipleChoiceQuestionProps {
+  status: QueryStatusEnum;
   questionData: definitions["multiple_choice_questions"];
   optionsData: definitions["multiple_choice_options"][];
   onSubmit: (userSelectionIds: number[]) => Promise<void>;
 }
 
 export default function MultipleChoiceQuestion({
+  status,
   questionData,
   optionsData,
   onSubmit,
@@ -23,6 +26,7 @@ export default function MultipleChoiceQuestion({
   const { user } = useSupabaseAuth();
   const [userSelections, setUserSelections] = useState<number[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const isLoading = status === QueryStatusEnum.LOADING;
 
   const submit = async () => {
     setIsSubmitting(true);
@@ -48,7 +52,7 @@ export default function MultipleChoiceQuestion({
 
   const getSubmitButtonMessage = () => {
     let submitButtonMessage = "";
-    let diff = userSelections.length - questionData.num_correct_options;
+    let diff = userSelections.length - questionData?.num_correct_options;
 
     if (diff > 0) {
       submitButtonMessage = `Unselect ${diff} option${
@@ -71,8 +75,9 @@ export default function MultipleChoiceQuestion({
         <Col lg={6} className={styles.equalHeightCol}>
           <div className={styles.instructionsWrapper}>
             <InstructionText
+              isLoading={isLoading}
               labelText="Question"
-              textMarkdown={questionData.text_markdown}
+              textMarkdown={questionData?.text_markdown}
             />
           </div>
         </Col>
@@ -80,20 +85,24 @@ export default function MultipleChoiceQuestion({
         <Col lg={6} className={styles.equalHeightCol}>
           <div className={styles.optionsWrapper}>
             <span className="label small yellow">
-              Select {questionData.num_correct_options}
+              {isLoading
+                ? "Loading Options"
+                : `Select ${questionData.num_correct_options}`}
             </span>
 
-            {optionsData.map((o) => (
-              <MultipleChoiceOption
-                key={o.id}
-                isSelected={userSelections.includes(o.id)}
-                disabled={isSubmitting}
-                textMarkdown={o.text_markdown}
-                onClick={() => onToggle(o.id)}
-                showResult={false}
-                isCorrectAnswer={true}
-              />
-            ))}
+            {isLoading
+              ? null
+              : optionsData.map((o) => (
+                  <MultipleChoiceOption
+                    key={o.id}
+                    isSelected={userSelections.includes(o.id)}
+                    disabled={isSubmitting}
+                    textMarkdown={o.text_markdown}
+                    onClick={() => onToggle(o.id)}
+                    showResult={false}
+                    isCorrectAnswer={true}
+                  />
+                ))}
           </div>
         </Col>
       </Row>
@@ -108,20 +117,24 @@ export default function MultipleChoiceQuestion({
                     className={styles.button}
                     onClick={submit}
                     tooltip={
-                      userSelections.length !== questionData.num_correct_options
+                      userSelections.length !==
+                      questionData?.num_correct_options
                         ? `Select ${
-                            questionData.num_correct_options -
+                            questionData?.num_correct_options -
                             userSelections.length
                           } more`
                         : `Submit`
                     }
                     disabled={
+                      isLoading ||
                       isSubmitting ||
-                      userSelections.length !== questionData.num_correct_options
+                      userSelections.length !==
+                        questionData?.num_correct_options
                     }
                     label={getSubmitButtonMessage()}
                     IconComponent={
-                      userSelections.length === questionData.num_correct_options
+                      userSelections.length ===
+                      questionData?.num_correct_options
                         ? RiUploadLine
                         : null
                     }

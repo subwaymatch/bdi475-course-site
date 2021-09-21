@@ -13,10 +13,7 @@ export default function FunctionPage() {
         <Container>
           <Row>
             <Col>
-              <h2 className="sectionTitle grayBottomBorder">
-                Functions, cont'd
-                <span className="accent green" />
-              </h2>
+              <h1 className="pageTitle">Functions, cont'd</h1>
             </Col>
           </Row>
 
@@ -26,19 +23,18 @@ export default function FunctionPage() {
               <>Recap how to create and call a function.</>,
               <>
                 Recap function inputs (
-                <span className="color-blue">parameters</span>) and output (
-                <span className="color-blue">return value</span>).
+                <span className="color-green">parameters</span>) and output (
+                <span className="color-green">return value</span>).
               </>,
               <>Introduce variable scope.</>,
             ]}
-            className={styles.block}
           />
 
           <Row>
             <Col>
               <div className={styles.coverImage}>
                 <Image
-                  src="/images/notes/1614186674643.png"
+                  src="/images/notes/1614186667983.png"
                   width={3000}
                   height={2000}
                   alt=""

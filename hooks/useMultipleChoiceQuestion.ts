@@ -1,15 +1,16 @@
 import { supabaseClient } from "lib/supabase/supabaseClient";
 import { useEffect, useState } from "react";
+import { QueryStatusEnum } from "types";
 import { definitions } from "types/database";
 
 export default function useMultipleChoiceQuestion(questionId: number) {
   const [result, setResult] = useState<{
-    status: string;
+    status: QueryStatusEnum;
     questionData: definitions["multiple_choice_questions"];
     optionsData: definitions["multiple_choice_options"][];
     error: string;
   }>({
-    status: "loading",
+    status: QueryStatusEnum.LOADING,
     questionData: null,
     optionsData: null,
     error: "",
@@ -18,7 +19,7 @@ export default function useMultipleChoiceQuestion(questionId: number) {
   const fetchData = async () => {
     setResult(
       Object.assign({}, result, {
-        status: "loading",
+        status: QueryStatusEnum.LOADING,
       })
     );
 
@@ -37,11 +38,11 @@ export default function useMultipleChoiceQuestion(questionId: number) {
       .eq("id", questionId)
       .single();
 
-    if (error && result.status !== "error") {
+    if (error && result.status !== QueryStatusEnum.ERROR) {
       console.error(error);
       setResult((prevResult) =>
         Object.assign({}, prevResult, {
-          status: "error",
+          status: QueryStatusEnum.ERROR,
           questionData: null,
           error: error.message,
         })
@@ -49,7 +50,9 @@ export default function useMultipleChoiceQuestion(questionId: number) {
     } else {
       setResult((prevResult) =>
         Object.assign({}, prevResult, {
-          status: prevResult.optionsData ? "success" : "loading",
+          status: prevResult.optionsData
+            ? QueryStatusEnum.SUCCESS
+            : QueryStatusEnum.LOADING,
           questionData: data,
           error: "",
         })
@@ -63,11 +66,11 @@ export default function useMultipleChoiceQuestion(questionId: number) {
       .select()
       .eq("question_id", questionId);
 
-    if (error && result.status !== "error") {
+    if (error && result.status !== QueryStatusEnum.ERROR) {
       console.error(error);
       setResult((prevResult) =>
         Object.assign({}, prevResult, {
-          status: "error",
+          status: QueryStatusEnum.ERROR,
           optionsData: null,
           error: error.message,
         })
@@ -75,7 +78,9 @@ export default function useMultipleChoiceQuestion(questionId: number) {
     } else {
       setResult((prevResult) =>
         Object.assign({}, prevResult, {
-          status: prevResult.questionData ? "success" : "loading",
+          status: prevResult.questionData
+            ? QueryStatusEnum.SUCCESS
+            : QueryStatusEnum.LOADING,
           optionsData: data,
           error: "",
         })
@@ -84,7 +89,7 @@ export default function useMultipleChoiceQuestion(questionId: number) {
   };
 
   useEffect(() => {
-    if (result.status !== "success") {
+    if (result.status !== QueryStatusEnum.SUCCESS) {
       fetchData();
     }
   }, []);

@@ -28,7 +28,12 @@
       right: 0;
 
       .iconButton {
+        color: $color-dark-gray;
         padding: 0.4rem;
+
+        &:hover {
+          color: $color-medium-gray;
+        }
 
         &.attemptsButton {
           color: $color-gray;

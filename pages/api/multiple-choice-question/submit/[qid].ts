@@ -50,6 +50,7 @@ export default async function recordAttempt(
 
     const isCorrect = isEqual(correctOptionIds, userSelectionIds);
 
+    // Retrieve previous submission with the same result (pass/fail) for the current user and question
     const { data: prevAttempts, error: prevAttemptsError } =
       await supabaseServiceClient
         .from<definitions["multiple_choice_attempts"]>(
@@ -60,6 +61,9 @@ export default async function recordAttempt(
         .eq("question_id", questionId)
         .eq("is_success", isCorrect);
 
+    // Only record the attempt if a previous submission with the same result does not exist
+    // Ideally, checking and inserting a record should be performed as a single transaction
+    // Due to lack of native transaction support in Supabase, these operations are performed sequentially - the worst case scenario is duplicate entries, which is not an issue
     if (prevAttempts.length === 0) {
       const { data: attemptResult, error: attemptError } =
         await supabaseServiceClient
