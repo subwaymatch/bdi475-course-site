@@ -1,4 +1,4 @@
-@use 'sass:color';
+@use "sass:color";
 @import "styles/variables";
 @import "styles/mixins";
 
@@ -100,16 +100,12 @@
     }
 
     p {
-      margin-top: 1.5rem;
+      margin-top: 1.75rem;
     }
 
     p:first-of-type,
     :global(.label) + p {
-      margin-top: 0.5rem;
-
-      @include media-breakpoint-down(lg) {
-        margin-top: 0.75rem;
-      }
+      margin-top: 1rem;
     }
 
     ul,

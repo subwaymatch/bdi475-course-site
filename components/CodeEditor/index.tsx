@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Editor from "@monaco-editor/react";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import { sm, lg } from "constants/media-query-strings";
+import { largeDesktop } from "constants/media-query-strings";
 import styles from "./CodeEditor.module.scss";
 import customTheme from "./custom-theme.json";
 
@@ -23,8 +23,7 @@ export default function CodeEditor({
   height,
 }: ICodeEditorProps) {
   const [isThemeLoaded, setIsThemeLoaded] = useState(false);
-  const isScreenSm = useMediaQuery(sm);
-  const isScreenLg = useMediaQuery(lg);
+  const isLargeDesktop = useMediaQuery(largeDesktop);
 
   function handleEditorWillMount(monaco) {
     monaco.editor.defineTheme("CustomTheme", customTheme);
@@ -60,7 +59,7 @@ export default function CodeEditor({
         theme={isThemeLoaded ? "CustomTheme" : "light"}
         options={{
           folding: false,
-          fontSize: isScreenSm ? 17 : isScreenLg ? 18 : 19,
+          fontSize: isLargeDesktop ? 18 : 17,
           wordWrap: "on",
           minimap: {
             enabled: false,

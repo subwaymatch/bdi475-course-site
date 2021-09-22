@@ -1,4 +1,4 @@
-@use 'sass:color';
+@use "sass:color";
 @import "./variables";
 @import url("https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css");
 @import url("https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css");
@@ -16,13 +16,13 @@ html {
 
 body {
   color: $color-text-gray;
-  font-size: 1.15rem;
+  font-size: 1.13rem;
   line-height: 1.8;
-  letter-spacing: -0.015rem;
+  letter-spacing: -0.025rem;
 
   @include media-breakpoint-down(xl) {
     font-size: 1.1rem;
-    letter-spacing: -0.012rem;
+    letter-spacing: -0.015rem;
   }
 
   @include media-breakpoint-down(md) {
@@ -130,6 +130,12 @@ ul {
 ol {
   list-style-type: decimal;
   list-style-position: inside;
+
+  li::marker {
+    color: color.adjust($color-gray, $lightness: 4%);
+    font-size: 0.9em;
+    font-weight: 500;
+  }
 }
 
 strong {
