@@ -36,7 +36,7 @@ export default function QuizPage() {
 
           <RecordedPythonChallenge challengeId={45} className={styles.block} />
 
-          <RecordedPythonChallenge challengeId={47} className={styles.block} />
+          <RecordedPythonChallenge challengeId={46} className={styles.block} />
         </Container>
       </main>
     </Layout>

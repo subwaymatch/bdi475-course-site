@@ -129,7 +129,7 @@ export default function NotesPage() {
               colorTheme={ColorTheme.Pink}
             />
           </Row>
-          {/* 
+
           <Row>
             <Col>
               <h2
@@ -145,7 +145,7 @@ export default function NotesPage() {
 
           <Row>
             <NoteItem
-              href="https://www.notion.so/bdi475/Lecture-11-Intro-to-Pandas-49636dcca1f34d20963bd4fc43d567a6"
+              href="https://bdi475.notion.site/Lecture-10-Intro-to-Pandas-49636dcca1f34d20963bd4fc43d567a6"
               thumbnail={
                 <Image
                   src="/images/notes/l11-pandas.png"
@@ -154,11 +154,12 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2021-03-03"
+              date="2021-09-23"
               title="Introduction to Pandas"
               colorTheme={ColorTheme.Purple}
             />
 
+            {/* 
             <NoteItem
               href="https://bdi475-jupyter-notebooks.netlify.app/l12-pandas-filter-sort-solution"
               thumbnail={
@@ -217,9 +218,9 @@ export default function NotesPage() {
               date="2021-03-17"
               title="Pandas Datetime, Grouping and Aggregating Data"
               colorTheme={ColorTheme.Purple}
-            />
+            /> */}
           </Row>
-
+          {/* 
           <Row>
             <Col>
               <h2
