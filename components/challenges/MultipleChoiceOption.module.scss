@@ -60,6 +60,7 @@
       padding-left: 0;
       margin-left: 0.5rem;
       transform: none;
+      border: 2px solid transparent;
 
       .optionCheckbox {
         position: relative;
@@ -72,11 +73,11 @@
       }
 
       &.isCorrectOption {
-        border: 2px solid $color-green;
+        border-color: $color-green;
 
         .optionCheckbox {
           background-color: white;
-          border-color: color.adjust($color-green);
+          border-color: $color-green;
         }
       }
 
@@ -86,7 +87,7 @@
         padding-left: 0;
 
         &.isUserCorrect {
-          border: 2px solid color.adjust($color-green, $lightness: 8%);
+          border-color: $color-green;
 
           .optionCheckbox {
             background: $color-green;
@@ -96,8 +97,11 @@
         }
 
         &.isUserIncorrect {
-          border: 2px solid
-            color.adjust($color-pink, $lightness: 8%, $saturation: 40%);
+          border-color: color.adjust(
+            $color-pink,
+            $lightness: 8%,
+            $saturation: 40%
+          );
 
           .optionCheckbox {
             background: $color-pink;
