@@ -308,8 +308,12 @@ kbd {
   font-family: $font-monospace;
   padding: 0.05em 0.2em;
   color: $color-darker-blue;
-  background-color: color.mix($color-blue, white, 10%);
-  border: 1px solid color.mix($color-blue, white, 30%);
+  background-color: color.adjust(
+    $color-blue,
+    $lightness: 21%,
+    $saturation: 50%
+  );
+  border: 1px solid color.adjust($color-blue, $lightness: 15%, $saturation: 50%);
   border-radius: 0.25rem;
   font-size: 0.95em;
   white-space: nowrap;

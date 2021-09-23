@@ -3,7 +3,9 @@
 
 .recordedChallenge {
   .exerciseHeader {
-    font-size: 1.2rem;
+    font-size: 1.05rem;
+    font-weight: normal;
+    letter-spacing: -0.01rem;
     line-height: 1.4;
     border-top: 1px solid $color-dark-gray;
     padding-top: 0.75rem;
@@ -13,22 +15,22 @@
 
     .exerciseType {
       color: $color-dark-gray;
-      display: block;
       font-weight: 500;
+      display: block;
     }
 
     .exerciseTitle {
-      color: $color-green;
-      font-weight: 500;
+      color: $color-gray;
     }
 
     .topControls {
       position: absolute;
-      top: 1rem;
+      top: 0.9rem;
       right: 0;
 
       .iconButton {
         color: $color-dark-gray;
+        font-size: 1.15rem;
         padding: 0.4rem;
 
         &:hover {
