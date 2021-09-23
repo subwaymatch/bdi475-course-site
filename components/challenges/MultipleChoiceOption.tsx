@@ -1,42 +1,63 @@
 import clsx from "clsx";
 import styles from "./MultipleChoiceOption.module.scss";
 import { parseMarkdown } from "lib/unified";
+import { definitions } from "types/database";
 
 interface IMultipleChoiceOptionProps {
   isSelected: boolean;
   disabled: boolean;
-  textMarkdown: string;
+  optionData: definitions["multiple_choice_options"];
+  answerData: definitions["multiple_choice_answers"];
   onClick: () => void;
   showResult: boolean;
-  isCorrectAnswer: boolean;
 }
 
 export default function MultipleChoiceOption({
   isSelected,
   disabled,
   onClick,
-  textMarkdown,
+  optionData,
+  answerData,
   showResult,
-  isCorrectAnswer,
 }: IMultipleChoiceOptionProps) {
+  const isUserCorrect = answerData
+    ? isSelected === answerData.is_correct
+    : false;
+
   return (
     <div
       className={clsx(styles.optionItem, {
         [styles.isSelected]: isSelected,
+        [styles.isNotSelected]: !isSelected,
+        [styles.showResult]: showResult,
+        [styles.highlighted]:
+          showResult && (isSelected || answerData?.is_correct),
+        [styles.isCorrectOption]: answerData?.is_correct,
+        [styles.isUserCorrect]: isSelected && isUserCorrect,
+        [styles.isUserIncorrect]: isSelected && !isUserCorrect,
       })}
       onClick={(e) => {
         e.preventDefault();
+
+        // If result is being displayed, disable click
+        if (showResult) {
+          return;
+        }
+
         onClick();
       }}
     >
       <div className={styles.optionCheckbox}>
-        {isSelected && <span>→</span>}
+        <span>
+          {!showResult && isSelected && "→"}
+          {showResult && isSelected && (isUserCorrect ? "✓" : "✗")}
+        </span>
       </div>
 
       <div
         className={styles.optionMarkdown}
         dangerouslySetInnerHTML={{
-          __html: parseMarkdown(textMarkdown),
+          __html: parseMarkdown(optionData.text_markdown),
         }}
       />
     </div>

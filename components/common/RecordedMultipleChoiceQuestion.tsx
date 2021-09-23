@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import useSupabaseAuth from "hooks/useSupabaseAuth";
 import { Row, Col } from "react-bootstrap";
@@ -10,6 +10,7 @@ import styles from "./RecordedChallenge.module.scss";
 import useMultipleChoiceQuestion from "hooks/useMultipleChoiceQuestion";
 import MultipleChoiceQuestion from "components/challenges/MultipleChoiceQuestion";
 import { QueryStatusEnum } from "types";
+import { definitions } from "types/database";
 
 interface IRecordedMultipleChoiceQuestionProps {
   questionId: number;
@@ -24,10 +25,14 @@ export default function RecordedMultipleChoiceQuestion({
   const isAdmin = roles.includes("Admin");
   const { status, questionData, optionsData, error } =
     useMultipleChoiceQuestion(questionId);
+  const [answersData, setAnswersData] = useState<
+    definitions["multiple_choice_answers"][]
+  >([]);
   const editLinkRef = useRef<HTMLAnchorElement>();
   const attemptsLinkRef = useRef<HTMLAnchorElement>();
   const historyLinkRef = useRef<HTMLAnchorElement>();
   const attempts = [];
+  const [showResult, setShowResult] = useState(false);
 
   const onSubmit = async (userSelections: number[]) => {
     if (!session) {
@@ -51,6 +56,9 @@ export default function RecordedMultipleChoiceQuestion({
     );
 
     const submitResult = await response.json();
+
+    setAnswersData(submitResult.answersData);
+    setShowResult(true);
 
     console.log(`submitResult`);
     console.log(submitResult);
@@ -182,7 +190,10 @@ export default function RecordedMultipleChoiceQuestion({
             status={status}
             questionData={questionData}
             optionsData={optionsData}
+            answersData={answersData}
+            showResult={showResult}
             onSubmit={onSubmit}
+            onReset={() => setShowResult(false)}
           />
         </div>
       </Col>

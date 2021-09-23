@@ -14,13 +14,19 @@ interface IMultipleChoiceQuestionProps {
   status: QueryStatusEnum;
   questionData: definitions["multiple_choice_questions"];
   optionsData: definitions["multiple_choice_options"][];
+  answersData: definitions["multiple_choice_answers"][];
+  showResult: boolean;
   onSubmit: (userSelectionIds: number[]) => Promise<void>;
+  onReset: () => void;
 }
 
 export default function MultipleChoiceQuestion({
   status,
   questionData,
   optionsData,
+  answersData,
+  showResult,
+  onReset,
   onSubmit,
 }: IMultipleChoiceQuestionProps) {
   const { user } = useSupabaseAuth();
@@ -54,7 +60,9 @@ export default function MultipleChoiceQuestion({
     let submitButtonMessage = "";
     let diff = userSelections.length - questionData?.num_correct_options;
 
-    if (diff > 0) {
+    if (showResult) {
+      submitButtonMessage = "Showing result";
+    } else if (diff > 0) {
       submitButtonMessage = `Unselect ${diff} option${
         diff > 1 ? "s" : ""
       } to submit ${"•".repeat(diff)}`;
@@ -97,10 +105,10 @@ export default function MultipleChoiceQuestion({
                     key={o.id}
                     isSelected={userSelections.includes(o.id)}
                     disabled={isSubmitting}
-                    textMarkdown={o.text_markdown}
+                    optionData={o}
+                    answerData={answersData.find((a) => a.option_id === o.id)}
                     onClick={() => onToggle(o.id)}
-                    showResult={false}
-                    isCorrectAnswer={true}
+                    showResult={showResult}
                   />
                 ))}
           </div>
@@ -127,9 +135,10 @@ export default function MultipleChoiceQuestion({
                     }
                     disabled={
                       isLoading ||
-                      isSubmitting ||
                       userSelections.length !==
-                        questionData?.num_correct_options
+                        questionData?.num_correct_options ||
+                      isSubmitting ||
+                      showResult
                     }
                     label={getSubmitButtonMessage()}
                     IconComponent={

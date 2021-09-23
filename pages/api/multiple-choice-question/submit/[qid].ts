@@ -81,7 +81,7 @@ export default async function recordAttempt(
 
     return res.json({
       status: "success",
-      answerData: answers,
+      answersData: answers,
       userSelections,
       isCorrect,
     });
