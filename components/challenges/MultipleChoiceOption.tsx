@@ -48,10 +48,8 @@ export default function MultipleChoiceOption({
       }}
     >
       <div className={styles.optionCheckbox}>
-        <span>
-          {!showResult && isSelected && "→"}
-          {showResult && isSelected && (isUserCorrect ? "✓" : "✗")}
-        </span>
+        {!showResult && isSelected && "→"}
+        {showResult && isSelected && (isUserCorrect ? "✓" : "✗")}
       </div>
 
       <div
