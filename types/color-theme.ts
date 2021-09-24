@@ -5,4 +5,5 @@ export enum ColorTheme {
   Pink = "PINK",
   Blue = "BLUE",
   Orange = "ORANGE",
+  Black = "BLACK",
 }

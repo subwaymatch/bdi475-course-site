@@ -2,13 +2,14 @@ import { useState } from "react";
 import _ from "lodash";
 import { Col, Row } from "react-bootstrap";
 import { RiUploadLine } from "react-icons/ri";
-import ChallengeButton from "./ChallengeButton";
 import styles from "./MultipleChoiceQuestion.module.scss";
 import { definitions } from "types/database";
 import useSupabaseAuth from "hooks/useSupabaseAuth";
 import InstructionText from "./InstructionText";
 import MultipleChoiceOption from "./MultipleChoiceOption";
 import { QueryStatusEnum } from "types";
+import Button from "components/ui/Button";
+import { ColorTheme } from "types/color-theme";
 
 interface IMultipleChoiceQuestionProps {
   status: QueryStatusEnum;
@@ -91,66 +92,57 @@ export default function MultipleChoiceQuestion({
         </Col>
 
         <Col lg={6} className={styles.equalHeightCol}>
-          <div className={styles.optionsWrapper}>
-            <span className="label small yellow">
+          <div className={styles.optionsAndControlsWrapper}>
+            <div className={styles.optionsWrapper}>
+              <span className="label small yellow">
+                {isLoading
+                  ? "Loading Options"
+                  : `Select ${questionData.num_correct_options}`}
+              </span>
+
               {isLoading
-                ? "Loading Options"
-                : `Select ${questionData.num_correct_options}`}
-            </span>
+                ? null
+                : optionsData.map((o) => (
+                    <MultipleChoiceOption
+                      key={o.id}
+                      isSelected={userSelections.includes(o.id)}
+                      disabled={isSubmitting}
+                      optionData={o}
+                      answerData={answersData.find((a) => a.option_id === o.id)}
+                      onClick={() => onToggle(o.id)}
+                      showResult={showResult}
+                    />
+                  ))}
+            </div>
 
-            {isLoading
-              ? null
-              : optionsData.map((o) => (
-                  <MultipleChoiceOption
-                    key={o.id}
-                    isSelected={userSelections.includes(o.id)}
-                    disabled={isSubmitting}
-                    optionData={o}
-                    answerData={answersData.find((a) => a.option_id === o.id)}
-                    onClick={() => onToggle(o.id)}
-                    showResult={showResult}
-                  />
-                ))}
-          </div>
-        </Col>
-      </Row>
-
-      <Row className="g-0">
-        <Col>
-          <div className={styles.controlsWrapper}>
-            <Row className="g-0">
-              <Col>
-                <div className={styles.controls}>
-                  <ChallengeButton
-                    className={styles.button}
-                    onClick={submit}
-                    tooltip={
-                      userSelections.length !==
-                      questionData?.num_correct_options
-                        ? `Select ${
-                            questionData?.num_correct_options -
-                            userSelections.length
-                          } more`
-                        : `Submit`
-                    }
-                    disabled={
-                      isLoading ||
-                      userSelections.length !==
-                        questionData?.num_correct_options ||
-                      isSubmitting ||
-                      showResult
-                    }
-                    label={getSubmitButtonMessage()}
-                    IconComponent={
-                      userSelections.length ===
-                      questionData?.num_correct_options
-                        ? RiUploadLine
-                        : null
-                    }
-                  />
-                </div>
-              </Col>
-            </Row>
+            <div className={styles.controls}>
+              <Button
+                className={styles.button}
+                onClick={submit}
+                tooltip={
+                  userSelections.length !== questionData?.num_correct_options
+                    ? `Select ${
+                        questionData?.num_correct_options -
+                        userSelections.length
+                      } more`
+                    : `Submit`
+                }
+                disabled={
+                  isLoading ||
+                  userSelections.length !== questionData?.num_correct_options ||
+                  isSubmitting ||
+                  showResult
+                }
+                label={getSubmitButtonMessage()}
+                IconComponent={
+                  userSelections.length === questionData?.num_correct_options
+                    ? RiUploadLine
+                    : null
+                }
+                colorTheme={ColorTheme.Green}
+                fullWidth
+              />
+            </div>
           </div>
         </Col>
       </Row>

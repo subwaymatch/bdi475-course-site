@@ -1,14 +1,21 @@
-@use 'sass:color';
+@use "sass:color";
 @import "styles/variables";
 @import "styles/mixins";
 
 .questionWrapper {
   font-size: 1.1rem;
   border-top: 1px solid $color-border-gray;
+  border-bottom: 1px solid $color-border-gray;
 
   @include media-breakpoint-down(xl) {
     font-size: 1.05rem;
     letter-spacing: -0.01rem;
+  }
+
+  @include media-breakpoint-down(lg) {
+    font-size: 1.05rem;
+    letter-spacing: -0.01rem;
+    border-bottom: none;
   }
 
   @include media-breakpoint-down(md) {
@@ -22,13 +29,15 @@
   }
 
   .instructionsWrapper,
-  .optionsWrapper {
+  .optionsAndControlsWrapper {
     height: 100%;
   }
 
-  .optionsWrapper {
+  .optionsAndControlsWrapper {
     padding: 1rem 1rem 2rem 1.5rem;
     border-left: 1px solid $color-border-gray;
+    display: flex;
+    flex-direction: column;
 
     @include media-breakpoint-down(lg) {
       padding: 1rem 0 2rem 0;
@@ -37,23 +46,11 @@
     }
   }
 
-  .controlsWrapper {
-    border-top: 1px solid $color-border-gray;
-    border-bottom: 1px solid $color-border-gray;
+  .optionsWrapper {
+    flex-grow: 1;
+  }
 
-    .controls {
-      display: flex;
-      justify-content: center;
-      padding-left: 1.5rem;
-
-      @include media-breakpoint-down(lg) {
-        padding-left: 0;
-      }
-
-      .button {
-        padding-left: 2rem;
-        padding-right: 2rem;
-      }
-    }
+  .controls {
+    margin-top: 3rem;
   }
 }

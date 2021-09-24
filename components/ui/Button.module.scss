@@ -1,0 +1,86 @@
+@use "sass:color";
+@import "styles/variables";
+@import "styles/mixins";
+
+.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  letter-spacing: 0;
+  color: $color-dark-gray;
+  background-color: $color-border-gray;
+  border-radius: 0.4rem;
+  padding: 1.2rem 1.5rem;
+
+  &.fullWidth {
+    display: flex;
+    width: 100%;
+  }
+
+  @include media-breakpoint-down(xl) {
+    font-size: 0.95rem;
+  }
+
+  .reactIcon {
+    font-size: 0.9em;
+  }
+
+  .label {
+    margin-left: 0.45rem;
+  }
+
+  &:hover {
+    color: $color-black;
+    transform: translateY(2px);
+  }
+
+  &.disabled,
+  &:hover.disabled {
+    cursor: not-allowed;
+    background-color: $color-border-gray;
+    border-color: $color-border-gray;
+    color: #aaa;
+    transform: none;
+  }
+
+  &.green:not(.disabled) {
+    background-color: $color-green;
+  }
+
+  &.purple:not(.disabled) {
+    background-color: $color-purple;
+  }
+
+  &.yellow:not(.disabled) {
+    background-color: $color-yellow;
+  }
+
+  &.pink:not(.disabled) {
+    background-color: $color-pink;
+  }
+
+  &.blue:not(.disabled) {
+    background-color: $color-blue;
+  }
+
+  &.orange:not(.disabled) {
+    background-color: $color-orange;
+  }
+
+  &.gray:not(.disabled) {
+    background-color: $color-light-gray;
+  }
+
+  &.lightGray:not(.disabled) {
+    background-color: $color-lighter-gray;
+  }
+
+  &.black:not(.disabled) {
+    color: white;
+    background-color: black;
+  }
+}
