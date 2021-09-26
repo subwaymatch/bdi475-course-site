@@ -85,14 +85,14 @@
     "text": ["Intro to Jupyter Notebooks", "Intro to Pandas"]
   },
   {
-    "date": "2021-09-27",
-    "type": "CASE_STUDY",
-    "text": "Problem Set 2 -  Loops, Lists, Dictionaries"
-  },
-  {
     "date": "2021-09-28",
     "type": "LECTURE",
     "text": ["Series, DataFrame", "Creating, Reading Data", "CSV Files"]
+  },
+  {
+    "date": "2021-09-29",
+    "type": "EXERCISE",
+    "text": "Exercise 5"
   },
   {
     "date": "2021-09-30",
@@ -100,9 +100,9 @@
     "text": ["Pandas Data Types", "Missing Values"]
   },
   {
-    "date": "2021-10-01",
-    "type": "EXERCISE",
-    "text": "Exercise 5"
+    "date": "2021-10-04",
+    "type": "CASE_STUDY",
+    "text": "Problem Set 2 - Pandas Basics"
   },
   {
     "date": "2021-10-05",
