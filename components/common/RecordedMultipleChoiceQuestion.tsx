@@ -23,10 +23,9 @@ export default function RecordedMultipleChoiceQuestion({
 }: IRecordedMultipleChoiceQuestionProps) {
   const { user, session, roles } = useSupabaseAuth();
   const isAdmin = roles.includes("Admin");
-  const { status, questionData, optionsData, error } =
-    useMultipleChoiceQuestion(questionId);
+  const { status, questionData, error } = useMultipleChoiceQuestion(questionId);
   const [answersData, setAnswersData] = useState<
-    definitions["multiple_choice_answers"][]
+    definitions["multiple_choice_options"][]
   >([]);
   const editLinkRef = useRef<HTMLAnchorElement>();
   const attemptsLinkRef = useRef<HTMLAnchorElement>();
@@ -59,9 +58,6 @@ export default function RecordedMultipleChoiceQuestion({
 
     setAnswersData(submitResult.answersData);
     setShowResult(true);
-
-    console.log(`submitResult`);
-    console.log(submitResult);
   };
 
   return (
@@ -189,7 +185,6 @@ export default function RecordedMultipleChoiceQuestion({
           <MultipleChoiceQuestion
             status={status}
             questionData={questionData}
-            optionsData={optionsData}
             answersData={answersData}
             showResult={showResult}
             onSubmit={onSubmit}

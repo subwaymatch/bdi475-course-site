@@ -2,12 +2,13 @@ import clsx from "clsx";
 import styles from "./MultipleChoiceOption.module.scss";
 import { parseMarkdown } from "lib/unified";
 import { definitions } from "types/database";
+import { IMultipleChoiceOption } from "types/database/multiple-choice";
 
 interface IMultipleChoiceOptionProps {
   isSelected: boolean;
   disabled: boolean;
-  optionData: definitions["multiple_choice_options"];
-  answerData: definitions["multiple_choice_answers"];
+  optionData: IMultipleChoiceOption;
+  answerData: definitions["multiple_choice_options"];
   onClick: () => void;
   showResult: boolean;
 }
@@ -48,8 +49,10 @@ export default function MultipleChoiceOption({
       }}
     >
       <div className={styles.optionCheckbox}>
-        {!showResult && isSelected && "→"}
-        {showResult && isSelected && (isUserCorrect ? "✓" : "✗")}
+        <span>
+          {!showResult && isSelected && "→"}
+          {showResult && isSelected && (isUserCorrect ? "✓" : "✗")}
+        </span>
       </div>
 
       <div

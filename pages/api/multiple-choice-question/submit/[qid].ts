@@ -34,14 +34,14 @@ export default async function recordAttempt(
   const questionId = Number.parseInt(qid as string);
 
   try {
-    const { data: answers, error: answerError } = await supabaseServiceClient
-      .from<definitions["multiple_choice_answers"]>("multiple_choice_answers")
-      .select()
+    const { data: options, error: answerError } = await supabaseServiceClient
+      .from<definitions["multiple_choice_options"]>("multiple_choice_options")
+      .select(`id, is_correct, explanation`)
       .eq("question_id", questionId);
 
-    const correctOptionIds = answers
+    const correctOptionIds = options
       .filter((o) => o.is_correct)
-      .map((o) => o.option_id)
+      .map((o) => o.id)
       .sort();
 
     const userSelectionIds = [
@@ -81,7 +81,7 @@ export default async function recordAttempt(
 
     return res.json({
       status: "success",
-      answersData: answers,
+      answersData: options,
       userSelections,
       isCorrect,
     });
