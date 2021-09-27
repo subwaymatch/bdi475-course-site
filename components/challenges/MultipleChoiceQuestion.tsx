@@ -10,12 +10,12 @@ import MultipleChoiceOption from "./MultipleChoiceOption";
 import { QueryStatusEnum } from "types";
 import Button from "components/ui/Button";
 import { ColorTheme } from "types/color-theme";
+import { IMultipleChoiceQuestionWithOptions } from "types/database/multiple-choice";
 
 interface IMultipleChoiceQuestionProps {
   status: QueryStatusEnum;
-  questionData: definitions["multiple_choice_questions"];
-  optionsData: definitions["multiple_choice_options"][];
-  answersData: definitions["multiple_choice_answers"][];
+  questionData: IMultipleChoiceQuestionWithOptions;
+  answersData: definitions["multiple_choice_options"][];
   showResult: boolean;
   onSubmit: (userSelectionIds: number[]) => Promise<void>;
   onReset: () => void;
@@ -24,7 +24,6 @@ interface IMultipleChoiceQuestionProps {
 export default function MultipleChoiceQuestion({
   status,
   questionData,
-  optionsData,
   answersData,
   showResult,
   onReset,
@@ -102,13 +101,13 @@ export default function MultipleChoiceQuestion({
 
               {isLoading
                 ? null
-                : optionsData.map((o) => (
+                : questionData.options.map((o) => (
                     <MultipleChoiceOption
                       key={o.id}
                       isSelected={userSelections.includes(o.id)}
                       disabled={isSubmitting}
                       optionData={o}
-                      answerData={answersData.find((a) => a.option_id === o.id)}
+                      answerData={answersData?.find((a) => a.id === o.id)}
                       onClick={() => onToggle(o.id)}
                       showResult={showResult}
                     />
