@@ -12,47 +12,6 @@ export interface paths {
       };
     };
   };
-  "/all_challenges_matview": {
-    get: {
-      parameters: {
-        query: {
-          created_at?: parameters["rowFilter.all_challenges_matview.created_at"];
-          starter_code?: parameters["rowFilter.all_challenges_matview.starter_code"];
-          test_code?: parameters["rowFilter.all_challenges_matview.test_code"];
-          text_markdown?: parameters["rowFilter.all_challenges_matview.text_markdown"];
-          title?: parameters["rowFilter.all_challenges_matview.title"];
-          updated_at?: parameters["rowFilter.all_challenges_matview.updated_at"];
-          old_id?: parameters["rowFilter.all_challenges_matview.old_id"];
-          language?: parameters["rowFilter.all_challenges_matview.language"];
-          id?: parameters["rowFilter.all_challenges_matview.id"];
-          /** Filtering Columns */
-          select?: parameters["select"];
-          /** Ordering */
-          order?: parameters["order"];
-          /** Limiting and Pagination */
-          offset?: parameters["offset"];
-          /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
-        header: {
-          /** Limiting and Pagination */
-          Range?: parameters["range"];
-          /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
-          /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
-      responses: {
-        /** OK */
-        200: {
-          schema: definitions["all_challenges_matview"][];
-        };
-        /** Partial Content */
-        206: unknown;
-      };
-    };
-  };
   "/coding_challenge_attempts": {
     get: {
       parameters: {
@@ -964,21 +923,6 @@ export interface paths {
 }
 
 export interface definitions {
-  all_challenges_matview: {
-    created_at?: string;
-    starter_code?: string;
-    test_code?: string;
-    text_markdown?: string;
-    title?: string;
-    updated_at?: string;
-    old_id?: string;
-    language?: string;
-    /**
-     * Note:
-     * This is a Primary Key.<pk/>
-     */
-    id?: number;
-  };
   coding_challenge_attempts: {
     /**
      * Note:
@@ -1130,17 +1074,6 @@ export interface parameters {
   offset: string;
   /** Limiting and Pagination */
   limit: string;
-  /** all_challenges_matview */
-  "body.all_challenges_matview": definitions["all_challenges_matview"];
-  "rowFilter.all_challenges_matview.created_at": string;
-  "rowFilter.all_challenges_matview.starter_code": string;
-  "rowFilter.all_challenges_matview.test_code": string;
-  "rowFilter.all_challenges_matview.text_markdown": string;
-  "rowFilter.all_challenges_matview.title": string;
-  "rowFilter.all_challenges_matview.updated_at": string;
-  "rowFilter.all_challenges_matview.old_id": string;
-  "rowFilter.all_challenges_matview.language": string;
-  "rowFilter.all_challenges_matview.id": string;
   /** coding_challenge_attempts */
   "body.coding_challenge_attempts": definitions["coding_challenge_attempts"];
   "rowFilter.coding_challenge_attempts.id": string;

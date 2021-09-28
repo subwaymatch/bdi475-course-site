@@ -136,10 +136,7 @@ export default function PythonChallengeListPage({ page }) {
         <Container>
           <Row>
             <Col>
-              <h2 className="sectionTitle grayBottomBorder">
-                Python Challenges
-                <span className="accent pink" />
-              </h2>
+              <h1 className="pageTitle">Python Challenges</h1>
             </Col>
           </Row>
 

@@ -32,12 +32,12 @@ body {
 }
 
 a {
-  color: $color-darker-blue;
+  color: $color-text-gray;
   cursor: pointer;
   text-decoration: none;
 
   &:hover {
-    color: color.adjust($color-darker-blue, $lightness: -8%, $saturation: -10%);
+    color: $color-dark-gray;
   }
 }
 
@@ -69,6 +69,25 @@ h1.pageTitle {
   @include media-breakpoint-down(sm) {
     font-size: 3rem;
     letter-spacing: -0.07rem;
+  }
+}
+
+p,
+ul,
+ol {
+  a {
+    color: color.adjust($color-medium-gray, $lightness: 0%);
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+    text-decoration-thickness: 1px;
+    text-decoration-color: $color-gray;
+    transition: all 0.2s ease;
+    display: inline-block;
+
+    &:hover {
+      color: $color-dark-gray;
+      transform: translateY(1px);
+    }
   }
 }
 
