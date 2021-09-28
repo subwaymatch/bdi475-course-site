@@ -374,16 +374,17 @@ ul.pagination {
 
   li {
     display: inline-block;
-    font-weight: 600;
+    font-weight: 500;
 
     a {
-      color: $color-dark-gray;
+      color: $color-medium-gray;
       display: inline-block;
       padding: 0.8rem 1.5rem;
       border-radius: 4px;
+      text-decoration: none;
 
       &:hover {
-        color: $color-black;
+        color: $color-text-gray;
         background: #f9f9f9;
       }
     }

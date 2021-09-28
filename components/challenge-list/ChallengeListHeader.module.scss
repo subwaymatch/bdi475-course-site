@@ -1,0 +1,15 @@
+@use "sass:color";
+@import "styles/variables";
+@import "styles/mixins";
+
+.listHeader {
+  .createButton {
+    font-size: 1.1em;
+  }
+
+  .pageDisplay {
+    color: $color-gray;
+    padding: 1rem 0;
+    border-bottom: 1px solid transparent;
+  }
+}

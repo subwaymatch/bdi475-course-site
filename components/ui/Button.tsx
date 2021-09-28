@@ -6,7 +6,7 @@ import styles from "./Button.module.scss";
 import { ColorTheme } from "types/color-theme";
 
 interface IButtonProps {
-  className: string;
+  className?: string;
   tooltip?: React.ReactNode;
   label: string;
   disabled?: boolean;

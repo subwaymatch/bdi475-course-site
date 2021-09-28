@@ -4,6 +4,7 @@ import { Row, Col } from "react-bootstrap";
 import { motion } from "framer-motion";
 import { clickableVariants } from "animations/clickableVariants";
 import { toast } from "react-toastify";
+import { FiExternalLink } from "react-icons/fi";
 import { IoCopyOutline } from "react-icons/io5";
 import { RiEditBoxLine, RiDeleteBin6Line } from "react-icons/ri";
 import { CopyToClipboard } from "react-copy-to-clipboard";
@@ -60,35 +61,30 @@ export default function ChallengeListItem({
         </Col>
 
         <Col md={5}>
-          <Link href={permalink}>
-            <motion.a
-              variants={clickableVariants}
-              whileHover="hover"
-              whileTap="tap"
+          <Link href={editLink}>
+            <a
               className={styles.title}
+              target="_blank"
+              rel="noopener noreferrer"
             >
               {title}
-            </motion.a>
+            </a>
           </Link>
         </Col>
 
         <Col md={2}>
           <div className={styles.actions}>
-            <Link href={editLink}>
-              <motion.a
-                variants={clickableVariants}
-                whileHover="hover"
-                whileTap="tap"
-                className={clsx(styles.iconButton, styles.edit)}
+            <Link href={permalink}>
+              <a
+                className={clsx(styles.iconButton)}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <RiEditBoxLine className={styles.reactIcon} />
-              </motion.a>
+                <FiExternalLink className={styles.reactIcon} />
+              </a>
             </Link>
 
-            <motion.a
-              variants={clickableVariants}
-              whileHover="hover"
-              whileTap="tap"
+            <a
               className={clsx(styles.iconButton, styles.delete)}
               onClick={(e) => {
                 e.preventDefault();
@@ -96,7 +92,7 @@ export default function ChallengeListItem({
               }}
             >
               <RiDeleteBin6Line className={styles.reactIcon} />
-            </motion.a>
+            </a>
           </div>
         </Col>
 
