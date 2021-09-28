@@ -91,14 +91,6 @@
       margin-top: 4rem;
     }
 
-    a {
-      color: color.adjust($color-blue, $lightness: -16%);
-
-      &:hover {
-        color: color.adjust($color-blue, $lightness: -32%, $saturation: -8%);
-      }
-    }
-
     p {
       margin-top: 1.75rem;
     }
