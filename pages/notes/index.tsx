@@ -159,9 +159,8 @@ export default function NotesPage() {
               colorTheme={ColorTheme.Purple}
             />
 
-            {/* 
             <NoteItem
-              href="https://bdi475-jupyter-notebooks.netlify.app/l12-pandas-filter-sort-solution"
+              href="https://canvas.illinois.edu/courses/14860/assignments/328939"
               thumbnail={
                 <Image
                   src="/images/notes/l11-pandas.png"
@@ -170,10 +169,11 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2021-03-08"
-              title="Pandas Filter"
+              date="2021-09-28"
+              title="Pandas Filtering"
               colorTheme={ColorTheme.Purple}
             />
+            {/* 
 
             <NoteItem
               href="https://bdi475-jupyter-notebooks.netlify.app/l13-pandas-filter-recap-and-sort-solution"

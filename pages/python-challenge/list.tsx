@@ -9,6 +9,7 @@ import { supabaseClient } from "lib/supabase/supabaseClient";
 import { toast } from "react-toastify";
 import { definitions } from "types/database";
 import { useRouter } from "next/router";
+import ChallengeListHeader from "components/challenge-list/ChallengeListHeader";
 
 export default function PythonChallengeListPage({ page }) {
   const initialPage = Number(page);
@@ -140,18 +141,10 @@ export default function PythonChallengeListPage({ page }) {
             </Col>
           </Row>
 
-          <Row>
-            <Col md={4}>
-              <button
-                onClick={createNewChallenge}
-                className={styles.createButton}
-              >
-                + Create
-              </button>
-            </Col>
-
-            <Col md={4}>Page {currentPageIndex + 1}</Col>
-          </Row>
+          <ChallengeListHeader
+            create={createNewChallenge}
+            currentPage={currentPageIndex}
+          />
 
           <ChallengeList items={listItems} />
 

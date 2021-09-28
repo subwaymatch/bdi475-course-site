@@ -3,7 +3,6 @@
 .listItem {
   border-top: 1px solid $color-border-gray;
   padding: 0.25rem 0;
-  font-size: 1.15rem;
 
   .cid {
     display: flex;
@@ -31,15 +30,15 @@
   }
 
   .title {
-    color: $color-dark-gray;
+    color: $color-text-gray;
     font-size: 1.05em;
-    font-weight: 500;
     display: block;
     padding: 1rem 0;
     transition: color 200ms linear;
 
     &:hover {
-      color: $color-purple;
+      color: $color-medium-gray;
+      transform: translateY(1px);
     }
   }
 
@@ -51,9 +50,11 @@
       display: inline-block;
       padding: 0.5rem;
       transition: color 200ms linear;
+      color: $color-medium-gray;
 
       &:hover {
         color: $color-pink;
+        transform: translateY(1px);
       }
     }
 
@@ -64,5 +65,9 @@
 
   .date {
     color: #999;
+  }
+
+  :global(.label) {
+    font-size: 0.95rem;
   }
 }
