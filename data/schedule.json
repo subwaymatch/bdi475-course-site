@@ -90,24 +90,24 @@
     "text": ["Series, DataFrame", "Creating, Reading Data", "CSV Files"]
   },
   {
-    "date": "2021-09-29",
+    "date": "2021-09-30",
+    "type": "LECTURE",
+    "text": ["Filter Data", "Sort Data"]
+  },
+  {
+    "date": "2021-10-02",
     "type": "EXERCISE",
     "text": "Exercise 5"
   },
   {
-    "date": "2021-09-30",
+    "date": "2021-10-05",
     "type": "LECTURE",
     "text": ["Pandas Data Types", "Missing Values"]
   },
   {
-    "date": "2021-10-04",
+    "date": "2021-10-06",
     "type": "CASE_STUDY",
-    "text": "Problem Set 2 - Pandas Basics"
-  },
-  {
-    "date": "2021-10-05",
-    "type": "LECTURE",
-    "text": ["Filter Data", "Sort Data"]
+    "text": "Problem Set 2 - Pandas"
   },
   {
     "date": "2021-10-07",
