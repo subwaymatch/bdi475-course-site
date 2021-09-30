@@ -160,7 +160,7 @@ export default function NotesPage() {
             />
 
             <NoteItem
-              href="https://canvas.illinois.edu/courses/14860/assignments/328939"
+              href="https://nbviewer.jupyter.org/github/bdi475/notebooks/blob/20b0866414f60b83c3228f2866fe737886a1a326/L11-pandas-filtering-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/l11-pandas.png"
@@ -173,10 +173,9 @@ export default function NotesPage() {
               title="Pandas Filtering"
               colorTheme={ColorTheme.Purple}
             />
-            {/* 
 
             <NoteItem
-              href="https://bdi475-jupyter-notebooks.netlify.app/l13-pandas-filter-recap-and-sort-solution"
+              href="https://canvas.illinois.edu/courses/14860/assignments/330029"
               thumbnail={
                 <Image
                   src="/images/notes/l11-pandas.png"
@@ -185,11 +184,11 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2021-03-10"
-              title="More Pandas Filter"
+              date="2021-09-30"
+              title="Pandas Filtering and Sorting"
               colorTheme={ColorTheme.Purple}
             />
-
+            {/*
             <NoteItem
               href="https://bdi475-jupyter-notebooks.netlify.app/l14-working-with-pandas-solution"
               thumbnail={
