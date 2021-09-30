@@ -1,0 +1,116 @@
+@use "sass:color";
+@import "styles/variables";
+@import "styles/mixins";
+
+.controlBar {
+  padding: 0 10px;
+  height: 40px;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: white;
+  background-color: #111;
+
+  .controlRow {
+    height: 100%;
+  }
+
+  a.backButton {
+    display: inline-block;
+    color: $color-medium-gray;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: -0.01rem;
+    padding: 0.5rem 1rem 0.4rem 0;
+    user-select: none;
+
+    &:hover {
+      color: $color-gray;
+    }
+  }
+
+  .challengeTitleWrapper {
+    .challengeTitleInput {
+      font-family: $font-sans-serif;
+      letter-spacing: -0.01rem;
+      font-size: 1rem;
+      line-height: 1;
+      font-weight: 500;
+      text-align: center;
+      display: inline-block;
+      padding: 3px 0;
+      color: white;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      width: 100%;
+
+      &:hover {
+        background-color: #222;
+      }
+
+      &:focus {
+        background-color: transparent;
+        color: $color-green;
+      }
+    }
+  }
+
+  .controls {
+    display: flex;
+    justify-content: flex-end;
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      color: white;
+      padding: 0.3rem 0.5rem;
+      margin-right: 0.3rem;
+      font-size: 0.8rem;
+      letter-spacing: -0.01rem;
+      font-weight: 500;
+      cursor: pointer;
+      user-select: none;
+
+      .reactIcon {
+        font-size: 0.7rem;
+        margin-right: 0.3rem;
+        position: relative;
+        top: 1px;
+      }
+
+      &:hover {
+        color: $color-yellow;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &.disabled {
+        cursor: not-allowed;
+        &:hover {
+          color: white;
+        }
+      }
+
+      &.clone {
+        .reactIcon {
+          font-size: 1rem;
+        }
+      }
+
+      &.copyLink {
+        .reactIcon {
+          font-size: 0.85rem;
+        }
+      }
+
+      &.delete {
+        .reactIcon {
+          font-size: 0.85rem;
+          top: 0;
+        }
+      }
+    }
+  }
+}

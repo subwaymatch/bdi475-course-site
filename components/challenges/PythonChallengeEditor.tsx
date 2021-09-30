@@ -1,22 +1,15 @@
 import dynamic from "next/dynamic";
-import Link from "next/link";
 import { useState } from "react";
 import usePythonRuntime from "hooks/usePythonRuntime";
-import { MdDelete } from "react-icons/md";
-import { IoCopy, IoLink, IoPlay } from "react-icons/io5";
-import { AiFillSave } from "react-icons/ai";
-import { VscRepoForked, VscRunAll } from "react-icons/vsc";
+import { IoPlay } from "react-icons/io5";
+import { VscRunAll } from "react-icons/vsc";
 import produce from "immer";
-import { Row, Col } from "react-bootstrap";
-import { motion } from "framer-motion";
-import { smallClickableVariants } from "animations/clickableVariants";
-import { toast } from "react-toastify";
-import { CopyToClipboard } from "react-copy-to-clipboard";
 import _ from "lodash";
 import styles from "./PythonChallengeEditor.module.scss";
 import clsx from "clsx";
 import { ICodeExecutionResult } from "types/pyodide";
 import { definitions } from "types/database";
+import ChallengeEditorControlBar from "./ChallengeEditorControlBar";
 
 const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
@@ -74,6 +67,22 @@ export default function PythonChallengeEditor({
     await onSave(workingChallengeData, workingSolutionData);
   };
 
+  const clone = async () => {
+    if (didChange) {
+      if (
+        window.confirm(
+          "You must save your changes to clone this challenge. Save and continue?"
+        )
+      ) {
+        await save();
+      } else {
+        return;
+      }
+    }
+
+    await onClone();
+  };
+
   const displayCodeExecutionResult = (result: ICodeExecutionResult) => {
     if (result.hasError) {
       window.alert(`Error\n\n${result.errorMessage}`);
@@ -127,149 +136,16 @@ export default function PythonChallengeEditor({
 
   return (
     <div className={styles.challengeEditPage}>
-      <div className={styles.controlBar}>
-        <Row className={clsx(styles.controlRow, "align-items-center")}>
-          <Col xs={4}>
-            <Link href="/python-challenge/list">
-              <motion.a
-                variants={smallClickableVariants}
-                whileHover="hover"
-                whileTap="tap"
-                className={styles.backButton}
-              >
-                ← Back to List
-              </motion.a>
-            </Link>
-          </Col>
-
-          <Col xs={4}>
-            <div className={styles.challengeTitleWrapper}>
-              <input
-                type="text"
-                value={workingChallengeData.title}
-                onChange={(e) =>
-                  updateWorkingChallengeData("title", e.target.value)
-                }
-                placeholder="Challenge Title"
-                className={styles.challengeTitleInput}
-              />
-            </div>
-          </Col>
-
-          <Col xs={4}>
-            <div className={styles.controls}>
-              <motion.div
-                variants={smallClickableVariants}
-                whileHover="hover"
-                whileTap="tap"
-                className={clsx(styles.button, styles.save)}
-                onClick={async (e) => {
-                  e.preventDefault();
-
-                  try {
-                    await save();
-                    toast.success("Save successful");
-                  } catch (err) {
-                    toast.error("Error saving challenge");
-                  }
-                }}
-              >
-                <AiFillSave className={styles.reactIcon} />
-                <span className={styles.label}>Save</span>
-              </motion.div>
-
-              <motion.div
-                variants={smallClickableVariants}
-                whileHover="hover"
-                whileTap="tap"
-                className={clsx(styles.button, styles.clone)}
-                onClick={async (e) => {
-                  e.preventDefault();
-
-                  if (didChange) {
-                    if (
-                      window.confirm(
-                        "You must save your changes to clone this challenge. Save and continue?"
-                      )
-                    ) {
-                      await save();
-                    } else {
-                      return;
-                    }
-                  }
-
-                  await onClone();
-                }}
-              >
-                <VscRepoForked className={styles.reactIcon} />
-                <span className={styles.label}>Clone</span>
-              </motion.div>
-
-              <CopyToClipboard
-                text={qid}
-                onCopy={() =>
-                  toast.info(
-                    <div>
-                      Copied <code>{qid}</code> to clipboard
-                    </div>
-                  )
-                }
-              >
-                <motion.div
-                  variants={smallClickableVariants}
-                  whileHover="hover"
-                  whileTap="tap"
-                  className={clsx(styles.button, styles.copyId)}
-                  onClick={(e) => {
-                    e.preventDefault();
-                  }}
-                >
-                  <IoCopy className={styles.reactIcon} />
-                  <span className={styles.label}>Copy ID</span>
-                </motion.div>
-              </CopyToClipboard>
-
-              <CopyToClipboard
-                text={`${window.location.origin}/python-challenge/view/${qid}`}
-                onCopy={() => toast.info("Copied permalink to clipboard")}
-              >
-                <motion.div
-                  variants={smallClickableVariants}
-                  whileHover="hover"
-                  whileTap="tap"
-                  className={clsx(styles.button, styles.copyLink)}
-                  onClick={(e) => {
-                    e.preventDefault();
-                  }}
-                >
-                  <IoLink className={styles.reactIcon} />
-                  <span className={styles.label}>Copy Link</span>
-                </motion.div>
-              </CopyToClipboard>
-
-              <motion.div
-                variants={smallClickableVariants}
-                whileHover="hover"
-                whileTap="tap"
-                className={clsx(styles.button, styles.delete)}
-                onClick={async (e) => {
-                  e.preventDefault();
-                  if (
-                    window.confirm(
-                      "Are you sure you want to delete this challenge? This cannot be undone."
-                    )
-                  ) {
-                    await onDelete();
-                  }
-                }}
-              >
-                <MdDelete className={styles.reactIcon} />
-                <span className={styles.label}>Delete</span>
-              </motion.div>
-            </div>
-          </Col>
-        </Row>
-      </div>
+      <ChallengeEditorControlBar
+        challengeId={qid}
+        permalink={`${window.location.origin}/python-challenge/view/${qid}`}
+        backUrl="/python-challenge/list"
+        onDelete={onDelete}
+        clone={clone}
+        title={workingChallengeData.title}
+        setTitle={(val) => updateWorkingChallengeData("title", val)}
+        save={save}
+      />
 
       <div className={styles.challengeAndTemplate}>
         <div className={clsx(styles.challengeText, styles.editorBox)}>

@@ -13,9 +13,9 @@ import { toast } from "react-toastify";
 export default function EditCodingChallengePage() {
   const router = useRouter();
   const { user, roles } = useSupabaseAuth();
-  const { cid } = router.query;
+  const { id } = router.query;
   const [isLoading, setIsLoading] = useState(true);
-  const challengeId = getChallengeIdAsNumberFromQuery(cid);
+  const challengeId = getChallengeIdAsNumberFromQuery(id);
   const [challengeData, setChallengeData] =
     useState<definitions["coding_challenges"]>(null);
   const [solutionData, setSolutionData] =
@@ -109,7 +109,7 @@ export default function EditCodingChallengePage() {
       return;
     }
 
-    router.push(`/python-challenge/edit/${challengeCloneResult[0].id}`);
+    router.push(`/python-challenge/edit/${clonedChallengeId}`);
   };
 
   const save = async (
