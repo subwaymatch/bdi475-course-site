@@ -3,6 +3,8 @@ import { useState } from "react";
 import usePythonRuntime from "hooks/usePythonRuntime";
 import { IoPlay } from "react-icons/io5";
 import { VscRunAll } from "react-icons/vsc";
+import { BsArrowUpRight } from "react-icons/bs";
+import { MdFormatShapes } from "react-icons/md";
 import produce from "immer";
 import _ from "lodash";
 import styles from "./PythonChallengeEditor.module.scss";
@@ -10,10 +12,16 @@ import clsx from "clsx";
 import { ICodeExecutionResult } from "types/pyodide";
 import { definitions } from "types/database";
 import ChallengeEditorControlBar from "./ChallengeEditorControlBar";
+import FormatterDiffModal from "components/FormatterDiffModal";
 
 const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
 });
+
+enum CodeTypeEnum {
+  SOLUTION_CODE = "SOLUTION_CODE",
+  SOLUTION_AND_TEST_CODE = "SOLUTION_AND_TEST_CODE",
+}
 
 interface IPythonChallengeEditorProps {
   id: number;
@@ -41,6 +49,9 @@ export default function PythonChallengeEditor({
   const [workingSolutionData, setWorkingSolutionData] = useState<
     definitions["coding_challenge_solutions"]
   >(_.cloneDeep(solutionData));
+  const [codeTypeToFormat, setCodeTypeToFormat] = useState<CodeTypeEnum | null>(
+    null
+  );
   const { isRuntimeReady, runCode, runAndCheckCode } = usePythonRuntime();
 
   const didChange =
@@ -221,6 +232,15 @@ export default function PythonChallengeEditor({
 
             <div className={styles.boxControls}>
               <span
+                className={styles.iconButton}
+                onClick={() => {
+                  setCodeTypeToFormat(CodeTypeEnum.SOLUTION_CODE);
+                }}
+              >
+                <MdFormatShapes className={styles.reactIcon} />
+              </span>
+
+              <span
                 className={clsx(styles.iconButton, {
                   [styles.disabled]: !isRuntimeReady,
                 })}
@@ -236,6 +256,18 @@ export default function PythonChallengeEditor({
                 onClick={runAndCheckSolutionCode}
               >
                 <VscRunAll className={styles.reactIcon} />
+              </span>
+
+              <span
+                className={styles.iconButton}
+                onClick={() => {
+                  updateWorkingChallengeData(
+                    "starter_code",
+                    workingSolutionData.solution_code
+                  );
+                }}
+              >
+                <BsArrowUpRight className={styles.reactIcon} />
               </span>
             </div>
           </div>
@@ -259,6 +291,17 @@ export default function PythonChallengeEditor({
               <span>Test Cases</span>
               <span className="accent pink" />
             </div>
+
+            <div className={styles.boxControls}>
+              <span
+                className={styles.iconButton}
+                onClick={() => {
+                  setCodeTypeToFormat(CodeTypeEnum.SOLUTION_AND_TEST_CODE);
+                }}
+              >
+                <MdFormatShapes className={styles.reactIcon} />
+              </span>
+            </div>
           </div>
 
           <div className={styles.sectionContentWrapper}>
@@ -273,6 +316,50 @@ export default function PythonChallengeEditor({
           </div>
         </div>
       </div>
+
+      <FormatterDiffModal
+        isOpen={codeTypeToFormat !== null}
+        onAccept={async (formattedCode) => {
+          if (codeTypeToFormat === CodeTypeEnum.SOLUTION_CODE) {
+            updateWorkingSolutionData("solution_code", formattedCode);
+          } else if (codeTypeToFormat === CodeTypeEnum.SOLUTION_AND_TEST_CODE) {
+            const response = await fetch(
+              process.env.NEXT_PUBLIC_BLACK_LAMBDA_ENDPOINT,
+              {
+                method: "POST",
+                mode: "cors",
+                credentials: "same-origin",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  source: workingSolutionData.solution_code,
+                }),
+              }
+            );
+
+            const solutionFormatResult = await response.json();
+            const formattedSolutionCode = solutionFormatResult.formatted_code;
+            // TODO: Handle formatting of both solution and test code
+            // DO NOTHING
+            updateWorkingChallengeData(
+              "test_code",
+              formattedCode.slice(formattedSolutionCode.length).trimStart()
+            );
+          }
+
+          setCodeTypeToFormat(null);
+        }}
+        onClose={() => setCodeTypeToFormat(null)}
+        original={
+          codeTypeToFormat === CodeTypeEnum.SOLUTION_CODE
+            ? workingSolutionData.solution_code
+            : workingSolutionData.solution_code +
+              "\n\n" +
+              workingChallengeData.test_code
+        }
+        language="python"
+      />
     </div>
   );
 }

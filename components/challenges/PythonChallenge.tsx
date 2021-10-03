@@ -17,7 +17,7 @@ import styles from "./PythonChallenge.module.scss";
 import clsx from "clsx";
 import { definitions } from "types/database";
 import useSupabaseAuth from "hooks/useSupabaseAuth";
-import FormatterDiffModal from "components/CodeEditor/FormatterDiffModal";
+import FormatterDiffModal from "components/FormatterDiffModal";
 import InstructionText from "./InstructionText";
 import ChallengeButton from "./ChallengeButton";
 import SolutionCodeModal from "./SolutionCodeModal";
