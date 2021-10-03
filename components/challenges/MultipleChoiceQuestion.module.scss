@@ -33,6 +33,16 @@
     height: 100%;
   }
 
+  .instructionsWrapper {
+    .inner {
+      padding: 1rem 2rem 2rem 0;
+
+      @include media-breakpoint-down(md) {
+        padding: 1.5rem 0 2rem 0;
+      }
+    }
+  }
+
   .optionsAndControlsWrapper {
     padding: 1rem 1rem 2rem 1.5rem;
     border-left: 1px solid $color-border-gray;

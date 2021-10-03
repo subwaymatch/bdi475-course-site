@@ -3,15 +3,7 @@
 @import "styles/mixins";
 
 .instructionTextWrapper {
-  overflow-y: auto;
-
   .instructionTextInner {
-    padding: 1rem 2rem 2rem 0;
-
-    @include media-breakpoint-down(md) {
-      padding: 1.5rem 0 2rem 0;
-    }
-
     .textMarkdown {
       margin-top: 0.5rem;
 

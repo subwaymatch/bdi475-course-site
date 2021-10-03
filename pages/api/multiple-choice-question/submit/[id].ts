@@ -27,11 +27,11 @@ export default async function recordAttempt(
 
   // Extract attempt information
   const {
-    query: { qid },
+    query: { id },
     body: { userSelections },
   } = req;
 
-  const questionId = Number.parseInt(qid as string);
+  const questionId = Number.parseInt(id as string);
 
   try {
     const { data: options, error: answerError } = await supabaseServiceClient

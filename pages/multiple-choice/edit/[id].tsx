@@ -112,6 +112,12 @@ export default function EditCodingChallengePage() {
     updatedQuestionData: definitions["multiple_choice_questions"],
     updatedOptionsData: definitions["multiple_choice_options"][]
   ) => {
+    const previousIds = optionsData.map((o) => o.id);
+    const newIds = updatedOptionsData.map((o) => o.id);
+    const idsToDelete = previousIds.filter((x) => !newIds.includes(x));
+
+    console.log(`idsToDelete=${JSON.stringify(idsToDelete)}`);
+
     setQuestionData(updatedQuestionData);
     setOptionsData(updatedOptionsData);
 
@@ -166,7 +172,7 @@ export default function EditCodingChallengePage() {
   ) : (
     <Layout excludeHeader={true} excludeFooter={true}>
       <MultipleChoiceEditor
-        qid={challengeId}
+        id={challengeId}
         questionData={questionData}
         optionsData={optionsData}
         onSave={save}

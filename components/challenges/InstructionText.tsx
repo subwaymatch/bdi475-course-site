@@ -19,7 +19,9 @@ const InstructionText = forwardRef<HTMLDivElement, IInstructionTextProps>(
       })}
     >
       <div className={styles.instructionTextInner}>
-        <span className="label small whiteText blue">{labelText}</span>
+        {labelText && (
+          <span className="label small whiteText blue">{labelText}</span>
+        )}
 
         {isLoading ? (
           <div className={styles.textMarkdown}>Loading</div>

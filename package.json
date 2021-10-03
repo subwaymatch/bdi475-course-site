@@ -49,7 +49,6 @@
     "remark-rehype": "^9.0.0",
     "sass": "^1.38.0",
     "unified": "^10.1.0",
-    "unified-stream": "^2.0.0",
     "victory": "^35.4.8"
   },
   "devDependencies": {

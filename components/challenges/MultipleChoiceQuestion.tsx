@@ -86,6 +86,7 @@ export default function MultipleChoiceQuestion({
               isLoading={isLoading}
               labelText="Question"
               textMarkdown={questionData?.text_markdown}
+              className={styles.inner}
             />
           </div>
         </Col>

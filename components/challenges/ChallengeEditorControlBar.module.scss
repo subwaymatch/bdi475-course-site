@@ -3,15 +3,13 @@
 @import "styles/mixins";
 
 .controlBar {
-  padding: 0 10px;
-  height: 40px;
   font-size: 1rem;
   line-height: 1.4;
   color: white;
   background-color: #111;
 
   .controlRow {
-    height: 100%;
+    padding: 0.15rem 0;
   }
 
   a.backButton {

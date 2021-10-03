@@ -1,4 +1,4 @@
-@use 'sass:color';
+@use "sass:color";
 @import "styles/variables";
 @import "styles/mixins";
 
@@ -19,6 +19,14 @@
     .outputCol {
       // Force equal height to output columns
       flex: 1;
+    }
+  }
+
+  .inner {
+    padding: 1rem 2rem 2rem 0;
+
+    @include media-breakpoint-down(md) {
+      padding: 1.5rem 0 2rem 0;
     }
   }
 

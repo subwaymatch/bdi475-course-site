@@ -5127,14 +5127,6 @@ uncontrollable@^7.2.1:
     invariant "^2.2.4"
     react-lifecycles-compat "^3.0.4"
 
-unified-stream@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/unified-stream/-/unified-stream-2.0.0.tgz#53172f26f6a478d1066114fb91b7cb1c96c9bb79"
-  integrity sha512-KdwODjgqGsTbHMLqm57qLxNAkbCboD5EMPC4BULs/9iy5ZTsw3xgc0BUjeCmABt/yfZt0k7rgkBLcdiZ8LwZug==
-  dependencies:
-    unified "^10.0.0"
-    vfile "^5.0.0"
-
 unified@^10.0.0, unified@^10.1.0:
   version "10.1.0"
   resolved "https://registry.yarnpkg.com/unified/-/unified-10.1.0.tgz#4e65eb38fc2448b1c5ee573a472340f52b9346fe"

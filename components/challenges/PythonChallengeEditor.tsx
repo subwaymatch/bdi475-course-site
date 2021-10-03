@@ -16,7 +16,7 @@ const CodeEditor = dynamic(() => import("components/CodeEditor"), {
 });
 
 interface IPythonChallengeEditorProps {
-  qid: number;
+  id: number;
   challengeData: definitions["coding_challenges"];
   solutionData: definitions["coding_challenge_solutions"];
   onSave: (
@@ -28,7 +28,7 @@ interface IPythonChallengeEditorProps {
 }
 
 export default function PythonChallengeEditor({
-  qid,
+  id,
   challengeData,
   solutionData,
   onSave,
@@ -137,8 +137,8 @@ export default function PythonChallengeEditor({
   return (
     <div className={styles.challengeEditPage}>
       <ChallengeEditorControlBar
-        challengeId={qid}
-        permalink={`${window.location.origin}/python-challenge/view/${qid}`}
+        challengeId={id}
+        permalink={`${window.location.origin}/python-challenge/view/${id}`}
         backUrl="/python-challenge/list"
         onDelete={onDelete}
         clone={clone}
@@ -151,7 +151,7 @@ export default function PythonChallengeEditor({
         <div className={clsx(styles.challengeText, styles.editorBox)}>
           <div className={styles.boxHeader}>
             <div className={styles.boxTitle}>
-              <span className={styles.boxTitle}>Challenge Text</span>
+              <span className={styles.boxTitle}>Challenge Text Markdown</span>
               <span className="accent purple" />
             </div>
           </div>

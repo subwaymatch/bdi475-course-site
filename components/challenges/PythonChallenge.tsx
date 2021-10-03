@@ -56,6 +56,8 @@ export default function PythonChallenge({
     ? Math.max(instructionTextHeight, 400)
     : 400;
 
+  console.log(`height: ${instructionTextHeight}`);
+
   useEffect(() => {
     // Load user code from LocalStorage if key exists
     if (localStorageKey && savedUserCode) {
@@ -144,12 +146,15 @@ export default function PythonChallenge({
     <div className={styles.challengeWrapper}>
       <Row className="g-0">
         <Col lg={6}>
-          <InstructionText
-            ref={ref}
-            isLoading={false}
-            labelText="Task"
-            textMarkdown={challengeData.text_markdown}
-          />
+          {/* Use for dynamic height calculation with padding */}
+          <div ref={ref}>
+            <InstructionText
+              isLoading={false}
+              labelText="Task"
+              textMarkdown={challengeData.text_markdown}
+              className={styles.inner}
+            />
+          </div>
         </Col>
 
         <Col lg={6}>

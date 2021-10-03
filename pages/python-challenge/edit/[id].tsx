@@ -165,7 +165,7 @@ export default function EditCodingChallengePage() {
   ) : (
     <Layout excludeHeader={true} excludeFooter={true}>
       <PythonChallengeEditor
-        qid={challengeId}
+        id={challengeId}
         challengeData={challengeData}
         solutionData={solutionData}
         onSave={save}
