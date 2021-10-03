@@ -147,8 +147,8 @@ export default function PythonChallengeEditor({
         save={save}
       />
 
-      <div className={styles.challengeAndTemplate}>
-        <div className={clsx(styles.challengeText, styles.editorBox)}>
+      <div className={styles.boxesRow}>
+        <div className={styles.sectionBox}>
           <div className={styles.boxHeader}>
             <div className={styles.boxTitle}>
               <span className={styles.boxTitle}>Challenge Text Markdown</span>
@@ -156,18 +156,20 @@ export default function PythonChallengeEditor({
             </div>
           </div>
 
-          <div className={styles.codeEditorWrapper}>
-            <textarea
-              className={styles.challengeTextarea}
-              value={workingChallengeData.text_markdown}
-              onChange={(e) =>
-                updateWorkingChallengeData("text_markdown", e.target.value)
-              }
-            />
+          <div className={styles.sectionContentWrapper}>
+            <div className={styles.preventOverflow}>
+              <textarea
+                className={styles.fullTextArea}
+                value={workingChallengeData.text_markdown}
+                onChange={(e) =>
+                  updateWorkingChallengeData("text_markdown", e.target.value)
+                }
+              />
+            </div>
           </div>
         </div>
 
-        <div className={clsx(styles.starter, styles.editorBox)}>
+        <div className={styles.sectionBox}>
           <div className={styles.boxHeader}>
             <div className={styles.boxTitle}>
               <span>Starter</span>
@@ -195,21 +197,22 @@ export default function PythonChallengeEditor({
             </div>
           </div>
 
-          <div className={styles.codeEditorWrapper}>
-            <CodeEditor
-              editorValue={workingChallengeData.starter_code}
-              onChange={(v) => updateWorkingChallengeData("starter_code", v)}
-              onRun={runStarterCode}
-              onCheck={runAndCheckStarterCode}
-              language="python"
-              height="calc(50vh - 55px)"
-            />
+          <div className={styles.sectionContentWrapper}>
+            <div className={styles.preventOverflow}>
+              <CodeEditor
+                editorValue={workingChallengeData.starter_code}
+                onChange={(v) => updateWorkingChallengeData("starter_code", v)}
+                onRun={runStarterCode}
+                onCheck={runAndCheckStarterCode}
+                language="python"
+              />
+            </div>
           </div>
         </div>
       </div>
 
-      <div className={styles.solutionAndCheck}>
-        <div className={clsx(styles.solution, styles.editorBox)}>
+      <div className={styles.boxesRow}>
+        <div className={styles.sectionBox}>
           <div className={styles.boxHeader}>
             <div className={styles.boxTitle}>
               <span>Solution</span>
@@ -237,19 +240,20 @@ export default function PythonChallengeEditor({
             </div>
           </div>
 
-          <div className={styles.codeEditorWrapper}>
-            <CodeEditor
-              editorValue={workingSolutionData.solution_code}
-              onChange={(v) => updateWorkingSolutionData("solution_code", v)}
-              onRun={runSolutionCode}
-              onCheck={runAndCheckSolutionCode}
-              language="python"
-              height="calc(50vh - 55px)"
-            />
+          <div className={styles.sectionContentWrapper}>
+            <div className={styles.preventOverflow}>
+              <CodeEditor
+                editorValue={workingSolutionData.solution_code}
+                onChange={(v) => updateWorkingSolutionData("solution_code", v)}
+                onRun={runSolutionCode}
+                onCheck={runAndCheckSolutionCode}
+                language="python"
+              />
+            </div>
           </div>
         </div>
 
-        <div className={clsx(styles.testCases, styles.editorBox)}>
+        <div className={styles.sectionBox}>
           <div className={styles.boxHeader}>
             <div className={styles.boxTitle}>
               <span>Test Cases</span>
@@ -257,14 +261,15 @@ export default function PythonChallengeEditor({
             </div>
           </div>
 
-          <div className={styles.codeEditorWrapper}>
-            <CodeEditor
-              editorValue={workingChallengeData.test_code}
-              onChange={(v) => updateWorkingChallengeData("test_code", v)}
-              onRun={() => {}}
-              language="python"
-              height="calc(50vh - 55px)"
-            />
+          <div className={styles.sectionContentWrapper}>
+            <div className={styles.preventOverflow}>
+              <CodeEditor
+                editorValue={workingChallengeData.test_code}
+                onChange={(v) => updateWorkingChallengeData("test_code", v)}
+                onRun={() => {}}
+                language="python"
+              />
+            </div>
           </div>
         </div>
       </div>
