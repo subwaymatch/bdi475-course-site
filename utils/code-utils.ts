@@ -1,5 +1,5 @@
 export function removeSolutionPortion(solutionCode: string) {
-  // Split lines to code
+  // Split code to lines
   const lines = solutionCode.split(/\r?\n/);
 
   let startReplace = false;

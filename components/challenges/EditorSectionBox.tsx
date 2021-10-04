@@ -15,6 +15,7 @@ interface IEditorSectionBoxProps {
   title: React.ReactNode;
   colorTheme?: ColorTheme;
   iconButtons?: Array<IIconButtonProps>;
+  allowScroll?: boolean;
   children: React.ReactNode;
 }
 
@@ -22,6 +23,7 @@ export default function EditorSectionBox({
   title,
   colorTheme,
   iconButtons,
+  allowScroll,
   children,
 }: IEditorSectionBoxProps) {
   return (
@@ -51,7 +53,14 @@ export default function EditorSectionBox({
       </div>
 
       <div className={styles.sectionContentWrapper}>
-        <div className={styles.preventOverflow}>{children}</div>
+        <div
+          className={clsx({
+            [styles.allowScroll]: allowScroll,
+            [styles.preventOverflow]: !allowScroll,
+          })}
+        >
+          {children}
+        </div>
       </div>
     </div>
   );

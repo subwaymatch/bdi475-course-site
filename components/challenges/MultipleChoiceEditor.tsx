@@ -7,6 +7,8 @@ import clsx from "clsx";
 import { definitions } from "types/database";
 import ChallengeEditorControlBar from "./ChallengeEditorControlBar";
 import InstructionText from "./InstructionText";
+import EditorSectionBox from "./EditorSectionBox";
+import { ColorTheme } from "types/color-theme";
 
 interface IMultipleChoiceEditorProps {
   id: number;
@@ -92,73 +94,45 @@ export default function MultipleChoiceEditor({
       />
 
       <div className={styles.boxesRow}>
-        <div className={styles.sectionBox}>
-          <div className={styles.boxHeader}>
-            <div className={styles.boxTitle}>
-              <span>Question Markdown</span>
-              <span className="accent purple" />
-            </div>
-          </div>
+        <EditorSectionBox
+          title="Question Markdown"
+          colorTheme={ColorTheme.Purple}
+        >
+          <textarea
+            className={styles.fullTextArea}
+            value={workingQuestionData.text_markdown}
+            onChange={(e) =>
+              updateWorkingQuestionData("text_markdown", e.target.value)
+            }
+          />
+        </EditorSectionBox>
 
-          <div className={styles.sectionContentWrapper}>
-            <div className={styles.preventOverflow}>
-              <textarea
-                className={styles.fullTextArea}
-                value={workingQuestionData.text_markdown}
-                onChange={(e) =>
-                  updateWorkingQuestionData("text_markdown", e.target.value)
-                }
-              />
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.sectionBox}>
-          <div className={styles.boxHeader}>
-            <div className={styles.boxTitle}>
-              <span>Options Markdown</span>
-              <span className="accent green" />
-            </div>
-          </div>
-
-          <div className={styles.sectionContentWrapper}>
-            <h2>Some header</h2>
-          </div>
-        </div>
+        <EditorSectionBox
+          title="Options Markdown"
+          colorTheme={ColorTheme.Green}
+        >
+          <h2>Some header</h2>
+        </EditorSectionBox>
       </div>
 
       <div className={styles.boxesRow}>
-        <div className={styles.sectionBox}>
-          <div className={styles.boxHeader}>
-            <div className={styles.boxTitle}>
-              <span>Question Preview</span>
-              <span className="accent green" />
-            </div>
+        <EditorSectionBox
+          title="Question Preview"
+          colorTheme={ColorTheme.Blue}
+          allowScroll
+        >
+          <div className={styles.inner}>
+            <InstructionText
+              isLoading={workingQuestionData ? false : true}
+              labelText={null}
+              textMarkdown={workingQuestionData?.text_markdown}
+            />
           </div>
+        </EditorSectionBox>
 
-          <div className={styles.sectionContentWrapper}>
-            <div className={styles.inner}>
-              <InstructionText
-                isLoading={workingQuestionData ? false : true}
-                labelText={null}
-                textMarkdown={workingQuestionData?.text_markdown}
-              />
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.sectionBox}>
-          <div className={styles.boxHeader}>
-            <div className={styles.boxTitle}>
-              <span>Options Preview</span>
-              <span className="accent pink" />
-            </div>
-          </div>
-
-          <div className={styles.sectionContentWrapper}>
-            <h2>Some header</h2>
-          </div>
-        </div>
+        <EditorSectionBox title="Options Preview" colorTheme={ColorTheme.Pink}>
+          <h2>Some header</h2>
+        </EditorSectionBox>
       </div>
     </div>
   );

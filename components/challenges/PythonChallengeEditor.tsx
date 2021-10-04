@@ -8,14 +8,13 @@ import { MdFormatShapes } from "react-icons/md";
 import produce from "immer";
 import _ from "lodash";
 import styles from "./PythonChallengeEditor.module.scss";
-import clsx from "clsx";
 import { ICodeExecutionResult } from "types/pyodide";
 import { definitions } from "types/database";
 import ChallengeEditorControlBar from "./ChallengeEditorControlBar";
 import EditorSectionBox from "./EditorSectionBox";
 import FormatterDiffModal from "components/FormatterDiffModal";
 import { ColorTheme } from "types/color-theme";
-import { removeSolutionPortion } from "utils/code-formatter";
+import { removeSolutionPortion } from "utils/code-utils";
 
 const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
