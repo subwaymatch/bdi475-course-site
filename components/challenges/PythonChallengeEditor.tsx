@@ -15,6 +15,7 @@ import ChallengeEditorControlBar from "./ChallengeEditorControlBar";
 import EditorSectionBox from "./EditorSectionBox";
 import FormatterDiffModal from "components/FormatterDiffModal";
 import { ColorTheme } from "types/color-theme";
+import { removeSolutionPortion } from "utils/code-formatter";
 
 const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
@@ -226,11 +227,13 @@ export default function PythonChallengeEditor({
             },
             {
               Icon: BsArrowUpRight,
-              onClick: () =>
-                updateWorkingChallengeData(
-                  "starter_code",
+              onClick: () => {
+                const processedCode = removeSolutionPortion(
                   workingSolutionData.solution_code
-                ),
+                );
+
+                updateWorkingChallengeData("starter_code", processedCode);
+              },
             },
           ]}
         >
@@ -268,8 +271,9 @@ export default function PythonChallengeEditor({
         isOpen={codeTypeToFormat !== null}
         onAccept={async (formattedCode) => {
           if (codeTypeToFormat === CodeTypeEnum.SOLUTION_CODE) {
-            updateWorkingSolutionData("solution_code", formattedCode);
+            updateWorkingSolutionData("solution_code", formattedCode.trim());
           } else if (codeTypeToFormat === CodeTypeEnum.SOLUTION_AND_TEST_CODE) {
+            // Formatting only the test cases will not work as the code only contains incomplete parts
             const response = await fetch(
               process.env.NEXT_PUBLIC_BLACK_LAMBDA_ENDPOINT,
               {
@@ -287,11 +291,12 @@ export default function PythonChallengeEditor({
 
             const solutionFormatResult = await response.json();
             const formattedSolutionCode = solutionFormatResult.formatted_code;
+            const formattedTestCode = formattedCode
+              .slice(formattedSolutionCode.length)
+              .trim();
 
-            updateWorkingChallengeData(
-              "test_code",
-              formattedCode.slice(formattedSolutionCode.length).trimStart()
-            );
+            // Only extract the test cases portion
+            updateWorkingChallengeData("test_code", formattedTestCode);
           }
 
           setCodeTypeToFormat(null);

@@ -38,6 +38,7 @@ export default function EditorSectionBox({
           {iconButtons &&
             iconButtons.map((o) => (
               <span
+                key={o.Icon.name}
                 className={clsx(styles.iconButton, {
                   [styles.disabled]: o.disabled,
                 })}
