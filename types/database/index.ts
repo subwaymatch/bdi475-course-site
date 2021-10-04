@@ -114,96 +114,6 @@ export interface paths {
       };
     };
   };
-  "/coding_challenge_solutions": {
-    get: {
-      parameters: {
-        query: {
-          solution_code?: parameters["rowFilter.coding_challenge_solutions.solution_code"];
-          challenge_id?: parameters["rowFilter.coding_challenge_solutions.challenge_id"];
-          /** Filtering Columns */
-          select?: parameters["select"];
-          /** Ordering */
-          order?: parameters["order"];
-          /** Limiting and Pagination */
-          offset?: parameters["offset"];
-          /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
-        header: {
-          /** Limiting and Pagination */
-          Range?: parameters["range"];
-          /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
-          /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
-      responses: {
-        /** OK */
-        200: {
-          schema: definitions["coding_challenge_solutions"][];
-        };
-        /** Partial Content */
-        206: unknown;
-      };
-    };
-    post: {
-      parameters: {
-        body: {
-          /** coding_challenge_solutions */
-          coding_challenge_solutions?: definitions["coding_challenge_solutions"];
-        };
-        query: {
-          /** Filtering Columns */
-          select?: parameters["select"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** Created */
-        201: unknown;
-      };
-    };
-    delete: {
-      parameters: {
-        query: {
-          solution_code?: parameters["rowFilter.coding_challenge_solutions.solution_code"];
-          challenge_id?: parameters["rowFilter.coding_challenge_solutions.challenge_id"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-    patch: {
-      parameters: {
-        query: {
-          solution_code?: parameters["rowFilter.coding_challenge_solutions.solution_code"];
-          challenge_id?: parameters["rowFilter.coding_challenge_solutions.challenge_id"];
-        };
-        body: {
-          /** coding_challenge_solutions */
-          coding_challenge_solutions?: definitions["coding_challenge_solutions"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-  };
   "/coding_challenges": {
     get: {
       parameters: {
@@ -850,15 +760,6 @@ export interface definitions {
     is_success: boolean;
     user_code?: string;
   };
-  /** Coding challenge solutions - the solutions are separated to a separate table to prevent non-authorized users accessing the solutions */
-  coding_challenge_solutions: {
-    solution_code?: string;
-    /**
-     * Note:
-     * This is a Foreign Key to `coding_challenges.id`.<fk table='coding_challenges' column='id'/>
-     */
-    challenge_id: number;
-  };
   /** Coding challenges */
   coding_challenges: {
     created_at?: string;
@@ -979,10 +880,6 @@ export interface parameters {
   "rowFilter.coding_challenge_attempts.submitted_at": string;
   "rowFilter.coding_challenge_attempts.is_success": string;
   "rowFilter.coding_challenge_attempts.user_code": string;
-  /** coding_challenge_solutions */
-  "body.coding_challenge_solutions": definitions["coding_challenge_solutions"];
-  "rowFilter.coding_challenge_solutions.solution_code": string;
-  "rowFilter.coding_challenge_solutions.challenge_id": string;
   /** coding_challenges */
   "body.coding_challenges": definitions["coding_challenges"];
   "rowFilter.coding_challenges.created_at": string;
