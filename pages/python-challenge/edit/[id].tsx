@@ -18,8 +18,6 @@ export default function EditCodingChallengePage() {
   const challengeId = getChallengeIdAsNumberFromQuery(id);
   const [challengeData, setChallengeData] =
     useState<definitions["coding_challenges"]>(null);
-  const [solutionData, setSolutionData] =
-    useState<definitions["coding_challenge_solutions"]>(null);
 
   const loadChallengeData = async () => {
     setIsLoading(true);
@@ -34,21 +32,7 @@ export default function EditCodingChallengePage() {
       console.error(challengeError);
     }
 
-    const { data: solutionData, error: solutionError } = await supabaseClient
-      .from<definitions["coding_challenge_solutions"]>(
-        "coding_challenge_solutions"
-      )
-      .select()
-      .eq("challenge_id", challengeId)
-      .single();
-
-    if (solutionError) {
-      console.error(solutionError);
-    }
-
     setChallengeData(challengeData);
-    setSolutionData(solutionData);
-
     setIsLoading(false);
   };
 
@@ -83,41 +67,13 @@ export default function EditCodingChallengePage() {
 
     const clonedChallengeId = challengeCloneResult[0].id;
 
-    const { data: clonedSolutionData, error: solutionCloneError } =
-      await supabaseClient
-        .from<definitions["coding_challenge_solutions"]>(
-          "coding_challenge_solutions"
-        )
-        .insert(
-          [
-            Object.assign({}, solutionData, {
-              challenge_id: clonedChallengeId,
-            }),
-          ],
-          {
-            returning: "minimal",
-          }
-        );
-
-    if (solutionCloneError) {
-      console.error(solutionCloneError);
-
-      toast.error(
-        `Error cloning the solution entry for ${clonedChallengeId}: ${solutionCloneError.message}`
-      );
-
-      return;
-    }
-
     router.push(`/python-challenge/edit/${clonedChallengeId}`);
   };
 
   const save = async (
-    updatedChallengeData: definitions["coding_challenges"],
-    updatedSolutionData: definitions["coding_challenge_solutions"]
+    updatedChallengeData: definitions["coding_challenges"]
   ) => {
     setChallengeData(updatedChallengeData);
-    setSolutionData(updatedSolutionData);
 
     const { data: challengeUpdateResult, error: challengeUpdateError } =
       await supabaseClient
@@ -129,20 +85,6 @@ export default function EditCodingChallengePage() {
 
     if (challengeUpdateError) {
       console.error(challengeUpdateError);
-    }
-
-    const { data: solutionUpdateResult, error: solutionUpdateError } =
-      await supabaseClient
-        .from<definitions["coding_challenge_solutions"]>(
-          "coding_challenge_solutions"
-        )
-        .update(updatedSolutionData, {
-          returning: "minimal",
-        })
-        .match({ challenge_id: updatedSolutionData.challenge_id });
-
-    if (solutionUpdateError) {
-      console.error(solutionUpdateError);
     }
   };
 
@@ -167,7 +109,6 @@ export default function EditCodingChallengePage() {
       <PythonChallengeEditor
         id={challengeId}
         challengeData={challengeData}
-        solutionData={solutionData}
         onSave={save}
         onClone={onClone}
         onDelete={onDelete}

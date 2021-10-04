@@ -32,19 +32,17 @@ export default function SolutionCodeModal({
 }: ISolutionCodeModal) {
   const { user } = useSupabaseAuth();
   const [status, setStatus] = useState(RequestStatusEnum.LOADING);
-  const [solutionData, setSolutionData] =
-    useState<definitions["coding_challenge_solutions"]>(null);
+  const [challengeData, setChallengeData] =
+    useState<definitions["coding_challenges"]>(null);
   const [errorMessage, setErrorMessage] = useState("");
 
   const getSolutionCode = async () => {
     setStatus(RequestStatusEnum.LOADING);
 
     const { data, error } = await supabaseClient
-      .from<definitions["coding_challenge_solutions"]>(
-        "coding_challenge_solutions"
-      )
-      .select()
-      .eq("challenge_id", cid)
+      .from<definitions["coding_challenges"]>("coding_challenges")
+      .select(`id, solution_code`)
+      .eq("id", cid)
       .single();
 
     if (error) {
@@ -52,7 +50,7 @@ export default function SolutionCodeModal({
       setStatus(RequestStatusEnum.ERROR);
       setErrorMessage(error.message);
     } else {
-      setSolutionData(data);
+      setChallengeData(data);
       setStatus(RequestStatusEnum.SUCCESS);
     }
   };
@@ -113,7 +111,7 @@ export default function SolutionCodeModal({
             wrapLongLines={true}
           >
             {status === RequestStatusEnum.SUCCESS
-              ? solutionData.solution_code
+              ? challengeData.solution_code
               : "# Loading"}
           </SyntaxHighlighter>
         </div>

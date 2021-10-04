@@ -105,25 +105,6 @@ export default function PythonChallengeListPage({ page }) {
 
     const newChallengeId = challengeData[0].id;
 
-    const { data: solutionData, error: solutionError } = await supabaseClient
-      .from<definitions["coding_challenge_solutions"]>(
-        "coding_challenge_solutions"
-      )
-      .insert([
-        {
-          challenge_id: newChallengeId,
-        },
-      ]);
-
-    if (solutionError) {
-      console.error(solutionError);
-
-      toast.error(
-        `Error creating a solution entry for ${newChallengeId}: ${solutionError.message}`
-      );
-      return;
-    }
-
     router.push(`/python-challenge/edit/${challengeData[0].id}`);
   };
 

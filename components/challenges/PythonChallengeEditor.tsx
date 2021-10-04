@@ -28,11 +28,7 @@ enum CodeTypeEnum {
 interface IPythonChallengeEditorProps {
   id: number;
   challengeData: definitions["coding_challenges"];
-  solutionData: definitions["coding_challenge_solutions"];
-  onSave: (
-    newChallengeData: definitions["coding_challenges"],
-    newSolutionData: definitions["coding_challenge_solutions"]
-  ) => void;
+  onSave: (newChallengeData: definitions["coding_challenges"]) => void;
   onDelete: () => void;
   onClone: () => void;
 }
@@ -40,7 +36,6 @@ interface IPythonChallengeEditorProps {
 export default function PythonChallengeEditor({
   id,
   challengeData,
-  solutionData,
   onSave,
   onDelete,
   onClone,
@@ -48,17 +43,12 @@ export default function PythonChallengeEditor({
   const [workingChallengeData, setWorkingChallengeData] = useState<
     definitions["coding_challenges"]
   >(_.cloneDeep(challengeData));
-  const [workingSolutionData, setWorkingSolutionData] = useState<
-    definitions["coding_challenge_solutions"]
-  >(_.cloneDeep(solutionData));
   const [codeTypeToFormat, setCodeTypeToFormat] = useState<CodeTypeEnum | null>(
     null
   );
   const { isRuntimeReady, runCode, runAndCheckCode } = usePythonRuntime();
 
-  const didChange =
-    !_.isEqual(challengeData, workingChallengeData) ||
-    !_.isEqual(solutionData, workingSolutionData);
+  const didChange = !_.isEqual(challengeData, workingChallengeData);
 
   const updateWorkingChallengeData = (key, val) => {
     const updatedChallengeData = produce(workingChallengeData, (draft) => {
@@ -68,16 +58,8 @@ export default function PythonChallengeEditor({
     setWorkingChallengeData(updatedChallengeData);
   };
 
-  const updateWorkingSolutionData = (key, val) => {
-    const updateSolutionData = produce(workingSolutionData, (draft) => {
-      draft[key] = val;
-    });
-
-    setWorkingSolutionData(updateSolutionData);
-  };
-
   const save = async () => {
-    await onSave(workingChallengeData, workingSolutionData);
+    await onSave(workingChallengeData);
   };
 
   const clone = async () => {
@@ -130,7 +112,7 @@ export default function PythonChallengeEditor({
       return;
     }
 
-    const result = await runCode(workingSolutionData.solution_code);
+    const result = await runCode(workingChallengeData.solution_code);
     displayCodeExecutionResult(result);
   };
 
@@ -140,7 +122,7 @@ export default function PythonChallengeEditor({
     }
 
     const result = await runAndCheckCode(
-      workingSolutionData.solution_code,
+      workingChallengeData.solution_code,
       workingChallengeData.test_code
     );
 
@@ -228,7 +210,7 @@ export default function PythonChallengeEditor({
               Icon: BsArrowUpRight,
               onClick: () => {
                 const processedCode = removeSolutionPortion(
-                  workingSolutionData.solution_code
+                  workingChallengeData.solution_code
                 );
 
                 updateWorkingChallengeData("starter_code", processedCode);
@@ -237,8 +219,8 @@ export default function PythonChallengeEditor({
           ]}
         >
           <CodeEditor
-            editorValue={workingSolutionData.solution_code}
-            onChange={(v) => updateWorkingSolutionData("solution_code", v)}
+            editorValue={workingChallengeData.solution_code}
+            onChange={(v) => updateWorkingChallengeData("solution_code", v)}
             onRun={runSolutionCode}
             onCheck={runAndCheckSolutionCode}
             language="python"
@@ -270,7 +252,7 @@ export default function PythonChallengeEditor({
         isOpen={codeTypeToFormat !== null}
         onAccept={async (formattedCode) => {
           if (codeTypeToFormat === CodeTypeEnum.SOLUTION_CODE) {
-            updateWorkingSolutionData("solution_code", formattedCode.trim());
+            updateWorkingChallengeData("solution_code", formattedCode.trim());
           } else if (codeTypeToFormat === CodeTypeEnum.SOLUTION_AND_TEST_CODE) {
             // Formatting only the test cases will not work as the code only contains incomplete parts
             const response = await fetch(
@@ -283,7 +265,7 @@ export default function PythonChallengeEditor({
                   "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                  source: workingSolutionData.solution_code,
+                  source: workingChallengeData.solution_code,
                 }),
               }
             );
@@ -303,8 +285,8 @@ export default function PythonChallengeEditor({
         onClose={() => setCodeTypeToFormat(null)}
         original={
           codeTypeToFormat === CodeTypeEnum.SOLUTION_CODE
-            ? workingSolutionData.solution_code
-            : workingSolutionData.solution_code +
+            ? workingChallengeData.solution_code
+            : workingChallengeData.solution_code +
               "\n\n" +
               workingChallengeData.test_code
         }

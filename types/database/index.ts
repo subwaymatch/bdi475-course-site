@@ -118,7 +118,6 @@ export interface paths {
     get: {
       parameters: {
         query: {
-          old_challenge_id?: parameters["rowFilter.coding_challenge_solutions.old_challenge_id"];
           solution_code?: parameters["rowFilter.coding_challenge_solutions.solution_code"];
           challenge_id?: parameters["rowFilter.coding_challenge_solutions.challenge_id"];
           /** Filtering Columns */
@@ -171,7 +170,6 @@ export interface paths {
     delete: {
       parameters: {
         query: {
-          old_challenge_id?: parameters["rowFilter.coding_challenge_solutions.old_challenge_id"];
           solution_code?: parameters["rowFilter.coding_challenge_solutions.solution_code"];
           challenge_id?: parameters["rowFilter.coding_challenge_solutions.challenge_id"];
         };
@@ -188,7 +186,6 @@ export interface paths {
     patch: {
       parameters: {
         query: {
-          old_challenge_id?: parameters["rowFilter.coding_challenge_solutions.old_challenge_id"];
           solution_code?: parameters["rowFilter.coding_challenge_solutions.solution_code"];
           challenge_id?: parameters["rowFilter.coding_challenge_solutions.challenge_id"];
         };
@@ -217,11 +214,12 @@ export interface paths {
           text_markdown?: parameters["rowFilter.coding_challenges.text_markdown"];
           title?: parameters["rowFilter.coding_challenges.title"];
           updated_at?: parameters["rowFilter.coding_challenges.updated_at"];
-          old_id?: parameters["rowFilter.coding_challenges.old_id"];
           /** Programming language used for the challenge (e.g., python, java, c) */
           language?: parameters["rowFilter.coding_challenges.language"];
           /** Primary ID in int8 format for coding challenges */
           id?: parameters["rowFilter.coding_challenges.id"];
+          /** Solution code */
+          solution_code?: parameters["rowFilter.coding_challenges.solution_code"];
           /** Filtering Columns */
           select?: parameters["select"];
           /** Ordering */
@@ -278,11 +276,12 @@ export interface paths {
           text_markdown?: parameters["rowFilter.coding_challenges.text_markdown"];
           title?: parameters["rowFilter.coding_challenges.title"];
           updated_at?: parameters["rowFilter.coding_challenges.updated_at"];
-          old_id?: parameters["rowFilter.coding_challenges.old_id"];
           /** Programming language used for the challenge (e.g., python, java, c) */
           language?: parameters["rowFilter.coding_challenges.language"];
           /** Primary ID in int8 format for coding challenges */
           id?: parameters["rowFilter.coding_challenges.id"];
+          /** Solution code */
+          solution_code?: parameters["rowFilter.coding_challenges.solution_code"];
         };
         header: {
           /** Preference */
@@ -303,11 +302,12 @@ export interface paths {
           text_markdown?: parameters["rowFilter.coding_challenges.text_markdown"];
           title?: parameters["rowFilter.coding_challenges.title"];
           updated_at?: parameters["rowFilter.coding_challenges.updated_at"];
-          old_id?: parameters["rowFilter.coding_challenges.old_id"];
           /** Programming language used for the challenge (e.g., python, java, c) */
           language?: parameters["rowFilter.coding_challenges.language"];
           /** Primary ID in int8 format for coding challenges */
           id?: parameters["rowFilter.coding_challenges.id"];
+          /** Solution code */
+          solution_code?: parameters["rowFilter.coding_challenges.solution_code"];
         };
         body: {
           /** coding_challenges */
@@ -774,99 +774,6 @@ export interface paths {
       };
     };
   };
-  "/rls_test": {
-    get: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.rls_test.id"];
-          user_id?: parameters["rowFilter.rls_test.user_id"];
-          some_col?: parameters["rowFilter.rls_test.some_col"];
-          /** Filtering Columns */
-          select?: parameters["select"];
-          /** Ordering */
-          order?: parameters["order"];
-          /** Limiting and Pagination */
-          offset?: parameters["offset"];
-          /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
-        header: {
-          /** Limiting and Pagination */
-          Range?: parameters["range"];
-          /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
-          /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
-      responses: {
-        /** OK */
-        200: {
-          schema: definitions["rls_test"][];
-        };
-        /** Partial Content */
-        206: unknown;
-      };
-    };
-    post: {
-      parameters: {
-        body: {
-          /** rls_test */
-          rls_test?: definitions["rls_test"];
-        };
-        query: {
-          /** Filtering Columns */
-          select?: parameters["select"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** Created */
-        201: unknown;
-      };
-    };
-    delete: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.rls_test.id"];
-          user_id?: parameters["rowFilter.rls_test.user_id"];
-          some_col?: parameters["rowFilter.rls_test.some_col"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-    patch: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.rls_test.id"];
-          user_id?: parameters["rowFilter.rls_test.user_id"];
-          some_col?: parameters["rowFilter.rls_test.some_col"];
-        };
-        body: {
-          /** rls_test */
-          rls_test?: definitions["rls_test"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-  };
   "/rpc/is_admin": {
     post: {
       parameters: {
@@ -945,7 +852,6 @@ export interface definitions {
   };
   /** Coding challenge solutions - the solutions are separated to a separate table to prevent non-authorized users accessing the solutions */
   coding_challenge_solutions: {
-    old_challenge_id?: string;
     solution_code?: string;
     /**
      * Note:
@@ -961,7 +867,6 @@ export interface definitions {
     text_markdown?: string;
     title?: string;
     updated_at?: string;
-    old_id?: string;
     /** Programming language used for the challenge (e.g., python, java, c) */
     language: string;
     /**
@@ -971,6 +876,8 @@ export interface definitions {
      * This is a Primary Key.<pk/>
      */
     id: number;
+    /** Solution code */
+    solution_code?: string;
   };
   mcq_with_options: {
     /**
@@ -1041,16 +948,6 @@ export interface definitions {
     /** A user's role for role-based access control */
     roles?: string;
   };
-  /** A temporary table to test row-level security settings */
-  rls_test: {
-    /**
-     * Note:
-     * This is a Primary Key.<pk/>
-     */
-    id: number;
-    user_id?: string;
-    some_col?: number;
-  };
 }
 
 export interface parameters {
@@ -1084,7 +981,6 @@ export interface parameters {
   "rowFilter.coding_challenge_attempts.user_code": string;
   /** coding_challenge_solutions */
   "body.coding_challenge_solutions": definitions["coding_challenge_solutions"];
-  "rowFilter.coding_challenge_solutions.old_challenge_id": string;
   "rowFilter.coding_challenge_solutions.solution_code": string;
   "rowFilter.coding_challenge_solutions.challenge_id": string;
   /** coding_challenges */
@@ -1095,11 +991,12 @@ export interface parameters {
   "rowFilter.coding_challenges.text_markdown": string;
   "rowFilter.coding_challenges.title": string;
   "rowFilter.coding_challenges.updated_at": string;
-  "rowFilter.coding_challenges.old_id": string;
   /** Programming language used for the challenge (e.g., python, java, c) */
   "rowFilter.coding_challenges.language": string;
   /** Primary ID in int8 format for coding challenges */
   "rowFilter.coding_challenges.id": string;
+  /** Solution code */
+  "rowFilter.coding_challenges.solution_code": string;
   /** mcq_with_options */
   "body.mcq_with_options": definitions["mcq_with_options"];
   "rowFilter.mcq_with_options.id": string;
@@ -1142,11 +1039,6 @@ export interface parameters {
   "rowFilter.profiles.email": string;
   /** A user's role for role-based access control */
   "rowFilter.profiles.roles": string;
-  /** rls_test */
-  "body.rls_test": definitions["rls_test"];
-  "rowFilter.rls_test.id": string;
-  "rowFilter.rls_test.user_id": string;
-  "rowFilter.rls_test.some_col": string;
 }
 
 export interface operations {}
