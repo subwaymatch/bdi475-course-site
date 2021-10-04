@@ -105,7 +105,7 @@ export default function PythonChallengeListPage({ page }) {
 
     const newChallengeId = challengeData[0].id;
 
-    router.push(`/python-challenge/edit/${challengeData[0].id}`);
+    router.push(`/python-challenge/edit/${newChallengeId}`);
   };
 
   useEffect(() => {

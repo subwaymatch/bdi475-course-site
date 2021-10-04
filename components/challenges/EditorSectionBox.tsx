@@ -3,6 +3,7 @@ import styles from "./EditorSectionBox.module.scss";
 import clsx from "clsx";
 import { IconType } from "react-icons";
 import { ColorTheme } from "types/color-theme";
+import Tippy from "@tippyjs/react";
 
 interface IIconButtonProps {
   Icon: IconType;
@@ -39,22 +40,30 @@ export default function EditorSectionBox({
         <div className={styles.boxControls}>
           {iconButtons &&
             iconButtons.map((o) => (
-              <span
+              <Tippy
                 key={o.Icon.name}
-                className={clsx(styles.iconButton, {
-                  [styles.disabled]: o.disabled,
-                })}
-                onClick={o.disabled ? () => {} : o.onClick}
+                content={o.tooltip}
+                className="tippy"
+                placement="bottom"
+                theme="light"
+                disabled={!o.tooltip}
               >
-                <o.Icon className={styles.reactIcon} />
-              </span>
+                <span
+                  className={clsx(styles.iconButton, {
+                    [styles.disabled]: o.disabled,
+                  })}
+                  onClick={o.disabled ? () => {} : o.onClick}
+                >
+                  <o.Icon className={styles.reactIcon} />
+                </span>
+              </Tippy>
             ))}
         </div>
       </div>
 
       <div className={styles.sectionContentWrapper}>
         <div
-          className={clsx({
+          className={clsx(styles.sectionContent, {
             [styles.allowScroll]: allowScroll,
             [styles.preventOverflow]: !allowScroll,
           })}

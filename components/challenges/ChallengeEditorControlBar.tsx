@@ -1,20 +1,16 @@
 import Link from "next/link";
 import { MdDelete } from "react-icons/md";
-import { IoCopy, IoLink, IoPlay } from "react-icons/io5";
 import { AiFillSave } from "react-icons/ai";
 import { VscRepoForked } from "react-icons/vsc";
 import { Container, Row, Col } from "react-bootstrap";
 import { motion } from "framer-motion";
 import { smallClickableVariants } from "animations/clickableVariants";
-import { toast } from "react-toastify";
-import { CopyToClipboard } from "react-copy-to-clipboard";
 import _ from "lodash";
 import styles from "./ChallengeEditorControlBar.module.scss";
 import clsx from "clsx";
 
 interface IChallengeEditorControlBarProps {
   challengeId: number;
-  permalink: string;
   backUrl: string;
   title: string;
   setTitle: (v: string) => void;
@@ -25,7 +21,6 @@ interface IChallengeEditorControlBarProps {
 
 export default function ChallengeEditorControlBar({
   challengeId,
-  permalink,
   backUrl,
   title,
   setTitle,
@@ -69,16 +64,7 @@ export default function ChallengeEditorControlBar({
                 whileHover="hover"
                 whileTap="tap"
                 className={clsx(styles.button, styles.save)}
-                onClick={async (e) => {
-                  e.preventDefault();
-
-                  try {
-                    await save();
-                    toast.success("Save successful");
-                  } catch (err) {
-                    toast.error("Error saving challenge");
-                  }
-                }}
+                onClick={save}
               >
                 <AiFillSave className={styles.reactIcon} />
                 <span className={styles.label}>Save</span>
@@ -94,48 +80,6 @@ export default function ChallengeEditorControlBar({
                 <VscRepoForked className={styles.reactIcon} />
                 <span className={styles.label}>Clone</span>
               </motion.div>
-
-              <CopyToClipboard
-                text={challengeId}
-                onCopy={() =>
-                  toast.info(
-                    <div>
-                      Copied <code>{challengeId}</code> to clipboard
-                    </div>
-                  )
-                }
-              >
-                <motion.div
-                  variants={smallClickableVariants}
-                  whileHover="hover"
-                  whileTap="tap"
-                  className={clsx(styles.button, styles.copyId)}
-                  onClick={(e) => {
-                    e.preventDefault();
-                  }}
-                >
-                  <IoCopy className={styles.reactIcon} />
-                  <span className={styles.label}>Copy ID</span>
-                </motion.div>
-              </CopyToClipboard>
-
-              <CopyToClipboard
-                text={permalink}
-                onCopy={() => toast.info("Copied permalink to clipboard")}
-              >
-                <motion.div
-                  variants={smallClickableVariants}
-                  whileHover="hover"
-                  whileTap="tap"
-                  className={clsx(styles.button, styles.copyLink)}
-                  onClick={(e) => {
-                    e.preventDefault();
-                  }}
-                >
-                  <IoLink className={styles.reactIcon} />
-                  <span className={styles.label}>Copy Link</span>
-                </motion.div>
-              </CopyToClipboard>
 
               <motion.div
                 variants={smallClickableVariants}

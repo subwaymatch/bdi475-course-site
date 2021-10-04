@@ -9,6 +9,7 @@ import ChallengeEditorControlBar from "./ChallengeEditorControlBar";
 import InstructionText from "./InstructionText";
 import EditorSectionBox from "./EditorSectionBox";
 import { ColorTheme } from "types/color-theme";
+import MultipleChoiceOption from "./MultipleChoiceOption";
 
 interface IMultipleChoiceEditorProps {
   id: number;
@@ -84,8 +85,7 @@ export default function MultipleChoiceEditor({
     <div className={styles.challengeEditPage}>
       <ChallengeEditorControlBar
         challengeId={id}
-        permalink={`${window.location.origin}/python-challenge/view/${id}`}
-        backUrl="/python-challenge/list"
+        backUrl="/multiple-choice/list"
         onDelete={onDelete}
         clone={clone}
         title={workingQuestionData.title}
@@ -131,7 +131,19 @@ export default function MultipleChoiceEditor({
         </EditorSectionBox>
 
         <EditorSectionBox title="Options Preview" colorTheme={ColorTheme.Pink}>
-          <h2>Some header</h2>
+          <div className={styles.inner}>
+            {optionsData.map((o) => (
+              <MultipleChoiceOption
+                key={o.id}
+                isSelected={false}
+                disabled={true}
+                optionData={o}
+                answerData={null}
+                onClick={() => {}}
+                showResult={false}
+              />
+            ))}
+          </div>
         </EditorSectionBox>
       </div>
     </div>

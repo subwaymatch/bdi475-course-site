@@ -15,6 +15,7 @@ import EditorSectionBox from "./EditorSectionBox";
 import FormatterDiffModal from "components/FormatterDiffModal";
 import { ColorTheme } from "types/color-theme";
 import { removeSolutionPortion } from "utils/code-utils";
+import { toast } from "react-toastify";
 
 const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
@@ -28,17 +29,19 @@ enum CodeTypeEnum {
 interface IPythonChallengeEditorProps {
   id: number;
   challengeData: definitions["coding_challenges"];
-  onSave: (newChallengeData: definitions["coding_challenges"]) => void;
-  onDelete: () => void;
-  onClone: () => void;
+  save: (
+    newChallengeData: definitions["coding_challenges"]
+  ) => Promise<boolean>;
+  clone: () => Promise<void>;
+  deleteChallenge: () => Promise<void>;
 }
 
 export default function PythonChallengeEditor({
   id,
   challengeData,
-  onSave,
-  onDelete,
-  onClone,
+  save,
+  clone,
+  deleteChallenge,
 }: IPythonChallengeEditorProps) {
   const [workingChallengeData, setWorkingChallengeData] = useState<
     definitions["coding_challenges"]
@@ -58,24 +61,30 @@ export default function PythonChallengeEditor({
     setWorkingChallengeData(updatedChallengeData);
   };
 
-  const save = async () => {
-    await onSave(workingChallengeData);
+  const saveWorkingData = async () => {
+    const isSaveSuccessful = await save(workingChallengeData);
+
+    if (isSaveSuccessful) {
+      toast.success("Save successful");
+    } else {
+      toast.error("Error saving challenge, check console");
+    }
   };
 
-  const clone = async () => {
+  const handleClone = async () => {
     if (didChange) {
       if (
         window.confirm(
           "You must save your changes to clone this challenge. Save and continue?"
         )
       ) {
-        await save();
+        await save(workingChallengeData);
       } else {
         return;
       }
     }
 
-    await onClone();
+    await clone();
   };
 
   const displayCodeExecutionResult = (result: ICodeExecutionResult) => {
@@ -133,13 +142,12 @@ export default function PythonChallengeEditor({
     <div className={styles.challengeEditPage}>
       <ChallengeEditorControlBar
         challengeId={id}
-        permalink={`${window.location.origin}/python-challenge/view/${id}`}
         backUrl="/python-challenge/list"
-        onDelete={onDelete}
-        clone={clone}
+        onDelete={deleteChallenge}
+        clone={handleClone}
         title={workingChallengeData.title}
         setTitle={(val) => updateWorkingChallengeData("title", val)}
-        save={save}
+        save={saveWorkingData}
       />
 
       <div className={styles.boxesRow}>
@@ -169,7 +177,12 @@ export default function PythonChallengeEditor({
             {
               Icon: VscRunAll,
               onClick: runAndCheckStarterCode,
-              tooltip: "Run and check starter code",
+              tooltip: (
+                <>
+                  Run <span className="color-purple">and</span> check
+                  correctness
+                </>
+              ),
               disabled: !isRuntimeReady,
             },
           ]}
@@ -203,7 +216,12 @@ export default function PythonChallengeEditor({
             {
               Icon: VscRunAll,
               onClick: runAndCheckSolutionCode,
-              tooltip: "Run and check solution code",
+              tooltip: (
+                <>
+                  Run <span className="color-purple">and</span> check
+                  correctness
+                </>
+              ),
               disabled: !isRuntimeReady,
             },
             {
@@ -215,6 +233,7 @@ export default function PythonChallengeEditor({
 
                 updateWorkingChallengeData("starter_code", processedCode);
               },
+              tooltip: "Generate starter code",
             },
           ]}
         >
