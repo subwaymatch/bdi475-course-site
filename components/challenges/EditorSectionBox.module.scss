@@ -1,0 +1,50 @@
+@import "styles/variables";
+
+.sectionBox {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid $color-border-gray;
+
+  &:last-of-type {
+    border-right: none;
+  }
+
+  .boxHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid $color-border-gray;
+    padding: 0 0.6rem;
+    height: 38px;
+    font-size: 1rem;
+    line-height: 1.4;
+    font-weight: 500;
+
+    :global(.accent) {
+      margin-left: 0.5rem;
+    }
+
+    .iconButton {
+      line-height: 1;
+      display: inline-block;
+      cursor: pointer;
+      padding: 0.25rem;
+    }
+  }
+
+  .sectionContentWrapper {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    height: 0;
+
+    .inner {
+      padding: 0.5rem 1rem;
+    }
+
+    .preventOverflow {
+      height: 100%;
+      overflow: hidden;
+    }
+  }
+}

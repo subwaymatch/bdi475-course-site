@@ -12,7 +12,9 @@ import clsx from "clsx";
 import { ICodeExecutionResult } from "types/pyodide";
 import { definitions } from "types/database";
 import ChallengeEditorControlBar from "./ChallengeEditorControlBar";
+import EditorSectionBox from "./EditorSectionBox";
 import FormatterDiffModal from "components/FormatterDiffModal";
+import { ColorTheme } from "types/color-theme";
 
 const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
@@ -159,162 +161,107 @@ export default function PythonChallengeEditor({
       />
 
       <div className={styles.boxesRow}>
-        <div className={styles.sectionBox}>
-          <div className={styles.boxHeader}>
-            <div className={styles.boxTitle}>
-              <span className={styles.boxTitle}>Challenge Text Markdown</span>
-              <span className="accent purple" />
-            </div>
-          </div>
+        <EditorSectionBox
+          title="Challenge Text Markdown"
+          colorTheme={ColorTheme.Purple}
+        >
+          <textarea
+            className={styles.fullTextArea}
+            value={workingChallengeData.text_markdown}
+            onChange={(e) =>
+              updateWorkingChallengeData("text_markdown", e.target.value)
+            }
+          />
+        </EditorSectionBox>
 
-          <div className={styles.sectionContentWrapper}>
-            <div className={styles.preventOverflow}>
-              <textarea
-                className={styles.fullTextArea}
-                value={workingChallengeData.text_markdown}
-                onChange={(e) =>
-                  updateWorkingChallengeData("text_markdown", e.target.value)
-                }
-              />
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.sectionBox}>
-          <div className={styles.boxHeader}>
-            <div className={styles.boxTitle}>
-              <span>Starter</span>
-              <span className="accent blue" />
-            </div>
-
-            <div className={styles.boxControls}>
-              <span
-                className={clsx(styles.iconButton, {
-                  [styles.disabled]: !isRuntimeReady,
-                })}
-                onClick={runStarterCode}
-              >
-                <IoPlay className={styles.reactIcon} />
-              </span>
-
-              <span
-                className={clsx(styles.iconButton, {
-                  [styles.disabled]: !isRuntimeReady,
-                })}
-                onClick={runAndCheckStarterCode}
-              >
-                <VscRunAll className={styles.reactIcon} />
-              </span>
-            </div>
-          </div>
-
-          <div className={styles.sectionContentWrapper}>
-            <div className={styles.preventOverflow}>
-              <CodeEditor
-                editorValue={workingChallengeData.starter_code}
-                onChange={(v) => updateWorkingChallengeData("starter_code", v)}
-                onRun={runStarterCode}
-                onCheck={runAndCheckStarterCode}
-                language="python"
-              />
-            </div>
-          </div>
-        </div>
+        <EditorSectionBox
+          title="Starter"
+          colorTheme={ColorTheme.Blue}
+          iconButtons={[
+            {
+              Icon: IoPlay,
+              onClick: runStarterCode,
+              tooltip: "Run starter code",
+              disabled: !isRuntimeReady,
+            },
+            {
+              Icon: VscRunAll,
+              onClick: runAndCheckStarterCode,
+              tooltip: "Run and check starter code",
+              disabled: !isRuntimeReady,
+            },
+          ]}
+        >
+          <CodeEditor
+            editorValue={workingChallengeData.starter_code}
+            onChange={(v) => updateWorkingChallengeData("starter_code", v)}
+            onRun={runStarterCode}
+            onCheck={runAndCheckStarterCode}
+            language="python"
+          />
+        </EditorSectionBox>
       </div>
 
       <div className={styles.boxesRow}>
-        <div className={styles.sectionBox}>
-          <div className={styles.boxHeader}>
-            <div className={styles.boxTitle}>
-              <span>Solution</span>
-              <span className="accent green" />
-            </div>
+        <EditorSectionBox
+          title="Solution"
+          colorTheme={ColorTheme.Green}
+          iconButtons={[
+            {
+              Icon: MdFormatShapes,
+              onClick: () => setCodeTypeToFormat(CodeTypeEnum.SOLUTION_CODE),
+              tooltip: "Format code",
+            },
+            {
+              Icon: IoPlay,
+              onClick: runSolutionCode,
+              tooltip: "Run solution code",
+              disabled: !isRuntimeReady,
+            },
+            {
+              Icon: VscRunAll,
+              onClick: runAndCheckSolutionCode,
+              tooltip: "Run and check solution code",
+              disabled: !isRuntimeReady,
+            },
+            {
+              Icon: BsArrowUpRight,
+              onClick: () =>
+                updateWorkingChallengeData(
+                  "starter_code",
+                  workingSolutionData.solution_code
+                ),
+            },
+          ]}
+        >
+          <CodeEditor
+            editorValue={workingSolutionData.solution_code}
+            onChange={(v) => updateWorkingSolutionData("solution_code", v)}
+            onRun={runSolutionCode}
+            onCheck={runAndCheckSolutionCode}
+            language="python"
+          />
+        </EditorSectionBox>
 
-            <div className={styles.boxControls}>
-              <span
-                className={styles.iconButton}
-                onClick={() => {
-                  setCodeTypeToFormat(CodeTypeEnum.SOLUTION_CODE);
-                }}
-              >
-                <MdFormatShapes className={styles.reactIcon} />
-              </span>
-
-              <span
-                className={clsx(styles.iconButton, {
-                  [styles.disabled]: !isRuntimeReady,
-                })}
-                onClick={runSolutionCode}
-              >
-                <IoPlay className={styles.reactIcon} />
-              </span>
-
-              <span
-                className={clsx(styles.iconButton, {
-                  [styles.disabled]: !isRuntimeReady,
-                })}
-                onClick={runAndCheckSolutionCode}
-              >
-                <VscRunAll className={styles.reactIcon} />
-              </span>
-
-              <span
-                className={styles.iconButton}
-                onClick={() => {
-                  updateWorkingChallengeData(
-                    "starter_code",
-                    workingSolutionData.solution_code
-                  );
-                }}
-              >
-                <BsArrowUpRight className={styles.reactIcon} />
-              </span>
-            </div>
-          </div>
-
-          <div className={styles.sectionContentWrapper}>
-            <div className={styles.preventOverflow}>
-              <CodeEditor
-                editorValue={workingSolutionData.solution_code}
-                onChange={(v) => updateWorkingSolutionData("solution_code", v)}
-                onRun={runSolutionCode}
-                onCheck={runAndCheckSolutionCode}
-                language="python"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.sectionBox}>
-          <div className={styles.boxHeader}>
-            <div className={styles.boxTitle}>
-              <span>Test Cases</span>
-              <span className="accent pink" />
-            </div>
-
-            <div className={styles.boxControls}>
-              <span
-                className={styles.iconButton}
-                onClick={() => {
-                  setCodeTypeToFormat(CodeTypeEnum.SOLUTION_AND_TEST_CODE);
-                }}
-              >
-                <MdFormatShapes className={styles.reactIcon} />
-              </span>
-            </div>
-          </div>
-
-          <div className={styles.sectionContentWrapper}>
-            <div className={styles.preventOverflow}>
-              <CodeEditor
-                editorValue={workingChallengeData.test_code}
-                onChange={(v) => updateWorkingChallengeData("test_code", v)}
-                onRun={() => {}}
-                language="python"
-              />
-            </div>
-          </div>
-        </div>
+        <EditorSectionBox
+          title="Test Cases"
+          colorTheme={ColorTheme.Pink}
+          iconButtons={[
+            {
+              Icon: MdFormatShapes,
+              onClick: () =>
+                setCodeTypeToFormat(CodeTypeEnum.SOLUTION_AND_TEST_CODE),
+              tooltip: "Format code",
+            },
+          ]}
+        >
+          <CodeEditor
+            editorValue={workingChallengeData.test_code}
+            onChange={(v) => updateWorkingChallengeData("test_code", v)}
+            onRun={() => {}}
+            language="python"
+          />
+        </EditorSectionBox>
       </div>
 
       <FormatterDiffModal
@@ -340,8 +287,7 @@ export default function PythonChallengeEditor({
 
             const solutionFormatResult = await response.json();
             const formattedSolutionCode = solutionFormatResult.formatted_code;
-            // TODO: Handle formatting of both solution and test code
-            // DO NOTHING
+
             updateWorkingChallengeData(
               "test_code",
               formattedCode.slice(formattedSolutionCode.length).trimStart()
