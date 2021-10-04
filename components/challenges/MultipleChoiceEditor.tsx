@@ -115,7 +115,7 @@ export default function MultipleChoiceEditor({
         <EditorSectionBox
           title="Options Markdown"
           colorTheme={ColorTheme.Green}
-          allowScrolling
+          allowScroll
         >
           {workingOptionsData?.map((o) => {
             return (

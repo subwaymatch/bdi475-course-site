@@ -9,6 +9,7 @@ interface IIconButtonProps {
   Icon: IconType;
   tooltip?: React.ReactNode;
   disabled?: boolean;
+  allowScroll?: boolean;
   onClick: () => void;
 }
 
