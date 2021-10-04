@@ -10,6 +10,7 @@ import InstructionText from "./InstructionText";
 import EditorSectionBox from "./EditorSectionBox";
 import { ColorTheme } from "types/color-theme";
 import MultipleChoiceOption from "./MultipleChoiceOption";
+import { TextareaAutosize } from "@material-ui/core";
 
 interface IMultipleChoiceEditorProps {
   id: number;
@@ -40,6 +41,10 @@ export default function MultipleChoiceEditor({
   const didChange =
     !_.isEqual(questionData, workingQuestionData) ||
     !_.isEqual(optionsData, workingOptionsData);
+
+  // New options (multiple_choice_options entry) that have not been saved to the database yet will be marked by negative IDs (e.g., -1, -2, -3, ...)
+  let newOptionIdCounter = -1;
+  let idsToDelete = [];
 
   const updateWorkingQuestionData = (key, val) => {
     const updatedQuestionData = produce(workingQuestionData, (draft) => {
@@ -99,7 +104,7 @@ export default function MultipleChoiceEditor({
           colorTheme={ColorTheme.Purple}
         >
           <textarea
-            className={styles.fullTextArea}
+            className={styles.fullTextarea}
             value={workingQuestionData.text_markdown}
             onChange={(e) =>
               updateWorkingQuestionData("text_markdown", e.target.value)
@@ -110,8 +115,27 @@ export default function MultipleChoiceEditor({
         <EditorSectionBox
           title="Options Markdown"
           colorTheme={ColorTheme.Green}
+          allowScrolling
         >
-          <h2>Some header</h2>
+          {workingOptionsData?.map((o) => {
+            return (
+              <div className={styles.optionEditItem} key={o.id}>
+                <TextareaAutosize
+                  className={styles.optionTextarea}
+                  value={o.text_markdown}
+                  onChange={(e) =>
+                    updateWorkingOptionsData(
+                      o.id,
+                      "text_markdown",
+                      e.target.value
+                    )
+                  }
+                />
+
+                <div className={styles.controls}>D</div>
+              </div>
+            );
+          })}
         </EditorSectionBox>
       </div>
 
@@ -132,7 +156,7 @@ export default function MultipleChoiceEditor({
 
         <EditorSectionBox title="Options Preview" colorTheme={ColorTheme.Pink}>
           <div className={styles.inner}>
-            {optionsData.map((o) => (
+            {workingOptionsData?.map((o) => (
               <MultipleChoiceOption
                 key={o.id}
                 isSelected={false}

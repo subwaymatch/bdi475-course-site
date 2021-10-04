@@ -382,10 +382,10 @@ export interface paths {
           is_correct?: parameters["rowFilter.multiple_choice_options.is_correct"];
           /** Explanation shown to a learner after submission (pertaining to each option) */
           explanation?: parameters["rowFilter.multiple_choice_options.explanation"];
-          /** Filtering Columns */
-          select?: parameters["select"];
           /** Ordering */
           order?: parameters["order"];
+          /** Filtering Columns */
+          select?: parameters["select"];
           /** Limiting and Pagination */
           offset?: parameters["offset"];
           /** Limiting and Pagination */
@@ -438,6 +438,8 @@ export interface paths {
           is_correct?: parameters["rowFilter.multiple_choice_options.is_correct"];
           /** Explanation shown to a learner after submission (pertaining to each option) */
           explanation?: parameters["rowFilter.multiple_choice_options.explanation"];
+          /** Used to determine the display order */
+          order?: parameters["rowFilter.multiple_choice_options.order"];
         };
         header: {
           /** Preference */
@@ -458,6 +460,8 @@ export interface paths {
           is_correct?: parameters["rowFilter.multiple_choice_options.is_correct"];
           /** Explanation shown to a learner after submission (pertaining to each option) */
           explanation?: parameters["rowFilter.multiple_choice_options.explanation"];
+          /** Used to determine the display order */
+          order?: parameters["rowFilter.multiple_choice_options.order"];
         };
         body: {
           /** multiple_choice_options */
@@ -821,6 +825,8 @@ export interface definitions {
     is_correct: boolean;
     /** Explanation shown to a learner after submission (pertaining to each option) */
     explanation?: string;
+    /** Used to determine the display order */
+    order: number;
   };
   /** Multiple choice questions */
   multiple_choice_questions: {
@@ -918,6 +924,8 @@ export interface parameters {
   "rowFilter.multiple_choice_options.is_correct": string;
   /** Explanation shown to a learner after submission (pertaining to each option) */
   "rowFilter.multiple_choice_options.explanation": string;
+  /** Used to determine the display order */
+  "rowFilter.multiple_choice_options.order": string;
   /** multiple_choice_questions */
   "body.multiple_choice_questions": definitions["multiple_choice_questions"];
   "rowFilter.multiple_choice_questions.id": string;

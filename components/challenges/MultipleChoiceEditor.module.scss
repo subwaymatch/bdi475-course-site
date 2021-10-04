@@ -1,2 +1,27 @@
 @import "styles/variables";
 @import "./full-edit-page.common";
+
+.optionEditItem {
+  display: flex;
+  padding: 0.2rem;
+
+  .optionTextarea {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0.3rem 0.6rem;
+    font-family: $font-monospace;
+    font-size: 1.1rem;
+    line-height: 1.45;
+    letter-spacing: -0.02rem;
+    border: none;
+    outline: none;
+    flex: 1;
+    border: 1px solid $color-border-gray;
+
+    &:focus,
+    &:active {
+      border-color: $color-blue;
+    }
+  }
+}

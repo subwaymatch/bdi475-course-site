@@ -156,7 +156,7 @@ export default function PythonChallengeEditor({
           colorTheme={ColorTheme.Purple}
         >
           <textarea
-            className={styles.fullTextArea}
+            className={styles.fullTextarea}
             value={workingChallengeData.text_markdown}
             onChange={(e) =>
               updateWorkingChallengeData("text_markdown", e.target.value)
