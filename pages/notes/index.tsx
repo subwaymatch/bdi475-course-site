@@ -188,9 +188,9 @@ export default function NotesPage() {
               title="Pandas Filtering and Sorting"
               colorTheme={ColorTheme.Purple}
             />
-            {/*
+
             <NoteItem
-              href="https://bdi475-jupyter-notebooks.netlify.app/l14-working-with-pandas-solution"
+              href="https://canvas.illinois.edu/courses/14860/assignments/332382"
               thumbnail={
                 <Image
                   src="/images/notes/l11-pandas.png"
@@ -199,11 +199,11 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2021-03-15"
-              title="Pandas Sort, Rename/Drop/Select Columns"
+              date="2021-10-05"
+              title="Pandas Column Operations and Missing Values"
               colorTheme={ColorTheme.Purple}
             />
-
+            {/*
             <NoteItem
               href="https://bdi475-jupyter-notebooks.netlify.app/l15-datetime-groupby-stats-solution"
               thumbnail={

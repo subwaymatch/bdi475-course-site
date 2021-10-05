@@ -77,6 +77,15 @@ export default function AssignmentsPage() {
                   link="https://canvas.illinois.edu/courses/14860/assignments/330304"
                   colorTheme={ColorTheme.Purple}
                 />
+
+                <AssignmentItem
+                  name="Exercise 5"
+                  dueDate={dayjs("2021-10-06").tz().format("ll")}
+                  pointsAvailable={20}
+                  status={AssignmentStatus.Available}
+                  link="https://canvas.illinois.edu/courses/14860/assignments/332380"
+                  colorTheme={ColorTheme.Purple}
+                />
               </div>
             </Col>
           </Row>
@@ -122,6 +131,15 @@ export default function AssignmentsPage() {
                   pointsAvailable={25}
                   status={AssignmentStatus.Available}
                   link="/assignments/quiz-02"
+                  colorTheme={ColorTheme.Green}
+                />
+
+                <AssignmentItem
+                  name="Quiz 3"
+                  dueDate={dayjs("2021-10-07").tz().format("ll")}
+                  pointsAvailable={25}
+                  status={AssignmentStatus.Available}
+                  link="https://canvas.illinois.edu/courses/14860/assignments/332255"
                   colorTheme={ColorTheme.Green}
                 />
               </div>
