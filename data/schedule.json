@@ -106,13 +106,8 @@
   },
   {
     "date": "2021-10-06",
-    "type": "CASE_STUDY",
-    "text": "Problem Set 2 - Pandas"
-  },
-  {
-    "date": "2021-10-07",
-    "type": "QUIZ",
-    "text": "Quiz 3"
+    "type": "EXERCISE",
+    "text": "Exercise 6"
   },
   {
     "date": "2021-10-07",
@@ -121,8 +116,8 @@
   },
   {
     "date": "2021-10-08",
-    "type": "EXERCISE",
-    "text": "Exercise 6"
+    "type": "QUIZ",
+    "text": "Quiz 3"
   },
   {
     "date": "2021-10-12",
@@ -130,14 +125,14 @@
     "text": ["Add new columns", "Rename/reorder columns", "Pandas Indices"]
   },
   {
+    "date": "2021-10-13",
+    "type": "CASE_STUDY",
+    "text": "Problem Set 2 - Pandas"
+  },
+  {
     "date": "2021-10-14",
     "type": "LECTURE",
     "text": ["Datetime Formats", "Aggregating Data", "Merging Data"]
-  },
-  {
-    "date": "2021-10-15",
-    "type": "EXERCISE",
-    "text": "Exercise 7"
   },
   {
     "date": "2021-10-18",
@@ -152,12 +147,17 @@
   {
     "date": "2021-10-20",
     "type": "EXERCISE",
-    "text": "Exercise 8"
+    "text": "Exercise 7"
   },
   {
     "date": "2021-10-21",
     "type": "LECTURE",
     "text": ["Intro to SQL", "Create Table", "Basic Querying"]
+  },
+  {
+    "date": "2021-10-22",
+    "type": "EXERCISE",
+    "text": "Exercise 8"
   },
   {
     "date": "2021-10-26",
