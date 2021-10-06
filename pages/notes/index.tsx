@@ -175,7 +175,7 @@ export default function NotesPage() {
             />
 
             <NoteItem
-              href="https://canvas.illinois.edu/courses/14860/assignments/330029"
+              href="https://nbviewer.jupyter.org/github/bdi475/notebooks/blob/e5fb4db0e1b2b75fbbe1bc61817648bd9629c675/L12-pandas-filtering-sorting-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/l11-pandas.png"
