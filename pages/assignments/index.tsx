@@ -136,7 +136,7 @@ export default function AssignmentsPage() {
 
                 <AssignmentItem
                   name="Quiz 3"
-                  dueDate={dayjs("2021-10-07").tz().format("ll")}
+                  dueDate={dayjs("2021-10-08").tz().format("ll")}
                   pointsAvailable={25}
                   status={AssignmentStatus.Available}
                   link="https://canvas.illinois.edu/courses/14860/assignments/332255"
