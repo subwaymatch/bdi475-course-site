@@ -190,7 +190,7 @@ export default function NotesPage() {
             />
 
             <NoteItem
-              href="https://canvas.illinois.edu/courses/14860/assignments/332382"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/6257679c27ed493fe92cad330f61beeb5139222d/L13-pandas-columns-missing-values-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/l11-pandas.png"
@@ -203,9 +203,9 @@ export default function NotesPage() {
               title="Pandas Column Operations and Missing Values"
               colorTheme={ColorTheme.Purple}
             />
-            {/*
+
             <NoteItem
-              href="https://bdi475-jupyter-notebooks.netlify.app/l15-datetime-groupby-stats-solution"
+              href="https://canvas.illinois.edu/courses/14860/assignments/333219"
               thumbnail={
                 <Image
                   src="/images/notes/l11-pandas.png"
@@ -214,10 +214,10 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2021-03-17"
-              title="Pandas Datetime, Grouping and Aggregating Data"
+              date="2021-10-07"
+              title="Pandas Datetime, Grouping, Aggregating, Merging"
               colorTheme={ColorTheme.Purple}
-            /> */}
+            />
           </Row>
           {/* 
           <Row>

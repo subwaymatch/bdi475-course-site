@@ -102,7 +102,7 @@
   {
     "date": "2021-10-05",
     "type": "LECTURE",
-    "text": ["Pandas Data Types", "Missing Values"]
+    "text": ["Column Operations", "Missing Values"]
   },
   {
     "date": "2021-10-06",
@@ -112,7 +112,7 @@
   {
     "date": "2021-10-07",
     "type": "LECTURE",
-    "text": ["Filter Data", "Sort Data", "Read/update a Cell"]
+    "text": ["Datetime", "Aggregation", "Merge"]
   },
   {
     "date": "2021-10-08",
