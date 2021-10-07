@@ -1,4 +1,4 @@
-import MultipleChoiceEditor from "components/challenges/MultipleChoiceEditor";
+import MultipleChoiceEditor from "components/challenges/editor/MultipleChoiceEditor";
 import Layout from "components/Layout";
 import { useRouter } from "next/router";
 import { Container, Row, Col } from "react-bootstrap";

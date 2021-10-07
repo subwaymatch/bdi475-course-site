@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import Link from "next/link";
-import PythonChallenge from "components/challenges/PythonChallenge";
+import PythonChallenge from "components/challenges/view/PythonChallenge";
 import useSupabaseAuth from "hooks/useSupabaseAuth";
 import { Row, Col } from "react-bootstrap";
 import { BsCheckCircle } from "react-icons/bs";

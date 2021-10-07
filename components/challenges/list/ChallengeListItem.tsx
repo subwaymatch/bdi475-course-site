@@ -6,7 +6,7 @@ import { clickableVariants } from "animations/clickableVariants";
 import { toast } from "react-toastify";
 import { FiExternalLink } from "react-icons/fi";
 import { IoCopyOutline } from "react-icons/io5";
-import { RiEditBoxLine, RiDeleteBin6Line } from "react-icons/ri";
+import { RiDeleteBin6Line } from "react-icons/ri";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import clsx from "clsx";
 import styles from "./ChallengeListItem.module.scss";

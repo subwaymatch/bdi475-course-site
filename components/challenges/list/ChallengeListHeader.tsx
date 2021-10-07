@@ -3,7 +3,6 @@ import { Row, Col } from "react-bootstrap";
 import styles from "./ChallengeListHeader.module.scss";
 import Button from "components/ui/Button";
 import { ColorTheme } from "types/color-theme";
-import { VscAdd } from "react-icons/vsc";
 
 interface IChallengeListHeaderProps {
   create: () => void;

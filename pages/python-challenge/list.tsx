@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Layout from "components/Layout";
 import { Col, Container, Row } from "react-bootstrap";
-import ChallengeList from "components/challenge-list/ChallengeList";
+import ChallengeList from "components/challenges/list/ChallengeList";
 import ReactPaginate from "react-paginate";
-import { IChallengeListItemProps } from "components/challenge-list/ChallengeListItem";
+import { IChallengeListItemProps } from "components/challenges/list/ChallengeListItem";
 import styles from "styles/pages/python-challenge/list.module.scss";
 import { supabaseClient } from "lib/supabase/supabaseClient";
 import { toast } from "react-toastify";
 import { definitions } from "types/database";
 import { useRouter } from "next/router";
-import ChallengeListHeader from "components/challenge-list/ChallengeListHeader";
+import ChallengeListHeader from "components/challenges/list/ChallengeListHeader";
 
 export default function PythonChallengeListPage({ page }) {
   const initialPage = Number(page);

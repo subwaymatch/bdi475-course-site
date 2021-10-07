@@ -3,13 +3,12 @@ import { IoPlay } from "react-icons/io5";
 import produce from "immer";
 import _ from "lodash";
 import styles from "./MultipleChoiceEditor.module.scss";
-import clsx from "clsx";
 import { definitions } from "types/database";
 import ChallengeEditorControlBar from "./ChallengeEditorControlBar";
-import InstructionText from "./InstructionText";
+import InstructionText from "../view/InstructionText";
 import EditorSectionBox from "./EditorSectionBox";
 import { ColorTheme } from "types/color-theme";
-import MultipleChoiceOption from "./MultipleChoiceOption";
+import MultipleChoiceOption from "../view/MultipleChoiceOption";
 import { TextareaAutosize } from "@material-ui/core";
 
 interface IMultipleChoiceEditorProps {

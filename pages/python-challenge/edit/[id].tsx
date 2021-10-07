@@ -1,4 +1,4 @@
-import PythonChallengeEditor from "components/challenges/PythonChallengeEditor";
+import PythonChallengeEditor from "components/challenges/editor/PythonChallengeEditor";
 import Layout from "components/Layout";
 import { useRouter } from "next/router";
 import { Container, Row, Col } from "react-bootstrap";

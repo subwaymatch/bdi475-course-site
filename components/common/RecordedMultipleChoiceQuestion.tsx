@@ -8,7 +8,7 @@ import Tippy from "@tippyjs/react";
 import clsx from "clsx";
 import styles from "./RecordedChallenge.module.scss";
 import useMultipleChoiceQuestion from "hooks/useMultipleChoiceQuestion";
-import MultipleChoiceQuestion from "components/challenges/MultipleChoiceQuestion";
+import MultipleChoiceQuestion from "components/challenges/view/MultipleChoiceQuestion";
 import { QueryStatusEnum } from "types";
 import { definitions } from "types/database";
 
