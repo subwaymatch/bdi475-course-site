@@ -6,7 +6,8 @@ import { VscRunAll } from "react-icons/vsc";
 import { BsArrowUpRight } from "react-icons/bs";
 import { MdFormatShapes } from "react-icons/md";
 import produce from "immer";
-import _ from "lodash";
+import cloneDeep from "lodash/cloneDeep";
+import isEqual from "lodash/isEqual";
 import styles from "./PythonChallengeEditor.module.scss";
 import { ICodeExecutionResult } from "types/pyodide";
 import { definitions } from "types/database";
@@ -45,13 +46,13 @@ export default function PythonChallengeEditor({
 }: IPythonChallengeEditorProps) {
   const [workingChallengeData, setWorkingChallengeData] = useState<
     definitions["coding_challenges"]
-  >(_.cloneDeep(challengeData));
+  >(cloneDeep(challengeData));
   const [codeTypeToFormat, setCodeTypeToFormat] = useState<CodeTypeEnum | null>(
     null
   );
   const { isRuntimeReady, runCode, runAndCheckCode } = usePythonRuntime();
 
-  const didChange = !_.isEqual(challengeData, workingChallengeData);
+  const didChange = !isEqual(challengeData, workingChallengeData);
 
   const updateWorkingChallengeData = (key, val) => {
     const updatedChallengeData = produce(workingChallengeData, (draft) => {

@@ -1,93 +1,100 @@
 import React, { useState } from "react";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import {
+  DndContext,
+  closestCenter,
+  KeyboardSensor,
+  PointerSensor,
+  useSensor,
+  useSensors,
+} from "@dnd-kit/core";
+import {
+  arrayMove,
+  SortableContext,
+  sortableKeyboardCoordinates,
+  verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
+import MultipleChoiceOptionItemEditor from "./MultipleChoiceOptionItemEditor";
+import { definitions } from "types/database";
+import cloneDeep from "lodash/cloneDeep";
+import sortBy from "lodash/sortBy";
 
-// fake data generator
-const initialItems = [1, 2, 3, 4, 5].map((num) => ({
-  id: `item-${num}`,
-  content: `item ${num}`,
-}));
+export interface IMultipleChoiceOptionsEditorProps {
+  optionsData: Array<definitions["multiple_choice_options"]>;
+  setOptionsData: (
+    options: Array<definitions["multiple_choice_options"]>
+  ) => void;
+}
 
-// a little function to help us with reordering the result
-const reorder = (list, startIndex, endIndex) => {
-  const result = Array.from(list);
-  const [removed] = result.splice(startIndex, 1);
-  result.splice(endIndex, 0, removed);
+export interface IOptionItem {
+  id: string;
+  optionData: definitions["multiple_choice_options"];
+}
 
-  return result;
-};
+export default function MultipleChoiceOptionsEditor({
+  optionsData,
+  setOptionsData,
+}: IMultipleChoiceOptionsEditorProps) {
+  const sortedOptionsData: Array<definitions["multiple_choice_options"]> =
+    sortBy(optionsData, "order");
+  const items: Array<IOptionItem> = sortedOptionsData.map((o) => ({
+    id: o.id.toString(),
+    optionData: o,
+  }));
 
-const grid = 8;
+  const sensors = useSensors(
+    useSensor(PointerSensor),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    })
+  );
 
-const getItemStyle = (isDragging, draggableStyle) => ({
-  // some basic styles to make the items look a bit nicer
-  userSelect: "none",
-  padding: grid * 2,
-  margin: `0 0 ${grid}px 0`,
+  function updateOptionsData(optionId, key, val) {
+    const newOptions = cloneDeep(optionsData).map((o) => {
+      if (o.id === optionId) {
+        o[key] = val;
+      }
 
-  // change background colour if dragging
-  background: isDragging ? "lightgreen" : "grey",
+      return o;
+    });
 
-  // styles we need to apply on draggables
-  ...draggableStyle,
-});
-
-const getListStyle = (isDraggingOver) => ({
-  background: isDraggingOver ? "lightblue" : "lightgrey",
-  padding: grid,
-  width: 250,
-});
-
-export default function MultipleChoiceOptionsEditor() {
-  const [items, setItems] = useState(initialItems);
-
-  function onDragEnd(result) {
-    // dropped outside the list
-    if (!result.destination) {
-      return;
-    }
-
-    const reorderedItems = reorder(
-      items,
-      result.source.index,
-      result.destination.index
-    );
-
-    setItems(reorderedItems as any);
+    setOptionsData(newOptions);
   }
 
-  // Normally you would want to split things out into separate components.
-  // But in this example everything is just done in one place for simplicity
+  function handleDragEnd(event) {
+    const { active, over } = event;
+
+    if (active.id !== over.id) {
+      const oldIndex = items.findIndex((o) => active.id === o.id);
+      const newIndex = items.findIndex((o) => over.id === o.id);
+
+      const newArray = arrayMove(items, oldIndex, newIndex);
+      newArray.forEach((o, index) => {
+        o.optionData = cloneDeep(o.optionData);
+        o.optionData.order = index;
+      });
+
+      setOptionsData(newArray.map((x) => x.optionData));
+    }
+  }
 
   return (
-    <DragDropContext onDragEnd={onDragEnd}>
-      <Droppable droppableId="droppable">
-        {(provided, snapshot) => (
-          <div
-            {...provided.droppableProps}
-            ref={provided.innerRef}
-            style={getListStyle(snapshot.isDraggingOver)}
-          >
-            {items.map((item, index) => (
-              <Draggable key={item.id} draggableId={item.id} index={index}>
-                {(provided, snapshot) => (
-                  <div
-                    ref={provided.innerRef}
-                    {...provided.draggableProps}
-                    {...provided.dragHandleProps}
-                    style={getItemStyle(
-                      snapshot.isDragging,
-                      provided.draggableProps.style
-                    )}
-                  >
-                    {item.content}
-                  </div>
-                )}
-              </Draggable>
-            ))}
-            {provided.placeholder}
-          </div>
-        )}
-      </Droppable>
-    </DragDropContext>
+    <DndContext
+      sensors={sensors}
+      collisionDetection={closestCenter}
+      onDragEnd={handleDragEnd}
+    >
+      <SortableContext items={items} strategy={verticalListSortingStrategy}>
+        {items.map((item) => (
+          <MultipleChoiceOptionItemEditor
+            key={item.id}
+            id={item.id}
+            optionData={item.optionData}
+            updateTextMarkdown={(v) => {
+              updateOptionsData(item.optionData.id, "text_markdown", v);
+            }}
+          />
+        ))}
+      </SortableContext>
+    </DndContext>
   );
 }

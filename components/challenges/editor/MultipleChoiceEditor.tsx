@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { IoPlay } from "react-icons/io5";
 import produce from "immer";
-import _ from "lodash";
+import cloneDeep from "lodash/cloneDeep";
+import isEqual from "lodash/isEqual";
 import styles from "./MultipleChoiceEditor.module.scss";
 import { definitions } from "types/database";
 import ChallengeEditorControlBar from "./ChallengeEditorControlBar";
@@ -9,7 +9,7 @@ import InstructionText from "../view/InstructionText";
 import EditorSectionBox from "./EditorSectionBox";
 import { ColorTheme } from "types/color-theme";
 import MultipleChoiceOption from "../view/MultipleChoiceOption";
-import { TextareaAutosize } from "@material-ui/core";
+import MultipleChoiceOptionsEditor from "./MultipleChoiceOptionsEditor";
 
 interface IMultipleChoiceEditorProps {
   id: number;
@@ -33,13 +33,13 @@ export default function MultipleChoiceEditor({
 }: IMultipleChoiceEditorProps) {
   const [workingQuestionData, setWorkingQuestionData] = useState<
     definitions["multiple_choice_questions"]
-  >(_.cloneDeep(questionData));
+  >(cloneDeep(questionData));
   const [workingOptionsData, setWorkingOptionsData] = useState<
     definitions["multiple_choice_options"][]
-  >(_.cloneDeep(optionsData));
+  >(cloneDeep(optionsData));
   const didChange =
-    !_.isEqual(questionData, workingQuestionData) ||
-    !_.isEqual(optionsData, workingOptionsData);
+    !isEqual(questionData, workingQuestionData) ||
+    !isEqual(optionsData, workingOptionsData);
 
   // New options (multiple_choice_options entry) that have not been saved to the database yet will be marked by negative IDs (e.g., -1, -2, -3, ...)
   let newOptionIdCounter = -1;
@@ -51,18 +51,6 @@ export default function MultipleChoiceEditor({
     });
 
     setWorkingQuestionData(updatedQuestionData);
-  };
-
-  const updateWorkingOptionsData = (optionId, key, val) => {
-    const newOptions = _.cloneDeep(workingOptionsData).map((o) => {
-      if (o.id === optionId) {
-        o[key] = val;
-      }
-
-      return o;
-    });
-
-    setWorkingOptionsData(newOptions);
   };
 
   const save = async () => {
@@ -116,25 +104,10 @@ export default function MultipleChoiceEditor({
           colorTheme={ColorTheme.Green}
           allowScroll
         >
-          {workingOptionsData?.map((o) => {
-            return (
-              <div className={styles.optionEditItem} key={o.id}>
-                <TextareaAutosize
-                  className={styles.optionTextarea}
-                  value={o.text_markdown}
-                  onChange={(e) =>
-                    updateWorkingOptionsData(
-                      o.id,
-                      "text_markdown",
-                      e.target.value
-                    )
-                  }
-                />
-
-                <div className={styles.controls}>D</div>
-              </div>
-            );
-          })}
+          <MultipleChoiceOptionsEditor
+            optionsData={workingOptionsData}
+            setOptionsData={setWorkingOptionsData}
+          />
         </EditorSectionBox>
       </div>
 
