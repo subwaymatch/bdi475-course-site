@@ -26,8 +26,8 @@ export default function MultipleChoiceQuestion({
   questionData,
   answersData,
   showResult,
-  onReset,
   onSubmit,
+  onReset,
 }: IMultipleChoiceQuestionProps) {
   const { user } = useSupabaseAuth();
   const [userSelections, setUserSelections] = useState<number[]>([]);

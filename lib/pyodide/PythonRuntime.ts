@@ -1,4 +1,4 @@
-import _ from "lodash";
+import omit from "lodash/omit";
 import {
   ICodeExecutionResult,
   PyodideRequest,
@@ -55,7 +55,7 @@ class PythonRuntime {
 
       this.pyodideWorker.onmessage = (e) => {
         if (e.data.type === PyodideResponse.RunCodeComplete) {
-          resolve(_.omit(e.data, "type"));
+          resolve(omit(e.data, "type"));
         }
       };
 

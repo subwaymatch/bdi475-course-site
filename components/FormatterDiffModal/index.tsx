@@ -3,7 +3,7 @@ import { DiffEditor } from "@monaco-editor/react";
 import ReactModal from "react-modal";
 import styles from "./FormatterDiffModal.module.scss";
 import customTheme from "../CodeEditor/custom-theme.json";
-import _ from "lodash";
+import cloneDeep from "lodash/cloneDeep";
 import clsx from "clsx";
 import { Row, Col } from "react-bootstrap";
 import { BiShapeTriangle } from "react-icons/bi";
@@ -71,7 +71,7 @@ export default function FormatterDiffModal({
 
   const handleAccept = async () => {
     if (status === CodeFormatStatusEnum.SUCCESS) {
-      await onAccept(_.cloneDeep(formattedCode));
+      await onAccept(cloneDeep(formattedCode));
     } else {
       onClose();
     }

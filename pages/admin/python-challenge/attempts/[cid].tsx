@@ -17,7 +17,7 @@ import { supabaseClient } from "lib/supabase/supabaseClient";
 import { definitions } from "types/database";
 import useSupabaseAuth from "hooks/useSupabaseAuth";
 import { getChallengeIdAsNumberFromQuery } from "utils/challenge";
-import _ from "lodash";
+import orderBy from "lodash/orderBy";
 
 dayjs.extend(relativeTime);
 
@@ -91,7 +91,7 @@ export default function CodingChallengeAttemptsPage() {
         // Simultaneous broadcast of attempts from multiple users do not necessarily arrive sequentially
         // Sort the attempts manually before setting state
         setAttempts((attempts) => {
-          const newAttempts = _.orderBy(
+          const newAttempts = orderBy(
             [newAttempt, ...attempts],
             ["submitted_at"],
             ["desc"]

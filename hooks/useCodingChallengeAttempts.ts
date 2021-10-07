@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import useSupabaseAuth from "hooks/useSupabaseAuth";
 import { supabaseClient } from "lib/supabase/supabaseClient";
 import { definitions } from "types/database";
-import _ from "lodash";
+import orderBy from "lodash/orderBy";
 
 export default function useCodingChallengeAttempts(challengeId: number) {
   const { user } = useSupabaseAuth();
@@ -52,7 +52,7 @@ export default function useCodingChallengeAttempts(challengeId: number) {
 
         if (newData.challenge_id === challengeId) {
           setAttempts((previousAttempts) => {
-            const updatedAttempts = _.orderBy(
+            const updatedAttempts = orderBy(
               [newData, ...previousAttempts],
               ["submitted_at"],
               ["desc"]

@@ -1,6 +1,6 @@
 import React from "react";
 import hljs from "highlight.js";
-import _ from "lodash";
+import lodashTrim from "lodash/trim";
 
 interface HighlighterProps {
   content: string;
@@ -14,7 +14,7 @@ export default function Highlighter({
   trim = true,
 }: HighlighterProps): JSX.Element {
   if (trim) {
-    content = _.trim(content, "\n");
+    content = lodashTrim(content, "\n");
   }
 
   const highlighted = language

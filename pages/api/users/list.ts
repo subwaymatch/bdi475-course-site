@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { firebaseAdmin } from "firebase/firebaseAdmin";
-import _ from "lodash";
+import keyBy from "lodash/keyBy";
 
 export default async function getAllUsers(
   req: NextApiRequest,
@@ -16,7 +16,7 @@ export default async function getAllUsers(
       email: u.email,
     }));
 
-    res.json(_.keyBy(users, "uid"));
+    res.json(keyBy(users, "uid"));
   } catch (err) {
     return res.status(500).end(`Error fetching user list: ${err.message}`);
   }

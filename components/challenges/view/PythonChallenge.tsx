@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import dynamic from "next/dynamic";
-import _ from "lodash";
+import debounce from "lodash/debounce";
 import { useMeasure } from "react-use";
 import { desktop } from "constants/media-query-strings";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
@@ -128,7 +128,7 @@ export default function PythonChallenge({
   };
 
   const saveUserCodeToLocalStorage = useCallback(
-    _.debounce((codeToSave) => {
+    debounce((codeToSave) => {
       setSavedUserCode(codeToSave);
     }, 1000),
     []

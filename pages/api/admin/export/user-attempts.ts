@@ -1,6 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { firebaseAdmin } from "firebase/firebaseAdmin";
-import _ from "lodash";
+import keyBy from "lodash/keyBy";
+import find from "lodash/find";
+import findLast from "lodash/findLast";
 import stringify from "csv-stringify/lib/sync";
 import dayjs from "dayjs";
 
@@ -27,7 +29,7 @@ export default async function getUserChallengeAttemptsAsCSV(
       uid: u.uid,
       email: u.email,
     }));
-    const uidEmailMap = _.keyBy(users, "uid");
+    const uidEmailMap = keyBy(users, "uid");
 
     const querySnapshot = await firebaseAdmin
       .firestore()
@@ -53,12 +55,12 @@ export default async function getUserChallengeAttemptsAsCSV(
           }
         });
 
-        const firstSuccessAttempt = _.find(
+        const firstSuccessAttempt = find(
           userExerciseAttempts,
           (o) => o.isSuccess
         );
 
-        const lastSuccessAttempt = _.findLast(
+        const lastSuccessAttempt = findLast(
           userExerciseAttempts,
           (o) => o.isSuccess
         );

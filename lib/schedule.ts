@@ -1,4 +1,4 @@
-import _ from "lodash";
+import isString from "lodash/isString";
 import {
   ScheduleType,
   ICalendarEvent,
@@ -56,7 +56,7 @@ export function organizeEventsByYearAndDate(
 
     const dateEvents = yearEvents[event.date];
 
-    dateEvents[event.type] = _.isString(event.text) ? [event.text] : event.text;
+    dateEvents[event.type] = isString(event.text) ? [event.text] : event.text;
   });
 
   return organizedEvents;

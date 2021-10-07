@@ -3,7 +3,7 @@ import Layout from "components/Layout";
 import { useRouter } from "next/router";
 import { Container, Row, Col } from "react-bootstrap";
 import { supabaseClient } from "lib/supabase/supabaseClient";
-import _ from "lodash";
+import cloneDeep from "lodash/cloneDeep";
 import { useEffect, useState } from "react";
 import useSupabaseAuth from "hooks/useSupabaseAuth";
 import { definitions } from "types/database";
@@ -65,7 +65,7 @@ export default function EditCodingChallengePage() {
   };
 
   const onClone = async () => {
-    const questionClone = _.cloneDeep(questionData);
+    const questionClone = cloneDeep(questionData);
     delete questionClone.id;
 
     const { data: qData, error: qError } = await supabaseClient
@@ -83,7 +83,7 @@ export default function EditCodingChallengePage() {
 
     const clonedChallengeId = qData[0].id;
 
-    const optionsClone = _.cloneDeep(optionsData);
+    const optionsClone = cloneDeep(optionsData);
     optionsClone.forEach((o) => {
       o.questionId = clonedChallengeId;
       delete optionsClone.id;
