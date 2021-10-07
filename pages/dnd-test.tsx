@@ -1,12 +1,5 @@
-import dynamic from "next/dynamic";
+import Dndtest from "components/dnd-test";
 
-const MultipleChoiceOptionsEditor = dynamic(
-  () => import("components/challenges/MultipleChoiceOptionsEditor"),
-  {
-    ssr: false,
-  }
-);
-
-export default function DnDTestPage() {
-  return <MultipleChoiceOptionsEditor />;
+export default function DndTestPage() {
+  return <Dndtest />;
 }
