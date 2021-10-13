@@ -105,6 +105,15 @@ export default function AssignmentsPage() {
                   link="/assignments/problem-set-01"
                   colorTheme={ColorTheme.Blue}
                 />
+
+                <AssignmentItem
+                  name="Problem Set 2"
+                  dueDate={dayjs("2021-10-14").tz().format("ll")}
+                  pointsAvailable={80}
+                  status={AssignmentStatus.Available}
+                  link="https://canvas.illinois.edu/courses/14860/assignments/333593"
+                  colorTheme={ColorTheme.Blue}
+                />
               </div>
             </Col>
           </Row>

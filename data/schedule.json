@@ -121,21 +121,21 @@
   },
   {
     "date": "2021-10-12",
-    "type": "LECTURE",
-    "text": ["Add new columns", "Rename/reorder columns", "Pandas Indices"]
+    "type": "NO_LECTURE",
+    "text": "Problem Set Workday"
   },
   {
-    "date": "2021-10-13",
+    "date": "2021-10-14",
     "type": "CASE_STUDY",
-    "text": "Problem Set 2 - Pandas"
+    "text": "Problem Set 2 - Starbucks App Customers"
   },
   {
     "date": "2021-10-14",
     "type": "LECTURE",
-    "text": ["Datetime Formats", "Aggregating Data", "Merging Data"]
+    "text": ["Merge Types", "More Aggregation"]
   },
   {
-    "date": "2021-10-18",
+    "date": "2021-10-20",
     "type": "CASE_STUDY",
     "text": "Case Study 1 - Chicago Rideshare Vehicles"
   },
@@ -145,11 +145,6 @@
     "text": ["Merging Data", "Aggregating Data"]
   },
   {
-    "date": "2021-10-20",
-    "type": "EXERCISE",
-    "text": "Exercise 7"
-  },
-  {
     "date": "2021-10-21",
     "type": "LECTURE",
     "text": ["Intro to SQL", "Create Table", "Basic Querying"]
@@ -157,12 +152,17 @@
   {
     "date": "2021-10-22",
     "type": "EXERCISE",
-    "text": "Exercise 8"
+    "text": "Exercise 7"
   },
   {
     "date": "2021-10-26",
     "type": "LECTURE",
     "text": ["Query Data", "Sort Data"]
+  },
+  {
+    "date": "2021-10-27",
+    "type": "EXERCISE",
+    "text": "Exercise 8"
   },
   {
     "date": "2021-10-28",

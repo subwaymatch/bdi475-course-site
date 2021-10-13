@@ -205,7 +205,7 @@ export default function NotesPage() {
             />
 
             <NoteItem
-              href="https://canvas.illinois.edu/courses/14860/assignments/333219"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/0c246b3a78572609f77b653fd73533d53fa90240/L14-datetime-groupby-merge-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/l11-pandas.png"
