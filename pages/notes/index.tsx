@@ -218,7 +218,23 @@ export default function NotesPage() {
               title="Pandas Datetime, Grouping, Aggregating, Merging"
               colorTheme={ColorTheme.Purple}
             />
+
+            <NoteItem
+              href="https://canvas.illinois.edu/courses/14860/assignments/335765"
+              thumbnail={
+                <Image
+                  src="/images/notes/l11-pandas.png"
+                  width={900}
+                  height={600}
+                  alt=""
+                />
+              }
+              date="2021-10-14"
+              title="More Pandas Exercise"
+              colorTheme={ColorTheme.Purple}
+            />
           </Row>
+
           {/* 
           <Row>
             <Col>
