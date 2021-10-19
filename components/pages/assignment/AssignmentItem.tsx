@@ -64,7 +64,7 @@ export default function AssignmentItem({
         </Col>
 
         <Col md={{ span: 4, order: 1 }}>
-          <Link href={link}>
+          <Link href={link ? link : "/"}>
             <a className={clsx(styles.name)}>{name}</a>
           </Link>
         </Col>

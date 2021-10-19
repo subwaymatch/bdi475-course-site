@@ -135,11 +135,6 @@
     "text": ["Merge Types", "More Aggregation"]
   },
   {
-    "date": "2021-10-20",
-    "type": "CASE_STUDY",
-    "text": "Case Study 1 - Chicago Rideshare Vehicles"
-  },
-  {
     "date": "2021-10-19",
     "type": "LECTURE",
     "text": ["Merging Data", "Aggregating Data"]
@@ -150,9 +145,9 @@
     "text": ["Intro to SQL", "Create Table", "Basic Querying"]
   },
   {
-    "date": "2021-10-22",
-    "type": "EXERCISE",
-    "text": "Exercise 7"
+    "date": "2021-10-25",
+    "type": "CASE_STUDY",
+    "text": "Case Study 1 - Chicago Rideshare Vehicles"
   },
   {
     "date": "2021-10-26",
@@ -162,7 +157,7 @@
   {
     "date": "2021-10-27",
     "type": "EXERCISE",
-    "text": "Exercise 8"
+    "text": "Exercise 7"
   },
   {
     "date": "2021-10-28",
@@ -183,6 +178,11 @@
     "date": "2021-11-02",
     "type": "LECTURE",
     "text": ["Intro to DataViz with Python", "Box Plots", "Histograms"]
+  },
+  {
+    "date": "2021-11-03",
+    "type": "EXERCISE",
+    "text": "Exercise 8"
   },
   {
     "date": "2021-11-04",

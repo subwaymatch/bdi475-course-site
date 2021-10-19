@@ -8,6 +8,8 @@ import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
+import CaseStudyItem from "components/pages/assignment/CaseStudyItem";
+import Image from "next/image";
 
 dayjs.extend(localizedFormat);
 dayjs.extend(utc);
@@ -152,6 +154,36 @@ export default function AssignmentsPage() {
                   colorTheme={ColorTheme.Green}
                 />
               </div>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col>
+              <div className={styles.caseStudies}>
+                <h2 className="sectionTitle">
+                  Case Study <span className="accent blue" />
+                </h2>
+              </div>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col lg={6}>
+              <CaseStudyItem
+                name="Chicago Ridesharing Vehicles"
+                dueDate={dayjs("2021-10-25").tz().format("ll")}
+                pointsAvailable={80}
+                status={AssignmentStatus.Available}
+                link="https://canvas.illinois.edu/courses/14860/assignments/337283"
+                thumbnail={
+                  <Image
+                    src="/images/case-studies/case_study_ridesharing_vehicles.jpg"
+                    layout="responsive"
+                    width={1920}
+                    height={640}
+                  />
+                }
+              />
             </Col>
           </Row>
         </Container>

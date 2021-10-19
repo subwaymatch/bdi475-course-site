@@ -1,4 +1,5 @@
 import { Row, Col } from "react-bootstrap";
+import Link from "next/link";
 import styles from "./CaseStudyItem.module.scss";
 import { AssignmentStatus } from "types/assignment";
 import clsx from "clsx";
@@ -31,52 +32,54 @@ export default function CaseStudyItem({
   thumbnail,
 }: ICaseStudyItemProps) {
   return (
-    <div
-      className={clsx(styles.caseStudyItem, {
-        [styles.complete]: status === AssignmentStatus.Complete,
-        [styles.available]: status === AssignmentStatus.Available,
-        [styles.unavailable]: status === AssignmentStatus.Unavailable,
-      })}
-    >
-      <Row>
-        <Col>{thumbnail}</Col>
-      </Row>
+    <Link href={link ? link : "/"}>
+      <div
+        className={clsx(styles.caseStudyItem, {
+          [styles.complete]: status === AssignmentStatus.Complete,
+          [styles.available]: status === AssignmentStatus.Available,
+          [styles.unavailable]: status === AssignmentStatus.Unavailable,
+        })}
+      >
+        <Row>
+          <Col>{thumbnail}</Col>
+        </Row>
 
-      <Row>
-        <Col md={12}>
-          <div className={styles.metaInfo}>
+        <Row>
+          <Col md={12}>
+            <div className={styles.metaInfo}>
+              <span
+                className={clsx(
+                  "label",
+                  status === AssignmentStatus.Available ? "blue" : "lightGray"
+                )}
+              >
+                Due {dueDate}
+              </span>
+              <span className="gray label">
+                {pointsAvailable} Points Available
+              </span>
+            </div>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col md={12}>
+            <span className={styles.name}>{name}</span>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col>
             <span
-              className={clsx(
-                "label",
-                status === AssignmentStatus.Available ? "blue" : "lightGray"
-              )}
+              className={clsx(styles.status, {
+                "color-blue": status === AssignmentStatus.Available,
+              })}
             >
-              Due {dueDate}
+              {status}
             </span>
-            <span className="gray label">
-              {pointsAvailable} Points Available
-            </span>
-          </div>
-        </Col>
-      </Row>
-
-      <Row>
-        <Col md={12}>
-          <span className={styles.name}>{name}</span>
-        </Col>
-      </Row>
-
-      <Row>
-        <Col>
-          <span
-            className={clsx(styles.status, {
-              blue: status === AssignmentStatus.Available,
-            })}
-          >
-            {status}
-          </span>
-        </Col>
-      </Row>
-    </div>
+          </Col>
+        </Row>
+      </div>
+    </Link>
   );
 }

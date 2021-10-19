@@ -220,7 +220,7 @@ export default function NotesPage() {
             />
 
             <NoteItem
-              href="https://canvas.illinois.edu/courses/14860/assignments/335765"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/6739c2acdcd5ffcd13c2549c20ebde1737f44a24/L15-advanced-pandas-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/l11-pandas.png"

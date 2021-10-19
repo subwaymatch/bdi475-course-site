@@ -46,6 +46,10 @@
   &.available {
     .name {
       color: $color-medium-gray;
+
+      &:hover {
+        color: $color-dark-gray;
+      }
     }
   }
   &.unavailable {
