@@ -76,7 +76,7 @@ export default function AssignmentsPage() {
                   dueDate={dayjs("2021-10-03").tz().format("ll")}
                   pointsAvailable={20}
                   status={AssignmentStatus.Available}
-                  link="https://canvas.illinois.edu/courses/14860/assignments/330304"
+                  link="https://nbviewer.org/github/bdi475/notebooks/blob/e5fb4db0e1b2b75fbbe1bc61817648bd9629c675/exercise-05-pandas-filtering-sorting-SOLUTION.ipynb"
                   colorTheme={ColorTheme.Purple}
                 />
 
@@ -85,7 +85,7 @@ export default function AssignmentsPage() {
                   dueDate={dayjs("2021-10-06").tz().format("ll")}
                   pointsAvailable={20}
                   status={AssignmentStatus.Available}
-                  link="https://canvas.illinois.edu/courses/14860/assignments/332380"
+                  link="https://nbviewer.org/github/bdi475/notebooks/blob/e5fb4db0e1b2b75fbbe1bc61817648bd9629c675/exercise-06-pandas-working-with-columns-and-missing-values-SOLUTION.ipynb"
                   colorTheme={ColorTheme.Purple}
                 />
               </div>
@@ -113,7 +113,7 @@ export default function AssignmentsPage() {
                   dueDate={dayjs("2021-10-14").tz().format("ll")}
                   pointsAvailable={80}
                   status={AssignmentStatus.Available}
-                  link="https://canvas.illinois.edu/courses/14860/assignments/333593"
+                  link="https://nbviewer.org/github/bdi475/notebooks/blob/1bad25c3a85d188212d819486dd8107f76637aa1/problem-set-02-starbucks-app-customers-SOLUTION.ipynb"
                   colorTheme={ColorTheme.Blue}
                 />
               </div>
