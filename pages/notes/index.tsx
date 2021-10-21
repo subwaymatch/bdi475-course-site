@@ -235,7 +235,6 @@ export default function NotesPage() {
             />
           </Row>
 
-          {/* 
           <Row>
             <Col>
               <h2
@@ -251,7 +250,7 @@ export default function NotesPage() {
 
           <Row>
             <NoteItem
-              href="https://bdi475-jupyter-notebooks.netlify.app/l17-intro-to-sql-solution"
+              href="https://canvas.illinois.edu/courses/14860/assignments/338375"
               thumbnail={
                 <Image
                   src="/images/notes/l17-sql.png"
@@ -260,11 +259,12 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2021-03-29"
+              date="2021-10-21"
               title="Introduction to SQL"
               colorTheme={ColorTheme.Green}
             />
 
+            {/* 
             <NoteItem
               href="https://bdi475-jupyter-notebooks.netlify.app/l18-more-sql-basics-solution"
               thumbnail={
@@ -279,8 +279,10 @@ export default function NotesPage() {
               title="More SQL Basics"
               colorTheme={ColorTheme.Green}
             />
+            */}
           </Row>
 
+          {/*
           <Row>
             <Col>
               <h2
