@@ -185,6 +185,24 @@ export default function AssignmentsPage() {
                 }
               />
             </Col>
+
+            <Col lg={6}>
+              <CaseStudyItem
+                name="Airbnb Listings Analysis with SQL"
+                dueDate={dayjs("2021-11-01").tz().format("ll")}
+                pointsAvailable={80}
+                status={AssignmentStatus.Available}
+                link="https://canvas.illinois.edu/courses/14860/assignments/339950"
+                thumbnail={
+                  <Image
+                    src="/images/case-studies/case_study_airbnb_listings.jpg"
+                    layout="responsive"
+                    width={1920}
+                    height={640}
+                  />
+                }
+              />
+            </Col>
           </Row>
         </Container>
       </main>

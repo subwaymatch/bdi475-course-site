@@ -250,7 +250,7 @@ export default function NotesPage() {
 
           <Row>
             <NoteItem
-              href="https://canvas.illinois.edu/courses/14860/assignments/338375"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/ce3b24aca031d595cb8c58ede3d43c973ad1f354/L17-intro-to-SQL-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/l17-sql.png"
@@ -264,9 +264,8 @@ export default function NotesPage() {
               colorTheme={ColorTheme.Green}
             />
 
-            {/* 
             <NoteItem
-              href="https://bdi475-jupyter-notebooks.netlify.app/l18-more-sql-basics-solution"
+              href="https://canvas.illinois.edu/courses/14860/assignments/339939"
               thumbnail={
                 <Image
                   src="/images/notes/l17-sql.png"
@@ -275,11 +274,10 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2021-03-31"
-              title="More SQL Basics"
+              date="2021-10-26"
+              title="More SQL Queries and Aggregations"
               colorTheme={ColorTheme.Green}
             />
-            */}
           </Row>
 
           {/*
