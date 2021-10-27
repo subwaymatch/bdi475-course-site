@@ -88,6 +88,15 @@ export default function AssignmentsPage() {
                   link="https://nbviewer.org/github/bdi475/notebooks/blob/e5fb4db0e1b2b75fbbe1bc61817648bd9629c675/exercise-06-pandas-working-with-columns-and-missing-values-SOLUTION.ipynb"
                   colorTheme={ColorTheme.Purple}
                 />
+
+                <AssignmentItem
+                  name="Exercise 7"
+                  dueDate={dayjs("2021-10-29").tz().format("ll")}
+                  pointsAvailable={20}
+                  status={AssignmentStatus.Available}
+                  link="https://canvas.illinois.edu/courses/14860/assignments/340206"
+                  colorTheme={ColorTheme.Purple}
+                />
               </div>
             </Col>
           </Row>
@@ -151,6 +160,15 @@ export default function AssignmentsPage() {
                   pointsAvailable={25}
                   status={AssignmentStatus.Available}
                   link="https://canvas.illinois.edu/courses/14860/assignments/332255"
+                  colorTheme={ColorTheme.Green}
+                />
+
+                <AssignmentItem
+                  name="Quiz 4"
+                  dueDate={dayjs("2021-10-28").tz().format("ll")}
+                  pointsAvailable={25}
+                  status={AssignmentStatus.Available}
+                  link="https://canvas.illinois.edu/courses/14860/assignments/340348"
                   colorTheme={ColorTheme.Green}
                 />
               </div>

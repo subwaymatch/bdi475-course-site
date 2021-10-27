@@ -155,11 +155,6 @@
     "text": ["Query Data", "Sort Data"]
   },
   {
-    "date": "2021-10-27",
-    "type": "EXERCISE",
-    "text": "Exercise 7"
-  },
-  {
     "date": "2021-10-28",
     "type": "QUIZ",
     "text": "Quiz 4"
@@ -167,7 +162,12 @@
   {
     "date": "2021-10-28",
     "type": "LECTURE",
-    "text": ["Joins"]
+    "text": ["Graph Data Structure", "Network Analysis"]
+  },
+  {
+    "date": "2021-10-29",
+    "type": "EXERCISE",
+    "text": "Exercise 7"
   },
   {
     "date": "2021-11-01",
