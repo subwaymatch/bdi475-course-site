@@ -22,6 +22,7 @@ function App({ Component, pageProps }: AppProps) {
           <PythonRuntimeProvider>
             <ToastContainer
               position="top-center"
+              theme="colored"
               autoClose={3000}
               hideProgressBar={false}
               newestOnTop={false}
