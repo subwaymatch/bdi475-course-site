@@ -48,7 +48,7 @@ export default function MultipleChoiceOptionsEditor({
     })
   );
 
-  function updateOptionsData(optionId, key, val) {
+  const updateOptionsData = (optionId, key, val) => {
     const newOptions = cloneDeep(optionsData).map((o) => {
       if (o.id === optionId) {
         o[key] = val;
@@ -58,9 +58,17 @@ export default function MultipleChoiceOptionsEditor({
     });
 
     setOptionsData(newOptions);
-  }
+  };
 
-  function handleDragEnd(event) {
+  const markForDeletion = (id) => {
+    console.log(`markForDeletion id=${id}`);
+
+    const clonedOptions = cloneDeep(optionsData.filter((o) => o.id !== id));
+
+    setOptionsData(clonedOptions);
+  };
+
+  const handleDragEnd = (event) => {
     const { active, over } = event;
 
     if (active.id !== over.id) {
@@ -68,6 +76,7 @@ export default function MultipleChoiceOptionsEditor({
       const newIndex = items.findIndex((o) => over.id === o.id);
 
       const newArray = arrayMove(items, oldIndex, newIndex);
+
       newArray.forEach((o, index) => {
         o.optionData = cloneDeep(o.optionData);
         o.optionData.order = index;
@@ -75,26 +84,48 @@ export default function MultipleChoiceOptionsEditor({
 
       setOptionsData(newArray.map((x) => x.optionData));
     }
-  }
+  };
 
   return (
-    <DndContext
-      sensors={sensors}
-      collisionDetection={closestCenter}
-      onDragEnd={handleDragEnd}
+    <div
+      style={{
+        height: "100%",
+        background: "yellow",
+        display: "flex",
+        flexDirection: "column",
+      }}
     >
-      <SortableContext items={items} strategy={verticalListSortingStrategy}>
-        {items.map((item) => (
-          <MultipleChoiceOptionItemEditor
-            key={item.id}
-            id={item.id}
-            optionData={item.optionData}
-            updateTextMarkdown={(v) => {
-              updateOptionsData(item.optionData.id, "text_markdown", v);
-            }}
-          />
-        ))}
-      </SortableContext>
-    </DndContext>
+      <div style={{ flex: 1, overflowY: "auto" }}>
+        <DndContext
+          sensors={sensors}
+          collisionDetection={closestCenter}
+          onDragEnd={handleDragEnd}
+        >
+          <SortableContext items={items} strategy={verticalListSortingStrategy}>
+            {items.map((item) => (
+              <MultipleChoiceOptionItemEditor
+                key={item.id}
+                id={item.id}
+                optionData={item.optionData}
+                onDelete={() => markForDeletion(item.optionData.id)}
+                updateTextMarkdown={(v) => {
+                  updateOptionsData(item.optionData.id, "text_markdown", v);
+                }}
+              />
+            ))}
+          </SortableContext>
+        </DndContext>
+      </div>
+      <div
+        style={{
+          width: "100%",
+          textAlign: "center",
+          background: "#aaa",
+          padding: "8px 16px",
+        }}
+      >
+        Add Option
+      </div>
+    </div>
   );
 }
