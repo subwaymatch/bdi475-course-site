@@ -265,7 +265,7 @@ export default function NotesPage() {
             />
 
             <NoteItem
-              href="https://canvas.illinois.edu/courses/14860/assignments/339939"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/ce3b24aca031d595cb8c58ede3d43c973ad1f354/L18-SQL-queries-aggregations-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/l17-sql.png"
@@ -280,7 +280,6 @@ export default function NotesPage() {
             />
           </Row>
 
-          {/*
           <Row>
             <Col>
               <h2
@@ -296,6 +295,21 @@ export default function NotesPage() {
 
           <Row>
             <NoteItem
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/14b726cfc43bc5950a15968e4a7c809b6b857bf8/L19-graph-data-structure.ipynb"
+              thumbnail={
+                <Image
+                  src="/images/notes/l19-dataviz.png"
+                  width={900}
+                  height={600}
+                  alt=""
+                />
+              }
+              date="2021-10-28"
+              title="Graph Data Structure"
+              colorTheme={ColorTheme.Blue}
+            />
+            {/*
+            <NoteItem
               href="https://bdi475-jupyter-notebooks.netlify.app/l19-intro-to-dataviz-solution"
               thumbnail={
                 <Image
@@ -309,6 +323,7 @@ export default function NotesPage() {
               title="Introduction to DataViz"
               colorTheme={ColorTheme.Blue}
             />
+            
             <NoteItem
               href="https://bdi475-jupyter-notebooks.netlify.app/l20-line-bar-scatter-plots-solution"
               thumbnail={
@@ -364,8 +379,8 @@ export default function NotesPage() {
               date="2021-04-21"
               title="Tableau Scatter Plot, Pie Chart, Geographic Map"
               colorTheme={ColorTheme.Blue}
-            />
-          </Row> */}
+            />*/}
+          </Row>
         </Container>
       </main>
     </Layout>
