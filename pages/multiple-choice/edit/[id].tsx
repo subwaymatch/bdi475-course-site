@@ -67,6 +67,7 @@ export default function EditCodingChallengePage() {
   const onClone = async () => {
     const questionClone = cloneDeep(questionData);
     delete questionClone.id;
+    delete questionClone.createdAt;
 
     const { data: qData, error: qError } = await supabaseClient
       .from<definitions["multiple_choice_questions"]>(
@@ -85,8 +86,8 @@ export default function EditCodingChallengePage() {
 
     const optionsClone = cloneDeep(optionsData);
     optionsClone.forEach((o) => {
-      o.questionId = clonedChallengeId;
-      delete optionsClone.id;
+      o.question_id = clonedChallengeId;
+      delete o.id;
     });
 
     const { data: oData, error: oError } = await supabaseClient
