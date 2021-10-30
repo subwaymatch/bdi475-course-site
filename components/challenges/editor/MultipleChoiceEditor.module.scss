@@ -1,9 +1,33 @@
 @import "styles/variables";
 @import "./edit-page.common";
 
-.optionEditItem {
+.optionsEditor {
+  height: 100%;
   display: flex;
-  padding: 0.2rem;
+  flex-direction: column;
+
+  .optionItemsWrapper {
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  .addOptionButton {
+    width: 100%;
+    text-align: center;
+    background-color: #ccc;
+    padding: 8px 16px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #d4d4d4;
+    }
+  }
+}
+
+.optionItemEditor {
+  display: flex;
+  align-items: center;
+  padding: 0.25rem;
 
   .optionTextarea {
     display: block;
@@ -23,5 +47,10 @@
     &:active {
       border-color: $color-blue;
     }
+  }
+
+  .deleteButton {
+    cursor: pointer;
+    padding: 0.2rem;
   }
 }

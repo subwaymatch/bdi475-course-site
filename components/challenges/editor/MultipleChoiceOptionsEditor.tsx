@@ -15,6 +15,7 @@ import {
 } from "@dnd-kit/sortable";
 import MultipleChoiceOptionItemEditor from "./MultipleChoiceOptionItemEditor";
 import { definitions } from "types/database";
+import styles from "./MultipleChoiceEditor.module.scss";
 import cloneDeep from "lodash/cloneDeep";
 import sortBy from "lodash/sortBy";
 
@@ -87,15 +88,8 @@ export default function MultipleChoiceOptionsEditor({
   };
 
   return (
-    <div
-      style={{
-        height: "100%",
-        background: "yellow",
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
-      <div style={{ flex: 1, overflowY: "auto" }}>
+    <div className={styles.optionsEditor}>
+      <div className={styles.optionItemsWrapper}>
         <DndContext
           sensors={sensors}
           collisionDetection={closestCenter}
@@ -116,16 +110,7 @@ export default function MultipleChoiceOptionsEditor({
           </SortableContext>
         </DndContext>
       </div>
-      <div
-        style={{
-          width: "100%",
-          textAlign: "center",
-          background: "#aaa",
-          padding: "8px 16px",
-        }}
-      >
-        Add Option
-      </div>
+      <div className={styles.addOptionButton}>Add Option</div>
     </div>
   );
 }
