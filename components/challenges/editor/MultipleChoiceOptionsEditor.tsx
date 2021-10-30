@@ -70,8 +70,6 @@ export default function MultipleChoiceOptionsEditor({
   };
 
   const markForDeletion = (id) => {
-    console.log(`markForDeletion id=${id}`);
-
     const clonedOptions = cloneDeep(optionsData.filter((o) => o.id !== id));
 
     setOptionsData(clonedOptions);
@@ -89,8 +87,6 @@ export default function MultipleChoiceOptionsEditor({
     };
 
     dec();
-
-    console.log(`newOptionId=${newOptionItem.id}`);
 
     clonedOptions.push(newOptionItem);
 
