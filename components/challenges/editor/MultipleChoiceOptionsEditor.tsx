@@ -18,8 +18,10 @@ import { definitions } from "types/database";
 import styles from "./MultipleChoiceEditor.module.scss";
 import cloneDeep from "lodash/cloneDeep";
 import sortBy from "lodash/sortBy";
+import { useCounter } from "react-use";
 
 export interface IMultipleChoiceOptionsEditorProps {
+  questionData: definitions["multiple_choice_questions"];
   optionsData: Array<definitions["multiple_choice_options"]>;
   setOptionsData: (
     options: Array<definitions["multiple_choice_options"]>
@@ -32,6 +34,7 @@ export interface IOptionItem {
 }
 
 export default function MultipleChoiceOptionsEditor({
+  questionData,
   optionsData,
   setOptionsData,
 }: IMultipleChoiceOptionsEditorProps) {
@@ -41,6 +44,11 @@ export default function MultipleChoiceOptionsEditor({
     id: o.id.toString(),
     optionData: o,
   }));
+
+  // a counter of new option id
+  // negative values are used to indicate that the new items
+  // haven't been saved to the database yet
+  const [newOptionId, { dec }] = useCounter(-1);
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -65,6 +73,26 @@ export default function MultipleChoiceOptionsEditor({
     console.log(`markForDeletion id=${id}`);
 
     const clonedOptions = cloneDeep(optionsData.filter((o) => o.id !== id));
+
+    setOptionsData(clonedOptions);
+  };
+
+  const addNewOptionItem = () => {
+    const clonedOptions = cloneDeep(optionsData);
+    const newOptionItem: definitions["multiple_choice_options"] = {
+      id: newOptionId,
+      question_id: questionData.id,
+      is_correct: false,
+      text_markdown: "",
+      explanation: "",
+      order: clonedOptions.length,
+    };
+
+    dec();
+
+    console.log(`newOptionId=${newOptionItem.id}`);
+
+    clonedOptions.push(newOptionItem);
 
     setOptionsData(clonedOptions);
   };
@@ -102,6 +130,13 @@ export default function MultipleChoiceOptionsEditor({
                 id={item.id}
                 optionData={item.optionData}
                 onDelete={() => markForDeletion(item.optionData.id)}
+                updateIsCorrect={(isCorrect) => {
+                  updateOptionsData(
+                    item.optionData.id,
+                    "is_correct",
+                    isCorrect
+                  );
+                }}
                 updateTextMarkdown={(v) => {
                   updateOptionsData(item.optionData.id, "text_markdown", v);
                 }}
@@ -110,7 +145,9 @@ export default function MultipleChoiceOptionsEditor({
           </SortableContext>
         </DndContext>
       </div>
-      <div className={styles.addOptionButton}>Add Option</div>
+      <div className={styles.addOptionButton} onClick={addNewOptionItem}>
+        Add Option
+      </div>
     </div>
   );
 }

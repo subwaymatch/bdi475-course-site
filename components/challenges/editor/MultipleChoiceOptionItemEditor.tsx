@@ -2,7 +2,7 @@ import React from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { definitions } from "types/database";
-import { TextareaAutosize } from "@material-ui/core";
+import { Checkbox, TextareaAutosize } from "@material-ui/core";
 import { DragHandle } from "components/ui/DragHandle";
 import styles from "./MultipleChoiceEditor.module.scss";
 import { RiDeleteBin2Line } from "react-icons/ri";
@@ -11,6 +11,7 @@ export interface IMultipleChoiceOptionItemEditorProps {
   id: string;
   optionData: definitions["multiple_choice_options"];
   onDelete: () => void;
+  updateIsCorrect: (isCorrect: boolean) => void;
   updateTextMarkdown: (v: string) => void;
 }
 
@@ -18,12 +19,11 @@ export default function MultipleChoiceOptionItemEditor({
   id,
   optionData,
   onDelete,
+  updateIsCorrect,
   updateTextMarkdown,
 }: IMultipleChoiceOptionItemEditorProps) {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id });
-
-  console.log(`transform=${transform}, transition=${transition}`);
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -37,6 +37,17 @@ export default function MultipleChoiceOptionItemEditor({
       style={style}
       {...attributes}
     >
+      <div className={styles.checkboxWrapper}>
+        <Checkbox
+          checked={optionData.is_correct}
+          onChange={(e) => {
+            updateIsCorrect(e.target.checked);
+          }}
+          inputProps={{ "aria-label": "controlled" }}
+          color="default"
+        />
+      </div>
+
       <TextareaAutosize
         className={styles.optionTextarea}
         value={optionData.text_markdown}

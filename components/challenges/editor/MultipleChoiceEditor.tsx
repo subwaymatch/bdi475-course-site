@@ -41,9 +41,6 @@ export default function MultipleChoiceEditor({
     !isEqual(questionData, workingQuestionData) ||
     !isEqual(optionsData, workingOptionsData);
 
-  // New options (multiple_choice_options entry) that have not been saved to the database yet will be marked by negative IDs (e.g., -1, -2, -3, ...)
-  let idsToDelete = new Set();
-
   const updateWorkingQuestionData = (key, val) => {
     const updatedQuestionData = produce(workingQuestionData, (draft) => {
       draft[key] = val;
@@ -54,9 +51,6 @@ export default function MultipleChoiceEditor({
 
   const save = async () => {
     await onSave(workingQuestionData, workingOptionsData);
-
-    // reset idsToDelete
-    idsToDelete = new Set();
   };
 
   const clone = async () => {
@@ -108,6 +102,7 @@ export default function MultipleChoiceEditor({
         >
           <MultipleChoiceOptionsEditor
             optionsData={workingOptionsData}
+            questionData={workingQuestionData}
             setOptionsData={setWorkingOptionsData}
           />
         </EditorSectionBox>
