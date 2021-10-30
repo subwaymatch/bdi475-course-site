@@ -179,7 +179,7 @@ export default function AssignmentsPage() {
             <Col>
               <div className={styles.caseStudies}>
                 <h2 className="sectionTitle">
-                  Case Study <span className="accent blue" />
+                  Case Studies <span className="accent blue" />
                 </h2>
               </div>
             </Col>
