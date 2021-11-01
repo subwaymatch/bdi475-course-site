@@ -117,10 +117,12 @@ export default function EditCodingChallengePage() {
     const newIds = updatedOptionsData.map((o) => o.id);
     const idsToDelete = previousIds.filter((x) => !newIds.includes(x));
 
-    console.log(`idsToDelete=${JSON.stringify(idsToDelete)}`);
+    const oldOptionsData = updatedOptionsData.filter((o) => o.id > 0);
+    const newOptionsData = updatedOptionsData.filter((o) => o.id < 0);
 
-    setQuestionData(updatedQuestionData);
-    setOptionsData(updatedOptionsData);
+    console.log(`upsertOptionsData`);
+
+    console.log(`idsToDelete=${JSON.stringify(idsToDelete)}`);
 
     const { data: challengeUpdateResult, error: challengeUpdateError } =
       await supabaseClient
@@ -137,19 +139,29 @@ export default function EditCodingChallengePage() {
       return;
     }
 
-    const { data: optionsUpdateResult, error: optionsUpdateError } =
+    const { data: oldOptionsUpdateResult, error: oldOptionsUpdateError } =
       await supabaseClient
         .from<definitions["multiple_choice_options"]>("multiple_choice_options")
-        .upsert(updatedOptionsData, {
-          returning: "minimal",
-        });
+        .upsert(oldOptionsData);
 
-    if (optionsUpdateError) {
-      console.error(challengeUpdateError);
+    if (oldOptionsUpdateError) {
+      console.error(oldOptionsUpdateError);
+      return;
+    }
+
+    const { data: newOptionsUpdateResult, error: newOptionsUpdateError } =
+      await supabaseClient
+        .from<definitions["multiple_choice_options"]>("multiple_choice_options")
+        .insert(newOptionsData);
+
+    if (newOptionsUpdateError) {
+      console.error(newOptionsUpdateError);
       return;
     }
 
     // TODO: Delete dangling option Ids
+    setQuestionData(updatedQuestionData);
+    setOptionsData([...oldOptionsUpdateResult, ...newOptionsUpdateResult]);
   };
 
   useEffect(() => {
