@@ -113,14 +113,19 @@ export default function EditCodingChallengePage() {
     updatedQuestionData: definitions["multiple_choice_questions"],
     updatedOptionsData: definitions["multiple_choice_options"][]
   ) => {
+    const updatedQuestionDataCopy = cloneDeep(updatedQuestionData);
+    const updatedOptionsDataCopy = cloneDeep(updatedOptionsData);
+
     const previousIds = optionsData.map((o) => o.id);
-    const newIds = updatedOptionsData.map((o) => o.id);
+    const newIds = updatedOptionsDataCopy.map((o) => o.id);
     const idsToDelete = previousIds.filter((x) => !newIds.includes(x));
-
-    const oldOptionsData = updatedOptionsData.filter((o) => o.id > 0);
-    const newOptionsData = updatedOptionsData.filter((o) => o.id < 0);
-
-    console.log(`upsertOptionsData`);
+    const oldOptionsData = updatedOptionsDataCopy.filter((o) => o.id > 0);
+    const newOptionsData = updatedOptionsDataCopy
+      .filter((o) => o.id < 0)
+      .map((o) => {
+        delete o.id;
+        return o;
+      });
 
     console.log(`idsToDelete=${JSON.stringify(idsToDelete)}`);
 
@@ -129,10 +134,10 @@ export default function EditCodingChallengePage() {
         .from<definitions["multiple_choice_questions"]>(
           "multiple_choice_questions"
         )
-        .update(updatedQuestionData, {
+        .update(updatedQuestionDataCopy, {
           returning: "minimal",
         })
-        .match({ id: updatedQuestionData.id });
+        .match({ id: updatedQuestionDataCopy.id });
 
     if (challengeUpdateError) {
       console.error(challengeUpdateError);
@@ -159,8 +164,15 @@ export default function EditCodingChallengePage() {
       return;
     }
 
+    console.log(newOptionsUpdateResult);
+
+    const { data: deleteResult, error: deleteError } = await supabaseClient
+      .from<definitions["multiple_choice_options"]>("multiple_choice_options")
+      .delete()
+      .in("id", idsToDelete);
+
     // TODO: Delete dangling option Ids
-    setQuestionData(updatedQuestionData);
+    setQuestionData(updatedQuestionDataCopy);
     setOptionsData([...oldOptionsUpdateResult, ...newOptionsUpdateResult]);
   };
 

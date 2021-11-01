@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import produce from "immer";
 import cloneDeep from "lodash/cloneDeep";
 import isEqual from "lodash/isEqual";
@@ -40,6 +40,14 @@ export default function MultipleChoiceEditor({
   const didChange =
     !isEqual(questionData, workingQuestionData) ||
     !isEqual(optionsData, workingOptionsData);
+
+  useEffect(() => {
+    // Update working options data from props
+    // If a user creates a new option and saves it,
+    // a new option id will be created that can only
+    // be retrieved from the optionsData prop
+    setWorkingOptionsData(cloneDeep(optionsData));
+  }, [optionsData]);
 
   const updateWorkingQuestionData = (key, val) => {
     const updatedQuestionData = produce(workingQuestionData, (draft) => {
