@@ -3,13 +3,43 @@
 @import "styles/mixins";
 
 .listHeader {
+  font-size: 1.1rem;
+  letter-spacing: 0;
+
   .createButton {
-    font-size: 1.1em;
+    font-size: 1.1rem;
+    color: $color-medium-gray;
+    border: 1px solid $color-gray;
+    border-left: none;
+    border-right: none;
+    display: block;
+    width: 100%;
+    padding: 1.5rem 0;
+    cursor: pointer;
+    transition: all 0.05s linear;
+
+    &:hover {
+      color: $color-dark-gray;
+      border-color: $color-dark-gray;
+      transform: translateY(1px);
+    }
   }
 
   .pageDisplay {
     color: $color-gray;
-    padding: 1rem 0;
-    border-bottom: 1px solid transparent;
+    padding: 1.5rem 0 1.5rem 1.5rem;
+    border: 1px solid $color-border-gray;
+    border-left: none;
+    border-right: none;
+  }
+
+  .createButton,
+  .pageDisplay {
+    display: flex;
+    align-items: center;
+
+    .reactIcon {
+      margin-right: 0.5rem;
+    }
   }
 }
