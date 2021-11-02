@@ -16,7 +16,7 @@ interface IChallengeEditorControlBarProps {
   setTitle: (v: string) => void;
   onDelete: () => void;
   clone: () => void;
-  save: () => void;
+  save: (displayToast?: boolean) => void;
 }
 
 export default function ChallengeEditorControlBar({
@@ -64,7 +64,7 @@ export default function ChallengeEditorControlBar({
                 whileHover="hover"
                 whileTap="tap"
                 className={clsx(styles.button, styles.save)}
-                onClick={save}
+                onClick={() => save()}
               >
                 <AiFillSave className={styles.reactIcon} />
                 <span className={styles.label}>Save</span>

@@ -17,7 +17,8 @@ interface IMultipleChoiceEditorProps {
   optionsData: definitions["multiple_choice_options"][];
   onSave: (
     newQuestionData: definitions["multiple_choice_questions"],
-    newOptionsData: definitions["multiple_choice_options"][]
+    newOptionsData: definitions["multiple_choice_options"][],
+    displayToast?: boolean
   ) => void;
   onDelete: () => void;
   onClone: () => void;
@@ -57,8 +58,11 @@ export default function MultipleChoiceEditor({
     setWorkingQuestionData(updatedQuestionData);
   };
 
-  const save = async () => {
-    await onSave(workingQuestionData, workingOptionsData);
+  const save = async (displayToast = true) => {
+    console.log(`MultipleChoiceEditor.save() displayToast=`);
+    console.log(displayToast);
+
+    await onSave(workingQuestionData, workingOptionsData, displayToast);
   };
 
   const clone = async () => {
@@ -68,7 +72,7 @@ export default function MultipleChoiceEditor({
           "You must save your changes to clone this challenge. Save and continue?"
         )
       ) {
-        await save();
+        await save(false);
       } else {
         return;
       }

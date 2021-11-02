@@ -53,7 +53,9 @@ export default function EditCodingChallengePage() {
 
   const onDelete = async () => {
     const { data, error: deleteError } = await supabaseClient
-      .from<definitions["multiple_choice_options"]>("multiple_choice_options")
+      .from<definitions["multiple_choice_questions"]>(
+        "multiple_choice_questions"
+      )
       .delete()
       .match({ id: challengeId });
 
@@ -107,11 +109,16 @@ export default function EditCodingChallengePage() {
     }
 
     router.push(`/multiple-choice/edit/${clonedChallengeId}`);
+
+    toast.success(
+      `Successfully cloned multiple choice question ${challengeId}`
+    );
   };
 
   const save = async (
     updatedQuestionData: definitions["multiple_choice_questions"],
-    updatedOptionsData: definitions["multiple_choice_options"][]
+    updatedOptionsData: definitions["multiple_choice_options"][],
+    displayToast = true
   ) => {
     const updatedQuestionDataCopy = cloneDeep(updatedQuestionData);
     const updatedOptionsDataCopy = cloneDeep(updatedOptionsData);
@@ -127,8 +134,6 @@ export default function EditCodingChallengePage() {
         return o;
       });
 
-    console.log(`idsToDelete=${JSON.stringify(idsToDelete)}`);
-
     const { data: challengeUpdateResult, error: challengeUpdateError } =
       await supabaseClient
         .from<definitions["multiple_choice_questions"]>(
@@ -140,6 +145,7 @@ export default function EditCodingChallengePage() {
         .match({ id: updatedQuestionDataCopy.id });
 
     if (challengeUpdateError) {
+      toast.error(`Error updating question`);
       console.error(challengeUpdateError);
       return;
     }
@@ -160,20 +166,28 @@ export default function EditCodingChallengePage() {
         .insert(newOptionsData);
 
     if (newOptionsUpdateError) {
+      toast.error(`Error updating options`);
       console.error(newOptionsUpdateError);
       return;
     }
-
-    console.log(newOptionsUpdateResult);
 
     const { data: deleteResult, error: deleteError } = await supabaseClient
       .from<definitions["multiple_choice_options"]>("multiple_choice_options")
       .delete()
       .in("id", idsToDelete);
 
-    // TODO: Delete dangling option Ids
+    if (deleteError) {
+      toast.error(`Error deleting options ${JSON.stringify(idsToDelete)}`);
+      console.error(deleteError);
+      return;
+    }
+
     setQuestionData(updatedQuestionDataCopy);
     setOptionsData([...oldOptionsUpdateResult, ...newOptionsUpdateResult]);
+
+    if (displayToast === true) {
+      toast.success(`Saved successfully`);
+    }
   };
 
   useEffect(() => {
