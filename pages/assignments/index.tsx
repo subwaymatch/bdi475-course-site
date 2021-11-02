@@ -97,6 +97,15 @@ export default function AssignmentsPage() {
                   link="https://canvas.illinois.edu/courses/14860/assignments/340206"
                   colorTheme={ColorTheme.Purple}
                 />
+
+                <AssignmentItem
+                  name="Exercise 8"
+                  dueDate={dayjs("2021-11-03").tz().format("ll")}
+                  pointsAvailable={20}
+                  status={AssignmentStatus.Available}
+                  link="https://canvas.illinois.edu/courses/14860/assignments/342468"
+                  colorTheme={ColorTheme.Purple}
+                />
               </div>
             </Col>
           </Row>

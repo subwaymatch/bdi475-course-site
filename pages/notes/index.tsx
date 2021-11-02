@@ -308,9 +308,9 @@ export default function NotesPage() {
               title="Graph Data Structure"
               colorTheme={ColorTheme.Blue}
             />
-            {/*
+
             <NoteItem
-              href="https://bdi475-jupyter-notebooks.netlify.app/l19-intro-to-dataviz-solution"
+              href="https://canvas.illinois.edu/courses/14860/assignments/342467"
               thumbnail={
                 <Image
                   src="/images/notes/l19-dataviz.png"
@@ -319,10 +319,11 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2021-04-05"
+              date="2021-11-02"
               title="Introduction to DataViz"
               colorTheme={ColorTheme.Blue}
             />
+            {/*
             
             <NoteItem
               href="https://bdi475-jupyter-notebooks.netlify.app/l20-line-bar-scatter-plots-solution"
