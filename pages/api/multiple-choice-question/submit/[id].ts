@@ -36,7 +36,7 @@ export default async function recordAttempt(
   try {
     const { data: options, error: answerError } = await supabaseServiceClient
       .from<definitions["multiple_choice_options"]>("multiple_choice_options")
-      .select(`id, is_correct, explanation`)
+      .select(`id, is_correct, explanation_markdown`)
       .eq("question_id", questionId);
 
     const correctOptionIds = options
