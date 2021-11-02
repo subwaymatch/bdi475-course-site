@@ -20,20 +20,24 @@ export default function PythonChallengeListPage({ page }) {
   const router = useRouter();
   const calculatePageCount = async () => {
     const { count } = await supabaseClient
-      .from<definitions["coding_challenges"]>("coding_challenges")
+      .from<definitions["multiple_choice_questions"]>(
+        "multiple_choice_questions"
+      )
       .select("id", { head: true, count: "exact" });
 
     setTotalNumberOfPages(Math.ceil(count / pageSize));
   };
 
-  const toListItem = (challengeData: definitions["coding_challenges"]) => {
+  const toListItem = (
+    challengeData: definitions["multiple_choice_questions"]
+  ) => {
     const item: IChallengeListItemProps = {
       id: String(challengeData.id),
       title: challengeData.title,
       createdAt: new Date(challengeData.created_at),
       updatedAt: new Date(challengeData.updated_at),
-      permalink: `/python-challenge/view/${challengeData.id}`,
-      editLink: `/python-challenge/edit/${challengeData.id}`,
+      permalink: `/multiple-choice/view/${challengeData.id}`,
+      editLink: `/multiple-choice/edit/${challengeData.id}`,
       onDelete: async () => {
         if (
           window.confirm(
@@ -41,7 +45,7 @@ export default function PythonChallengeListPage({ page }) {
           )
         ) {
           const { data: deleteResultData, error } = await supabaseClient
-            .from("coding_challenges")
+            .from("multiple_choice_questions")
             .delete()
             .match({ id: challengeData.id });
 
@@ -67,9 +71,10 @@ export default function PythonChallengeListPage({ page }) {
 
   const loadPage = async (pageIndex: number) => {
     const { data, error } = await supabaseClient
-      .from<definitions["coding_challenges"]>("coding_challenges")
+      .from<definitions["multiple_choice_questions"]>(
+        "multiple_choice_questions"
+      )
       .select()
-      .eq("language", "python")
       .order("updated_at", { ascending: false })
       .range(pageIndex * pageSize, (pageIndex + 1) * pageSize);
 
@@ -91,20 +96,58 @@ export default function PythonChallengeListPage({ page }) {
   };
 
   const createNewChallenge = async () => {
-    const { data: challengeData, error: challengeError } = await supabaseClient
-      .from<definitions["coding_challenges"]>("coding_challenges")
-      .insert([{}]);
+    const { data: challengeInsertResult, error: challengeInsertError } =
+      await supabaseClient
+        .from<definitions["multiple_choice_questions"]>(
+          "multiple_choice_questions"
+        )
+        .insert([
+          {
+            title: "",
+            text_markdown: "",
+            explanation_markdown: "",
+          },
+        ]);
 
-    if (challengeError) {
-      console.error(challengeError);
+    if (challengeInsertError) {
+      console.error(challengeInsertError);
 
-      toast.error("Error creating a new challenge: " + challengeError.message);
+      toast.error(
+        "Error creating a new challenge: " + challengeInsertError.message
+      );
       return;
     }
 
-    const newChallengeId = challengeData[0].id;
+    const newChallengeId = challengeInsertResult[0].id;
 
-    router.push(`/python-challenge/edit/${newChallengeId}`);
+    const { data: optionsInsertData, error: optionsInsertError } =
+      await supabaseClient
+        .from<definitions["multiple_choice_options"]>("multiple_choice_options")
+        .insert([
+          {
+            question_id: newChallengeId,
+            text_markdown: "",
+            is_correct: false,
+            order: 0,
+            explanation_markdown: "",
+          },
+          {
+            question_id: newChallengeId,
+            text_markdown: "",
+            is_correct: false,
+            order: 1,
+            explanation_markdown: "",
+          },
+        ]);
+
+    if (optionsInsertError) {
+      console.error(optionsInsertError);
+
+      toast.error("Error creating options: " + optionsInsertError.message);
+      return;
+    }
+
+    router.push(`/multiple-choice/edit/${newChallengeId}`);
   };
 
   useEffect(() => {
@@ -117,7 +160,7 @@ export default function PythonChallengeListPage({ page }) {
         <Container>
           <Row>
             <Col>
-              <h1 className="pageTitle">Python Challenges</h1>
+              <h1 className="pageTitle">Multiple Choice</h1>
             </Col>
           </Row>
 

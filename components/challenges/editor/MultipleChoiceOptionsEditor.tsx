@@ -82,7 +82,7 @@ export default function MultipleChoiceOptionsEditor({
       question_id: questionData.id,
       is_correct: false,
       text_markdown: "",
-      explanation: "",
+      explanation_markdown: "",
       order: clonedOptions.length,
     };
 

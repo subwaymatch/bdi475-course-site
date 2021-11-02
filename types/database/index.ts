@@ -381,7 +381,7 @@ export interface paths {
           text_markdown?: parameters["rowFilter.multiple_choice_options.text_markdown"];
           is_correct?: parameters["rowFilter.multiple_choice_options.is_correct"];
           /** Explanation shown to a learner after submission (pertaining to each option) */
-          explanation?: parameters["rowFilter.multiple_choice_options.explanation"];
+          explanation_markdown?: parameters["rowFilter.multiple_choice_options.explanation_markdown"];
           /** Ordering */
           order?: parameters["order"];
           /** Filtering Columns */
@@ -437,7 +437,7 @@ export interface paths {
           text_markdown?: parameters["rowFilter.multiple_choice_options.text_markdown"];
           is_correct?: parameters["rowFilter.multiple_choice_options.is_correct"];
           /** Explanation shown to a learner after submission (pertaining to each option) */
-          explanation?: parameters["rowFilter.multiple_choice_options.explanation"];
+          explanation_markdown?: parameters["rowFilter.multiple_choice_options.explanation_markdown"];
           /** Used to determine the display order */
           order?: parameters["rowFilter.multiple_choice_options.order"];
         };
@@ -459,7 +459,7 @@ export interface paths {
           text_markdown?: parameters["rowFilter.multiple_choice_options.text_markdown"];
           is_correct?: parameters["rowFilter.multiple_choice_options.is_correct"];
           /** Explanation shown to a learner after submission (pertaining to each option) */
-          explanation?: parameters["rowFilter.multiple_choice_options.explanation"];
+          explanation_markdown?: parameters["rowFilter.multiple_choice_options.explanation_markdown"];
           /** Used to determine the display order */
           order?: parameters["rowFilter.multiple_choice_options.order"];
         };
@@ -489,7 +489,7 @@ export interface paths {
           /** Question text in markdown format */
           text_markdown?: parameters["rowFilter.multiple_choice_questions.text_markdown"];
           /** Explanation shown to a learner after submission (pertaining to the whole question) */
-          explanation?: parameters["rowFilter.multiple_choice_questions.explanation"];
+          explanation_markdown?: parameters["rowFilter.multiple_choice_questions.explanation_markdown"];
           /** Filtering Columns */
           select?: parameters["select"];
           /** Ordering */
@@ -547,7 +547,7 @@ export interface paths {
           /** Question text in markdown format */
           text_markdown?: parameters["rowFilter.multiple_choice_questions.text_markdown"];
           /** Explanation shown to a learner after submission (pertaining to the whole question) */
-          explanation?: parameters["rowFilter.multiple_choice_questions.explanation"];
+          explanation_markdown?: parameters["rowFilter.multiple_choice_questions.explanation_markdown"];
         };
         header: {
           /** Preference */
@@ -569,7 +569,7 @@ export interface paths {
           /** Question text in markdown format */
           text_markdown?: parameters["rowFilter.multiple_choice_questions.text_markdown"];
           /** Explanation shown to a learner after submission (pertaining to the whole question) */
-          explanation?: parameters["rowFilter.multiple_choice_questions.explanation"];
+          explanation_markdown?: parameters["rowFilter.multiple_choice_questions.explanation_markdown"];
         };
         body: {
           /** multiple_choice_questions */
@@ -804,7 +804,15 @@ export interface definitions {
      * This is a Primary Key.<pk/>
      */
     id: number;
+    /**
+     * Note:
+     * This is a Foreign Key to `profiles.id`.<fk table='profiles' column='id'/>
+     */
     user_id: string;
+    /**
+     * Note:
+     * This is a Foreign Key to `multiple_choice_questions.id`.<fk table='multiple_choice_questions' column='id'/>
+     */
     question_id: number;
     submitted_at?: string;
     is_success: boolean;
@@ -824,7 +832,7 @@ export interface definitions {
     text_markdown: string;
     is_correct: boolean;
     /** Explanation shown to a learner after submission (pertaining to each option) */
-    explanation?: string;
+    explanation_markdown?: string;
     /** Used to determine the display order */
     order: number;
   };
@@ -841,7 +849,7 @@ export interface definitions {
     /** Question text in markdown format */
     text_markdown: string;
     /** Explanation shown to a learner after submission (pertaining to the whole question) */
-    explanation?: string;
+    explanation_markdown?: string;
   };
   profiles: {
     /**
@@ -853,7 +861,7 @@ export interface definitions {
     display_name?: string;
     email?: string;
     /** A user's role for role-based access control */
-    roles?: string;
+    roles?: unknown[];
   };
 }
 
@@ -923,7 +931,7 @@ export interface parameters {
   "rowFilter.multiple_choice_options.text_markdown": string;
   "rowFilter.multiple_choice_options.is_correct": string;
   /** Explanation shown to a learner after submission (pertaining to each option) */
-  "rowFilter.multiple_choice_options.explanation": string;
+  "rowFilter.multiple_choice_options.explanation_markdown": string;
   /** Used to determine the display order */
   "rowFilter.multiple_choice_options.order": string;
   /** multiple_choice_questions */
@@ -935,7 +943,7 @@ export interface parameters {
   /** Question text in markdown format */
   "rowFilter.multiple_choice_questions.text_markdown": string;
   /** Explanation shown to a learner after submission (pertaining to the whole question) */
-  "rowFilter.multiple_choice_questions.explanation": string;
+  "rowFilter.multiple_choice_questions.explanation_markdown": string;
   /** profiles */
   "body.profiles": definitions["profiles"];
   "rowFilter.profiles.id": string;

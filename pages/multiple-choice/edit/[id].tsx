@@ -120,8 +120,11 @@ export default function EditCodingChallengePage() {
     updatedOptionsData: definitions["multiple_choice_options"][],
     displayToast = true
   ) => {
-    const updatedQuestionDataCopy = cloneDeep(updatedQuestionData);
-    const updatedOptionsDataCopy = cloneDeep(updatedOptionsData);
+    const updatedQuestionDataCopy: definitions["multiple_choice_questions"] =
+      cloneDeep(updatedQuestionData);
+    const updatedOptionsDataCopy: Array<
+      definitions["multiple_choice_options"]
+    > = cloneDeep(updatedOptionsData.filter((o) => o));
 
     const previousIds = optionsData.map((o) => o.id);
     const newIds = updatedOptionsDataCopy.map((o) => o.id);

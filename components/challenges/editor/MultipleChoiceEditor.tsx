@@ -59,9 +59,6 @@ export default function MultipleChoiceEditor({
   };
 
   const save = async (displayToast = true) => {
-    console.log(`MultipleChoiceEditor.save() displayToast=`);
-    console.log(displayToast);
-
     await onSave(workingQuestionData, workingOptionsData, displayToast);
   };
 

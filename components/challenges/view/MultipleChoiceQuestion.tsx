@@ -97,10 +97,12 @@ export default function MultipleChoiceQuestion({
               <span className="label small yellow">
                 {isLoading
                   ? "Loading Options"
-                  : `Select ${questionData.num_correct_options}`}
+                  : questionData.options
+                  ? `Select ${questionData.num_correct_options}`
+                  : "No option item"}
               </span>
 
-              {isLoading
+              {isLoading || !questionData.options
                 ? null
                 : questionData.options.map((o) => (
                     <MultipleChoiceOption
