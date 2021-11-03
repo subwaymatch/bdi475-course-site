@@ -4,6 +4,7 @@ import { CSS } from "@dnd-kit/utilities";
 import { definitions } from "types/database";
 import { Checkbox, TextareaAutosize } from "@material-ui/core";
 import { DragHandle } from "components/ui/DragHandle";
+import clsx from "clsx";
 import styles from "./MultipleChoiceEditor.module.scss";
 import { RiDeleteBin2Line } from "react-icons/ri";
 
@@ -11,16 +12,14 @@ export interface IMultipleChoiceOptionItemEditorProps {
   id: string;
   optionData: definitions["multiple_choice_options"];
   onDelete: () => void;
-  updateIsCorrect: (isCorrect: boolean) => void;
-  updateTextMarkdown: (v: string) => void;
+  updateField: (fieldName: string, v: any) => void;
 }
 
 export default function MultipleChoiceOptionItemEditor({
   id,
   optionData,
   onDelete,
-  updateIsCorrect,
-  updateTextMarkdown,
+  updateField,
 }: IMultipleChoiceOptionItemEditorProps) {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id });
@@ -40,26 +39,52 @@ export default function MultipleChoiceOptionItemEditor({
       <div className={styles.checkboxWrapper}>
         <Checkbox
           checked={optionData.is_correct}
-          onChange={(e) => {
-            updateIsCorrect(e.target.checked);
-          }}
+          onChange={(e) => updateField("is_correct", e.target.checked)}
           inputProps={{ "aria-label": "controlled" }}
           color="default"
         />
       </div>
 
-      <TextareaAutosize
-        className={styles.optionTextarea}
-        value={optionData.text_markdown}
-        onChange={(e) => updateTextMarkdown(e.target.value)}
-      />
+      <div className={styles.stackedTextareasWrapper}>
+        <div className={styles.textareaWrapper}>
+          <span
+            className={clsx(styles.textareaLabel, styles.textMarkdownLabel)}
+          >
+            Text
+          </span>
+
+          <TextareaAutosize
+            className={clsx(styles.textarea, styles.text)}
+            value={optionData.text_markdown}
+            onChange={(e) => updateField("text_markdown", e.target.value)}
+          />
+        </div>
+
+        <div className={styles.textareaWrapper}>
+          <span
+            className={clsx(
+              styles.textareaLabel,
+              styles.explanationMarkdownLabel
+            )}
+          >
+            Explanation
+          </span>
+
+          <TextareaAutosize
+            className={clsx(styles.textarea, styles.explanation)}
+            value={optionData.explanation_markdown}
+            onChange={(e) =>
+              updateField("explanation_markdown", e.target.value)
+            }
+          />
+        </div>
+      </div>
 
       <DragHandle {...listeners} />
 
       <div
         className={styles.deleteButton}
         onClick={(e) => {
-          console.log("on Delete click");
           onDelete();
         }}
       >

@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import {
   DndContext,
   closestCenter,
@@ -13,6 +12,10 @@ import {
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
+import {
+  restrictToVerticalAxis,
+  restrictToFirstScrollableAncestor,
+} from "@dnd-kit/modifiers";
 import MultipleChoiceOptionItemEditor from "./MultipleChoiceOptionItemEditor";
 import { definitions } from "types/database";
 import styles from "./MultipleChoiceEditor.module.scss";
@@ -118,6 +121,10 @@ export default function MultipleChoiceOptionsEditor({
           sensors={sensors}
           collisionDetection={closestCenter}
           onDragEnd={handleDragEnd}
+          modifiers={[
+            restrictToVerticalAxis,
+            restrictToFirstScrollableAncestor,
+          ]}
         >
           <SortableContext items={items} strategy={verticalListSortingStrategy}>
             {items.map((item) => (
@@ -126,16 +133,9 @@ export default function MultipleChoiceOptionsEditor({
                 id={item.id}
                 optionData={item.optionData}
                 onDelete={() => markForDeletion(item.optionData.id)}
-                updateIsCorrect={(isCorrect) => {
-                  updateOptionsData(
-                    item.optionData.id,
-                    "is_correct",
-                    isCorrect
-                  );
-                }}
-                updateTextMarkdown={(v) => {
-                  updateOptionsData(item.optionData.id, "text_markdown", v);
-                }}
+                updateField={(fieldName, value) =>
+                  updateOptionsData(item.optionData.id, fieldName, value)
+                }
               />
             ))}
           </SortableContext>

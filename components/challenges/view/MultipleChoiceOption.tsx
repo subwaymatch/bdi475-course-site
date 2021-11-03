@@ -28,6 +28,7 @@ export default function MultipleChoiceOption({
   return (
     <div
       className={clsx(styles.optionItem, {
+        [styles.disabled]: disabled,
         [styles.isSelected]: isSelected,
         [styles.isNotSelected]: !isSelected,
         [styles.showResult]: showResult,
@@ -40,8 +41,8 @@ export default function MultipleChoiceOption({
       onClick={(e) => {
         e.preventDefault();
 
-        // If result is being displayed, disable click
-        if (showResult) {
+        // If disabled or in result-view, do nothing
+        if (disabled || showResult) {
           return;
         }
 
