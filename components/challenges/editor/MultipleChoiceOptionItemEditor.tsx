@@ -7,6 +7,7 @@ import { DragHandle } from "components/ui/DragHandle";
 import clsx from "clsx";
 import styles from "./MultipleChoiceEditor.module.scss";
 import { RiDeleteBin2Line } from "react-icons/ri";
+import { BsParagraph } from "react-icons/bs";
 
 export interface IMultipleChoiceOptionItemEditorProps {
   id: string;
