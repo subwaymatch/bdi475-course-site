@@ -323,10 +323,9 @@ export default function NotesPage() {
               title="Introduction to DataViz"
               colorTheme={ColorTheme.Blue}
             />
-            {/*
-            
+
             <NoteItem
-              href="https://bdi475-jupyter-notebooks.netlify.app/l20-line-bar-scatter-plots-solution"
+              href="https://canvas.illinois.edu/courses/14860/assignments/343674"
               thumbnail={
                 <Image
                   src="/images/notes/l19-dataviz.png"
@@ -335,12 +334,13 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2021-04-07"
+              date="2021-11-04"
               title="Line, Scatter, and Bar Plots"
               colorTheme={ColorTheme.Blue}
             />
+
             <NoteItem
-              href="https://bdi475-jupyter-notebooks.netlify.app/l21-advanced-visualizations-solution"
+              href="https://canvas.illinois.edu/courses/14860/assignments/343675"
               thumbnail={
                 <Image
                   src="/images/notes/l19-dataviz.png"
@@ -349,10 +349,12 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2021-04-14"
+              date="2021-11-09"
               title="Advanced Visualizations"
               colorTheme={ColorTheme.Blue}
             />
+
+            {/*
             <NoteItem
               href="https://www.notion.so/bdi475/Lecture-22-Introduction-to-Tableau-15832a839f2146a59f36160bd7ce1450"
               thumbnail={
