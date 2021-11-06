@@ -37,7 +37,7 @@ export default function LoginPage() {
                   marginBottom: "2rem",
                 }}
               >
-                Password sign-ins are for isntructors, TAs, and admins only.
+                Password sign-ins are for instructors, TAs, and admins only.
               </p>
               <Auth supabaseClient={supabaseClient} providers={[]} />
             </Col>
