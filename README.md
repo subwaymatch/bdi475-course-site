@@ -7,12 +7,6 @@
 
 This is a course site for UIUC's BDI 475 - Introduction to Data Analytics Applications in Business.
 
-## Link to Spring 2021 Version
-
-Spring 2021 deployment uses Firebase Auth and Firestore. The link here is only for an archival purpose.
-
-[https://bdi475-course-site-fgr8lwjf7-subwaymatch.vercel.app/](https://bdi475-course-site-fgr8lwjf7-subwaymatch.vercel.app/)
-
 ## Preview (Development) and Production Branches
 
 - `development` branch is used for all development activities. `development` branch can be viewed at [https://bdi475-course-site.vercel.app/](https://bdi475-course-site.vercel.app/).
@@ -27,9 +21,9 @@ Spring 2021 deployment uses Firebase Auth and Firestore. The link here is only f
 
 ### Fall 2021
 
-- Updated [Pyodide](https://github.com/pyodide/pyodide) to version `0.18` to support Safari and mobile browsers.
+- Updated [Pyodide](https://github.com/pyodide/pyodide) to version `0.18.1` to support Safari and mobile browsers.
 
-- Updated [Next.js](https://github.com/vercel/next.js/) to version `11.1` for `webpack` v5 support, faster builds, and web fonts optimizations.
+- Updated [Next.js](https://github.com/vercel/next.js/) to v12 for `webpack` v5 support, faster builds, and web fonts optimizations.
 
 - Updated [Bootstrap](https://getbootstrap.com/) to v5. No noticeable change other than a few breaking classnames.
 
@@ -40,14 +34,23 @@ Spring 2021 deployment uses Firebase Auth and Firestore. The link here is only f
   - Supabase uses Postgres as a backing database. This makes it easy to make joined queries.
   - Supabase provides a [type generator](https://supabase.io/docs/reference/javascript/generating-types) that works seamlessly with Typescript.
 
+## Link to Spring 2021 Version
+
+Spring 2021 deployment uses Firebase Auth and Firestore. The link here is only for an archival purpose.
+
+[https://bdi475-course-site-fgr8lwjf7-subwaymatch.vercel.app/](https://bdi475-course-site-fgr8lwjf7-subwaymatch.vercel.app/)
+
 ## Roadmap 🦜
 
 These are features I'm looking to add.
 
-- Multiple choice questions
+- Multiple choice questions (work-in-progress)
 - SQLite coding challenge support using [sql.js](https://github.com/sql-js/sql.js/)
+- Full page coding challenge
+- WebAssembly-based Python playground with Pandas/Numpy support
 - [MDX](https://mdxjs.com/) support
 - Live polling feature
+- Jupyter/Colab autograder using AWS lambda
 
 ## Local development
 
