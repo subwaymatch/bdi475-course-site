@@ -76,7 +76,7 @@ export default function Login() {
 
           <Row>
             <Col>
-              <span className="greenLabel">NetID</span>
+              <span className="green label">NetID</span>
             </Col>
           </Row>
 
