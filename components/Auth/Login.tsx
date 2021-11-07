@@ -8,14 +8,17 @@ import { clickableVariants } from "animations/clickableVariants";
 import styles from "./Login.module.scss";
 import clsx from "clsx";
 import { supabaseClient } from "lib/supabase/supabaseClient";
+import { CircularProgress } from "@material-ui/core";
 
 export default function Login() {
   const [netId, setNetId] = useState("");
+  const [isSendingEmail, setIsSendingEmail] = useState(false);
   const [isEmailSent, setIsEmailSent] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
   const sendSignInLink = async (email: string) => {
     try {
+      setIsSendingEmail(true);
       setErrorMessage("");
 
       const { error: signInError } = await supabaseClient.auth.signIn({
@@ -33,11 +36,16 @@ export default function Login() {
       const errorMessage = err.message;
 
       toast.error(errorMessage);
+    } finally {
+      setIsSendingEmail(false);
     }
   };
 
-  const submit = (e) => {
-    e.preventDefault();
+  const submit = () => {
+    if (isSendingEmail || isEmailSent) {
+      return;
+    }
+
     let userEmail;
 
     // If the user has typed a full email, do not append @illinois.edu to the end
@@ -100,28 +108,31 @@ export default function Login() {
 
           <Row className={clsx(styles.submitControls, "align-items-center")}>
             <Col md={4} xs={12}>
-              {isEmailSent ? (
-                <a
-                  className="lightGray button disabled"
-                  onClick={(e) => {
-                    e.preventDefault();
-                  }}
-                >
-                  <span className={styles.label}>Check your Inbox</span>
-                  <MdDone className={styles.reactIcon} />
-                </a>
-              ) : (
-                <motion.span
-                  variants={clickableVariants}
-                  whileHover="hover"
-                  whileTap="tap"
-                  className="green button"
-                  onClick={submit}
-                >
-                  <span className={styles.label}>Email Me</span>
-                  <RiSendPlaneLine className={styles.reactIcon} />
-                </motion.span>
-              )}
+              <a
+                className={clsx("green", "button", {
+                  disabled: isSendingEmail || isEmailSent,
+                })}
+                onClick={() => {
+                  submit();
+                }}
+              >
+                {isEmailSent ? (
+                  <>
+                    <span className={styles.label}>Check your Inbox</span>
+                    <MdDone className={styles.reactIcon} />
+                  </>
+                ) : isSendingEmail ? (
+                  <>
+                    <span className={styles.label}>Sending Email</span>
+                    <CircularProgress color="inherit" size={20} />
+                  </>
+                ) : (
+                  <>
+                    <span className={styles.label}>Email Me</span>
+                    <RiSendPlaneLine className={styles.reactIcon} />
+                  </>
+                )}
+              </a>
             </Col>
             <Col md={8} xs={12}>
               <p className={styles.note}>
