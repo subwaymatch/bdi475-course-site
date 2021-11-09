@@ -187,7 +187,7 @@
   {
     "date": "2021-11-04",
     "type": "LECTURE",
-    "text": ["DataViz (continued)", "Line Charts", "Bar Charts"]
+    "text": ["DataViz (continued)", "Line Charts", "Bar Charts", "Other Types"]
   },
   {
     "date": "2021-11-05",
@@ -197,7 +197,7 @@
   {
     "date": "2021-11-09",
     "type": "LECTURE",
-    "text": ["Treemap", "Sunburst", "Heatmap"]
+    "text": ["Final Project Explanation"]
   },
   {
     "date": "2021-11-10",
@@ -206,18 +206,13 @@
   },
   {
     "date": "2021-11-11",
-    "type": "QUIZ",
-    "text": "Quiz 5"
-  },
-  {
-    "date": "2021-11-11",
     "type": "LECTURE",
     "text": ["Intro to Tableau", "Box Plots", "Histograms", "Line/Bar Charts"]
   },
   {
-    "date": "2021-11-15",
-    "type": "CASE_STUDY",
-    "text": "Case Study 3 - Chicago Rideshare Trips"
+    "date": "2021-11-16",
+    "type": "QUIZ",
+    "text": "Quiz 5"
   },
   {
     "date": "2021-11-16",
@@ -225,9 +220,14 @@
     "text": ["Tableau", "Scatter Plot", "Heatmap", "Geographic Map"]
   },
   {
+    "date": "2021-11-17",
+    "type": "CASE_STUDY",
+    "text": "Case Study 3 - Chicago Rideshare Trips"
+  },
+  {
     "date": "2021-11-18",
     "type": "LECTURE",
-    "text": ["More Tableau"]
+    "text": ["Workday"]
   },
   {
     "date": "2021-11-23",
@@ -242,7 +242,7 @@
   {
     "date": "2021-11-30",
     "type": "LECTURE",
-    "text": ["Workday"]
+    "text": ["Final Case Study Check-in"]
   },
   {
     "date": "2021-12-01",
@@ -252,7 +252,7 @@
   {
     "date": "2021-12-02",
     "type": "LECTURE",
-    "text": ["Final Case Study Setup"]
+    "text": ["Workday"]
   },
   {
     "date": "2021-12-07",

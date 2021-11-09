@@ -310,7 +310,7 @@ export default function NotesPage() {
             />
 
             <NoteItem
-              href="https://canvas.illinois.edu/courses/14860/assignments/342467"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/main/L20-intro-to-visualizations-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/l19-dataviz.png"
@@ -325,7 +325,7 @@ export default function NotesPage() {
             />
 
             <NoteItem
-              href="https://canvas.illinois.edu/courses/14860/assignments/343674"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/main/L21-line-bar-scatter-plots-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/l19-dataviz.png"
@@ -340,7 +340,7 @@ export default function NotesPage() {
             />
 
             <NoteItem
-              href="https://canvas.illinois.edu/courses/14860/assignments/343675"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/main/L22-advanced-visualizations-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/l19-dataviz.png"
@@ -351,6 +351,21 @@ export default function NotesPage() {
               }
               date="2021-11-09"
               title="Advanced Visualizations"
+              colorTheme={ColorTheme.Blue}
+            />
+
+            <NoteItem
+              href="https://www.notion.so/bdi475/Lecture-22-Introduction-to-Tableau-15832a839f2146a59f36160bd7ce1450"
+              thumbnail={
+                <Image
+                  src="/images/notes/l19-dataviz.png"
+                  width={900}
+                  height={600}
+                  alt=""
+                />
+              }
+              date="2021-11-11"
+              title="Introduction to Tableau"
               colorTheme={ColorTheme.Blue}
             />
 
