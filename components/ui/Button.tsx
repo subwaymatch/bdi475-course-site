@@ -5,7 +5,7 @@ import { isMobile } from "react-device-detect";
 import styles from "./Button.module.scss";
 import { ColorTheme } from "types/color-theme";
 
-interface IButtonProps {
+export interface IButtonProps {
   className?: string;
   tooltip?: React.ReactNode;
   label: string;

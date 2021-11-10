@@ -3,11 +3,12 @@ import Link from "next/link";
 import useSupabaseAuth from "hooks/useSupabaseAuth";
 import { Row, Col } from "react-bootstrap";
 import { BsCheckCircle } from "react-icons/bs";
-import { RiHistoryLine, RiEditBoxLine, RiGroupLine } from "react-icons/ri";
+import { RiEditBoxLine } from "react-icons/ri";
 import Tippy from "@tippyjs/react";
 import clsx from "clsx";
 import styles from "./RecordedChallenge.module.scss";
 import useMultipleChoiceQuestion from "hooks/useMultipleChoiceQuestion";
+import useMultipleChoiceAttempts from "hooks/useMultipleChoiceAttempts";
 import MultipleChoiceQuestion from "components/challenges/view/MultipleChoiceQuestion";
 import { QueryStatusEnum } from "types";
 import { definitions } from "types/database";
@@ -24,13 +25,11 @@ export default function RecordedMultipleChoiceQuestion({
   const { user, session, roles } = useSupabaseAuth();
   const isAdmin = roles.includes("Admin");
   const { status, questionData, error } = useMultipleChoiceQuestion(questionId);
+  const { attempts } = useMultipleChoiceAttempts(questionId);
   const [answersData, setAnswersData] = useState<
     definitions["multiple_choice_options"][]
   >([]);
   const editLinkRef = useRef<HTMLAnchorElement>();
-  const attemptsLinkRef = useRef<HTMLAnchorElement>();
-  const historyLinkRef = useRef<HTMLAnchorElement>();
-  const attempts = [];
   const [showResult, setShowResult] = useState(false);
 
   const onSubmit = async (userSelections: number[]) => {
@@ -58,6 +57,27 @@ export default function RecordedMultipleChoiceQuestion({
 
     setAnswersData(submitResult.answersData);
     setShowResult(true);
+  };
+
+  const getAttemptMessage = () => {
+    if (!user) {
+      return "You must be signed in to view your submission history";
+    } else if (attempts.length === 0) {
+      return "No submission";
+    } else {
+      const passCount = attempts.filter((o) => o.is_success).length;
+
+      if (passCount === 0) {
+        return `No successful submission yet`;
+      } else {
+        return `Pass`;
+      }
+    }
+  };
+
+  const onReset = () => {
+    setAnswersData([]);
+    setShowResult(false);
   };
 
   return (
@@ -100,62 +120,11 @@ export default function RecordedMultipleChoiceQuestion({
                         theme="light"
                         reference={editLinkRef}
                       />
-
-                      <Link
-                        href={`/admin/multiple-choice/attempts/${questionId}`}
-                      >
-                        <a
-                          className={clsx(styles.iconButton, styles.editButton)}
-                          ref={attemptsLinkRef}
-                        >
-                          <RiGroupLine className={styles.reactIcon} />
-                        </a>
-                      </Link>
-
-                      <Tippy
-                        content="View all user attempts"
-                        className="tippy"
-                        placement="bottom"
-                        offset={[0, -2]}
-                        theme="light"
-                        reference={attemptsLinkRef}
-                      />
-                    </>
-                  )}
-
-                  {user && (
-                    <>
-                      <Link href={`/multiple-choice/history/${questionId}`}>
-                        <a
-                          className={clsx(
-                            styles.iconButton,
-                            styles.historyButton,
-                            {
-                              [styles.disabled]: attempts.length === 0,
-                            }
-                          )}
-                          ref={historyLinkRef}
-                        >
-                          <RiHistoryLine className={styles.reactIcon} />
-                        </a>
-                      </Link>
-                      <Tippy
-                        content={
-                          attempts.length > 0
-                            ? "View submission history"
-                            : "No history found"
-                        }
-                        className="tippy"
-                        placement="bottom"
-                        offset={[0, -2]}
-                        theme="light"
-                        reference={historyLinkRef}
-                      />
                     </>
                   )}
 
                   <Tippy
-                    content={"TODO: ATTEMPTS MESSAGE"}
+                    content={getAttemptMessage()}
                     className="tippy"
                     placement="bottom"
                     offset={[0, -2]}
@@ -188,7 +157,7 @@ export default function RecordedMultipleChoiceQuestion({
             answersData={answersData}
             showResult={showResult}
             onSubmit={onSubmit}
-            onReset={() => setShowResult(false)}
+            onReset={onReset}
           />
         </div>
       </Col>
