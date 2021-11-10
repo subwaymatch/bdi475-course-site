@@ -12,6 +12,7 @@ import useMultipleChoiceAttempts from "hooks/useMultipleChoiceAttempts";
 import MultipleChoiceQuestion from "components/challenges/view/MultipleChoiceQuestion";
 import { QueryStatusEnum } from "types";
 import { definitions } from "types/database";
+import { toast } from "react-toastify";
 
 interface IRecordedMultipleChoiceQuestionProps {
   questionId: number;
@@ -54,6 +55,12 @@ export default function RecordedMultipleChoiceQuestion({
     );
 
     const submitResult = await response.json();
+
+    if (submitResult.isCorrect) {
+      toast.success("Great work! 👊");
+    } else {
+      toast.error("Try again! 🧐");
+    }
 
     setAnswersData(submitResult.answersData);
     setShowResult(true);
