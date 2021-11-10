@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 import useSupabaseAuth from "hooks/useSupabaseAuth";
 import { Row, Col } from "react-bootstrap";
-import { BsCheckCircle } from "react-icons/bs";
+import { BsCheckCircle, BsXCircle } from "react-icons/bs";
 import { RiEditBoxLine } from "react-icons/ri";
 import Tippy from "@tippyjs/react";
 import clsx from "clsx";
@@ -150,7 +150,11 @@ export default function RecordedMultipleChoiceQuestion({
                         }
                       )}
                     >
-                      <BsCheckCircle className={styles.reactIcon} />
+                      {attempts.some((o) => o.is_success) ? (
+                        <BsCheckCircle className={styles.reactIcon} />
+                      ) : (
+                        <BsXCircle className={styles.reactIcon} />
+                      )}
                     </span>
                   </Tippy>
                 </div>

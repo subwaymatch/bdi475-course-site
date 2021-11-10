@@ -3,7 +3,7 @@ import Link from "next/link";
 import PythonChallenge from "components/challenges/view/PythonChallenge";
 import useSupabaseAuth from "hooks/useSupabaseAuth";
 import { Row, Col } from "react-bootstrap";
-import { BsCheckCircle } from "react-icons/bs";
+import { BsCheckCircle, BsXCircle } from "react-icons/bs";
 import { RiHistoryLine, RiEditBoxLine, RiGroupLine } from "react-icons/ri";
 import usePythonChallenge from "hooks/usePythonChallenge";
 import useCodingChallengeAttempts from "hooks/useCodingChallengeAttempts";
@@ -156,7 +156,11 @@ export default function RecordedPythonChallenge({
                         }
                       )}
                     >
-                      <BsCheckCircle className={styles.reactIcon} />
+                      {attempts.some((o) => o.is_success) ? (
+                        <BsCheckCircle className={styles.reactIcon} />
+                      ) : (
+                        <BsXCircle className={styles.reactIcon} />
+                      )}
                     </span>
                   </Tippy>
                 </div>
