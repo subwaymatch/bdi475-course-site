@@ -27,11 +27,11 @@ export default function Login() {
 
       if (signInError) {
         setErrorMessage(signInError.message);
+        toast.error(signInError.message);
       } else {
         setIsEmailSent(true);
+        toast.success(`Successfully sent a sign-in link to ${email}`);
       }
-
-      toast.success(`Successfully sent a sign-in link to ${email}`);
     } catch (err) {
       const errorMessage = err.message;
 
