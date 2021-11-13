@@ -115,6 +115,15 @@ export default function AssignmentsPage() {
                   link="https://canvas.illinois.edu/courses/14860/assignments/343676"
                   colorTheme={ColorTheme.Purple}
                 />
+
+                <AssignmentItem
+                  name="Exercise 10"
+                  dueDate={dayjs("2021-11-17").tz().format("ll")}
+                  pointsAvailable={80}
+                  status={AssignmentStatus.Available}
+                  link="https://canvas.illinois.edu/courses/14860/assignments/346038"
+                  colorTheme={ColorTheme.Purple}
+                />
               </div>
             </Col>
           </Row>
@@ -189,6 +198,15 @@ export default function AssignmentsPage() {
                   link="https://canvas.illinois.edu/courses/14860/assignments/340348"
                   colorTheme={ColorTheme.Green}
                 />
+
+                <AssignmentItem
+                  name="Quiz 5"
+                  dueDate={dayjs("2021-11-25").tz().format("ll")}
+                  pointsAvailable={25}
+                  status={AssignmentStatus.Available}
+                  link="https://canvas.illinois.edu/courses/14860/assignments/346164/edit"
+                  colorTheme={ColorTheme.Green}
+                />
               </div>
             </Col>
           </Row>
@@ -232,6 +250,42 @@ export default function AssignmentsPage() {
                 thumbnail={
                   <Image
                     src="/images/case-studies/case_study_airbnb_listings.jpg"
+                    layout="responsive"
+                    width={1920}
+                    height={640}
+                  />
+                }
+              />
+            </Col>
+
+            <Col lg={6}>
+              <CaseStudyItem
+                name="Chicago Ridesharing Trips Before & After COVID-19"
+                dueDate={dayjs("2021-11-30").tz().format("ll")}
+                pointsAvailable={80}
+                status={AssignmentStatus.Available}
+                link="https://canvas.illinois.edu/courses/14860/assignments/346161"
+                thumbnail={
+                  <Image
+                    src="/images/case-studies/case_study_ridesharing_trips.jpg"
+                    layout="responsive"
+                    width={1920}
+                    height={640}
+                  />
+                }
+              />
+            </Col>
+
+            <Col lg={6}>
+              <CaseStudyItem
+                name="Fortune 1000 Tableau Visualizations"
+                dueDate={dayjs("2021-12-01").tz().format("ll")}
+                pointsAvailable={80}
+                status={AssignmentStatus.Available}
+                link="https://canvas.illinois.edu/courses/14860/assignments/346162"
+                thumbnail={
+                  <Image
+                    src="/images/case-studies/case_study_fortune_1000.jpg"
                     layout="responsive"
                     width={1920}
                     height={640}

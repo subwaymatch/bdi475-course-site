@@ -369,9 +369,8 @@ export default function NotesPage() {
               colorTheme={ColorTheme.Blue}
             />
 
-            {/*
             <NoteItem
-              href="https://www.notion.so/bdi475/Lecture-22-Introduction-to-Tableau-15832a839f2146a59f36160bd7ce1450"
+              href="https://bdi475.notion.site/Lecture-24-Advanced-Tableau-Visualizations-334bf4b89ffe4012b6b0fcb334da0178"
               thumbnail={
                 <Image
                   src="/images/notes/l19-dataviz.png"
@@ -380,10 +379,11 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2021-04-19"
-              title="Intro to Tableau"
+              date="2021-11-16"
+              title="Advanced Tableau Visualizations"
               colorTheme={ColorTheme.Blue}
             />
+            {/*
             <NoteItem
               href="https://www.notion.so/bdi475/Lecture-23-Tableau-334bf4b89ffe4012b6b0fcb334da0178"
               thumbnail={
