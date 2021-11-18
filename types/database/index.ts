@@ -114,6 +114,102 @@ export interface paths {
       };
     };
   };
+  "/coding_challenge_solution_lookup": {
+    get: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.coding_challenge_solution_lookup.id"];
+          user_id?: parameters["rowFilter.coding_challenge_solution_lookup.user_id"];
+          challenge_id?: parameters["rowFilter.coding_challenge_solution_lookup.challenge_id"];
+          looked_at?: parameters["rowFilter.coding_challenge_solution_lookup.looked_at"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["coding_challenge_solution_lookup"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** coding_challenge_solution_lookup */
+          coding_challenge_solution_lookup?: definitions["coding_challenge_solution_lookup"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.coding_challenge_solution_lookup.id"];
+          user_id?: parameters["rowFilter.coding_challenge_solution_lookup.user_id"];
+          challenge_id?: parameters["rowFilter.coding_challenge_solution_lookup.challenge_id"];
+          looked_at?: parameters["rowFilter.coding_challenge_solution_lookup.looked_at"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.coding_challenge_solution_lookup.id"];
+          user_id?: parameters["rowFilter.coding_challenge_solution_lookup.user_id"];
+          challenge_id?: parameters["rowFilter.coding_challenge_solution_lookup.challenge_id"];
+          looked_at?: parameters["rowFilter.coding_challenge_solution_lookup.looked_at"];
+        };
+        body: {
+          /** coding_challenge_solution_lookup */
+          coding_challenge_solution_lookup?: definitions["coding_challenge_solution_lookup"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
   "/coding_challenges": {
     get: {
       parameters: {
@@ -764,6 +860,16 @@ export interface definitions {
     is_success: boolean;
     user_code?: string;
   };
+  coding_challenge_solution_lookup: {
+    /**
+     * Note:
+     * This is a Primary Key.<pk/>
+     */
+    id: number;
+    user_id?: string;
+    challenge_id?: number;
+    looked_at?: string;
+  };
   /** Coding challenges */
   coding_challenges: {
     created_at?: string;
@@ -894,6 +1000,12 @@ export interface parameters {
   "rowFilter.coding_challenge_attempts.submitted_at": string;
   "rowFilter.coding_challenge_attempts.is_success": string;
   "rowFilter.coding_challenge_attempts.user_code": string;
+  /** coding_challenge_solution_lookup */
+  "body.coding_challenge_solution_lookup": definitions["coding_challenge_solution_lookup"];
+  "rowFilter.coding_challenge_solution_lookup.id": string;
+  "rowFilter.coding_challenge_solution_lookup.user_id": string;
+  "rowFilter.coding_challenge_solution_lookup.challenge_id": string;
+  "rowFilter.coding_challenge_solution_lookup.looked_at": string;
   /** coding_challenges */
   "body.coding_challenges": definitions["coding_challenges"];
   "rowFilter.coding_challenges.created_at": string;

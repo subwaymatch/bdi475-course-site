@@ -5,11 +5,10 @@ import _ from "lodash";
 import clsx from "clsx";
 import { Row, Col } from "react-bootstrap";
 import { CgClose } from "react-icons/cg";
-import { definitions } from "types/database";
-import { supabaseClient } from "lib/supabase/supabaseClient";
 import useSupabaseAuth from "hooks/useSupabaseAuth";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { materialDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { toast } from "react-toastify";
 
 enum RequestStatusEnum {
   LOADING,
@@ -32,26 +31,33 @@ export default function SolutionCodeModal({
 }: ISolutionCodeModal) {
   const { user } = useSupabaseAuth();
   const [status, setStatus] = useState(RequestStatusEnum.LOADING);
-  const [challengeData, setChallengeData] =
-    useState<definitions["coding_challenges"]>(null);
+  const [solutionCode, setSolutionCode] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const { session } = useSupabaseAuth();
 
   const getSolutionCode = async () => {
     setStatus(RequestStatusEnum.LOADING);
 
-    const { data, error } = await supabaseClient
-      .from<definitions["coding_challenges"]>("coding_challenges")
-      .select(`id, solution_code`)
-      .eq("id", cid)
-      .single();
+    try {
+      const fetchResult = await fetch(`/api/coding-challenge/${cid}/solution`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${session.access_token}`,
+        },
+      });
+      const data = await fetchResult.json();
 
-    if (error) {
-      console.error(error);
-      setStatus(RequestStatusEnum.ERROR);
-      setErrorMessage(error.message);
-    } else {
-      setChallengeData(data);
+      console.log(data);
+
+      setSolutionCode((data as any).solutionCode);
       setStatus(RequestStatusEnum.SUCCESS);
+    } catch (err) {
+      console.error(err);
+      setStatus(RequestStatusEnum.ERROR);
+      setErrorMessage(err.message);
+
+      toast.error(err.message);
     }
   };
 
@@ -99,7 +105,7 @@ export default function SolutionCodeModal({
 
         <div className={styles.modalBody}>
           <SyntaxHighlighter
-            language="python"
+            language={language}
             style={materialDark}
             customStyle={{
               fontSize: "1.2rem",
@@ -110,9 +116,7 @@ export default function SolutionCodeModal({
             }}
             wrapLongLines={true}
           >
-            {status === RequestStatusEnum.SUCCESS
-              ? challengeData.solution_code
-              : "# Loading"}
+            {status === RequestStatusEnum.SUCCESS ? solutionCode : "# Loading"}
           </SyntaxHighlighter>
         </div>
 
