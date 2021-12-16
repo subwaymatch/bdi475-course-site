@@ -18,7 +18,7 @@ body {
   color: $color-text-gray;
   font-size: 1.13rem;
   line-height: 1.8;
-  letter-spacing: -0.025rem;
+  letter-spacing: -0.03rem;
 
   @include media-breakpoint-down(xl) {
     font-size: 1.1rem;
@@ -333,10 +333,10 @@ kbd {
   color: $color-darker-blue;
   background-color: color.adjust(
     $color-blue,
-    $lightness: 21%,
+    $lightness: 18%,
     $saturation: 50%
   );
-  border: 1px solid color.adjust($color-blue, $lightness: 15%, $saturation: 50%);
+  // border: 1px solid color.adjust($color-blue, $lightness: 15%, $saturation: 50%);
   border-radius: 0.25rem;
   font-size: 0.95em;
   white-space: nowrap;
