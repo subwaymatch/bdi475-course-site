@@ -333,8 +333,11 @@ function Disclosures() {
                     If we can't run or hide, we'll fight back with whatever we
                     can get our hands on. If you want to better prepare yourself
                     for any of these situations, visit police.illinois.edu/safe.
-                    Remember you can sign up for emergency text messages at
-                    http://emergency.illinois.edu/.
+                    Remember you can sign up for emergency text messages at{" "}
+                    <a href="http://emergency.illinois.edu/">
+                      http://emergency.illinois.edu/
+                    </a>
+                    .
                   </p>
                 </Col>
               </Row>
@@ -361,10 +364,20 @@ function Disclosures() {
                     employees who, as counselors, confidential advisors, and
                     medical professionals, do not have this reporting
                     responsibility and can maintain confidentiality, can be
-                    found here: http://wecare.illinois.
-                    edu/resources/students/#confidential. Other information
-                    about resources and reporting is available here:
-                    http://wecare.illinois.edu.
+                    found here:{" "}
+                    <a
+                      href="http://wecare.illinois.
+                    edu/resources/students/#confidential"
+                    >
+                      http://wecare.illinois.
+                      edu/resources/students/#confidential
+                    </a>
+                    . Other information about resources and reporting is
+                    available here:{" "}
+                    <a href="http://wecare.illinois.edu">
+                      http://wecare.illinois.edu
+                    </a>
+                    .
                   </p>
                 </Col>
               </Row>
@@ -417,7 +430,10 @@ function Disclosures() {
                 directly via email at jhouse@illinois.edu to schedule an
                 appointment or for additional information. You can also visit
                 the counseling center website site at:
-                http://counselingcenter.illinois.edu/about-us/embedded-counselors
+                <a href="http://counselingcenter.illinois.edu/about-us/embedded-counselors">
+                  http://counselingcenter.illinois.edu/about-us/embedded-counselors
+                </a>
+                .
               </p>
             </div>
 
@@ -448,7 +464,8 @@ function Disclosures() {
                 Kognito offers modules specific to concerns of LGBTQ individuals
                 and student veterans. Having conversations about suicide can be
                 difficult, but it is important to have them. If you are unsure
-                where to begin, practice at http://ui.kognito.com
+                where to begin, practice at{" "}
+                <a href="http://ui.kognito.com">http://ui.kognito.com</a>.
               </p>
             </div>
           </Col>
