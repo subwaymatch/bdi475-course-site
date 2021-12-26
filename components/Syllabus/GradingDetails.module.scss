@@ -15,28 +15,39 @@
 
       h3 {
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        border-top: 1px solid $color-dark-gray;
-        padding: 1.5rem 0;
-        border-bottom: 1px solid $color-border-gray;
+        align-items: flex-start;
+        padding: 1.5rem 0 0 0;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        font-size: 1.4rem;
+        border-top: 1px solid $color-border-gray;
 
         .title {
           // Nothing
         }
 
         .number {
-          font-size: 0.9rem;
-          font-weight: 700;
+          font-size: 0.8rem;
+          font-weight: 600;
           background-color: $color-yellow;
-          border-radius: 10rem;
-          padding: 0.25rem 0.8rem;
+          border-radius: 50%;
+          width: 1.5rem;
+          height: 1.5rem;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          margin-left: 0.4rem;
         }
       }
 
       p {
         margin-top: 1.5rem;
         padding-top: 0;
+
+        &:first-of-type {
+          margin-top: 0;
+        }
       }
     }
   }

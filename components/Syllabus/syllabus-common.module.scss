@@ -2,10 +2,11 @@
 @import "styles/mixins";
 
 p.text {
-  color: $color-medium-gray;
-  font-size: 1.3rem;
-  line-height: 1.9;
-  font-weight: 300;
+  color: #999;
+  font-size: 1.26rem;
+  letter-spacing: -0.03rem;
+  line-height: 1.8;
+  font-weight: 450;
   margin-top: 1.5rem;
 
   &:first-of-type {
@@ -13,11 +14,11 @@ p.text {
   }
 
   @include media-breakpoint-down(xl) {
-    font-size: 1.25rem;
+    font-size: 1.22rem;
   }
 
   @include media-breakpoint-down(lg) {
-    font-size: 1.2rem;
+    font-size: 1.18rem;
     line-height: 1.8;
   }
 

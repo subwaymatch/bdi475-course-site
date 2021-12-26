@@ -2,13 +2,17 @@
 @import "styles/mixins";
 @import "./syllabus-common.module.scss";
 
-.syllabus {
+.courseInformation {
   h3 {
-    font-weight: 500;
-    font-size: 1.4rem;
+    font-weight: 550;
+    font-size: 1.5rem;
 
     @include media-breakpoint-down(lg) {
       font-size: 1.3rem;
+    }
+
+    @include media-breakpoint-down(md) {
+      margin-bottom: 1.5rem;
     }
   }
 
@@ -50,11 +54,28 @@
   .instructionalTeam {
     margin-top: 4rem;
 
-    .memberHeader {
-      border-top: 1px solid black;
-      padding: 1rem 0;
+    .memberInfo {
+      padding-bottom: 6rem;
+
+      @include media-breakpoint-down(lg) {
+        padding-bottom: 8rem;
+      }
 
       @include media-breakpoint-down(md) {
+        padding-bottom: 6rem;
+      }
+
+      &:last-child {
+        padding-bottom: 0;
+      }
+    }
+
+    .memberHeader {
+      border-top: 1px solid $color-border-gray;
+      padding: 1rem 0;
+      line-height: 1.7;
+
+      @include media-breakpoint-down(lg) {
         border: none;
         padding-top: 0.5rem;
       }
@@ -62,7 +83,6 @@
       .name,
       .role,
       .title {
-        font-weight: 500;
         display: block;
       }
 
@@ -70,20 +90,16 @@
         color: $color-orange;
       }
 
-      .title {
-        font-weight: 400;
-        text-align: right;
+      .name {
+        font-weight: 600;
+      }
 
-        @include media-breakpoint-down(lg) {
-          color: $color-gray;
-          text-align: left;
-        }
+      .title {
+        color: $color-gray;
       }
     }
 
     .memberDesc {
-      border-top: 1px solid $color-border-gray;
-
       p {
         margin-top: 1.5rem;
         padding: 0;
@@ -91,6 +107,16 @@
         @include media-breakpoint-down(xl) {
           margin-top: 1.25rem;
         }
+      }
+    }
+
+    .memberImage {
+      position: relative;
+
+      .imageLabel {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
       }
     }
   }

@@ -1,3 +1,4 @@
+@import "./variables.scss";
 @import "~bootstrap/scss/_functions";
 @import "~bootstrap/scss/_variables";
 @import "~bootstrap/scss/mixins/_breakpoints";
@@ -5,3 +6,10 @@
 // Do not apply customizations
 // Bootstrap 5's default configuration works well
 // @import './bootstrap.custom';
+@mixin font-sans-serif-mixin() {
+  font-family: "Inter", sans-serif;
+
+  @supports (font-variation-settings: normal) {
+    font-family: "Inter var", "Inter", sans-serif;
+  }
+}

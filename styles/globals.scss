@@ -1,23 +1,20 @@
 @use "sass:color";
 @import "./variables";
+@import "./mixins";
 @import url("https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css");
 @import url("https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css");
 @import "~bootstrap/scss/bootstrap-grid";
 @import url("https://rsms.me/inter/inter.css");
 
 html {
-  font-family: $font-sans-serif;
-}
-@supports (font-variation-settings: normal) {
-  html {
-    font-family: $font-sans-serif;
-  }
+  @include font-sans-serif-mixin();
 }
 
 body {
   color: $color-text-gray;
   font-size: 1.13rem;
   line-height: 1.8;
+  font-weight: 450;
   letter-spacing: -0.03rem;
 
   @include media-breakpoint-down(xl) {
@@ -118,7 +115,7 @@ h1.pageTitleBorders {
 
 h2.sectionTitle {
   color: $color-dark-gray;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   line-height: 1.5;
   font-weight: 600;
   border-top: 1px solid $color-dark-gray;
@@ -133,6 +130,14 @@ h2.sectionTitle {
 
   &.grayBottomBorder {
     border-bottom: 1px solid $color-border-gray;
+  }
+
+  @include media-breakpoint-down(xl) {
+    font-size: 1.6rem;
+  }
+
+  @include media-breakpoint-down(lg) {
+    font-size: 1.5rem;
   }
 
   @include media-breakpoint-down(md) {
@@ -318,8 +323,9 @@ strong {
   }
 }
 
-input {
-  font-family: $font-sans-serif;
+input,
+button {
+  @include font-sans-serif-mixin();
 }
 
 ::placeholder {

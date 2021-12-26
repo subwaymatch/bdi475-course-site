@@ -1,5 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap";
-import styles from "./Syllabus.module.scss";
+import styles from "./CourseInformation.module.scss";
 import clsx from "clsx";
 import Image from "next/image";
 import GradingBreakdown from "./GradingBreakdown";
@@ -8,7 +8,7 @@ import PoliciesAndDisclosures from "./PoliciesAndDisclosures";
 
 export default function CourseInformation() {
   return (
-    <section className={styles.syllabus}>
+    <section className={styles.courseInformation}>
       <div className={styles.sectionInfo}>
         <Container>
           <Row>
@@ -96,75 +96,132 @@ export default function CourseInformation() {
           <Row>
             <Col>
               <h2 className="sectionTitle">
-                Instructor
+                Instructional Team
                 <span className="accent orange" />
               </h2>
             </Col>
           </Row>
 
-          <Row>
-            <Col
-              md={{
-                span: 8,
-                order: 1,
-              }}
-              xs={{
-                span: 12,
-                order: 2,
-              }}
-            >
-              <div className={styles.memberHeader}>
-                <Row>
-                  <Col lg={6} md={12}>
-                    <span className={styles.name}>Ye Joo Park</span>
-                    <span className={styles.role}>Course Instructor</span>
-                  </Col>
-                  <Col lg={6} md={12}>
-                    <span className={styles.title}>
-                      Instructor of Accountancy
-                    </span>
-                    <span className={styles.title}>
-                      UI-Deloitte Center Fellow
-                    </span>
-                  </Col>
-                </Row>
-              </div>
+          <div className={styles.memberInfo}>
+            <Row>
+              <Col
+                lg={{
+                  span: 8,
+                  order: 1,
+                }}
+                xs={{
+                  span: 12,
+                  order: 2,
+                }}
+              >
+                <div className={styles.memberHeader}>
+                  <span className={styles.role}>Course Instructor</span>
+                  <span className={styles.name}>Ye Joo Park</span>
+                  <span className={styles.title}>
+                    Instructor of Accountancy
+                  </span>
+                  <span className={styles.title}>
+                    Associate Director, UI-Deloitte Center for Business
+                    Analytics
+                  </span>
+                </div>
 
-              <div className={styles.memberDesc}>
-                <p className={styles.text}>
-                  Greetings! Please call me <code>"Park"</code>. I started
-                  programming as a hobby in elementary school. During my final
-                  year as an accounting major here, I've made up my mind to
-                  pursue what I love to do! Fast-forward to 2021, I'm excited to
-                  be back at my alma mater to be a part of a leading-edge data
-                  analytics curriculum.
-                </p>
-              </div>
-            </Col>
+                <div className={styles.memberDesc}>
+                  <p className={styles.text}>
+                    Greetings! Please call me <code>Park</code>. I started
+                    programming as a hobby in elementary school. During my final
+                    year as an accounting major here, I've made up my mind to
+                    pursue what I love to do! Fast-forward to 2021, I'm excited
+                    to be back at my alma mater to be a part of a leading-edge
+                    data analytics curriculum.
+                  </p>
+                </div>
+              </Col>
 
-            <Col
-              xl={{
-                span: 3,
-                order: 2,
-              }}
-              md={{
-                span: 4,
-                order: 2,
-              }}
-              xs={{
-                span: 12,
-                order: 1,
-              }}
-            >
-              <div className={styles.memberImage}>
-                <Image
-                  src="/images/park_square_bw.jpg"
-                  width={1000}
-                  height={1000}
-                />
-              </div>
-            </Col>
-          </Row>
+              <Col
+                lg={{
+                  span: 4,
+                  order: 2,
+                }}
+                xs={{
+                  span: 12,
+                  order: 1,
+                }}
+              >
+                <div className={styles.memberImage}>
+                  <Image
+                    src="/images/park_square_bw.jpg"
+                    width={1000}
+                    height={1000}
+                  />
+
+                  <div className={styles.imageLabel}>
+                    <span className="label black">Park</span>
+                  </div>
+                </div>
+              </Col>
+            </Row>
+          </div>
+
+          <div className={styles.memberInfo}>
+            <Row>
+              <Col
+                lg={{
+                  span: 8,
+                  order: 1,
+                }}
+                xs={{
+                  span: 12,
+                  order: 2,
+                }}
+              >
+                <div className={styles.memberHeader}>
+                  <span className={styles.role}>Teaching Assistant</span>
+                  <span className={styles.name}>Sandip Sonawane</span>
+                  <span className={styles.title}>
+                    MS Statistics with Analytics Concentration
+                  </span>
+                </div>
+
+                <div className={styles.memberDesc}>
+                  <p className={styles.text}>
+                    I am pursuing a Master's Degree in Statistics-Analytics at
+                    UIUC. In my previous role at Eaton Research Labs, I had an
+                    extensive range of responsibilities including selecting
+                    features, mining data, improving data collection techniques,
+                    processing data, optimizing classifiers, and doing ad-hoc
+                    analyses. As a Data Scientist, I was required to have
+                    excellent communication skills, understanding of algorithms,
+                    excellence in Python, proficiency in Pandas & SQL, and
+                    excellent knowledge of applied statistics.
+                  </p>
+                </div>
+              </Col>
+
+              <Col
+                lg={{
+                  span: 4,
+                  order: 2,
+                }}
+                xs={{
+                  span: 12,
+                  order: 1,
+                }}
+              >
+                <div className={styles.memberImage}>
+                  <Image
+                    src="/images/sandip_square_bw.jpg"
+                    width={1000}
+                    height={1000}
+                  />
+
+                  <div className={styles.imageLabel}>
+                    <span className="label black">Sandip</span>
+                  </div>
+                </div>
+              </Col>
+            </Row>
+          </div>
         </Container>
       </div>
 

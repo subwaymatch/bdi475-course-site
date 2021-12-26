@@ -1,4 +1,5 @@
 @import "styles/variables";
+@import "styles/mixins";
 
 .modalContent {
   display: flex;
@@ -53,9 +54,10 @@
     justify-content: center;
 
     .button {
+      @include font-sans-serif-mixin();
+
       cursor: pointer;
       font-size: 1.15rem;
-      font-family: $font-sans-serif;
       letter-spacing: -0.02rem;
       display: inline-flex;
       align-items: center;

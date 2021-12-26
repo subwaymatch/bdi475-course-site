@@ -28,7 +28,8 @@
 
   .challengeTitleWrapper {
     .challengeTitleInput {
-      font-family: $font-sans-serif;
+      @include font-sans-serif-mixin();
+
       letter-spacing: -0.01rem;
       font-size: 1rem;
       line-height: 1;

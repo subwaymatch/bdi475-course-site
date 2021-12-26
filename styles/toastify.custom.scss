@@ -1,5 +1,6 @@
 @use "sass:color";
 @import "styles/variables";
+@import "styles/mixins";
 
 :root {
   --toastify-color-info: #{$color-darker-blue};
@@ -16,7 +17,7 @@
 
 /** Classes for the displayed toast **/
 .Toastify__toast {
-  font-family: $font-sans-serif;
+  @include font-sans-serif-mixin();
   font-size: 1rem;
   letter-spacing: -0.01rem;
   line-height: 1.7;
