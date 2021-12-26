@@ -116,9 +116,9 @@ export function getWeeklyDayjsObjectsByYear(
           .map((n, i) =>
             dayjs()
               .year(o.year)
+              .month(6) // fix https://github.com/iamkun/dayjs/issues/1751
               .week(o.week)
               .startOf("week")
-              .clone()
               .add(i, "day")
           )
           .map((dayjsObject) =>
