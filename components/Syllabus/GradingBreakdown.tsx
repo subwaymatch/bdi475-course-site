@@ -53,7 +53,7 @@ export default function GradingBreakdown() {
           <Col>
             <h2 className="sectionTitle grayBottomBorder">
               Grading Breakdown
-              <span className="accent purple" />
+              <span className="accent green" />
             </h2>
           </Col>
         </Row>
@@ -81,7 +81,7 @@ export default function GradingBreakdown() {
 
             <Col sm={4} className="d-none d-sm-block">
               <div>
-                <span className="label yellow">Notes</span>
+                <span className="label pink">Notes</span>
               </div>
             </Col>
           </Row>

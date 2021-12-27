@@ -15,7 +15,7 @@ export default function CourseInformation() {
             <Col>
               <h2 className="sectionTitle">
                 Course Information
-                <span className="accent green" />
+                <span className="accent purple" />
               </h2>
             </Col>
           </Row>
@@ -23,21 +23,21 @@ export default function CourseInformation() {
           <Row>
             <Col md={4}>
               <div className={styles.displayBox}>
-                <span className="label orange">Course Number</span>
+                <span className="label purple">Course Number</span>
                 <span className={styles.largeText}>BDI 475</span>
               </div>
             </Col>
 
             <Col md={4}>
               <div className={styles.displayBox}>
-                <span className="label blue">Credit</span>
+                <span className="label orange">Credit</span>
                 <span className={styles.largeText}>3 Hours</span>
               </div>
             </Col>
 
             <Col md={4}>
               <div className={styles.displayBox}>
-                <span className="label purple">Instructor</span>
+                <span className="label blue">Instructor</span>
                 <span className={styles.largeText}>Park, Ye Joo</span>
               </div>
             </Col>

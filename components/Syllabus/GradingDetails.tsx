@@ -5,54 +5,45 @@ import clsx from "clsx";
 const GradingComponentDetails = () => (
   <div className={styles.gradingComponentDetails}>
     <h2 className="sectionTitle">
-      Grading Components <span className="accent yellow" />
+      Grading Components <span className="accent green" />
     </h2>
 
     <div className={clsx(styles.componentBox, styles.first)}>
-      <h3>
-        <span className={styles.title}>Participation</span>
-        <span className={styles.number}>1</span>
-      </h3>
+      <span className={styles.number}>1</span>
+      <h3>Participation</h3>
 
       <p className={styles.text}>
         During the live lectures, you will work on coding exercises. Your
         participation is measured by a mix of the correctness and efforts in
-        those exercises. It's perfectly okay to get a few questions wrong. 🤠
+        those exercises. It's perfectly okay to get a few questions wrong.
       </p>
     </div>
 
     <div className={styles.componentBox}>
-      <h3>
-        <span className={styles.title}>After-class Exercises</span>
-        <span className={styles.number}>2</span>
-      </h3>
+      <span className={styles.number}>2</span>
+      <h3>After-class Exercises</h3>
 
       <p className={styles.text}>
         These exercises aim to reinforce your understanding of topics we discuss
-        in lectures. 🐌 The challenges are highly similar to the ones you see in
+        in lectures. The challenges are highly similar to the ones you see in
         lectures. You will get an unlimited number of attempts.
       </p>
     </div>
 
     <div className={styles.componentBox}>
-      <h3>
-        <span className={styles.title}>Quizzes</span>
-        <span className={styles.number}>3</span>
-      </h3>
+      <span className={styles.number}>3</span>
+      <h3>Quizzes</h3>
 
       <p className={styles.text}>
-        Each quiz will test your understanding of the topics we discuss in
-        lectures. All quizzes are{" "}
-        <span className="color-green w-500">open note and open search</span>{" "}
-        (able to search). However, no P2P discussions are allowed.
+        Each of the 5 quizzes will test your understanding of the topics we
+        discuss in lectures. All quizzes are open-book. The lowest quiz score
+        will be dropped.
       </p>
     </div>
 
     <div className={styles.componentBox}>
-      <h3>
-        <span className={styles.title}>Problem Sets</span>
-        <span className={styles.number}>4</span>
-      </h3>
+      <span className={styles.number}>4</span>
+      <h3>Problem Sets</h3>
 
       <p className={styles.text}>
         Similar to after-class exercises, each problem set is consisted of
@@ -62,10 +53,8 @@ const GradingComponentDetails = () => (
     </div>
 
     <div className={styles.componentBox}>
-      <h3>
-        <span className={styles.title}>Case Studies</span>
-        <span className={styles.number}>5</span>
-      </h3>
+      <span className={styles.number}>5</span>
+      <h3>Case Studies</h3>
 
       <p className={styles.text}>
         Case studies will bring together all topics we discuss in lectures. You
@@ -79,15 +68,13 @@ const GradingComponentDetails = () => (
       </p>
     </div>
     <div className={styles.componentBox}>
-      <h3>
-        <span className={styles.title}>Capstone Project</span>
-        <span className={styles.number}>6</span>
-      </h3>
+      <span className={styles.number}>6</span>
+      <h3>Capstone Project</h3>
 
       <p className={styles.text}>
         During the last few weeks of this course, you will work on an
         independent capstone project. The goal is to create a portfolio that
-        showcases your data analytic skills. To encourage
+        showcases your data analytic skills.
       </p>
     </div>
   </div>
@@ -97,16 +84,16 @@ const LetterGradeRange = () => (
   <div className={styles.letterGradeRange}>
     <h2 className="sectionTitle">
       Letter Grades
-      <span className="accent green" />
+      <span className="accent blue" />
     </h2>
 
     <div className={styles.header}>
       <Row>
         <Col>
-          <span className="label green">% Range</span>
+          <span className="label">% Range</span>
         </Col>
         <Col>
-          <span className="label purple">Letter Grade</span>
+          <span className="label blue">Letter Grade</span>
         </Col>
       </Row>
     </div>

@@ -1,3 +1,4 @@
+@use "sass:color";
 @import "styles/variables";
 @import "styles/mixins";
 @import "./syllabus-common.module.scss";
@@ -7,41 +8,36 @@
 
   .gradingComponentDetails {
     .componentBox {
-      margin-top: 4rem;
+      padding: 2.5rem 0;
+      border-top: 1px solid $color-border-gray;
 
       &.first {
         margin-top: 0;
       }
 
-      h3 {
-        display: flex;
-        align-items: center;
-        align-items: flex-start;
-        padding: 1.5rem 0 0 0;
-        margin-bottom: 0.5rem;
+      .number {
+        font-size: 1rem;
         font-weight: 600;
-        font-size: 1.4rem;
-        border-top: 1px solid $color-border-gray;
-
-        .title {
-          // Nothing
-        }
-
-        .number {
-          font-size: 0.8rem;
-          font-weight: 600;
-          background-color: $color-yellow;
-          border-radius: 50%;
-          width: 1.5rem;
-          height: 1.5rem;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          margin-left: 0.4rem;
-        }
+        color: white;
+        background-color: $color-green;
+        border-radius: 50%;
+        width: 2rem;
+        height: 2rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0.25rem;
       }
 
-      p {
+      h3 {
+        display: block;
+        margin-top: 0.25rem;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        font-size: 1.45rem;
+      }
+
+      p.text {
         margin-top: 1.5rem;
         padding-top: 0;
 
@@ -73,7 +69,6 @@
         }
 
         .letter {
-          color: $color-purple;
         }
 
         &:first-child {

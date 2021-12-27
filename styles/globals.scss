@@ -231,12 +231,15 @@ strong {
 .label,
 .button {
   background-color: $color-lighter-gray;
+  font-weight: 500;
 
   &.green {
+    color: white;
     background-color: $color-green;
   }
 
   &.purple {
+    color: white;
     background-color: $color-purple;
   }
 
@@ -245,14 +248,17 @@ strong {
   }
 
   &.pink {
+    color: white;
     background-color: $color-pink;
   }
 
   &.blue {
+    color: white;
     background-color: $color-blue;
   }
 
   &.orange {
+    color: white;
     background-color: $color-orange;
   }
 
