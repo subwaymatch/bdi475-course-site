@@ -46,8 +46,8 @@ export default function CourseInformation() {
           <Row>
             <Col md={4}>
               <div className={styles.displayBox}>
-                <span className="label yellow">Term</span>
-                <span className={styles.largeText}>Fall 2021</span>
+                <span className="label gray">Term</span>
+                <span className={styles.largeText}>Spring 2022</span>
               </div>
             </Col>
 
@@ -55,11 +55,9 @@ export default function CourseInformation() {
               <div className={styles.displayBox}>
                 <span className="label green">Class Time &amp; Location</span>
                 <div className={styles.largeText}>
-                  Tues &amp; Thurs 3:30-4:50 PM
+                  Tues &amp; Thurs 12:30-1:50 PM
                   <br />
-                  <span className="color-gray">
-                    3007 Business Instructional Facility
-                  </span>
+                  <span className="color-gray">226 Wohlers Hall</span>
                 </div>
               </div>
             </Col>

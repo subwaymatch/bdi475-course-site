@@ -90,7 +90,7 @@ const LetterGradeRange = () => (
     <div className={styles.header}>
       <Row>
         <Col>
-          <span className="label">% Range</span>
+          <span className="label blue">% Range</span>
         </Col>
         <Col>
           <span className="label blue">Letter Grade</span>

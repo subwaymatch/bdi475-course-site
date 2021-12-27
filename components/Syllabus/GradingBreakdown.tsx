@@ -81,7 +81,7 @@ export default function GradingBreakdown() {
 
             <Col sm={4} className="d-none d-sm-block">
               <div>
-                <span className="label pink">Notes</span>
+                <span className="label gray">Notes</span>
               </div>
             </Col>
           </Row>

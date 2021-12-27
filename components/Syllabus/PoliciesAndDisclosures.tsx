@@ -16,7 +16,10 @@ function Policies() {
       <Container>
         <Row>
           <Col>
-            <h2>Policies</h2>
+            <h2 className="sectionTitle">
+              Policies
+              <span className="accent orange" />
+            </h2>
           </Col>
         </Row>
 
@@ -52,10 +55,10 @@ function Policies() {
 
                 <Col lg={8}>
                   <p className={styles.text}>
-                    I will post a recording of each lecture on Mediaspace within
-                    24 hours. Some lecture sessions may be workdays without a
-                    discussion of new topics. I will not upload the recordings
-                    for these sessions.
+                    Although not guaranteed, I will try to post a recording of
+                    each lecture on Mediaspace within 48 hours. Some lecture
+                    sessions may be utilized as workdays. I will not upload the
+                    recordings for these sessions.
                   </p>
                 </Col>
               </Row>
@@ -157,7 +160,10 @@ function Disclosures() {
       <Container>
         <Row>
           <Col>
-            <h2>Disclosures</h2>
+            <h2 className="sectionTitle">
+              Disclosures
+              <span className="accent orange" />
+            </h2>
           </Col>
         </Row>
 

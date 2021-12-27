@@ -4,35 +4,30 @@
 
 .policies,
 .disclosures {
-  h2 {
-    color: $color-orange;
-    font-size: 2.5rem;
-    font-weight: 500;
-    margin-top: 6rem;
-    border-top: 2px solid $color-orange;
-    padding-top: 0.25rem;
-    padding-bottom: 4rem;
+  margin-top: 6rem;
+
+  .item {
+    border-top: 1px solid $color-border-gray;
+    padding: 3rem 0;
   }
 
   h3 {
-    color: $color-orange;
-    font-size: 1.8rem;
-    font-weight: 500;
-    padding-bottom: 1rem;
-
-    @include media-breakpoint-down(xl) {
-      font-size: 1.6rem;
-    }
-  }
-
-  .item {
-    border-top: 1px solid $color-orange;
-    padding-top: 1.5rem;
-    padding-bottom: 4rem;
+    font-weight: 550;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
 
     @include media-breakpoint-down(lg) {
-      padding-top: 1rem;
-      padding-bottom: 4rem;
+      font-size: 1.3rem;
+    }
+  }
+}
+
+.disclosures {
+  h3 {
+    margin-bottom: 0.75rem;
+
+    @include media-breakpoint-down(lg) {
+      margin-bottom: 0.5rem;
     }
   }
 }
