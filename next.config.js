@@ -1,4 +1,13 @@
-module.exports = {
+const withMDX = require("@next/mdx")({
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [],
+    rehypePlugins: [],
+  },
+});
+
+module.exports = withMDX({
+  pageExtensions: ["js", "jsx", "md", "mdx"],
   webpack: (config, { isServer, webpack }) => {
     console.log(`Webpack version: ${webpack.version}`);
 
@@ -8,4 +17,4 @@ module.exports = {
 
     return config;
   },
-};
+});
