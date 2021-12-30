@@ -49,48 +49,24 @@ export const UserContextProvider = (props) => {
     }
   };
 
-  const handleStorageEvent = (e) => {
-    if (e.key === "supabase.auth.token") {
-      const newSession = JSON.parse(e.newValue);
-      const currentSession = newSession?.currentSession;
-      update(currentSession);
-    }
-  };
-
   useEffect(() => {
-    const session = supabaseClient.auth.session();
-
-    update(session);
-
-    // If a session user already exists,
-    // manually register auth cookie
-    if (session) {
-      setAuthCookieOnServer("SIGNED_IN", session);
-    } else {
-      setAuthCookieOnServer("SIGNED_OUT", session);
-    }
-
     const { data: authListener } = supabaseClient.auth.onAuthStateChange(
       async (event, session) => {
-        update(session);
+        console.log(`onAuthStateChange, event=${event}`);
+        console.log(session);
 
-        await setAuthCookieOnServer(event, session);
+        setAuthCookieOnServer(event, session);
+
+        update(session);
       }
     );
 
     return () => {
       authListener.unsubscribe();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    window.addEventListener("storage", handleStorageEvent);
-
-    return () => {
-      window.removeEventListener("storage", handleStorageEvent);
-    };
-  }, []);
+  console.log(`roles=${JSON.stringify(roles)}`);
 
   const value: IUserContext = {
     session,
