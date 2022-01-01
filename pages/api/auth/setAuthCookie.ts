@@ -9,7 +9,5 @@ export default function setAuthCookie(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  console.log(`setAuthCookie=${JSON.stringify(req.body)}`);
-
   supabaseClient.auth.api.setAuthCookie(req, res);
 }
