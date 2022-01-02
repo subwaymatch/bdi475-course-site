@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import styles from "./MultipleChoiceOption.module.scss";
-import { parseMarkdown } from "lib/unified";
+import { parseMarkdown } from "lib/markdown";
 import { definitions } from "types/database";
 import { IMultipleChoiceOption } from "types/database/multiple-choice";
 

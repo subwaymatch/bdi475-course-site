@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import styles from "./InstructionText.module.scss";
 import clsx from "clsx";
-import { parseMarkdown } from "lib/unified";
+import { parseMarkdown } from "lib/markdown";
 
 interface IInstructionTextProps {
   isLoading: boolean;
