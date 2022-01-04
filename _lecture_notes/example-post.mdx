@@ -10,3 +10,46 @@ This is an example post, with a [link](https://nextjs.org) and a React component
 The title and description are pulled from the MDX file and processed using `gray-matter`. Additionally, links are rendered using a custom component passed to `next-mdx-remote`.
 
 Go back [home](/).
+
+What is the output of the following code?
+
+## Sample Code
+
+```python
+@requires_authorization(roles=["ADMIN"])
+def somefunc(param1='', param2=0):
+    r'''A adtertertertereteretdocstring'''
+    if param1 > param2: # interesting
+        print 'Gre\'ater'
+    return (param2 - param1 + 1 + 0b10l) or None
+
+class SomeClass:
+    pass
+```
+
+## Another sample
+
+Try writing a SQL script as well.
+
+```sql
+SELECT * FROM cities;
+```
+
+## Invalid lang
+
+```java
+test
+```
+
+## Other unified plugins
+
+### Math equations
+
+Euler\'s identity $e^{i\\pi}+1=0$ is a beautiful formula in $\\RR^2$.
+
+Lift($L$) can be determined by Lift Coefficient ($C_L$) like the following
+equation.
+
+$$
+L = \frac{1}{2} \rho v^2 S C_L
+$$

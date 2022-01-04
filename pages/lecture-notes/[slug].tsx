@@ -2,6 +2,12 @@ import fs from "fs";
 import matter from "gray-matter";
 import { MDXRemote } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
+import remarkParse from "remark-parse";
+import remarkMath from "remark-math";
+import remarkRehype from "remark-rehype";
+import rehypeKatex from "rehype-katex";
+import rehypeHighlight from "rehype-highlight";
+import rehypeStringify from "rehype-stringify";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import Link from "next/link";
@@ -34,6 +40,15 @@ export default function LectureNotePage({ source, frontMatter }) {
           <Row>
             <Col>
               <main>
+                <span className="katex">
+                  <span className="katex-mathml">
+                    The KaTeX stylesheet is not loaded!
+                  </span>
+                  <span className="katex-version rule">
+                    KaTeX stylesheet version:{" "}
+                  </span>
+                </span>
+
                 <MDXRemote {...source} />
               </main>
             </Col>
@@ -50,14 +65,20 @@ export const getStaticProps = async ({ params }) => {
 
   const { content, data } = matter(source);
 
+  console.log(`content=${JSON.stringify(content)}`);
+  console.log(`data=${JSON.stringify(data)}`);
+
   const mdxSource = await serialize(content, {
     // Optionally pass remark/rehype plugins
     mdxOptions: {
-      remarkPlugins: [],
-      rehypePlugins: [],
+      remarkPlugins: [remarkMath],
+      rehypePlugins: [rehypeKatex, rehypeHighlight],
     },
-    scope: data,
+    // scope: data,
   });
+
+  console.log(`mdxSource`);
+  console.log(mdxSource);
 
   return {
     props: {
