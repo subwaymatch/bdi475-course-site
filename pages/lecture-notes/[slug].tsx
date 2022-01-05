@@ -2,14 +2,9 @@ import fs from "fs";
 import matter from "gray-matter";
 import { MDXRemote } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
-import remarkParse from "remark-parse";
 import remarkMath from "remark-math";
-import remarkRehype from "remark-rehype";
 import rehypeKatex from "rehype-katex";
 import rehypeHighlight from "rehype-highlight";
-import rehypeStringify from "rehype-stringify";
-import dynamic from "next/dynamic";
-import Head from "next/head";
 import Link from "next/link";
 import path from "path";
 import Layout from "components/Layout";
@@ -72,7 +67,7 @@ export const getStaticProps = async ({ params }) => {
     // Optionally pass remark/rehype plugins
     mdxOptions: {
       remarkPlugins: [remarkMath],
-      rehypePlugins: [rehypeKatex, rehypeHighlight],
+      rehypePlugins: [rehypeHighlight, rehypeKatex],
     },
     // scope: data,
   });
