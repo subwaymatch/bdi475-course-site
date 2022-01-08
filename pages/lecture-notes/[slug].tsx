@@ -11,7 +11,9 @@ import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import { postFilePaths, POSTS_PATH } from "lib/mdx/posts";
 
-export default function LectureNotePage({ source, frontMatter }) {
+export default function LectureNotePage({ source, frontMatter, params }) {
+  console.log(params);
+
   return (
     <Layout>
       <div className="page">
@@ -63,6 +65,8 @@ export const getStaticProps = async ({ params }) => {
   console.log(`content=${JSON.stringify(content)}`);
   console.log(`data=${JSON.stringify(data)}`);
 
+  // KaTeX does not work at the moment
+  // see https://github.com/hashicorp/next-mdx-remote/issues/221 for details
   const mdxSource = await serialize(content, {
     // Optionally pass remark/rehype plugins
     mdxOptions: {
