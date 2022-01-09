@@ -37,15 +37,6 @@ export default function LectureNotePage({ source, frontMatter, params }) {
           <Row>
             <Col>
               <main>
-                <span className="katex">
-                  <span className="katex-mathml">
-                    The KaTeX stylesheet is not loaded!
-                  </span>
-                  <span className="katex-version rule">
-                    KaTeX stylesheet version:{" "}
-                  </span>
-                </span>
-
                 <MDXRemote {...source} />
               </main>
             </Col>
@@ -56,7 +47,7 @@ export default function LectureNotePage({ source, frontMatter, params }) {
   );
 }
 
-export const getStaticProps = async ({ params }) => {
+export const getServerSideProps = async ({ params }) => {
   const postFilePath = path.join(POSTS_PATH, `${params.slug}.mdx`);
   const source = fs.readFileSync(postFilePath);
 
@@ -87,15 +78,15 @@ export const getStaticProps = async ({ params }) => {
   };
 };
 
-export const getStaticPaths = async () => {
-  const paths = postFilePaths
-    // Remove file extensions for page paths
-    .map((path) => path.replace(/\.mdx?$/, ""))
-    // Map the path into the static paths object required by Next.js
-    .map((slug) => ({ params: { slug } }));
+// export const getStaticPaths = async () => {
+//   const paths = postFilePaths
+//     // Remove file extensions for page paths
+//     .map((path) => path.replace(/\.mdx?$/, ""))
+//     // Map the path into the static paths object required by Next.js
+//     .map((slug) => ({ params: { slug } }));
 
-  return {
-    paths,
-    fallback: false,
-  };
-};
+//   return {
+//     paths,
+//     fallback: false,
+//   };
+// };
