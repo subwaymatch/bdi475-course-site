@@ -4,7 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import styles from "styles/pages/notes/common.module.scss";
 import ListWithTitle from "components/common/ListWithTitle";
 import CenteredColumn from "components/common/CenteredColumn";
-import RecordedPythonChallenge from "components/common/RecordedPythonChallenge";
+import RecordedPythonChallengeById from "components/common/RecordedPythonChallengeById";
 
 export default function FunctionPage() {
   return (
@@ -43,29 +43,65 @@ export default function FunctionPage() {
             </Col>
           </Row>
 
-          <RecordedPythonChallenge challengeId={55} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={55}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={79} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={79}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={83} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={83}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={115} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={115}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={103} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={103}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={104} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={104}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={105} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={105}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={76} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={76}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={108} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={108}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={109} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={109}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={106} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={106}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={107} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={107}
+            className={styles.block}
+          />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Variable Scopes</h3>
@@ -87,7 +123,10 @@ export default function FunctionPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedPythonChallenge challengeId={110} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={110}
+            className={styles.block}
+          />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Variable Scopes</h3>
@@ -110,9 +149,15 @@ export default function FunctionPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedPythonChallenge challengeId={112} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={112}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={111} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={111}
+            className={styles.block}
+          />
 
           <CenteredColumn className={styles.textBox}>
             <span className="label green">What happened?</span>
@@ -132,9 +177,15 @@ export default function FunctionPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedPythonChallenge challengeId={113} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={113}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={114} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={114}
+            className={styles.block}
+          />
         </Container>
       </main>
     </Layout>

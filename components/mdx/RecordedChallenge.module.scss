@@ -1,0 +1,58 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.recordedChallenge {
+  .exerciseHeader {
+    font-size: 1.05rem;
+    font-weight: normal;
+    letter-spacing: -0.01rem;
+    line-height: 1.4;
+    border-top: 1px solid $color-dark-gray;
+    padding-top: 0.75rem;
+    padding-bottom: 2rem;
+    align-items: center;
+    position: relative;
+
+    .exerciseType {
+      color: $color-dark-gray;
+      font-weight: 500;
+      display: block;
+    }
+
+    .exerciseTitle {
+      color: $color-gray;
+    }
+
+    .topControls {
+      position: absolute;
+      top: 0.9rem;
+      right: 0;
+
+      .iconButton {
+        color: $color-dark-gray;
+        font-size: 1.15rem;
+        padding: 0.4rem;
+
+        &:hover {
+          color: $color-medium-gray;
+        }
+
+        &.attemptsButton {
+          color: $color-gray;
+
+          &.hasSubmission {
+            color: black;
+
+            &.onlyFail {
+              color: $color-red;
+            }
+
+            &.hasPass {
+              color: $color-green;
+            }
+          }
+        }
+      }
+    }
+  }
+}

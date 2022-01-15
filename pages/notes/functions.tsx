@@ -4,7 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import styles from "styles/pages/notes/common.module.scss";
 import ListWithTitle from "components/common/ListWithTitle";
 import CenteredColumn from "components/common/CenteredColumn";
-import RecordedPythonChallenge from "components/common/RecordedPythonChallenge";
+import RecordedPythonChallengeById from "components/common/RecordedPythonChallengeById";
 
 export default function FunctionPage() {
   return (
@@ -53,17 +53,35 @@ export default function FunctionPage() {
             </Col>
           </Row>
 
-          <RecordedPythonChallenge challengeId={44} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={44}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={71} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={71}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={75} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={75}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={48} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={48}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={70} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={70}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={63} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={63}
+            className={styles.block}
+          />
 
           <CenteredColumn className={styles.textBox}>
             <h3>What are functions?</h3>
@@ -134,41 +152,95 @@ export default function FunctionPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedPythonChallenge challengeId={221} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={221}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={222} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={222}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={68} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={68}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={64} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={64}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={219} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={219}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={65} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={65}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={92} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={92}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={94} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={94}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={220} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={220}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={93} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={93}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={101} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={101}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={97} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={97}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={98} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={98}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={99} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={99}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={100} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={100}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={96} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={96}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={95} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={95}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={102} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={102}
+            className={styles.block}
+          />
         </Container>
       </main>
     </Layout>

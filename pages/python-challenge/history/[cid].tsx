@@ -82,7 +82,7 @@ export default function PythonChallengeUserHistoryPage() {
                       <Col md={2} xs={6}>
                         {o.submitted_at && (
                           <div className={styles.timestamp}>
-                            <span className="label yellow">Submitted</span>
+                            <span className="label">Submitted</span>
 
                             <div className={styles.text}>
                               <Tippy

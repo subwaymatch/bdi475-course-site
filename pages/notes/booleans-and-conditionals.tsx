@@ -5,7 +5,7 @@ import styles from "styles/pages/notes/common.module.scss";
 import clsx from "clsx";
 import ListWithTitle from "components/common/ListWithTitle";
 import CenteredColumn from "components/common/CenteredColumn";
-import RecordedPythonChallenge from "components/common/RecordedPythonChallenge";
+import RecordedPythonChallengeById from "components/common/RecordedPythonChallengeById";
 import { FaWikipediaW } from "react-icons/fa";
 import LargeQuote from "components/common/LargeQuote";
 
@@ -89,11 +89,20 @@ export default function BooleansAndConditionalsPage() {
             </p>
           </LargeQuote>
 
-          <RecordedPythonChallenge challengeId={10} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={10}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={8} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={8}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={9} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={9}
+            className={styles.block}
+          />
 
           <Row className={clsx(styles.boxItems)}>
             <Col xl={{ span: 8, offset: 2 }} lg={{ span: 10, offset: 1 }}>
@@ -136,11 +145,20 @@ export default function BooleansAndConditionalsPage() {
             </p>
           </LargeQuote>
 
-          <RecordedPythonChallenge challengeId={23} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={23}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={159} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={159}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={160} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={160}
+            className={styles.block}
+          />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Expressions</h3>
@@ -211,11 +229,20 @@ export default function BooleansAndConditionalsPage() {
             className={styles.block}
           />
 
-          <RecordedPythonChallenge challengeId={5} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={5}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={161} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={161}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={36} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={36}
+            className={styles.block}
+          />
 
           <CenteredColumn className={styles.textBox}>
             <h3>If...Else</h3>
@@ -238,11 +265,20 @@ export default function BooleansAndConditionalsPage() {
             </p>
           </LargeQuote>
 
-          <RecordedPythonChallenge challengeId={3} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={3}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={162} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={162}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={163} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={163}
+            className={styles.block}
+          />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Why are some lines indented?</h3>
@@ -263,7 +299,10 @@ export default function BooleansAndConditionalsPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedPythonChallenge challengeId={33} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={33}
+            className={styles.block}
+          />
 
           <Row className={clsx(styles.boxItems)}>
             <Col>
@@ -320,15 +359,30 @@ export default function BooleansAndConditionalsPage() {
             <p>How does Biaggis sound?</p>
           </LargeQuote>
 
-          <RecordedPythonChallenge challengeId={25} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={25}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={27} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={27}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={164} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={164}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={165} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={165}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={166} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={166}
+            className={styles.block}
+          />
         </Container>
       </main>
     </Layout>

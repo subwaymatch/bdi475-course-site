@@ -5,28 +5,28 @@ import useSupabaseAuth from "hooks/useSupabaseAuth";
 import { Row, Col } from "react-bootstrap";
 import { BsCheckCircle, BsXCircle } from "react-icons/bs";
 import { RiHistoryLine, RiEditBoxLine, RiGroupLine } from "react-icons/ri";
-import usePythonChallenge from "hooks/usePythonChallenge";
-import useCodingChallengeAttempts from "hooks/useCodingChallengeAttempts";
 import Tippy from "@tippyjs/react";
 import clsx from "clsx";
 import styles from "./RecordedChallenge.module.scss";
+import { definitions } from "types/database";
 
 interface IRecordedPythonChallengeProps {
-  challengeId: number;
+  challenge: definitions["coding_challenges"];
+  attempts?: definitions["coding_challenge_attempts"][];
+  recordSubmission?: () => void;
   className?: string;
   showSolution?: boolean;
 }
 
 export default function RecordedPythonChallenge({
-  challengeId,
+  challenge,
+  attempts = [],
+  recordSubmission = () => {},
   className,
   showSolution = true,
 }: IRecordedPythonChallengeProps) {
   const { user, roles } = useSupabaseAuth();
   const isAdmin = roles.includes("Admin");
-  const { status, data, error } = usePythonChallenge(challengeId);
-  const { attempts, recordSubmission } =
-    useCodingChallengeAttempts(challengeId);
   const editLinkRef = useRef<HTMLAnchorElement>();
   const attemptsLinkRef = useRef<HTMLAnchorElement>();
   const historyLinkRef = useRef<HTMLAnchorElement>();
@@ -48,7 +48,7 @@ export default function RecordedPythonChallenge({
     }
   };
 
-  return status === "success" ? (
+  return (
     <Row>
       <Col>
         <div
@@ -60,12 +60,12 @@ export default function RecordedPythonChallenge({
             <Col>
               <div className={styles.exerciseHeader}>
                 <span className={styles.exerciseType}>Python Challenge</span>
-                <h2 className={styles.exerciseTitle}>{data.title}</h2>
+                <h2 className={styles.exerciseTitle}>{challenge.title}</h2>
 
                 <div className={styles.topControls}>
                   {user && isAdmin && (
                     <>
-                      <Link href={`/python-challenge/edit/${challengeId}`}>
+                      <Link href={`/python-challenge/edit/${challenge.id}`}>
                         <a
                           className={clsx(styles.iconButton, styles.editButton)}
                           ref={editLinkRef}
@@ -84,7 +84,7 @@ export default function RecordedPythonChallenge({
                       />
 
                       <Link
-                        href={`/admin/python-challenge/attempts/${challengeId}`}
+                        href={`/admin/python-challenge/attempts/${challenge.id}`}
                       >
                         <a
                           className={clsx(styles.iconButton, styles.editButton)}
@@ -107,7 +107,7 @@ export default function RecordedPythonChallenge({
 
                   {user && (
                     <>
-                      <Link href={`/python-challenge/history/${challengeId}`}>
+                      <Link href={`/python-challenge/history/${challenge.id}`}>
                         <a
                           className={clsx(
                             styles.iconButton,
@@ -169,18 +169,12 @@ export default function RecordedPythonChallenge({
           </Row>
 
           <PythonChallenge
-            challengeData={data}
-            localStorageKey={`coding-question-${challengeId}`}
+            challengeData={challenge}
+            localStorageKey={`coding-question-${challenge.id}`}
             showSolution={showSolution}
-            onSubmit={recordSubmission}
+            onSubmit={recordSubmission ? recordSubmission : () => {}}
           />
         </div>
-      </Col>
-    </Row>
-  ) : (
-    <Row>
-      <Col>
-        <p>{status === "error" ? error : "Loading..."}</p>
       </Col>
     </Row>
   );

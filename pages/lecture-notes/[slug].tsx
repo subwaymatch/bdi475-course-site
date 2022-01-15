@@ -9,7 +9,14 @@ import Link from "next/link";
 import path from "path";
 import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
-import { postFilePaths, POSTS_PATH } from "lib/mdx/posts";
+import { POSTS_PATH } from "lib/mdx/posts";
+import RecordedPythonChallenge from "components/mdx/RecordedPythonChallenge";
+import CenteredColumn from "components/common/CenteredColumn";
+
+const components = {
+  RecordedPythonChallenge,
+  CenteredColumn,
+};
 
 export default function LectureNotePage({ source, frontMatter, params }) {
   console.log(params);
@@ -37,7 +44,7 @@ export default function LectureNotePage({ source, frontMatter, params }) {
           <Row>
             <Col>
               <main>
-                <MDXRemote {...source} />
+                <MDXRemote {...source} components={components} />
               </main>
             </Col>
           </Row>

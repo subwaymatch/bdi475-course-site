@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import RecordedPythonChallenge from "components/common/RecordedPythonChallenge";
+import RecordedPythonChallengeById from "components/common/RecordedPythonChallengeById";
 import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import { getChallengeIdAsNumberFromQuery } from "utils/challenge";
@@ -20,7 +20,7 @@ export default function ViewCodingChallengePage() {
           <Row>
             <Col>
               {cid ? (
-                <RecordedPythonChallenge challengeId={challengeId} />
+                <RecordedPythonChallengeById challengeId={challengeId} />
               ) : (
                 <p>Loading...</p>
               )}

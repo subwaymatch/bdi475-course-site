@@ -5,7 +5,7 @@ import styles from "styles/pages/notes/common.module.scss";
 import clsx from "clsx";
 import ListWithTitle from "components/common/ListWithTitle";
 import CenteredColumn from "components/common/CenteredColumn";
-import RecordedPythonChallenge from "components/common/RecordedPythonChallenge";
+import RecordedPythonChallengeById from "components/common/RecordedPythonChallengeById";
 import LargeQuote from "components/common/LargeQuote";
 
 export default function LoopsAndCollectionsPage() {
@@ -52,13 +52,25 @@ export default function LoopsAndCollectionsPage() {
             </Col>
           </Row>
 
-          <RecordedPythonChallenge challengeId={32} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={32}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={24} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={24}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={31} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={31}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={19} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={19}
+            className={styles.block}
+          />
 
           <Row className={clsx(styles.boxItems)}>
             <Col xl={{ span: 8, offset: 2 }} lg={{ span: 10, offset: 1 }}>
@@ -98,7 +110,10 @@ export default function LoopsAndCollectionsPage() {
             </Col>
           </Row>
 
-          <RecordedPythonChallenge challengeId={38} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={38}
+            className={styles.block}
+          />
 
           <CenteredColumn className={styles.textBox}>
             <h3>While Loops</h3>
@@ -174,7 +189,10 @@ export default function LoopsAndCollectionsPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedPythonChallenge challengeId={47} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={47}
+            className={styles.block}
+          />
 
           <LargeQuote className={styles.block}>
             <p>A Python dictionary is... just like a real dictionary.</p>
@@ -199,15 +217,30 @@ export default function LoopsAndCollectionsPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedPythonChallenge challengeId={43} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={43}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={201} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={201}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={200} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={200}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={41} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={41}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={202} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={202}
+            className={styles.block}
+          />
 
           <LargeQuote className={styles.block}>
             <p>
@@ -263,31 +296,70 @@ export default function LoopsAndCollectionsPage() {
             </Col>
           </Row>
 
-          <RecordedPythonChallenge challengeId={50} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={50}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={203} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={203}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={59} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={59}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={204} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={204}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={205} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={205}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={60} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={60}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={58} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={58}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={51} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={51}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={61} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={61}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={206} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={206}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={207} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={207}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={208} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={208}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={209} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={209}
+            className={styles.block}
+          />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Tuples</h3>
@@ -307,7 +379,10 @@ export default function LoopsAndCollectionsPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedPythonChallenge challengeId={52} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={52}
+            className={styles.block}
+          />
         </Container>
       </main>
     </Layout>

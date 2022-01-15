@@ -4,7 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import styles from "styles/pages/notes/common.module.scss";
 import ListWithTitle from "components/common/ListWithTitle";
 import CenteredColumn from "components/common/CenteredColumn";
-import RecordedPythonChallenge from "components/common/RecordedPythonChallenge";
+import RecordedPythonChallengeById from "components/common/RecordedPythonChallengeById";
 
 export default function Exercise() {
   const codingChallengeIds = [177, 173, 174, 175, 172, 176, 171, 168, 169, 170];
@@ -74,7 +74,7 @@ export default function Exercise() {
           </CenteredColumn>
 
           {codingChallengeIds.map((challengeId) => (
-            <RecordedPythonChallenge
+            <RecordedPythonChallengeById
               key={challengeId}
               challengeId={challengeId}
               className={styles.block}

@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "styles/pages/notes/common.module.scss";
 import CenteredColumn from "components/common/CenteredColumn";
-import RecordedPythonChallenge from "components/common/RecordedPythonChallenge";
+import RecordedPythonChallengeById from "components/common/RecordedPythonChallengeById";
 
 export default function QuizPage() {
   return (
@@ -45,9 +45,15 @@ export default function QuizPage() {
             </Col>
           </Row>
 
-          <RecordedPythonChallenge challengeId={56} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={56}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={123} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={123}
+            className={styles.block}
+          />
         </Container>
       </main>
     </Layout>

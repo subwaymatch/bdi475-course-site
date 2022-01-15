@@ -2,7 +2,7 @@ import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "styles/pages/notes/common.module.scss";
 import RecordedMultipleChoiceQuestion from "components/common/RecordedMultipleChoiceQuestion";
-import RecordedPythonChallenge from "components/common/RecordedPythonChallenge";
+import RecordedPythonChallengeById from "components/common/RecordedPythonChallengeById";
 
 export default function TestPage() {
   return (
@@ -24,7 +24,7 @@ export default function TestPage() {
                 className={styles.block}
               />
 
-              <RecordedPythonChallenge
+              <RecordedPythonChallengeById
                 challengeId={211}
                 className={styles.block}
               />

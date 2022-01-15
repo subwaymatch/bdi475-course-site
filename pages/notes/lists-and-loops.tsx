@@ -5,7 +5,7 @@ import styles from "styles/pages/notes/common.module.scss";
 import clsx from "clsx";
 import ListWithTitle from "components/common/ListWithTitle";
 import CenteredColumn from "components/common/CenteredColumn";
-import RecordedPythonChallenge from "components/common/RecordedPythonChallenge";
+import RecordedPythonChallengeById from "components/common/RecordedPythonChallengeById";
 import LargeQuote from "components/common/LargeQuote";
 
 export default function ListsAndLoopsPage() {
@@ -53,15 +53,30 @@ export default function ListsAndLoopsPage() {
             </Col>
           </Row>
 
-          <RecordedPythonChallenge challengeId={178} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={178}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={1} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={1}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={179} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={179}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={22} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={22}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={180} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={180}
+            className={styles.block}
+          />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Introduction to Lists</h3>
@@ -86,11 +101,20 @@ export default function ListsAndLoopsPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedPythonChallenge challengeId={4} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={4}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={181} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={181}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={20} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={20}
+            className={styles.block}
+          />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Accessing list elements by index</h3>
@@ -110,11 +134,20 @@ export default function ListsAndLoopsPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedPythonChallenge challengeId={183} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={183}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={182} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={182}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={34} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={34}
+            className={styles.block}
+          />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Negative list indices</h3>
@@ -131,9 +164,15 @@ export default function ListsAndLoopsPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedPythonChallenge challengeId={184} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={184}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={185} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={185}
+            className={styles.block}
+          />
 
           <CenteredColumn className={styles.textBox}>
             <h3>How many elements are in a list?</h3>
@@ -145,9 +184,15 @@ export default function ListsAndLoopsPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedPythonChallenge challengeId={186} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={186}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={187} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={187}
+            className={styles.block}
+          />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Working with lists</h3>
@@ -173,7 +218,10 @@ export default function ListsAndLoopsPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedPythonChallenge challengeId={188} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={188}
+            className={styles.block}
+          />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Can a list have elements with non-uniform data types?</h3>
@@ -195,9 +243,15 @@ export default function ListsAndLoopsPage() {
             </p>
           </LargeQuote>
 
-          <RecordedPythonChallenge challengeId={29} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={29}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={28} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={28}
+            className={styles.block}
+          />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Do we really want to keep copy-pasting stuff?</h3>
@@ -212,15 +266,30 @@ export default function ListsAndLoopsPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedPythonChallenge challengeId={35} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={35}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={189} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={189}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={21} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={21}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={30} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={30}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={39} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={39}
+            className={styles.block}
+          />
 
           <CenteredColumn className={styles.textBox}>
             <h3>Another way to retrieve elements</h3>
@@ -249,7 +318,10 @@ export default function ListsAndLoopsPage() {
             </ul>
           </CenteredColumn>
 
-          <RecordedPythonChallenge challengeId={26} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={26}
+            className={styles.block}
+          />
 
           <Row className={clsx(styles.boxItems)}>
             <Col xl={{ span: 8, offset: 2 }} lg={{ span: 10, offset: 1 }}>
@@ -289,9 +361,15 @@ export default function ListsAndLoopsPage() {
             </Col>
           </Row>
 
-          <RecordedPythonChallenge challengeId={40} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={40}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={37} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={37}
+            className={styles.block}
+          />
         </Container>
       </main>
     </Layout>

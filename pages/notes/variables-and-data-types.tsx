@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import styles from "styles/pages/notes/common.module.scss";
 import Image from "next/image";
 import clsx from "clsx";
-import RecordedPythonChallenge from "components/common/RecordedPythonChallenge";
+import RecordedPythonChallengeById from "components/common/RecordedPythonChallengeById";
 import ListWithTitle from "components/common/ListWithTitle";
 
 export default function VariablesAndDataTypesPage() {
@@ -45,11 +45,20 @@ export default function VariablesAndDataTypesPage() {
             </Col>
           </Row>
 
-          <RecordedPythonChallenge challengeId={6} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={6}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={152} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={152}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={154} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={154}
+            className={styles.block}
+          />
 
           <Row>
             <Col
@@ -150,9 +159,15 @@ export default function VariablesAndDataTypesPage() {
             </Col>
           </Row>
 
-          <RecordedPythonChallenge challengeId={151} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={151}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={153} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={153}
+            className={styles.block}
+          />
 
           <Row>
             <Col
@@ -248,13 +263,25 @@ export default function VariablesAndDataTypesPage() {
             </Col>
           </Row>
 
-          <RecordedPythonChallenge challengeId={13} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={13}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={155} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={155}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={156} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={156}
+            className={styles.block}
+          />
 
-          <RecordedPythonChallenge challengeId={157} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={157}
+            className={styles.block}
+          />
 
           <Row>
             <Col
@@ -283,7 +310,10 @@ export default function VariablesAndDataTypesPage() {
             </Col>
           </Row>
 
-          <RecordedPythonChallenge challengeId={158} className={styles.block} />
+          <RecordedPythonChallengeById
+            challengeId={158}
+            className={styles.block}
+          />
         </Container>
       </main>
     </Layout>
