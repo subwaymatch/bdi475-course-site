@@ -6,7 +6,7 @@ import { Row, Col } from "react-bootstrap";
 import { BsCheckCircle, BsXCircle } from "react-icons/bs";
 import { RiHistoryLine, RiEditBoxLine, RiGroupLine } from "react-icons/ri";
 import usePythonChallenge from "hooks/usePythonChallenge";
-import useCodingChallengeAttempts from "hooks/useCodingChallengeAttempts";
+import useCodingChallengeAttempts from "hooks/useSingleCodingChallengeAttempts";
 import Tippy from "@tippyjs/react";
 import clsx from "clsx";
 import styles from "./RecordedChallenge.module.scss";

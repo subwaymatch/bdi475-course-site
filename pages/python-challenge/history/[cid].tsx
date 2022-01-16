@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import Highlighter from "components/code-blocks/Highlighter";
 import styles from "styles/pages/python-challenge/history.module.scss";
 import clsx from "clsx";
-import useCodingChallengeAttempts from "hooks/useCodingChallengeAttempts";
+import useSingleCodingChallengeAttempts from "hooks/useSingleCodingChallengeAttempts";
 import { IoCopyOutline } from "react-icons/io5";
 import { HiOutlineBadgeCheck } from "react-icons/hi";
 import { IoIosCloseCircleOutline } from "react-icons/io";
@@ -21,7 +21,7 @@ export default function PythonChallengeUserHistoryPage() {
   const router = useRouter();
   const { cid } = router.query;
   let challengeId = getChallengeIdAsNumberFromQuery(cid);
-  const { attempts } = useCodingChallengeAttempts(challengeId);
+  const { attempts } = useSingleCodingChallengeAttempts(challengeId);
 
   return (
     <Layout>
