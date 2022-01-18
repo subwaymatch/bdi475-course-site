@@ -27,9 +27,9 @@
 
     { "token": "attribute.name", "foreground": "ff5c26" },
     { "token": "attribute.value", "foreground": "43c1ff" },
-    { "token": "attribute.value.number", "foreground": "ff75af" },
+    { "token": "attribute.value.number", "foreground": "f16060" },
 
-    { "token": "string", "foreground": "ff75af" },
+    { "token": "string", "foreground": "f16060" },
     { "token": "keyword", "foreground": "43c1ff" },
     { "token": "keyword.operator", "foreground": "dc7fff" },
     { "token": "keyword.control", "foreground": "dc7fff" },

@@ -1,4 +1,4 @@
-@use 'sass:color';
+@use "sass:color";
 @import "styles/variables";
 
 .hljs {
@@ -7,11 +7,9 @@
   color: color.adjust($color-blue, $lightness: -16%, $saturation: -70%);
   background-color: color.adjust(
     $color-blue,
-    $lightness: 21%,
-    $saturation: -60%
+    $lightness: 35%,
+    $saturation: -70%
   );
-  border: 1px solid
-    color.adjust($color-blue, $lightness: 21%, $saturation: -60%);
   line-height: 1.65;
   font-family: $font-monospace;
   letter-spacing: 0;

@@ -1,4 +1,4 @@
-@use 'sass:color';
+@use "sass:color";
 @import "styles/variables";
 @import "styles/mixins";
 
@@ -117,10 +117,12 @@
       }
 
       .quiz {
-        background-color: $color-pink;
+        color: white;
+        background-color: $color-red;
       }
 
       .lecture {
+        color: white;
         background-color: $color-green;
 
         .lectureHeading {
@@ -129,7 +131,7 @@
         }
 
         .topic {
-          color: color.scale($color-green, $lightness: -48%);
+          color: color.scale($color-green, $lightness: -40%);
           font-size: 0.95em;
           font-weight: 400;
           border-top: 1px solid color.scale($color-green, $lightness: -12%);
@@ -142,6 +144,7 @@
       }
 
       .exercise {
+        color: white;
         background-color: $color-purple;
       }
 
@@ -152,6 +155,7 @@
       }
 
       .caseStudy {
+        color: white;
         background-color: $color-blue;
       }
     }

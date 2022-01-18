@@ -171,6 +171,7 @@ strong {
 
 .color-green {
   color: color.adjust($color-green, $lightness: -16%);
+  color: $color-green;
 }
 .color-purple {
   color: $color-purple;
@@ -181,8 +182,11 @@ strong {
 .color-pink {
   color: $color-pink;
 }
+.color-red {
+  color: $color-red;
+}
 .color-blue {
-  color: color.adjust($color-blue, $lightness: -12%);
+  color: $color-blue;
 }
 .color-orange {
   color: $color-orange;
@@ -249,6 +253,11 @@ strong {
   &.pink {
     color: white;
     background-color: $color-pink;
+  }
+
+  &.red {
+    color: white;
+    background-color: $color-red;
   }
 
   &.blue {
@@ -345,8 +354,8 @@ kbd {
   color: $color-darker-blue;
   background-color: color.adjust(
     $color-blue,
-    $lightness: 18%,
-    $saturation: 50%
+    $lightness: 33%,
+    $saturation: 60%
   );
   // border: 1px solid color.adjust($color-blue, $lightness: 15%, $saturation: 50%);
   border-radius: 0.25rem;

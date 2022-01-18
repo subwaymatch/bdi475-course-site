@@ -176,7 +176,7 @@ export default function PythonChallenge({
               [styles.hasOutput]: !!output,
             })}
           >
-            <span className="label small whiteText green">Output</span>
+            <span className="label small green">Output</span>
             <pre>{output ? output : "No Output"}</pre>
           </div>
         </Col>
@@ -186,7 +186,7 @@ export default function PythonChallenge({
               [styles.hasOutput]: hasError,
             })}
           >
-            <span className="label small whiteText pink">Error</span>
+            <span className="label small red">Error</span>
             <pre>{errorMessage ? errorMessage : "No Error"}</pre>
           </div>
         </Col>
@@ -257,7 +257,7 @@ export default function PythonChallenge({
                           <span className="color-blue"> + </span>
                           <kbd>Enter ↵</kbd> */}
                           Run your code{" "}
-                          <strong className="color-pink">without</strong>{" "}
+                          <strong className="color-red">without</strong>{" "}
                           submitting
                         </>
                       ) : (
@@ -283,7 +283,7 @@ export default function PythonChallenge({
                           <span className="color-blue"> + </span>
                           <kbd>Enter ↵</kbd> */}
                           Submit your code{" "}
-                          <strong className="color-purple">and</strong> check
+                          <strong className="color-blue">and</strong> check
                           correctness
                         </>
                       ) : (
