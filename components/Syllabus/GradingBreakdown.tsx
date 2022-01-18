@@ -112,26 +112,26 @@ export default function GradingBreakdown() {
         />
 
         <GradedItem
-          item="Problem Sets"
+          item="Problem Set"
           footnoteNumber={4}
-          points={120}
-          percentage={12}
-          notes="2 @ 60 points each"
+          points={60}
+          percentage={6}
+          notes="60 points"
         />
 
         <GradedItem
           item="Case Studies"
           footnoteNumber={5}
-          points={320}
-          percentage={32}
-          notes="4 @ 80 points each"
+          points={400}
+          percentage={40}
+          notes="5 @ 80 points each"
         />
 
         <GradedItem
           item="Capstone Project"
           footnoteNumber={6}
-          points={160}
-          percentage={16}
+          points={140}
+          percentage={14}
           notes="Independent Final Project"
         />
 

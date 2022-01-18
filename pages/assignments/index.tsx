@@ -27,7 +27,7 @@ export default function AssignmentsPage() {
               <h1 className="pageTitle">Assignments</h1>
             </Col>
           </Row>
-
+          {/* 
           <Row>
             <Col>
               <div className={styles.exercises}>
@@ -293,7 +293,7 @@ export default function AssignmentsPage() {
                 }
               />
             </Col>
-          </Row>
+          </Row> */}
         </Container>
       </main>
     </Layout>

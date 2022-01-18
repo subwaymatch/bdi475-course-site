@@ -170,7 +170,6 @@ strong {
 }
 
 .color-green {
-  color: color.adjust($color-green, $lightness: -16%);
   color: $color-green;
 }
 .color-purple {
