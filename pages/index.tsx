@@ -32,7 +32,8 @@ export default function MainPage() {
                   <div className={styles.linkText}>
                     <span className={styles.title}>Zoom Link ⟶</span>
                     <p className={styles.desc}>
-                      Office hours are Wednesdays 3-4 PM or by appointment.
+                      Office hours are Wednesdays 4-5 PM (Park), Fridays 4-5 PM
+                      (Sandip), or by appointment.
                     </p>
                   </div>
 
@@ -42,6 +43,26 @@ export default function MainPage() {
                 </a>
               </Col>
 
+              <Col lg={6}>
+                <a
+                  href="https://canvas.illinois.edu/courses/18332"
+                  className={styles.linkItem}
+                >
+                  <div className={styles.linkText}>
+                    <span className={styles.title}>Canvas ⟶</span>
+                    <p className={styles.desc}>
+                      View announcements, grades, and all course materials
+                    </p>
+                  </div>
+
+                  <div className={styles.linkImage}>
+                    <Image src={geometricImage3} width={130} height={160} />
+                  </div>
+                </a>
+              </Col>
+            </Row>
+
+            <Row style={{ display: "none" }}>
               <Col lg={6}>
                 <a
                   href="https://mediaspace.illinois.edu/channel/Intro+to+Data+Analytics+Apps+in+Business+%28BDI+475%29+Fall+2021/227356363"
@@ -56,26 +77,6 @@ export default function MainPage() {
 
                   <div className={styles.linkImage}>
                     <Image src={geometricImage2} width={147} height={160} />
-                  </div>
-                </a>
-              </Col>
-            </Row>
-
-            <Row>
-              <Col lg={6}>
-                <a
-                  href="https://canvas.illinois.edu/courses/14860"
-                  className={styles.linkItem}
-                >
-                  <div className={styles.linkText}>
-                    <span className={styles.title}>Canvas ⟶</span>
-                    <p className={styles.desc}>
-                      View announcements, grades, and all course materials
-                    </p>
-                  </div>
-
-                  <div className={styles.linkImage}>
-                    <Image src={geometricImage3} width={130} height={160} />
                   </div>
                 </a>
               </Col>
