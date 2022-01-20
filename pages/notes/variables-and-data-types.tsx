@@ -2,6 +2,7 @@ import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "styles/pages/notes/common.module.scss";
 import Image from "next/image";
+import thumbImage from "public/images/notes/abstract-001.png";
 import clsx from "clsx";
 import RecordedPythonChallengeById from "components/common/RecordedPythonChallengeById";
 import ListWithTitle from "components/common/ListWithTitle";
@@ -18,14 +19,14 @@ export default function VariablesAndDataTypesPage() {
           </Row>
 
           <ListWithTitle
-            title="Objectives ⟶"
+            title="Objectives"
             items={[
               <>
-                What are <span className="color-green">data types</span>?
+                What are <span className="color-blue">data types</span>?
               </>,
               <>Understand basic data types.</>,
               <>
-                Understand what <span className="color-purple">variables</span>{" "}
+                Understand what <span className="color-blue">variables</span>{" "}
                 are.
               </>,
               <>Why do we need variables?</>,
@@ -35,12 +36,7 @@ export default function VariablesAndDataTypesPage() {
           <Row>
             <Col>
               <div className={styles.coverImage}>
-                <Image
-                  src="/images/notes/1630532795833.png"
-                  width={3000}
-                  height={2000}
-                  alt=""
-                />
+                <Image src={thumbImage} alt="" />
               </div>
             </Col>
           </Row>

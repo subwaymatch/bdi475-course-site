@@ -11,10 +11,14 @@ import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import { POSTS_PATH } from "lib/mdx/posts";
 import RecordedPythonChallenge from "components/mdx/RecordedPythonChallenge";
+import RecordedPythonChallengeById from "components/common/RecordedPythonChallengeById";
 import CenteredColumn from "components/common/CenteredColumn";
+import styles from "styles/pages/notes/common.module.scss";
+import ListWithTitle from "components/common/ListWithTitle";
 
 const components = {
   RecordedPythonChallenge,
+  RecordedPythonChallengeById,
   CenteredColumn,
 };
 
@@ -23,8 +27,29 @@ export default function LectureNotePage({ source, frontMatter, params }) {
 
   return (
     <Layout>
-      <div className="page">
+      <div className={styles.page}>
         <Container>
+          {frontMatter.title && (
+            <Row>
+              <Col>
+                <h1 className={styles.noteTitle}>{frontMatter.title}</h1>
+              </Col>
+            </Row>
+          )}
+
+          {frontMatter.objectives && (
+            <ListWithTitle
+              title="Objectives ⟶"
+              items={frontMatter.objectives.map((o) => (
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: o,
+                  }}
+                />
+              ))}
+            />
+          )}
+
           <Row>
             <Col>
               <nav>

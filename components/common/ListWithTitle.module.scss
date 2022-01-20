@@ -2,24 +2,18 @@
 @import "styles/mixins";
 
 .listBox {
+  padding-top: 2rem;
   border-top: 1px solid $color-medium-gray;
-  padding-top: 1.5rem;
-
-  &.objectives {
-    margin-top: 1rem;
-    border-top: none;
-    padding-top: 0;
-  }
 
   h3 {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
     font-weight: 600;
   }
 
   ul {
     @include media-breakpoint-up(lg) {
-      font-size: 0.92em;
-      letter-spacing: -0.01rem;
+      font-size: 1.2rem;
+      letter-spacing: -0.03rem;
     }
 
     @include media-breakpoint-down(lg) {
@@ -30,7 +24,7 @@
 
     li {
       padding: 0.75rem 0;
-      border-bottom: 1px dotted $color-border-gray;
+      border-bottom: 1px solid $color-border-gray;
 
       @include media-breakpoint-down(xl) {
         padding: 0.6rem 0;
