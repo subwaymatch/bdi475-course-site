@@ -43,7 +43,7 @@ export default function SiteFooter() {
                   <a href="https://www.datacamp.com/">DataCamp</a>
                 </li>
                 <li>
-                  <a href="https://hrnkyfflkojpububxuxh.supabase.in/storage/v1/object/public/distributed-materials/bdi475-syllabus-fa2021_v3.pdf">
+                  <a href="https://hrnkyfflkojpububxuxh.supabase.in/storage/v1/object/public/distributed-materials/bdi475-syllabus-sp2022_v1.pdf">
                     PDF Syllabus
                   </a>
                 </li>

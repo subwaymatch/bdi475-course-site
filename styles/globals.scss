@@ -159,7 +159,7 @@ ol {
   list-style-position: inside;
 
   li::marker {
-    color: $color-gray-20;
+    color: $color-gray-50;
     font-size: 0.9em;
     font-weight: 500;
   }
@@ -372,6 +372,35 @@ kbd {
   color: black;
   background-color: color.scale(black, $lightness: 95%);
   border-color: color.scale(black, $lightness: 80%);
+}
+
+table {
+  width: 100%;
+  font-weight: 400;
+  text-align: right;
+
+  thead {
+    tr {
+      border-bottom: 1px solid $color-gray-400;
+    }
+  }
+
+  tbody {
+    tr {
+      border-bottom: 1px solid $color-border-gray;
+    }
+  }
+
+  td {
+    padding: 0.25rem;
+  }
+
+  tr {
+    th:first-of-type,
+    td:first-of-type {
+      text-align: left;
+    }
+  }
 }
 
 .tippy {

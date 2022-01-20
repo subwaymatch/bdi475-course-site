@@ -62,8 +62,8 @@ export default function MainPage() {
               </Col>
             </Row>
 
-            <Row style={{ display: "none" }}>
-              <Col lg={6}>
+            <Row>
+              <Col lg={6} style={{ display: "none" }}>
                 <a
                   href="https://mediaspace.illinois.edu/channel/Intro+to+Data+Analytics+Apps+in+Business+%28BDI+475%29+Fall+2021/227356363"
                   className={styles.linkItem}
@@ -83,7 +83,7 @@ export default function MainPage() {
 
               <Col lg={6}>
                 <a
-                  href="https://www.datacamp.com/groups/shared_links/879a294f30aff1d0a8e33b431196f132c4c36ff01508779908c2a36164218b08"
+                  href="https://www.datacamp.com/groups/shared_links/e80741d5bd5c2b8749b5bcfa128c705bb6a14e2ee65bfaf7efb080b1da94e74d"
                   className={styles.linkItem}
                 >
                   <div className={styles.linkText}>
