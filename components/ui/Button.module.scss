@@ -71,11 +71,11 @@
   }
 
   &.gray:not(.disabled) {
-    background-color: $color-light-gray;
+    background-color: $color-gray-40;
   }
 
   &.lightGray:not(.disabled) {
-    background-color: $color-lighter-gray;
+    background-color: $color-gray-20;
   }
 
   &.black:not(.disabled) {

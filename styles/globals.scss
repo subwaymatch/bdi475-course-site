@@ -13,7 +13,7 @@ body {
   color: $color-text-gray;
   font-size: 1.13rem;
   line-height: 1.8;
-  font-weight: 450;
+  font-weight: 500;
   letter-spacing: -0.03rem;
 
   @include media-breakpoint-down(xl) {
@@ -76,11 +76,11 @@ p,
 ul,
 ol {
   a {
-    color: color.adjust($color-medium-gray, $lightness: 0%);
+    color: color.adjust($color-gray-90, $lightness: 0%);
     text-decoration: underline;
     text-underline-offset: 0.3em;
     text-decoration-thickness: 1px;
-    text-decoration-color: $color-gray;
+    text-decoration-color: $color-gray-50;
     transition: all 0.2s ease;
     display: inline-block;
 
@@ -159,7 +159,7 @@ ol {
   list-style-position: inside;
 
   li::marker {
-    color: color.adjust($color-gray, $lightness: 4%);
+    color: $color-gray-20;
     font-size: 0.9em;
     font-weight: 500;
   }
@@ -191,10 +191,10 @@ strong {
   color: $color-orange;
 }
 .color-gray {
-  color: $color-gray;
+  color: $color-gray-50;
 }
 .color-medium-gray {
-  color: $color-medium-gray;
+  color: $color-gray-90;
 }
 .color-dark-gray {
   color: $color-dark-gray;
@@ -232,8 +232,8 @@ strong {
 .accent,
 .label,
 .button {
-  background-color: $color-lighter-gray;
-  font-weight: 500;
+  background-color: $color-gray-20;
+  font-weight: 600;
 
   &.green {
     color: white;
@@ -270,12 +270,12 @@ strong {
   }
 
   &.gray {
-    color: $color-medium-gray;
-    background-color: $color-lighter-gray;
+    color: $color-gray-90;
+    background-color: $color-gray-20;
   }
 
   &.lightGray {
-    background-color: $color-lighter-gray;
+    background-color: $color-gray-20;
   }
 
   &.black {
@@ -318,7 +318,7 @@ strong {
   display: inline-flex;
   align-items: center;
   color: black;
-  background-color: $color-lighter-gray;
+  background-color: $color-gray-20;
   line-height: 1.5;
   padding: 1.25rem 1.75rem;
   border: none;
@@ -343,7 +343,7 @@ button {
 }
 
 ::placeholder {
-  color: $color-light-gray;
+  color: $color-gray-40;
 }
 
 :not(pre) > code,
@@ -401,7 +401,7 @@ ul.pagination {
     font-weight: 500;
 
     a {
-      color: $color-medium-gray;
+      color: $color-gray-90;
       display: inline-block;
       padding: 0.8rem 1.5rem;
       border-radius: 4px;
@@ -414,7 +414,7 @@ ul.pagination {
     }
 
     &.disabled a {
-      color: $color-light-gray;
+      color: $color-gray-40;
       cursor: not-allowed;
 
       &:hover {

@@ -16,7 +16,7 @@ export default function NotesPage() {
             </Col>
           </Row>
 
-          {/* <Row>
+          <Row>
             <Col>
               <h2 className="sectionTitle">
                 Python Basics <span className="purple accent" />
@@ -129,7 +129,7 @@ export default function NotesPage() {
               colorTheme={ColorTheme.Pink}
             />
           </Row>
-
+          {/* 
           <Row>
             <Col>
               <h2

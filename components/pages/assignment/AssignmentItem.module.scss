@@ -9,13 +9,13 @@
   transition: all 0.2s ease;
 
   &:hover {
-    border-top-color: $color-gray;
+    border-top-color: $color-gray-50;
     transform: translateX(2px);
   }
 
   .name {
     display: block;
-    color: $color-light-gray;
+    color: $color-gray-40;
 
     @include media-breakpoint-down(md) {
       font-size: 2rem;
@@ -45,7 +45,7 @@
   }
   &.available {
     .name {
-      color: $color-medium-gray;
+      color: $color-gray-90;
 
       &:hover {
         color: $color-dark-gray;
@@ -54,7 +54,7 @@
   }
   &.unavailable {
     .status {
-      color: $color-light-gray;
+      color: $color-gray-40;
     }
   }
 }

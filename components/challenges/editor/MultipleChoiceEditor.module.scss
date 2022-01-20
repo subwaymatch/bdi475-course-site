@@ -14,7 +14,7 @@
 
   .addOptionButton {
     text-align: center;
-    color: $color-gray;
+    color: $color-gray-50;
     border: 2px dashed $color-border-gray;
     border-radius: 128px;
     margin: 1rem;
@@ -23,7 +23,7 @@
     transition: all 0.3s ease;
 
     &:hover {
-      color: $color-medium-gray;
+      color: $color-gray-90;
       background-color: $color-border-gray;
       border-style: solid;
     }
@@ -82,7 +82,7 @@
         border: none;
         outline: none;
         position: relative;
-        color: color.adjust($color-medium-gray, $lightness: 0%);
+        color: color.adjust($color-gray-90, $lightness: 0%);
 
         &.text {
           &:focus,
@@ -102,7 +102,7 @@
               $lightness: -50%,
               $saturation: -24%
             );
-            border-color: $color-gray;
+            border-color: $color-gray-50;
           }
         }
       }

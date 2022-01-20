@@ -20,7 +20,7 @@
     }
 
     .exerciseTitle {
-      color: $color-gray;
+      color: $color-gray-50;
     }
 
     .topControls {
@@ -34,11 +34,11 @@
         padding: 0.4rem;
 
         &:hover {
-          color: $color-medium-gray;
+          color: $color-gray-90;
         }
 
         &.attemptsButton {
-          color: $color-gray;
+          color: $color-gray-50;
 
           &.hasSubmission {
             color: black;

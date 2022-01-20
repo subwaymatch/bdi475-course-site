@@ -16,7 +16,7 @@
     }
 
     .reactIcon {
-      color: $color-gray;
+      color: $color-gray-50;
       display: none;
       font-size: 1.05rem;
       margin-left: 0.5rem;
@@ -37,7 +37,7 @@
     transition: color 200ms linear;
 
     &:hover {
-      color: $color-medium-gray;
+      color: $color-gray-90;
       transform: translateY(1px);
     }
   }
@@ -50,7 +50,7 @@
       display: inline-block;
       padding: 0.5rem;
       transition: color 200ms linear;
-      color: $color-medium-gray;
+      color: $color-gray-90;
 
       &:hover {
         color: $color-pink;

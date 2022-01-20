@@ -23,7 +23,7 @@
   .name {
     font-size: 1.8rem;
     display: block;
-    color: $color-light-gray;
+    color: $color-gray-40;
     margin-top: 0.5rem;
   }
 
@@ -43,12 +43,12 @@
     cursor: pointer;
 
     .name {
-      color: $color-medium-gray;
+      color: $color-gray-90;
     }
   }
   &.unavailable {
     .status {
-      color: $color-light-gray;
+      color: $color-gray-40;
     }
   }
 

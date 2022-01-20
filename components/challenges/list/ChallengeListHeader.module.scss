@@ -8,8 +8,8 @@
 
   .createButton {
     font-size: 1.1rem;
-    color: $color-medium-gray;
-    border: 1px solid $color-gray;
+    color: $color-gray-90;
+    border: 1px solid $color-gray-50;
     border-left: none;
     border-right: none;
     display: block;
@@ -26,7 +26,7 @@
   }
 
   .pageDisplay {
-    color: $color-gray;
+    color: $color-gray-50;
     padding: 1.5rem 0 1.5rem 1.5rem;
     border: 1px solid $color-border-gray;
     border-left: none;

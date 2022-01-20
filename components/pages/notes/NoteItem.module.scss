@@ -22,7 +22,7 @@
     align-items: center;
     font-size: 1.1rem;
     margin-top: 0.25rem;
-    color: $color-gray;
+    color: $color-gray-50;
 
     .date {
       .dateDivider {
@@ -49,7 +49,7 @@
     }
 
     .dateWrapper {
-      color: color.adjust($color-gray, $lightness: -12%);
+      color: $color-gray-60;
     }
   }
 }

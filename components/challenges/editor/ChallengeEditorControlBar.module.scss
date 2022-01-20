@@ -14,7 +14,7 @@
 
   a.backButton {
     display: inline-block;
-    color: $color-medium-gray;
+    color: $color-gray-90;
     font-size: 0.9rem;
     font-weight: 500;
     letter-spacing: -0.01rem;
@@ -22,7 +22,7 @@
     user-select: none;
 
     &:hover {
-      color: $color-gray;
+      color: $color-gray-50;
     }
   }
 

@@ -59,7 +59,7 @@
 }
 
 .linksSection {
-  background: color.adjust($color-gray, $lightness: 22%);
+  background: $color-gray-20;
   padding: 6rem 0;
 
   @include media-breakpoint-down(lg) {
@@ -124,7 +124,7 @@
       }
 
       .desc {
-        color: $color-gray;
+        color: $color-gray-50;
         margin-top: 0.5rem;
         font-size: 1.2rem;
         font-weight: 300;
@@ -150,7 +150,7 @@
     &:hover {
       .linkText {
         .desc {
-          color: $color-medium-gray;
+          color: $color-gray-90;
         }
       }
     }
