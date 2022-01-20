@@ -5,8 +5,8 @@ import { serialize } from "next-mdx-remote/serialize";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import rehypeHighlight from "rehype-highlight";
-import Link from "next/link";
 import path from "path";
+import Image from "next/image";
 import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import { POSTS_PATH } from "lib/mdx/posts";
@@ -20,6 +20,11 @@ const components = {
   RecordedPythonChallenge,
   RecordedPythonChallengeById,
   CenteredColumn,
+  p: (props) => (
+    <CenteredColumn>
+      <p>{props.children}</p>
+    </CenteredColumn>
+  ),
 };
 
 export default function LectureNotePage({ source, frontMatter, params }) {
@@ -50,21 +55,20 @@ export default function LectureNotePage({ source, frontMatter, params }) {
             />
           )}
 
-          <Row>
-            <Col>
-              <nav>
-                <Link href="/">
-                  <a>👈 Go back home</a>
-                </Link>
-              </nav>
-            </Col>
-          </Row>
-
-          <Row>
-            <Col>
-              <h1>{frontMatter.title}</h1>
-            </Col>
-          </Row>
+          {frontMatter.thumbnailSrc && (
+            <Row>
+              <Col>
+                <div className={styles.coverImage}>
+                  <Image
+                    src={frontMatter.thumbnailSrc}
+                    width={frontMatter.thumbnailWidth}
+                    height={frontMatter.thumbnailHeight}
+                    alt=""
+                  />
+                </div>
+              </Col>
+            </Row>
+          )}
 
           <Row>
             <Col>
