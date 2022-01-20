@@ -5,6 +5,7 @@ import Image from "next/image";
 import thumbImage from "public/images/notes/abstract-001.png";
 import clsx from "clsx";
 import RecordedPythonChallengeById from "components/common/RecordedPythonChallengeById";
+import CenteredColumn from "components/common/CenteredColumn";
 import ListWithTitle from "components/common/ListWithTitle";
 
 export default function VariablesAndDataTypesPage() {
@@ -14,22 +15,24 @@ export default function VariablesAndDataTypesPage() {
         <Container>
           <Row>
             <Col>
-              <h1 className={styles.noteTitle}>Variables and Data Types</h1>
+              <h1 className="pageTitle">Variables and Data Types</h1>
             </Col>
           </Row>
 
           <ListWithTitle
             title="Objectives"
             items={[
+              <>Introduce you to Python.</>,
               <>
-                What are <span className="color-blue">data types</span>?
+                Understand what a <span className="color-blue">data type</span>{" "}
+                is.
               </>,
-              <>Understand basic data types.</>,
+              <>Discuss basic data types.</>,
               <>
                 Understand what <span className="color-blue">variables</span>{" "}
                 are.
               </>,
-              <>Why do we need variables?</>,
+              <>Discuss why variables are useful.</>,
             ]}
           />
 
@@ -56,61 +59,47 @@ export default function VariablesAndDataTypesPage() {
             className={styles.block}
           />
 
-          <Row>
-            <Col
-              lg={{
-                span: 6,
-                offset: 3,
-              }}
-              md={{
-                span: 8,
-                offset: 2,
-              }}
-            >
-              <div className={styles.textBox}>
-                <h3>Python Data Types</h3>
+          <CenteredColumn className={styles.textBox}>
+            <h2>Python Data Types</h2>
 
-                <span className="label purple">What is it?</span>
-                <p>
-                  In Python, ALL values have{" "}
-                  <span className="color-purple">data types</span>. We'll go
-                  over a few <strong>built-in</strong> types.
-                </p>
+            <span className="label purple">What is it?</span>
+            <p>
+              In Python, ALL values have{" "}
+              <span className="color-purple">data types</span>. We'll go over a
+              few <strong>built-in</strong> types.
+            </p>
 
-                <ul>
-                  <li>
-                    <code>Text "Hello World"</code> is a text type (
-                    <code>str</code>).
-                  </li>
-                  <li>
-                    Number <code>475</code> is an integer type (<code>int</code>
-                    ).
-                  </li>
-                  <li>
-                    Number <code>1.99</code> is a float type (<code>float</code>
-                    ).
-                  </li>
-                  <li>
-                    Logical <code>True</code> is a boolean type (
-                    <code>bool</code>).
-                  </li>
-                </ul>
+            <ul>
+              <li>
+                <code>Text "Hello World"</code> is a text type (<code>str</code>
+                ).
+              </li>
+              <li>
+                Number <code>475</code> is an integer type (<code>int</code>
+                ).
+              </li>
+              <li>
+                Number <code>1.99</code> is a float type (<code>float</code>
+                ).
+              </li>
+              <li>
+                Logical <code>True</code> is a boolean type (<code>bool</code>).
+              </li>
+            </ul>
 
-                <span className="label green">Primitive vs Non-primitive</span>
-                <p>
-                  Data types can be categorized into two types -{" "}
-                  <em className="color-green">primitive</em> and{" "}
-                  <em className="color-green">non-primitive</em> types.
-                  Technically speaking, Python only has <em>non-primitive</em>{" "}
-                  types as everything is an object in Python. For the purpose of
-                  this course, you do not have to worry about differentiating
-                  between primitive and non-primitive types.
-                </p>
-              </div>
-            </Col>
-          </Row>
+            <span className="label green">Primitive vs Non-primitive</span>
+            <p>
+              Data types can be categorized into two types -{" "}
+              <em className="color-green">primitive</em> and{" "}
+              <em className="color-green">non-primitive</em> types. Technically
+              speaking, Python only has <em>non-primitive</em> types as
+              everything is an object in Python. For the purpose of this course,
+              you do not have to worry about differentiating between primitive
+              and non-primitive types.
+            </p>
+          </CenteredColumn>
 
-          <Row className={clsx(styles.boxItems)}>
+          <Row className={styles.boxItems}>
             <Col>
               <h2 className="sectionTitle">
                 Basic Data Types
@@ -120,7 +109,7 @@ export default function VariablesAndDataTypesPage() {
               <Row>
                 <Col md={4}>
                   <div className={styles.item}>
-                    <span className="label yellow">Text</span>
+                    <span className="label">Text</span>
 
                     <p>
                       Strings (<code>str</code>) are text types. They are always
@@ -130,7 +119,7 @@ export default function VariablesAndDataTypesPage() {
                 </Col>
                 <Col md={4}>
                   <div className={styles.item}>
-                    <span className="label yellow">Numbers</span>
+                    <span className="label">Numbers</span>
 
                     <p>
                       Integers (<code>int</code>) and decimals (
@@ -142,7 +131,7 @@ export default function VariablesAndDataTypesPage() {
                 </Col>
                 <Col md={4}>
                   <div className={styles.item}>
-                    <span className="label yellow">Logical Yes/No</span>
+                    <span className="label">Logical Yes/No</span>
 
                     <p>
                       Booleans (<code>bool</code>) can only have two possible
@@ -165,49 +154,35 @@ export default function VariablesAndDataTypesPage() {
             className={styles.block}
           />
 
-          <Row>
-            <Col
-              lg={{
-                span: 6,
-                offset: 3,
-              }}
-              md={{
-                span: 8,
-                offset: 2,
+          <CenteredColumn className={styles.textBox}>
+            <h3>What are variables?</h3>
+
+            <span className="label blue">From Wikipedia</span>
+            <p
+              style={{
+                textDecoration: "line-through",
+                color: "#777",
               }}
             >
-              <div className={styles.textBox}>
-                <h3>What are variables?</h3>
+              A variable is a storage location (identified by a memory address)
+              paired with an associated symbolic name, which contains some known
+              or unknown quantity of information referred to as a value.
+            </p>
 
-                <span className="label blue">From Wikipedia</span>
-                <p
-                  style={{
-                    textDecoration: "line-through",
-                    color: "#777",
-                  }}
-                >
-                  A variable is a storage location (identified by a memory
-                  address) paired with an associated symbolic name, which
-                  contains some known or unknown quantity of information
-                  referred to as a value.
-                </p>
+            <span className="label pink">What it really means</span>
+            <p>
+              A variable is a nickname for a stored value that can{" "}
+              <em className="color-pink">change</em>.
+            </p>
 
-                <span className="label pink">What it really means</span>
-                <p>
-                  A variable is a nickname for a stored value that can{" "}
-                  <em className="color-pink">change</em>.
-                </p>
-
-                <span className="label green">Creating a Variable</span>
-                <p>
-                  The syntax to create a new variable is{" "}
-                  <code>my_variable = some_value</code>. The <code>=</code>{" "}
-                  symbol here is an <strong>assignment operator</strong> and NOT
-                  a symbol for equality.
-                </p>
-              </div>
-            </Col>
-          </Row>
+            <span className="label green">Creating a Variable</span>
+            <p>
+              The syntax to create a new variable is{" "}
+              <code>my_variable = some_value</code>. The <code>=</code> symbol
+              here is an <strong>assignment operator</strong> and NOT a symbol
+              for equality.
+            </p>
+          </CenteredColumn>
 
           <Row className={clsx(styles.boxItems)}>
             <Col>
@@ -219,7 +194,7 @@ export default function VariablesAndDataTypesPage() {
               <Row>
                 <Col md={4}>
                   <div className={styles.item}>
-                    <span className="label yellow">First Character</span>
+                    <span className="label">First Character</span>
 
                     <p>
                       Variable names must{" "}
@@ -232,7 +207,7 @@ export default function VariablesAndDataTypesPage() {
                 </Col>
                 <Col md={4}>
                   <div className={styles.item}>
-                    <span className="label yellow">Allowed Characters</span>
+                    <span className="label">Allowed Characters</span>
 
                     <p>
                       You can use{" "}
@@ -245,7 +220,7 @@ export default function VariablesAndDataTypesPage() {
                 </Col>
                 <Col md={4}>
                   <div className={styles.item}>
-                    <span className="label yellow">Case Matters</span>
+                    <span className="label">Case Matters</span>
 
                     <p>
                       Variable names are{" "}

@@ -40,10 +40,16 @@
     margin-top: 6rem;
   }
 
+  h2:not(:global(.sectionTitle)) {
+    color: $color-dark-gray;
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+
   h3 {
     color: $color-dark-gray;
     font-size: 1.6rem;
-    font-weight: 500;
+    font-weight: 550;
   }
 
   .listBox {

@@ -176,7 +176,7 @@ export default function PythonChallenge({
               [styles.hasOutput]: !!output,
             })}
           >
-            <span className="label small green">Output</span>
+            <span className="label small">Output</span>
             <pre>{output ? output : "No Output"}</pre>
           </div>
         </Col>
@@ -186,7 +186,7 @@ export default function PythonChallenge({
               [styles.hasOutput]: hasError,
             })}
           >
-            <span className="label small red">Error</span>
+            <span className="label small">Error</span>
             <pre>{errorMessage ? errorMessage : "No Error"}</pre>
           </div>
         </Col>

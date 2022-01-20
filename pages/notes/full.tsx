@@ -29,17 +29,17 @@ export default function NotesPage() {
               href="/notes/variables-and-data-types"
               thumbnail={
                 <Image
-                  src="/images/notes/abstract-001.png"
+                  src="/images/notes/1630532795833.png"
                   width={900}
-                  height={450}
+                  height={600}
                   alt=""
                 />
               }
-              date="2022-01-20"
+              date="2021-08-31"
               title="Variables and Data Types"
               colorTheme={ColorTheme.Green}
             />
-            {/* 
+
             <NoteItem
               href="/notes/booleans-and-conditionals"
               thumbnail={
@@ -127,9 +127,9 @@ export default function NotesPage() {
               date="2021-09-21"
               title="Functions Part 2"
               colorTheme={ColorTheme.Pink}
-            /> */}
+            />
           </Row>
-          {/* 
+
           <Row>
             <Col>
               <h2
@@ -383,7 +383,7 @@ export default function NotesPage() {
               title="Advanced Tableau Visualizations"
               colorTheme={ColorTheme.Blue}
             />
-          </Row> */}
+          </Row>
         </Container>
       </main>
     </Layout>

@@ -25,7 +25,6 @@ export default function CodingChallengeAttemptsPage() {
   const router = useRouter();
   const { cid } = router.query;
   let challengeId = getChallengeIdAsNumberFromQuery(cid);
-  const { user, roles } = useSupabaseAuth();
   const [attempts, setAttempts] = useState([]);
 
   const getAttempts = async () => {
@@ -166,7 +165,7 @@ export default function CodingChallengeAttemptsPage() {
                       <Col md={2} xs={6}>
                         {o.submitted_at && (
                           <div className={styles.timestamp}>
-                            <span className="label yellow">Submitted</span>
+                            <span className="label black">Submitted</span>
 
                             <div className={styles.text}>
                               <Tippy
