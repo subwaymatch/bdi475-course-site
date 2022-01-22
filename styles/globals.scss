@@ -11,19 +11,14 @@ html {
 
 body {
   color: $color-text-gray;
-  font-size: 1.13rem;
+  font-size: 1.1rem;
   line-height: 1.8;
-  font-weight: 500;
-  letter-spacing: -0.03rem;
-
-  @include media-breakpoint-down(xl) {
-    font-size: 1.1rem;
-    letter-spacing: -0.015rem;
-  }
+  font-weight: 450;
+  letter-spacing: -0.01rem;
 
   @include media-breakpoint-down(md) {
-    font-size: 1.05rem;
-    letter-spacing: -0.01rem;
+    font-size: 1rem;
+    letter-spacing: -0.008rem;
   }
 }
 
@@ -231,6 +226,7 @@ strong {
 
 .accent,
 .label,
+.chip,
 .button {
   background-color: $color-gray-30;
   font-weight: 600;
@@ -293,8 +289,8 @@ strong {
   border-radius: 1rem;
 }
 
-.label {
-  color: $color-black;
+.label,
+.chip {
   display: inline-block;
   font-size: 1rem;
   letter-spacing: -0.01rem;
@@ -375,7 +371,9 @@ kbd {
 }
 
 table {
+  color: $color-gray-700;
   width: 100%;
+  font-size: 0.9em;
   font-weight: 400;
   text-align: right;
 
@@ -391,14 +389,25 @@ table {
     }
   }
 
+  th {
+    font-weight: 600;
+  }
+
+  th,
   td {
-    padding: 0.25rem;
+    padding: 0.25rem 0;
+    text-align: center;
   }
 
   tr {
     th:first-of-type,
     td:first-of-type {
       text-align: left;
+    }
+
+    th:last-of-type,
+    td:last-of-type {
+      text-align: right;
     }
   }
 }

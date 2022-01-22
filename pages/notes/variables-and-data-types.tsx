@@ -8,6 +8,7 @@ import RecordedPythonChallengeById from "components/common/RecordedPythonChallen
 import CenteredColumn from "components/common/CenteredColumn";
 import ListWithTitle from "components/common/ListWithTitle";
 import RecordedMultipleChoiceQuestion from "components/common/RecordedMultipleChoiceQuestion";
+import Chip from "components/common/Chip";
 
 export default function VariablesAndDataTypesPage() {
   return (
@@ -185,14 +186,14 @@ export default function VariablesAndDataTypesPage() {
               <Row>
                 <Col md={4}>
                   <div className={styles.item}>
-                    <span className="label">Perfect for Beginners</span>
+                    <Chip label="Perfect for Beginners" />
 
                     <p>Human-readable</p>
                   </div>
                 </Col>
                 <Col md={4}>
                   <div className={styles.item}>
-                    <span className="label">Community</span>
+                    <Chip label="Community" />
 
                     <p>
                       Thousands of <a href="https://pypi.org/">packages</a>
@@ -201,7 +202,7 @@ export default function VariablesAndDataTypesPage() {
                 </Col>
                 <Col md={4}>
                   <div className={styles.item}>
-                    <span className="label">Versatile</span>
+                    <Chip label="Versatile" />
 
                     <p>Popular for data analytics/science</p>
                   </div>
@@ -228,7 +229,8 @@ export default function VariablesAndDataTypesPage() {
           <CenteredColumn className={styles.textBox}>
             <h2>Python Data Types</h2>
 
-            <span className="label purple">What is it?</span>
+            <Chip color="purple">What is it?</Chip>
+
             <p>
               A data type denotes the category of a value. In Python, ALL values
               have <em>data type</em>s. We'll go over a few{" "}
@@ -465,11 +467,6 @@ export default function VariablesAndDataTypesPage() {
               </Row>
             </Col>
           </Row>
-
-          <RecordedPythonChallengeById
-            challengeId={155}
-            className={styles.block}
-          />
 
           <RecordedPythonChallengeById
             challengeId={156}

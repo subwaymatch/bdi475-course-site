@@ -1,49 +1,62 @@
 ---
 title: Variables and Data Types
 objectives:
-  - What are <span class="color-blue">data types</span>?
-  - Understand basic data types.
-  - Understand what variables are.
-  - Why do we need variables?
+  - Introduce you to Python.
+  - Understand what a <span class="color-blue">data type</span> is.
+  - Discuss basic data types.
+  - Understand what <span class="color-blue">variables</span> are.
+  - Discuss why variables are useful.
 thumbnailSrc: /images/notes/abstract-001.png
 thumbnailWidth: 2400
 thumbnailHeight: 1200
 ---
 
-This is an example post, with a [link](https://nextjs.org) and a React component:
+<CenteredColumn>
 
-The title and description are pulled from the MDX file and processed using `gray-matter`. Additionally, links are rendered using a custom component passed to `next-mdx-remote`.
+## What is Python?
 
-Go back [home](/).
+Python is a <span className="color-purple">broad-purpose</span> programming language that is designed to be <span className="color-purple">human-readable</span>. It was created by Guido van Rossum in the 1980s. Its simple syntax emphasizes readability. Unlike many other programming languages, Python code often reads like natural English sentences. According to [PYPL Programming Language Popularity Index](https://pypl.github.io/PYPL.html), Python is the world's most popular programming language.
 
-What is the output of the following code?
+| Rank | Change | Language    | Share  | Trend  |
+| ---- | ------ | ----------- | ------ | ------ |
+| 1    |        | Python      | 28.74% | -1.80% |
+| 2    |        | Java        | 18.01% | 1.20%  |
+| 3    |        | JavaScript  | 9.07%  | 0.60%  |
+| 4    | ↑      | C/C++       | 7.40%  | 1.10%  |
+| 5    | ↓      | C#          | 7.27%  | 0.70%  |
+| 6    |        | PHP         | 6.06%  | 0.00%  |
+| 7    |        | R           | 4.19%  | 0.30%  |
+| 8    |        | Objective-C | 2.27%  | -1.40% |
+| 9    |        | Swift       | 1.91%  | -0.20% |
+| 10   |        | TypeScript  | 1.74%  | 0.00%  |
 
-## Sample Code
+### What makes Python so charming?
 
-```python
-@requires_authorization(roles=["ADMIN"])
-def somefunc(param1='', param2=0):
-    r'''A adtertertertereteretdocstring'''
-    if param1 > param2: # interesting
-        print 'Gre\'ater'
-    return (param2 - param1 + 1 + 0b10l) or None
+1.  It's easy to read and write.
+2.  It's open-source and free.
+3.  There are thousdands of _packages_ available.
+4.  It's versatile. You can use Python for data science (machine learning, deep learning, AI), web development, desktop app development, low-level programs, game programming, and more.
+5.  It has a massive community of users and supporters.
 
-class SomeClass:
-    pass
-```
-
-## Another sample
-
-Try writing a SQL script as well.
-
-```sql
-SELECT * FROM cities;
-```
-
-## Invalid lang
-
-```java
-test
-```
+</CenteredColumn>
 
 <RecordedPythonChallengeById challengeId={6} />
+
+<CenteredColumn>
+
+## Python Data Types
+
+What is it?
+
+A data type denotes the category of a value. In Python, ALL values have \_data type_s. We'll go over a few{" "} **built-in** types. Built-in types are pre-defined data types that are part of the Python programming language itself.
+
+- Text `"Hello World"` is a text type (`str` ).
+- Number `475` is an integer type (`int` ).
+- Number `1.99` is a float type (`float` ).
+- Logical `True` is a boolean type (`bool`).
+
+Primitive vs Non-primitive
+
+Data types can be categorized into two types -{" "} _primitive_ and{" "} _non-primitive_ types. Technically speaking, Python only has _non-primitive_ types as everything is an object in Python. For the purpose of this course, you do not have to worry about differentiating between primitive and non-primitive types.
+
+</CenteredColumn>

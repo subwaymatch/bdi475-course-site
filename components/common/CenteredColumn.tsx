@@ -1,4 +1,6 @@
 import { Row, Col } from "react-bootstrap";
+import clsx from "clsx";
+import styles from "./CenteredColumn.module.scss";
 
 interface ICenteredColumnProps {
   children: React.ReactNode;
@@ -25,7 +27,7 @@ export default function CenteredColumn({
           offset: 0,
         }}
       >
-        <div className={className}>{children}</div>
+        <div className={clsx(styles.centeredColumn, className)}>{children}</div>
       </Col>
     </Row>
   );

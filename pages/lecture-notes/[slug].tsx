@@ -13,6 +13,7 @@ import { POSTS_PATH } from "lib/mdx/posts";
 import RecordedPythonChallenge from "components/mdx/RecordedPythonChallenge";
 import RecordedPythonChallengeById from "components/common/RecordedPythonChallengeById";
 import CenteredColumn from "components/common/CenteredColumn";
+import Chip from "components/common/Chip";
 import styles from "styles/pages/notes/common.module.scss";
 import ListWithTitle from "components/common/ListWithTitle";
 
@@ -20,11 +21,7 @@ const components = {
   RecordedPythonChallenge,
   RecordedPythonChallengeById,
   CenteredColumn,
-  p: (props) => (
-    <CenteredColumn>
-      <p>{props.children}</p>
-    </CenteredColumn>
-  ),
+  Chip,
 };
 
 export default function LectureNotePage({ source, frontMatter, params }) {

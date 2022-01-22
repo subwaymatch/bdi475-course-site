@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import styles from "styles/pages/notes/common.module.scss";
 import RecordedMultipleChoiceQuestion from "components/common/RecordedMultipleChoiceQuestion";
 import RecordedPythonChallengeById from "components/common/RecordedPythonChallengeById";
+import Chip from "components/common/Chip";
 
 export default function TestPage() {
   return (
@@ -17,19 +18,21 @@ export default function TestPage() {
 
           <Row>
             <Col>
-              <RecordedMultipleChoiceQuestion questionId={1} />
-
-              <RecordedMultipleChoiceQuestion
-                questionId={2}
-                className={styles.block}
-              />
-
-              <RecordedPythonChallengeById
-                challengeId={211}
-                className={styles.block}
-              />
+              <Chip label="Test Chip" small />
             </Col>
           </Row>
+
+          <RecordedMultipleChoiceQuestion questionId={1} />
+
+          <RecordedMultipleChoiceQuestion
+            questionId={2}
+            className={styles.block}
+          />
+
+          <RecordedPythonChallengeById
+            challengeId={211}
+            className={styles.block}
+          />
         </Container>
       </main>
     </Layout>
