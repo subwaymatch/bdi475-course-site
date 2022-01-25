@@ -49,12 +49,9 @@
     background-color: $color-orange;
   }
 
-  &.gray {
-    color: $color-gray-90;
-    background-color: $color-gray-20;
-  }
-
+  &.gray,
   &.lightGray {
+    color: $color-gray-90;
     background-color: $color-gray-20;
   }
 

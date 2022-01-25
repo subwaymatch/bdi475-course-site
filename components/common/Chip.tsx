@@ -7,15 +7,27 @@ interface IChipProps {
   color?: string;
   small?: boolean;
   children?: ReactNode;
+  className?: string;
 }
 
-export default function Chip({ label, color, small, children }: IChipProps) {
+export default function Chip({
+  label,
+  color,
+  small,
+  children,
+  className,
+}: IChipProps) {
   return (
     <span
-      className={clsx("chip", styles.chip, {
-        [styles[color]]: color,
-        small: small,
-      })}
+      className={clsx(
+        "chip",
+        styles.chip,
+        {
+          [styles[color]]: color,
+          [styles.small]: small,
+        },
+        className
+      )}
     >
       {children || label}
     </span>

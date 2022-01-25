@@ -8,6 +8,7 @@ import clsx from "clsx";
 import { Row, Col } from "react-bootstrap";
 import { BiShapeTriangle } from "react-icons/bi";
 import { CgClose } from "react-icons/cg";
+import Chip from "components/common/Chip";
 
 enum CodeFormatStatusEnum {
   LOADING,
@@ -111,13 +112,17 @@ export default function FormatterDiffModal({
           <Row className="g-0">
             <Col>
               <div className={clsx(styles.diffBoxHeader, styles.before)}>
-                <span className="label small whiteText pink">Original</span>
+                <Chip color="pink" small>
+                  Original
+                </Chip>
                 <span className={styles.desc}>Before formatting</span>
               </div>
             </Col>
             <Col>
               <div className={clsx(styles.diffBoxHeader, styles.after)}>
-                <span className="label small whiteText blue">Modified</span>
+                <Chip color="blue" small>
+                  Modified
+                </Chip>
                 <span className={styles.desc}>After formatting</span>
               </div>
             </Col>

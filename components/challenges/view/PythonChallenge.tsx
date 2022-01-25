@@ -21,6 +21,7 @@ import FormatterDiffModal from "components/FormatterDiffModal";
 import InstructionText from "./InstructionText";
 import ChallengeButton from "./ChallengeButton";
 import SolutionCodeModal from "./SolutionCodeModal";
+import Chip from "components/common/Chip";
 
 const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
@@ -176,7 +177,7 @@ export default function PythonChallenge({
               [styles.hasOutput]: !!output,
             })}
           >
-            <span className="label small">Output</span>
+            <Chip small>Output</Chip>
             <pre>{output ? output : "No Output"}</pre>
           </div>
         </Col>
@@ -186,7 +187,7 @@ export default function PythonChallenge({
               [styles.hasOutput]: hasError,
             })}
           >
-            <span className="label small">Error</span>
+            <Chip small>Error</Chip>
             <pre>{errorMessage ? errorMessage : "No Error"}</pre>
           </div>
         </Col>

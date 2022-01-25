@@ -128,14 +128,9 @@ export default function CodingChallengeAttemptsPage() {
                     <Row>
                       <Col md={2} xs={6}>
                         <div className={styles.result}>
-                          <span
-                            className={clsx(
-                              "label",
-                              o.is_success ? "green" : "pink"
-                            )}
-                          >
+                          <Chip color={o.is_success ? "green" : "pink"}>
                             Result
-                          </span>
+                          </Chip>
 
                           <div className={styles.text}>
                             {o.is_success ? (
@@ -166,7 +161,7 @@ export default function CodingChallengeAttemptsPage() {
                       <Col md={2} xs={6}>
                         {o.submitted_at && (
                           <div className={styles.timestamp}>
-                            <span className="label black">Submitted</span>
+                            <Chip color="black">Submitted</Chip>
 
                             <div className={styles.text}>
                               <Tippy
@@ -188,15 +183,10 @@ export default function CodingChallengeAttemptsPage() {
                         <div className={styles.codeWrapper}>
                           <div className={styles.labelWrapper}>
                             <Chip color="blue">Code</Chip>
-                            <span
-                              className={clsx(
-                                "label",
-                                "purple",
-                                styles.displayName
-                              )}
-                            >
+
+                            <Chip color="purple" className={styles.displayName}>
                               {o.profiles.display_name}
-                            </span>
+                            </Chip>
 
                             <CopyToClipboard
                               text={o.user_code}

@@ -11,6 +11,7 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import clsx from "clsx";
 import styles from "./ChallengeListItem.module.scss";
 import dayjs from "dayjs";
+import Chip from "components/common/Chip";
 
 export interface IChallengeListItemProps {
   id: string;
@@ -54,7 +55,7 @@ export default function ChallengeListItem({
                 e.preventDefault();
               }}
             >
-              <span className={styles.label}>{id}</span>
+              <span className={styles.idText}>{id}</span>
               <IoCopyOutline className={styles.reactIcon} />
             </motion.div>
           </CopyToClipboard>
@@ -97,15 +98,15 @@ export default function ChallengeListItem({
         </Col>
 
         <Col md={2}>
-          <span className={clsx("label", styles.date)}>
+          <Chip className={styles.date}>
             {dayjs(createdAt).format("MMM D, YYYY")}
-          </span>
+          </Chip>
         </Col>
 
         <Col md={2}>
-          <span className={clsx("label", styles.date)}>
+          <Chip className={styles.date}>
             {dayjs(updatedAt).format("MMM D, YYYY")}
-          </span>
+          </Chip>
         </Col>
       </Row>
     </div>

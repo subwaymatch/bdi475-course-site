@@ -225,58 +225,11 @@ strong {
 }
 
 .accent,
-.label,
 .button {
   background-color: $color-gray-30;
   font-weight: 600;
 
-  &.green {
-    color: white;
-    background-color: $color-green;
-  }
-
-  &.purple {
-    color: white;
-    background-color: $color-purple;
-  }
-
-  &.yellow {
-    background-color: $color-yellow;
-  }
-
-  &.pink {
-    color: white;
-    background-color: $color-pink;
-  }
-
-  &.red {
-    color: white;
-    background-color: $color-red;
-  }
-
-  &.blue {
-    color: white;
-    background-color: $color-blue;
-  }
-
-  &.orange {
-    color: white;
-    background-color: $color-orange;
-  }
-
-  &.gray {
-    color: $color-gray-90;
-    background-color: $color-gray-20;
-  }
-
-  &.lightGray {
-    background-color: $color-gray-20;
-  }
-
-  &.black {
-    color: white;
-    background-color: black;
-  }
+  @include color-backgrounds();
 }
 
 .accent {
@@ -286,26 +239,6 @@ strong {
   height: 0.5rem;
   background-color: black;
   border-radius: 1rem;
-}
-
-.label {
-  display: inline-block;
-  font-size: 1rem;
-  letter-spacing: -0.01rem;
-  line-height: 1.2;
-  padding: 0.3rem 0.7rem;
-  border-radius: 4rem;
-  white-space: nowrap;
-
-  &.small {
-    font-size: 0.9rem;
-    font-weight: 500;
-    padding: 0.2rem 0.5rem;
-  }
-
-  &.whiteText {
-    color: white;
-  }
 }
 
 .button {

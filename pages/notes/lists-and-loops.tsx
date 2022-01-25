@@ -295,7 +295,7 @@ export default function ListsAndLoopsPage() {
           <CenteredColumn className={styles.textBox}>
             <h3>Another way to retrieve elements</h3>
 
-            <span className="label orange">A second syntax</span>
+            <Chip color="orange">A second syntax</Chip>
             <p>
               You can also use <code>for x in my_list</code> to iterate over
               each value in <code>my_list</code>. Note that <code>x</code> is an

@@ -1,7 +1,7 @@
 .centeredColumn {
   margin-top: 6rem;
 
-  :global(.label) {
+  :global(.chip) {
     &:first-of-type {
       margin-top: 2rem;
     }
@@ -14,7 +14,7 @@
   }
 
   p:first-of-type,
-  :global(.label) + p {
+  :global(.chip) + p {
     margin-top: 1rem;
   }
 

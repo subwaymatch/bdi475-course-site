@@ -2,6 +2,7 @@ import { forwardRef } from "react";
 import styles from "./InstructionText.module.scss";
 import clsx from "clsx";
 import { parseMarkdown } from "lib/markdown";
+import Chip from "components/common/Chip";
 
 interface IInstructionTextProps {
   isLoading: boolean;
@@ -19,7 +20,11 @@ const InstructionText = forwardRef<HTMLDivElement, IInstructionTextProps>(
       })}
     >
       <div className={styles.instructionTextInner}>
-        {labelText && <span className="label small black">{labelText}</span>}
+        {labelText && (
+          <Chip color="black" small>
+            {labelText}
+          </Chip>
+        )}
 
         {isLoading ? (
           <div className={styles.textMarkdown}>Loading</div>

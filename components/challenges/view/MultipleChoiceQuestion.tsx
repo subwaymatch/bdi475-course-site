@@ -12,6 +12,7 @@ import Button from "components/ui/Button";
 import { IconType } from "react-icons";
 import { ColorTheme } from "types/color-theme";
 import { IMultipleChoiceQuestionWithOptions } from "types/database/multiple-choice";
+import Chip from "components/common/Chip";
 
 interface IMultipleChoiceQuestionProps {
   status: QueryStatusEnum;
@@ -145,13 +146,13 @@ export default function MultipleChoiceQuestion({
         <Col lg={6} className={styles.equalHeightCol}>
           <div className={styles.optionsAndControlsWrapper}>
             <div className={styles.optionsWrapper}>
-              <span className="label small black">
+              <Chip color="black" small>
                 {isLoading
                   ? "Loading Options"
                   : questionData.options
                   ? `Select ${questionData.num_correct_options}`
                   : "No option item"}
-              </span>
+              </Chip>
 
               {isLoading || !questionData.options
                 ? null

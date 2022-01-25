@@ -45,14 +45,9 @@ export default function PythonChallengeUserHistoryPage() {
                     <Row>
                       <Col md={2} xs={6}>
                         <div className={styles.result}>
-                          <span
-                            className={clsx(
-                              "label",
-                              o.is_success ? "green" : "pink"
-                            )}
-                          >
+                          <Chip color={o.is_success ? "green" : "pink"}>
                             Result
-                          </span>
+                          </Chip>
 
                           <div className={styles.text}>
                             {o.is_success ? (
@@ -83,7 +78,7 @@ export default function PythonChallengeUserHistoryPage() {
                       <Col md={2} xs={6}>
                         {o.submitted_at && (
                           <div className={styles.timestamp}>
-                            <span className="label">Submitted</span>
+                            <Chip>Submitted</Chip>
 
                             <div className={styles.text}>
                               <Tippy

@@ -31,7 +31,7 @@ export default function CourseInformation() {
 
             <Col md={4}>
               <div className={styles.displayBox}>
-                <span className="label orange">Credit</span>
+                <Chip color="orange">Credit</Chip>
                 <span className={styles.largeText}>3 Hours</span>
               </div>
             </Col>
@@ -47,7 +47,7 @@ export default function CourseInformation() {
           <Row>
             <Col md={4}>
               <div className={styles.displayBox}>
-                <span className="label gray">Term</span>
+                <Chip>Term</Chip>
                 <span className={styles.largeText}>Spring 2022</span>
               </div>
             </Col>
@@ -155,7 +155,7 @@ export default function CourseInformation() {
                   />
 
                   <div className={styles.imageLabel}>
-                    <span className="label black">Park</span>
+                    <Chip color="black">Park</Chip>
                   </div>
                 </div>
               </Col>
@@ -215,7 +215,7 @@ export default function CourseInformation() {
                   />
 
                   <div className={styles.imageLabel}>
-                    <span className="label black">Sandip</span>
+                    <Chip color="black">Sandip</Chip>
                   </div>
                 </div>
               </Col>

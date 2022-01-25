@@ -9,6 +9,7 @@ import useSupabaseAuth from "hooks/useSupabaseAuth";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { materialDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { toast } from "react-toastify";
+import Chip from "components/common/Chip";
 
 enum RequestStatusEnum {
   LOADING,
@@ -96,9 +97,9 @@ export default function SolutionCodeModal({
         <div className={styles.modalHeader}>
           <Row className="g-0">
             <Col>
-              <span className="label orange small whiteText">
+              <Chip color="orange" small>
                 Solution Code
-              </span>
+              </Chip>
             </Col>
           </Row>
         </div>

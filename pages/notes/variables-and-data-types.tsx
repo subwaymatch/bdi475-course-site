@@ -428,7 +428,7 @@ export default function VariablesAndDataTypesPage() {
               <Row>
                 <Col md={4}>
                   <div className={styles.item}>
-                    <span className="label">First Character</span>
+                    <Chip>First Character</Chip>
 
                     <p>
                       Variable names must{" "}
@@ -441,7 +441,7 @@ export default function VariablesAndDataTypesPage() {
                 </Col>
                 <Col md={4}>
                   <div className={styles.item}>
-                    <span className="label">Allowed Characters</span>
+                    <Chip>Allowed Characters</Chip>
 
                     <p>
                       You can use{" "}
@@ -454,7 +454,7 @@ export default function VariablesAndDataTypesPage() {
                 </Col>
                 <Col md={4}>
                   <div className={styles.item}>
-                    <span className="label">Case Matters</span>
+                    <Chip>Case Matters</Chip>
 
                     <p>
                       Variable names are{" "}

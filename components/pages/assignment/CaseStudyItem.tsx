@@ -7,6 +7,7 @@ import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
+import Chip from "components/common/Chip";
 
 dayjs.extend(localizedFormat);
 dayjs.extend(utc);
@@ -47,17 +48,14 @@ export default function CaseStudyItem({
         <Row>
           <Col md={12}>
             <div className={styles.metaInfo}>
-              <span
-                className={clsx(
-                  "label",
+              <Chip
+                color={
                   status === AssignmentStatus.Available ? "blue" : "lightGray"
-                )}
+                }
               >
                 Due {dueDate}
-              </span>
-              <span className="gray label">
-                {pointsAvailable} Points Available
-              </span>
+              </Chip>
+              <Chip>{pointsAvailable} Points Available</Chip>
             </div>
           </Col>
         </Row>
