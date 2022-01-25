@@ -39,7 +39,7 @@ export default function NotesPage() {
               title="Variables and Data Types"
               colorTheme={ColorTheme.Green}
             />
-            {/* 
+
             <NoteItem
               href="/notes/booleans-and-conditionals"
               thumbnail={
@@ -53,7 +53,7 @@ export default function NotesPage() {
               date="2022-01-25"
               title="Operators, Booleans, and Conditionals"
               colorTheme={ColorTheme.Green}
-            /> */}
+            />
 
             {/* 
             <NoteItem

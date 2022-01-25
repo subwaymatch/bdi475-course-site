@@ -113,6 +113,11 @@
       margin-top: 4rem;
     }
 
+    h2:not(:first-child),
+    h3:not(:first-child) {
+      margin-top: 3rem;
+    }
+
     p {
       margin-top: 1.75rem;
     }

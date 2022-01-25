@@ -26,9 +26,9 @@ export default function Exercise() {
               <>
                 You have until{" "}
                 <strong className="color-purple">
-                  Tuesday before the beginning of the class
+                  Thursday before the beginning of the class
                 </strong>{" "}
-                (Sep 7, 3:30 PM CST) to complete this exercise.
+                (Jan 27, 12:30 PM CST) to complete this exercise.
               </>,
               <>
                 You get{" "}

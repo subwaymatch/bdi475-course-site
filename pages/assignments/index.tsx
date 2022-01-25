@@ -27,7 +27,7 @@ export default function AssignmentsPage() {
               <h1 className="pageTitle">Assignments</h1>
             </Col>
           </Row>
-          {/* 
+
           <Row>
             <Col>
               <div className={styles.exercises}>
@@ -37,13 +37,13 @@ export default function AssignmentsPage() {
 
                 <AssignmentItem
                   name="Exercise 1"
-                  dueDate={dayjs("2021-09-07").tz().format("ll")}
+                  dueDate={dayjs("2022-01-27").tz().format("ll")}
                   pointsAvailable={20}
                   status={AssignmentStatus.Available}
                   link="/assignments/exercise-01"
                   colorTheme={ColorTheme.Purple}
                 />
-
+                {/* 
                 <AssignmentItem
                   name="Exercise 2"
                   dueDate={dayjs("2021-09-09").tz().format("ll")}
@@ -123,11 +123,11 @@ export default function AssignmentsPage() {
                   status={AssignmentStatus.Available}
                   link="https://canvas.illinois.edu/courses/14860/assignments/346038"
                   colorTheme={ColorTheme.Purple}
-                />
+                /> */}
               </div>
             </Col>
           </Row>
-
+          {/* 
           <Row>
             <Col>
               <div className={styles.problemSets}>

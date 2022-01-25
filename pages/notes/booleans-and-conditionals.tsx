@@ -10,6 +10,7 @@ import RecordedPythonChallengeById from "components/common/RecordedPythonChallen
 import { FaWikipediaW } from "react-icons/fa";
 import LargeQuote from "components/common/LargeQuote";
 import Chip from "components/common/Chip";
+import RecordedMultipleChoiceQuestion from "components/common/RecordedMultipleChoiceQuestion";
 
 export default function BooleansAndConditionalsPage() {
   return (
@@ -27,6 +28,7 @@ export default function BooleansAndConditionalsPage() {
           <ListWithTitle
             title="Objectives ⟶"
             items={[
+              <>Discuss operators.</>,
               <>
                 Understand the <code>bool</code> data type.
               </>,
@@ -50,7 +52,43 @@ export default function BooleansAndConditionalsPage() {
           </Row>
 
           <CenteredColumn className={styles.textBox}>
-            <h3>What are booleans?</h3>
+            <h2>Operators</h2>
+
+            <Chip color="blue">What are they?</Chip>
+
+            <p>
+              Operators are symbols that perform various types of opertions. The
+              most simple example is an addition (e.g., <code>1 + 1</code>),
+              which performs an arithmetic operation.
+            </p>
+
+            <p>Python operations are categorized into the following groups:</p>
+
+            <ul>
+              <li>Arithmetic Operators</li>
+              <li>Assignment Operators</li>
+              <li>Comparison Operators</li>
+              <li>Logical Operators</li>
+              <li>Bitwise Operators</li>
+              <li>Membership Operators</li>
+              <li>Identity Operators</li>
+            </ul>
+
+            <h3>Arithmetic Operators</h3>
+          </CenteredColumn>
+
+          <RecordedMultipleChoiceQuestion
+            questionId={32}
+            className={styles.block}
+          />
+
+          <RecordedMultipleChoiceQuestion
+            questionId={33}
+            className={styles.block}
+          />
+
+          <CenteredColumn className={styles.textBox}>
+            <h2>Booleans</h2>
 
             <Chip color="purple">Overview</Chip>
 
@@ -107,13 +145,13 @@ export default function BooleansAndConditionalsPage() {
             <Col xl={{ span: 8, offset: 2 }} lg={{ span: 10, offset: 1 }}>
               <h2 className="sectionTitle">
                 Why are booleans so important?
-                <span className="accent purple" />
+                <span className="accent blue" />
               </h2>
 
               <Row>
                 <Col md={6}>
                   <div className={styles.item}>
-                    <Chip color="yellow">Evaluation</Chip>
+                    <Chip color="blue">Evaluation</Chip>
 
                     <p>
                       Even the most complex boolean <em>expressions</em> in
@@ -125,7 +163,7 @@ export default function BooleansAndConditionalsPage() {
 
                 <Col md={6}>
                   <div className={styles.item}>
-                    <Chip color="green">Logic</Chip>
+                    <Chip color="blue">Logic</Chip>
 
                     <p>
                       It controls the <em>flow</em> of your program. We will
