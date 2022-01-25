@@ -4,6 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import styles from "styles/pages/notes/common.module.scss";
 import clsx from "clsx";
 import ListWithTitle from "components/common/ListWithTitle";
+import thumbImage from "public/images/notes/abstract-002.png";
 import CenteredColumn from "components/common/CenteredColumn";
 import RecordedPythonChallengeById from "components/common/RecordedPythonChallengeById";
 import { FaWikipediaW } from "react-icons/fa";
@@ -17,7 +18,9 @@ export default function BooleansAndConditionalsPage() {
         <Container>
           <Row>
             <Col>
-              <h1 className={styles.noteTitle}>Booleans and Conditionals</h1>
+              <h1 className={styles.noteTitle}>
+                Operators, Booleans, and Conditionals
+              </h1>
             </Col>
           </Row>
 
@@ -41,12 +44,7 @@ export default function BooleansAndConditionalsPage() {
           <Row>
             <Col>
               <div className={styles.coverImage}>
-                <Image
-                  src="/images/notes/1612360485433.png"
-                  width={3000}
-                  height={2000}
-                  alt=""
-                />
+                <Image src={thumbImage} alt="" />
               </div>
             </Col>
           </Row>

@@ -44,17 +44,18 @@ export default function NotesPage() {
               href="/notes/booleans-and-conditionals"
               thumbnail={
                 <Image
-                  src="/images/notes/1612360485433.png"
+                  src="/images/notes/abstract-002.png"
                   width={900}
-                  height={600}
+                  height={450}
                   alt=""
                 />
               }
-              date="2021-09-02"
-              title="Booleans and Conditionals"
+              date="2022-01-25"
+              title="Operators, Booleans, and Conditionals"
               colorTheme={ColorTheme.Green}
-            />
+            /> */}
 
+            {/* 
             <NoteItem
               href="/notes/lists-and-loops"
               thumbnail={
