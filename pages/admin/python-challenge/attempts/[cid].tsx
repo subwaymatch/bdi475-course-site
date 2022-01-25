@@ -18,6 +18,7 @@ import { definitions } from "types/database";
 import useSupabaseAuth from "hooks/useSupabaseAuth";
 import { getChallengeIdAsNumberFromQuery } from "utils/challenge";
 import orderBy from "lodash/orderBy";
+import Chip from "components/common/Chip";
 
 dayjs.extend(relativeTime);
 
@@ -186,7 +187,7 @@ export default function CodingChallengeAttemptsPage() {
                       <Col md={8}>
                         <div className={styles.codeWrapper}>
                           <div className={styles.labelWrapper}>
-                            <span className="label blue">Code</span>
+                            <Chip color="blue">Code</Chip>
                             <span
                               className={clsx(
                                 "label",

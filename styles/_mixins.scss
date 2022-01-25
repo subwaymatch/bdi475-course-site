@@ -13,3 +13,53 @@
     font-family: "Inter var", "Inter", sans-serif;
   }
 }
+
+@mixin color-backgrounds() {
+  &.green {
+    color: white;
+    background-color: $color-green;
+  }
+
+  &.purple {
+    color: white;
+    background-color: $color-purple;
+  }
+
+  &.yellow {
+    background-color: $color-yellow;
+  }
+
+  &.pink {
+    color: white;
+    background-color: $color-pink;
+  }
+
+  &.red {
+    color: white;
+    background-color: $color-red;
+  }
+
+  &.blue {
+    color: white;
+    background-color: $color-blue;
+  }
+
+  &.orange {
+    color: white;
+    background-color: $color-orange;
+  }
+
+  &.gray {
+    color: $color-gray-90;
+    background-color: $color-gray-20;
+  }
+
+  &.lightGray {
+    background-color: $color-gray-20;
+  }
+
+  &.black {
+    color: white;
+    background-color: black;
+  }
+}

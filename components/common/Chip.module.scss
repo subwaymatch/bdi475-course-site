@@ -1,0 +1,26 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.chip {
+  display: inline-block;
+  background-color: $color-gray-30;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01rem;
+  line-height: 1.2;
+  padding: 0.3rem 0.7rem;
+  border-radius: 4rem;
+  white-space: nowrap;
+
+  &.small {
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.2rem 0.5rem;
+  }
+
+  &.whiteText {
+    color: white;
+  }
+
+  @include color-backgrounds();
+}

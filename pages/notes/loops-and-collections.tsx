@@ -7,6 +7,7 @@ import ListWithTitle from "components/common/ListWithTitle";
 import CenteredColumn from "components/common/CenteredColumn";
 import RecordedPythonChallengeById from "components/common/RecordedPythonChallengeById";
 import LargeQuote from "components/common/LargeQuote";
+import Chip from "components/common/Chip";
 
 export default function LoopsAndCollectionsPage() {
   return (
@@ -82,7 +83,7 @@ export default function LoopsAndCollectionsPage() {
               <Row>
                 <Col md={6}>
                   <div className={styles.item}>
-                    <span className="label blue">For Loops</span>
+                    <Chip color="blue">For Loops</Chip>
 
                     <p>
                       You must supply a <code>list</code>-like data to{" "}
@@ -96,7 +97,7 @@ export default function LoopsAndCollectionsPage() {
 
                 <Col md={6}>
                   <div className={styles.item}>
-                    <span className="label green">While Loops</span>
+                    <Chip color="green">While Loops</Chip>
 
                     <p>
                       A <code>while</code> loop will continue to run until a
@@ -118,7 +119,7 @@ export default function LoopsAndCollectionsPage() {
           <CenteredColumn className={styles.textBox}>
             <h3>While Loops</h3>
 
-            <span className="label purple">Indefinite Iteration</span>
+            <Chip color="purple">Indefinite Iteration</Chip>
             <p>
               Last time, we covered the first type of loop in Python - the{" "}
               <code>for</code> loop. A <code>for</code> loop takes a{" "}
@@ -143,7 +144,7 @@ export default function LoopsAndCollectionsPage() {
               condition is NOT satisfied.
             </p>
 
-            <span className="label pink">Skip Discussion For Now</span>
+            <Chip color="pink">Skip Discussion For Now</Chip>
             <p>
               Although <code>while</code> loops can be useful at times, we won't
               find many uses for the purpose of this course. For now, you only
@@ -162,7 +163,7 @@ export default function LoopsAndCollectionsPage() {
           <CenteredColumn className={styles.textBox}>
             <h3>Dictionary</h3>
 
-            <span className="label green">Key-Value Pairs</span>
+            <Chip color="green">Key-Value Pairs</Chip>
             <p>
               Do you know what <em className="color-green">terpsichorean</em>{" "}
               means? How about <em className="color-purple">appoggiatura</em>?
@@ -199,13 +200,13 @@ export default function LoopsAndCollectionsPage() {
           </LargeQuote>
 
           <CenteredColumn className={styles.textBox}>
-            <span className="label yellow">Creating an empty dictionary</span>
+            <Chip color="yellow">Creating an empty dictionary</Chip>
             <p>
               You can create an empty dictionary using the following syntax:{" "}
               <code>my_dict = &#123;&#125;</code>.
             </p>
 
-            <span className="label blue">Dictionary with initial values</span>
+            <Chip color="blue">Dictionary with initial values</Chip>
             <p>
               You can create a dictionary with initial values using the
               following syntax:{" "}
@@ -260,7 +261,7 @@ export default function LoopsAndCollectionsPage() {
               <Row>
                 <Col md={4}>
                   <div className={styles.item}>
-                    <span className="label green">Retrieve a Value by Key</span>
+                    <Chip color="green">Retrieve a Value by Key</Chip>
                     <p>
                       Assume we're working with a dictionary named{" "}
                       <code>my_dict</code>. To retrieve a value by a key, use
@@ -270,7 +271,7 @@ export default function LoopsAndCollectionsPage() {
                 </Col>
                 <Col md={4}>
                   <div className={styles.item}>
-                    <span className="label yellow">Add a Key-Value Pair</span>
+                    <Chip color="yellow">Add a Key-Value Pair</Chip>
                     <p>
                       To add a new key-value pair, use square brackets with an
                       assignment operation (e.g.,{" "}
@@ -280,7 +281,7 @@ export default function LoopsAndCollectionsPage() {
                 </Col>
                 <Col md={4}>
                   <div className={styles.item}>
-                    <span className="label pink">Update a Key-Value pair</span>
+                    <Chip color="pink">Update a Key-Value pair</Chip>
                     <p>
                       To update an existing key-value pair, use square brackets
                       with an assignment operation (e.g.,{" "}
@@ -364,7 +365,7 @@ export default function LoopsAndCollectionsPage() {
           <CenteredColumn className={styles.textBox}>
             <h3>Tuples</h3>
 
-            <span className="label green">Immutable</span>
+            <Chip color="green">Immutable</Chip>
 
             <p>
               The final collection data type we'll discuss is the{" "}

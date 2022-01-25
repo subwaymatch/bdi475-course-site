@@ -14,6 +14,7 @@ import Tippy from "@tippyjs/react";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { getChallengeIdAsNumberFromQuery } from "utils/challenge";
+import Chip from "components/common/Chip";
 
 dayjs.extend(relativeTime);
 
@@ -103,7 +104,7 @@ export default function PythonChallengeUserHistoryPage() {
                       <Col md={8}>
                         <div className={styles.codeWrapper}>
                           <div className={styles.labelWrapper}>
-                            <span className="label blue">Code</span>
+                            <Chip color="blue">Code</Chip>
 
                             <CopyToClipboard
                               text={o.user_code}

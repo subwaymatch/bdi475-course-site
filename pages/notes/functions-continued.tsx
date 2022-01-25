@@ -5,6 +5,7 @@ import styles from "styles/pages/notes/common.module.scss";
 import ListWithTitle from "components/common/ListWithTitle";
 import CenteredColumn from "components/common/CenteredColumn";
 import RecordedPythonChallengeById from "components/common/RecordedPythonChallengeById";
+import Chip from "components/common/Chip";
 
 export default function FunctionPage() {
   return (
@@ -105,7 +106,7 @@ export default function FunctionPage() {
 
           <CenteredColumn className={styles.textBox}>
             <h3>Variable Scopes</h3>
-            <span className="label blue">Global Scope</span>
+            <Chip color="blue">Global Scope</Chip>
 
             <p>
               Any variable that is declared outside of the function is in the
@@ -130,7 +131,7 @@ export default function FunctionPage() {
 
           <CenteredColumn className={styles.textBox}>
             <h3>Variable Scopes</h3>
-            <span className="label pink">Function Scope</span>
+            <Chip color="pink">Function Scope</Chip>
 
             <p>
               Any variable that is used inside a function is in the function
@@ -160,7 +161,7 @@ export default function FunctionPage() {
           />
 
           <CenteredColumn className={styles.textBox}>
-            <span className="label green">What happened?</span>
+            <Chip color="green">What happened?</Chip>
 
             <p>
               Python throws an error 🚫 since <code>x</code> is already

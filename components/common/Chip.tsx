@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import clsx from "clsx";
+import styles from "./Chip.module.scss";
 
 interface IChipProps {
   label?: string;
@@ -11,8 +12,8 @@ interface IChipProps {
 export default function Chip({ label, color, small, children }: IChipProps) {
   return (
     <span
-      className={clsx("chip", {
-        [color]: color,
+      className={clsx("chip", styles.chip, {
+        [styles[color]]: color,
         small: small,
       })}
     >

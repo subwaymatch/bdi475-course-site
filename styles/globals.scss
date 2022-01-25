@@ -226,7 +226,6 @@ strong {
 
 .accent,
 .label,
-.chip,
 .button {
   background-color: $color-gray-30;
   font-weight: 600;
@@ -289,8 +288,7 @@ strong {
   border-radius: 1rem;
 }
 
-.label,
-.chip {
+.label {
   display: inline-block;
   font-size: 1rem;
   letter-spacing: -0.01rem;

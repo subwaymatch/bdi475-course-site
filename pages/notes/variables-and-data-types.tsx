@@ -257,7 +257,7 @@ export default function VariablesAndDataTypesPage() {
               </li>
             </ul>
 
-            <span className="label green">Primitive vs Non-primitive</span>
+            <Chip color="green">Primitive vs Non-primitive</Chip>
             <p>
               Data types can be categorized into two types -{" "}
               <em className="color-green">primitive</em> and{" "}
@@ -279,7 +279,7 @@ export default function VariablesAndDataTypesPage() {
               <Row>
                 <Col md={4}>
                   <div className={styles.item}>
-                    <span className="label blue">Text</span>
+                    <Chip color="blue">Text</Chip>
 
                     <p>
                       Strings (<code>str</code>) are text types. They are always
@@ -289,7 +289,7 @@ export default function VariablesAndDataTypesPage() {
                 </Col>
                 <Col md={4}>
                   <div className={styles.item}>
-                    <span className="label blue">Numbers</span>
+                    <Chip color="blue">Numbers</Chip>
 
                     <p>
                       Integers (<code>int</code>) and decimals (
@@ -301,7 +301,7 @@ export default function VariablesAndDataTypesPage() {
                 </Col>
                 <Col md={4}>
                   <div className={styles.item}>
-                    <span className="label blue">Logical Yes/No</span>
+                    <Chip color="blue">Logical Yes/No</Chip>
 
                     <p>
                       Booleans (<code>bool</code>) can only have two possible
@@ -349,7 +349,7 @@ export default function VariablesAndDataTypesPage() {
           <CenteredColumn className={styles.textBox}>
             <h3>What are variables?</h3>
 
-            <span className="label blue">From Wikipedia</span>
+            <Chip color="blue">From Wikipedia</Chip>
             <p
               style={{
                 textDecoration: "line-through",
@@ -361,13 +361,13 @@ export default function VariablesAndDataTypesPage() {
               or unknown quantity of information referred to as a value.
             </p>
 
-            <span className="label pink">What it really means</span>
+            <Chip color="pink">What it really means</Chip>
             <p>
               A variable is a nickname for a stored value that can{" "}
               <em className="color-pink">change</em>.
             </p>
 
-            <span className="label green">Why do we use variables?</span>
+            <Chip color="green">Why do we use variables?</Chip>
             <p>
               If you have a constantly-changing value that is used in many
               different places of a computer program, you will likely run into a
@@ -389,7 +389,7 @@ export default function VariablesAndDataTypesPage() {
               readability of your code.
             </p>
 
-            <span className="label purple">Creating a Variable</span>
+            <Chip color="purple">Creating a Variable</Chip>
             <p>
               The syntax to create a new variable is{" "}
               <code>my_variable = some_value</code>. The <code>=</code> symbol
@@ -481,7 +481,7 @@ export default function VariablesAndDataTypesPage() {
           <CenteredColumn className={styles.textBox}>
             <h3>Updating Variables</h3>
 
-            <span className="label blue">Identical</span>
+            <Chip color="blue">Identical</Chip>
             <p>
               The syntax for updating a variable is{" "}
               <strong>the same as creating a new variable</strong>.

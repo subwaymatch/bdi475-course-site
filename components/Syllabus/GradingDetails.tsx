@@ -1,6 +1,7 @@
 import styles from "./GradingDetails.module.scss";
 import { Col, Container, Row } from "react-bootstrap";
 import clsx from "clsx";
+import Chip from "components/common/Chip";
 
 const GradingComponentDetails = () => (
   <div className={styles.gradingComponentDetails}>
@@ -90,10 +91,10 @@ const LetterGradeRange = () => (
     <div className={styles.header}>
       <Row>
         <Col>
-          <span className="label blue">% Range</span>
+          <Chip color="blue">% Range</Chip>
         </Col>
         <Col>
-          <span className="label blue">Letter Grade</span>
+          <Chip color="blue">Letter Grade</Chip>
         </Col>
       </Row>
     </div>

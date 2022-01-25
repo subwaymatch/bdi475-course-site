@@ -8,6 +8,7 @@ import CenteredColumn from "components/common/CenteredColumn";
 import RecordedPythonChallengeById from "components/common/RecordedPythonChallengeById";
 import { FaWikipediaW } from "react-icons/fa";
 import LargeQuote from "components/common/LargeQuote";
+import Chip from "components/common/Chip";
 
 export default function BooleansAndConditionalsPage() {
   return (
@@ -53,7 +54,7 @@ export default function BooleansAndConditionalsPage() {
           <CenteredColumn className={styles.textBox}>
             <h3>What are booleans?</h3>
 
-            <span className="label purple">Overview</span>
+            <Chip color="purple">Overview</Chip>
 
             <p>
               A <strong>boolean</strong> is a data type that can only represent
@@ -114,7 +115,7 @@ export default function BooleansAndConditionalsPage() {
               <Row>
                 <Col md={6}>
                   <div className={styles.item}>
-                    <span className="label yellow">Evaluation</span>
+                    <Chip color="yellow">Evaluation</Chip>
 
                     <p>
                       Even the most complex boolean <em>expressions</em> in
@@ -126,7 +127,7 @@ export default function BooleansAndConditionalsPage() {
 
                 <Col md={6}>
                   <div className={styles.item}>
-                    <span className="label green">Logic</span>
+                    <Chip color="green">Logic</Chip>
 
                     <p>
                       It controls the <em>flow</em> of your program. We will
@@ -163,7 +164,7 @@ export default function BooleansAndConditionalsPage() {
           <CenteredColumn className={styles.textBox}>
             <h3>Expressions</h3>
 
-            <span className="label purple">Evaluated Chunk of Code</span>
+            <Chip color="purple">Evaluated Chunk of Code</Chip>
 
             <p>
               If you're new to programming, an{" "}
@@ -179,7 +180,7 @@ export default function BooleansAndConditionalsPage() {
               that depend on the context (thank you <FaWikipediaW /> Wikipedia).
             </p>
 
-            <span className="label green">For Us</span>
+            <Chip color="green">For Us</Chip>
             <p>
               In the context of <strong>programming</strong>, an expression is{" "}
               <span className="color-green">
@@ -246,7 +247,7 @@ export default function BooleansAndConditionalsPage() {
 
           <CenteredColumn className={styles.textBox}>
             <h3>If...Else</h3>
-            <span className="label green">Conditional Blocks</span>
+            <Chip color="green">Conditional Blocks</Chip>
             <p>
               Being able to use expressions to dynamically determine a value
               sounds... fancy. But how exactly is it <em>useful</em>?
@@ -282,7 +283,7 @@ export default function BooleansAndConditionalsPage() {
 
           <CenteredColumn className={styles.textBox}>
             <h3>Why are some lines indented?</h3>
-            <span className="label green">Code Blocks</span>
+            <Chip color="green">Code Blocks</Chip>
             <p>
               Python uses indentation to define a block of code. What do you
               mean block of code? A block of code refers to{" "}
@@ -314,7 +315,7 @@ export default function BooleansAndConditionalsPage() {
               <Row>
                 <Col md={4}>
                   <div className={styles.item}>
-                    <span className="label green">if</span>
+                    <Chip color="green">if</Chip>
 
                     <p>
                       <code>if</code> statements always come first. You must
@@ -328,7 +329,7 @@ export default function BooleansAndConditionalsPage() {
                 </Col>
                 <Col md={4}>
                   <div className={styles.item}>
-                    <span className="label yellow">elif</span>
+                    <Chip color="yellow">elif</Chip>
 
                     <p>
                       <code>elif</code> statements come after the first
@@ -341,7 +342,7 @@ export default function BooleansAndConditionalsPage() {
                 </Col>
                 <Col md={4}>
                   <div className={styles.item}>
-                    <span className="label pink">else</span>
+                    <Chip color="pink">else</Chip>
 
                     <p>
                       <code>else</code> statements come last. <code>else</code>{" "}

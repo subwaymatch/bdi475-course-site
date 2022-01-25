@@ -5,6 +5,7 @@ import Image from "next/image";
 import GradingBreakdown from "./GradingBreakdown";
 import GradingDetails from "./GradingDetails";
 import PoliciesAndDisclosures from "./PoliciesAndDisclosures";
+import Chip from "components/common/Chip";
 
 export default function CourseInformation() {
   return (
@@ -23,7 +24,7 @@ export default function CourseInformation() {
           <Row>
             <Col md={4}>
               <div className={styles.displayBox}>
-                <span className="label purple">Course Number</span>
+                <Chip color="purple">Course Number</Chip>
                 <span className={styles.largeText}>BDI 475</span>
               </div>
             </Col>
@@ -37,7 +38,7 @@ export default function CourseInformation() {
 
             <Col md={4}>
               <div className={styles.displayBox}>
-                <span className="label blue">Instructor</span>
+                <Chip color="blue">Instructor</Chip>
                 <span className={styles.largeText}>Park, Ye Joo</span>
               </div>
             </Col>
@@ -53,7 +54,7 @@ export default function CourseInformation() {
 
             <Col md={8}>
               <div className={styles.displayBox}>
-                <span className="label green">Class Time &amp; Location</span>
+                <Chip color="green">Class Time &amp; Location</Chip>
                 <div className={styles.largeText}>
                   Tues &amp; Thurs 12:30-1:50 PM
                   <br />

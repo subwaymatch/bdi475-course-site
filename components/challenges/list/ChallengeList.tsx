@@ -1,3 +1,4 @@
+import Chip from "components/common/Chip";
 import React from "react";
 import { Row, Col } from "react-bootstrap";
 import styles from "./ChallengeList.module.scss";
@@ -17,23 +18,23 @@ export default function ChallengeList({ items }: IChallengeListProps) {
           <div className={styles.headerRow}>
             <Row>
               <Col md={1}>
-                <span className="label blue">ID</span>
+                <Chip color="blue">ID</Chip>
               </Col>
 
               <Col md={5}>
-                <span className="label purple">Title</span>
+                <Chip color="purple">Title</Chip>
               </Col>
 
               <Col md={2}>
-                <span className="label pink">Actions</span>
+                <Chip color="pink">Actions</Chip>
               </Col>
 
               <Col md={2}>
-                <span className="label green">Created</span>
+                <Chip color="green">Created</Chip>
               </Col>
 
               <Col md={2}>
-                <span className="label yellow">Modified</span>
+                <Chip color="yellow">Modified</Chip>
               </Col>
             </Row>
           </div>

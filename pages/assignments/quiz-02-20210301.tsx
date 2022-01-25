@@ -4,6 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import styles from "styles/pages/notes/common.module.scss";
 import CenteredColumn from "components/common/CenteredColumn";
 import RecordedPythonChallengeById from "components/common/RecordedPythonChallengeById";
+import Chip from "components/common/Chip";
 
 export default function QuizPage() {
   return (
@@ -22,7 +23,7 @@ export default function QuizPage() {
           <CenteredColumn className={styles.textBox}>
             <h3>Yeezy Sneakers</h3>
 
-            <span className="label purple">Yeezy.. Peezy?</span>
+            <Chip color="purple">Yeezy.. Peezy?</Chip>
             <p>
               Have you ever heard of sneakers that cost over $1,000 in resale
               markets? 🔥🔥 I was stunned when I randomly ran into this list in{" "}

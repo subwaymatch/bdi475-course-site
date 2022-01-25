@@ -5,6 +5,7 @@ import styles from "styles/pages/notes/common.module.scss";
 import ListWithTitle from "components/common/ListWithTitle";
 import CenteredColumn from "components/common/CenteredColumn";
 import RecordedPythonChallengeById from "components/common/RecordedPythonChallengeById";
+import Chip from "components/common/Chip";
 
 export default function FunctionPage() {
   return (
@@ -86,7 +87,7 @@ export default function FunctionPage() {
           <CenteredColumn className={styles.textBox}>
             <h3>What are functions?</h3>
 
-            <span className="label green">Back to Algebra</span>
+            <Chip color="green">Back to Algebra</Chip>
 
             <p>
               Let's forget about Python for a moment and go back a few years all

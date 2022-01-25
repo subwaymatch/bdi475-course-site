@@ -6,6 +6,7 @@ import ListWithTitle from "components/common/ListWithTitle";
 import CenteredColumn from "components/common/CenteredColumn";
 import RecordedPythonChallengeById from "components/common/RecordedPythonChallengeById";
 import LargeQuote from "components/common/LargeQuote";
+import Chip from "components/common/Chip";
 
 export default function StringsAndStringsMethodPage() {
   return (
@@ -117,7 +118,7 @@ export default function StringsAndStringsMethodPage() {
           <CenteredColumn className={styles.textBox}>
             <h3>Slicing a List</h3>
 
-            <span className="label green">Select Subset</span>
+            <Chip color="green">Select Subset</Chip>
 
             <p>
               In Python, you can easily slice and retrieve a subset of a{" "}

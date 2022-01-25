@@ -3,7 +3,9 @@ export enum ColorTheme {
   Purple = "PURPLE",
   Yellow = "YELLOW",
   Pink = "PINK",
+  Red = "RED",
   Blue = "BLUE",
+  Gray = "GRAY",
   Orange = "ORANGE",
   Black = "BLACK",
 }

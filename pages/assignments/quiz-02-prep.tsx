@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import styles from "styles/pages/notes/common.module.scss";
 import CenteredColumn from "components/common/CenteredColumn";
 import RecordedPythonChallengeById from "components/common/RecordedPythonChallengeById";
+import Chip from "components/common/Chip";
 
 export default function QuizPage() {
   return (
@@ -21,7 +22,7 @@ export default function QuizPage() {
           <CenteredColumn className={styles.textBox}>
             <h3>Sample Questions</h3>
 
-            <span className="label purple">Preparation for Quiz 2</span>
+            <Chip color="purple">Preparation for Quiz 2</Chip>
             <p>
               These questions are highly similar to what you'll see on Quiz 2.
               😀{" "}

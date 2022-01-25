@@ -3,8 +3,6 @@ import { Container, Row, Col } from "react-bootstrap";
 import { toast } from "react-toastify";
 import { MdDone } from "react-icons/md";
 import { RiSendPlaneLine } from "react-icons/ri";
-import { motion } from "framer-motion";
-import { clickableVariants } from "animations/clickableVariants";
 import styles from "./Login.module.scss";
 import clsx from "clsx";
 import { supabaseClient } from "lib/supabase/supabaseClient";

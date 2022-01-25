@@ -1,6 +1,7 @@
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "./GradingBreakdown.module.scss";
 import clsx from "clsx";
+import Chip from "components/common/Chip";
 
 interface IGradedItemProps {
   item: string;
@@ -62,7 +63,7 @@ export default function GradingBreakdown() {
           <Row>
             <Col sm={4} xs={6}>
               <div>
-                <span className="label green">Item</span>
+                <Chip color="green">Item</Chip>
               </div>
             </Col>
 
@@ -75,7 +76,7 @@ export default function GradingBreakdown() {
 
             <Col sm={2} xs={3}>
               <div>
-                <span className="label purple">%</span>
+                <Chip color="purple">%</Chip>
               </div>
             </Col>
 

@@ -7,6 +7,7 @@ import ListWithTitle from "components/common/ListWithTitle";
 import CenteredColumn from "components/common/CenteredColumn";
 import RecordedPythonChallengeById from "components/common/RecordedPythonChallengeById";
 import LargeQuote from "components/common/LargeQuote";
+import Chip from "components/common/Chip";
 
 export default function ListsAndLoopsPage() {
   return (
@@ -81,7 +82,7 @@ export default function ListsAndLoopsPage() {
           <CenteredColumn className={styles.textBox}>
             <h3>Introduction to Lists</h3>
 
-            <span className="label green">Overview</span>
+            <Chip color="green">Overview</Chip>
 
             <p>
               The code you wrote above is great. But with a degree from the U of
@@ -118,7 +119,7 @@ export default function ListsAndLoopsPage() {
 
           <CenteredColumn className={styles.textBox}>
             <h3>Accessing list elements by index</h3>
-            <span className="label blue">Zero-based Index</span>
+            <Chip color="blue">Zero-based Index</Chip>
             <p>
               What does that <code>offers[0]</code> do? The square brackets used
               in <code>offers[0]</code> denote the <em>index</em> of the element
@@ -151,7 +152,7 @@ export default function ListsAndLoopsPage() {
 
           <CenteredColumn className={styles.textBox}>
             <h3>Negative list indices</h3>
-            <span className="label blue">From the end of the list</span>
+            <Chip color="blue">From the end of the list</Chip>
             <p>
               You can also access elements from the end of the array using a
               negative index. Negative indices begin at <code>-1</code>.{" "}
@@ -177,7 +178,7 @@ export default function ListsAndLoopsPage() {
           <CenteredColumn className={styles.textBox}>
             <h3>How many elements are in a list?</h3>
 
-            <span className="label yellow">Length of a list</span>
+            <Chip color="yellow">Length of a list</Chip>
             <p>
               You can retrieve the number of items in a list by using{" "}
               <code>len(my_list)</code> syntax.
@@ -196,7 +197,7 @@ export default function ListsAndLoopsPage() {
 
           <CenteredColumn className={styles.textBox}>
             <h3>Working with lists</h3>
-            <span className="label purple">List methods</span>
+            <Chip color="purple">List methods</Chip>
             <p>
               Python provides multiple list methods (if you're not familiar with
               what a "method" is, think of it as some operation on a list - like
@@ -225,7 +226,7 @@ export default function ListsAndLoopsPage() {
 
           <CenteredColumn className={styles.textBox}>
             <h3>Can a list have elements with non-uniform data types?</h3>
-            <span className="label pink">Mixed Types</span>
+            <Chip color="pink">Mixed Types</Chip>
             <p>
               From the previous coding question, we're able to see that a list
               can have elements with mixed data types. A list can hold{" "}
@@ -256,7 +257,7 @@ export default function ListsAndLoopsPage() {
           <CenteredColumn className={styles.textBox}>
             <h3>Do we really want to keep copy-pasting stuff?</h3>
 
-            <span className="label purple">Nope</span>
+            <Chip color="purple">Nope</Chip>
             <p>
               Well that's a little inefficient, isn't it? You may be okay with
               copy-pasting the <code>print(roster[n])</code> code a couple of
@@ -333,7 +334,7 @@ export default function ListsAndLoopsPage() {
               <Row>
                 <Col md={6}>
                   <div className={styles.item}>
-                    <span className="label blue">For Loops</span>
+                    <Chip color="blue">For Loops</Chip>
 
                     <p>
                       You must supply a <code>list</code>-like data to{" "}
@@ -347,7 +348,7 @@ export default function ListsAndLoopsPage() {
 
                 <Col md={6}>
                   <div className={styles.item}>
-                    <span className="label green">While Loops</span>
+                    <Chip color="green">While Loops</Chip>
 
                     <p>
                       A <code>while</code> loop will continue to run until a

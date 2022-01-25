@@ -5,6 +5,7 @@ import styles from "styles/pages/notes/common.module.scss";
 import ListWithTitle from "components/common/ListWithTitle";
 import CenteredColumn from "components/common/CenteredColumn";
 import RecordedPythonChallengeById from "components/common/RecordedPythonChallengeById";
+import Chip from "components/common/Chip";
 
 export default function QuizPage() {
   const codingChallengeIds = [210, 211, 212, 213];
@@ -59,7 +60,7 @@ export default function QuizPage() {
           <CenteredColumn className={styles.textBox}>
             <h3>How to Complete Your Assignment</h3>
 
-            <span className="label green">Green Checkmarks</span>
+            <Chip color="green">Green Checkmarks</Chip>
             <p>
               You will have to complete the coding challenges below. There is no
               time limit or a submit button. You only need to check whether you
@@ -68,7 +69,7 @@ export default function QuizPage() {
               record your submission.
             </p>
 
-            <span className="label purple">Grading</span>
+            <Chip color="purple">Grading</Chip>
 
             <p>We will only look at your final successful attempt.</p>
           </CenteredColumn>

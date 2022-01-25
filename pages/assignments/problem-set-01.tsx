@@ -5,6 +5,7 @@ import styles from "styles/pages/notes/common.module.scss";
 import ListWithTitle from "components/common/ListWithTitle";
 import CenteredColumn from "components/common/CenteredColumn";
 import RecordedPythonChallengeById from "components/common/RecordedPythonChallengeById";
+import Chip from "components/common/Chip";
 
 export default function ProblemSetPage() {
   const codingChallengeIds = [116, 117, 118, 119, 120, 121, 122];
@@ -66,7 +67,7 @@ export default function ProblemSetPage() {
           <CenteredColumn className={styles.textBox}>
             <h3>Getting Help</h3>
 
-            <span className="label green">Discord</span>
+            <Chip color="green">Discord</Chip>
             <p>
               All exercises in this problem set is designed to challenge you. 👽
               If you're stuck, I encourage you to post your question along with
@@ -77,7 +78,7 @@ export default function ProblemSetPage() {
               to get help.
             </p>
 
-            <span className="label yellow">Extra Office Hours</span>
+            <Chip color="yellow">Extra Office Hours</Chip>
             <p>I will be holding two extra office hours over Zoom. 📺</p>
             <ul>
               <li>
