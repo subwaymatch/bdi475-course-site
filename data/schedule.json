@@ -1,11 +1,11 @@
 [
   {
-    "date": "2022-01-25",
+    "date": "2022-01-18",
     "type": "LECTURE",
     "text": ["Welcome", "Course Overview"]
   },
   {
-    "date": "2022-01-27",
+    "date": "2022-01-20",
     "type": "LECTURE",
     "text": [
       "Intro to Python",
@@ -16,62 +16,62 @@
     ]
   },
   {
-    "date": "2022-02-01",
+    "date": "2022-01-25",
     "type": "LECTURE",
     "text": ["Operators", "Booleans", "Conditional Logic"]
   },
   {
-    "date": "2022-02-02",
+    "date": "2022-01-26",
     "type": "EXERCISE",
     "text": "Exercise 1"
   },
   {
-    "date": "2022-02-03",
+    "date": "2022-01-27",
     "type": "LECTURE",
     "text": ["Lists", "For Loops", "While Loops"]
   },
   {
-    "date": "2022-02-08",
+    "date": "2022-02-01",
     "type": "QUIZ",
     "text": "Quiz 1"
   },
   {
-    "date": "2022-02-08",
+    "date": "2022-02-01",
     "type": "LECTURE",
     "text": ["Dictionaries", "Strings", "String Methods"]
   },
   {
-    "date": "2022-02-10",
+    "date": "2022-02-03",
     "type": "LECTURE",
     "text": ["Functions", "Parameters", "Return Values"]
   },
   {
-    "date": "2022-02-14",
-    "type": "CASE_STUDY",
-    "text": "Problem Set 1 - Variables, Data Types, Conditional Logic"
-  },
-  {
-    "date": "2022-02-11",
+    "date": "2022-02-04",
     "type": "EXERCISE",
     "text": "Exercise 2"
   },
   {
-    "date": "2022-02-15",
+    "date": "2022-02-07",
+    "type": "CASE_STUDY",
+    "text": "Problem Set 1 - Variables, Data Types, Conditional Logic"
+  },
+  {
+    "date": "2022-02-08",
     "type": "LECTURE",
     "text": ["Intro to Jupyter Notebooks", "Import Packages", "Intro to Pandas"]
   },
   {
-    "date": "2022-02-17",
+    "date": "2022-02-10",
     "type": "LECTURE",
     "text": ["Series", "DataFrame", "CSV Format", "Read/Write CSV"]
   },
   {
-    "date": "2022-02-18",
+    "date": "2022-02-11",
     "type": "EXERCISE",
     "text": "Exercise 3"
   },
   {
-    "date": "2022-02-22",
+    "date": "2022-02-15",
     "type": "LECTURE",
     "text": [
       "Pandas Data Types",
@@ -82,27 +82,27 @@
     ]
   },
   {
-    "date": "2022-02-24",
+    "date": "2022-02-17",
     "type": "LECTURE",
     "text": ["Filter Data", "Sort Data", "In-place vs Out-of-place"]
   },
   {
-    "date": "2022-02-25",
+    "date": "2022-02-18",
     "type": "EXERCISE",
     "text": "Exercise 4"
   },
   {
-    "date": "2022-03-01",
+    "date": "2022-02-22",
     "type": "QUIZ",
     "text": "Quiz 2"
   },
   {
-    "date": "2022-03-01",
+    "date": "2022-02-22",
     "type": "LECTURE",
     "text": ["Index", "Select", "Assign"]
   },
   {
-    "date": "2022-03-03",
+    "date": "2022-02-24",
     "type": "LECTURE",
     "text": [
       "Aggregations",
@@ -112,37 +112,37 @@
     ]
   },
   {
-    "date": "2022-03-04",
+    "date": "2022-02-25",
     "type": "EXERCISE",
     "text": "Exercise 5"
   },
   {
-    "date": "2022-03-05",
+    "date": "2022-02-26",
     "type": "CASE_STUDY",
     "text": "Case Study 1 - Chicago Rideshare Vehicles"
   },
   {
-    "date": "2022-03-08",
+    "date": "2022-03-01",
     "type": "LECTURE",
     "text": ["Merge", "Different Join Types"]
   },
   {
-    "date": "2022-03-09",
+    "date": "2022-03-02",
     "type": "EXERCISE",
     "text": "Exercise 6"
   },
   {
-    "date": "2022-03-10",
+    "date": "2022-03-03",
     "type": "QUIZ",
     "text": "Quiz 3"
   },
   {
-    "date": "2022-03-10",
+    "date": "2022-03-03",
     "type": "LECTURE",
     "text": ["Case Study Workday"]
   },
   {
-    "date": "2022-03-12",
+    "date": "2022-03-05",
     "type": "CASE_STUDY",
     "text": "Case Study 2 - Starbucks App Customers"
   },
