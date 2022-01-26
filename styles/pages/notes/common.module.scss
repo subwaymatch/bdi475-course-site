@@ -40,24 +40,6 @@
     margin-top: 6rem;
   }
 
-  h2:not(:global(.sectionTitle)) {
-    color: $color-dark-gray;
-    font-size: 1.8rem;
-    font-weight: 600;
-    letter-spacing: -0.03rem;
-  }
-
-  h3 {
-    color: $color-dark-gray;
-    font-size: 1.6rem;
-    font-weight: 550;
-    letter-spacing: -0.025rem;
-  }
-
-  table {
-    margin-top: 3rem;
-  }
-
   .listBox {
     margin-top: 6rem;
     border-top: 1px solid black;
@@ -105,32 +87,7 @@
   .textBox {
     margin-top: 6rem;
 
-    :global(.chip) {
-      &:first-of-type {
-        margin-top: 2rem;
-      }
-
-      margin-top: 4rem;
-    }
-
-    h2:not(:first-child),
-    h3:not(:first-child) {
-      margin-top: 3rem;
-    }
-
-    p {
-      margin-top: 1.75rem;
-    }
-
-    p:first-of-type,
-    :global(.chip) + p {
-      margin-top: 1rem;
-    }
-
-    ul,
-    ol {
-      margin-top: 1.5rem;
-    }
+    @include text-block();
   }
 
   .boxItems {
@@ -141,7 +98,7 @@
       padding-top: 2rem;
 
       p {
-        margin-top: 0.5rem;
+        margin-top: 1rem;
       }
 
       @include media-breakpoint-down(sm) {

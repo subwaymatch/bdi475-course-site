@@ -60,3 +60,67 @@
     background-color: black;
   }
 }
+
+@mixin text-block() {
+  :global(.chip) {
+    margin-top: 4rem;
+  }
+
+  h2:not(:global(.sectionTitle)) {
+    color: $color-dark-gray;
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: -0.03rem;
+  }
+
+  h3 {
+    color: $color-dark-gray;
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: -0.025rem;
+  }
+
+  h4 {
+    color: $color-dark-gray;
+    font-size: 1.45rem;
+    font-weight: 600;
+    letter-spacing: -0.025rem;
+  }
+
+  h2,
+  h3 {
+    margin-top: 3rem;
+  }
+
+  h4,
+  h5 {
+    margin-top: 2rem;
+  }
+
+  p {
+    margin-top: 1.75rem;
+  }
+
+  pre,
+  ul,
+  ol,
+  h2 + :global(.chip),
+  h3 + :global(.chip) {
+    margin-top: 1.5rem;
+  }
+
+  h2 + p,
+  h3 + p,
+  h4 + p,
+  :global(.chip) + p {
+    margin-top: 1rem;
+  }
+
+  table {
+    margin-top: 3rem;
+  }
+
+  & > *:first-child {
+    padding-top: 0;
+  }
+}

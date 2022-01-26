@@ -9,17 +9,19 @@ import path from "path";
 import Image from "next/image";
 import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
-import { POSTS_PATH } from "lib/mdx/posts";
+import { POSTS_PATH, replaceShortcodes } from "lib/mdx/posts";
 import RecordedPythonChallenge from "components/mdx/RecordedPythonChallenge";
 import RecordedPythonChallengeById from "components/common/RecordedPythonChallengeById";
 import CenteredColumn from "components/common/CenteredColumn";
 import Chip from "components/common/Chip";
 import styles from "styles/pages/notes/common.module.scss";
 import ListWithTitle from "components/common/ListWithTitle";
+import RecordedMultipleChoiceQuestion from "components/common/RecordedMultipleChoiceQuestion";
 
 const components = {
   RecordedPythonChallenge,
   RecordedPythonChallengeById,
+  RecordedMultipleChoiceQuestion,
   CenteredColumn,
   Chip,
 };
@@ -89,9 +91,11 @@ export const getServerSideProps = async ({ params }) => {
   console.log(`content=${JSON.stringify(content)}`);
   console.log(`data=${JSON.stringify(data)}`);
 
+  let withShortcodes = replaceShortcodes(content);
+
   // KaTeX does not work at the moment
   // see https://github.com/hashicorp/next-mdx-remote/issues/221 for details
-  const mdxSource = await serialize(content, {
+  const mdxSource = await serialize(withShortcodes, {
     // Optionally pass remark/rehype plugins
     mdxOptions: {
       remarkPlugins: [remarkMath],
@@ -99,9 +103,6 @@ export const getServerSideProps = async ({ params }) => {
     },
     // scope: data,
   });
-
-  console.log(`mdxSource`);
-  console.log(mdxSource);
 
   return {
     props: {

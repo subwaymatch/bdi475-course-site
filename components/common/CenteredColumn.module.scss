@@ -1,29 +1,7 @@
+@import "styles/_mixins";
+
 .centeredColumn {
   margin-top: 6rem;
 
-  :global(.chip) {
-    &:first-of-type {
-      margin-top: 2rem;
-    }
-
-    margin-top: 4rem;
-  }
-
-  p {
-    margin-top: 1.75rem;
-  }
-
-  p:first-of-type,
-  :global(.chip) + p {
-    margin-top: 1rem;
-  }
-
-  ul,
-  ol {
-    margin-top: 1.5rem;
-  }
-
-  pre {
-    margin-top: 1.5rem;
-  }
+  @include text-block();
 }
