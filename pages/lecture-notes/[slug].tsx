@@ -5,63 +5,63 @@ import { serialize } from "next-mdx-remote/serialize";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import rehypeHighlight from "rehype-highlight";
+import remarkGfm from "remark-gfm";
 import path from "path";
 import Image from "next/image";
 import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import { POSTS_PATH, replaceShortcodes } from "lib/mdx/posts";
-import RecordedPythonChallenge from "components/mdx/RecordedPythonChallenge";
 import RecordedPythonChallengeById from "components/common/RecordedPythonChallengeById";
 import CenteredColumn from "components/common/CenteredColumn";
 import Chip from "components/common/Chip";
 import styles from "styles/pages/notes/common.module.scss";
 import ListWithTitle from "components/common/ListWithTitle";
-import RecordedMultipleChoiceQuestion from "components/common/RecordedMultipleChoiceQuestion";
+import RecordedMultipleChoiceQuestionById from "components/common/RecordedMultipleChoiceQuestionById";
 
 const components = {
-  RecordedPythonChallenge,
   RecordedPythonChallengeById,
-  RecordedMultipleChoiceQuestion,
+  RecordedMultipleChoiceQuestionById,
   CenteredColumn,
   Chip,
 };
 
-export default function LectureNotePage({ source, frontMatter, params }) {
+export default function LectureNotePage({
+  objectiveMdxSources,
+  bodyMdxSource,
+  frontMatterData,
+  params,
+}) {
   console.log(params);
 
   return (
     <Layout>
       <div className={styles.page}>
         <Container>
-          {frontMatter.title && (
+          {frontMatterData.title && (
             <Row>
               <Col>
-                <h1 className={styles.noteTitle}>{frontMatter.title}</h1>
+                <h1 className={styles.noteTitle}>{frontMatterData.title}</h1>
               </Col>
             </Row>
           )}
 
-          {frontMatter.objectives && (
+          {objectiveMdxSources && (
             <ListWithTitle
               title="Objectives ⟶"
-              items={frontMatter.objectives.map((o) => (
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: o,
-                  }}
-                />
+              items={objectiveMdxSources.map((source) => (
+                <MDXRemote {...source} components={components} />
               ))}
             />
           )}
 
-          {frontMatter.thumbnailSrc && (
+          {frontMatterData.thumbnailSrc && (
             <Row>
               <Col>
                 <div className={styles.coverImage}>
                   <Image
-                    src={frontMatter.thumbnailSrc}
-                    width={frontMatter.thumbnailWidth}
-                    height={frontMatter.thumbnailHeight}
+                    src={frontMatterData.thumbnailSrc}
+                    width={frontMatterData.thumbnailWidth}
+                    height={frontMatterData.thumbnailHeight}
                     alt=""
                   />
                 </div>
@@ -71,8 +71,8 @@ export default function LectureNotePage({ source, frontMatter, params }) {
 
           <Row>
             <Col>
-              <main>
-                <MDXRemote {...source} components={components} />
+              <main className={styles.composable}>
+                <MDXRemote {...bodyMdxSource} components={components} />
               </main>
             </Col>
           </Row>
@@ -86,10 +86,29 @@ export const getServerSideProps = async ({ params }) => {
   const postFilePath = path.join(POSTS_PATH, `${params.slug}.mdx`);
   const source = fs.readFileSync(postFilePath);
 
-  const { content, data } = matter(source);
+  const { content, data: frontMatterData } = matter(source);
+
+  let objectives = frontMatterData.objectives;
+  let objectiveMdxSources = null;
+
+  if (objectives && objectives.length > 0) {
+    objectiveMdxSources = [];
+
+    for (const o of objectives) {
+      const newSource = await serialize(o, {
+        // Optionally pass remark/rehype plugins
+        mdxOptions: {
+          remarkPlugins: [remarkGfm, remarkMath],
+          rehypePlugins: [rehypeHighlight, rehypeKatex],
+        },
+      });
+
+      objectiveMdxSources.push(newSource);
+    }
+  }
 
   console.log(`content=${JSON.stringify(content)}`);
-  console.log(`data=${JSON.stringify(data)}`);
+  console.log(`frontMatterData=${JSON.stringify(frontMatterData)}`);
 
   let withShortcodes = replaceShortcodes(content);
 
@@ -98,7 +117,7 @@ export const getServerSideProps = async ({ params }) => {
   const mdxSource = await serialize(withShortcodes, {
     // Optionally pass remark/rehype plugins
     mdxOptions: {
-      remarkPlugins: [remarkMath],
+      remarkPlugins: [remarkGfm, remarkMath],
       rehypePlugins: [rehypeHighlight, rehypeKatex],
     },
     // scope: data,
@@ -106,8 +125,9 @@ export const getServerSideProps = async ({ params }) => {
 
   return {
     props: {
-      source: mdxSource,
-      frontMatter: data,
+      bodyMdxSource: mdxSource,
+      frontMatterData,
+      objectiveMdxSources,
     },
   };
 };

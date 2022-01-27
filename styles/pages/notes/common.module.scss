@@ -107,3 +107,9 @@
     }
   }
 }
+
+.composable {
+  :global(.composable-block) {
+    margin-top: 6rem;
+  }
+}

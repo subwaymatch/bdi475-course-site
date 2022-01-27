@@ -14,15 +14,15 @@ import { QueryStatusEnum } from "types";
 import { definitions } from "types/database";
 import { toast } from "react-toastify";
 
-interface IRecordedMultipleChoiceQuestionProps {
+interface IRecordedMultipleChoiceQuestionByIdProps {
   questionId: number;
   className?: string;
 }
 
-export default function RecordedMultipleChoiceQuestion({
+export default function RecordedMultipleChoiceQuestionById({
   questionId,
   className,
-}: IRecordedMultipleChoiceQuestionProps) {
+}: IRecordedMultipleChoiceQuestionByIdProps) {
   const { user, session, roles } = useSupabaseAuth();
   const isAdmin = roles.includes("Admin");
   const { status, questionData, error } = useMultipleChoiceQuestion(questionId);
@@ -91,7 +91,7 @@ export default function RecordedMultipleChoiceQuestion({
     <Row>
       <Col>
         <div
-          className={clsx(styles.recordedChallenge, {
+          className={clsx(styles.recordedChallenge, "composable-block", {
             [className]: !!className,
           })}
         >

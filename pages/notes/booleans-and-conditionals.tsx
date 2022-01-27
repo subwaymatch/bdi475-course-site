@@ -10,7 +10,7 @@ import RecordedPythonChallengeById from "components/common/RecordedPythonChallen
 import { FaWikipediaW } from "react-icons/fa";
 import LargeQuote from "components/common/LargeQuote";
 import Chip from "components/common/Chip";
-import RecordedMultipleChoiceQuestion from "components/common/RecordedMultipleChoiceQuestion";
+import RecordedMultipleChoiceQuestionById from "components/common/RecordedMultipleChoiceQuestionById";
 
 export default function BooleansAndConditionalsPage() {
   return (
@@ -77,12 +77,12 @@ export default function BooleansAndConditionalsPage() {
             <h3>Arithmetic Operators</h3>
           </CenteredColumn>
 
-          <RecordedMultipleChoiceQuestion
+          <RecordedMultipleChoiceQuestionById
             questionId={32}
             className={styles.block}
           />
 
-          <RecordedMultipleChoiceQuestion
+          <RecordedMultipleChoiceQuestionById
             questionId={33}
             className={styles.block}
           />

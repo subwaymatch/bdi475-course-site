@@ -55,22 +55,22 @@ export default function NotesPage() {
               colorTheme={ColorTheme.Green}
             />
 
-            {/* 
             <NoteItem
-              href="/notes/lists-and-loops"
+              href="/lecture-notes/lists-and-loops"
               thumbnail={
                 <Image
-                  src="/images/notes/1612807284318.png"
+                  src="/images/notes/abstract-003.png"
                   width={900}
-                  height={600}
+                  height={450}
                   alt=""
                 />
               }
-              date="2021-09-07"
+              date="2022-01-27"
               title="Lists and Loops"
-              colorTheme={ColorTheme.Pink}
+              colorTheme={ColorTheme.Blue}
             />
 
+            {/* 
             <NoteItem
               href="/notes/loops-and-collections"
               thumbnail={

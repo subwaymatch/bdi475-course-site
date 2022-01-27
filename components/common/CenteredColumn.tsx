@@ -27,7 +27,11 @@ export default function CenteredColumn({
           offset: 0,
         }}
       >
-        <div className={clsx(styles.centeredColumn, className)}>{children}</div>
+        <div
+          className={clsx(styles.centeredColumn, "composable-block", className)}
+        >
+          {children}
+        </div>
       </Col>
     </Row>
   );

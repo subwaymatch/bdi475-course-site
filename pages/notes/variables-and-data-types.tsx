@@ -7,7 +7,7 @@ import clsx from "clsx";
 import RecordedPythonChallengeById from "components/common/RecordedPythonChallengeById";
 import CenteredColumn from "components/common/CenteredColumn";
 import ListWithTitle from "components/common/ListWithTitle";
-import RecordedMultipleChoiceQuestion from "components/common/RecordedMultipleChoiceQuestion";
+import RecordedMultipleChoiceQuestionById from "components/common/RecordedMultipleChoiceQuestionById";
 import Chip from "components/common/Chip";
 
 export default function VariablesAndDataTypesPage() {
@@ -316,7 +316,7 @@ export default function VariablesAndDataTypesPage() {
             </Col>
           </Row>
 
-          <RecordedMultipleChoiceQuestion
+          <RecordedMultipleChoiceQuestionById
             questionId={27}
             className={styles.block}
           />
@@ -331,12 +331,12 @@ export default function VariablesAndDataTypesPage() {
             className={styles.block}
           />
 
-          <RecordedMultipleChoiceQuestion
+          <RecordedMultipleChoiceQuestionById
             questionId={28}
             className={styles.block}
           />
 
-          <RecordedMultipleChoiceQuestion
+          <RecordedMultipleChoiceQuestionById
             questionId={29}
             className={styles.block}
           />
@@ -398,7 +398,7 @@ export default function VariablesAndDataTypesPage() {
             </p>
           </CenteredColumn>
 
-          <RecordedMultipleChoiceQuestion
+          <RecordedMultipleChoiceQuestionById
             questionId={30}
             className={styles.block}
           />
@@ -408,7 +408,7 @@ export default function VariablesAndDataTypesPage() {
             className={styles.block}
           />
 
-          <RecordedMultipleChoiceQuestion
+          <RecordedMultipleChoiceQuestionById
             questionId={31}
             className={styles.block}
           />

@@ -15,7 +15,7 @@ export function replaceShortcodes(mdxStr: string): string {
 
   replacedStr = replacedStr.replace(
     /(\[multiple-choice )(\d+)(\])/gim,
-    "<RecordedMultipleChoiceQuestion questionId={$2} />"
+    "<RecordedMultipleChoiceQuestionById questionId={$2} />"
   );
 
   return replacedStr;

@@ -1,7 +1,7 @@
 import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "styles/pages/notes/common.module.scss";
-import RecordedMultipleChoiceQuestion from "components/common/RecordedMultipleChoiceQuestion";
+import RecordedMultipleChoiceQuestionById from "components/common/RecordedMultipleChoiceQuestionById";
 import RecordedPythonChallengeById from "components/common/RecordedPythonChallengeById";
 import Chip from "components/common/Chip";
 
@@ -22,9 +22,9 @@ export default function TestPage() {
             </Col>
           </Row>
 
-          <RecordedMultipleChoiceQuestion questionId={1} />
+          <RecordedMultipleChoiceQuestionById questionId={1} />
 
-          <RecordedMultipleChoiceQuestion
+          <RecordedMultipleChoiceQuestionById
             questionId={2}
             className={styles.block}
           />

@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import { getChallengeIdAsNumberFromQuery } from "utils/challenge";
-import RecordedMultipleChoiceQuestion from "components/common/RecordedMultipleChoiceQuestion";
+import RecordedMultipleChoiceQuestionById from "components/common/RecordedMultipleChoiceQuestionById";
 
 export default function ViewMultipleChoiceQuestionPage() {
   const router = useRouter();
@@ -20,7 +20,7 @@ export default function ViewMultipleChoiceQuestionPage() {
           <Row>
             <Col>
               {qid ? (
-                <RecordedMultipleChoiceQuestion questionId={challengeId} />
+                <RecordedMultipleChoiceQuestionById questionId={challengeId} />
               ) : (
                 <p>Loading...</p>
               )}

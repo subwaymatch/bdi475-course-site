@@ -52,7 +52,7 @@ export default function RecordedPythonChallengeById({
     <Row>
       <Col>
         <div
-          className={clsx(styles.recordedChallenge, {
+          className={clsx(styles.recordedChallenge, "composable-block", {
             [className]: !!className,
           })}
         >
