@@ -16,12 +16,14 @@ import CenteredColumn from "components/common/CenteredColumn";
 import Chip from "components/common/Chip";
 import styles from "styles/pages/notes/common.module.scss";
 import ListWithTitle from "components/common/ListWithTitle";
+import LargeQuote from "components/common/LargeQuote";
 import RecordedMultipleChoiceQuestionById from "components/common/RecordedMultipleChoiceQuestionById";
 
 const components = {
   RecordedPythonChallengeById,
   RecordedMultipleChoiceQuestionById,
   CenteredColumn,
+  LargeQuote,
   Chip,
 };
 

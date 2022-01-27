@@ -12,7 +12,7 @@ export default function LargeQuote({ children, className }: ILargeQuoteProps) {
     <Row>
       <Col>
         <div
-          className={clsx({
+          className={clsx("composable-block", {
             [className]: !!className,
           })}
         >

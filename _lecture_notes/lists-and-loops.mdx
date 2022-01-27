@@ -11,6 +11,12 @@ thumbnailWidth: 2400
 thumbnailHeight: 1200
 ---
 
+[python-challenge 178]
+[python-challenge 1]
+[python-challenge 179]
+[python-challenge 22]
+[python-challenge 180]
+
 <CenteredColumn>
 
 ## Introduction to Lists
@@ -23,25 +29,126 @@ Last time, we talked about `bool`, `int`, `float`, and `str` types. Variables wi
 
 </CenteredColumn>
 
-[python-challenge 6]
-
-[multiple-choice 27]
+[python-challenge 4]
+[python-challenge 181]
+[python-challenge 20]
 
 <CenteredColumn>
 
-## Python Data Types
+### Accessing list elements by index
 
-<Chip color="orange">What is it?</Chip>
+<Chip color="blue">Zero-based Index</Chip>
 
-A data type denotes the category of a value. In Python, ALL values have *data type*s. We'll go over a few **built-in** types. Built-in types are pre-defined data types that are part of the Python programming language itself.
+What does that `offers[0]` do? The square brackets used in `offers[0]` denote the _index_ of the element you're trying to retrieve. `offers[0]` retrieves the first value in the array, which is `55000` in our code. But why does the index start at zero, not one?
 
-- Text `"Hello World"` is a text type (`str` ).
-- Number `475` is an integer type (`int` ).
-- Number `1.99` is a float type (`float` ).
-- Logical `True` is a boolean type (`bool`).
-
-<Chip color="blue">Primitive vs Non-primitive</Chip>
-
-Data types can be categorized into two types - _primitive_ and _non-primitive_ types. Technically speaking, Python only has _non-primitive_ types as everything is an object in Python. For the purpose of this course, you do not have to worry about differentiating between primitive and non-primitive types.
+In many programming languages including Python, you start counting indices at zero, not one. To retrieve the second item from `my_list`, the correct code would be `my_list[1]`, not `my_list[2]`.
 
 </CenteredColumn>
+
+[multiple-choice 34]
+[python-challenge 183]
+[python-challenge 182]
+[python-challenge 34]
+
+<CenteredColumn>
+
+### Negative list indices
+
+<Chip color="blue">From the end of the list</Chip>
+
+You can also access elements from the end of the array using a negative index. Negative indices begin at `-1`. `my_list[-1]` will select the **last element** in `my_list`.
+
+Similarly, `my_list[-2]` will select the second to the last element in `my_list`.
+
+</CenteredColumn>
+
+[multiple-choice 35]
+[multiple-choice 36]
+[python-challenge 184]
+[python-challenge 185]
+
+<CenteredColumn>
+
+### How many elements are in a list?
+
+<Chip color="black">Length of a list</Chip>
+
+You can retrieve the number of items in a list by using `len(my_list)` syntax.
+
+</CenteredColumn>
+
+[multiple-choice 37]
+[python-challenge 186]
+[python-challenge 187]
+
+<CenteredColumn>
+
+### Working with lists
+
+<Chip color="purple">List methods</Chip>
+
+Python provides multiple list methods (if you're not familiar with what a "method" is, think of it as some operation on a list - like adding or removing an item).
+
+A common operation is to add an item to an existing list. You can append an item to a list using `my_list.append(new_value)` syntax.
+
+If you'd like to take a look at all available methods, refer to [https://docs.python.org/3/tutorial/datastructures.html](https://docs.python.org/3/tutorial/datastructures.html) .
+
+</CenteredColumn>
+
+[python-challenge 188]
+
+<CenteredColumn>
+
+### Can a list have elements with non-uniform data types?
+
+<Chip color="pink">Mixed Types</Chip>
+
+From the previous coding question, we're able to see that a list can have elements with mixed data types. A list can hold **any** data type. In fact, a list can hold another list, which is called a _nested list_. For now, let's keep it simple and not worry about nested lists.
+
+</CenteredColumn>
+
+<LargeQuote>
+  <p>
+    A list can contain a list that contains another list that contains another
+    list... and so on.
+  </p>
+</LargeQuote>
+
+[python-challenge 29]
+[python-challenge 28]
+
+<CenteredColumn>
+
+### Do we really want to keep copy-pasting stuff?
+
+<Chip color="red">Repetition is never good</Chip>
+
+Well that's a little inefficient, isn't it? You may be okay with copy-pasting the `print(roster[n])` code a couple of times. But imagine if the `roster` list had 1,000 names. You'd be spending your entire afternoon copy-pasting and changing numbers.
+
+</CenteredColumn>
+
+[python-challenge 35]
+[python-challenge 189]
+[python-challenge 21]
+[python-challenge 30]
+[python-challenge 39]
+
+<CenteredColumn>
+
+### Another way to retrieve elements
+
+<Chip color="black">A second syntax</Chip>
+
+You can also use `for x in my_list` to iterate over each value in `my_list`. Note that `x` is an arbitrary name you pick. You can use any name. Any of the code below will work.
+
+- `for x in my_list`
+- `for a in my_list`
+- `for my_value in my_list`
+- `for any_variable_name in my_list`
+
+</CenteredColumn>
+
+[python-challenge 26]
+
+[python-challenge 40]
+[python-challenge 37]
