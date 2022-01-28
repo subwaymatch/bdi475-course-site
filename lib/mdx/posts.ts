@@ -7,16 +7,37 @@ export const postFilePaths = fs
   .readdirSync(POSTS_PATH)
   .filter((path) => /\.mdx?$/.test(path));
 
-export function replaceShortcodes(mdxStr: string): string {
+export function processShortcodes(mdxStr: string): {
+  replacedStr: string;
+  multipleChoiceIds: number[];
+  pythonChallengeIds: number[];
+} {
+  let pythonChallengeRegex = /\[python-challenge (\d+)\]/gim;
+  let multipleChoiceRegex = /\[multiple-choice (\d+)\]/gim;
+
+  // @ts-ignore: Type 'IterableIterator<RegExpMatchArray>' is not an array type or a string type.
+  const pythonChallengeIds = [...mdxStr.matchAll(pythonChallengeRegex)].map(
+    (m) => Number.parseInt(m[1])
+  );
+
+  // @ts-ignore: Type 'IterableIterator<RegExpMatchArray>' is not an array type or a string type.
+  const multipleChoiceIds = [...mdxStr.matchAll(multipleChoiceRegex)].map((m) =>
+    Number.parseInt(m[1])
+  );
+
   let replacedStr = mdxStr.replace(
-    /(\[python-challenge )(\d+)(\])/gim,
-    "<RecordedPythonChallengeById challengeId={$2} />"
+    pythonChallengeRegex,
+    "<RecordedPythonChallengeById challengeId={$1} />"
   );
 
   replacedStr = replacedStr.replace(
-    /(\[multiple-choice )(\d+)(\])/gim,
-    "<RecordedMultipleChoiceQuestionById questionId={$2} />"
+    multipleChoiceRegex,
+    "<RecordedMultipleChoiceQuestionById questionId={$1} />"
   );
 
-  return replacedStr;
+  return {
+    replacedStr,
+    pythonChallengeIds,
+    multipleChoiceIds,
+  };
 }

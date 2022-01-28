@@ -10,7 +10,7 @@ import path from "path";
 import Image from "next/image";
 import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
-import { POSTS_PATH, replaceShortcodes } from "lib/mdx/posts";
+import { POSTS_PATH, postFilePaths, processShortcodes } from "lib/mdx/posts";
 import RecordedPythonChallengeById from "components/common/RecordedPythonChallengeById";
 import CenteredColumn from "components/common/CenteredColumn";
 import Chip from "components/common/Chip";
@@ -31,9 +31,11 @@ export default function LectureNotePage({
   objectiveMdxSources,
   bodyMdxSource,
   frontMatterData,
-  params,
+  pythonChallengeIds,
+  multipleChoiceIds,
 }) {
-  console.log(params);
+  console.log(pythonChallengeIds);
+  console.log(multipleChoiceIds);
 
   return (
     <Layout>
@@ -84,7 +86,7 @@ export default function LectureNotePage({
   );
 }
 
-export const getServerSideProps = async ({ params }) => {
+export const getStaticProps = async ({ params }) => {
   const postFilePath = path.join(POSTS_PATH, `${params.slug}.mdx`);
   const source = fs.readFileSync(postFilePath);
 
@@ -109,14 +111,12 @@ export const getServerSideProps = async ({ params }) => {
     }
   }
 
-  console.log(`content=${JSON.stringify(content)}`);
-  console.log(`frontMatterData=${JSON.stringify(frontMatterData)}`);
-
-  let withShortcodes = replaceShortcodes(content);
+  let { replacedStr, multipleChoiceIds, pythonChallengeIds } =
+    processShortcodes(content);
 
   // KaTeX does not work at the moment
   // see https://github.com/hashicorp/next-mdx-remote/issues/221 for details
-  const mdxSource = await serialize(withShortcodes, {
+  const mdxSource = await serialize(replacedStr, {
     // Optionally pass remark/rehype plugins
     mdxOptions: {
       remarkPlugins: [remarkGfm, remarkMath],
@@ -130,19 +130,21 @@ export const getServerSideProps = async ({ params }) => {
       bodyMdxSource: mdxSource,
       frontMatterData,
       objectiveMdxSources,
+      pythonChallengeIds,
+      multipleChoiceIds,
     },
   };
 };
 
-// export const getStaticPaths = async () => {
-//   const paths = postFilePaths
-//     // Remove file extensions for page paths
-//     .map((path) => path.replace(/\.mdx?$/, ""))
-//     // Map the path into the static paths object required by Next.js
-//     .map((slug) => ({ params: { slug } }));
+export const getStaticPaths = async () => {
+  const paths = postFilePaths
+    // Remove file extensions for page paths
+    .map((path) => path.replace(/\.mdx?$/, ""))
+    // Map the path into the static paths object required by Next.js
+    .map((slug) => ({ params: { slug } }));
 
-//   return {
-//     paths,
-//     fallback: false,
-//   };
-// };
+  return {
+    paths,
+    fallback: false,
+  };
+};
