@@ -18,6 +18,8 @@ import styles from "styles/pages/notes/common.module.scss";
 import ListWithTitle from "components/common/ListWithTitle";
 import LargeQuote from "components/common/LargeQuote";
 import RecordedMultipleChoiceQuestionById from "components/common/RecordedMultipleChoiceQuestionById";
+import { useEffect } from "react";
+import { supabaseClient } from "lib/supabase/supabaseClient";
 
 const components = {
   RecordedPythonChallengeById,
@@ -31,11 +33,31 @@ export default function LectureNotePage({
   objectiveMdxSources,
   bodyMdxSource,
   frontMatterData,
-  pythonChallengeIds,
-  multipleChoiceIds,
+  challenges,
 }) {
-  console.log(pythonChallengeIds);
-  console.log(multipleChoiceIds);
+  const load = async () => {
+    const multipleChoiceIds = challenges
+      .filter((o) => o.challengeType === "multiple-choice")
+      .map((o) => o.challengeId);
+    const pythonChallengeIds = challenges
+      .filter((o) => o.challengeType === "python-challenge")
+      .map((o) => o.challengeId);
+
+    console.log(pythonChallengeIds);
+    console.log(multipleChoiceIds);
+
+    const { data, error } = await supabaseClient.rpc("get_challenge_results", {
+      multiple_choice_ids: multipleChoiceIds,
+      python_challenge_ids: pythonChallengeIds,
+    });
+
+    console.log(`attempts`);
+    console.log(data);
+  };
+
+  useEffect(() => {
+    load();
+  }, []);
 
   return (
     <Layout>
@@ -111,8 +133,7 @@ export const getStaticProps = async ({ params }) => {
     }
   }
 
-  let { replacedStr, multipleChoiceIds, pythonChallengeIds } =
-    processShortcodes(content);
+  let { replacedStr, challenges } = processShortcodes(content);
 
   // KaTeX does not work at the moment
   // see https://github.com/hashicorp/next-mdx-remote/issues/221 for details
@@ -130,8 +151,7 @@ export const getStaticProps = async ({ params }) => {
       bodyMdxSource: mdxSource,
       frontMatterData,
       objectiveMdxSources,
-      pythonChallengeIds,
-      multipleChoiceIds,
+      challenges,
     },
   };
 };

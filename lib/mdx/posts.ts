@@ -7,23 +7,24 @@ export const postFilePaths = fs
   .readdirSync(POSTS_PATH)
   .filter((path) => /\.mdx?$/.test(path));
 
+interface IChallengeTypeAndId {
+  challengeType: string;
+  challengeId: number;
+}
+
 export function processShortcodes(mdxStr: string): {
   replacedStr: string;
-  multipleChoiceIds: number[];
-  pythonChallengeIds: number[];
+  challenges: IChallengeTypeAndId[];
 } {
+  let allChallengeRegex = /\[(multiple-choice|python-challenge) (\d+)\]/gim;
   let pythonChallengeRegex = /\[python-challenge (\d+)\]/gim;
   let multipleChoiceRegex = /\[multiple-choice (\d+)\]/gim;
 
   // @ts-ignore: Type 'IterableIterator<RegExpMatchArray>' is not an array type or a string type.
-  const pythonChallengeIds = [...mdxStr.matchAll(pythonChallengeRegex)].map(
-    (m) => Number.parseInt(m[1])
-  );
-
-  // @ts-ignore: Type 'IterableIterator<RegExpMatchArray>' is not an array type or a string type.
-  const multipleChoiceIds = [...mdxStr.matchAll(multipleChoiceRegex)].map((m) =>
-    Number.parseInt(m[1])
-  );
+  let challenges = [...mdxStr.matchAll(allChallengeRegex)].map((m) => ({
+    challengeType: m[1],
+    challengeId: Number.parseInt(m[2]),
+  }));
 
   let replacedStr = mdxStr.replace(
     pythonChallengeRegex,
@@ -37,7 +38,6 @@ export function processShortcodes(mdxStr: string): {
 
   return {
     replacedStr,
-    pythonChallengeIds,
-    multipleChoiceIds,
+    challenges,
   };
 }
