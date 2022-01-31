@@ -20,6 +20,10 @@ import LargeQuote from "components/common/LargeQuote";
 import RecordedMultipleChoiceQuestionById from "components/common/RecordedMultipleChoiceQuestionById";
 import { useEffect } from "react";
 import { supabaseClient } from "lib/supabase/supabaseClient";
+import { IChallengeResult } from "types/database/multiple-choice";
+import useSupabaseAuth from "hooks/useSupabaseAuth";
+import useMultipleChoiceQuestions from "hooks/useMultipleChoiceQuestions";
+import usePythonChallenges from "hooks/usePythonChallenges";
 
 const components = {
   RecordedPythonChallengeById,
@@ -35,29 +39,39 @@ export default function LectureNotePage({
   frontMatterData,
   challenges,
 }) {
-  const load = async () => {
-    const multipleChoiceIds = challenges
-      .filter((o) => o.challengeType === "multiple-choice")
-      .map((o) => o.challengeId);
-    const pythonChallengeIds = challenges
-      .filter((o) => o.challengeType === "python-challenge")
-      .map((o) => o.challengeId);
+  const multipleChoiceIds = challenges
+    .filter((o) => o.challengeType === "multiple-choice")
+    .map((o) => o.challengeId);
+  const pythonChallengeIds = challenges
+    .filter((o) => o.challengeType === "python-challenge")
+    .map((o) => o.challengeId);
 
+  const { user } = useSupabaseAuth();
+  const { data: multipleChoiceQuestions } =
+    useMultipleChoiceQuestions(multipleChoiceIds);
+  const { data: pythonChallenges } = usePythonChallenges(pythonChallengeIds);
+
+  const load = async () => {
     console.log(pythonChallengeIds);
     console.log(multipleChoiceIds);
 
-    const { data, error } = await supabaseClient.rpc("get_challenge_results", {
-      multiple_choice_ids: multipleChoiceIds,
-      python_challenge_ids: pythonChallengeIds,
-    });
+    const { data: challengeResults, error: challengeResultsError } =
+      await supabaseClient
+        .rpc<IChallengeResult>("get_challenge_results", {
+          multiple_choice_ids: multipleChoiceIds,
+          python_challenge_ids: pythonChallengeIds,
+        })
+        .eq("uid", user.id);
 
-    console.log(`attempts`);
-    console.log(data);
+    console.log(`challengeResults`);
+    console.log(challengeResults);
   };
 
   useEffect(() => {
-    load();
-  }, []);
+    if (user) {
+      load();
+    }
+  }, [user]);
 
   return (
     <Layout>
