@@ -24,8 +24,12 @@ export default function RecordedPythonChallenge({
   showSolution = true,
 }: IRecordedPythonChallengeProps) {
   const { user, roles } = useSupabaseAuth();
-  const { pythonChallenges } = useChallenges();
+  const { pythonChallenges, challengeResults } = useChallenges();
   const challenge = pythonChallenges?.find((o) => o.id == challengeId);
+  const challengeResult = challengeResults?.find(
+    (o) =>
+      o.challenge_type === "python-challenge" && o.challenge_id == challengeId
+  );
   const isAdmin = roles.includes("Admin");
   const { attempts, recordSubmission } =
     useCodingChallengeAttempts(challengeId);
@@ -36,13 +40,15 @@ export default function RecordedPythonChallenge({
   const getAttemptMessage = () => {
     if (!user) {
       return "You must be signed in to view your submission history";
-    } else if (attempts.length === 0) {
+    } else if (!challengeResult) {
+      return "Loading";
+    } else if (challengeResult.total_count === 0) {
       return "No submission";
     } else {
-      const passCount = attempts.filter((o) => o.is_success).length;
-      const failCount = attempts.filter((o) => !o.is_success).length;
+      const passCount = challengeResult.success_count;
+      const failCount = challengeResult.fail_count;
 
-      return `${attempts.length} submission${
+      return `${challengeResult.total_count} submission${
         attempts.length > 1 ? "s" : ""
       } (${passCount} pass${passCount > 1 ? "es" : ""}, ${failCount} fail${
         failCount > 1 ? "s" : ""
@@ -140,33 +146,36 @@ export default function RecordedPythonChallenge({
                     </>
                   )}
 
-                  <Tippy
-                    content={getAttemptMessage()}
-                    className="tippy"
-                    placement="bottom"
-                    offset={[0, -2]}
-                    theme="light"
-                  >
-                    <span
-                      className={clsx(
-                        styles.iconButton,
-                        styles.attemptsButton,
-                        {
-                          [styles.hasSubmission]: attempts.length > 0,
-                          [styles.onlyFail]:
-                            attempts.length > 0 &&
-                            attempts.every((o) => !o.is_success),
-                          [styles.hasPass]: attempts.some((o) => o.is_success),
-                        }
-                      )}
+                  {challengeResult && (
+                    <Tippy
+                      content={getAttemptMessage()}
+                      className="tippy"
+                      placement="bottom"
+                      offset={[0, -2]}
+                      theme="light"
                     >
-                      {attempts.some((o) => o.is_success) ? (
-                        <BsCheckCircle className={styles.reactIcon} />
-                      ) : (
-                        <BsXCircle className={styles.reactIcon} />
-                      )}
-                    </span>
-                  </Tippy>
+                      <span
+                        className={clsx(
+                          styles.iconButton,
+                          styles.attemptsButton,
+                          {
+                            [styles.hasSubmission]:
+                              challengeResult.total_count > 0,
+                            [styles.onlyFail]:
+                              challengeResult.success_count > 0 &&
+                              challengeResult.fail_count === 0,
+                            [styles.hasPass]: challengeResult.success_count > 0,
+                          }
+                        )}
+                      >
+                        {attempts.some((o) => o.is_success) ? (
+                          <BsCheckCircle className={styles.reactIcon} />
+                        ) : (
+                          <BsXCircle className={styles.reactIcon} />
+                        )}
+                      </span>
+                    </Tippy>
+                  )}
                 </div>
               </div>
             </Col>

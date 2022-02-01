@@ -28,9 +28,6 @@ export default function useChallengeResults({
       })
       .eq("uid", user.id);
 
-    console.log(`challengeResults`);
-    console.log(data);
-
     if (error) {
       setResult((prevResult) =>
         Object.assign({}, prevResult, {

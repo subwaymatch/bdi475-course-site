@@ -33,7 +33,7 @@ export function processShortcodes(mdxStr: string): {
 
   replacedStr = replacedStr.replace(
     multipleChoiceRegex,
-    "<RecordedMultipleChoiceQuestionById questionId={$1} />"
+    "<RecordedMultipleChoiceQuestion questionId={$1} />"
   );
 
   return {

@@ -7,6 +7,7 @@ import {
 import { definitions } from "types/database";
 import useMultipleChoiceQuestions from "hooks/useMultipleChoiceQuestions";
 import usePythonChallenges from "hooks/usePythonChallenges";
+import useChallengeResults from "hooks/useChallengeResults";
 
 export interface IChallengesContext {
   multipleChoiceQuestions: IMultipleChoiceQuestionWithOptions[];
@@ -25,26 +26,23 @@ export const ChallengesContextProvider = (props: {
   pythonChallengeIds: number[];
   [x: string]: any;
 }) => {
-  const { data: multipleChoiceQuestions } = useMultipleChoiceQuestions(
-    props.multipleChoiceIds
-  );
-  const { data: pythonChallenges } = usePythonChallenges(
-    props.pythonChallengeIds
-  );
+  const { multipleChoiceIds, pythonChallengeIds } = props;
 
-  console.log("ChallengeContext");
-  console.log(`multipleChoiceQuestions`);
-  console.log(multipleChoiceQuestions);
+  const { data: multipleChoiceQuestions } =
+    useMultipleChoiceQuestions(multipleChoiceIds);
+  const { data: pythonChallenges } = usePythonChallenges(pythonChallengeIds);
 
-  console.log(`pythonChallenges`);
-  console.log(pythonChallenges);
+  const { data: challengeResults } = useChallengeResults({
+    multipleChoiceIds,
+    pythonChallengeIds,
+  });
 
   return (
     <ChallengesContext.Provider
       value={{
         multipleChoiceQuestions,
         pythonChallenges,
-        challengeResults: null,
+        challengeResults,
       }}
       {...props}
     />

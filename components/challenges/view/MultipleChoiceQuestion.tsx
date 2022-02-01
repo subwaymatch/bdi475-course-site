@@ -15,7 +15,7 @@ import { IMultipleChoiceQuestionWithOptions } from "types/database/multiple-choi
 import Chip from "components/common/Chip";
 
 interface IMultipleChoiceQuestionProps {
-  status: QueryStatusEnum;
+  status?: QueryStatusEnum;
   questionData: IMultipleChoiceQuestionWithOptions;
   answersData: definitions["multiple_choice_options"][];
   showResult?: boolean;
@@ -33,7 +33,7 @@ export default function MultipleChoiceQuestion({
 }: IMultipleChoiceQuestionProps) {
   const [userSelections, setUserSelections] = useState<number[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const isLoading = status === QueryStatusEnum.LOADING;
+  const isLoading = !questionData;
   const isUserCorrect =
     answersData &&
     userSelections.length > 0 &&

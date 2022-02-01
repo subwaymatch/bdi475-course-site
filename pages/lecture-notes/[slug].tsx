@@ -11,28 +11,18 @@ import Image from "next/image";
 import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import { POSTS_PATH, postFilePaths, processShortcodes } from "lib/mdx/posts";
-import RecordedPythonChallengeById from "components/common/RecordedPythonChallengeById";
 import CenteredColumn from "components/common/CenteredColumn";
 import Chip from "components/common/Chip";
 import styles from "styles/pages/notes/common.module.scss";
 import ListWithTitle from "components/common/ListWithTitle";
 import LargeQuote from "components/common/LargeQuote";
-import RecordedMultipleChoiceQuestionById from "components/common/RecordedMultipleChoiceQuestionById";
+import RecordedMultipleChoiceQuestion from "components/common/RecordedMultipleChoiceQuestion";
 import RecordedPythonChallenge from "components/common/RecordedPythonChallenge";
-import useMultipleChoiceQuestions from "hooks/useMultipleChoiceQuestions";
-import usePythonChallenges from "hooks/usePythonChallenges";
-import useChallengeResults from "hooks/useChallengeResults";
-import { createContext } from "react";
-import { definitions } from "types/database";
-import {
-  IChallengeResult,
-  IMultipleChoiceQuestionWithOptions,
-} from "types/database/multiple-choice";
 import { ChallengesContextProvider } from "context/ChallengesContext";
 
 const components = {
   RecordedPythonChallenge,
-  RecordedMultipleChoiceQuestionById,
+  RecordedMultipleChoiceQuestion,
   CenteredColumn,
   LargeQuote,
   Chip,
