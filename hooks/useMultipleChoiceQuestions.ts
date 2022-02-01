@@ -39,7 +39,7 @@ export default function useMultipleChoiceQuestions(questionIds: number[]) {
       setResult((prevResult) =>
         Object.assign({}, prevResult, {
           status: QueryStatusEnum.SUCCESS,
-          data: data,
+          data,
           error: "",
         })
       );

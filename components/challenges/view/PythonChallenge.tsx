@@ -62,7 +62,7 @@ export default function PythonChallenge({
     if (localStorageKey && savedUserCode) {
       setUserCode(savedUserCode);
     }
-  }, []);
+  }, [localStorageKey]);
 
   const { isRuntimeReady, runCode, runAndCheckCode } = usePythonRuntime();
 

@@ -18,19 +18,61 @@ import styles from "styles/pages/notes/common.module.scss";
 import ListWithTitle from "components/common/ListWithTitle";
 import LargeQuote from "components/common/LargeQuote";
 import RecordedMultipleChoiceQuestionById from "components/common/RecordedMultipleChoiceQuestionById";
-import { useEffect } from "react";
-import { supabaseClient } from "lib/supabase/supabaseClient";
-import { IChallengeResult } from "types/database/multiple-choice";
-import useSupabaseAuth from "hooks/useSupabaseAuth";
+import RecordedPythonChallenge from "components/common/RecordedPythonChallenge";
 import useMultipleChoiceQuestions from "hooks/useMultipleChoiceQuestions";
 import usePythonChallenges from "hooks/usePythonChallenges";
+import useChallengeResults from "hooks/useChallengeResults";
+import { createContext } from "react";
+import { definitions } from "types/database";
+import {
+  IChallengeResult,
+  IMultipleChoiceQuestionWithOptions,
+} from "types/database/multiple-choice";
 
 const components = {
-  RecordedPythonChallengeById,
+  RecordedPythonChallenge,
   RecordedMultipleChoiceQuestionById,
   CenteredColumn,
   LargeQuote,
   Chip,
+};
+
+interface IChallengesContext {
+  multipleChoiceQuestions: IMultipleChoiceQuestionWithOptions[];
+  pythonChallenges: definitions["coding_challenges"][];
+  challengeResults: IChallengeResult[];
+}
+
+const ChallengesDataContext = createContext<IChallengesContext>({
+  multipleChoiceQuestions: null,
+  pythonChallenges: null,
+  challengeResults: null,
+});
+
+const ChallengesContextProvider = ({
+  multipleChoiceIds,
+  pythonChallengeIds,
+}) => {
+  const { data: multipleChoiceQuestions } =
+    useMultipleChoiceQuestions(multipleChoiceIds);
+  const { data: pythonChallenges } = usePythonChallenges(pythonChallengeIds);
+
+  console.log("ChallengeContext");
+  console.log(`multipleChoiceQuestions`);
+  console.log(multipleChoiceQuestions);
+
+  console.log(`pythonChallenges`);
+  console.log(pythonChallenges);
+
+  return (
+    <ChallengesDataContext.Provider
+      value={{
+        multipleChoiceQuestions,
+        pythonChallenges,
+        challengeResults: null,
+      }}
+    />
+  );
 };
 
 export default function LectureNotePage({
@@ -45,33 +87,6 @@ export default function LectureNotePage({
   const pythonChallengeIds = challenges
     .filter((o) => o.challengeType === "python-challenge")
     .map((o) => o.challengeId);
-
-  const { user } = useSupabaseAuth();
-  const { data: multipleChoiceQuestions } =
-    useMultipleChoiceQuestions(multipleChoiceIds);
-  const { data: pythonChallenges } = usePythonChallenges(pythonChallengeIds);
-
-  const load = async () => {
-    console.log(pythonChallengeIds);
-    console.log(multipleChoiceIds);
-
-    const { data: challengeResults, error: challengeResultsError } =
-      await supabaseClient
-        .rpc<IChallengeResult>("get_challenge_results", {
-          multiple_choice_ids: multipleChoiceIds,
-          python_challenge_ids: pythonChallengeIds,
-        })
-        .eq("uid", user.id);
-
-    console.log(`challengeResults`);
-    console.log(challengeResults);
-  };
-
-  useEffect(() => {
-    if (user) {
-      load();
-    }
-  }, [user]);
 
   return (
     <Layout>
@@ -112,7 +127,12 @@ export default function LectureNotePage({
           <Row>
             <Col>
               <main className={styles.composable}>
-                <MDXRemote {...bodyMdxSource} components={components} />
+                <ChallengesContextProvider
+                  multipleChoiceIds={multipleChoiceIds}
+                  pythonChallengeIds={pythonChallengeIds}
+                >
+                  <MDXRemote {...bodyMdxSource} components={components} />
+                </ChallengesContextProvider>
               </main>
             </Col>
           </Row>
