@@ -28,6 +28,7 @@ import {
   IChallengeResult,
   IMultipleChoiceQuestionWithOptions,
 } from "types/database/multiple-choice";
+import { ChallengesContextProvider } from "context/ChallengesContext";
 
 const components = {
   RecordedPythonChallenge,
@@ -35,44 +36,6 @@ const components = {
   CenteredColumn,
   LargeQuote,
   Chip,
-};
-
-interface IChallengesContext {
-  multipleChoiceQuestions: IMultipleChoiceQuestionWithOptions[];
-  pythonChallenges: definitions["coding_challenges"][];
-  challengeResults: IChallengeResult[];
-}
-
-const ChallengesDataContext = createContext<IChallengesContext>({
-  multipleChoiceQuestions: null,
-  pythonChallenges: null,
-  challengeResults: null,
-});
-
-const ChallengesContextProvider = ({
-  multipleChoiceIds,
-  pythonChallengeIds,
-}) => {
-  const { data: multipleChoiceQuestions } =
-    useMultipleChoiceQuestions(multipleChoiceIds);
-  const { data: pythonChallenges } = usePythonChallenges(pythonChallengeIds);
-
-  console.log("ChallengeContext");
-  console.log(`multipleChoiceQuestions`);
-  console.log(multipleChoiceQuestions);
-
-  console.log(`pythonChallenges`);
-  console.log(pythonChallenges);
-
-  return (
-    <ChallengesDataContext.Provider
-      value={{
-        multipleChoiceQuestions,
-        pythonChallenges,
-        challengeResults: null,
-      }}
-    />
-  );
 };
 
 export default function LectureNotePage({

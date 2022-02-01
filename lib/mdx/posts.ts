@@ -28,7 +28,7 @@ export function processShortcodes(mdxStr: string): {
 
   let replacedStr = mdxStr.replace(
     pythonChallengeRegex,
-    "<RecordedPythonChallenge challengeId={$1} challenge={pythonChallenges?.find(o => o.id == $1)} />"
+    "<RecordedPythonChallenge challengeId={$1} />"
   );
 
   replacedStr = replacedStr.replace(

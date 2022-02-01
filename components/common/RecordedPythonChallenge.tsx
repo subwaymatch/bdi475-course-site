@@ -6,6 +6,7 @@ import { Row, Col } from "react-bootstrap";
 import { BsCheckCircle, BsXCircle } from "react-icons/bs";
 import { RiHistoryLine, RiEditBoxLine, RiGroupLine } from "react-icons/ri";
 import useCodingChallengeAttempts from "hooks/useSingleCodingChallengeAttempts";
+import useChallenges from "hooks/useChallenges";
 import Tippy from "@tippyjs/react";
 import clsx from "clsx";
 import styles from "./RecordedChallenge.module.scss";
@@ -13,18 +14,18 @@ import { definitions } from "types/database";
 
 interface IRecordedPythonChallengeProps {
   challengeId: number;
-  challenge: definitions["coding_challenges"];
   className?: string;
   showSolution?: boolean;
 }
 
 export default function RecordedPythonChallenge({
   challengeId,
-  challenge,
   className,
   showSolution = true,
 }: IRecordedPythonChallengeProps) {
   const { user, roles } = useSupabaseAuth();
+  const { pythonChallenges } = useChallenges();
+  const challenge = pythonChallenges?.find((o) => o.id == challengeId);
   const isAdmin = roles.includes("Admin");
   const { attempts, recordSubmission } =
     useCodingChallengeAttempts(challengeId);
