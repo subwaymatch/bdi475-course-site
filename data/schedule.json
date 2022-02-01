@@ -32,13 +32,13 @@
   },
   {
     "date": "2022-02-01",
-    "type": "QUIZ",
-    "text": "Quiz 1"
+    "type": "LECTURE",
+    "text": ["Dictionaries", "Quiz Preparation"]
   },
   {
-    "date": "2022-02-01",
-    "type": "LECTURE",
-    "text": ["Dictionaries", "Strings", "String Methods"]
+    "date": "2022-02-03",
+    "type": "QUIZ",
+    "text": "Quiz 1"
   },
   {
     "date": "2022-02-03",
