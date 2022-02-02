@@ -101,15 +101,15 @@
 
         &.isUserIncorrect {
           border-color: color.adjust(
-            $color-pink,
+            $color-red,
             $lightness: 8%,
             $saturation: 40%
           );
 
           .optionCheckbox {
-            background: $color-pink;
+            background: $color-red;
             color: $color-white;
-            border-color: $color-pink;
+            border-color: $color-red;
           }
         }
       }
