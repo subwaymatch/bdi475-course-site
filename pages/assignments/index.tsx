@@ -155,6 +155,7 @@ export default function AssignmentsPage() {
               </div>
             </Col>
           </Row>
+          */}
 
           <Row>
             <Col>
@@ -165,13 +166,13 @@ export default function AssignmentsPage() {
 
                 <AssignmentItem
                   name="Quiz 1"
-                  dueDate={dayjs("2021-09-13").tz().format("ll")}
+                  dueDate={dayjs("2021-02-03").tz().format("ll")}
                   pointsAvailable={25}
                   status={AssignmentStatus.Available}
-                  link="/assignments/quiz-01"
+                  link="/lecture-notes/quiz-01"
                   colorTheme={ColorTheme.Green}
                 />
-
+                {/* 
                 <AssignmentItem
                   name="Quiz 2"
                   dueDate={dayjs("2021-09-24").tz().format("ll")}
@@ -206,11 +207,11 @@ export default function AssignmentsPage() {
                   status={AssignmentStatus.Available}
                   link="https://canvas.illinois.edu/courses/14860/assignments/346164/edit"
                   colorTheme={ColorTheme.Green}
-                />
+                /> */}
               </div>
             </Col>
           </Row>
-
+          {/* 
           <Row>
             <Col>
               <div className={styles.caseStudies}>
