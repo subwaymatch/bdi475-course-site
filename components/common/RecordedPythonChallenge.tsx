@@ -10,7 +10,6 @@ import useChallenges from "hooks/useChallenges";
 import Tippy from "@tippyjs/react";
 import clsx from "clsx";
 import styles from "./RecordedChallenge.module.scss";
-import { definitions } from "types/database";
 
 interface IRecordedPythonChallengeProps {
   challengeId: number;
