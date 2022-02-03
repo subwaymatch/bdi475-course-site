@@ -25,11 +25,12 @@ const components = {
   RecordedMultipleChoiceQuestion,
   CenteredColumn,
   LargeQuote,
+  ListWithTitle,
   Chip,
 };
 
 export default function LectureNotePage({
-  objectiveMdxSources,
+  overviewMdxSources,
   bodyMdxSource,
   frontMatterData,
   challenges,
@@ -57,10 +58,10 @@ export default function LectureNotePage({
               </Row>
             )}
 
-            {objectiveMdxSources && (
+            {overviewMdxSources && (
               <ListWithTitle
-                title="Objectives ⟶"
-                items={objectiveMdxSources.map((source) => (
+                title={frontMatterData.listTitle}
+                items={overviewMdxSources.map((source) => (
                   <MDXRemote {...source} components={components} />
                 ))}
               />
@@ -101,11 +102,11 @@ export const getStaticProps = async ({ params }) => {
 
   const { content, data: frontMatterData } = matter(source);
 
-  let objectives = frontMatterData.objectives;
-  let objectiveMdxSources = null;
+  let objectives = frontMatterData.listItems;
+  let overviewMdxSources = null;
 
   if (objectives && objectives.length > 0) {
-    objectiveMdxSources = [];
+    overviewMdxSources = [];
 
     for (const o of objectives) {
       const newSource = await serialize(o, {
@@ -116,7 +117,7 @@ export const getStaticProps = async ({ params }) => {
         },
       });
 
-      objectiveMdxSources.push(newSource);
+      overviewMdxSources.push(newSource);
     }
   }
 
@@ -137,7 +138,7 @@ export const getStaticProps = async ({ params }) => {
     props: {
       bodyMdxSource: mdxSource,
       frontMatterData,
-      objectiveMdxSources,
+      overviewMdxSources,
       challenges,
     },
   };

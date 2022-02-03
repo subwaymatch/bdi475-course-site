@@ -2,12 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext",
-      "webworker"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext", "webworker"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -21,12 +16,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
 }

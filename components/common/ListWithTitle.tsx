@@ -17,7 +17,7 @@ export default function ListWithTitle({
     <Row>
       <Col>
         <div
-          className={clsx(styles.listBox, {
+          className={clsx(styles.listBox, "composable-block", {
             [className]: !!className,
           })}
         >

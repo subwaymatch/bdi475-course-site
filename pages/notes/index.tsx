@@ -85,22 +85,22 @@ export default function NotesPage() {
               colorTheme={ColorTheme.Purple}
             />
 
-            {/* 
             <NoteItem
-              href="/notes/strings-and-string-methods"
+              href="/lecture-notes/strings-and-string-methods"
               thumbnail={
                 <Image
-                  src="/images/notes/1613412922600.png"
+                  src="/images/notes/abstract-005.png"
                   width={900}
-                  height={600}
+                  height={450}
                   alt=""
                 />
               }
-              date="2021-09-14"
+              date="2022-02-03"
               title="Strings and String Methods"
               colorTheme={ColorTheme.Green}
             />
 
+            {/* 
             <NoteItem
               href="/notes/functions"
               thumbnail={
