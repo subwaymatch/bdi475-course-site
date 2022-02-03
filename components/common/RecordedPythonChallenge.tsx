@@ -5,11 +5,13 @@ import useSupabaseAuth from "hooks/useSupabaseAuth";
 import { Row, Col } from "react-bootstrap";
 import { BsCheckCircle, BsXCircle } from "react-icons/bs";
 import { RiHistoryLine, RiEditBoxLine, RiGroupLine } from "react-icons/ri";
-import useCodingChallengeAttempts from "hooks/useSingleCodingChallengeAttempts";
+import { definitions } from "types/database";
 import useChallenges from "hooks/useChallenges";
 import Tippy from "@tippyjs/react";
 import clsx from "clsx";
 import styles from "./RecordedChallenge.module.scss";
+import { supabaseClient } from "lib/supabase/supabaseClient";
+import { toast } from "react-toastify";
 
 interface IRecordedPythonChallengeProps {
   challengeId: number;
@@ -30,11 +32,61 @@ export default function RecordedPythonChallenge({
       o.challenge_type === "python-challenge" && o.challenge_id == challengeId
   );
   const isAdmin = roles.includes("Admin");
-  const { attempts, recordSubmission } =
-    useCodingChallengeAttempts(challengeId);
   const editLinkRef = useRef<HTMLAnchorElement>();
   const attemptsLinkRef = useRef<HTMLAnchorElement>();
   const historyLinkRef = useRef<HTMLAnchorElement>();
+
+  const recordSubmission = async (isSuccess: boolean, userCode: string) => {
+    if (!user) {
+      return;
+    }
+
+    const { data: latestAttempt, error: latestAttemptError } =
+      await supabaseClient
+        .from<definitions["coding_challenge_attempts"]>(
+          "coding_challenge_attempts"
+        )
+        .select()
+        .eq("challenge_id", challengeId)
+        .order("submitted_at", { ascending: false })
+        .limit(1);
+
+    if (latestAttempt.length > 0) {
+      const lastRecordedAttempt = latestAttempt[0];
+
+      if (
+        lastRecordedAttempt.is_success === isSuccess &&
+        lastRecordedAttempt.user_code === userCode
+      ) {
+        toast.info(
+          `Your code was identical to the previous submission - your attempt was not recorded.`
+        );
+        return;
+      }
+    }
+
+    const { data: insertResult, error: insertError } = await supabaseClient
+      .from<definitions["coding_challenge_attempts"]>(
+        "coding_challenge_attempts"
+      )
+      .insert(
+        [
+          {
+            user_id: user.id,
+            challenge_id: challengeId,
+            is_success: isSuccess,
+            user_code: userCode,
+          },
+        ],
+        {
+          returning: "minimal",
+        }
+      );
+
+    if (insertError) {
+      console.error(insertError);
+    }
+  };
 
   const getAttemptMessage = () => {
     if (!user) {
@@ -48,7 +100,7 @@ export default function RecordedPythonChallenge({
       const failCount = challengeResult.fail_count;
 
       return `${challengeResult.total_count} submission${
-        attempts.length > 1 ? "s" : ""
+        challengeResult.total_count > 1 ? "s" : ""
       } (${passCount} pass${passCount > 1 ? "es" : ""}, ${failCount} fail${
         failCount > 1 ? "s" : ""
       })`;
@@ -122,7 +174,9 @@ export default function RecordedPythonChallenge({
                             styles.iconButton,
                             styles.historyButton,
                             {
-                              [styles.disabled]: attempts.length === 0,
+                              [styles.disabled]:
+                                !challengeResult ||
+                                challengeResult.total_count === 0,
                             }
                           )}
                           ref={historyLinkRef}
@@ -132,7 +186,7 @@ export default function RecordedPythonChallenge({
                       </Link>
                       <Tippy
                         content={
-                          attempts.length > 0
+                          challengeResult && challengeResult.total_count > 0
                             ? "View submission history"
                             : "No history found"
                         }
@@ -161,13 +215,13 @@ export default function RecordedPythonChallenge({
                             [styles.hasSubmission]:
                               challengeResult.total_count > 0,
                             [styles.onlyFail]:
-                              challengeResult.success_count > 0 &&
-                              challengeResult.fail_count === 0,
+                              challengeResult.success_count === 0 &&
+                              challengeResult.fail_count > 0,
                             [styles.hasPass]: challengeResult.success_count > 0,
                           }
                         )}
                       >
-                        {attempts.some((o) => o.is_success) ? (
+                        {challengeResult.success_count > 0 ? (
                           <BsCheckCircle className={styles.reactIcon} />
                         ) : (
                           <BsXCircle className={styles.reactIcon} />

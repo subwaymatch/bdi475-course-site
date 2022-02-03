@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { MutableRefObject, useEffect, useRef, useState } from "react";
 import useSupabaseAuth from "hooks/useSupabaseAuth";
 import { supabaseClient } from "lib/supabase/supabaseClient";
 import { definitions } from "types/database";
@@ -23,6 +23,9 @@ export default function useChallengeResults({
     data: null,
     error: null,
   });
+  const challengeResultsRef: MutableRefObject<IChallengeResult[]> = useRef(
+    result.data
+  );
 
   const getBlankResult = (
     challengeType: string,
@@ -75,8 +78,6 @@ export default function useChallengeResults({
         }
       });
 
-      console.log(challengeResults);
-
       setResult((prevResult) =>
         Object.assign({}, prevResult, {
           status: QueryStatusEnum.SUCCESS,
@@ -94,18 +95,20 @@ export default function useChallengeResults({
     submittedAt: string
   ) => {
     if (
-      challengeType === "python-challenge" &&
-      pythonChallengeIds.includes(challengeId)
+      (challengeType === "python-challenge" &&
+        pythonChallengeIds.includes(challengeId)) ||
+      (challengeType === "multiple-choice" &&
+        multipleChoiceIds.includes(challengeId))
     ) {
-      console.log(`matching attempt found, challenge_id=${challengeId}`);
-
-      let challengeResults: IChallengeResult[] = cloneDeep(result.data);
-      console.log(`challengeResults`);
-      console.log(result);
-      console.log(challengeResults);
+      let challengeResults: IChallengeResult[] = cloneDeep(
+        challengeResultsRef.current
+      );
 
       challengeResults = challengeResults.map((o) => {
-        if (o.challenge_id === challengeId) {
+        if (
+          o.challenge_type === challengeType &&
+          o.challenge_id === challengeId
+        ) {
           o.total_count++;
 
           if (isSuccess) {
@@ -151,10 +154,29 @@ export default function useChallengeResults({
       })
       .subscribe();
 
+    const multipleChoiceAttemptSubscription = supabaseClient
+      .from<definitions["multiple_choice_attempts"]>(
+        `multiple_choice_attempts:user_id=eq.${user.id}`
+      )
+      .on("INSERT", async (payload) => {
+        updateResult(
+          "multiple-choice",
+          payload.new.question_id,
+          payload.new.is_success,
+          payload.new.submitted_at
+        );
+      })
+      .subscribe();
+
     return () => {
       supabaseClient.removeSubscription(pythonChallengeAttemptSubscription);
+      supabaseClient.removeSubscription(multipleChoiceAttemptSubscription);
     };
   }, [user]);
+
+  useEffect(() => {
+    challengeResultsRef.current = result.data;
+  }, [result]);
 
   return result;
 }
