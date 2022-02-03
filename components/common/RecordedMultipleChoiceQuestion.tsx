@@ -7,7 +7,6 @@ import { RiEditBoxLine } from "react-icons/ri";
 import Tippy from "@tippyjs/react";
 import clsx from "clsx";
 import styles from "./RecordedChallenge.module.scss";
-import useMultipleChoiceAttempts from "hooks/useMultipleChoiceAttempts";
 import MultipleChoiceQuestion from "components/challenges/view/MultipleChoiceQuestion";
 import { definitions } from "types/database";
 import { toast } from "react-toastify";
@@ -30,8 +29,6 @@ export default function RecordedMultipleChoiceQuestion({
     (o) =>
       o.challenge_type === "multiple-choice" && o.challenge_id == questionId
   );
-
-  const { attempts } = useMultipleChoiceAttempts(questionId);
   const [answersData, setAnswersData] = useState<
     definitions["multiple_choice_options"][]
   >([]);
@@ -145,13 +142,13 @@ export default function RecordedMultipleChoiceQuestion({
                             [styles.hasSubmission]:
                               challengeResult.total_count > 0,
                             [styles.onlyFail]:
-                              challengeResult.success_count > 0 &&
-                              challengeResult.fail_count === 0,
+                              challengeResult.success_count === 0 &&
+                              challengeResult.fail_count > 0,
                             [styles.hasPass]: challengeResult.success_count > 0,
                           }
                         )}
                       >
-                        {attempts.some((o) => o.is_success) ? (
+                        {challengeResult.success_count > 0 ? (
                           <BsCheckCircle className={styles.reactIcon} />
                         ) : (
                           <BsXCircle className={styles.reactIcon} />
