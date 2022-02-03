@@ -42,56 +42,56 @@ export default function LectureNotePage({
     .map((o) => o.challengeId);
 
   return (
-    <Layout>
-      <div className={styles.page}>
-        <Container>
-          {frontMatterData.title && (
+    <ChallengesContextProvider
+      multipleChoiceIds={multipleChoiceIds}
+      pythonChallengeIds={pythonChallengeIds}
+    >
+      <Layout>
+        <div className={styles.page}>
+          <Container>
+            {frontMatterData.title && (
+              <Row>
+                <Col>
+                  <h1 className={styles.noteTitle}>{frontMatterData.title}</h1>
+                </Col>
+              </Row>
+            )}
+
+            {objectiveMdxSources && (
+              <ListWithTitle
+                title="Objectives ⟶"
+                items={objectiveMdxSources.map((source) => (
+                  <MDXRemote {...source} components={components} />
+                ))}
+              />
+            )}
+
+            {frontMatterData.thumbnailSrc && (
+              <Row>
+                <Col>
+                  <div className={styles.coverImage}>
+                    <Image
+                      src={frontMatterData.thumbnailSrc}
+                      width={frontMatterData.thumbnailWidth}
+                      height={frontMatterData.thumbnailHeight}
+                      alt=""
+                    />
+                  </div>
+                </Col>
+              </Row>
+            )}
+
             <Row>
               <Col>
-                <h1 className={styles.noteTitle}>{frontMatterData.title}</h1>
-              </Col>
-            </Row>
-          )}
-
-          {objectiveMdxSources && (
-            <ListWithTitle
-              title="Objectives ⟶"
-              items={objectiveMdxSources.map((source) => (
-                <MDXRemote {...source} components={components} />
-              ))}
-            />
-          )}
-
-          {frontMatterData.thumbnailSrc && (
-            <Row>
-              <Col>
-                <div className={styles.coverImage}>
-                  <Image
-                    src={frontMatterData.thumbnailSrc}
-                    width={frontMatterData.thumbnailWidth}
-                    height={frontMatterData.thumbnailHeight}
-                    alt=""
-                  />
-                </div>
-              </Col>
-            </Row>
-          )}
-
-          <Row>
-            <Col>
-              <main className={styles.composable}>
-                <ChallengesContextProvider
-                  multipleChoiceIds={multipleChoiceIds}
-                  pythonChallengeIds={pythonChallengeIds}
-                >
+                <main className={styles.composable}>
                   <MDXRemote {...bodyMdxSource} components={components} />
-                </ChallengesContextProvider>
-              </main>
-            </Col>
-          </Row>
-        </Container>
-      </div>
-    </Layout>
+                </main>
+              </Col>
+            </Row>
+          </Container>
+        </div>
+      </Layout>
+    </ChallengesContextProvider>
   );
 }
 

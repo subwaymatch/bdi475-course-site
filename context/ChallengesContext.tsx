@@ -31,7 +31,6 @@ export const ChallengesContextProvider = (props: {
   const { data: multipleChoiceQuestions } =
     useMultipleChoiceQuestions(multipleChoiceIds);
   const { data: pythonChallenges } = usePythonChallenges(pythonChallengeIds);
-
   const { data: challengeResults } = useChallengeResults({
     multipleChoiceIds,
     pythonChallengeIds,

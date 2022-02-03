@@ -47,7 +47,7 @@ export default function RecordedPythonChallenge({
           "coding_challenge_attempts"
         )
         .select()
-        .eq("challenge_id", challengeId)
+        .match({ challenge_id: challengeId, user_id: user.id })
         .order("submitted_at", { ascending: false })
         .limit(1);
 
