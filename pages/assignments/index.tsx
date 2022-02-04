@@ -40,19 +40,19 @@ export default function AssignmentsPage() {
                   dueDate={dayjs("2022-01-27").tz().format("ll")}
                   pointsAvailable={20}
                   status={AssignmentStatus.Available}
-                  link="/assignments/exercise-01"
+                  link="/assignments-old/exercise-01"
                   colorTheme={ColorTheme.Purple}
                 />
-                {/* 
+
                 <AssignmentItem
                   name="Exercise 2"
-                  dueDate={dayjs("2021-09-09").tz().format("ll")}
+                  dueDate={dayjs("2022-02-06").tz().format("ll")}
                   pointsAvailable={20}
                   status={AssignmentStatus.Available}
                   link="/assignments/exercise-02"
                   colorTheme={ColorTheme.Purple}
                 />
-
+                {/* 
                 <AssignmentItem
                   name="Exercise 3"
                   dueDate={dayjs("2021-09-14").tz().format("ll")}
@@ -127,7 +127,7 @@ export default function AssignmentsPage() {
               </div>
             </Col>
           </Row>
-          {/* 
+
           <Row>
             <Col>
               <div className={styles.problemSets}>
@@ -137,25 +137,24 @@ export default function AssignmentsPage() {
 
                 <AssignmentItem
                   name="Problem Set 1"
-                  dueDate={dayjs("2021-09-21").tz().format("ll")}
-                  pointsAvailable={80}
+                  dueDate={dayjs("2022-02-09").tz().format("ll")}
+                  pointsAvailable={60}
                   status={AssignmentStatus.Available}
                   link="/assignments/problem-set-01"
                   colorTheme={ColorTheme.Blue}
                 />
 
-                <AssignmentItem
+                {/* <AssignmentItem
                   name="Problem Set 2"
                   dueDate={dayjs("2021-10-14").tz().format("ll")}
                   pointsAvailable={80}
                   status={AssignmentStatus.Available}
                   link="https://nbviewer.org/github/bdi475/notebooks/blob/1bad25c3a85d188212d819486dd8107f76637aa1/problem-set-02-starbucks-app-customers-SOLUTION.ipynb"
                   colorTheme={ColorTheme.Blue}
-                />
+                /> */}
               </div>
             </Col>
           </Row>
-          */}
 
           <Row>
             <Col>
@@ -169,7 +168,7 @@ export default function AssignmentsPage() {
                   dueDate={dayjs("2021-02-03").tz().format("ll")}
                   pointsAvailable={25}
                   status={AssignmentStatus.Available}
-                  link="/lecture-notes/quiz-01"
+                  link="/assignments/quiz-01"
                   colorTheme={ColorTheme.Green}
                 />
                 {/* 

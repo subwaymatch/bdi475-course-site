@@ -10,7 +10,7 @@ import path from "path";
 import Image from "next/image";
 import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
-import { POSTS_PATH, postFilePaths, processShortcodes } from "lib/mdx/posts";
+import { postFilePaths, processShortcodes } from "lib/mdx/posts";
 import CenteredColumn from "components/common/CenteredColumn";
 import Chip from "components/common/Chip";
 import styles from "styles/pages/notes/common.module.scss";
@@ -97,7 +97,12 @@ export default function LectureNotePage({
 }
 
 export const getStaticProps = async ({ params }) => {
-  const postFilePath = path.join(POSTS_PATH, `${params.slug}.mdx`);
+  const pathComponents = [process.cwd(), "_mdx_posts"];
+  if (params.category !== "uncategorized") {
+    pathComponents.push(params.category);
+  }
+  pathComponents.push(`${params.slug}.mdx`);
+  const postFilePath = path.join.apply(null, pathComponents);
   const source = fs.readFileSync(postFilePath);
 
   const { content, data: frontMatterData } = matter(source);
@@ -149,7 +154,13 @@ export const getStaticPaths = async () => {
     // Remove file extensions for page paths
     .map((path) => path.replace(/\.mdx?$/, ""))
     // Map the path into the static paths object required by Next.js
-    .map((slug) => ({ params: { slug } }));
+    .map((path) => {
+      const splitPath = path.split("/");
+      const category = splitPath.length === 3 ? splitPath[1] : "uncategorized";
+      const slug = splitPath.length === 3 ? splitPath[2] : splitPath[1];
+
+      return { params: { category, slug } };
+    });
 
   return {
     paths,

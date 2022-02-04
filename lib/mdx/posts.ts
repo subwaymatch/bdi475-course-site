@@ -1,11 +1,7 @@
-import fs from "fs";
-import path from "path";
+import glob from "glob";
 
-export const POSTS_PATH = path.join(process.cwd(), "_lecture_notes");
-
-export const postFilePaths = fs
-  .readdirSync(POSTS_PATH)
-  .filter((path) => /\.mdx?$/.test(path));
+const GLOB_STR = "_mdx_posts/**/*.mdx";
+export const postFilePaths = glob.sync(GLOB_STR);
 
 interface IChallengeTypeAndId {
   challengeType: string;
