@@ -39,7 +39,11 @@ export default function Login() {
     }
   };
 
-  const submit = () => {
+  const submit = (e) => {
+    if (e) {
+      e.preventDefault();
+    }
+
     if (isSendingEmail || isEmailSent) {
       return;
     }
