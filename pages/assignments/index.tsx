@@ -46,16 +46,16 @@ export default function AssignmentsPage() {
 
                 <AssignmentItem
                   name="Exercise 2"
-                  dueDate={dayjs("2022-02-06").tz().format("ll")}
+                  dueDate={dayjs("2022-02-09").tz().format("ll")}
                   pointsAvailable={20}
                   status={AssignmentStatus.Available}
                   link="/assignments/exercise-02"
                   colorTheme={ColorTheme.Purple}
                 />
-                {/* 
+
                 <AssignmentItem
                   name="Exercise 3"
-                  dueDate={dayjs("2021-09-14").tz().format("ll")}
+                  dueDate={dayjs("2022-02-09").tz().format("ll")}
                   pointsAvailable={20}
                   status={AssignmentStatus.Available}
                   link="/assignments/exercise-03"
@@ -64,13 +64,13 @@ export default function AssignmentsPage() {
 
                 <AssignmentItem
                   name="Exercise 4"
-                  dueDate={dayjs("2021-09-23").tz().format("ll")}
+                  dueDate={dayjs("2022-02-11").tz().format("ll")}
                   pointsAvailable={20}
                   status={AssignmentStatus.Available}
                   link="/assignments/exercise-04"
                   colorTheme={ColorTheme.Purple}
                 />
-
+                {/* 
                 <AssignmentItem
                   name="Exercise 5"
                   dueDate={dayjs("2021-10-03").tz().format("ll")}
@@ -137,7 +137,7 @@ export default function AssignmentsPage() {
 
                 <AssignmentItem
                   name="Problem Set 1"
-                  dueDate={dayjs("2022-02-09").tz().format("ll")}
+                  dueDate={dayjs("2022-02-14").tz().format("ll")}
                   pointsAvailable={60}
                   status={AssignmentStatus.Available}
                   link="/assignments/problem-set-01"

@@ -1,0 +1,142 @@
+@use "sass:color";
+@import "styles/variables";
+@import "styles/mixins";
+
+.calendarCell {
+  flex: 1;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+
+  &:first-child {
+    padding-left: 0;
+  }
+
+  &:last-child {
+    padding-right: 0;
+  }
+
+  @include media-breakpoint-only(md) {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+
+  @include media-breakpoint-down(md) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.day {
+  margin: 0.8rem 0;
+  border-top: 1px solid #333;
+
+  .todayIndicator {
+    display: none;
+  }
+
+  .dayHeader {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0.4rem;
+
+    @include media-breakpoint-down(sm) {
+      justify-content: flex-start;
+    }
+
+    .date {
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+
+      .dateDivider {
+        display: inline-block;
+        padding: 0 0.15rem;
+      }
+    }
+
+    .weekday {
+      color: #999;
+
+      @include media-breakpoint-down(sm) {
+        margin-left: 0.5rem;
+      }
+    }
+  }
+
+  .dayContent {
+    margin-top: 0.5rem;
+
+    .box {
+      padding: 0.3rem 0.5rem;
+      border-radius: 0.2rem;
+      margin-top: 0.3rem;
+    }
+
+    .heading {
+      font-weight: 500;
+      padding-bottom: 0.3rem;
+    }
+
+    .QUIZ {
+      color: white;
+      background-color: $color-pink;
+    }
+
+    .LECTURE {
+      color: white;
+      background-color: $color-green;
+
+      .items > div {
+        color: color.scale($color-green, $lightness: -40%);
+        font-size: 0.95em;
+        font-weight: 400;
+        border-top: 1px solid color.scale($color-green, $lightness: -12%);
+        padding: 0.3rem 0;
+
+        &:last-child {
+          padding-bottom: 0;
+        }
+      }
+    }
+
+    .EXERCISE {
+      color: white;
+      background-color: $color-purple;
+    }
+
+    .NO_LECTURE {
+      color: $color-text-gray;
+      font-weight: 400;
+      background-color: #eee;
+    }
+
+    .CASE_STUDY {
+      color: white;
+      background-color: $color-blue;
+    }
+  }
+
+  &.today {
+    border-top: none;
+
+    .todayIndicator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      background-color: black;
+      padding: 0.4rem 0.4rem;
+      font-size: 1rem;
+
+      .todayIcon {
+        margin-left: 0.2rem;
+      }
+    }
+
+    .dayHeader {
+      .weekday {
+        color: black;
+      }
+    }
+  }
+}

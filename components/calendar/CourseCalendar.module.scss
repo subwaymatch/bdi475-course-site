@@ -2,7 +2,7 @@
 @import "styles/variables";
 @import "styles/mixins";
 
-.calendar {
+.courseCalendar {
   color: $color-black;
   font-size: 1rem;
   letter-spacing: -0.02rem;
@@ -33,15 +33,6 @@
 
     .reactIcon {
       margin-right: 0.5rem;
-    }
-  }
-
-  .calendarRow {
-    display: flex;
-
-    @include media-breakpoint-down(lg) {
-      padding: 0;
-      flex-direction: column;
     }
   }
 
@@ -115,21 +106,21 @@
         margin-top: 0.3rem;
       }
 
-      .quiz {
+      .heading {
+        font-weight: 500;
+        padding-bottom: 0.3rem;
+      }
+
+      .QUIZ {
         color: white;
         background-color: $color-pink;
       }
 
-      .lecture {
+      .LECTURE {
         color: white;
         background-color: $color-green;
 
-        .lectureHeading {
-          font-weight: 500;
-          padding-bottom: 0.3rem;
-        }
-
-        .topic {
+        .items > div {
           color: color.scale($color-green, $lightness: -40%);
           font-size: 0.95em;
           font-weight: 400;
@@ -142,18 +133,18 @@
         }
       }
 
-      .exercise {
+      .EXERCISE {
         color: white;
         background-color: $color-purple;
       }
 
-      .noLecture {
+      .NO_LECTURE {
         color: $color-text-gray;
         font-weight: 400;
         background-color: #eee;
       }
 
-      .caseStudy {
+      .CASE_STUDY {
         color: white;
         background-color: $color-blue;
       }

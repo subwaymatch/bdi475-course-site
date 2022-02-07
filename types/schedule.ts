@@ -11,7 +11,9 @@ export enum ScheduleType {
 export interface ICalendarEvent {
   date: string;
   type: ScheduleType;
+  title?: string;
   text?: string | string[];
+  link?: string;
 }
 
 export interface ILectureNumberMap {
@@ -29,8 +31,6 @@ export interface IYearAndWeek {
 
 export interface IEventsByYear {
   [year: string]: {
-    [dateStr: string]: {
-      [scheduleType in ScheduleType]: string[];
-    };
+    [dateStr: string]: ICalendarEvent[];
   };
 }

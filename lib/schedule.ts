@@ -1,4 +1,3 @@
-import isString from "lodash/isString";
 import {
   ScheduleType,
   ICalendarEvent,
@@ -51,12 +50,12 @@ export function organizeEventsByYearAndDate(
     const yearEvents = organizedEvents[year];
 
     if (!yearEvents.hasOwnProperty(event.date)) {
-      yearEvents[event.date] = {};
+      yearEvents[event.date] = [];
     }
 
-    const dateEvents = yearEvents[event.date];
+    event.text = Array.isArray(event.text) ? event.text : [event.text];
 
-    dateEvents[event.type] = isString(event.text) ? [event.text] : event.text;
+    yearEvents[event.date].push(event);
   });
 
   return organizedEvents;

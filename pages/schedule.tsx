@@ -1,6 +1,6 @@
 import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
-import CourseCalendar from "components/pages/schedule/CourseCalendar";
+import CourseCalendar from "components/calendar/CourseCalendar";
 import styles from "styles/pages/schedule.module.scss";
 
 export default function SchedulePage() {

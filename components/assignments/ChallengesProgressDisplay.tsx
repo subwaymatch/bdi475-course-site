@@ -49,8 +49,7 @@ export default function ChallengesProgressDisplay() {
         )}
 
         <div className={clsx(styles.count)}>
-          {p === 0 && "Challenges"}
-          {p > 0 && p < 100 && (
+          {p < 100 && (
             <>
               {resultSummary.num_success}
               <span className={styles.divider}>/</span>
