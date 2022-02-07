@@ -1,11 +1,24 @@
 import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "styles/pages/notes/common.module.scss";
-import RecordedMultipleChoiceQuestionById from "components/common/RecordedMultipleChoiceQuestionById";
-import RecordedPythonChallengeById from "components/common/RecordedPythonChallengeById";
 import Chip from "components/common/Chip";
+import { useEffect, useState } from "react";
+import { supabaseClient } from "lib/supabase/supabaseClient";
 
 export default function TestPage() {
+  const [results, setResults] = useState(null);
+
+  const load = async () => {
+    const { data, error } = await supabaseClient.rpc("get_challenge_results2", {
+      multiple_choice_ids: [],
+    });
+    setResults(data);
+  };
+
+  useEffect(() => {
+    load();
+  }, []);
+
   return (
     <Layout>
       <main className={styles.page}>
@@ -22,17 +35,9 @@ export default function TestPage() {
             </Col>
           </Row>
 
-          <RecordedMultipleChoiceQuestionById questionId={1} />
-
-          <RecordedMultipleChoiceQuestionById
-            questionId={2}
-            className={styles.block}
-          />
-
-          <RecordedPythonChallengeById
-            challengeId={211}
-            className={styles.block}
-          />
+          <Row>
+            <Col>{JSON.stringify(results)}</Col>
+          </Row>
         </Container>
       </main>
     </Layout>

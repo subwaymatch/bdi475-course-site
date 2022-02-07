@@ -1,12 +1,8 @@
 import glob from "glob";
+import { IChallengeTypeAndId } from "types/challenge";
 
 const GLOB_STR = "_mdx_posts/**/*.mdx";
 export const postFilePaths = glob.sync(GLOB_STR);
-
-interface IChallengeTypeAndId {
-  challengeType: string;
-  challengeId: number;
-}
 
 export function processShortcodes(mdxStr: string): {
   replacedStr: string;

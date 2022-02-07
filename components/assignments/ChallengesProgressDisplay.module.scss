@@ -1,0 +1,90 @@
+@import "styles/variables";
+
+.bottomBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $color-white;
+}
+
+.progressDisplay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  letter-spacing: 0;
+  color: $color-gray-70;
+  padding: 0.3rem 0;
+
+  .progressIcon {
+    color: $color-black;
+    margin-right: 0.4rem;
+  }
+
+  &.beforeStart,
+  &.inProgress {
+    .progressIcon {
+      color: $color-blue;
+    }
+  }
+
+  &.complete {
+    .progressIcon {
+      color: $color-green;
+    }
+  }
+
+  .count {
+    color: $color-gray-100;
+
+    .divider {
+      color: $color-gray-50;
+      padding: 0 0.1rem;
+    }
+  }
+
+  &.complete {
+    .count {
+      color: $color-green;
+    }
+  }
+
+  .progressOuter {
+    width: 8rem;
+    height: 8px;
+    border: 1px solid $color-gray-50;
+    margin: 0 0.5rem;
+
+    .progressBar {
+      height: 100%;
+      background-color: $color-gray-40;
+    }
+  }
+
+  &.complete {
+    .progressOuter {
+      border: 1px solid $color-green;
+
+      .progressBar {
+        background-color: $color-green;
+      }
+    }
+  }
+
+  .percentage {
+    color: $color-gray-60;
+    font-size: 0.95em;
+    line-height: 1.2;
+    display: inline-block;
+  }
+
+  &.complete {
+    .percentage {
+      color: $color-green;
+    }
+  }
+}

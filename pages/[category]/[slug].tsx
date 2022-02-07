@@ -1,11 +1,6 @@
 import fs from "fs";
 import matter from "gray-matter";
-import { MDXRemote } from "next-mdx-remote";
-import { serialize } from "next-mdx-remote/serialize";
-import remarkMath from "remark-math";
-import rehypeKatex from "rehype-katex";
-import rehypeHighlight from "rehype-highlight";
-import remarkGfm from "remark-gfm";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import path from "path";
 import Image from "next/image";
 import Layout from "components/Layout";
@@ -19,6 +14,23 @@ import LargeQuote from "components/common/LargeQuote";
 import RecordedMultipleChoiceQuestion from "components/common/RecordedMultipleChoiceQuestion";
 import RecordedPythonChallenge from "components/common/RecordedPythonChallenge";
 import { ChallengesContextProvider } from "context/ChallengesContext";
+import {
+  Green,
+  Purple,
+  Yellow,
+  Pink,
+  Orange,
+  Red,
+  Blue,
+  DarkerBlue,
+  Navy,
+  Gray,
+  MediumGray,
+  DarkGray,
+} from "components/common/colors";
+import ChallengesProgressDisplay from "components/assignments/ChallengesProgressDisplay";
+import serializeWithPlugins from "lib/mdx/serializeWithPlugins";
+import { IChallengeTypeAndId } from "types/challenge";
 
 const components = {
   RecordedPythonChallenge,
@@ -27,26 +39,37 @@ const components = {
   LargeQuote,
   ListWithTitle,
   Chip,
+  Green,
+  Purple,
+  Yellow,
+  Pink,
+  Orange,
+  Red,
+  Blue,
+  DarkerBlue,
+  Navy,
+  Gray,
+  MediumGray,
+  DarkGray,
 };
 
+interface ILectureNotePageProps {
+  bodyMdxSource: MDXRemoteSerializeResult;
+  frontMatterData: {
+    [key: string]: any;
+  };
+  overviewMdxSources: MDXRemoteSerializeResult[];
+  challenges: IChallengeTypeAndId[];
+}
+
 export default function LectureNotePage({
-  overviewMdxSources,
   bodyMdxSource,
   frontMatterData,
+  overviewMdxSources,
   challenges,
-}) {
-  const multipleChoiceIds = challenges
-    .filter((o) => o.challengeType === "multiple-choice")
-    .map((o) => o.challengeId);
-  const pythonChallengeIds = challenges
-    .filter((o) => o.challengeType === "python-challenge")
-    .map((o) => o.challengeId);
-
+}: ILectureNotePageProps) {
   return (
-    <ChallengesContextProvider
-      multipleChoiceIds={multipleChoiceIds}
-      pythonChallengeIds={pythonChallengeIds}
-    >
+    <ChallengesContextProvider challenges={challenges}>
       <Layout>
         <div className={styles.page}>
           <Container>
@@ -92,35 +115,35 @@ export default function LectureNotePage({
           </Container>
         </div>
       </Layout>
+
+      <ChallengesProgressDisplay />
     </ChallengesContextProvider>
   );
 }
 
 export const getStaticProps = async ({ params }) => {
+  // find .mdx file path
   const pathComponents = [process.cwd(), "_mdx_posts"];
+
+  // uncategorized posts do not belong into a separate folder
   if (params.category !== "uncategorized") {
     pathComponents.push(params.category);
   }
   pathComponents.push(`${params.slug}.mdx`);
+
   const postFilePath = path.join.apply(null, pathComponents);
   const source = fs.readFileSync(postFilePath);
 
   const { content, data: frontMatterData } = matter(source);
 
   let objectives = frontMatterData.listItems;
-  let overviewMdxSources = null;
+  let overviewMdxSources: MDXRemoteSerializeResult[] = null;
 
   if (objectives && objectives.length > 0) {
     overviewMdxSources = [];
 
     for (const o of objectives) {
-      const newSource = await serialize(o, {
-        // Optionally pass remark/rehype plugins
-        mdxOptions: {
-          remarkPlugins: [remarkGfm, remarkMath],
-          rehypePlugins: [rehypeHighlight, rehypeKatex],
-        },
-      });
+      const newSource = await serializeWithPlugins(o);
 
       overviewMdxSources.push(newSource);
     }
@@ -130,18 +153,11 @@ export const getStaticProps = async ({ params }) => {
 
   // KaTeX does not work at the moment
   // see https://github.com/hashicorp/next-mdx-remote/issues/221 for details
-  const mdxSource = await serialize(replacedStr, {
-    // Optionally pass remark/rehype plugins
-    mdxOptions: {
-      remarkPlugins: [remarkGfm, remarkMath],
-      rehypePlugins: [rehypeHighlight, rehypeKatex],
-    },
-    // scope: data,
-  });
+  const bodyMdxSource = await serializeWithPlugins(replacedStr);
 
   return {
     props: {
-      bodyMdxSource: mdxSource,
+      bodyMdxSource,
       frontMatterData,
       overviewMdxSources,
       challenges,

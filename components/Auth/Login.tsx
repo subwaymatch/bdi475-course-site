@@ -39,7 +39,7 @@ export default function Login() {
     }
   };
 
-  const submit = (e) => {
+  const submit = (e?: React.FormEvent<HTMLFormElement>) => {
     if (e) {
       e.preventDefault();
     }

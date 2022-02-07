@@ -1,13 +1,14 @@
-import React, { useEffect, useState, createContext } from "react";
-import { SupabaseClient, Session, User } from "@supabase/supabase-js";
+import React, { createContext, useEffect } from "react";
 import {
   IChallengeResult,
   IMultipleChoiceQuestionWithOptions,
 } from "types/database/multiple-choice";
+import { IChallengeTypeAndId } from "types/challenge";
 import { definitions } from "types/database";
 import useMultipleChoiceQuestions from "hooks/useMultipleChoiceQuestions";
 import usePythonChallenges from "hooks/usePythonChallenges";
 import useChallengeResults from "hooks/useChallengeResults";
+import { getMultipleChoiceIds, getPythonChallengeIds } from "utils/challenge";
 
 export interface IChallengesContext {
   multipleChoiceQuestions: IMultipleChoiceQuestionWithOptions[];
@@ -22,19 +23,18 @@ const ChallengesContext = createContext<IChallengesContext>({
 });
 
 export const ChallengesContextProvider = (props: {
-  multipleChoiceIds: number[];
-  pythonChallengeIds: number[];
+  challenges: IChallengeTypeAndId[];
   [x: string]: any;
 }) => {
-  const { multipleChoiceIds, pythonChallengeIds } = props;
+  const { challenges } = props;
+
+  const multipleChoiceIds = getMultipleChoiceIds(challenges);
+  const pythonChallengeIds = getPythonChallengeIds(challenges);
 
   const { data: multipleChoiceQuestions } =
     useMultipleChoiceQuestions(multipleChoiceIds);
   const { data: pythonChallenges } = usePythonChallenges(pythonChallengeIds);
-  const { data: challengeResults } = useChallengeResults({
-    multipleChoiceIds,
-    pythonChallengeIds,
-  });
+  const { data: challengeResults } = useChallengeResults(challenges);
 
   return (
     <ChallengesContext.Provider
