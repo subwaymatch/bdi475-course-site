@@ -12,6 +12,7 @@ import clsx from "clsx";
 import styles from "./RecordedChallenge.module.scss";
 import { supabaseClient } from "lib/supabase/supabaseClient";
 import { toast } from "react-toastify";
+import { ChallengeTypeEnum } from "types/challenge";
 
 interface IRecordedPythonChallengeProps {
   challengeId: number;
@@ -24,14 +25,14 @@ export default function RecordedPythonChallenge({
   className,
   showSolution = true,
 }: IRecordedPythonChallengeProps) {
-  const { user, roles } = useSupabaseAuth();
+  const { user, isAdmin } = useSupabaseAuth();
   const { pythonChallenges, challengeResults } = useChallenges();
   const challenge = pythonChallenges?.find((o) => o.id == challengeId);
   const challengeResult = challengeResults?.find(
     (o) =>
-      o.challenge_type === "python-challenge" && o.challenge_id == challengeId
+      o.challenge_type === ChallengeTypeEnum.PythonChallenge &&
+      o.challenge_id == challengeId
   );
-  const isAdmin = roles.includes("Admin");
   const editLinkRef = useRef<HTMLAnchorElement>();
   const attemptsLinkRef = useRef<HTMLAnchorElement>();
   const historyLinkRef = useRef<HTMLAnchorElement>();

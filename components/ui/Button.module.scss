@@ -10,10 +10,10 @@
   transition: all 0.3s ease;
   font-size: 1rem;
   letter-spacing: 0;
-  color: $color-dark-gray;
-  background-color: $color-border-gray;
+  color: $color-gray-100;
+  background-color: $color-gray-30;
   border-radius: 0.4rem;
-  padding: 1.2rem 1.5rem;
+  padding: 1rem 1.4rem;
 
   &.fullWidth {
     display: flex;
@@ -26,15 +26,12 @@
 
   .reactIcon {
     font-size: 0.9em;
-  }
-
-  .label {
-    margin-left: 0.45rem;
+    margin-right: 0.5rem;
   }
 
   &:hover {
     color: $color-black;
-    transform: translateY(2px);
+    background-color: color.adjust($color-border-gray, $lightness: -3%);
   }
 
   &.disabled,
@@ -47,11 +44,21 @@
   }
 
   &.green:not(.disabled) {
+    color: $color-white;
     background-color: $color-green;
+
+    &:hover {
+      background-color: color.adjust($color-green, $lightness: 5%);
+    }
   }
 
   &.purple:not(.disabled) {
+    color: $color-white;
     background-color: $color-purple;
+
+    &:hover {
+      background-color: color.adjust($color-purple, $lightness: 5%);
+    }
   }
 
   &.yellow:not(.disabled) {
@@ -59,15 +66,30 @@
   }
 
   &.pink:not(.disabled) {
+    color: $color-white;
     background-color: $color-pink;
+
+    &:hover {
+      background-color: color.adjust($color-pink, $lightness: 5%);
+    }
   }
 
   &.blue:not(.disabled) {
+    color: $color-white;
     background-color: $color-blue;
+
+    &:hover {
+      background-color: color.adjust($color-blue, $lightness: 5%);
+    }
   }
 
   &.orange:not(.disabled) {
+    color: $color-white;
     background-color: $color-orange;
+
+    &:hover {
+      background-color: color.adjust($color-orange, $lightness: 5%);
+    }
   }
 
   &.gray:not(.disabled) {
@@ -77,5 +99,9 @@
   &.black:not(.disabled) {
     color: white;
     background-color: black;
+
+    &:hover {
+      background-color: color.adjust($color-black, $lightness: 15%);
+    }
   }
 }

@@ -22,8 +22,7 @@ export default function RecordedPythonChallengeById({
   className,
   showSolution = true,
 }: IRecordedPythonChallengeProps) {
-  const { user, roles } = useSupabaseAuth();
-  const isAdmin = roles.includes("Admin");
+  const { user, roles, isAdmin } = useSupabaseAuth();
   const { status, data, error } = usePythonChallenge(challengeId);
   const { attempts, recordSubmission } =
     useCodingChallengeAttempts(challengeId);

@@ -13,6 +13,8 @@ import { IconType } from "react-icons";
 import { ColorTheme } from "types/color-theme";
 import { IMultipleChoiceQuestionWithOptions } from "types/database/multiple-choice";
 import Chip from "components/common/Chip";
+import { GoCheck } from "react-icons/go";
+import { FiThumbsUp } from "react-icons/fi";
 
 interface IMultipleChoiceQuestionProps {
   status?: QueryStatusEnum;
@@ -84,7 +86,7 @@ export default function MultipleChoiceQuestion({
         questionData?.num_correct_options - userSelections.length
       } more`;
     } else {
-      return `Click to submit`;
+      return null;
     }
   };
 
@@ -92,7 +94,7 @@ export default function MultipleChoiceQuestion({
     if (isLoading || isSubmitting) {
       return null;
     } else if (isUserCorrect) {
-      return IoCheckmark;
+      return FiThumbsUp;
     } else if (showResult && !isUserCorrect) {
       return IoRefresh;
     } else {

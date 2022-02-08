@@ -27,12 +27,12 @@ body {
 }
 
 a {
-  color: $color-text-gray;
+  color: $color-gray-200;
   cursor: pointer;
   text-decoration: none;
 
   &:hover {
-    color: $color-dark-gray;
+    color: $color-black;
   }
 }
 
@@ -331,6 +331,13 @@ table {
   td {
     padding: 0.25rem 0;
     text-align: center;
+  }
+
+  &.left {
+    th,
+    td {
+      text-align: left;
+    }
   }
 
   tr {

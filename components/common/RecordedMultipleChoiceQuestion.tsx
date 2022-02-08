@@ -11,6 +11,7 @@ import MultipleChoiceQuestion from "components/challenges/view/MultipleChoiceQue
 import { definitions } from "types/database";
 import { toast } from "react-toastify";
 import useChallenges from "hooks/useChallenges";
+import { ChallengeTypeEnum } from "types/challenge";
 
 interface IRecordedMultipleChoiceQuestionProps {
   questionId: number;
@@ -21,13 +22,13 @@ export default function RecordedMultipleChoiceQuestion({
   questionId,
   className,
 }: IRecordedMultipleChoiceQuestionProps) {
-  const { user, session, roles } = useSupabaseAuth();
-  const isAdmin = roles.includes("Admin");
+  const { user, session, isAdmin } = useSupabaseAuth();
   const { multipleChoiceQuestions, challengeResults } = useChallenges();
   const questionData = multipleChoiceQuestions?.find((o) => o.id == questionId);
   const challengeResult = challengeResults?.find(
     (o) =>
-      o.challenge_type === "multiple-choice" && o.challenge_id == questionId
+      o.challenge_type === ChallengeTypeEnum.MultipleChoice &&
+      o.challenge_id == questionId
   );
   const [answersData, setAnswersData] = useState<
     definitions["multiple_choice_options"][]

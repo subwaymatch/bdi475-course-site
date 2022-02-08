@@ -1,9 +1,6 @@
-import React, { createContext, useEffect } from "react";
-import {
-  IChallengeResult,
-  IMultipleChoiceQuestionWithOptions,
-} from "types/database/multiple-choice";
-import { IChallengeTypeAndId } from "types/challenge";
+import React, { createContext } from "react";
+import { IMultipleChoiceQuestionWithOptions } from "types/database/multiple-choice";
+import { IChallengeResult, IChallengeTypeAndId } from "types/challenge";
 import { definitions } from "types/database";
 import useMultipleChoiceQuestions from "hooks/useMultipleChoiceQuestions";
 import usePythonChallenges from "hooks/usePythonChallenges";

@@ -5,12 +5,14 @@ export interface IUserContext {
   user: User;
   session: Session;
   roles: string[];
+  isAdmin: boolean;
 }
 
 const UserContext = createContext<IUserContext>({
   user: null,
   session: null,
   roles: [],
+  isAdmin: false,
 });
 
 export const UserContextProvider = (props) => {
@@ -76,6 +78,7 @@ export const UserContextProvider = (props) => {
     session,
     user,
     roles,
+    isAdmin: roles ? roles.includes("Admin") : false,
   };
 
   return <UserContext.Provider value={value} {...props} />;

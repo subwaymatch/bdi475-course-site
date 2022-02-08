@@ -2,10 +2,13 @@ import { MutableRefObject, useEffect, useRef, useState } from "react";
 import useSupabaseAuth from "hooks/useSupabaseAuth";
 import { supabaseClient } from "lib/supabase/supabaseClient";
 import { definitions } from "types/database";
-import { IChallengeResult } from "types/database/multiple-choice";
 import { QueryStatusEnum } from "types";
 import cloneDeep from "lodash/cloneDeep";
-import { IChallengeTypeAndId } from "types/challenge";
+import {
+  ChallengeTypeEnum,
+  IChallengeResult,
+  IChallengeTypeAndId,
+} from "types/challenge";
 import { getMultipleChoiceIds, getPythonChallengeIds } from "utils/challenge";
 
 export default function useChallengeResults(challenges: IChallengeTypeAndId[]) {
@@ -37,9 +40,6 @@ export default function useChallengeResults(challenges: IChallengeTypeAndId[]) {
       rpcParams
     );
 
-    console.log(`challengeResults`);
-    console.log(data);
-
     if (error) {
       setResult((prevResult) =>
         Object.assign({}, prevResult, {
@@ -60,15 +60,15 @@ export default function useChallengeResults(challenges: IChallengeTypeAndId[]) {
   };
 
   const updateResult = async (
-    challengeType: string,
+    challengeType: ChallengeTypeEnum,
     challengeId: number,
     isSuccess: boolean,
     submittedAt: string
   ) => {
     if (
-      (challengeType === "python-challenge" &&
+      (challengeType === ChallengeTypeEnum.PythonChallenge &&
         pythonChallengeIds.includes(challengeId)) ||
-      (challengeType === "multiple-choice" &&
+      (challengeType === ChallengeTypeEnum.MultipleChoice &&
         multipleChoiceIds.includes(challengeId))
     ) {
       let challengeResults: IChallengeResult[] = cloneDeep(
@@ -117,7 +117,7 @@ export default function useChallengeResults(challenges: IChallengeTypeAndId[]) {
       )
       .on("INSERT", async (payload) => {
         updateResult(
-          "python-challenge",
+          ChallengeTypeEnum.PythonChallenge,
           payload.new.challenge_id,
           payload.new.is_success,
           payload.new.submitted_at
@@ -131,7 +131,7 @@ export default function useChallengeResults(challenges: IChallengeTypeAndId[]) {
       )
       .on("INSERT", async (payload) => {
         updateResult(
-          "multiple-choice",
+          ChallengeTypeEnum.MultipleChoice,
           payload.new.question_id,
           payload.new.is_success,
           payload.new.submitted_at

@@ -23,8 +23,7 @@ export default function RecordedMultipleChoiceQuestionById({
   questionId,
   className,
 }: IRecordedMultipleChoiceQuestionByIdProps) {
-  const { user, session, roles } = useSupabaseAuth();
-  const isAdmin = roles.includes("Admin");
+  const { user, session, isAdmin } = useSupabaseAuth();
   const { status, questionData, error } = useMultipleChoiceQuestion(questionId);
   const { attempts } = useMultipleChoiceAttempts(questionId);
   const [answersData, setAnswersData] = useState<

@@ -23,7 +23,7 @@ export default function Button({
   disabled,
   onClick,
   IconComponent,
-  fullWidth,
+  fullWidth = false,
   colorTheme,
 }: IButtonProps) {
   fullWidth = typeof fullWidth === "undefined" ? false : !!fullWidth;
@@ -56,11 +56,7 @@ export default function Button({
           onClick();
         }}
       >
-        {IconComponent && (
-          <div className={styles.iconWrapper}>
-            <IconComponent className={styles.reactIcon} />
-          </div>
-        )}
+        {IconComponent && <IconComponent className={styles.reactIcon} />}
         <span className={styles.label}>{label}</span>
       </div>
     </Tippy>

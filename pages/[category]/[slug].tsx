@@ -5,6 +5,7 @@ import path from "path";
 import Image from "next/image";
 import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
+import queryString from "query-string";
 import { postFilePaths, processShortcodes } from "lib/mdx/posts";
 import CenteredColumn from "components/common/CenteredColumn";
 import Chip from "components/common/Chip";
@@ -30,7 +31,14 @@ import {
 } from "components/common/colors";
 import ChallengesProgressDisplay from "components/assignments/ChallengesProgressDisplay";
 import serializeWithPlugins from "lib/mdx/serializeWithPlugins";
-import { IChallengeTypeAndId } from "types/challenge";
+import { ChallengeTypeEnum, IChallengeTypeAndId } from "types/challenge";
+import useSupabaseAuth from "hooks/useSupabaseAuth";
+import {
+  getMultipleChoiceIds,
+  getPythonChallengeIds,
+  compressForQueryString,
+} from "utils/challenge";
+import Link from "next/link";
 
 const components = {
   RecordedPythonChallenge,
@@ -68,6 +76,8 @@ export default function LectureNotePage({
   overviewMdxSources,
   challenges,
 }: ILectureNotePageProps) {
+  const { isAdmin } = useSupabaseAuth();
+
   return (
     <ChallengesContextProvider challenges={challenges}>
       <Layout>
@@ -108,6 +118,19 @@ export default function LectureNotePage({
             <Row>
               <Col>
                 <main className={styles.composable}>
+                  {isAdmin && (
+                    <div className="composable-block">
+                      <Link
+                        href={{
+                          pathname: "/admin/challenges/summary",
+                          query: compressForQueryString(challenges) as any,
+                        }}
+                      >
+                        Summary
+                      </Link>
+                    </div>
+                  )}
+
                   <MDXRemote {...bodyMdxSource} components={components} />
                 </main>
               </Col>
