@@ -49,8 +49,6 @@ export default function SolutionCodeModal({
       });
       const data = await fetchResult.json();
 
-      console.log(data);
-
       setSolutionCode((data as any).solutionCode);
       setStatus(RequestStatusEnum.SUCCESS);
     } catch (err) {

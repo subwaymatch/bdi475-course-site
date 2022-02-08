@@ -173,7 +173,7 @@ export default function MultipleChoiceQuestion({
 
             <div className={styles.controls}>
               <Button
-                onClick={showResult ? reset : submit}
+                handleClick={showResult ? reset : submit}
                 tooltip={getSubmitButtonTooltipMessage()}
                 disabled={
                   isLoading ||

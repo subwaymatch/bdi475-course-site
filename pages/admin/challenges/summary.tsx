@@ -18,6 +18,7 @@ import { ColorTheme } from "types/color-theme";
 import { BsDownload } from "react-icons/bs";
 import { RiDownloadLine } from "react-icons/ri";
 import Link from "next/link";
+import ButtonControls from "components/common/ButtonControls";
 
 export default function ChallengeResultsSummary() {
   const { isAdmin } = useSupabaseAuth();
@@ -82,19 +83,13 @@ export default function ChallengeResultsSummary() {
             <>
               <Row>
                 <Col>
-                  <div
-                    style={{
-                      borderTop: "1px solid #eee",
-                      paddingTop: "1rem",
-                      paddingBottom: "3rem",
-                    }}
-                  >
+                  <ButtonControls>
                     <Button
-                      onClick={download}
+                      handleClick={download}
                       label="Download as CSV"
                       IconComponent={RiDownloadLine}
                     />
-                  </div>
+                  </ButtonControls>
                 </Col>
               </Row>
 

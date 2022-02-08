@@ -39,6 +39,9 @@ import {
   compressForQueryString,
 } from "utils/challenge";
 import Link from "next/link";
+import ButtonControls from "components/common/ButtonControls";
+import Button from "components/ui/Button";
+import { RiDownloadLine } from "react-icons/ri";
 
 const components = {
   RecordedPythonChallenge,
@@ -119,16 +122,16 @@ export default function LectureNotePage({
               <Col>
                 <main className={styles.composable}>
                   {isAdmin && (
-                    <div className="composable-block">
+                    <ButtonControls>
                       <Link
                         href={{
                           pathname: "/admin/challenges/summary",
                           query: compressForQueryString(challenges) as any,
                         }}
                       >
-                        Summary
+                        <a>View Submission Results Summary ⟶</a>
                       </Link>
-                    </div>
+                    </ButtonControls>
                   )}
 
                   <MDXRemote {...bodyMdxSource} components={components} />

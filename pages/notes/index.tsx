@@ -100,21 +100,22 @@ export default function NotesPage() {
               colorTheme={ColorTheme.Green}
             />
 
-            {/* 
             <NoteItem
-              href="/notes/functions"
+              href="/lecture-notes/functions"
               thumbnail={
                 <Image
-                  src="/images/notes/1614015120608.png"
+                  src="/images/notes/abstract-006.png"
                   width={900}
-                  height={600}
+                  height={450}
                   alt=""
                 />
               }
-              date="2021-09-16"
+              date="2022-02-08"
               title="Functions Part 1"
               colorTheme={ColorTheme.Blue}
             />
+
+            {/* 
             <NoteItem
               href="/notes/functions-continued"
               thumbnail={

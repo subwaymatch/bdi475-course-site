@@ -11,7 +11,10 @@ import {
 } from "types/challenge";
 import { getMultipleChoiceIds, getPythonChallengeIds } from "utils/challenge";
 
-export default function useChallengeResults(challenges: IChallengeTypeAndId[]) {
+export default function useChallengeResults(
+  challenges: IChallengeTypeAndId[],
+  userId?: string
+) {
   const { user } = useSupabaseAuth();
   const multipleChoiceIds = getMultipleChoiceIds(challenges);
   const pythonChallengeIds = getPythonChallengeIds(challenges);
@@ -28,11 +31,13 @@ export default function useChallengeResults(challenges: IChallengeTypeAndId[]) {
     result.data
   );
 
+  const filterUserId = userId ? userId : user?.id;
+
   const load = async () => {
     const rpcParams = {
       python_challenge_ids: pythonChallengeIds,
       multiple_choice_ids: multipleChoiceIds,
-      user_id: user.id,
+      user_id: filterUserId,
     };
 
     const { data, error } = await supabaseClient.rpc<IChallengeResult>(

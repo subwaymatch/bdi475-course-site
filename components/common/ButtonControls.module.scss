@@ -1,0 +1,15 @@
+@import "styles/variables";
+
+.buttonControls {
+  border-top: 1px solid $color-border-gray;
+  padding-top: 1rem;
+  padding-bottom: 3rem;
+
+  & > * {
+    margin-right: 1rem;
+  }
+
+  & > :last-child {
+    margin-right: 0;
+  }
+}

@@ -1,0 +1,123 @@
+---
+title: Introduction to Functions
+listTitle: "Objectives ⟶"
+listItems:
+  - Recap the `list` data type and `for` loops.
+  - Recap the string (`str`) data type and related utility methods.
+  - Introduce the concept of functions.
+  - Learn how to create new functions using the `def` keyword.
+  - Learn parameters and return values.
+  - Introduce variable scopes.
+thumbnailSrc: /images/notes/abstract-006.png
+thumbnailWidth: 2400
+thumbnailHeight: 1200
+---
+
+[python-challenge 44]
+[python-challenge 71]
+[python-challenge 75]
+[python-challenge 48]
+[python-challenge 70]
+[python-challenge 63]
+
+<CenteredColumn>
+
+### What are functions?
+
+<Chip color="green">Back to Algebra</Chip>
+
+Let's forget about Python for a moment and go back a few years all the way back to Algebra. Do you remember any expressions that resemble the form of `f(x) = x + 3`?
+
+`f(x) = x + 3` is a _function_. For any given `x`, the function will add `3` to `x` and return that value.
+
+- `f(5) = 5 + 3`, returns `8`
+- `f(10) = 10 + 3`, returns `13`
+- `f(-3) = -3 + 3`, returns `0`
+
+In mathematical terms, a function takes one or more inputs and produces an output. Our previous function `f(x) = x + 3` can be broken down into:
+
+![Function Breakdown](https://accy570-fa2020-course-site-assets.s3-us-west-2.amazonaws.com/images/function-breakdown-01.png)
+
+`f` in front of the parentheses is an arbitrary name used to represent a function. We can choose to rename our function to `add_three`. This changes our function expression to `add_three(x) = x + 3`.
+
+A function can also take more than one input (e.g., `add_three(a, b) = a + b`).
+
+In programming, an inputs is referred as an _argument_, and an output is referred as a _return value_.
+
+![Function Diagram](https://accy570-fa2020-course-site-assets.s3-us-west-2.amazonaws.com/images/function-diagram-01.png)
+
+</CenteredColumn>
+
+[python-challenge 221]
+[python-challenge 222]
+[python-challenge 68]
+[python-challenge 64]
+[python-challenge 219]
+[python-challenge 65]
+[python-challenge 92]
+[python-challenge 94]
+[python-challenge 220]
+[python-challenge 93]
+[python-challenge 101]
+[python-challenge 97]
+[python-challenge 98]
+[python-challenge 99]
+[python-challenge 100]
+[python-challenge 96]
+[python-challenge 95]
+[python-challenge 102]
+
+[python-challenge 55]
+[python-challenge 79]
+[python-challenge 83]
+[python-challenge 115]
+[python-challenge 103]
+[python-challenge 104]
+[python-challenge 105]
+[python-challenge 76]
+[python-challenge 108]
+[python-challenge 109]
+[python-challenge 106]
+[python-challenge 107]
+
+<CenteredColumn>
+
+### Variable Scopes
+
+<Chip color="blue">Global Scope</Chip>
+
+Any variable that is declared outside of the function is in the **global scope**. A variable in the global scope is called a global variable. Both `global_one` and `global_two` variables in the code below are examples of global variables.
+
+![Global Variables](https://accy570-fa2020-course-site-assets.s3-us-west-2.amazonaws.com/images/global-scope-example-01.png)
+
+</CenteredColumn>
+
+[python-challenge 110]
+
+<CenteredColumn>
+
+### Variable Scopes
+
+<chip color="pink">Function Scope</chip>
+
+Any variable that is used inside a function is in the function scope. A variable in the function scope is called a **local** variable. When a function is called, a function scope for that function is created. The function scope includes both the arguments of the function and any variables created inside the function.
+
+![Local Variables](https://accy570-fa2020-course-site-assets.s3-us-west-2.amazonaws.com/images/function-scope-example-02.png)
+
+</CenteredColumn>
+
+[python-challenge 112]
+[python-challenge 111]
+
+<CenteredColumn>
+
+<Chip color="green">What happened?</Chip>
+
+Python throws an error 🚫 since `x` is already destroyed! Remember, function arguments reside in the local environment of the function and are destroyed once the function finishes running.
+
+![https://accy570-fa2020-course-site-assets.s3-us-west-2.amazonaws.com/images/function-scope-example-03.png](https://accy570-fa2020-course-site-assets.s3-us-west-2.amazonaws.com/images/function-scope-example-03.png)
+
+</CenteredColumn>
+
+[python-challenge 113]
+[python-challenge 114]

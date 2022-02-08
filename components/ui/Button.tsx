@@ -4,13 +4,14 @@ import { IconType } from "react-icons";
 import { isMobile } from "react-device-detect";
 import styles from "./Button.module.scss";
 import { ColorTheme } from "types/color-theme";
+import { forwardRef } from "react";
 
 export interface IButtonProps {
   className?: string;
   tooltip?: React.ReactNode;
   label: string;
   disabled?: boolean;
-  onClick: () => void;
+  handleClick?: () => void;
   IconComponent?: IconType;
   fullWidth?: boolean;
   colorTheme?: ColorTheme;
@@ -21,7 +22,7 @@ export default function Button({
   tooltip,
   label,
   disabled,
-  onClick,
+  handleClick,
   IconComponent,
   fullWidth = false,
   colorTheme,
@@ -46,15 +47,19 @@ export default function Button({
           [styles.fullWidth]: fullWidth,
           [styles.hasIcon]: IconComponent,
         })}
-        onClick={async (e) => {
-          e.preventDefault();
+        onClick={
+          handleClick
+            ? async (e) => {
+                e.preventDefault();
 
-          if (disabled) {
-            return;
-          }
+                if (disabled) {
+                  return;
+                }
 
-          onClick();
-        }}
+                handleClick();
+              }
+            : () => {}
+        }
       >
         {IconComponent && <IconComponent className={styles.reactIcon} />}
         <span className={styles.label}>{label}</span>
