@@ -40,7 +40,7 @@ export default function AssignmentsPage() {
                   dueDate={dayjs("2022-01-27").tz().format("ll")}
                   pointsAvailable={20}
                   status={AssignmentStatus.Available}
-                  link="/assignments-old/exercise-01"
+                  link="/assignments/exercise-01"
                   colorTheme={ColorTheme.Purple}
                 />
 
