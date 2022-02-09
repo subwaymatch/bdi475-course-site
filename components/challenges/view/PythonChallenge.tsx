@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import debounce from "lodash/debounce";
 import { useMeasure } from "react-use";
 import { desktop } from "constants/media-query-strings";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import usePythonRuntime from "hooks/usePythonRuntime";
 import useLocalStorage from "hooks/useLocalStorage";
 import { Col, Row } from "react-bootstrap";

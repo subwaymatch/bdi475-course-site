@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Editor from "@monaco-editor/react";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import { largeDesktop } from "constants/media-query-strings";
 import styles from "./CodeEditor.module.scss";
 import customTheme from "./custom-theme.json";

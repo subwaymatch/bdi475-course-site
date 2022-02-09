@@ -6,7 +6,7 @@ import { RiSendPlaneLine } from "react-icons/ri";
 import styles from "./Login.module.scss";
 import clsx from "clsx";
 import { supabaseClient } from "lib/supabase/supabaseClient";
-import { CircularProgress } from "@material-ui/core";
+import CircularProgress from "@mui/material/CircularProgress";
 
 export default function Login() {
   const [netId, setNetId] = useState("");

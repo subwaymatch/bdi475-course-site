@@ -13,7 +13,7 @@ import { FiLogIn, FiCalendar, FiHexagon } from "react-icons/fi";
 import { HiOutlineMail } from "react-icons/hi";
 import { RiBook3Line } from "react-icons/ri";
 import MenuButton from "components/SiteHeader/MenuButton";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import { desktop } from "constants/media-query-strings";
 import Tippy from "@tippyjs/react";
 import useSupabaseAuth from "hooks/useSupabaseAuth";
