@@ -5,8 +5,11 @@ import path from "path";
 import Image from "next/image";
 import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
-import queryString from "query-string";
-import { postFilePaths, processShortcodes } from "lib/mdx/posts";
+import {
+  extractChallenges,
+  postFilePaths,
+  processShortcodes,
+} from "lib/mdx/posts";
 import CenteredColumn from "components/common/CenteredColumn";
 import Chip from "components/common/Chip";
 import styles from "styles/pages/notes/common.module.scss";
@@ -31,17 +34,11 @@ import {
 } from "components/common/colors";
 import ChallengesProgressDisplay from "components/assignments/ChallengesProgressDisplay";
 import serializeWithPlugins from "lib/mdx/serializeWithPlugins";
-import { ChallengeTypeEnum, IChallengeTypeAndId } from "types/challenge";
+import { IChallengeTypeAndId } from "types/challenge";
 import useSupabaseAuth from "hooks/useSupabaseAuth";
-import {
-  getMultipleChoiceIds,
-  getPythonChallengeIds,
-  compressForQueryString,
-} from "utils/challenge";
 import Link from "next/link";
 import ButtonControls from "components/common/ButtonControls";
-import Button from "components/ui/Button";
-import { RiDownloadLine } from "react-icons/ri";
+import { Button, ButtonGroup } from "@mui/material";
 
 const components = {
   RecordedPythonChallenge,
@@ -71,6 +68,8 @@ interface ILectureNotePageProps {
   };
   overviewMdxSources: MDXRemoteSerializeResult[];
   challenges: IChallengeTypeAndId[];
+  category: string;
+  slug: string;
 }
 
 export default function LectureNotePage({
@@ -78,6 +77,8 @@ export default function LectureNotePage({
   frontMatterData,
   overviewMdxSources,
   challenges,
+  category,
+  slug,
 }: ILectureNotePageProps) {
   const { isAdmin } = useSupabaseAuth();
 
@@ -122,16 +123,15 @@ export default function LectureNotePage({
               <Col>
                 <main className={styles.composable}>
                   {isAdmin && (
-                    <ButtonControls>
-                      <Link
-                        href={{
-                          pathname: "/admin/challenges/summary",
-                          query: compressForQueryString(challenges) as any,
-                        }}
-                      >
-                        <a>View Submission Results Summary ⟶</a>
+                    <ButtonGroup>
+                      <Link href={`/${category}/${slug}/results-summary`}>
+                        <a>
+                          <Button size="large">
+                            View Submission Results Summary ⟶
+                          </Button>
+                        </a>
                       </Link>
-                    </ButtonControls>
+                    </ButtonGroup>
                   )}
 
                   <MDXRemote {...bodyMdxSource} components={components} />
@@ -149,15 +149,12 @@ export default function LectureNotePage({
 
 export const getStaticProps = async ({ params }) => {
   // find .mdx file path
-  const pathComponents = [process.cwd(), "_mdx_posts"];
-
-  // uncategorized posts do not belong into a separate folder
-  if (params.category !== "uncategorized") {
-    pathComponents.push(params.category);
-  }
-  pathComponents.push(`${params.slug}.mdx`);
-
-  const postFilePath = path.join.apply(null, pathComponents);
+  const postFilePath = path.join.apply(null, [
+    process.cwd(),
+    "_mdx_posts",
+    params.category,
+    `${params.slug}.mdx`,
+  ]);
   const source = fs.readFileSync(postFilePath);
 
   const { content, data: frontMatterData } = matter(source);
@@ -175,7 +172,8 @@ export const getStaticProps = async ({ params }) => {
     }
   }
 
-  let { replacedStr, challenges } = processShortcodes(content);
+  const challenges = extractChallenges(content);
+  const replacedStr = processShortcodes(content);
 
   // KaTeX does not work at the moment
   // see https://github.com/hashicorp/next-mdx-remote/issues/221 for details
@@ -187,6 +185,8 @@ export const getStaticProps = async ({ params }) => {
       frontMatterData,
       overviewMdxSources,
       challenges,
+      category: params.category,
+      slug: params.slug,
     },
   };
 };

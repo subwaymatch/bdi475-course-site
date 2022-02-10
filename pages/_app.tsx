@@ -21,7 +21,7 @@ const muiTheme = createTheme({
   palette: {
     primary: {
       contrastText: sassVariables.white,
-      main: sassVariables.purple,
+      main: sassVariables.blue,
     },
     secondary: {
       contrastText: sassVariables.white,

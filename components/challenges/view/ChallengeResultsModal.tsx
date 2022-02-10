@@ -19,19 +19,19 @@ enum RequestStatusEnum {
   ERROR,
 }
 
-interface ISolutionCodeModal {
+interface IChallengeResultsModal {
   isOpen: boolean;
   onClose: () => void;
   cid: number;
   language: string;
 }
 
-export default function SolutionCodeModal({
+export default function ChallengeResultsModal({
   isOpen,
   onClose,
   cid,
   language,
-}: ISolutionCodeModal) {
+}: IChallengeResultsModal) {
   const { user } = useSupabaseAuth();
   const [status, setStatus] = useState(RequestStatusEnum.LOADING);
   const [solutionCode, setSolutionCode] = useState("");
@@ -39,36 +39,6 @@ export default function SolutionCodeModal({
   const { session } = useSupabaseAuth();
 
   const isMdBreakpoint = useMediaQuery(md);
-
-  const getSolutionCode = async () => {
-    setStatus(RequestStatusEnum.LOADING);
-
-    try {
-      const fetchResult = await fetch(`/api/coding-challenge/${cid}/solution`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          authorization: `Bearer ${session.access_token}`,
-        },
-      });
-      const data = await fetchResult.json();
-
-      setSolutionCode((data as any).solutionCode);
-      setStatus(RequestStatusEnum.SUCCESS);
-    } catch (err) {
-      console.error(err);
-      setStatus(RequestStatusEnum.ERROR);
-      setErrorMessage(err.message);
-
-      toast.error(err.message);
-    }
-  };
-
-  useEffect(() => {
-    if (isOpen && user) {
-      getSolutionCode();
-    }
-  }, [isOpen, user]);
 
   const handleClose = async () => {
     onClose();
@@ -107,20 +77,7 @@ export default function SolutionCodeModal({
         </div>
 
         <div className={styles.modalBody}>
-          <SyntaxHighlighter
-            language={language}
-            style={materialDark}
-            customStyle={{
-              fontSize: "1.2rem",
-              border: "none",
-              borderRadius: 0,
-              margin: 0,
-              padding: "1rem 1.25rem",
-            }}
-            wrapLongLines={true}
-          >
-            {status === RequestStatusEnum.SUCCESS ? solutionCode : "# Loading"}
-          </SyntaxHighlighter>
+          {status === RequestStatusEnum.SUCCESS ? solutionCode : "# Loading"}
         </div>
 
         <div className={styles.modalFooter}>
