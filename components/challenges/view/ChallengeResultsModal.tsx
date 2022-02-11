@@ -1,95 +1,122 @@
-import { useEffect, useState } from "react";
-import ReactModal from "react-modal";
-import styles from "./SolutionCodeModal.module.scss";
-import _ from "lodash";
-import clsx from "clsx";
-import { Row, Col } from "react-bootstrap";
-import { CgClose } from "react-icons/cg";
-import useSupabaseAuth from "hooks/useSupabaseAuth";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { materialDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
-import { toast } from "react-toastify";
-import Chip from "components/common/Chip";
-import { useMediaQuery } from "@mui/material";
-import { md } from "constants/media-query-strings";
+import Box from "@mui/material/Box";
+import Modal from "@mui/material/Modal";
+import useChallengeResults from "hooks/useChallengeResults";
+import { IChallengeTypeAndId } from "types/challenge";
+import dayjs from "dayjs";
+import { CircularProgress } from "@mui/material";
+import { getChallengeTypeDisplayName } from "utils/challenge";
+import Button from "@mui/material/button";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Chip from "@mui/material/Chip";
+import CloseIcon from "@mui/icons-material/Close";
 
-enum RequestStatusEnum {
-  LOADING,
-  SUCCESS,
-  ERROR,
-}
+const modalBoxStyle = {
+  position: "absolute",
+  top: "5%",
+  right: "5%",
+  bottom: "5%",
+  left: "5%",
+  bgcolor: "background.paper",
+  boxShadow: 24,
+  p: 4,
+  overflow: "auto",
+};
 
-interface IChallengeResultsModal {
+interface IChallengeResultsModalProps {
+  challenges: IChallengeTypeAndId[];
+  userId: string;
   isOpen: boolean;
-  onClose: () => void;
-  cid: number;
-  language: string;
+  handleClose: () => void;
 }
 
 export default function ChallengeResultsModal({
+  challenges = [],
+  userId,
   isOpen,
-  onClose,
-  cid,
-  language,
-}: IChallengeResultsModal) {
-  const { user } = useSupabaseAuth();
-  const [status, setStatus] = useState(RequestStatusEnum.LOADING);
-  const [solutionCode, setSolutionCode] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-  const { session } = useSupabaseAuth();
-
-  const isMdBreakpoint = useMediaQuery(md);
-
-  const handleClose = async () => {
-    onClose();
-  };
+  handleClose,
+}: IChallengeResultsModalProps) {
+  const { data: challengeResults } = useChallengeResults(challenges, userId);
 
   return (
-    <ReactModal
-      isOpen={isOpen}
-      style={{
-        overlay: {
-          backgroundColor: "rgba(0, 0, 0, 0.75)",
-        },
-        content: {
-          top: isMdBreakpoint ? "40px" : "80px",
-          left: isMdBreakpoint ? "40px" : "80px",
-          right: isMdBreakpoint ? "40px" : "80px",
-          bottom: isMdBreakpoint ? "40px" : "80px",
-          backgroundColor: "#2f2f2f",
-          border: "none",
-          padding: "16px",
-        },
-      }}
-      ariaHideApp={false}
-      closeTimeoutMS={200}
-      onRequestClose={handleClose}
-    >
-      <div className={styles.modalContent}>
-        <div className={styles.modalHeader}>
-          <Row className="g-0">
-            <Col>
-              <Chip color="orange" small>
-                Solution Code
-              </Chip>
-            </Col>
-          </Row>
-        </div>
-
-        <div className={styles.modalBody}>
-          {status === RequestStatusEnum.SUCCESS ? solutionCode : "# Loading"}
-        </div>
-
-        <div className={styles.modalFooter}>
-          <button
-            onClick={handleClose}
-            className={clsx(styles.closeButton, styles.button)}
+    <div>
+      <Modal open={isOpen} onClose={handleClose}>
+        <Box sx={modalBoxStyle}>
+          <Box
+            sx={{
+              marginBottom: 2,
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
           >
-            <CgClose className={styles.reactIcon} />
-            <span className={styles.label}>Close</span>
-          </button>
-        </div>
-      </div>
-    </ReactModal>
+            <Chip
+              label="Challenge Attempts Summary"
+              sx={{ fontSize: "0.92rem" }}
+              color="secondary"
+            />
+
+            <Button
+              variant="outlined"
+              onClick={handleClose}
+              endIcon={<CloseIcon />}
+            >
+              Close
+            </Button>
+          </Box>
+
+          <TableContainer>
+            <Table className="left">
+              <TableHead>
+                <TableRow>
+                  <TableCell>ID</TableCell>
+                  <TableCell>Type</TableCell>
+                  <TableCell>Title</TableCell>
+                  <TableCell>Success Count</TableCell>
+                  <TableCell>Fail Count</TableCell>
+                  <TableCell>Total Count</TableCell>
+                  <TableCell>First Success</TableCell>
+                </TableRow>
+              </TableHead>
+
+              <TableBody>
+                {challengeResults?.map((o) => (
+                  <TableRow key={`${o.challenge_type}_${o.challenge_id}`}>
+                    <TableCell>{o.challenge_id}</TableCell>
+                    <TableCell>
+                      {getChallengeTypeDisplayName(o.challenge_type)}
+                    </TableCell>
+                    <TableCell>{o.challenge_title}</TableCell>
+                    <TableCell>{o.success_count}</TableCell>
+                    <TableCell>{o.fail_count}</TableCell>
+                    <TableCell>{o.total_count}</TableCell>
+                    <TableCell>
+                      {o.first_success &&
+                        dayjs(o.first_success).format("YYYY-MM-DD hh:mm a")}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+
+          {!challengeResults && (
+            <Box
+              sx={{
+                marginTop: 6,
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <CircularProgress color="inherit" />
+            </Box>
+          )}
+        </Box>
+      </Modal>
+    </div>
   );
 }

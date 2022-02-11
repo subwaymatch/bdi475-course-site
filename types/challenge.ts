@@ -8,11 +8,6 @@ export interface IChallengeTypeAndId {
   challengeId: number;
 }
 
-export interface ISimplifiedChallengeTypeAndIds {
-  i: (string | number)[];
-  t: string[];
-}
-
 export interface IChallengeResult {
   uid: string;
   email: string;

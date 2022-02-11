@@ -15,6 +15,10 @@ import saveAs from "file-saver";
 import dayjs from "dayjs";
 import { Box, Button, ButtonGroup, Modal } from "@mui/material";
 import Link from "next/link";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import DownloadIcon from "@mui/icons-material/Download";
+import { VscEye } from "react-icons/vsc";
+import ChallengeResultsModal from "components/challenges/view/ChallengeResultsModal";
 
 interface IChallengeResultsSummaryPageProps {
   frontMatterData: {
@@ -33,6 +37,7 @@ export default function ChallengeResultsSummary({
 }: IChallengeResultsSummaryPageProps) {
   const { isAdmin } = useSupabaseAuth();
   const [isDetailModalOpen, setIsDetailModalOpen] = useState<boolean>(false);
+  const [detailUserId, setDetailUserId] = useState<string>(null);
 
   const [results, setResults] = useState<IChallengeResultSummary[]>(null);
 
@@ -46,6 +51,16 @@ export default function ChallengeResultsSummary({
     );
 
     setResults(data);
+  };
+
+  const handleDetailModalClose = () => {
+    setIsDetailModalOpen(false);
+    setDetailUserId(null);
+  };
+
+  const openDetailModal = (userId: string) => {
+    setDetailUserId(userId);
+    setIsDetailModalOpen(true);
   };
 
   const download = async () => {
@@ -98,11 +113,20 @@ export default function ChallengeResultsSummary({
                       <ButtonGroup>
                         <Link href={`/${category}/${slug}`}>
                           <a>
-                            <Button size="large">
-                              ⟵ Back to {frontMatterData.title}
+                            <Button
+                              size="large"
+                              disableElevation
+                              startIcon={<ArrowBackIcon />}
+                            >
+                              Back to {frontMatterData.title}
                             </Button>
 
-                            <Button size="large" onClick={download}>
+                            <Button
+                              size="large"
+                              disableElevation
+                              onClick={download}
+                              startIcon={<DownloadIcon />}
+                            >
                               Download as CSV
                             </Button>
                           </a>
@@ -122,6 +146,7 @@ export default function ChallengeResultsSummary({
                           <th>Correct Count</th>
                           <th>Number of Challenges</th>
                           <th>Percentage</th>
+                          <th>Details</th>
                           <th>Last Success</th>
                         </tr>
                       </thead>
@@ -134,31 +159,39 @@ export default function ChallengeResultsSummary({
                             <td>{o.num_correct}</td>
                             <td>{o.num_challenges}</td>
                             <td>{o.percentage}%</td>
-                            <td>{o.last_success}</td>
+                            <td>
+                              <Button
+                                onClick={() => openDetailModal(o.uid)}
+                                variant="outlined"
+                                size="small"
+                                startIcon={<VscEye />}
+                              >
+                                View
+                              </Button>
+                            </td>
+                            <td>
+                              {o.last_success &&
+                                dayjs(o.last_success).format(
+                                  "YYYY-MM-DD hh:mm a"
+                                )}
+                            </td>
                           </tr>
                         ))}
                       </tbody>
                     </table>
-
-                    <Modal
-                      open={isDetailModalOpen}
-                      onClose={() => {
-                        setIsDetailModalOpen(false);
-                      }}
-                      aria-labelledby="modal-modal-title"
-                      aria-describedby="modal-modal-description"
-                    >
-                      <Box>
-                        <h2>Hello World</h2>
-                        Modal
-                      </Box>
-                    </Modal>
                   </Col>
                 </Row>
               </>
             )}
           </Container>
         </div>
+
+        <ChallengeResultsModal
+          challenges={challenges}
+          userId={detailUserId}
+          isOpen={isDetailModalOpen}
+          handleClose={handleDetailModalClose}
+        />
       </Layout>
     </ChallengesContextProvider>
   );

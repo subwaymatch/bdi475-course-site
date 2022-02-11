@@ -17,11 +17,14 @@ import Chip from "@mui/material/Chip";
 const muiTheme = createTheme({
   typography: {
     fontFamily: ["Inter", "sans-serif"].join(","),
+    button: {
+      textTransform: "none",
+    },
   },
   palette: {
     primary: {
       contrastText: sassVariables.white,
-      main: sassVariables.blue,
+      main: "#575757",
     },
     secondary: {
       contrastText: sassVariables.white,
@@ -42,6 +45,9 @@ const muiTheme = createTheme({
     success: {
       contrastText: sassVariables.white,
       main: sassVariables.green,
+    },
+    black: {
+      main: "#0d0d0d",
     },
   },
 });

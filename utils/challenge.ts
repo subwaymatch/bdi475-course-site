@@ -1,8 +1,4 @@
-import {
-  ChallengeTypeEnum,
-  IChallengeTypeAndId,
-  ISimplifiedChallengeTypeAndIds,
-} from "types/challenge";
+import { ChallengeTypeEnum, IChallengeTypeAndId } from "types/challenge";
 
 export function getChallengeIdAsNumberFromQuery(
   cid: string | string[]
@@ -14,6 +10,17 @@ export function getChallengeIdAsNumberFromQuery(
     : null;
 
   return challengeId;
+}
+
+export function getChallengeTypeDisplayName(challengeTypeStr: string) {
+  const challengeStringMap = {
+    "python-challenge": "Python",
+    "multiple-choice": "MCQ",
+  };
+
+  return challengeStringMap.hasOwnProperty(challengeTypeStr)
+    ? challengeStringMap[challengeTypeStr]
+    : "Unknown";
 }
 
 export function getMultipleChoiceIds(challenges: IChallengeTypeAndId[]) {

@@ -33,7 +33,24 @@ export default function useChallengeResults(
 
   const filterUserId = userId ? userId : user?.id;
 
+  const findChallengeIndex = (challengeId: number, challengeType: string) => {
+    return challenges.findIndex((challenge) => {
+      return (
+        challenge.challengeId === challengeId &&
+        challenge.challengeType === challengeType
+      );
+    });
+  };
+
   const load = async () => {
+    setResult((prevResult) =>
+      Object.assign({}, prevResult, {
+        status: QueryStatusEnum.LOADING,
+        data: null,
+        error: null,
+      })
+    );
+
     const rpcParams = {
       python_challenge_ids: pythonChallengeIds,
       multiple_choice_ids: multipleChoiceIds,
@@ -54,6 +71,13 @@ export default function useChallengeResults(
         })
       );
     } else {
+      data.sort((a, b) => {
+        return (
+          findChallengeIndex(a.challenge_id, a.challenge_type) -
+          findChallengeIndex(b.challenge_id, b.challenge_type)
+        );
+      });
+
       setResult((prevResult) =>
         Object.assign({}, prevResult, {
           status: QueryStatusEnum.SUCCESS,
@@ -101,11 +125,11 @@ export default function useChallengeResults(
         return o;
       });
 
-      setResult((prevResult) => ({
+      setResult({
         status: QueryStatusEnum.SUCCESS,
         data: challengeResults,
         error: null,
-      }));
+      });
     }
   };
 
@@ -149,6 +173,10 @@ export default function useChallengeResults(
       supabaseClient.removeSubscription(multipleChoiceAttemptSubscription);
     };
   }, [user]);
+
+  useEffect(() => {
+    load();
+  }, [userId]);
 
   useEffect(() => {
     challengeResultsRef.current = result?.data;
