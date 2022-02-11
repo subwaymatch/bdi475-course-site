@@ -5,15 +5,15 @@ import { IChallengeTypeAndId } from "types/challenge";
 import dayjs from "dayjs";
 import { CircularProgress } from "@mui/material";
 import { getChallengeTypeDisplayName } from "utils/challenge";
-import Button from "@mui/material/button";
+import Chip from "@mui/material/Chip";
+import Button from "@mui/material/Button";
+import CloseIcon from "@mui/icons-material/Close";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Chip from "@mui/material/Chip";
-import CloseIcon from "@mui/icons-material/Close";
 
 const modalBoxStyle = {
   position: "absolute",

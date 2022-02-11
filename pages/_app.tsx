@@ -28,7 +28,7 @@ const muiTheme = createTheme({
     },
     secondary: {
       contrastText: sassVariables.white,
-      main: sassVariables.green,
+      main: sassVariables.purple,
     },
     error: {
       contrastText: sassVariables.white,
@@ -45,9 +45,6 @@ const muiTheme = createTheme({
     success: {
       contrastText: sassVariables.white,
       main: sassVariables.green,
-    },
-    black: {
-      main: "#0d0d0d",
     },
   },
 });
