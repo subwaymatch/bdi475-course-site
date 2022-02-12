@@ -4,7 +4,6 @@ import { IconType } from "react-icons";
 import { isMobile } from "react-device-detect";
 import styles from "./Button.module.scss";
 import { ColorTheme } from "types/color-theme";
-import { forwardRef } from "react";
 
 export interface IButtonProps {
   className?: string;

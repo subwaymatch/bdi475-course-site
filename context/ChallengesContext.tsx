@@ -8,12 +8,14 @@ import useChallengeResults from "hooks/useChallengeResults";
 import { getMultipleChoiceIds, getPythonChallengeIds } from "utils/challenge";
 
 export interface IChallengesContext {
+  challenges: IChallengeTypeAndId[];
   multipleChoiceQuestions: IMultipleChoiceQuestionWithOptions[];
   pythonChallenges: definitions["coding_challenges"][];
   challengeResults: IChallengeResult[];
 }
 
 const ChallengesContext = createContext<IChallengesContext>({
+  challenges: null,
   multipleChoiceQuestions: null,
   pythonChallenges: null,
   challengeResults: null,
@@ -36,6 +38,7 @@ export const ChallengesContextProvider = (props: {
   return (
     <ChallengesContext.Provider
       value={{
+        challenges,
         multipleChoiceQuestions,
         pythonChallenges,
         challengeResults,

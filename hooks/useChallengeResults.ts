@@ -175,6 +175,10 @@ export default function useChallengeResults(
   }, [user]);
 
   useEffect(() => {
+    if (!user) {
+      return;
+    }
+
     load();
   }, [userId]);
 

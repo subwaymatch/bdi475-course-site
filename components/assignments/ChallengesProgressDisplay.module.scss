@@ -11,6 +11,21 @@
   background-color: $color-white;
 }
 
+.signInLink {
+  color: $color-gray-70;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    color: $color-gray-90;
+  }
+
+  .icon {
+    font-size: 1rem;
+    margin-right: 0.3rem;
+  }
+}
+
 .progressDisplay {
   display: flex;
   align-items: center;
@@ -18,7 +33,12 @@
   font-size: 0.85rem;
   letter-spacing: 0;
   color: $color-gray-70;
-  padding: 0.3rem 0;
+  padding: 0.3rem;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.9;
+  }
 
   .progressIcon {
     color: $color-black;

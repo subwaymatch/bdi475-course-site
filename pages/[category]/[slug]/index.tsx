@@ -37,7 +37,7 @@ import serializeWithPlugins from "lib/mdx/serializeWithPlugins";
 import { IChallengeTypeAndId } from "types/challenge";
 import useSupabaseAuth from "hooks/useSupabaseAuth";
 import Link from "next/link";
-import ButtonControls from "components/common/ButtonControls";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Button, ButtonGroup } from "@mui/material";
 
 const components = {
@@ -122,12 +122,16 @@ export default function LectureNotePage({
             <Row>
               <Col>
                 <main className={styles.composable}>
-                  {isAdmin && (
+                  {isAdmin && challenges?.length > 0 && (
                     <ButtonGroup>
                       <Link href={`/${category}/${slug}/results-summary`}>
                         <a>
-                          <Button size="large">
-                            View Submission Results Summary ⟶
+                          <Button
+                            size="large"
+                            disableElevation
+                            startIcon={<ArrowForwardIcon />}
+                          >
+                            View Submission Results Summary
                           </Button>
                         </a>
                       </Link>
