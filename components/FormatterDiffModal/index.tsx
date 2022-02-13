@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { DiffEditor } from "@monaco-editor/react";
 import ReactModal from "react-modal";
 import styles from "./FormatterDiffModal.module.scss";
-import customTheme from "../CodeEditor/custom-theme.json";
+import customTheme from "../CodeEditor/custom-light-theme.json";
 import cloneDeep from "lodash/cloneDeep";
 import clsx from "clsx";
 import { Row, Col } from "react-bootstrap";

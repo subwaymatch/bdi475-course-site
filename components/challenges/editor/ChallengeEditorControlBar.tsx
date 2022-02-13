@@ -3,7 +3,6 @@ import { MdDelete } from "react-icons/md";
 import { AiFillSave } from "react-icons/ai";
 import { VscRepoForked } from "react-icons/vsc";
 import { Container, Row, Col } from "react-bootstrap";
-import { motion } from "framer-motion";
 import { smallClickableVariants } from "animations/clickableVariants";
 import _ from "lodash";
 import styles from "./ChallengeEditorControlBar.module.scss";
@@ -34,14 +33,7 @@ export default function ChallengeEditorControlBar({
         <Row className={clsx(styles.controlRow, "align-items-center")}>
           <Col xs={4}>
             <Link href={backUrl}>
-              <motion.a
-                variants={smallClickableVariants}
-                whileHover="hover"
-                whileTap="tap"
-                className={styles.backButton}
-              >
-                ← Back to List
-              </motion.a>
+              <a className={styles.backButton}>← Back to List</a>
             </Link>
           </Col>
 
@@ -59,32 +51,23 @@ export default function ChallengeEditorControlBar({
 
           <Col xs={4}>
             <div className={styles.controls}>
-              <motion.div
-                variants={smallClickableVariants}
-                whileHover="hover"
-                whileTap="tap"
+              <div
                 className={clsx(styles.button, styles.save)}
                 onClick={() => save()}
               >
                 <AiFillSave className={styles.reactIcon} />
                 <span className={styles.label}>Save</span>
-              </motion.div>
+              </div>
 
-              <motion.div
-                variants={smallClickableVariants}
-                whileHover="hover"
-                whileTap="tap"
+              <div
                 className={clsx(styles.button, styles.clone)}
                 onClick={clone}
               >
                 <VscRepoForked className={styles.reactIcon} />
                 <span className={styles.label}>Clone</span>
-              </motion.div>
+              </div>
 
-              <motion.div
-                variants={smallClickableVariants}
-                whileHover="hover"
-                whileTap="tap"
+              <div
                 className={clsx(styles.button, styles.delete)}
                 onClick={async (e) => {
                   e.preventDefault();
@@ -99,7 +82,7 @@ export default function ChallengeEditorControlBar({
               >
                 <MdDelete className={styles.reactIcon} />
                 <span className={styles.label}>Delete</span>
-              </motion.div>
+              </div>
             </div>
           </Col>
         </Row>

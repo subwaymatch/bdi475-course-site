@@ -3,7 +3,7 @@ import Editor from "@monaco-editor/react";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { largeDesktop } from "constants/media-query-strings";
 import styles from "./CodeEditor.module.scss";
-import customTheme from "./custom-theme.json";
+import customLightTheme from "./custom-light-theme.json";
 
 interface ICodeEditorProps {
   editorValue: string;
@@ -26,7 +26,7 @@ export default function CodeEditor({
   const isLargeDesktop = useMediaQuery(largeDesktop);
 
   function handleEditorWillMount(monaco) {
-    monaco.editor.defineTheme("CustomTheme", customTheme);
+    monaco.editor.defineTheme("CustomTheme", customLightTheme);
     setIsThemeLoaded(true);
   }
 
