@@ -118,7 +118,7 @@ export default function PythonPlayground() {
         <div
           className={styles.logoWrapper}
           style={{
-            height: 23,
+            height: 25,
           }}
         >
           <Link href="/">
