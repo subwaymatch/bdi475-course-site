@@ -11,7 +11,8 @@ export enum PyodideResponse {
 }
 
 export interface ICodeExecutionResult {
-  type: string;
+  type?: string;
+  lastEvaluatedResult?: string;
   stdout: string;
   stderr: string;
   hasError: boolean;
