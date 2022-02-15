@@ -10,16 +10,42 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { FiPackage } from "react-icons/fi";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import Fab from "@mui/material/Fab";
+import { useState } from "react";
+import usePythonRuntime from "hooks/usePythonRuntime";
+import { toast } from "react-toastify";
 
 export default function PythonPlayground() {
   const [topBarRef, { height: topBarHeight }] = useMeasure();
-  const [playgroundBodyRef, { height: playgroundBodyHeight }] = useMeasure();
+  const [playgroundBodyRef] = useMeasure();
   const [bottomBarRef, { height: bottomBarHeight }] = useMeasure();
   const { height: windowHeight } = useWindowSize();
+  const { isRuntimeReady, runCode } = usePythonRuntime();
+  const [userCode, setUserCode] = useState("# Python");
+  const [output, setOutput] = useState("");
+  const [hasError, setHasError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  console.log(
-    `top=${topBarHeight}, body=${playgroundBodyHeight}, bottom=${bottomBarHeight}`
-  );
+  const runUserCode = async () => {
+    const result = await runCode(userCode);
+
+    console.log(result);
+
+    setOutput(result.stdout);
+    setHasError(result.hasError);
+    setErrorMessage(result.errorMessage);
+
+    if (result.hasError) {
+      toast.error("See the error message below.");
+    } else {
+      let message = "Run complete";
+
+      if (!result.stdout) {
+        message += " - your code did not print anything.";
+      }
+
+      toast(message);
+    }
+  };
 
   return (
     <div className={styles.playgroundWrapper}>
@@ -36,9 +62,15 @@ export default function PythonPlayground() {
       >
         <div className={styles.codeEditorWrapper}>
           <CodeEditor
-            editorValue={"# test code"}
-            onChange={() => {}}
-            onRun={() => {}}
+            editorValue={userCode}
+            onChange={setUserCode}
+            onRun={() => {
+              if (!isRuntimeReady) {
+                return;
+              }
+
+              runCode(userCode);
+            }}
             onCheck={null}
             language="python"
             height="100%"
@@ -52,6 +84,7 @@ export default function PythonPlayground() {
               sx={{
                 boxShadow: "none",
               }}
+              onClick={runUserCode}
             >
               <PlayArrowIcon />
             </Fab>
@@ -66,11 +99,8 @@ export default function PythonPlayground() {
 
             <div className={styles.boxContent}>
               <pre>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse vel elit neque. Quisque tempor pretium lorem sed
-                gravida. Proin eget lorem viverra, interdum orci in, euismod
-                elit. Fusce placerat lorem nulla. In id sem mattis, imperdiet
-                urna et, fermentum nunc. Fusce posuere justo eu rhoncus semper.
+                {output}
+                {errorMessage}
               </pre>
             </div>
           </div>
