@@ -2,10 +2,11 @@ import Layout from "components/Layout";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "styles/pages/notes/common.module.scss";
 import * as Comlink from "comlink";
+import type { TPyodideRuntime } from "lib/pyodide-comlink/worker";
 import { useEffect, useRef } from "react";
 
 export default function TestPage() {
-  const classRef = useRef<any>();
+  const classRef = useRef<Comlink.Remote<TPyodideRuntime>>();
 
   const init = async () => {
     const instance = await new classRef.current();
@@ -16,7 +17,7 @@ export default function TestPage() {
   };
 
   useEffect(() => {
-    const MyClass = Comlink.wrap(
+    const MyClass = Comlink.wrap<TPyodideRuntime>(
       new Worker(new URL("lib/pyodide-comlink/worker.ts", import.meta.url))
     );
 

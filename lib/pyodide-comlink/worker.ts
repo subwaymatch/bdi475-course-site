@@ -97,3 +97,5 @@ for key in list(globals().keys()).copy():
 }
 
 Comlink.expose(PyodideRuntime);
+
+export type TPyodideRuntime = typeof PyodideRuntime;

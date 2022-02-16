@@ -12,6 +12,7 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import Fab from "@mui/material/Fab";
 import { useState } from "react";
 import usePythonRuntime from "hooks/usePythonRuntime";
+import * as Comlink from "comlink";
 import { toast } from "react-toastify";
 
 export default function PythonPlayground() {
