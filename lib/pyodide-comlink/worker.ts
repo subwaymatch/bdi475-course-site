@@ -10,23 +10,30 @@ interface IPyodideWorkerGlobalScope extends WorkerGlobalScope {
 
 declare var self: IPyodideWorkerGlobalScope & typeof globalThis;
 
-class PyodideRuntime {
+export enum PyodideStatusEnum {
+  BEFORE_LOAD = "BEFORE_LOAD",
+  LOADING = "LOADING",
+  READY = "READY",
+}
+
+export class PyodideRuntime {
   static _instance;
 
-  isPyodideLoaded = false;
+  status: PyodideStatusEnum = PyodideStatusEnum.BEFORE_LOAD;
   pyodide = null;
 
   static getInstance() {
     return PyodideRuntime._instance || new PyodideRuntime();
   }
 
-  constructor() {
-    console.log("Initializing a new PyodideRuntime class instance!");
-  }
-
   async initialize() {
-    if (!this.isPyodideLoaded) {
+    console.log(`initialize`);
+    console.log(`PyodideRuntime.status=${this.status}`);
+    if (this.status === PyodideStatusEnum.BEFORE_LOAD) {
       console.log("Loading pyodide in PythonRuntime");
+
+      this.status = PyodideStatusEnum.LOADING;
+      console.log(`PyodideRuntime.status=${this.status}`);
 
       // @ts-expect-error
       this.pyodide = await loadPyodide({
@@ -41,12 +48,13 @@ class PyodideRuntime {
 
       console.log(self.pyodideGlobals);
 
-      this.isPyodideLoaded = true;
+      this.status = PyodideStatusEnum.READY;
+      console.log(`PyodideRuntime.status=${this.status}`);
     }
   }
 
   async findImports(codeStr): Promise<string[]> {
-    if (!this.isPyodideLoaded) {
+    if (this.status === PyodideStatusEnum.BEFORE_LOAD) {
       await this.initialize();
     }
 
@@ -54,7 +62,7 @@ class PyodideRuntime {
   }
 
   async runCode(codeStr) {
-    if (!this.isPyodideLoaded) {
+    if (this.status === PyodideStatusEnum.BEFORE_LOAD) {
       await this.initialize();
     }
 
@@ -93,6 +101,12 @@ for key in list(globals().keys()).copy():
     del globals()[key]`);
 
     return result;
+  }
+
+  async runAndTestCode(code, testCode) {
+    const concatenatedCode = code + "\n\n" + testCode;
+
+    return await this.runCode(concatenatedCode);
   }
 }
 

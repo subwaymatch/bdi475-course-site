@@ -10,41 +10,71 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { FiPackage } from "react-icons/fi";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import Fab from "@mui/material/Fab";
-import { useState } from "react";
-import usePythonRuntime from "hooks/usePythonRuntime";
 import * as Comlink from "comlink";
 import { toast } from "react-toastify";
+import type {
+  PyodideRuntime,
+  TPyodideRuntime,
+} from "lib/pyodide-comlink/worker";
+import { useState, useEffect, useRef } from "react";
+import { ICodeExecutionResult } from "types/pyodide";
 
 export default function PythonPlayground() {
   const [topBarRef, { height: topBarHeight }] = useMeasure();
-  const [playgroundBodyRef] = useMeasure();
   const [bottomBarRef, { height: bottomBarHeight }] = useMeasure();
   const { height: windowHeight } = useWindowSize();
-  const { isRuntimeReady, runCode } = usePythonRuntime();
+
+  let playgroundBodyHeight = windowHeight - topBarHeight - bottomBarHeight;
+  playgroundBodyHeight = Number.isFinite(playgroundBodyHeight)
+    ? playgroundBodyHeight
+    : 800;
+
+  console.log(
+    `windowHeight=${windowHeight}, topBarHeight=${topBarHeight}, bottomBarHeight=${bottomBarHeight}`
+  );
+
   const [userCode, setUserCode] = useState("# Python");
-  const [output, setOutput] = useState("");
-  const [hasError, setHasError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [codeResult, setCodeResult] = useState<ICodeExecutionResult>(null);
+
+  const classRef = useRef<Comlink.Remote<PyodideRuntime>>();
+
+  const init = async (o: Comlink.Remote<TPyodideRuntime>) => {
+    const instance = await new o();
+    await instance.initialize();
+
+    classRef.current = instance;
+  };
+
+  useEffect(() => {
+    const PyodideRuntimeClass = Comlink.wrap<TPyodideRuntime>(
+      new Worker(new URL("lib/pyodide-comlink/worker.ts", import.meta.url))
+    );
+
+    init(PyodideRuntimeClass);
+  }, []);
 
   const runUserCode = async () => {
-    const result = await runCode(userCode);
+    console.log(1);
+
+    console.log(2);
+
+    const instance = classRef.current;
+
+    await instance.initialize();
+    console.log(3);
+
+    const result = await instance.runCode(userCode);
+
+    console.log(4);
 
     console.log(result);
 
-    setOutput(result.stdout);
-    setHasError(result.hasError);
-    setErrorMessage(result.errorMessage);
+    setCodeResult(result);
 
     if (result.hasError) {
       toast.error("See the error message below.");
     } else {
-      let message = "Run complete";
-
-      if (!result.stdout) {
-        message += " - your code did not print anything.";
-      }
-
-      toast(message);
+      toast("Run complete");
     }
   };
 
@@ -57,21 +87,14 @@ export default function PythonPlayground() {
       <div
         className={styles.playgroundBody}
         style={{
-          height: `${windowHeight - topBarHeight - bottomBarHeight}px`,
+          height: `${playgroundBodyHeight}px`,
         }}
-        ref={playgroundBodyRef}
       >
         <div className={styles.codeEditorWrapper}>
           <CodeEditor
             editorValue={userCode}
             onChange={setUserCode}
-            onRun={() => {
-              if (!isRuntimeReady) {
-                return;
-              }
-
-              runCode(userCode);
-            }}
+            onRun={null}
             onCheck={null}
             language="python"
             height="100%"
@@ -100,8 +123,8 @@ export default function PythonPlayground() {
 
             <div className={styles.boxContent}>
               <pre>
-                {output}
-                {errorMessage}
+                {codeResult?.stdout}
+                {codeResult?.errorMessage}
               </pre>
             </div>
           </div>
@@ -114,13 +137,7 @@ export default function PythonPlayground() {
             </div>
 
             <div className={styles.boxContent}>
-              <pre>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse vel elit neque. Quisque tempor pretium lorem sed
-                gravida. Proin eget lorem viverra, interdum orci in, euismod
-                elit. Fusce placerat lorem nulla. In id sem mattis, imperdiet
-                urna et, fermentum nunc. Fusce posuere justo eu rhoncus semper.
-              </pre>
+              <pre>{codeResult?.lastEvaluatedResult}</pre>
             </div>
           </div>
         </div>
