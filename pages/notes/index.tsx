@@ -114,24 +114,8 @@ export default function NotesPage() {
               title="Functions Part 1"
               colorTheme={ColorTheme.Blue}
             />
-
-            {/* 
-            <NoteItem
-              href="/notes/functions-continued"
-              thumbnail={
-                <Image
-                  src="/images/notes/1614186667983.png"
-                  width={900}
-                  height={600}
-                  alt=""
-                />
-              }
-              date="2021-09-21"
-              title="Functions Part 2"
-              colorTheme={ColorTheme.Pink}
-            /> */}
           </Row>
-          {/* 
+
           <Row>
             <Col>
               <h2
@@ -140,64 +124,64 @@ export default function NotesPage() {
                   marginTop: "4rem",
                 }}
               >
-                Pandas <span className="purple accent" />
+                Pandas <span className="orange accent" />
               </h2>
             </Col>
           </Row>
 
           <Row>
             <NoteItem
-              href="https://bdi475.notion.site/Lecture-10-Intro-to-Pandas-49636dcca1f34d20963bd4fc43d567a6"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/4c66be3bb966b9a58564f58b6cabbf7d6c9a82e8/L08-introduction-to-jupyter-and-pandas-SOLUTION.ipynb"
               thumbnail={
                 <Image
-                  src="/images/notes/l11-pandas.png"
+                  src="/images/notes/pandas-gray-bg.png"
                   width={900}
-                  height={600}
+                  height={450}
                   alt=""
                 />
               }
-              date="2021-09-23"
-              title="Introduction to Pandas"
-              colorTheme={ColorTheme.Purple}
+              date="2022-02-10"
+              title="Introduction to Jupyter and Pandas"
+              colorTheme={ColorTheme.Orange}
             />
 
             <NoteItem
-              href="https://nbviewer.jupyter.org/github/bdi475/notebooks/blob/20b0866414f60b83c3228f2866fe737886a1a326/L11-pandas-filtering-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/4c66be3bb966b9a58564f58b6cabbf7d6c9a82e8/L09-pandas-series-dataframe-csv-filtering-SOLUTION.ipynb"
               thumbnail={
                 <Image
-                  src="/images/notes/l11-pandas.png"
+                  src="/images/notes/pandas-gray-bg.png"
                   width={900}
-                  height={600}
+                  height={450}
                   alt=""
                 />
               }
-              date="2021-09-28"
-              title="Pandas Filtering"
-              colorTheme={ColorTheme.Purple}
+              date="2022-02-15"
+              title="Series, DataFrame, CSV"
+              colorTheme={ColorTheme.Orange}
             />
 
             <NoteItem
-              href="https://nbviewer.jupyter.org/github/bdi475/notebooks/blob/e5fb4db0e1b2b75fbbe1bc61817648bd9629c675/L12-pandas-filtering-sorting-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/4c66be3bb966b9a58564f58b6cabbf7d6c9a82e8/L10-pandas-filtering-sorting-SOLUTION.ipynb"
               thumbnail={
                 <Image
-                  src="/images/notes/l11-pandas.png"
+                  src="/images/notes/pandas-gray-bg.png"
                   width={900}
-                  height={600}
+                  height={450}
                   alt=""
                 />
               }
-              date="2021-09-30"
+              date="2022-02-17"
               title="Pandas Filtering and Sorting"
-              colorTheme={ColorTheme.Purple}
+              colorTheme={ColorTheme.Orange}
             />
-
+            {/* 
             <NoteItem
               href="https://nbviewer.org/github/bdi475/notebooks/blob/6257679c27ed493fe92cad330f61beeb5139222d/L13-pandas-columns-missing-values-SOLUTION.ipynb"
               thumbnail={
                 <Image
-                  src="/images/notes/l11-pandas.png"
+                  src="/images/notes/pandas-gray-bg.png"
                   width={900}
-                  height={600}
+                  height={450}
                   alt=""
                 />
               }
@@ -210,9 +194,9 @@ export default function NotesPage() {
               href="https://nbviewer.org/github/bdi475/notebooks/blob/0c246b3a78572609f77b653fd73533d53fa90240/L14-datetime-groupby-merge-SOLUTION.ipynb"
               thumbnail={
                 <Image
-                  src="/images/notes/l11-pandas.png"
+                  src="/images/notes/pandas-gray-bg.png"
                   width={900}
-                  height={600}
+                  height={450}
                   alt=""
                 />
               }
@@ -225,19 +209,19 @@ export default function NotesPage() {
               href="https://nbviewer.org/github/bdi475/notebooks/blob/6739c2acdcd5ffcd13c2549c20ebde1737f44a24/L15-advanced-pandas-SOLUTION.ipynb"
               thumbnail={
                 <Image
-                  src="/images/notes/l11-pandas.png"
+                  src="/images/notes/pandas-gray-bg.png"
                   width={900}
-                  height={600}
+                  height={450}
                   alt=""
                 />
               }
               date="2021-10-14"
               title="More Pandas Exercise"
               colorTheme={ColorTheme.Purple}
-            />
+            /> */}
           </Row>
 
-          <Row>
+          {/* <Row>
             <Col>
               <h2
                 className="sectionTitle"

@@ -83,6 +83,16 @@
   {
     "date": "2022-02-17",
     "type": "LECTURE",
+    "text": ["Filter Data", "Sort Data", "In-place vs Out-of-place"]
+  },
+  {
+    "date": "2022-02-19",
+    "type": "EXERCISE",
+    "text": "Exercise 5"
+  },
+  {
+    "date": "2022-02-22",
+    "type": "LECTURE",
     "text": [
       "Pandas Data Types",
       "Datetime",
@@ -90,16 +100,6 @@
       "Column Operations",
       "Missing Values"
     ]
-  },
-  {
-    "date": "2022-02-18",
-    "type": "EXERCISE",
-    "text": "Exercise 5"
-  },
-  {
-    "date": "2022-02-22",
-    "type": "LECTURE",
-    "text": ["Filter Data", "Sort Data", "In-place vs Out-of-place"]
   },
   {
     "date": "2022-02-22",

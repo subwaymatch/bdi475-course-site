@@ -70,16 +70,16 @@ export default function AssignmentsPage() {
                   link="/assignments/exercise-04"
                   colorTheme={ColorTheme.Purple}
                 />
-                {/* 
+
                 <AssignmentItem
                   name="Exercise 5"
-                  dueDate={dayjs("2021-10-03").tz().format("ll")}
+                  dueDate={dayjs("2022-02-19").tz().format("ll")}
                   pointsAvailable={20}
                   status={AssignmentStatus.Available}
-                  link="https://nbviewer.org/github/bdi475/notebooks/blob/e5fb4db0e1b2b75fbbe1bc61817648bd9629c675/exercise-05-pandas-filtering-sorting-SOLUTION.ipynb"
+                  link="https://canvas.illinois.edu/courses/18332/assignments/432479"
                   colorTheme={ColorTheme.Purple}
                 />
-
+                {/* 
                 <AssignmentItem
                   name="Exercise 6"
                   dueDate={dayjs("2021-10-06").tz().format("ll")}
@@ -165,10 +165,19 @@ export default function AssignmentsPage() {
 
                 <AssignmentItem
                   name="Quiz 1"
-                  dueDate={dayjs("2021-02-03").tz().format("ll")}
+                  dueDate={dayjs("2022-02-03").tz().format("ll")}
                   pointsAvailable={25}
                   status={AssignmentStatus.Available}
                   link="/assignments/quiz-01"
+                  colorTheme={ColorTheme.Green}
+                />
+
+                <AssignmentItem
+                  name="Quiz 2 Prep"
+                  dueDate={dayjs("2022-12-31").tz().format("ll")}
+                  pointsAvailable={25}
+                  status={AssignmentStatus.Available}
+                  link="/assignments/quiz-02-prep"
                   colorTheme={ColorTheme.Green}
                 />
                 {/* 
