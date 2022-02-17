@@ -175,7 +175,7 @@ export default function AssignmentsPage() {
                 <AssignmentItem
                   name="Quiz 2 Prep"
                   dueDate={dayjs("2022-12-31").tz().format("ll")}
-                  pointsAvailable={25}
+                  pointsAvailable={0}
                   status={AssignmentStatus.Available}
                   link="/assignments/quiz-02-prep"
                   colorTheme={ColorTheme.Green}
