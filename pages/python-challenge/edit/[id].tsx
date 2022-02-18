@@ -10,6 +10,7 @@ import { definitions } from "types/database";
 import { getChallengeIdAsNumberFromQuery } from "utils/challenge";
 import { toast } from "react-toastify";
 import usePythonRuntime from "hooks/usePythonRuntime";
+import { PyodideStatusEnum } from "types/pyodide";
 
 export default function EditCodingChallengePage() {
   const router = useRouter();
@@ -20,7 +21,8 @@ export default function EditCodingChallengePage() {
   const [challengeData, setChallengeData] =
     useState<definitions["coding_challenges"]>(null);
   const challengeDataRef = useRef<definitions["coding_challenges"]>();
-  const { isRuntimeReady, runAndCheckCode } = usePythonRuntime();
+  const { status: pyodideStatus, runAndCheckCode } = usePythonRuntime();
+  const isRuntimeReady = pyodideStatus === PyodideStatusEnum.READY;
 
   challengeDataRef.current = challengeData;
 

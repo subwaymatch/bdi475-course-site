@@ -11,8 +11,7 @@ import { UserContextProvider } from "context/UserContext";
 import { supabaseClient } from "lib/supabase/supabaseClient";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import sassVariables from "styles/colors.module.scss";
-import Button from "@mui/material/Button";
-import Chip from "@mui/material/Chip";
+import PyodideRuntimeProvider from "lib/pyodide-comlink/PyodideRuntimeProvider";
 
 const muiTheme = createTheme({
   typography: {
@@ -52,7 +51,7 @@ const muiTheme = createTheme({
 function App({ Component, pageProps }: AppProps) {
   return (
     <UserContextProvider supabaseClient={supabaseClient}>
-      <PythonRuntimeProvider>
+      <PyodideRuntimeProvider>
         <ThemeProvider theme={muiTheme}>
           <ToastContainer
             position="top-center"
@@ -68,7 +67,7 @@ function App({ Component, pageProps }: AppProps) {
           />
           <Component {...pageProps} />
         </ThemeProvider>
-      </PythonRuntimeProvider>
+      </PyodideRuntimeProvider>
     </UserContextProvider>
   );
 }

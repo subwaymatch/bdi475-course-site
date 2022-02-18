@@ -12,12 +12,16 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import Fab from "@mui/material/Fab";
 import * as Comlink from "comlink";
 import { toast } from "react-toastify";
-import type {
-  PyodideRuntime,
-  TPyodideRuntime,
-} from "lib/pyodide-comlink/worker";
-import { useState, useEffect, useRef } from "react";
+import type { PyodideRuntime } from "lib/pyodide-comlink/worker";
+import { useState, useEffect } from "react";
 import { ICodeExecutionResult } from "types/pyodide";
+
+const runtime =
+  typeof window === "undefined"
+    ? null
+    : Comlink.wrap<PyodideRuntime>(
+        new Worker(new URL("lib/pyodide-comlink/worker.ts", import.meta.url))
+      );
 
 export default function PythonPlayground() {
   const [topBarRef, { height: topBarHeight }] = useMeasure();
@@ -36,21 +40,12 @@ export default function PythonPlayground() {
   const [userCode, setUserCode] = useState("# Python");
   const [codeResult, setCodeResult] = useState<ICodeExecutionResult>(null);
 
-  const classRef = useRef<Comlink.Remote<PyodideRuntime>>();
-
-  const init = async (o: Comlink.Remote<TPyodideRuntime>) => {
-    const instance = await new o();
+  const initialize = async (instance: Comlink.Remote<PyodideRuntime>) => {
     await instance.initialize();
-
-    classRef.current = instance;
   };
 
   useEffect(() => {
-    const PyodideRuntimeClass = Comlink.wrap<TPyodideRuntime>(
-      new Worker(new URL("lib/pyodide-comlink/worker.ts", import.meta.url))
-    );
-
-    init(PyodideRuntimeClass);
+    initialize(runtime);
   }, []);
 
   const runUserCode = async () => {
@@ -58,12 +53,10 @@ export default function PythonPlayground() {
 
     console.log(2);
 
-    const instance = classRef.current;
-
-    await instance.initialize();
+    await runtime.initialize();
     console.log(3);
 
-    const result = await instance.runCode(userCode);
+    const result = await runtime.runCode(userCode);
 
     console.log(4);
 

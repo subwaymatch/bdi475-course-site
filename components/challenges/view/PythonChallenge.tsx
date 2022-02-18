@@ -22,6 +22,7 @@ import InstructionText from "./InstructionText";
 import ChallengeButton from "./ChallengeButton";
 import SolutionCodeModal from "./SolutionCodeModal";
 import Chip from "components/common/Chip";
+import { PyodideStatusEnum } from "types/pyodide";
 
 const CodeEditor = dynamic(() => import("components/CodeEditor"), {
   ssr: false,
@@ -64,7 +65,12 @@ export default function PythonChallenge({
     }
   }, [localStorageKey]);
 
-  const { isRuntimeReady, runCode, runAndCheckCode } = usePythonRuntime();
+  const {
+    status: pyodideStatus,
+    runCode,
+    runAndCheckCode,
+  } = usePythonRuntime();
+  const isRuntimeReady = pyodideStatus === PyodideStatusEnum.READY;
 
   const reset = async () => {
     setUserCode(challengeData.starter_code);

@@ -1,7 +1,7 @@
 importScripts("https://cdn.jsdelivr.net/pyodide/v0.19.0/full/pyodide.js");
 
 import * as Comlink from "comlink";
-import { ICodeExecutionResult } from "types/pyodide";
+import { PyodideStatusEnum, ICodeExecutionResult } from "types/pyodide";
 
 interface IPyodideWorkerGlobalScope extends WorkerGlobalScope {
   pyodideGlobals?: string[];
@@ -10,20 +10,18 @@ interface IPyodideWorkerGlobalScope extends WorkerGlobalScope {
 
 declare var self: IPyodideWorkerGlobalScope & typeof globalThis;
 
-export enum PyodideStatusEnum {
-  BEFORE_LOAD = "BEFORE_LOAD",
-  LOADING = "LOADING",
-  READY = "READY",
-}
-
 export class PyodideRuntime {
-  static _instance;
+  static _instance: PyodideRuntime;
 
   status: PyodideStatusEnum = PyodideStatusEnum.BEFORE_LOAD;
   pyodide = null;
 
   static getInstance() {
-    return PyodideRuntime._instance || new PyodideRuntime();
+    if (!PyodideRuntime._instance) {
+      PyodideRuntime._instance = new PyodideRuntime();
+    }
+
+    return PyodideRuntime._instance;
   }
 
   async initialize() {
@@ -102,14 +100,10 @@ for key in list(globals().keys()).copy():
 
     return result;
   }
-
-  async runAndTestCode(code, testCode) {
-    const concatenatedCode = code + "\n\n" + testCode;
-
-    return await this.runCode(concatenatedCode);
-  }
 }
 
-Comlink.expose(PyodideRuntime);
+const instance = PyodideRuntime.getInstance();
+
+Comlink.expose(instance);
 
 export type TPyodideRuntime = typeof PyodideRuntime;

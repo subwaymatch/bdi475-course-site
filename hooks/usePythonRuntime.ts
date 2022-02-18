@@ -1,8 +1,8 @@
-import { PythonRuntimeContext } from "lib/pyodide/PythonRuntimeProvider";
+import { PyodideRuntimeContext } from "lib/pyodide-comlink/PyodideRuntimeProvider";
 import { useContext } from "react";
 
 const usePythonRuntime = () => {
-  return useContext(PythonRuntimeContext);
+  return useContext(PyodideRuntimeContext);
 };
 
 export default usePythonRuntime;
