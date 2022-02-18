@@ -1,7 +1,7 @@
 importScripts("https://cdn.jsdelivr.net/pyodide/v0.19.0/full/pyodide.js");
 
 import * as Comlink from "comlink";
-import { PyodideStatusEnum, ICodeExecutionResult } from "types/pyodide";
+import { PythonRuntimeStatus, ICodeExecutionResult } from "types/pyodide";
 
 interface IPyodideWorkerGlobalScope extends WorkerGlobalScope {
   pyodideGlobals?: string[];
@@ -13,7 +13,7 @@ declare var self: IPyodideWorkerGlobalScope & typeof globalThis;
 export class PyodideRuntime {
   static _instance: PyodideRuntime;
 
-  status: PyodideStatusEnum = PyodideStatusEnum.BEFORE_LOAD;
+  status: PythonRuntimeStatus = PythonRuntimeStatus.BEFORE_LOAD;
   pyodide = null;
 
   static getInstance() {
@@ -27,10 +27,10 @@ export class PyodideRuntime {
   async initialize() {
     console.log(`initialize`);
     console.log(`PyodideRuntime.status=${this.status}`);
-    if (this.status === PyodideStatusEnum.BEFORE_LOAD) {
+    if (this.status === PythonRuntimeStatus.BEFORE_LOAD) {
       console.log("Loading pyodide in PythonRuntime");
 
-      this.status = PyodideStatusEnum.LOADING;
+      this.status = PythonRuntimeStatus.LOADING;
       console.log(`PyodideRuntime.status=${this.status}`);
 
       // @ts-expect-error
@@ -46,13 +46,13 @@ export class PyodideRuntime {
 
       console.log(self.pyodideGlobals);
 
-      this.status = PyodideStatusEnum.READY;
+      this.status = PythonRuntimeStatus.READY;
       console.log(`PyodideRuntime.status=${this.status}`);
     }
   }
 
   async findImports(codeStr): Promise<string[]> {
-    if (this.status === PyodideStatusEnum.BEFORE_LOAD) {
+    if (this.status === PythonRuntimeStatus.BEFORE_LOAD) {
       await this.initialize();
     }
 
@@ -60,7 +60,7 @@ export class PyodideRuntime {
   }
 
   async runCode(codeStr) {
-    if (this.status === PyodideStatusEnum.BEFORE_LOAD) {
+    if (this.status === PythonRuntimeStatus.BEFORE_LOAD) {
       await this.initialize();
     }
 
@@ -105,5 +105,3 @@ for key in list(globals().keys()).copy():
 const instance = PyodideRuntime.getInstance();
 
 Comlink.expose(instance);
-
-export type TPyodideRuntime = typeof PyodideRuntime;

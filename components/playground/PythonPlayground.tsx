@@ -12,7 +12,7 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import Fab from "@mui/material/Fab";
 import * as Comlink from "comlink";
 import { toast } from "react-toastify";
-import type { PyodideRuntime } from "lib/pyodide-comlink/worker";
+import type { PyodideRuntime } from "lib/pyodide/pyodide-worker";
 import { useState, useEffect } from "react";
 import { ICodeExecutionResult } from "types/pyodide";
 
@@ -20,7 +20,7 @@ const runtime =
   typeof window === "undefined"
     ? null
     : Comlink.wrap<PyodideRuntime>(
-        new Worker(new URL("lib/pyodide-comlink/worker.ts", import.meta.url))
+        new Worker(new URL("lib/pyodide/pyodide-worker.ts", import.meta.url))
       );
 
 export default function PythonPlayground() {

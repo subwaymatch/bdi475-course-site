@@ -6,12 +6,11 @@ import "tippy.js/themes/light.css";
 import "styles/hljs.custom.scss";
 import "react-toastify/dist/ReactToastify.css";
 import "styles/toastify.custom.scss";
-import PythonRuntimeProvider from "lib/pyodide/PythonRuntimeProvider";
 import { UserContextProvider } from "context/UserContext";
 import { supabaseClient } from "lib/supabase/supabaseClient";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import sassVariables from "styles/colors.module.scss";
-import PyodideRuntimeProvider from "lib/pyodide-comlink/PyodideRuntimeProvider";
+import PythonRuntimeProvider from "lib/pyodide/PythonRuntimeProvider";
 
 const muiTheme = createTheme({
   typography: {
@@ -51,7 +50,7 @@ const muiTheme = createTheme({
 function App({ Component, pageProps }: AppProps) {
   return (
     <UserContextProvider supabaseClient={supabaseClient}>
-      <PyodideRuntimeProvider>
+      <PythonRuntimeProvider>
         <ThemeProvider theme={muiTheme}>
           <ToastContainer
             position="top-center"
@@ -67,7 +66,7 @@ function App({ Component, pageProps }: AppProps) {
           />
           <Component {...pageProps} />
         </ThemeProvider>
-      </PyodideRuntimeProvider>
+      </PythonRuntimeProvider>
     </UserContextProvider>
   );
 }

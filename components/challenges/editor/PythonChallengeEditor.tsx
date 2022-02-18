@@ -9,7 +9,7 @@ import produce from "immer";
 import cloneDeep from "lodash/cloneDeep";
 import isEqual from "lodash/isEqual";
 import styles from "./PythonChallengeEditor.module.scss";
-import { ICodeExecutionResult, PyodideStatusEnum } from "types/pyodide";
+import { ICodeExecutionResult, PythonRuntimeStatus } from "types/pyodide";
 import { definitions } from "types/database";
 import ChallengeEditorControlBar from "./ChallengeEditorControlBar";
 import EditorSectionBox from "./EditorSectionBox";
@@ -55,7 +55,7 @@ export default function PythonChallengeEditor({
     runCode,
     runAndCheckCode,
   } = usePythonRuntime();
-  const isRuntimeReady = pyodideStatus === PyodideStatusEnum.READY;
+  const isRuntimeReady = pyodideStatus === PythonRuntimeStatus.READY;
 
   const didChange = !isEqual(challengeData, workingChallengeData);
 
