@@ -10,23 +10,16 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { FiPackage } from "react-icons/fi";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import Fab from "@mui/material/Fab";
-import * as Comlink from "comlink";
 import { toast } from "react-toastify";
-import type { PyodideRuntime } from "lib/pyodide/pyodide-worker";
-import { useState, useEffect } from "react";
-import { ICodeExecutionResult } from "types/pyodide";
-
-const runtime =
-  typeof window === "undefined"
-    ? null
-    : Comlink.wrap<PyodideRuntime>(
-        new Worker(new URL("lib/pyodide/pyodide-worker.ts", import.meta.url))
-      );
+import { useState } from "react";
+import { ICodeExecutionResult, PythonRuntimeStatus } from "types/pyodide";
+import usePythonRuntime from "hooks/usePythonRuntime";
 
 export default function PythonPlayground() {
   const [topBarRef, { height: topBarHeight }] = useMeasure();
   const [bottomBarRef, { height: bottomBarHeight }] = useMeasure();
   const { height: windowHeight } = useWindowSize();
+  const { status: pythonRuntimeStatus, runCode } = usePythonRuntime();
 
   let playgroundBodyHeight = windowHeight - topBarHeight - bottomBarHeight;
   playgroundBodyHeight = Number.isFinite(playgroundBodyHeight)
@@ -40,28 +33,8 @@ export default function PythonPlayground() {
   const [userCode, setUserCode] = useState("# Python");
   const [codeResult, setCodeResult] = useState<ICodeExecutionResult>(null);
 
-  const initialize = async (instance: Comlink.Remote<PyodideRuntime>) => {
-    await instance.initialize();
-  };
-
-  useEffect(() => {
-    initialize(runtime);
-  }, []);
-
   const runUserCode = async () => {
-    console.log(1);
-
-    console.log(2);
-
-    await runtime.initialize();
-    console.log(3);
-
-    const result = await runtime.runCode(userCode);
-
-    console.log(4);
-
-    console.log(result);
-
+    const result = await runCode(userCode);
     setCodeResult(result);
 
     if (result.hasError) {
@@ -101,6 +74,7 @@ export default function PythonPlayground() {
               sx={{
                 boxShadow: "none",
               }}
+              disabled={pythonRuntimeStatus !== PythonRuntimeStatus.READY}
               onClick={runUserCode}
             >
               <PlayArrowIcon />

@@ -1,12 +1,12 @@
 import { useState, useEffect, createContext } from "react";
 import { PythonRuntimeStatus, ICodeExecutionResult } from "types/pyodide";
 import * as Comlink from "comlink";
-import type { PyodideRuntime } from "lib/pyodide/pyodide-worker";
+import type { PythonRuntime } from "lib/pyodide/pyodide-worker";
 
 const runtime =
   typeof window === "undefined"
     ? null
-    : Comlink.wrap<PyodideRuntime>(
+    : Comlink.wrap<PythonRuntime>(
         new Worker(new URL("lib/pyodide/pyodide-worker.ts", import.meta.url))
       );
 
@@ -20,7 +20,7 @@ export const PythonRuntimeContext = createContext<{
     code: string,
     testCode: string
   ) => Promise<ICodeExecutionResult>;
-  runtime: Comlink.Remote<PyodideRuntime>;
+  runtime: Comlink.Remote<PythonRuntime>;
 }>({
   status: PythonRuntimeStatus.BEFORE_LOAD,
   loadPackages: null,
@@ -53,20 +53,22 @@ export default function PythonRuntimeProvider({ children }: any) {
       throw new Error("Pyodide hasn't been loaded yet");
     }
 
-    return await runtime.runCode(code);
+    setStatus(PythonRuntimeStatus.RUNNING);
+
+    const result = await runtime.runCode(code);
+
+    setStatus(PythonRuntimeStatus.READY);
+
+    return result;
   };
 
   const runAndCheckCode = async (
     code,
     testCode
   ): Promise<ICodeExecutionResult> => {
-    if (status !== PythonRuntimeStatus.READY) {
-      throw new Error("Pyodide hasn't been loaded yet");
-    }
-
     const concatenatedCode = code + "\n\n" + testCode;
 
-    return await runtime.runCode(concatenatedCode);
+    return await runCode(concatenatedCode);
   };
 
   useEffect(() => {

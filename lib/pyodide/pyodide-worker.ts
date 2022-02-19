@@ -1,7 +1,7 @@
 importScripts("https://cdn.jsdelivr.net/pyodide/v0.19.0/full/pyodide.js");
 
 import * as Comlink from "comlink";
-import { PythonRuntimeStatus, ICodeExecutionResult } from "types/pyodide";
+import { ICodeExecutionResult } from "types/pyodide";
 
 interface IPyodideWorkerGlobalScope extends WorkerGlobalScope {
   pyodideGlobals?: string[];
@@ -10,60 +10,42 @@ interface IPyodideWorkerGlobalScope extends WorkerGlobalScope {
 
 declare var self: IPyodideWorkerGlobalScope & typeof globalThis;
 
-export class PyodideRuntime {
-  static _instance: PyodideRuntime;
+// this class does not check whether the runtime is
+// ready to run code or load packages
+// the status of the runtime must be updated and handled
+// by the Provider using this class
+export class PythonRuntime {
+  static _instance: PythonRuntime;
 
-  status: PythonRuntimeStatus = PythonRuntimeStatus.BEFORE_LOAD;
   pyodide = null;
 
   static getInstance() {
-    if (!PyodideRuntime._instance) {
-      PyodideRuntime._instance = new PyodideRuntime();
+    if (!PythonRuntime._instance) {
+      PythonRuntime._instance = new PythonRuntime();
     }
 
-    return PyodideRuntime._instance;
+    return PythonRuntime._instance;
   }
 
   async initialize() {
-    console.log(`initialize`);
-    console.log(`PyodideRuntime.status=${this.status}`);
-    if (this.status === PythonRuntimeStatus.BEFORE_LOAD) {
-      console.log("Loading pyodide in PythonRuntime");
+    // @ts-expect-error
+    this.pyodide = await loadPyodide({
+      indexURL: "https://cdn.jsdelivr.net/pyodide/v0.19.0/full/",
+    });
 
-      this.status = PythonRuntimeStatus.LOADING;
-      console.log(`PyodideRuntime.status=${this.status}`);
+    self.pyodideGlobals = (
+      await this.pyodide.runPythonAsync("list(globals().keys())")
+    ).toJs();
 
-      // @ts-expect-error
-      this.pyodide = await loadPyodide({
-        indexURL: "https://cdn.jsdelivr.net/pyodide/v0.19.0/full/",
-      });
-
-      self.pyodideGlobals = (
-        await this.pyodide.runPythonAsync("list(globals().keys())")
-      ).toJs();
-
-      console.log(`pyodideGlobals`);
-
-      console.log(self.pyodideGlobals);
-
-      this.status = PythonRuntimeStatus.READY;
-      console.log(`PyodideRuntime.status=${this.status}`);
-    }
+    console.log(`pyodideGlobals`);
+    console.log(self.pyodideGlobals);
   }
 
   async findImports(codeStr): Promise<string[]> {
-    if (this.status === PythonRuntimeStatus.BEFORE_LOAD) {
-      await this.initialize();
-    }
-
     return [];
   }
 
   async runCode(codeStr) {
-    if (this.status === PythonRuntimeStatus.BEFORE_LOAD) {
-      await this.initialize();
-    }
-
     let result: ICodeExecutionResult = {
       lastEvaluatedResult: null,
       stdout: null,
@@ -102,6 +84,6 @@ for key in list(globals().keys()).copy():
   }
 }
 
-const instance = PyodideRuntime.getInstance();
+const instance = PythonRuntime.getInstance();
 
 Comlink.expose(instance);
