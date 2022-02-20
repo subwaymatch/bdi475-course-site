@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "16.x"
+    "node": "14.x"
   },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "update-types": "npx openapi-typescript https://hrnkyfflkojpububxuxh.supabase.co/rest/v1/?apikey=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyODE3MzE2NywiZXhwIjoxOTQzNzQ5MTY3fQ.LiS_21tbgjTv04Cb0GX6dhcyZDGVFxz1Nt44Xzn3jb4 --output types/database/index.ts"
+    "update-types": "npx openapi-typescript https://hrnkyfflkojpububxuxh.supabase.co/rest/v1/?apikey=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCILiS_21tbgjTv04Cb0GX6dhcyZDGVFxz1Nt44Xzn3jb46MTYyODE3MzE2NywiZXhwIjoxOTQzNzQ5MTY3fQ. --output types/database/index.ts"
   },
   "dependencies": {
     "@dnd-kit/core": "^4.0.1",
