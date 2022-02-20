@@ -15,6 +15,30 @@ import { useState } from "react";
 import { ICodeExecutionResult, PythonRuntimeStatus } from "types/pyodide";
 import usePythonRuntime from "hooks/usePythonRuntime";
 import Drawer from "@mui/material/Drawer";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemAvatar from "@mui/material/ListItemAvatar";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import FolderIcon from "@mui/icons-material/Folder";
+
+import Box from "@mui/material/Box";
+import { VscPackage } from "react-icons/vsc";
+import { BsBox } from "react-icons/bs";
+import {
+  Backdrop,
+  CircularProgress,
+  LinearProgress,
+  Typography,
+} from "@mui/material";
 
 export default function PythonPlayground() {
   const [topBarRef, { height: topBarHeight }] = useMeasure();
@@ -36,6 +60,7 @@ export default function PythonPlayground() {
   );
   const [codeResult, setCodeResult] = useState<ICodeExecutionResult>(null);
   const [isPackageDrawerOpen, setIsPackageDrawerOpen] = useState(false);
+  const [isImportDialogOpen, setIsImportDialogOpen] = useState(true);
 
   const runUserCode = async () => {
     const imports = await findNewImports(userCode);
@@ -152,15 +177,84 @@ export default function PythonPlayground() {
         </div>
       </div>
 
-      <Drawer
-        anchor="left"
-        open={isPackageDrawerOpen}
-        onClose={() => setIsPackageDrawerOpen(false)}
-      >
-        {Array.from(Array(50).keys()).map((num) => (
-          <div key={num}>{num}</div>
-        ))}
-      </Drawer>
+      <PackagesDrawer
+        isOpen={isPackageDrawerOpen}
+        handleClose={() => setIsPackageDrawerOpen(false)}
+      />
+
+      <PackageInstallConfirmationDialog
+        isOpen={isImportDialogOpen}
+        handleClose={() => setIsImportDialogOpen(false)}
+      />
     </div>
+  );
+}
+
+function PackageInstallConfirmationDialog({ isOpen, handleClose }) {
+  return (
+    <Backdrop
+      sx={{ color: "#fff", backgroundColor: "rgba(0, 0, 0, 0.8)" }}
+      open={isOpen}
+      onClick={() => {}}
+    >
+      <Box>
+        <Typography
+          sx={{
+            marginBottom: 3,
+          }}
+        >
+          Python Package Manager
+        </Typography>
+
+        {["pandas", "numpy", "statsmodel"].map((packageName) => (
+          <Stack
+            direction="row"
+            justifyContent="flex-start"
+            alignItems="center"
+            key={packageName}
+            spacing={2}
+            sx={{
+              color: "#888",
+              paddingTop: 0.5,
+              paddingBottom: 0.5,
+            }}
+          >
+            <div style={{ color: "#69db58" }}>
+              <VscPackage />
+            </div>
+
+            <Typography>{packageName}</Typography>
+          </Stack>
+        ))}
+
+        <LinearProgress sx={{ marginTop: 3 }} />
+
+        <Typography sx={{ marginTop: 2 }}>Installing pandas...</Typography>
+      </Box>
+    </Backdrop>
+  );
+}
+
+function PackagesDrawer({ isOpen, handleClose }) {
+  const [value, setValue] = useState(0);
+
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue);
+  };
+
+  return (
+    <Drawer anchor="left" open={isOpen} onClose={handleClose}>
+      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          aria-label="basic tabs example"
+        >
+          <Tab label="Available" />
+          <Tab label="Installed" />
+        </Tabs>
+      </Box>
+      Test
+    </Drawer>
   );
 }
