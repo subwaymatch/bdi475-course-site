@@ -112,25 +112,23 @@ export default function ChallengeResultsSummary({
                     >
                       <ButtonGroup>
                         <Link href={`/${category}/${slug}`}>
-                          <a>
-                            <Button
-                              size="large"
-                              disableElevation
-                              startIcon={<ArrowBackIcon />}
-                            >
-                              Back to {frontMatterData.title}
-                            </Button>
-
-                            <Button
-                              size="large"
-                              disableElevation
-                              onClick={download}
-                              startIcon={<DownloadIcon />}
-                            >
-                              Download as CSV
-                            </Button>
-                          </a>
+                          <Button
+                            size="large"
+                            disableElevation
+                            startIcon={<ArrowBackIcon />}
+                          >
+                            Back to {frontMatterData.title}
+                          </Button>
                         </Link>
+
+                        <Button
+                          size="large"
+                          disableElevation
+                          onClick={download}
+                          startIcon={<DownloadIcon />}
+                        >
+                          Download as CSV
+                        </Button>
                       </ButtonGroup>
                     </Box>
                   </Col>
