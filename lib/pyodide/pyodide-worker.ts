@@ -41,11 +41,17 @@ export class PythonRuntime {
     console.log(self.pyodideGlobals);
   }
 
-  async findImports(codeStr): Promise<string[]> {
-    return [];
+  async findImports(code: string): Promise<string[]> {
+    const resultProxy = await this.pyodide.pyodide_py.find_imports(code);
+
+    const imports = resultProxy.toJs();
+
+    resultProxy.destroy();
+
+    return imports;
   }
 
-  async runCode(codeStr) {
+  async runCode(code: string) {
     let result: ICodeExecutionResult = {
       lastEvaluatedResult: null,
       stdout: null,
@@ -56,7 +62,7 @@ export class PythonRuntime {
 
     self.runPyodideFromJs = () => {
       try {
-        result.lastEvaluatedResult = this.pyodide.runPython(codeStr);
+        result.lastEvaluatedResult = this.pyodide.runPython(code);
       } catch (err) {
         result.hasError = true;
         result.errorMessage = err.message;

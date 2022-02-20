@@ -15,6 +15,8 @@ const runtime =
 export const PythonRuntimeContext = createContext<{
   status: PythonRuntimeStatus;
   loadPackages: (packages: string | Array<string>) => Promise<void>;
+  findImports: (code: string) => Promise<string[]>;
+  findNewImports: (code: string) => Promise<string[]>;
   runCode: (code: string) => Promise<ICodeExecutionResult>;
   runAndCheckCode: (
     code: string,
@@ -24,6 +26,8 @@ export const PythonRuntimeContext = createContext<{
 }>({
   status: PythonRuntimeStatus.BEFORE_LOAD,
   loadPackages: null,
+  findImports: null,
+  findNewImports: null,
   runCode: null,
   runAndCheckCode: null,
   runtime,
@@ -42,10 +46,32 @@ export default function PythonRuntimeProvider({ children }: any) {
     setStatus(PythonRuntimeStatus.READY);
   };
 
-  const loadPackages = async (packages: string | Array<string> = []) => {
+  const loadPackages = async (packages: string | string[] = []) => {
     if (typeof packages === "string") {
       packages = [packages];
     }
+  };
+
+  const findImports = async (code): Promise<string[]> => {
+    return await runtime.findImports(code);
+  };
+
+  const findNewImports = async (code): Promise<string[]> => {
+    const allImports = await runtime.findImports(code);
+
+    let loadedPackages = [];
+    console.log(`loadedPackages`);
+    let loadedPackagesProxy = runtime.pyodide.loadedPackages;
+    console.log(loadedPackagesProxy);
+    if (await runtime.pyodide.isPyProxy(loadedPackagesProxy)) {
+      console.log("pyProxy!");
+      loadedPackages = loadedPackagesProxy.toJs();
+      loadedPackagesProxy.destroy();
+    }
+
+    console.log(loadedPackages);
+
+    return allImports;
   };
 
   const runCode = async (code): Promise<ICodeExecutionResult> => {
@@ -80,6 +106,8 @@ export default function PythonRuntimeProvider({ children }: any) {
       value={{
         status,
         loadPackages,
+        findImports,
+        findNewImports,
         runCode,
         runAndCheckCode,
         runtime,

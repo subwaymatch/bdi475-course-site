@@ -8,7 +8,10 @@ import "react-toastify/dist/ReactToastify.css";
 import "styles/toastify.custom.scss";
 import { UserContextProvider } from "context/UserContext";
 import { supabaseClient } from "lib/supabase/supabaseClient";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import {
+  createTheme,
+  ThemeProvider as MuiThemeProvider,
+} from "@mui/material/styles";
 import sassVariables from "styles/colors.module.scss";
 import PythonRuntimeProvider from "lib/pyodide/PythonRuntimeProvider";
 
@@ -51,7 +54,7 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <UserContextProvider supabaseClient={supabaseClient}>
       <PythonRuntimeProvider>
-        <ThemeProvider theme={muiTheme}>
+        <MuiThemeProvider theme={muiTheme}>
           <ToastContainer
             position="top-center"
             theme="colored"
@@ -65,7 +68,7 @@ function App({ Component, pageProps }: AppProps) {
             pauseOnHover
           />
           <Component {...pageProps} />
-        </ThemeProvider>
+        </MuiThemeProvider>
       </PythonRuntimeProvider>
     </UserContextProvider>
   );

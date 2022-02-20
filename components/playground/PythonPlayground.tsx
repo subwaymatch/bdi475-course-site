@@ -14,26 +14,34 @@ import { toast } from "react-toastify";
 import { useState } from "react";
 import { ICodeExecutionResult, PythonRuntimeStatus } from "types/pyodide";
 import usePythonRuntime from "hooks/usePythonRuntime";
+import Drawer from "@mui/material/Drawer";
 
 export default function PythonPlayground() {
   const [topBarRef, { height: topBarHeight }] = useMeasure();
   const [bottomBarRef, { height: bottomBarHeight }] = useMeasure();
   const { height: windowHeight } = useWindowSize();
-  const { status: pythonRuntimeStatus, runCode } = usePythonRuntime();
+  const {
+    status: pythonRuntimeStatus,
+    findNewImports,
+    runCode,
+  } = usePythonRuntime();
 
   let playgroundBodyHeight = windowHeight - topBarHeight - bottomBarHeight;
   playgroundBodyHeight = Number.isFinite(playgroundBodyHeight)
     ? playgroundBodyHeight
     : 800;
 
-  console.log(
-    `windowHeight=${windowHeight}, topBarHeight=${topBarHeight}, bottomBarHeight=${bottomBarHeight}`
+  const [userCode, setUserCode] = useState(
+    "# Python\nimport sys\nsys.version\n"
   );
-
-  const [userCode, setUserCode] = useState("# Python");
   const [codeResult, setCodeResult] = useState<ICodeExecutionResult>(null);
+  const [isPackageDrawerOpen, setIsPackageDrawerOpen] = useState(false);
 
   const runUserCode = async () => {
+    const imports = await findNewImports(userCode);
+
+    console.log(`imports=${imports}`);
+
     const result = await runCode(userCode);
     setCodeResult(result);
 
@@ -123,7 +131,7 @@ export default function PythonPlayground() {
 
             <div
               className={clsx(styles.button, styles.settings)}
-              onClick={() => {}}
+              onClick={() => setIsPackageDrawerOpen(true)}
             >
               <FiPackage className={styles.reactIcon} />
               <span className={styles.label}>Packages</span>
@@ -143,6 +151,16 @@ export default function PythonPlayground() {
           </Link>
         </div>
       </div>
+
+      <Drawer
+        anchor="left"
+        open={isPackageDrawerOpen}
+        onClose={() => setIsPackageDrawerOpen(false)}
+      >
+        {Array.from(Array(50).keys()).map((num) => (
+          <div key={num}>{num}</div>
+        ))}
+      </Drawer>
     </div>
   );
 }
