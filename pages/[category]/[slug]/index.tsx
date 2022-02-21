@@ -61,7 +61,7 @@ const components = {
   DarkGray,
 };
 
-interface ILectureNotePageProps {
+interface IPageWithChallengesProps {
   bodyMdxSource: MDXRemoteSerializeResult;
   frontMatterData: {
     [key: string]: any;
@@ -72,14 +72,14 @@ interface ILectureNotePageProps {
   slug: string;
 }
 
-export default function LectureNotePage({
+export default function PageWithChallenges({
   bodyMdxSource,
   frontMatterData,
   overviewMdxSources,
   challenges,
   category,
   slug,
-}: ILectureNotePageProps) {
+}: IPageWithChallengesProps) {
   const { isAdmin } = useSupabaseAuth();
 
   return (

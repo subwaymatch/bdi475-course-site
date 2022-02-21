@@ -50,26 +50,33 @@ export default function PythonRuntimeProvider({ children }: any) {
     if (typeof packages === "string") {
       packages = [packages];
     }
+
+    console.log(`loadPackages, packages:`);
+    console.log(packages);
+
+    await runtime.pyodide.loadPackage(packages);
   };
 
   const findImports = async (code): Promise<string[]> => {
+    const loadedPackages = await runtime.pyodide.loadedPackages;
+
+    console.log(`findImports`);
+    console.log(loadedPackages);
+
     return await runtime.findImports(code);
   };
 
   const findNewImports = async (code): Promise<string[]> => {
-    const allImports = await runtime.findImports(code);
+    const allImports = await findImports(code);
 
-    let loadedPackages = [];
-    console.log(`loadedPackages`);
-    let loadedPackagesProxy = runtime.pyodide.loadedPackages;
-    console.log(loadedPackagesProxy);
-    if (await runtime.pyodide.isPyProxy(loadedPackagesProxy)) {
-      console.log("pyProxy!");
-      loadedPackages = loadedPackagesProxy.toJs();
-      loadedPackagesProxy.destroy();
-    }
+    const findImportsResult = await runtime.findImports(code);
 
-    console.log(loadedPackages);
+    console.log(`findImportsResult`);
+    console.log(findImportsResult);
+
+    // await runtime.pyodide.loadPackage(findImportsResult);
+
+    await runtime.pyodide.loadPackagesFromImports(code);
 
     return allImports;
   };

@@ -33,6 +33,8 @@ export class PythonRuntime {
       indexURL: "https://cdn.jsdelivr.net/pyodide/v0.19.0/full/",
     });
 
+    await this.pyodide.registerComlink(Comlink);
+
     self.pyodideGlobals = (
       await this.pyodide.runPythonAsync("list(globals().keys())")
     ).toJs();

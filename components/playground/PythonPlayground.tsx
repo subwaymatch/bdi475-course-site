@@ -17,28 +17,9 @@ import usePythonRuntime from "hooks/usePythonRuntime";
 import Drawer from "@mui/material/Drawer";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import FolderIcon from "@mui/icons-material/Folder";
-
 import Box from "@mui/material/Box";
 import { VscPackage } from "react-icons/vsc";
-import { BsBox } from "react-icons/bs";
-import {
-  Backdrop,
-  CircularProgress,
-  LinearProgress,
-  Typography,
-} from "@mui/material";
+import { Backdrop, LinearProgress, Typography } from "@mui/material";
 
 export default function PythonPlayground() {
   const [topBarRef, { height: topBarHeight }] = useMeasure();
@@ -46,6 +27,7 @@ export default function PythonPlayground() {
   const { height: windowHeight } = useWindowSize();
   const {
     status: pythonRuntimeStatus,
+    loadPackages,
     findNewImports,
     runCode,
   } = usePythonRuntime();
@@ -60,12 +42,14 @@ export default function PythonPlayground() {
   );
   const [codeResult, setCodeResult] = useState<ICodeExecutionResult>(null);
   const [isPackageDrawerOpen, setIsPackageDrawerOpen] = useState(false);
-  const [isImportDialogOpen, setIsImportDialogOpen] = useState(true);
+  const [isImportDialogOpen, setIsImportDialogOpen] = useState(false);
 
   const runUserCode = async () => {
     const imports = await findNewImports(userCode);
 
-    console.log(`imports=${imports}`);
+    // console.log(`new imports=${imports}`);
+
+    // await loadPackages(imports);
 
     const result = await runCode(userCode);
     setCodeResult(result);
@@ -199,11 +183,14 @@ function PackageInstallConfirmationDialog({ isOpen, handleClose }) {
     >
       <Box>
         <Typography
+          variant="body2"
           sx={{
             marginBottom: 3,
+            fontWeight: 600,
+            letterSpacing: 0,
           }}
         >
-          Python Package Manager
+          Python Package Installer
         </Typography>
 
         {["pandas", "numpy", "statsmodel"].map((packageName) => (
@@ -223,13 +210,15 @@ function PackageInstallConfirmationDialog({ isOpen, handleClose }) {
               <VscPackage />
             </div>
 
-            <Typography>{packageName}</Typography>
+            <Typography variant="body2">{packageName}</Typography>
           </Stack>
         ))}
 
-        <LinearProgress sx={{ marginTop: 3 }} />
+        <LinearProgress sx={{ marginTop: 4 }} />
 
-        <Typography sx={{ marginTop: 2 }}>Installing pandas...</Typography>
+        <Typography variant="body2" sx={{ marginTop: 1.5 }}>
+          Downloading pandas...
+        </Typography>
       </Box>
     </Backdrop>
   );
