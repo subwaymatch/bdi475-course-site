@@ -6,6 +6,11 @@ export enum PythonRuntimeStatus {
   LOADING_PACKAGES = "LOADING_PACKAGES",
 }
 
+export interface IPyodidePackageNameAndVersion {
+  name: string;
+  version: string;
+}
+
 export interface ICodeExecutionResult {
   type?: string;
   lastEvaluatedResult?: string;

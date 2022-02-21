@@ -14,12 +14,8 @@ import { toast } from "react-toastify";
 import { useState } from "react";
 import { ICodeExecutionResult, PythonRuntimeStatus } from "types/pyodide";
 import usePythonRuntime from "hooks/usePythonRuntime";
-import Drawer from "@mui/material/Drawer";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Box from "@mui/material/Box";
-import { VscPackage } from "react-icons/vsc";
-import { Backdrop, LinearProgress, Typography } from "@mui/material";
+import PackagesDrawer from "components/python-runtime/PackagesDrawer";
+import PackageInstallConfirmationDialog from "components/python-runtime/PackageInstallConfirmationDialog";
 
 export default function PythonPlayground() {
   const [topBarRef, { height: topBarHeight }] = useMeasure();
@@ -171,79 +167,5 @@ export default function PythonPlayground() {
         handleClose={() => setIsImportDialogOpen(false)}
       />
     </div>
-  );
-}
-
-function PackageInstallConfirmationDialog({ isOpen, handleClose }) {
-  return (
-    <Backdrop
-      sx={{ color: "#fff", backgroundColor: "rgba(0, 0, 0, 0.8)" }}
-      open={isOpen}
-      onClick={() => {}}
-    >
-      <Box>
-        <Typography
-          variant="body2"
-          sx={{
-            marginBottom: 3,
-            fontWeight: 600,
-            letterSpacing: 0,
-          }}
-        >
-          Python Package Installer
-        </Typography>
-
-        {["pandas", "numpy", "statsmodel"].map((packageName) => (
-          <Stack
-            direction="row"
-            justifyContent="flex-start"
-            alignItems="center"
-            key={packageName}
-            spacing={2}
-            sx={{
-              color: "#888",
-              paddingTop: 0.5,
-              paddingBottom: 0.5,
-            }}
-          >
-            <div style={{ color: "#69db58" }}>
-              <VscPackage />
-            </div>
-
-            <Typography variant="body2">{packageName}</Typography>
-          </Stack>
-        ))}
-
-        <LinearProgress sx={{ marginTop: 4 }} />
-
-        <Typography variant="body2" sx={{ marginTop: 1.5 }}>
-          Downloading pandas...
-        </Typography>
-      </Box>
-    </Backdrop>
-  );
-}
-
-function PackagesDrawer({ isOpen, handleClose }) {
-  const [value, setValue] = useState(0);
-
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
-  };
-
-  return (
-    <Drawer anchor="left" open={isOpen} onClose={handleClose}>
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          aria-label="basic tabs example"
-        >
-          <Tab label="Available" />
-          <Tab label="Installed" />
-        </Tabs>
-      </Box>
-      Test
-    </Drawer>
   );
 }

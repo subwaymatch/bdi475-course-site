@@ -1,0 +1,50 @@
+@import "styles/variables";
+
+.packageListWrapper {
+  padding: 1rem 0;
+
+  .packageItem {
+    display: flex;
+    padding: 0.25rem 0.75rem;
+
+    align-items: center;
+    border-bottom: 1px solid $color-border-gray;
+
+    .name {
+      // font-family: $font-monospace;
+      color: $color-gray-100;
+      font-weight: 550;
+      font-size: 0.95rem;
+      flex-grow: 1;
+    }
+
+    &.installed {
+      .name {
+      }
+    }
+
+    .version,
+    .installStatus {
+      font-size: 0.75rem;
+      line-height: 1.4;
+      font-weight: 600;
+
+      padding: 0.1rem 0.3rem;
+      margin: 0 0.1rem;
+      border-radius: 0.15rem;
+    }
+
+    .version {
+      color: $color-gray-60;
+      background-color: $color-gray-20;
+    }
+
+    .installStatus {
+      color: $color-white;
+      background-color: $color-green;
+    }
+
+    .actionsWrapper {
+    }
+  }
+}
