@@ -16,6 +16,21 @@
 .playgroundBody {
   display: flex;
 
+  :global(.gutter) {
+    background-color: $color-gray-30;
+    background-repeat: no-repeat;
+    background-position: 50%;
+
+    &:hover {
+      background-color: $color-gray-40;
+    }
+  }
+
+  :global(.gutter.gutter-horizontal) {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==");
+    cursor: col-resize;
+  }
+
   .codeEditorWrapper {
     width: 50%;
     position: relative;

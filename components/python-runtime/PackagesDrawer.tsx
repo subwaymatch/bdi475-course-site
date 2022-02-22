@@ -46,8 +46,6 @@ export default function PackagesDrawer({ isOpen, handleClose }) {
   };
 
   const handlePackageClick = (packageName: string) => {
-    console.log(`handlePackageClick, packageName=${packageName}`);
-
     if (loadedPackages.includes(packageName)) {
       return;
     }
@@ -96,6 +94,11 @@ export default function PackagesDrawer({ isOpen, handleClose }) {
               [styles.enabled]: packagesToInstall.length > 0,
               [styles.disabled]: packagesToInstall.length === 0,
             })}
+            onClick={() => {
+              if (packagesToInstall.length === 0) {
+                return;
+              }
+            }}
           >
             <div className={styles.label}>
               <span>
@@ -134,7 +137,7 @@ export default function PackagesDrawer({ isOpen, handleClose }) {
           paddingTop: drawerStickyHeight,
         }}
       >
-        {packages.map((o, i) => {
+        {packages.map((o) => {
           const installed = loadedPackages.includes(o.name);
           const notInstalled = !installed;
           const toInstall = packagesToInstall.includes(o.name);

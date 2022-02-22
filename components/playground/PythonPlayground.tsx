@@ -16,6 +16,7 @@ import { ICodeExecutionResult, PythonRuntimeStatus } from "types/pyodide";
 import usePythonRuntime from "hooks/usePythonRuntime";
 import PackagesDrawer from "components/python-runtime/PackagesDrawer";
 import PackageInstallConfirmationDialog from "components/python-runtime/PackageInstallConfirmationDialog";
+import Split from "react-split";
 
 export default function PythonPlayground() {
   const [topBarRef, { height: topBarHeight }] = useMeasure();
@@ -66,7 +67,7 @@ export default function PythonPlayground() {
         Top Bar
       </div>
 
-      <div
+      <Split
         className={styles.playgroundBody}
         style={{
           height: `${playgroundBodyHeight}px`,
@@ -124,7 +125,7 @@ export default function PythonPlayground() {
             </div>
           </div>
         </div>
-      </div>
+      </Split>
 
       <div className={styles.bottomBar} ref={bottomBarRef}>
         <div className={styles.controlsWrapper}>
