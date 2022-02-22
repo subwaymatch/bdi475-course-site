@@ -1,18 +1,23 @@
 @import "styles/variables";
 
 .controlsWrapper {
-  margin: 0.75rem;
+  .searchInput {
+    border-radius: 0;
+  }
 }
 
 .packageListWrapper {
-  padding-bottom: 1rem;
+  padding-bottom: 5rem;
 
   .packageItem {
     display: flex;
     padding: 0.25rem 0.75rem;
-
     align-items: center;
     border-bottom: 1px solid $color-border-gray;
+
+    &:last-of-type {
+      border-bottom: none;
+    }
 
     .name {
       // font-family: $font-monospace;
@@ -89,5 +94,29 @@
     color: $color-gray-40;
     display: block;
     margin-top: 0.5rem;
+  }
+}
+
+.installButtonWrapper {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+
+  .installButton {
+    color: $color-white;
+    background-color: $color-gray-800;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+
+    .label {
+      font-size: 1rem;
+    }
+
+    &:hover {
+      background-color: $color-gray-700;
+    }
   }
 }

@@ -1,4 +1,12 @@
-import { Drawer, Tabs, Tab, Box, IconButton, TextField } from "@mui/material";
+import {
+  Drawer,
+  Tabs,
+  Tab,
+  Box,
+  TextField,
+  InputAdornment,
+} from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 import React, { useMemo, useState } from "react";
 import availablePyodidePackages from "data/available-pyodide-packages.json";
 import { IPyodidePackageNameAndVersion } from "types/pyodide";
@@ -6,12 +14,16 @@ import styles from "./PackagesDrawer.module.scss";
 import clsx from "clsx";
 import usePythonRuntime from "hooks/usePythonRuntime";
 import { VscInbox } from "react-icons/vsc";
+import { RiDownloadLine } from "react-icons/ri";
+import { useMeasure } from "react-use";
 
 export default function PackagesDrawer({ isOpen, handleClose }) {
   const [tabIndex, setTabIndex] = useState(0);
   const isInstalledTabSelected = useMemo(() => tabIndex === 1, [tabIndex]);
   const { loadedPackages } = usePythonRuntime();
   const [filterString, setFilterString] = useState("");
+  const [packagesToInstall, setPackagesToInstall] = useState([]);
+  const [drawerRef, { width: drawerWidth }] = useMeasure();
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setTabIndex(newValue);
@@ -25,11 +37,15 @@ export default function PackagesDrawer({ isOpen, handleClose }) {
     packages = packages.filter((o) => o.name.includes(filterString.trim()));
   }
 
-  console.log(`new tab value=${tabIndex}`);
+  const cleanUpAndClose = () => {
+    setTabIndex(0);
+    setPackagesToInstall([]);
+    handleClose();
+  };
 
   return (
-    <Drawer anchor="left" open={isOpen} onClose={handleClose}>
-      <Box sx={{ borderBottom: 1, borderColor: "divider", width: 300 }}>
+    <Drawer anchor="left" open={isOpen} onClose={cleanUpAndClose}>
+      <Box sx={{ borderBottom: 1, borderColor: "divider" }} ref={drawerRef}>
         <Tabs value={tabIndex} onChange={handleChange}>
           <Tab label="Available" />
           <Tab label="Installed" />
@@ -40,6 +56,14 @@ export default function PackagesDrawer({ isOpen, handleClose }) {
         <TextField
           id="standard-basic"
           label="Filter by Search"
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <SearchIcon />
+              </InputAdornment>
+            ),
+            className: styles.searchInput,
+          }}
           type="search"
           variant="filled"
           value={filterString}
@@ -81,6 +105,25 @@ export default function PackagesDrawer({ isOpen, handleClose }) {
           </div>
         )}
       </div>
+
+      {packagesToInstall.length > 0 && (
+        <div
+          className={styles.installButtonWrapper}
+          style={{ width: drawerWidth }}
+        >
+          <div className={styles.installButton}>
+            <div className={styles.label}>
+              <span>
+                Install {packagesToInstall.length} package
+                {packagesToInstall.length > 1 ? "s" : null}
+              </span>
+              <span className="accent green" />
+            </div>
+
+            <RiDownloadLine className={styles.reactIcon} />
+          </div>
+        </div>
+      )}
     </Drawer>
   );
 }
