@@ -16,6 +16,8 @@ import usePythonRuntime from "hooks/usePythonRuntime";
 import { VscInbox } from "react-icons/vsc";
 import { RiDownloadLine } from "react-icons/ri";
 import { useMeasure } from "react-use";
+import { motion } from "framer-motion";
+import { MdArrowDownward } from "react-icons/md";
 
 export default function PackagesDrawer({ isOpen, handleClose }) {
   const [tabIndex, setTabIndex] = useState(0);
@@ -23,8 +25,7 @@ export default function PackagesDrawer({ isOpen, handleClose }) {
   const { loadedPackages } = usePythonRuntime();
   const [filterString, setFilterString] = useState("");
   const [packagesToInstall, setPackagesToInstall] = useState([]);
-  const [drawerRef, { width: drawerWidth }] = useMeasure();
-
+  const [drawerStickyRef, { height: drawerStickyHeight }] = useMeasure();
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setTabIndex(newValue);
   };
@@ -39,59 +40,124 @@ export default function PackagesDrawer({ isOpen, handleClose }) {
 
   const cleanUpAndClose = () => {
     setTabIndex(0);
+    setFilterString("");
     setPackagesToInstall([]);
     handleClose();
   };
 
+  const handlePackageClick = (packageName: string) => {
+    console.log(`handlePackageClick, packageName=${packageName}`);
+
+    if (loadedPackages.includes(packageName)) {
+      return;
+    }
+
+    if (!packagesToInstall.includes(packageName)) {
+      setPackagesToInstall((previousList) => [...previousList, packageName]);
+    } else {
+      setPackagesToInstall((previousList) =>
+        previousList.filter((v) => v !== packageName)
+      );
+    }
+  };
+
   return (
     <Drawer anchor="left" open={isOpen} onClose={cleanUpAndClose}>
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }} ref={drawerRef}>
-        <Tabs value={tabIndex} onChange={handleChange}>
-          <Tab label="Available" />
-          <Tab label="Installed" />
-        </Tabs>
-      </Box>
+      <div className={styles.stickyWrapper} ref={drawerStickyRef}>
+        <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+          <Tabs value={tabIndex} onChange={handleChange} variant="fullWidth">
+            <Tab sx={{ fontWeight: 600 }} label="Available" />
+            <Tab sx={{ fontWeight: 600 }} label="Installed" />
+          </Tabs>
+        </Box>
 
-      <div className={styles.controlsWrapper}>
-        <TextField
-          id="standard-basic"
-          label="Filter by Search"
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <SearchIcon />
-              </InputAdornment>
-            ),
-            className: styles.searchInput,
-          }}
-          type="search"
-          variant="filled"
-          value={filterString}
-          onChange={(e) => setFilterString(e.target.value)}
-        />
+        <div className={styles.controlsWrapper}>
+          <TextField
+            id="standard-basic"
+            label="Filter by Search"
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <SearchIcon />
+                </InputAdornment>
+              ),
+              className: styles.searchInput,
+              autoComplete: "off",
+            }}
+            type="search"
+            variant="filled"
+            value={filterString}
+            fullWidth
+            onChange={(e) => setFilterString(e.target.value)}
+          />
+
+          <div
+            className={clsx(styles.installButton, {
+              [styles.enabled]: packagesToInstall.length > 0,
+              [styles.disabled]: packagesToInstall.length === 0,
+            })}
+          >
+            <div className={styles.label}>
+              <span>
+                {packagesToInstall.length > 0 ? (
+                  <>
+                    Click to Install {packagesToInstall.length} package
+                    {packagesToInstall.length > 1 ? "s" : null}
+                  </>
+                ) : (
+                  <>Select package(s) to install</>
+                )}
+              </span>
+              {packagesToInstall.length > 0 && (
+                <span className="accent purple" />
+              )}
+            </div>
+
+            <motion.div
+              animate={{ y: [-1, 1, -1] }}
+              transition={{ ease: "linear", duration: 0.5, repeat: Infinity }}
+              className={styles.iconWrapper}
+            >
+              {packagesToInstall.length > 0 ? (
+                <RiDownloadLine className={styles.reactIcon} />
+              ) : (
+                <MdArrowDownward className={styles.reactIcon} />
+              )}
+            </motion.div>
+          </div>
+        </div>
       </div>
 
-      <div className={styles.packageListWrapper}>
+      <div
+        className={styles.packageListWrapper}
+        style={{
+          paddingTop: drawerStickyHeight,
+        }}
+      >
         {packages.map((o, i) => {
-          // const installed = loadedPackages.includes(o.name);
-          const installed = i % 2 === 0;
+          const installed = loadedPackages.includes(o.name);
           const notInstalled = !installed;
+          const toInstall = packagesToInstall.includes(o.name);
 
           return (
             <div
               className={clsx(styles.packageItem, {
                 [styles.installed]: installed,
                 [styles.notInstalled]: notInstalled,
+                [styles.toInstall]: toInstall,
               })}
+              onClick={() => handlePackageClick(o.name)}
               key={o.name}
             >
               <div className={styles.name}>{o.name}</div>
-              {installed ? (
-                <div className={styles.installStatus}>Installed</div>
-              ) : (
-                <div className={styles.installStatus}>Install →</div>
-              )}
+
               <div className={styles.version}>{o.version}</div>
+
+              <div className={styles.installStatus}>
+                {installed && "Installed"}
+                {notInstalled && !toInstall && "Select"}
+                {notInstalled && toInstall && "Selected"}
+              </div>
             </div>
           );
         })}
@@ -105,25 +171,6 @@ export default function PackagesDrawer({ isOpen, handleClose }) {
           </div>
         )}
       </div>
-
-      {packagesToInstall.length > 0 && (
-        <div
-          className={styles.installButtonWrapper}
-          style={{ width: drawerWidth }}
-        >
-          <div className={styles.installButton}>
-            <div className={styles.label}>
-              <span>
-                Install {packagesToInstall.length} package
-                {packagesToInstall.length > 1 ? "s" : null}
-              </span>
-              <span className="accent green" />
-            </div>
-
-            <RiDownloadLine className={styles.reactIcon} />
-          </div>
-        </div>
-      )}
     </Drawer>
   );
 }

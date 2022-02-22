@@ -1,13 +1,68 @@
 @import "styles/variables";
 
+.stickyWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 340px;
+  background-color: white;
+}
+
 .controlsWrapper {
+  position: relative;
+
   .searchInput {
     border-radius: 0;
+  }
+
+  .installButton {
+    color: $color-white;
+    background-color: $color-gray-800;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0.75rem;
+    cursor: pointer;
+    position: relative;
+    top: -1px;
+    border-bottom: 1px solid transparent;
+
+    &.disabled {
+      cursor: default;
+      color: $color-gray-60;
+      background-color: white;
+      border-bottom: 1px solid $color-border-gray;
+
+      &:hover {
+        color: $color-gray-60;
+        background-color: white;
+      }
+    }
+
+    .label {
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .iconWrapper {
+      display: flex;
+      align-items: center;
+
+      .reactIcon {
+        padding: 0;
+      }
+    }
+
+    &:hover {
+      background-color: $color-gray-600;
+    }
   }
 }
 
 .packageListWrapper {
-  padding-bottom: 5rem;
+  padding-bottom: 6rem;
+  width: 340px;
 
   .packageItem {
     display: flex;
@@ -53,11 +108,25 @@
     &.notInstalled {
       cursor: pointer;
 
-      .installStatus {
-        display: none;
-        color: $color-gray-300;
-        background-color: transparent;
-        border: 1px solid $color-gray-100;
+      &.toInstall {
+        .installStatus {
+          color: $color-white;
+          background-color: $color-purple;
+        }
+      }
+
+      &:not(.toInstall) {
+        .installStatus {
+          color: $color-gray-300;
+          border: 1px solid $color-gray-100;
+          display: none;
+        }
+
+        &:hover {
+          .installStatus {
+            display: block;
+          }
+        }
       }
 
       &:hover {
@@ -66,11 +135,11 @@
         .name {
           color: $color-gray-700;
         }
-
-        .installStatus {
-          display: block;
-        }
       }
+    }
+
+    &.toInstall {
+      background-color: $color-gray-20;
     }
 
     .actionsWrapper {
@@ -94,29 +163,5 @@
     color: $color-gray-40;
     display: block;
     margin-top: 0.5rem;
-  }
-}
-
-.installButtonWrapper {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-
-  .installButton {
-    color: $color-white;
-    background-color: $color-gray-800;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 1.5rem;
-    cursor: pointer;
-
-    .label {
-      font-size: 1rem;
-    }
-
-    &:hover {
-      background-color: $color-gray-700;
-    }
   }
 }

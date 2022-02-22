@@ -10,6 +10,7 @@
 
 .topBar {
   border-bottom: 1px solid $color-border-gray;
+  display: none;
 }
 
 .playgroundBody {
@@ -92,16 +93,15 @@
     align-items: center;
     color: $color-gray-800;
     padding: 0.3rem 0.5rem;
-    font-size: 0.9rem;
-    letter-spacing: -0.03rem;
+    font-size: 0.93rem;
+    letter-spacing: 0;
     font-weight: 500;
     cursor: pointer;
     user-select: none;
 
     .reactIcon {
-      font-size: 0.7rem;
-      margin-right: 0.3rem;
-      position: relative;
+      font-size: 0.8rem;
+      margin-right: 0.35rem;
     }
 
     &:hover {
