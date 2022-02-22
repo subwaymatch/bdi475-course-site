@@ -23,10 +23,13 @@ export default function PythonPlayground() {
   const { height: windowHeight } = useWindowSize();
   const {
     status: pythonRuntimeStatus,
+    loadedPackages,
     loadPackages,
     findNewImports,
     runCode,
   } = usePythonRuntime();
+
+  console.log(`loadedPackages=${JSON.stringify(loadedPackages)}`);
 
   let playgroundBodyHeight = windowHeight - topBarHeight - bottomBarHeight;
   playgroundBodyHeight = Number.isFinite(playgroundBodyHeight)

@@ -1,7 +1,11 @@
 @import "styles/variables";
 
+.controlsWrapper {
+  margin: 0.75rem;
+}
+
 .packageListWrapper {
-  padding: 1rem 0;
+  padding-bottom: 1rem;
 
   .packageItem {
     display: flex;
@@ -16,11 +20,6 @@
       font-weight: 550;
       font-size: 0.95rem;
       flex-grow: 1;
-    }
-
-    &.installed {
-      .name {
-      }
     }
 
     .version,
@@ -39,12 +38,56 @@
       background-color: $color-gray-20;
     }
 
-    .installStatus {
-      color: $color-white;
-      background-color: $color-green;
+    &.installed {
+      .installStatus {
+        color: $color-white;
+        background-color: $color-green;
+      }
+    }
+
+    &.notInstalled {
+      cursor: pointer;
+
+      .installStatus {
+        display: none;
+        color: $color-gray-300;
+        background-color: transparent;
+        border: 1px solid $color-gray-100;
+      }
+
+      &:hover {
+        background-color: $color-gray-10;
+
+        .name {
+          color: $color-gray-700;
+        }
+
+        .installStatus {
+          display: block;
+        }
+      }
     }
 
     .actionsWrapper {
     }
+  }
+}
+
+.emptyBox {
+  padding: 3rem 0.75rem;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  .reactIcon {
+    color: $color-gray-30;
+    font-size: 4rem;
+  }
+
+  .message {
+    color: $color-gray-40;
+    display: block;
+    margin-top: 0.5rem;
   }
 }

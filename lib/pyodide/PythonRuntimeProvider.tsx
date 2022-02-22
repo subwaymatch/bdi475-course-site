@@ -14,6 +14,7 @@ const runtime =
 // to enable Python code execution in the browser (web worker)
 export const PythonRuntimeContext = createContext<{
   status: PythonRuntimeStatus;
+  loadedPackages: string[];
   loadPackages: (packages: string | Array<string>) => Promise<void>;
   findImports: (code: string) => Promise<string[]>;
   findNewImports: (code: string) => Promise<string[]>;
@@ -25,6 +26,7 @@ export const PythonRuntimeContext = createContext<{
   runtime: Comlink.Remote<PythonRuntime>;
 }>({
   status: PythonRuntimeStatus.BEFORE_LOAD,
+  loadedPackages: null,
   loadPackages: null,
   findImports: null,
   findNewImports: null,
@@ -37,13 +39,19 @@ export default function PythonRuntimeProvider({ children }: any) {
   const [status, setStatus] = useState<PythonRuntimeStatus>(
     PythonRuntimeStatus.BEFORE_LOAD
   );
+  const [loadedPackages, setLoadedPackages] = useState<string[]>([]);
 
   const initialize = async () => {
     setStatus(PythonRuntimeStatus.LOADING);
 
     await runtime.initialize();
+    await updateLoadedPackages();
 
     setStatus(PythonRuntimeStatus.READY);
+  };
+
+  const updateLoadedPackages = async () => {
+    setLoadedPackages(Object.keys(await runtime.pyodide.loadedPackages));
   };
 
   const loadPackages = async (packages: string | string[] = []) => {
@@ -55,6 +63,7 @@ export default function PythonRuntimeProvider({ children }: any) {
     console.log(packages);
 
     await runtime.pyodide.loadPackage(packages);
+    await updateLoadedPackages();
   };
 
   const findImports = async (code): Promise<string[]> => {
@@ -112,6 +121,7 @@ export default function PythonRuntimeProvider({ children }: any) {
     <PythonRuntimeContext.Provider
       value={{
         status,
+        loadedPackages,
         loadPackages,
         findImports,
         findNewImports,
