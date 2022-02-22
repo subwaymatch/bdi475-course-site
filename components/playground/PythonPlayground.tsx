@@ -7,7 +7,7 @@ import Image from "next/image";
 import logoImage from "public/images/logo_bdi475.png";
 import Stack from "@mui/material/Stack";
 import { IoSettingsOutline } from "react-icons/io5";
-import { FiPackage } from "react-icons/fi";
+import { FiPackage, FiTerminal } from "react-icons/fi";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import Fab from "@mui/material/Fab";
 import { toast } from "react-toastify";
@@ -17,6 +17,8 @@ import usePythonRuntime from "hooks/usePythonRuntime";
 import PackagesDrawer from "components/python-runtime/PackagesDrawer";
 import PackageInstallConfirmationDialog from "components/python-runtime/PackageInstallConfirmationDialog";
 import Split from "react-split";
+import { BsTerminal } from "react-icons/bs";
+import { RiTerminalBoxFill } from "react-icons/ri";
 
 export default function PythonPlayground() {
   const [topBarRef, { height: topBarHeight }] = useMeasure();
@@ -68,7 +70,7 @@ export default function PythonPlayground() {
       </div>
 
       <Split
-        className={styles.playgroundBody}
+        className={clsx(styles.playgroundBody, styles.horizontalSplit)}
         style={{
           height: `${playgroundBodyHeight}px`,
         }}
@@ -99,10 +101,14 @@ export default function PythonPlayground() {
           </div>
         </div>
 
-        <div className={styles.resultWrapper}>
+        <Split
+          direction="vertical"
+          className={clsx(styles.resultWrapper, styles.verticalSplit)}
+        >
           <div className={clsx(styles.standardOutputWrapper, styles.outputBox)}>
             <div className={styles.boxHeader}>
               <h3>Standard Output</h3>
+              <span className="accent purple" />
             </div>
 
             <div className={styles.boxContent}>
@@ -118,13 +124,14 @@ export default function PythonPlayground() {
           >
             <div className={styles.boxHeader}>
               <h3>Evaluated Result</h3>
+              <span className="accent blue" />
             </div>
 
             <div className={styles.boxContent}>
               <pre>{codeResult?.lastEvaluatedResult}</pre>
             </div>
           </div>
-        </div>
+        </Split>
       </Split>
 
       <div className={styles.bottomBar} ref={bottomBarRef}>

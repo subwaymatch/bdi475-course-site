@@ -86,6 +86,7 @@ export default function PythonRuntimeProvider({ children }: any) {
     // await runtime.pyodide.loadPackage(findImportsResult);
 
     await runtime.pyodide.loadPackagesFromImports(code);
+    await updateLoadedPackages();
 
     return allImports;
   };
