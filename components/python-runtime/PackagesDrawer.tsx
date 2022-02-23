@@ -7,9 +7,12 @@ import {
   InputAdornment,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import availablePyodidePackages from "data/available-pyodide-packages.json";
-import { IPyodidePackageNameAndVersion } from "types/pyodide";
+import {
+  IPyodidePackageNameAndVersion,
+  PythonRuntimeStatus,
+} from "types/pyodide";
 import styles from "./PackagesDrawer.module.scss";
 import clsx from "clsx";
 import usePythonRuntime from "hooks/usePythonRuntime";
@@ -18,11 +21,16 @@ import { RiDownloadLine } from "react-icons/ri";
 import { useMeasure } from "react-use";
 import { motion } from "framer-motion";
 import { MdArrowDownward } from "react-icons/md";
+import produce from "immer";
 
 export default function PackagesDrawer({ isOpen, handleClose }) {
   const [tabIndex, setTabIndex] = useState(0);
   const isInstalledTabSelected = useMemo(() => tabIndex === 1, [tabIndex]);
-  const { loadedPackages } = usePythonRuntime();
+  const {
+    status: pythonRuntimeStatus,
+    loadedPackages,
+    loadPackages,
+  } = usePythonRuntime();
   const [filterString, setFilterString] = useState("");
   const [packagesToInstall, setPackagesToInstall] = useState([]);
   const [drawerStickyRef, { height: drawerStickyHeight }] = useMeasure();
@@ -37,6 +45,16 @@ export default function PackagesDrawer({ isOpen, handleClose }) {
   if (filterString.trim() !== "") {
     packages = packages.filter((o) => o.name.includes(filterString.trim()));
   }
+
+  useEffect(() => {
+    const updatedList = produce(packagesToInstall, (draft) => {
+      return draft.filter(
+        (packageName) => !loadedPackages.includes(packageName)
+      );
+    });
+
+    setPackagesToInstall(updatedList);
+  }, [loadedPackages]);
 
   const cleanUpAndClose = () => {
     setTabIndex(0);
@@ -57,6 +75,19 @@ export default function PackagesDrawer({ isOpen, handleClose }) {
         previousList.filter((v) => v !== packageName)
       );
     }
+  };
+
+  const handleInstallButtonClick = async () => {
+    if (
+      packagesToInstall.length === 0 ||
+      pythonRuntimeStatus === PythonRuntimeStatus.LOADING_PACKAGES
+    ) {
+      return;
+    }
+
+    cleanUpAndClose();
+
+    await loadPackages(packagesToInstall);
   };
 
   return (
@@ -92,21 +123,27 @@ export default function PackagesDrawer({ isOpen, handleClose }) {
           <div
             className={clsx(styles.installButton, {
               [styles.enabled]: packagesToInstall.length > 0,
-              [styles.disabled]: packagesToInstall.length === 0,
+              [styles.disabled]:
+                packagesToInstall.length === 0 ||
+                pythonRuntimeStatus === PythonRuntimeStatus.LOADING_PACKAGES,
             })}
-            onClick={() => {
-              if (packagesToInstall.length === 0) {
-                return;
-              }
-            }}
+            onClick={handleInstallButtonClick}
           >
             <div className={styles.label}>
               <span>
                 {packagesToInstall.length > 0 ? (
-                  <>
-                    Click to Install {packagesToInstall.length} package
-                    {packagesToInstall.length > 1 ? "s" : null}
-                  </>
+                  pythonRuntimeStatus !==
+                  PythonRuntimeStatus.LOADING_PACKAGES ? (
+                    <>
+                      Click to Install {packagesToInstall.length} package
+                      {packagesToInstall.length > 1 ? "s" : null}
+                    </>
+                  ) : (
+                    <>
+                      {packagesToInstall.length} package
+                      {packagesToInstall.length > 1 ? "s" : null} remaining
+                    </>
+                  )
                 ) : (
                   <>Select package(s) to install</>
                 )}
@@ -159,7 +196,7 @@ export default function PackagesDrawer({ isOpen, handleClose }) {
               <div className={styles.installStatus}>
                 {installed && "Installed"}
                 {notInstalled && !toInstall && "Select"}
-                {notInstalled && toInstall && "Selected"}
+                {notInstalled && toInstall && "Selected for Install"}
               </div>
             </div>
           );

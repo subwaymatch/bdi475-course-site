@@ -1,0 +1,33 @@
+@import "styles/variables";
+
+.installer {
+  width: 320px;
+
+  .packageItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.4rem 0;
+
+    .left {
+      display: flex;
+      align-items: center;
+
+      .reactIcon {
+        margin-right: 0.75rem;
+      }
+    }
+
+    &.waiting {
+      color: $color-gray-100;
+    }
+
+    &.inProgress {
+      color: $color-white;
+    }
+
+    &.completed {
+      color: $color-green;
+    }
+  }
+}

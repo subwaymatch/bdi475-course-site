@@ -6,19 +6,18 @@ import Link from "next/link";
 import Image from "next/image";
 import logoImage from "public/images/logo_bdi475.png";
 import Stack from "@mui/material/Stack";
-import { IoSettingsOutline } from "react-icons/io5";
+import { IoCubeOutline, IoSettingsOutline } from "react-icons/io5";
 import { FiPackage, FiTerminal } from "react-icons/fi";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import Fab from "@mui/material/Fab";
 import { toast } from "react-toastify";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { ICodeExecutionResult, PythonRuntimeStatus } from "types/pyodide";
 import usePythonRuntime from "hooks/usePythonRuntime";
 import PackagesDrawer from "components/python-runtime/PackagesDrawer";
-import PackageInstallConfirmationDialog from "components/python-runtime/PackageInstallConfirmationDialog";
+import PackageLoadingOverlay from "components/python-runtime/PackageLoadingOverlay";
 import Split from "react-split";
-import { BsTerminal } from "react-icons/bs";
-import { RiTerminalBoxFill } from "react-icons/ri";
+import { IoBanOutline } from "react-icons/io5";
 
 export default function PythonPlayground() {
   const [topBarRef, { height: topBarHeight }] = useMeasure();
@@ -27,14 +26,16 @@ export default function PythonPlayground() {
   const {
     status: pythonRuntimeStatus,
     loadedPackages,
-    loadPackages,
     findNewImports,
     runCode,
   } = usePythonRuntime();
 
   console.log(`loadedPackages=${JSON.stringify(loadedPackages)}`);
 
-  let playgroundBodyHeight = windowHeight - topBarHeight - bottomBarHeight;
+  let playgroundBodyHeight = useMemo(
+    () => windowHeight - topBarHeight - bottomBarHeight,
+    [windowHeight, topBarHeight, bottomBarHeight]
+  );
   playgroundBodyHeight = Number.isFinite(playgroundBodyHeight)
     ? playgroundBodyHeight
     : 800;
@@ -108,7 +109,7 @@ export default function PythonPlayground() {
           <div className={clsx(styles.standardOutputWrapper, styles.outputBox)}>
             <div className={styles.boxHeader}>
               <h3>Standard Output</h3>
-              <span className="accent purple" />
+              <span className="accent green" />
             </div>
 
             <div className={styles.boxContent}>
@@ -124,11 +125,18 @@ export default function PythonPlayground() {
           >
             <div className={styles.boxHeader}>
               <h3>Evaluated Result</h3>
-              <span className="accent blue" />
+              <span className="accent green" />
             </div>
 
             <div className={styles.boxContent}>
-              <pre>{codeResult?.lastEvaluatedResult}</pre>
+              {codeResult ? (
+                <pre>{codeResult.lastEvaluatedResult}</pre>
+              ) : (
+                <div className={styles.emptyBox}>
+                  <IoBanOutline className={styles.reactIcon} />
+                  <span className={styles.message}>No Output</span>
+                </div>
+              )}
             </div>
           </div>
         </Split>
@@ -149,7 +157,7 @@ export default function PythonPlayground() {
               className={clsx(styles.button, styles.settings)}
               onClick={() => setIsPackageDrawerOpen(true)}
             >
-              <FiPackage className={styles.reactIcon} />
+              <IoCubeOutline className={styles.reactIcon} />
               <span className={styles.label}>Packages</span>
             </div>
           </Stack>
@@ -173,8 +181,9 @@ export default function PythonPlayground() {
         handleClose={() => setIsPackageDrawerOpen(false)}
       />
 
-      <PackageInstallConfirmationDialog
-        isOpen={isImportDialogOpen}
+      <PackageLoadingOverlay
+        isOpen={pythonRuntimeStatus === PythonRuntimeStatus.LOADING_PACKAGES}
+        // isOpen={true}
         handleClose={() => setIsImportDialogOpen(false)}
       />
     </div>

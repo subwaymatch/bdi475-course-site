@@ -1,7 +1,14 @@
 import { useState, useEffect, createContext } from "react";
-import { PythonRuntimeStatus, ICodeExecutionResult } from "types/pyodide";
+import {
+  PythonRuntimeStatus,
+  ICodeExecutionResult,
+  IPackageLoadingStatus,
+  PackageLoadingStatus,
+} from "types/pyodide";
 import * as Comlink from "comlink";
 import type { PythonRuntime } from "lib/pyodide/pyodide-worker";
+import produce from "immer";
+import cloneDeep from "lodash/cloneDeep";
 
 const runtime =
   typeof window === "undefined"
@@ -16,6 +23,7 @@ export const PythonRuntimeContext = createContext<{
   status: PythonRuntimeStatus;
   loadedPackages: string[];
   loadPackages: (packages: string | Array<string>) => Promise<void>;
+  packagesLoadingStatus: IPackageLoadingStatus[];
   findImports: (code: string) => Promise<string[]>;
   findNewImports: (code: string) => Promise<string[]>;
   runCode: (code: string) => Promise<ICodeExecutionResult>;
@@ -28,6 +36,7 @@ export const PythonRuntimeContext = createContext<{
   status: PythonRuntimeStatus.BEFORE_LOAD,
   loadedPackages: null,
   loadPackages: null,
+  packagesLoadingStatus: null,
   findImports: null,
   findNewImports: null,
   runCode: null,
@@ -40,6 +49,9 @@ export default function PythonRuntimeProvider({ children }: any) {
     PythonRuntimeStatus.BEFORE_LOAD
   );
   const [loadedPackages, setLoadedPackages] = useState<string[]>([]);
+  const [packagesLoadingStatus, setPackagesLoadingStatus] = useState<
+    IPackageLoadingStatus[]
+  >([]);
 
   const initialize = async () => {
     setStatus(PythonRuntimeStatus.LOADING);
@@ -59,31 +71,44 @@ export default function PythonRuntimeProvider({ children }: any) {
       packages = [packages];
     }
 
-    console.log(`loadPackages, packages:`);
-    console.log(packages);
+    const loadingStatusArr: IPackageLoadingStatus[] = packages.map((name) => ({
+      name,
+      status: PackageLoadingStatus.WAITING,
+    }));
 
-    await runtime.pyodide.loadPackage(packages);
-    await updateLoadedPackages();
+    setPackagesLoadingStatus(loadingStatusArr);
+    setStatus(PythonRuntimeStatus.LOADING_PACKAGES);
+
+    let updatedLoadingStatusArr = cloneDeep(loadingStatusArr);
+
+    for (const packageName of packages) {
+      console.log(`SEQUENTIALLY LOADING ${packageName}`);
+      const index = loadingStatusArr.findIndex((o) => o.name === packageName);
+
+      updatedLoadingStatusArr = produce(updatedLoadingStatusArr, (draft) => {
+        draft[index].status = PackageLoadingStatus.IN_PROGRESS;
+      });
+      setPackagesLoadingStatus(updatedLoadingStatusArr);
+
+      await runtime.loadPackages(packageName);
+      await updateLoadedPackages();
+
+      updatedLoadingStatusArr = produce(updatedLoadingStatusArr, (draft) => {
+        draft[index].status = PackageLoadingStatus.COMPLETED;
+      });
+      setPackagesLoadingStatus(updatedLoadingStatusArr);
+    }
+
+    setPackagesLoadingStatus([]);
+    setStatus(PythonRuntimeStatus.READY);
   };
 
   const findImports = async (code): Promise<string[]> => {
-    const loadedPackages = await runtime.pyodide.loadedPackages;
-
-    console.log(`findImports`);
-    console.log(loadedPackages);
-
     return await runtime.findImports(code);
   };
 
   const findNewImports = async (code): Promise<string[]> => {
     const allImports = await findImports(code);
-
-    const findImportsResult = await runtime.findImports(code);
-
-    console.log(`findImportsResult`);
-    console.log(findImportsResult);
-
-    // await runtime.pyodide.loadPackage(findImportsResult);
 
     await runtime.pyodide.loadPackagesFromImports(code);
     await updateLoadedPackages();
@@ -124,6 +149,7 @@ export default function PythonRuntimeProvider({ children }: any) {
         status,
         loadedPackages,
         loadPackages,
+        packagesLoadingStatus,
         findImports,
         findNewImports,
         runCode,

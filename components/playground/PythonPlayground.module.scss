@@ -9,20 +9,18 @@
 }
 
 .topBar {
-  border-bottom: 1px solid $color-border-gray;
-  display: none;
 }
 
 .playgroundBody {
   display: flex;
 
   :global(.gutter) {
-    background-color: $color-gray-30;
+    background-color: $color-gray-10;
     background-repeat: no-repeat;
     background-position: 50%;
 
     &:hover {
-      background-color: $color-gray-40;
+      background-color: $color-white;
     }
   }
 
@@ -39,6 +37,7 @@
   .codeEditorWrapper {
     width: 50%;
     position: relative;
+    border-right: 1px solid $color-border-gray;
 
     .floatingButtonWrapper {
       position: absolute;
@@ -77,10 +76,10 @@
       }
 
       .boxContent {
-        font-family: $font-monospace;
         flex-grow: 1;
         overflow: auto;
         padding: 0.25rem 1.25rem;
+        display: flex;
 
         pre {
           color: $color-gray-100;
@@ -90,10 +89,31 @@
           padding-bottom: 1rem;
           white-space: pre-line;
         }
+
+        .emptyBox {
+          flex-grow: 1;
+          justify-content: center;
+          align-items: center;
+          display: flex;
+          flex-direction: column;
+
+          .reactIcon {
+            color: $color-gray-30;
+            font-size: 4rem;
+          }
+
+          .message {
+            color: $color-gray-40;
+            font-weight: 400;
+            display: block;
+            margin-top: 0.5rem;
+          }
+        }
       }
     }
 
     .standardOutputWrapper {
+      border-bottom: 1px solid $color-border-gray;
     }
 
     .evaluatedOutputWrapper {
@@ -115,17 +135,17 @@
   .button {
     display: inline-flex;
     align-items: center;
-    color: $color-gray-800;
+    color: $color-gray-500;
     padding: 0.3rem 0.5rem;
-    font-size: 0.93rem;
-    letter-spacing: 0;
-    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: -0.01rem;
+    font-weight: 600;
     cursor: pointer;
     user-select: none;
 
     .reactIcon {
       font-size: 0.8rem;
-      margin-right: 0.35rem;
+      margin-right: 0.3rem;
     }
 
     &:hover {

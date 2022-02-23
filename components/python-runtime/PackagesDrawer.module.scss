@@ -109,6 +109,12 @@
       cursor: pointer;
 
       &.toInstall {
+        background-color: $color-gray-20;
+
+        .name {
+          color: $color-gray-500;
+        }
+
         .installStatus {
           color: $color-white;
           background-color: $color-purple;
@@ -136,10 +142,6 @@
           color: $color-gray-700;
         }
       }
-    }
-
-    &.toInstall {
-      background-color: $color-gray-20;
     }
 
     .actionsWrapper {

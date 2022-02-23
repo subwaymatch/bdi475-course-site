@@ -19,3 +19,14 @@ export interface ICodeExecutionResult {
   hasError: boolean;
   errorMessage: string;
 }
+
+export enum PackageLoadingStatus {
+  WAITING = "WAITING",
+  IN_PROGRESS = "IN_PROGRESS",
+  COMPLETED = "COMPLETED",
+}
+
+export interface IPackageLoadingStatus {
+  name: string;
+  status: PackageLoadingStatus;
+}

@@ -53,6 +53,20 @@ export class PythonRuntime {
     return imports;
   }
 
+  async loadPackages(packages: string | string[]) {
+    await this.pyodide.loadPackage(
+      packages,
+      (msg) => {
+        console.log(`worker.loadPackages.msgCallback`);
+        console.log(msg);
+      },
+      (errMessage) => {
+        console.log(`worker.loadPackages.errMsgCallback`);
+        console.log(errMessage);
+      }
+    );
+  }
+
   async runCode(code: string) {
     let result: ICodeExecutionResult = {
       lastEvaluatedResult: null,
