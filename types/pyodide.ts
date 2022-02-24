@@ -11,9 +11,16 @@ export interface IPyodidePackageNameAndVersion {
   version: string;
 }
 
+export enum PyodideResultDisplayType {
+  HTML = "HTML",
+  JS_OBJECT = "JS_OBJECT",
+  UNKNOWN = "UNKNOWN",
+}
+
 export interface ICodeExecutionResult {
   type?: string;
   lastEvaluatedResult?: any;
+  evaluatedResultDisplayType?: PyodideResultDisplayType;
   stdout: string;
   stderr: string;
   hasError: boolean;

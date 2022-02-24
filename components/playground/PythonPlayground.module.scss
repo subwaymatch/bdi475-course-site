@@ -58,7 +58,6 @@
 
     .outputBox {
       height: 50%;
-      padding-bottom: 2%;
       display: flex;
       flex-direction: column;
 
@@ -96,7 +95,6 @@
       .boxContent {
         flex-grow: 1;
         overflow: auto;
-        padding: 0.25rem 1.25rem;
         display: flex;
         flex-direction: column;
 
@@ -105,7 +103,7 @@
           font-family: $font-monospace;
           font-size: 1rem;
           line-height: 1.5;
-          padding-bottom: 1rem;
+          padding: 0.25rem 1.25rem 1.25rem 1.25rem;
           white-space: pre-line;
 
           &.errorMessage {
@@ -196,6 +194,52 @@
 
       &:hover {
         color: $color-gray-500;
+      }
+    }
+  }
+}
+
+.renderedHtml {
+  table:global(.dataframe) {
+    border: none;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 0.85rem;
+
+    tr,
+    th,
+    td {
+      text-align: right;
+      vertical-align: middle;
+      padding: 0.5rem;
+      line-height: normal;
+      white-space: normal;
+      max-width: none;
+      border: none;
+    }
+
+    th {
+      font-weight: bold;
+    }
+
+    thead {
+      border-bottom: 1px solid black;
+      vertical-align: bottom;
+    }
+
+    tbody {
+      tr:nth-child(odd) {
+        background: $color-gray-20;
+
+        &:hover {
+          background: $color-gray-30;
+        }
+      }
+
+      tr:nth-child(even) {
+        &:hover {
+          background-color: $color-gray-30;
+        }
       }
     }
   }

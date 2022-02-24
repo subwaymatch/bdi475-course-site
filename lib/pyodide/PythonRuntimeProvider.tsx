@@ -118,9 +118,6 @@ export default function PythonRuntimeProvider({ children }: any) {
         !loadedPackages.includes(packageName)
     );
 
-    console.log(`findNewImports.allImports=${JSON.stringify(allImports)}`);
-    console.log(`findNewImports.newImports=${JSON.stringify(newImports)}`);
-
     return newImports;
   };
 

@@ -7,7 +7,11 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import Fab from "@mui/material/Fab";
 import { toast } from "react-toastify";
 import { useMemo, useState } from "react";
-import { ICodeExecutionResult, PythonRuntimeStatus } from "types/pyodide";
+import {
+  ICodeExecutionResult,
+  PyodideResultDisplayType,
+  PythonRuntimeStatus,
+} from "types/pyodide";
 import usePythonRuntime from "hooks/usePythonRuntime";
 import PackagesDrawer from "components/python-runtime/PackagesDrawer";
 import PackageLoadingOverlay from "components/python-runtime/PackageLoadingOverlay";
@@ -153,9 +157,19 @@ export default function PythonPlayground() {
 
             <div className={styles.boxContent}>
               {codeResult?.lastEvaluatedResult ? (
-                <pre className={styles.lastEvaluatedResult}>
-                  {codeResult.lastEvaluatedResult}
-                </pre>
+                codeResult?.evaluatedResultDisplayType ===
+                PyodideResultDisplayType.HTML ? (
+                  <div
+                    className={styles.renderedHtml}
+                    dangerouslySetInnerHTML={{
+                      __html: codeResult.lastEvaluatedResult,
+                    }}
+                  />
+                ) : (
+                  <pre className={styles.lastEvaluatedResult}>
+                    {codeResult.lastEvaluatedResult}
+                  </pre>
+                )
               ) : (
                 <div className={styles.emptyBox}>
                   <BiPyramid className={styles.reactIcon} />

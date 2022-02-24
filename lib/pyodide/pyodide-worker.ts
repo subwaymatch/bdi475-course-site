@@ -1,7 +1,7 @@
 importScripts("https://cdn.jsdelivr.net/pyodide/v0.19.1/full/pyodide.js");
 
 import * as Comlink from "comlink";
-import { ICodeExecutionResult } from "types/pyodide";
+import { ICodeExecutionResult, PyodideResultDisplayType } from "types/pyodide";
 
 interface IPyodideWorkerGlobalScope extends WorkerGlobalScope {
   pyodideGlobals?: string[];
@@ -105,12 +105,13 @@ runPyodideFromJs()
       console.log(await result.lastEvaluatedResult.length);
       console.log(await result.lastEvaluatedResult.type);
 
-      result.lastEvaluatedResult = await result.lastEvaluatedResult.toJs();
+      if (result.lastEvaluatedResult.type === "DataFrame") {
+        result.lastEvaluatedResult = result.lastEvaluatedResult.to_html();
+        result.evaluatedResultDisplayType = PyodideResultDisplayType.HTML;
+      }
 
       console.log(`after toJs()`);
       console.log(result.lastEvaluatedResult);
-
-      result.lastEvaluatedResult = null;
     }
 
     // Reset global namespace
