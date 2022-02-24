@@ -174,9 +174,9 @@ export default function NotesPage() {
               title="Pandas Filtering and Sorting"
               colorTheme={ColorTheme.Orange}
             />
-            {/* 
+
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/6257679c27ed493fe92cad330f61beeb5139222d/L13-pandas-columns-missing-values-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/2f71cdaf7cdaab48817b44dc8ed1e6e47fd326cc/L11-pandas-columns-missing-values-vocareum-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/pandas-gray-bg.png"
@@ -185,13 +185,13 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2021-10-05"
+              date="2022-02-22"
               title="Pandas Column Operations and Missing Values"
-              colorTheme={ColorTheme.Purple}
+              colorTheme={ColorTheme.Orange}
             />
 
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/0c246b3a78572609f77b653fd73533d53fa90240/L14-datetime-groupby-merge-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/2f71cdaf7cdaab48817b44dc8ed1e6e47fd326cc/L12-missing-values-datetime-aggregation-joins-vocareum-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/pandas-gray-bg.png"
@@ -200,11 +200,11 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2021-10-07"
-              title="Pandas Datetime, Grouping, Aggregating, Merging"
-              colorTheme={ColorTheme.Purple}
+              date="2022-02-24"
+              title="Missing Values, Datetime, Aggregation, and Merging"
+              colorTheme={ColorTheme.Orange}
             />
-
+            {/* 
             <NoteItem
               href="https://nbviewer.org/github/bdi475/notebooks/blob/6739c2acdcd5ffcd13c2549c20ebde1737f44a24/L15-advanced-pandas-SOLUTION.ipynb"
               thumbnail={

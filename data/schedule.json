@@ -96,7 +96,6 @@
     "text": [
       "Pandas Data Types",
       "Datetime",
-      "String Operations",
       "Column Operations",
       "Missing Values"
     ]
@@ -109,11 +108,6 @@
   {
     "date": "2022-02-24",
     "type": "LECTURE",
-    "text": ["Index", "Select", "Assign"]
-  },
-  {
-    "date": "2022-03-01",
-    "type": "LECTURE",
     "text": [
       "Aggregations",
       "Group By",
@@ -122,14 +116,19 @@
     ]
   },
   {
-    "date": "2022-02-26",
+    "date": "2022-03-01",
     "type": "CASE_STUDY",
     "text": "Case Study 1 - Chicago Rideshare Vehicles"
   },
   {
-    "date": "2022-03-03",
+    "date": "2022-03-01",
     "type": "LECTURE",
     "text": ["Merge", "Different Join Types"]
+  },
+  {
+    "date": "2022-03-03",
+    "type": "LECTURE",
+    "text": ["String Operations", "Index", "Select", "Assign"]
   },
   {
     "date": "2022-03-02",
@@ -143,6 +142,11 @@
   },
   {
     "date": "2022-03-08",
+    "type": "LECTURE",
+    "text": ["Hypothesis Testing", "t-tests"]
+  },
+  {
+    "date": "2022-03-10",
     "type": "LECTURE",
     "text": ["Case Study Workday"]
   },

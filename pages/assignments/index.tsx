@@ -219,7 +219,7 @@ export default function AssignmentsPage() {
               </div>
             </Col>
           </Row>
-          {/* 
+
           <Row>
             <Col>
               <div className={styles.caseStudies}>
@@ -234,10 +234,10 @@ export default function AssignmentsPage() {
             <Col lg={6}>
               <CaseStudyItem
                 name="Chicago Ridesharing Vehicles"
-                dueDate={dayjs("2021-10-25").tz().format("ll")}
+                dueDate={dayjs("2022-03-01").tz().format("ll")}
                 pointsAvailable={80}
                 status={AssignmentStatus.Available}
-                link="https://canvas.illinois.edu/courses/14860/assignments/337283"
+                link="https://canvas.illinois.edu/courses/18332/assignments/435420"
                 thumbnail={
                   <Image
                     src="/images/case-studies/case_study_ridesharing_vehicles.jpg"
@@ -249,6 +249,7 @@ export default function AssignmentsPage() {
               />
             </Col>
 
+            {/*
             <Col lg={6}>
               <CaseStudyItem
                 name="Airbnb Listings Analysis with SQL"
@@ -301,8 +302,8 @@ export default function AssignmentsPage() {
                   />
                 }
               />
-            </Col>
-          </Row> */}
+            </Col>*/}
+          </Row>
         </Container>
       </main>
     </Layout>

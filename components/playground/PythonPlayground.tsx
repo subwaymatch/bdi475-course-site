@@ -17,6 +17,16 @@ import PackagesDrawer from "components/python-runtime/PackagesDrawer";
 import PackageLoadingOverlay from "components/python-runtime/PackageLoadingOverlay";
 import Split from "react-split";
 import { BiPyramid } from "react-icons/bi";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import { Popover, Typography, Button } from "@mui/material";
+import HoverPopover from "material-ui-popup-state/HoverPopover";
+
+import {
+  usePopupState,
+  bindHover,
+  bindPopover,
+} from "material-ui-popup-state/hooks";
+import { BsQuestion } from "react-icons/bs";
 
 export default function PythonPlayground() {
   const [topBarRef, { height: topBarHeight }] = useMeasure();
@@ -44,6 +54,10 @@ export default function PythonPlayground() {
   const [codeResult, setCodeResult] = useState<ICodeExecutionResult>(null);
   const [isPackageDrawerOpen, setIsPackageDrawerOpen] = useState(false);
   const [isImportDialogOpen, setIsImportDialogOpen] = useState(false);
+  const evalResultBoxPopupState = usePopupState({
+    variant: "popover",
+    popupId: "'evalResultBoxPopover',",
+  });
 
   const runUserCode = async () => {
     const newImports = await findNewImports(userCode);
@@ -118,7 +132,7 @@ export default function PythonPlayground() {
                 )}
               </h3>
 
-              <span className="accent green" />
+              <HelpOutlineIcon className={styles.reactIcon} />
             </div>
 
             <div className={styles.boxContent}>
@@ -141,6 +155,7 @@ export default function PythonPlayground() {
               ) : (
                 <div className={styles.emptyBox}>
                   <BiPyramid className={styles.reactIcon} />
+
                   <span className={styles.message}>No Output</span>
                 </div>
               )}
@@ -151,8 +166,32 @@ export default function PythonPlayground() {
             className={clsx(styles.evaluatedOutputWrapper, styles.outputBox)}
           >
             <div className={styles.boxHeader}>
-              <h3>Evaluated Result</h3>
-              <span className="accent blue" />
+              <h3>
+                <span className={styles.text}>Evaluated Result</span>
+                <span className="accent purple" />
+              </h3>
+
+              <BsQuestion
+                className={styles.reactIcon}
+                {...bindHover(evalResultBoxPopupState)}
+              />
+
+              <HoverPopover
+                {...bindPopover(evalResultBoxPopupState)}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "right",
+                }}
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                elevation={0}
+              >
+                <div className={styles.popoverContent}>
+                  The content of the Popover.
+                </div>
+              </HoverPopover>
             </div>
 
             <div className={styles.boxContent}>
@@ -201,7 +240,7 @@ export default function PythonPlayground() {
           <Link href="/">
             <a className={clsx(styles.logoLink)}>
               {/* <Image src={logoImage} alt="BDI 475" width={72} height={19} /> */}
-              dataslope
+              pyodide playground
             </a>
           </Link>
         </div>
