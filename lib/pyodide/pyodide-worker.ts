@@ -1,4 +1,4 @@
-importScripts("https://cdn.jsdelivr.net/pyodide/v0.19.0/full/pyodide.js");
+importScripts("https://cdn.jsdelivr.net/pyodide/v0.19.1/full/pyodide.js");
 
 import * as Comlink from "comlink";
 import { ICodeExecutionResult } from "types/pyodide";
@@ -30,7 +30,7 @@ export class PythonRuntime {
   async initialize() {
     // @ts-expect-error
     this.pyodide = await loadPyodide({
-      indexURL: "https://cdn.jsdelivr.net/pyodide/v0.19.0/full/",
+      indexURL: "https://cdn.jsdelivr.net/pyodide/v0.19.1/full/",
     });
 
     await this.pyodide.registerComlink(Comlink);
@@ -95,6 +95,23 @@ runPyodideFromJs()
 `);
     result.stdout = this.pyodide.runPython("sys.stdout.getvalue()");
     result.stderr = this.pyodide.runPython("sys.stderr.getvalue()");
+
+    console.log(`result.lastEvaluatedResult`);
+    console.log(result.lastEvaluatedResult);
+
+    console.log(await this.pyodide.isPyProxy(result.lastEvaluatedResult));
+
+    if (await this.pyodide.isPyProxy(result.lastEvaluatedResult)) {
+      console.log(await result.lastEvaluatedResult.length);
+      console.log(await result.lastEvaluatedResult.type);
+
+      result.lastEvaluatedResult = await result.lastEvaluatedResult.toJs();
+
+      console.log(`after toJs()`);
+      console.log(result.lastEvaluatedResult);
+
+      result.lastEvaluatedResult = null;
+    }
 
     // Reset global namespace
     await this.pyodide.runPythonAsync(`from js import pyodideGlobals

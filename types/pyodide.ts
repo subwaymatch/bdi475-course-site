@@ -13,7 +13,7 @@ export interface IPyodidePackageNameAndVersion {
 
 export interface ICodeExecutionResult {
   type?: string;
-  lastEvaluatedResult?: string;
+  lastEvaluatedResult?: any;
   stdout: string;
   stderr: string;
   hasError: boolean;

@@ -9,6 +9,8 @@
 }
 
 .topBar {
+  border-bottom: 1px solid $color-gray-300;
+  background-color: $color-gray-700;
 }
 
 .playgroundBody {
@@ -38,6 +40,7 @@
     width: 50%;
     position: relative;
     border-right: 1px solid $color-border-gray;
+    border-right: 1px solid $color-gray-300;
 
     .floatingButtonWrapper {
       position: absolute;
@@ -63,15 +66,30 @@
         padding: 1rem 1.25rem 0.5rem 1.25rem;
         display: flex;
         align-items: center;
+        justify-content: space-between;
 
         h3 {
           color: $color-white;
           font-size: 1rem;
+          color: $color-gray-800;
           font-weight: 500;
-          color: $color-gray-400;
-          font-weight: 600;
           line-height: 1.4;
-          letter-spacing: -0.02rem;
+          letter-spacing: -0.01rem;
+          display: flex;
+          align-items: center;
+
+          .status {
+            margin-left: 0.4rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0;
+            line-height: 1.4;
+            display: inline-block;
+            color: $color-white;
+            background-color: $color-red;
+            padding: 0.05rem 0.25rem;
+            border-radius: 0.25rem;
+          }
         }
       }
 
@@ -80,6 +98,7 @@
         overflow: auto;
         padding: 0.25rem 1.25rem;
         display: flex;
+        flex-direction: column;
 
         pre {
           color: $color-gray-100;
@@ -88,6 +107,17 @@
           line-height: 1.5;
           padding-bottom: 1rem;
           white-space: pre-line;
+
+          &.errorMessage {
+            color: $color-red;
+            border-top: 1px solid $color-border-gray;
+            padding-top: 0.75rem;
+
+            &.noOutput {
+              border-top: none;
+              padding-top: 0;
+            }
+          }
         }
 
         .emptyBox {
@@ -99,14 +129,15 @@
 
           .reactIcon {
             color: $color-gray-30;
-            font-size: 4rem;
+            font-size: 2.5rem;
           }
 
           .message {
             color: $color-gray-40;
             font-weight: 400;
             display: block;
-            margin-top: 0.5rem;
+            margin-top: 0.25rem;
+            font-size: 1rem;
           }
         }
       }
@@ -124,29 +155,25 @@
 
 .bottomBar {
   border-top: 1px solid $color-border-gray;
+  border-top: 1px solid $color-gray-300;
   display: flex;
   align-items: center;
   justify-content: space-between;
 
   .controlsWrapper {
-    margin-left: 0.5rem;
   }
 
   .button {
     display: inline-flex;
     align-items: center;
-    color: $color-gray-500;
-    padding: 0.3rem 0.5rem;
-    font-size: 0.9rem;
+    color: $color-gray-800;
+    padding: 0.3rem 0.75rem;
+    border-right: 1px solid $color-gray-300;
+    font-size: 1rem;
     letter-spacing: -0.01rem;
-    font-weight: 600;
+    font-weight: 500;
     cursor: pointer;
     user-select: none;
-
-    .reactIcon {
-      font-size: 0.8rem;
-      margin-right: 0.3rem;
-    }
 
     &:hover {
       color: $color-gray-300;
@@ -162,5 +189,14 @@
 
   .logoWrapper {
     margin-right: 0.75rem;
+    font-weight: 600;
+
+    a {
+      color: $color-gray-900;
+
+      &:hover {
+        color: $color-gray-500;
+      }
+    }
   }
 }

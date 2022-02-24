@@ -1,9 +1,11 @@
 import { useState, useEffect, createContext } from "react";
+import availablePyodidePackages from "data/available-pyodide-packages.json";
 import {
   PythonRuntimeStatus,
-  ICodeExecutionResult,
+  IPyodidePackageNameAndVersion,
   IPackageLoadingStatus,
   PackageLoadingStatus,
+  ICodeExecutionResult,
 } from "types/pyodide";
 import * as Comlink from "comlink";
 import type { PythonRuntime } from "lib/pyodide/pyodide-worker";
@@ -108,12 +110,18 @@ export default function PythonRuntimeProvider({ children }: any) {
   };
 
   const findNewImports = async (code): Promise<string[]> => {
-    const allImports = await findImports(code);
+    let allImports = await findImports(code);
 
-    await runtime.pyodide.loadPackagesFromImports(code);
-    await updateLoadedPackages();
+    let newImports = allImports.filter(
+      (packageName) =>
+        availablePyodidePackages.map((o) => o.name).includes(packageName) &&
+        !loadedPackages.includes(packageName)
+    );
 
-    return allImports;
+    console.log(`findNewImports.allImports=${JSON.stringify(allImports)}`);
+    console.log(`findNewImports.newImports=${JSON.stringify(newImports)}`);
+
+    return newImports;
   };
 
   const runCode = async (code): Promise<ICodeExecutionResult> => {

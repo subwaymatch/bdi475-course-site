@@ -3,11 +3,6 @@ import CodeEditor from "components/CodeEditor";
 import styles from "./PythonPlayground.module.scss";
 import clsx from "clsx";
 import Link from "next/link";
-import Image from "next/image";
-import logoImage from "public/images/logo_bdi475.png";
-import Stack from "@mui/material/Stack";
-import { IoCubeOutline, IoSettingsOutline } from "react-icons/io5";
-import { FiPackage, FiTerminal } from "react-icons/fi";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import Fab from "@mui/material/Fab";
 import { toast } from "react-toastify";
@@ -17,7 +12,7 @@ import usePythonRuntime from "hooks/usePythonRuntime";
 import PackagesDrawer from "components/python-runtime/PackagesDrawer";
 import PackageLoadingOverlay from "components/python-runtime/PackageLoadingOverlay";
 import Split from "react-split";
-import { IoBanOutline } from "react-icons/io5";
+import { BiPyramid } from "react-icons/bi";
 
 export default function PythonPlayground() {
   const [topBarRef, { height: topBarHeight }] = useMeasure();
@@ -26,11 +21,10 @@ export default function PythonPlayground() {
   const {
     status: pythonRuntimeStatus,
     loadedPackages,
+    loadPackages,
     findNewImports,
     runCode,
   } = usePythonRuntime();
-
-  console.log(`loadedPackages=${JSON.stringify(loadedPackages)}`);
 
   let playgroundBodyHeight = useMemo(
     () => windowHeight - topBarHeight - bottomBarHeight,
@@ -41,18 +35,20 @@ export default function PythonPlayground() {
     : 800;
 
   const [userCode, setUserCode] = useState(
-    "# Python\nimport sys\nsys.version\n"
+    "import pandas as pd\n\npd.DataFrame({\n  'a': [1, 2, 3],\n  'b': [True, False, False]\n})\n"
   );
   const [codeResult, setCodeResult] = useState<ICodeExecutionResult>(null);
   const [isPackageDrawerOpen, setIsPackageDrawerOpen] = useState(false);
   const [isImportDialogOpen, setIsImportDialogOpen] = useState(false);
 
   const runUserCode = async () => {
-    const imports = await findNewImports(userCode);
+    const newImports = await findNewImports(userCode);
 
-    // console.log(`new imports=${imports}`);
+    console.log(`new imports=${newImports}`);
 
-    // await loadPackages(imports);
+    if (newImports) {
+      await loadPackages(newImports);
+    }
 
     const result = await runCode(userCode);
     setCodeResult(result);
@@ -108,15 +104,42 @@ export default function PythonPlayground() {
         >
           <div className={clsx(styles.standardOutputWrapper, styles.outputBox)}>
             <div className={styles.boxHeader}>
-              <h3>Standard Output</h3>
+              <h3>
+                <span className={styles.text}>Standard Output</span>
+
+                {codeResult?.hasError && (
+                  <span className={clsx(styles.status, styles.hasError)}>
+                    Error
+                  </span>
+                )}
+              </h3>
+
               <span className="accent green" />
             </div>
 
             <div className={styles.boxContent}>
-              <pre>
-                {codeResult?.stdout}
-                {codeResult?.errorMessage}
-              </pre>
+              {codeResult?.stdout || codeResult?.hasError ? (
+                <>
+                  {codeResult?.stdout && (
+                    <pre className={styles.stdout}>{codeResult?.stdout}</pre>
+                  )}
+
+                  {codeResult?.hasError && codeResult?.errorMessage && (
+                    <pre
+                      className={clsx(styles.errorMessage, {
+                        [styles.noOutput]: !codeResult?.stdout,
+                      })}
+                    >
+                      {codeResult?.errorMessage}
+                    </pre>
+                  )}
+                </>
+              ) : (
+                <div className={styles.emptyBox}>
+                  <BiPyramid className={styles.reactIcon} />
+                  <span className={styles.message}>No Output</span>
+                </div>
+              )}
             </div>
           </div>
 
@@ -125,15 +148,17 @@ export default function PythonPlayground() {
           >
             <div className={styles.boxHeader}>
               <h3>Evaluated Result</h3>
-              <span className="accent green" />
+              <span className="accent blue" />
             </div>
 
             <div className={styles.boxContent}>
-              {codeResult ? (
-                <pre>{codeResult.lastEvaluatedResult}</pre>
+              {codeResult?.lastEvaluatedResult ? (
+                <pre className={styles.lastEvaluatedResult}>
+                  {codeResult.lastEvaluatedResult}
+                </pre>
               ) : (
                 <div className={styles.emptyBox}>
-                  <IoBanOutline className={styles.reactIcon} />
+                  <BiPyramid className={styles.reactIcon} />
                   <span className={styles.message}>No Output</span>
                 </div>
               )}
@@ -144,33 +169,25 @@ export default function PythonPlayground() {
 
       <div className={styles.bottomBar} ref={bottomBarRef}>
         <div className={styles.controlsWrapper}>
-          <Stack direction="row" spacing={1}>
-            <div
-              className={clsx(styles.button, styles.settings)}
-              onClick={() => {}}
-            >
-              <IoSettingsOutline className={styles.reactIcon} />
-              <span className={styles.label}>Settings</span>
-            </div>
+          <div
+            className={clsx(styles.button, styles.settings)}
+            onClick={() => {}}
+          >
+            <span className={styles.label}>Settings ↑</span>
+          </div>
 
-            <div
-              className={clsx(styles.button, styles.settings)}
-              onClick={() => setIsPackageDrawerOpen(true)}
-            >
-              <IoCubeOutline className={styles.reactIcon} />
-              <span className={styles.label}>Packages</span>
-            </div>
-          </Stack>
+          <div
+            className={clsx(styles.button, styles.settings)}
+            onClick={() => setIsPackageDrawerOpen(true)}
+          >
+            <span className={styles.label}>Packages →</span>
+          </div>
         </div>
-        <div
-          className={styles.logoWrapper}
-          style={{
-            height: 25,
-          }}
-        >
+        <div className={styles.logoWrapper} style={{}}>
           <Link href="/">
             <a className={clsx(styles.logoLink)}>
-              <Image src={logoImage} alt="BDI 475" width={72} height={19} />
+              {/* <Image src={logoImage} alt="BDI 475" width={72} height={19} /> */}
+              dataslope
             </a>
           </Link>
         </div>

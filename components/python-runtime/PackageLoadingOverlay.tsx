@@ -13,17 +13,6 @@ import { CircularProgress } from "@mui/material";
 export default function PackageLoadingOverlay({ isOpen, handleClose }) {
   const { packagesLoadingStatus } = usePythonRuntime();
 
-  console.log(`PackageLoadingOverlay.packagesLoadingStatus`);
-  console.log(packagesLoadingStatus);
-
-  // let packagesLoadingStatus = [
-  //   { name: "pandas", status: PackageLoadingStatus.COMPLETED },
-  //   { name: "mylib", status: PackageLoadingStatus.COMPLETED },
-  //   { name: "numpy", status: PackageLoadingStatus.IN_PROGRESS },
-  //   { name: "htmllib", status: PackageLoadingStatus.WAITING },
-  //   { name: "beautifulsoup", status: PackageLoadingStatus.WAITING },
-  // ];
-
   return (
     <Backdrop
       sx={{ color: "#fff", backgroundColor: "rgba(0, 0, 0, 0.8)" }}
@@ -33,6 +22,7 @@ export default function PackageLoadingOverlay({ isOpen, handleClose }) {
       <Box className={styles.installer}>
         {packagesLoadingStatus.map((o) => (
           <div
+            key={o.name}
             className={clsx(styles.packageItem, {
               [styles.waiting]: o.status === PackageLoadingStatus.WAITING,
               [styles.inProgress]:
