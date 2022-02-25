@@ -18,8 +18,17 @@ import PackageLoadingOverlay from "components/python-runtime/PackageLoadingOverl
 import Split from "react-split";
 import { BiPyramid } from "react-icons/bi";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
-import { Popover, Typography, Button } from "@mui/material";
+import HorizontalRuleIcon from "@mui/icons-material/HorizontalRule";
+import {
+  Popover,
+  Typography,
+  Button,
+  Box,
+  CircularProgress,
+} from "@mui/material";
 import HoverPopover from "material-ui-popup-state/HoverPopover";
+import UseAnimations from "react-useanimations";
+import activity from "react-useanimations/lib/activity";
 
 import {
   usePopupState,
@@ -27,6 +36,12 @@ import {
   bindPopover,
 } from "material-ui-popup-state/hooks";
 import { BsQuestion } from "react-icons/bs";
+import {
+  CheckCircleOutline,
+  HourglassEmpty,
+  HourglassFull,
+  MoreHoriz,
+} from "@mui/icons-material";
 
 export default function PythonPlayground() {
   const [topBarRef, { height: topBarHeight }] = useMeasure();
@@ -54,9 +69,15 @@ export default function PythonPlayground() {
   const [codeResult, setCodeResult] = useState<ICodeExecutionResult>(null);
   const [isPackageDrawerOpen, setIsPackageDrawerOpen] = useState(false);
   const [isImportDialogOpen, setIsImportDialogOpen] = useState(false);
+
+  const stdoutBoxPopupState = usePopupState({
+    variant: "popover",
+    popupId: "tdoutBoxPopover",
+  });
+
   const evalResultBoxPopupState = usePopupState({
     variant: "popover",
-    popupId: "'evalResultBoxPopover',",
+    popupId: "evalResultBoxPopover",
   });
 
   const runUserCode = async () => {
@@ -102,16 +123,24 @@ export default function PythonPlayground() {
 
           <div className={styles.floatingButtonWrapper}>
             <Fab
+              aria-label="run"
               color="primary"
-              size="large"
-              aria-label="add"
               sx={{
                 boxShadow: "none",
               }}
               disabled={pythonRuntimeStatus !== PythonRuntimeStatus.READY}
               onClick={runUserCode}
             >
-              <PlayArrowIcon />
+              {pythonRuntimeStatus === PythonRuntimeStatus.READY ? (
+                <PlayArrowIcon />
+              ) : (
+                <UseAnimations
+                  animation={activity}
+                  fillColor="#777777"
+                  size={24}
+                  style={{ padding: 100 }}
+                />
+              )}
             </Fab>
           </div>
         </div>
@@ -132,7 +161,27 @@ export default function PythonPlayground() {
                 )}
               </h3>
 
-              <HelpOutlineIcon className={styles.reactIcon} />
+              <BsQuestion
+                className={styles.reactIcon}
+                {...bindHover(stdoutBoxPopupState)}
+              />
+
+              <HoverPopover
+                {...bindPopover(stdoutBoxPopupState)}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "right",
+                }}
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                elevation={0}
+              >
+                <div className={styles.popoverContent}>
+                  This area displays the standard output of your Python kernel.
+                </div>
+              </HoverPopover>
             </div>
 
             <div className={styles.boxContent}>
@@ -189,7 +238,8 @@ export default function PythonPlayground() {
                 elevation={0}
               >
                 <div className={styles.popoverContent}>
-                  The content of the Popover.
+                  The last evaluated expression in your code will be displayed
+                  in this area.
                 </div>
               </HoverPopover>
             </div>
