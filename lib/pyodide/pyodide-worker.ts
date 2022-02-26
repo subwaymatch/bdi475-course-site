@@ -99,19 +99,18 @@ runPyodideFromJs()
     console.log(`result.lastEvaluatedResult`);
     console.log(result.lastEvaluatedResult);
 
-    console.log(await this.pyodide.isPyProxy(result.lastEvaluatedResult));
-
     if (await this.pyodide.isPyProxy(result.lastEvaluatedResult)) {
-      console.log(await result.lastEvaluatedResult.length);
+      console.log(`length=${await result.lastEvaluatedResult.length}`);
       console.log(await result.lastEvaluatedResult.type);
 
       if (result.lastEvaluatedResult.type === "DataFrame") {
         result.lastEvaluatedResult = result.lastEvaluatedResult.to_html();
         result.evaluatedResultDisplayType = PyodideResultDisplayType.HTML;
+      } else {
+        // if an unknown PyProxy type, stringify result
+        result.lastEvaluatedResult =
+          await result.lastEvaluatedResult.toString();
       }
-
-      console.log(`after toJs()`);
-      console.log(result.lastEvaluatedResult);
     }
 
     // Reset global namespace
