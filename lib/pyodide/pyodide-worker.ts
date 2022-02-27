@@ -99,6 +99,36 @@ runPyodideFromJs()
     console.log(`result.lastEvaluatedResult`);
     console.log(result.lastEvaluatedResult);
 
+    // TODO: patch matplotlib.pyplot.show() and PILImage.Image to support matplotlib and pillow outputs
+    // refer to https://github.com/jupyterlite/jupyterlite/blob/main/packages/pyolite-kernel/py/pyolite/pyolite/patches.py for pyolite's implementations
+
+    // sample code to patch plt.show()
+    // import os
+
+    // os.environ["MPLBACKEND"] = "AGG"
+
+    // import matplotlib.pyplot
+    // import matplotlib.pyplot as plt
+    // import numpy as np
+    // from io import BytesIO
+
+    // _old_show = matplotlib.pyplot.show
+
+    // def show():
+    // print("show")
+    // buf = BytesIO()
+    // matplotlib.pyplot.savefig(buf, format="png")
+    // buf.seek(0)
+    // print(buf.read())
+
+    // matplotlib.pyplot.show = show
+
+    // xpoints = np.array([1, 8])
+    // ypoints = np.array([3, 10])
+
+    // plt.plot(xpoints, ypoints)
+    // plt.show()
+
     if (await this.pyodide.isPyProxy(result.lastEvaluatedResult)) {
       console.log(`length=${await result.lastEvaluatedResult.length}`);
       console.log(await result.lastEvaluatedResult.type);
