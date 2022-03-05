@@ -75,19 +75,19 @@ export default function AssignmentsPage() {
                   name="Exercise 5"
                   dueDate={dayjs("2022-02-19").tz().format("ll")}
                   pointsAvailable={20}
-                  status={AssignmentStatus.Available}
+                  status={AssignmentStatus.Unavailable}
                   link="https://canvas.illinois.edu/courses/18332/assignments/432479"
                   colorTheme={ColorTheme.Purple}
                 />
-                {/* 
                 <AssignmentItem
                   name="Exercise 6"
                   dueDate={dayjs("2021-10-06").tz().format("ll")}
                   pointsAvailable={20}
-                  status={AssignmentStatus.Available}
-                  link="https://nbviewer.org/github/bdi475/notebooks/blob/e5fb4db0e1b2b75fbbe1bc61817648bd9629c675/exercise-06-pandas-working-with-columns-and-missing-values-SOLUTION.ipynb"
+                  status={AssignmentStatus.Unavailable}
+                  link="https://canvas.illinois.edu/courses/18332/assignments/436926"
                   colorTheme={ColorTheme.Purple}
                 />
+                {/*
 
                 <AssignmentItem
                   name="Exercise 7"
@@ -167,7 +167,7 @@ export default function AssignmentsPage() {
                   name="Quiz 1"
                   dueDate={dayjs("2022-02-03").tz().format("ll")}
                   pointsAvailable={25}
-                  status={AssignmentStatus.Available}
+                  status={AssignmentStatus.Unavailable}
                   link="/assignments/quiz-01"
                   colorTheme={ColorTheme.Green}
                 />
@@ -176,17 +176,17 @@ export default function AssignmentsPage() {
                   name="Quiz 2 Prep"
                   dueDate={dayjs("2022-12-31").tz().format("ll")}
                   pointsAvailable={0}
-                  status={AssignmentStatus.Available}
+                  status={AssignmentStatus.Unavailable}
                   link="/assignments/quiz-02-prep"
                   colorTheme={ColorTheme.Green}
                 />
-                {/* 
+
                 <AssignmentItem
                   name="Quiz 2"
                   dueDate={dayjs("2021-09-24").tz().format("ll")}
                   pointsAvailable={25}
-                  status={AssignmentStatus.Available}
-                  link="/assignments/quiz-02"
+                  status={AssignmentStatus.Unavailable}
+                  link="https://canvas.illinois.edu/courses/18332/assignments/434590"
                   colorTheme={ColorTheme.Green}
                 />
 
@@ -194,11 +194,11 @@ export default function AssignmentsPage() {
                   name="Quiz 3"
                   dueDate={dayjs("2021-10-08").tz().format("ll")}
                   pointsAvailable={25}
-                  status={AssignmentStatus.Available}
-                  link="https://canvas.illinois.edu/courses/14860/assignments/332255"
+                  status={AssignmentStatus.Unavailable}
+                  link="https://canvas.illinois.edu/courses/18332/assignments/436916"
                   colorTheme={ColorTheme.Green}
                 />
-
+                {/*
                 <AssignmentItem
                   name="Quiz 4"
                   dueDate={dayjs("2021-10-28").tz().format("ll")}
@@ -236,7 +236,7 @@ export default function AssignmentsPage() {
                 name="Chicago Ridesharing Vehicles"
                 dueDate={dayjs("2022-03-01").tz().format("ll")}
                 pointsAvailable={80}
-                status={AssignmentStatus.Available}
+                status={AssignmentStatus.Unavailable}
                 link="https://canvas.illinois.edu/courses/18332/assignments/435420"
                 thumbnail={
                   <Image
