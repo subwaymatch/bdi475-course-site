@@ -204,9 +204,9 @@ export default function NotesPage() {
               title="Missing Values, Datetime, Aggregation, and Merging"
               colorTheme={ColorTheme.Orange}
             />
-            {/* 
+
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/6739c2acdcd5ffcd13c2549c20ebde1737f44a24/L15-advanced-pandas-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/3c6b43e4566a94e85b6b9e5d6097a33a848b8fd8/L13-aggregations-and-intro-to-merges-vocareum-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/pandas-gray-bg.png"
@@ -215,10 +215,25 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2021-10-14"
-              title="More Pandas Exercise"
+              date="2021-03-01"
+              title="More Aggregations, Intro to Merges"
               colorTheme={ColorTheme.Purple}
-            /> */}
+            />
+
+            <NoteItem
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/3c6b43e4566a94e85b6b9e5d6097a33a848b8fd8/L14-more-pandas-vocareum-SOLUTION.ipynb"
+              thumbnail={
+                <Image
+                  src="/images/notes/pandas-gray-bg.png"
+                  width={900}
+                  height={450}
+                  alt=""
+                />
+              }
+              date="2021-03-03"
+              title="Cell Operations, Advanced Exercises"
+              colorTheme={ColorTheme.Purple}
+            />
           </Row>
 
           {/* <Row>
