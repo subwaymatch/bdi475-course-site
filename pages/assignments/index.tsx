@@ -81,7 +81,7 @@ export default function AssignmentsPage() {
                 />
                 <AssignmentItem
                   name="Exercise 6"
-                  dueDate={dayjs("2021-10-06").tz().format("ll")}
+                  dueDate={dayjs("2022-03-02").tz().format("ll")}
                   pointsAvailable={20}
                   status={AssignmentStatus.Unavailable}
                   link="https://canvas.illinois.edu/courses/18332/assignments/436926"
@@ -174,7 +174,7 @@ export default function AssignmentsPage() {
 
                 <AssignmentItem
                   name="Quiz 2 Prep"
-                  dueDate={dayjs("2022-12-31").tz().format("ll")}
+                  dueDate={dayjs("2022-02-22").tz().format("ll")}
                   pointsAvailable={0}
                   status={AssignmentStatus.Unavailable}
                   link="/assignments/quiz-02-prep"
@@ -183,7 +183,7 @@ export default function AssignmentsPage() {
 
                 <AssignmentItem
                   name="Quiz 2"
-                  dueDate={dayjs("2021-09-24").tz().format("ll")}
+                  dueDate={dayjs("2022-02-22").tz().format("ll")}
                   pointsAvailable={25}
                   status={AssignmentStatus.Unavailable}
                   link="https://canvas.illinois.edu/courses/18332/assignments/434590"
@@ -192,7 +192,7 @@ export default function AssignmentsPage() {
 
                 <AssignmentItem
                   name="Quiz 3"
-                  dueDate={dayjs("2021-10-08").tz().format("ll")}
+                  dueDate={dayjs("2022-03-04").tz().format("ll")}
                   pointsAvailable={25}
                   status={AssignmentStatus.Unavailable}
                   link="https://canvas.illinois.edu/courses/18332/assignments/436916"
