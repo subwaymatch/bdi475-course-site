@@ -42,6 +42,7 @@ import {
   HourglassFull,
   MoreHoriz,
 } from "@mui/icons-material";
+import PlaygroundTopBar from "./PlaygroundTopBar";
 
 export default function PythonPlayground() {
   const [topBarRef, { height: topBarHeight }] = useMeasure();
@@ -101,9 +102,15 @@ export default function PythonPlayground() {
 
   return (
     <div className={styles.playgroundWrapper}>
-      <div className={styles.topBar} ref={topBarRef}>
-        Top Bar
-      </div>
+      <PlaygroundTopBar
+        snippetId={"abc123"}
+        // backUrl="/python-challenge/list"
+        handleDelete={() => {}}
+        clone={() => {}}
+        save={() => {}}
+        ref={topBarRef}
+        className={styles.topBar}
+      />
 
       <Split
         className={clsx(styles.playgroundBody, styles.horizontalSplit)}
