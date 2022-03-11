@@ -249,6 +249,24 @@ export default function AssignmentsPage() {
               />
             </Col>
 
+            <Col lg={6}>
+              <CaseStudyItem
+                name="Starbucks App Customers"
+                dueDate={dayjs("2022-03-12").tz().format("ll")}
+                pointsAvailable={80}
+                status={AssignmentStatus.Available}
+                link="https://canvas.illinois.edu/courses/18332/assignments/438367"
+                thumbnail={
+                  <Image
+                    src="/images/case-studies/case_study_starbucks_app_customers.jpg"
+                    layout="responsive"
+                    width={1920}
+                    height={640}
+                  />
+                }
+              />
+            </Col>
+
             {/*
             <Col lg={6}>
               <CaseStudyItem

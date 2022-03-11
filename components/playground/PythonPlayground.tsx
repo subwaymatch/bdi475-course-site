@@ -103,13 +103,12 @@ export default function PythonPlayground() {
   return (
     <div className={styles.playgroundWrapper}>
       <PlaygroundTopBar
+        topBarRef={topBarRef}
+        wrapperClassName={styles.topBar}
         snippetId={"abc123"}
-        // backUrl="/python-challenge/list"
         handleDelete={() => {}}
         clone={() => {}}
         save={() => {}}
-        ref={topBarRef}
-        className={styles.topBar}
       />
 
       <Split

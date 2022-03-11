@@ -7,7 +7,6 @@ import { extractChallenges, postFilePaths } from "lib/mdx/posts";
 import styles from "styles/pages/notes/common.module.scss";
 import { ChallengesContextProvider } from "context/ChallengesContext";
 import { IChallengeResultSummary, IChallengeTypeAndId } from "types/challenge";
-import useSupabaseAuth from "hooks/useSupabaseAuth";
 import { supabaseClient } from "lib/supabase/supabaseClient";
 import { getMultipleChoiceIds, getPythonChallengeIds } from "utils/challenge";
 import { useEffect, useState } from "react";
@@ -35,7 +34,6 @@ export default function ChallengeResultsSummary({
   category,
   slug,
 }: IChallengeResultsSummaryPageProps) {
-  const { isAdmin } = useSupabaseAuth();
   const [isDetailModalOpen, setIsDetailModalOpen] = useState<boolean>(false);
   const [detailUserId, setDetailUserId] = useState<string>(null);
 

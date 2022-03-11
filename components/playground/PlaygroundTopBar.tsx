@@ -8,22 +8,21 @@ import styles from "./PlaygroundTopBar.module.scss";
 import { useSnapshot } from "valtio";
 import pythonPlaygroundState from "stores/pythonPlaygroundState";
 import clsx from "clsx";
+import { UseMeasureRef } from "react-use/lib/useMeasure";
 
 interface IPlaygroundTopBarProps {
+  topBarRef: UseMeasureRef<Element>;
+  wrapperClassName: string;
   snippetId: string;
-  backUrl?: string;
-  title: string;
-  setTitle: (v: string) => void;
   handleDelete: () => void;
   clone: () => void;
   save: (displayToast?: boolean) => void;
 }
 
 export default function PlaygroundTopBar({
+  topBarRef,
+  wrapperClassName,
   snippetId,
-  backUrl,
-  title,
-  setTitle,
   handleDelete: onDelete,
   clone,
   save,
@@ -31,7 +30,7 @@ export default function PlaygroundTopBar({
   const snap = useSnapshot(pythonPlaygroundState);
 
   return (
-    <div className={styles.controlBar}>
+    <div className={wrapperClassName} ref={topBarRef}>
       <Container fluid>
         <Row className={clsx(styles.controlRow, "align-items-center")}>
           <Col xs={4}>

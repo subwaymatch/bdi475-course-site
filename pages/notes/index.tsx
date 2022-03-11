@@ -215,9 +215,9 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2021-03-01"
+              date="2022-03-01"
               title="More Aggregations, Intro to Merges"
-              colorTheme={ColorTheme.Purple}
+              colorTheme={ColorTheme.Orange}
             />
 
             <NoteItem
@@ -230,9 +230,9 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2021-03-03"
+              date="2022-03-03"
               title="Cell Operations, Advanced Exercises"
-              colorTheme={ColorTheme.Purple}
+              colorTheme={ColorTheme.Orange}
             />
 
             <NoteItem
@@ -245,9 +245,9 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2021-03-08"
+              date="2022-03-08"
               title="Hypothesis Testing"
-              colorTheme={ColorTheme.Purple}
+              colorTheme={ColorTheme.Orange}
             />
           </Row>
 
