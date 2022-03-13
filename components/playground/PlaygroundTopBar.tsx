@@ -6,13 +6,12 @@ import { Container, Row, Col } from "react-bootstrap";
 import _ from "lodash";
 import styles from "./PlaygroundTopBar.module.scss";
 import { useSnapshot } from "valtio";
-import pythonPlaygroundState from "stores/pythonPlaygroundState";
+import pythonPlaygroundState from "components/playground/pythonPlaygroundState";
 import clsx from "clsx";
 import { UseMeasureRef } from "react-use/lib/useMeasure";
 
 interface IPlaygroundTopBarProps {
   topBarRef: UseMeasureRef<Element>;
-  snippetId: string;
   handleDelete: () => void;
   clone: () => void;
   save: (displayToast?: boolean) => void;
@@ -20,7 +19,6 @@ interface IPlaygroundTopBarProps {
 
 export default function PlaygroundTopBar({
   topBarRef,
-  snippetId,
   handleDelete: onDelete,
   clone,
   save,

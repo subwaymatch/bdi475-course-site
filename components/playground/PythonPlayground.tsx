@@ -6,7 +6,7 @@ import Link from "next/link";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import Fab from "@mui/material/Fab";
 import { toast } from "react-toastify";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   ICodeExecutionResult,
   PyodideResultDisplayType,
@@ -20,7 +20,7 @@ import { BiPyramid } from "react-icons/bi";
 import HoverPopover from "material-ui-popup-state/HoverPopover";
 import UseAnimations from "react-useanimations";
 import activity from "react-useanimations/lib/activity";
-
+import pythonPlaygroundState from "components/playground/pythonPlaygroundState";
 import {
   usePopupState,
   bindHover,
@@ -28,6 +28,7 @@ import {
 } from "material-ui-popup-state/hooks";
 import { BsQuestion } from "react-icons/bs";
 import PlaygroundTopBar from "./PlaygroundTopBar";
+import { useSnapshot } from "valtio";
 
 export default function PythonPlayground() {
   const [topBarRef, { height: topBarHeight }] = useMeasure();
@@ -40,6 +41,10 @@ export default function PythonPlayground() {
     runCode,
   } = usePythonRuntime();
 
+  const { snippetId, title, userCode, codeResult } = useSnapshot(
+    pythonPlaygroundState
+  );
+
   let playgroundBodyHeight = useMemo(
     () => windowHeight - topBarHeight - bottomBarHeight,
     [windowHeight, topBarHeight, bottomBarHeight]
@@ -48,10 +53,6 @@ export default function PythonPlayground() {
     ? playgroundBodyHeight
     : 800;
 
-  const [userCode, setUserCode] = useState(
-    "import pandas as pd\n\npd.DataFrame({\n  'a': [1, 2, 3],\n  'b': [True, False, False]\n})\n"
-  );
-  const [codeResult, setCodeResult] = useState<ICodeExecutionResult>(null);
   const [isPackageDrawerOpen, setIsPackageDrawerOpen] = useState(false);
   const [isImportDialogOpen, setIsImportDialogOpen] = useState(false);
 
@@ -73,7 +74,7 @@ export default function PythonPlayground() {
     }
 
     const result = await runCode(userCode);
-    setCodeResult(result);
+    pythonPlaygroundState.codeResult = result;
 
     if (result.hasError) {
       toast.error("See the error message below.");
@@ -82,11 +83,12 @@ export default function PythonPlayground() {
     }
   };
 
+  useEffect(() => {}, []);
+
   return (
     <div className={styles.playgroundWrapper}>
       <PlaygroundTopBar
         topBarRef={topBarRef}
-        snippetId={"abc123"}
         handleDelete={() => {}}
         clone={() => {}}
         save={() => {}}
@@ -101,7 +103,9 @@ export default function PythonPlayground() {
         <div className={styles.codeEditorWrapper}>
           <CodeEditor
             editorValue={userCode}
-            onChange={setUserCode}
+            onChange={(val) => {
+              pythonPlaygroundState.userCode = val;
+            }}
             onRun={null}
             onCheck={null}
             language="python"
