@@ -12,7 +12,6 @@ import { UseMeasureRef } from "react-use/lib/useMeasure";
 
 interface IPlaygroundTopBarProps {
   topBarRef: UseMeasureRef<Element>;
-  wrapperClassName: string;
   snippetId: string;
   handleDelete: () => void;
   clone: () => void;
@@ -21,7 +20,6 @@ interface IPlaygroundTopBarProps {
 
 export default function PlaygroundTopBar({
   topBarRef,
-  wrapperClassName,
   snippetId,
   handleDelete: onDelete,
   clone,
@@ -30,7 +28,7 @@ export default function PlaygroundTopBar({
   const snap = useSnapshot(pythonPlaygroundState);
 
   return (
-    <div className={wrapperClassName} ref={topBarRef}>
+    <div className={styles.topBar} ref={topBarRef}>
       <Container fluid>
         <Row className={clsx(styles.controlRow, "align-items-center")}>
           <Col xs={4}>

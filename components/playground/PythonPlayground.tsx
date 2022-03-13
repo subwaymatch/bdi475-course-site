@@ -17,15 +17,6 @@ import PackagesDrawer from "components/python-runtime/PackagesDrawer";
 import PackageLoadingOverlay from "components/python-runtime/PackageLoadingOverlay";
 import Split from "react-split";
 import { BiPyramid } from "react-icons/bi";
-import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
-import HorizontalRuleIcon from "@mui/icons-material/HorizontalRule";
-import {
-  Popover,
-  Typography,
-  Button,
-  Box,
-  CircularProgress,
-} from "@mui/material";
 import HoverPopover from "material-ui-popup-state/HoverPopover";
 import UseAnimations from "react-useanimations";
 import activity from "react-useanimations/lib/activity";
@@ -36,12 +27,6 @@ import {
   bindPopover,
 } from "material-ui-popup-state/hooks";
 import { BsQuestion } from "react-icons/bs";
-import {
-  CheckCircleOutline,
-  HourglassEmpty,
-  HourglassFull,
-  MoreHoriz,
-} from "@mui/icons-material";
 import PlaygroundTopBar from "./PlaygroundTopBar";
 
 export default function PythonPlayground() {
@@ -50,7 +35,6 @@ export default function PythonPlayground() {
   const { height: windowHeight } = useWindowSize();
   const {
     status: pythonRuntimeStatus,
-    loadedPackages,
     loadPackages,
     findNewImports,
     runCode,
@@ -84,8 +68,6 @@ export default function PythonPlayground() {
   const runUserCode = async () => {
     const newImports = await findNewImports(userCode);
 
-    console.log(`new imports=${newImports}`);
-
     if (newImports) {
       await loadPackages(newImports);
     }
@@ -104,7 +86,6 @@ export default function PythonPlayground() {
     <div className={styles.playgroundWrapper}>
       <PlaygroundTopBar
         topBarRef={topBarRef}
-        wrapperClassName={styles.topBar}
         snippetId={"abc123"}
         handleDelete={() => {}}
         clone={() => {}}
@@ -294,10 +275,7 @@ export default function PythonPlayground() {
         </div>
         <div className={styles.logoWrapper} style={{}}>
           <Link href="/">
-            <a className={clsx(styles.logoLink)}>
-              {/* <Image src={logoImage} alt="BDI 475" width={72} height={19} /> */}
-              pyodide playground
-            </a>
+            <a className={clsx(styles.logoLink)}>python playground</a>
           </Link>
         </div>
       </div>
@@ -309,7 +287,6 @@ export default function PythonPlayground() {
 
       <PackageLoadingOverlay
         isOpen={pythonRuntimeStatus === PythonRuntimeStatus.LOADING_PACKAGES}
-        // isOpen={true}
         handleClose={() => setIsImportDialogOpen(false)}
       />
     </div>
