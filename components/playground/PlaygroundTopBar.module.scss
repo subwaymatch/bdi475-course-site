@@ -43,8 +43,12 @@
       outline: none;
       width: 100%;
 
+      &::placeholder {
+        color: $color-gray-300;
+      }
+
       &:hover {
-        background-color: #222;
+        background-color: $color-gray-600;
       }
 
       &:focus {

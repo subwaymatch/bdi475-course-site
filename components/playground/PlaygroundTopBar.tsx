@@ -23,7 +23,7 @@ export default function PlaygroundTopBar({
   clone,
   save,
 }: IPlaygroundTopBarProps) {
-  const snap = useSnapshot(pythonPlaygroundState);
+  const { title } = useSnapshot(pythonPlaygroundState);
 
   return (
     <div className={styles.topBar} ref={topBarRef}>
@@ -40,9 +40,12 @@ export default function PlaygroundTopBar({
             <div className={styles.snippetTitleWrapper}>
               <input
                 type="text"
-                value={snap.title}
+                value={title}
                 onChange={(e) => {
                   pythonPlaygroundState.title = e.target.value;
+                }}
+                onFocus={(e) => {
+                  e.target.select();
                 }}
                 placeholder="Snippet Title"
                 className={styles.snippetTitleInput}

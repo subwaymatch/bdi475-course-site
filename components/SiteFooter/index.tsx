@@ -30,9 +30,7 @@ export default function SiteFooter() {
 
               <ul>
                 <li>
-                  <a href="https://pyodide.org/en/stable/console.html">
-                    Python REPL
-                  </a>
+                  <Link href="/python-playground">Python Playground</Link>
                 </li>
                 <li>
                   <a href="https://cscircles.cemc.uwaterloo.ca/visualize">

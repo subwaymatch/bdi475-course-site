@@ -7,11 +7,8 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import Fab from "@mui/material/Fab";
 import { toast } from "react-toastify";
 import { useEffect, useMemo, useState } from "react";
-import {
-  ICodeExecutionResult,
-  PyodideResultDisplayType,
-  PythonRuntimeStatus,
-} from "types/pyodide";
+import { useRouter } from "next/router";
+import { PyodideResultDisplayType, PythonRuntimeStatus } from "types/pyodide";
 import usePythonRuntime from "hooks/usePythonRuntime";
 import PackagesDrawer from "components/python-runtime/PackagesDrawer";
 import PackageLoadingOverlay from "components/python-runtime/PackageLoadingOverlay";
@@ -31,6 +28,7 @@ import PlaygroundTopBar from "./PlaygroundTopBar";
 import { useSnapshot } from "valtio";
 
 export default function PythonPlayground() {
+  const router = useRouter();
   const [topBarRef, { height: topBarHeight }] = useMeasure();
   const [bottomBarRef, { height: bottomBarHeight }] = useMeasure();
   const { height: windowHeight } = useWindowSize();
@@ -41,9 +39,7 @@ export default function PythonPlayground() {
     runCode,
   } = usePythonRuntime();
 
-  const { snippetId, title, userCode, codeResult } = useSnapshot(
-    pythonPlaygroundState
-  );
+  const { userCode, codeResult } = useSnapshot(pythonPlaygroundState);
 
   let playgroundBodyHeight = useMemo(
     () => windowHeight - topBarHeight - bottomBarHeight,
@@ -58,7 +54,7 @@ export default function PythonPlayground() {
 
   const stdoutBoxPopupState = usePopupState({
     variant: "popover",
-    popupId: "tdoutBoxPopover",
+    popupId: "stdoutBoxPopover",
   });
 
   const evalResultBoxPopupState = usePopupState({
@@ -83,7 +79,7 @@ export default function PythonPlayground() {
     }
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {}, [router.isReady]);
 
   return (
     <div className={styles.playgroundWrapper}>

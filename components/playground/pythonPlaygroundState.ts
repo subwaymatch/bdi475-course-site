@@ -10,7 +10,7 @@ export interface IPythonPlaygroundState {
 
 const state = proxy({
   snippetId: null,
-  title: "Untitled",
+  title: "",
   userCode:
     "import pandas as pd\n\npd.DataFrame({\n  'a': [1, 2, 3],\n  'b': [True, False, False]\n})\n",
   codeResult: null,
