@@ -251,7 +251,7 @@ export default function NotesPage() {
             />
           </Row>
 
-          {/* <Row>
+          <Row>
             <Col>
               <h2
                 className="sectionTitle"
@@ -269,13 +269,13 @@ export default function NotesPage() {
               href="https://nbviewer.org/github/bdi475/notebooks/blob/ce3b24aca031d595cb8c58ede3d43c973ad1f354/L17-intro-to-SQL-SOLUTION.ipynb"
               thumbnail={
                 <Image
-                  src="/images/notes/l17-sql.png"
+                  src="/images/notes/sql-gray-bg.png"
                   width={900}
-                  height={600}
+                  height={450}
                   alt=""
                 />
               }
-              date="2021-10-21"
+              date="2022-03-22"
               title="Introduction to SQL"
               colorTheme={ColorTheme.Green}
             />
@@ -284,18 +284,19 @@ export default function NotesPage() {
               href="https://nbviewer.org/github/bdi475/notebooks/blob/ce3b24aca031d595cb8c58ede3d43c973ad1f354/L18-SQL-queries-aggregations-SOLUTION.ipynb"
               thumbnail={
                 <Image
-                  src="/images/notes/l17-sql.png"
+                  src="/images/notes/sql-gray-bg.png"
                   width={900}
-                  height={600}
+                  height={450}
                   alt=""
                 />
               }
-              date="2021-10-26"
+              date="2022-03-24"
               title="More SQL Queries and Aggregations"
               colorTheme={ColorTheme.Green}
             />
           </Row>
 
+          {/*
           <Row>
             <Col>
               <h2

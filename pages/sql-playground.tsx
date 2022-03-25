@@ -2,6 +2,16 @@ import { useState, useEffect } from "react";
 import initSqlJs from "sql.js";
 import styles from "components/playground/SQLPlayground.module.scss";
 
+const sqlChallenge = {
+  initScript: `CREATE TABLE contacts (
+	contact_id INTEGER PRIMARY KEY,
+	first_name TEXT NOT NULL,
+	last_name TEXT NOT NULL,
+	email TEXT NOT NULL UNIQUE,
+	phone TEXT NOT NULL UNIQUE
+);`,
+};
+
 export default function SqlJsPage() {
   const [db, setDb] = useState(null);
   const [error, setError] = useState(null);

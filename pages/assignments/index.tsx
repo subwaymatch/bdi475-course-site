@@ -87,17 +87,17 @@ export default function AssignmentsPage() {
                   link="https://canvas.illinois.edu/courses/18332/assignments/436926"
                   colorTheme={ColorTheme.Purple}
                 />
-                {/*
 
                 <AssignmentItem
                   name="Exercise 7"
-                  dueDate={dayjs("2021-10-29").tz().format("ll")}
+                  dueDate={dayjs("2022-03-27").tz().format("ll")}
                   pointsAvailable={20}
                   status={AssignmentStatus.Available}
-                  link="https://canvas.illinois.edu/courses/14860/assignments/340206"
+                  link="https://canvas.illinois.edu/courses/18332/assignments/443935"
                   colorTheme={ColorTheme.Purple}
                 />
 
+                {/*
                 <AssignmentItem
                   name="Exercise 8"
                   dueDate={dayjs("2021-11-03").tz().format("ll")}
@@ -143,15 +143,6 @@ export default function AssignmentsPage() {
                   link="/assignments/problem-set-01"
                   colorTheme={ColorTheme.Blue}
                 />
-
-                {/* <AssignmentItem
-                  name="Problem Set 2"
-                  dueDate={dayjs("2021-10-14").tz().format("ll")}
-                  pointsAvailable={80}
-                  status={AssignmentStatus.Available}
-                  link="https://nbviewer.org/github/bdi475/notebooks/blob/1bad25c3a85d188212d819486dd8107f76637aa1/problem-set-02-starbucks-app-customers-SOLUTION.ipynb"
-                  colorTheme={ColorTheme.Blue}
-                /> */}
               </div>
             </Col>
           </Row>
@@ -267,14 +258,13 @@ export default function AssignmentsPage() {
               />
             </Col>
 
-            {/*
             <Col lg={6}>
               <CaseStudyItem
                 name="Airbnb Listings Analysis with SQL"
-                dueDate={dayjs("2021-11-01").tz().format("ll")}
+                dueDate={dayjs("2022-04-01").tz().format("ll")}
                 pointsAvailable={80}
                 status={AssignmentStatus.Available}
-                link="https://canvas.illinois.edu/courses/14860/assignments/339950"
+                link="https://canvas.illinois.edu/courses/18332/assignments/443931"
                 thumbnail={
                   <Image
                     src="/images/case-studies/case_study_airbnb_listings.jpg"
@@ -286,6 +276,7 @@ export default function AssignmentsPage() {
               />
             </Col>
 
+            {/*
             <Col lg={6}>
               <CaseStudyItem
                 name="Chicago Ridesharing Trips Before & After COVID-19"
