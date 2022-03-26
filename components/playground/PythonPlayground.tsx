@@ -41,13 +41,10 @@ export default function PythonPlayground() {
 
   const { userCode, codeResult } = useSnapshot(pythonPlaygroundState);
 
-  let playgroundBodyHeight = useMemo(
-    () => windowHeight - topBarHeight - bottomBarHeight,
-    [windowHeight, topBarHeight, bottomBarHeight]
-  );
-  playgroundBodyHeight = Number.isFinite(playgroundBodyHeight)
-    ? playgroundBodyHeight
-    : 800;
+  let playgroundBodyHeight = useMemo(() => {
+    const newHeight = windowHeight - topBarHeight - bottomBarHeight;
+    return Number.isFinite(newHeight) ? newHeight : 800;
+  }, [windowHeight, topBarHeight, bottomBarHeight]);
 
   const [isPackageDrawerOpen, setIsPackageDrawerOpen] = useState(false);
   const [isImportDialogOpen, setIsImportDialogOpen] = useState(false);
@@ -132,14 +129,11 @@ export default function PythonPlayground() {
           </div>
         </div>
 
-        <Split
-          direction="vertical"
-          className={clsx(styles.resultWrapper, styles.verticalSplit)}
-        >
-          <div className={clsx(styles.standardOutputWrapper, styles.outputBox)}>
+        <div className={clsx(styles.resultWrapper)}>
+          <div className={clsx(styles.outputBox)}>
             <div className={styles.boxHeader}>
               <h3>
-                <span className={styles.text}>Standard Output</span>
+                <span className={styles.text}>Output</span>
 
                 {codeResult?.hasError && (
                   <span className={clsx(styles.status, styles.hasError)}>
@@ -172,7 +166,7 @@ export default function PythonPlayground() {
             </div>
 
             <div className={styles.boxContent}>
-              {codeResult?.stdout || codeResult?.hasError ? (
+              {(codeResult?.stdout || codeResult?.hasError) && (
                 <>
                   {codeResult?.stdout && (
                     <pre className={styles.stdout}>{codeResult?.stdout}</pre>
@@ -188,52 +182,16 @@ export default function PythonPlayground() {
                     </pre>
                   )}
                 </>
-              ) : (
-                <div className={styles.emptyBox}>
-                  <BiPyramid className={styles.reactIcon} />
-
-                  <span className={styles.message}>No Output</span>
-                </div>
               )}
-            </div>
-          </div>
 
-          <div
-            className={clsx(styles.evaluatedOutputWrapper, styles.outputBox)}
-          >
-            <div className={styles.boxHeader}>
-              <h3>
-                <span className={styles.text}>Evaluated Result</span>
-                <span className="accent purple" />
-              </h3>
+              {codeResult?.lastEvaluatedResult && (
+                <h4>
+                  <span>Last Evaluated Result</span>
+                </h4>
+              )}
 
-              <BsQuestion
-                className={styles.reactIcon}
-                {...bindHover(evalResultBoxPopupState)}
-              />
-
-              <HoverPopover
-                {...bindPopover(evalResultBoxPopupState)}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "right",
-                }}
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                elevation={0}
-              >
-                <div className={styles.popoverContent}>
-                  The last evaluated expression in your code will be displayed
-                  in this area.
-                </div>
-              </HoverPopover>
-            </div>
-
-            <div className={styles.boxContent}>
-              {codeResult?.lastEvaluatedResult ? (
-                codeResult?.evaluatedResultDisplayType ===
+              {codeResult?.lastEvaluatedResult &&
+                (codeResult?.evaluatedResultDisplayType ===
                 PyodideResultDisplayType.HTML ? (
                   <div
                     className={styles.renderedHtml}
@@ -245,16 +203,20 @@ export default function PythonPlayground() {
                   <pre className={styles.lastEvaluatedResult}>
                     {codeResult.lastEvaluatedResult}
                   </pre>
-                )
-              ) : (
-                <div className={styles.emptyBox}>
-                  <BiPyramid className={styles.reactIcon} />
-                  <span className={styles.message}>No Output</span>
-                </div>
-              )}
+                ))}
+
+              {!codeResult?.stdout &&
+                !codeResult?.hasError &&
+                !codeResult?.lastEvaluatedResult && (
+                  <div className={styles.emptyBox}>
+                    <BiPyramid className={styles.reactIcon} />
+
+                    <span className={styles.message}>No Output</span>
+                  </div>
+                )}
             </div>
           </div>
-        </Split>
+        </div>
       </Split>
 
       <div className={styles.bottomBar} ref={bottomBarRef}>

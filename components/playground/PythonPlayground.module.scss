@@ -55,7 +55,7 @@
     flex-direction: column;
 
     .outputBox {
-      height: 50%;
+      flex-grow: 1;
       display: flex;
       flex-direction: column;
 
@@ -64,7 +64,6 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        // border-bottom: 1px solid $color-gray-300;
 
         h3 {
           color: $color-white;
@@ -117,6 +116,21 @@
           }
         }
 
+        h4 {
+          font-size: 0.9rem;
+          font-weight: 500;
+          padding: 0.75rem 1.25rem;
+
+          span {
+            display: inline-block;
+            padding: 0.25rem 0.6rem;
+            line-height: 1.4;
+            color: white;
+            background-color: $color-blue;
+            border-radius: 0.25rem;
+          }
+        }
+
         .emptyBox {
           flex-grow: 1;
           justify-content: center;
@@ -139,14 +153,6 @@
         }
       }
     }
-
-    .standardOutputWrapper {
-      border-bottom: 1px solid $color-gray-300;
-    }
-
-    .evaluatedOutputWrapper {
-      border-top: 1px solid $color-gray-300;
-    }
   }
 }
 
@@ -155,9 +161,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  .controlsWrapper {
-  }
 
   .button {
     display: inline-flex;

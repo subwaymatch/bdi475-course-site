@@ -30,7 +30,9 @@ export default function SiteFooter() {
 
               <ul>
                 <li>
-                  <Link href="/python-playground">Python Playground</Link>
+                  <Link href="/python-playground/untitled">
+                    Python Playground
+                  </Link>
                 </li>
                 <li>
                   <a href="https://cscircles.cemc.uwaterloo.ca/visualize">

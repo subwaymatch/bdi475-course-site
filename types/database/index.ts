@@ -12,6 +12,114 @@ export interface paths {
       };
     };
   };
+  "/code_snippets": {
+    get: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.code_snippets.id"];
+          title?: parameters["rowFilter.code_snippets.title"];
+          user_id?: parameters["rowFilter.code_snippets.user_id"];
+          user_code?: parameters["rowFilter.code_snippets.user_code"];
+          language?: parameters["rowFilter.code_snippets.language"];
+          created_at?: parameters["rowFilter.code_snippets.created_at"];
+          updated_at?: parameters["rowFilter.code_snippets.updated_at"];
+          last_accessed_at?: parameters["rowFilter.code_snippets.last_accessed_at"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["code_snippets"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** code_snippets */
+          code_snippets?: definitions["code_snippets"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.code_snippets.id"];
+          title?: parameters["rowFilter.code_snippets.title"];
+          user_id?: parameters["rowFilter.code_snippets.user_id"];
+          user_code?: parameters["rowFilter.code_snippets.user_code"];
+          language?: parameters["rowFilter.code_snippets.language"];
+          created_at?: parameters["rowFilter.code_snippets.created_at"];
+          updated_at?: parameters["rowFilter.code_snippets.updated_at"];
+          last_accessed_at?: parameters["rowFilter.code_snippets.last_accessed_at"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.code_snippets.id"];
+          title?: parameters["rowFilter.code_snippets.title"];
+          user_id?: parameters["rowFilter.code_snippets.user_id"];
+          user_code?: parameters["rowFilter.code_snippets.user_code"];
+          language?: parameters["rowFilter.code_snippets.language"];
+          created_at?: parameters["rowFilter.code_snippets.created_at"];
+          updated_at?: parameters["rowFilter.code_snippets.updated_at"];
+          last_accessed_at?: parameters["rowFilter.code_snippets.last_accessed_at"];
+        };
+        body: {
+          /** code_snippets */
+          code_snippets?: definitions["code_snippets"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
   "/coding_challenge_attempts": {
     get: {
       parameters: {
@@ -784,6 +892,28 @@ export interface paths {
       };
     };
   };
+  "/rpc/get_challenge_results_summary": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: bigint[] */
+            multiple_choice_ids: string;
+            /** Format: bigint[] */
+            python_challenge_ids: string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
   "/rpc/is_admin": {
     post: {
       parameters: {
@@ -801,11 +931,18 @@ export interface paths {
       };
     };
   };
-  "/rpc/create_profile_for_new_user": {
+  "/rpc/get_challenge_results": {
     post: {
       parameters: {
         body: {
-          args: { [key: string]: unknown };
+          args: {
+            /** Format: uuid */
+            user_id?: string;
+            /** Format: bigint[] */
+            multiple_choice_ids: string;
+            /** Format: bigint[] */
+            python_challenge_ids: string;
+          };
         };
         header: {
           /** Preference */
@@ -823,6 +960,7 @@ export interface paths {
       parameters: {
         body: {
           args: {
+            /** Format: integer */
             size: number;
           };
         };
@@ -840,229 +978,459 @@ export interface paths {
 }
 
 export interface definitions {
+  /** @description Code snippets */
+  code_snippets: {
+    /**
+     * Format: bigint
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     */
+    id: number;
+    /** Format: text */
+    title?: string;
+    /**
+     * Format: uuid
+     * @description Note:
+     * This is a Foreign Key to `profiles.id`.<fk table='profiles' column='id'/>
+     */
+    user_id?: string;
+    /** Format: text */
+    user_code?: string;
+    /** Format: text */
+    language?: string;
+    /**
+     * Format: timestamp with time zone
+     * @default now()
+     */
+    created_at?: string;
+    /**
+     * Format: timestamp with time zone
+     * @default now()
+     */
+    updated_at?: string;
+    /**
+     * Format: timestamp with time zone
+     * @default now()
+     */
+    last_accessed_at?: string;
+  };
   coding_challenge_attempts: {
     /**
-     * Note:
+     * Format: bigint
+     * @description Note:
      * This is a Primary Key.<pk/>
      */
     id: number;
     /**
-     * Note:
+     * Format: uuid
+     * @description Note:
      * This is a Foreign Key to `profiles.id`.<fk table='profiles' column='id'/>
      */
     user_id: string;
     /**
-     * Note:
+     * Format: bigint
+     * @description Note:
      * This is a Foreign Key to `coding_challenges.id`.<fk table='coding_challenges' column='id'/>
      */
     challenge_id: number;
+    /**
+     * Format: timestamp with time zone
+     * @default now()
+     */
     submitted_at: string;
+    /**
+     * Format: boolean
+     * @default true
+     */
     is_success: boolean;
+    /** Format: text */
     user_code?: string;
   };
   coding_challenge_solution_lookup: {
     /**
-     * Note:
+     * Format: bigint
+     * @description Note:
      * This is a Primary Key.<pk/>
      */
     id: number;
+    /** Format: uuid */
     user_id?: string;
+    /** Format: bigint */
     challenge_id?: number;
+    /**
+     * Format: timestamp with time zone
+     * @default now()
+     */
     looked_at?: string;
   };
-  /** Coding challenges */
+  /** @description Coding challenges */
   coding_challenges: {
+    /**
+     * Format: timestamp with time zone
+     * @default now()
+     */
     created_at?: string;
+    /** Format: text */
     starter_code?: string;
+    /** Format: text */
     test_code: string;
+    /**
+     * Format: text
+     * @default Markdown Text
+     */
     text_markdown?: string;
+    /**
+     * Format: text
+     * @default New Python Challenge
+     */
     title?: string;
+    /**
+     * Format: timestamp with time zone
+     * @default now()
+     */
     updated_at?: string;
-    /** Programming language used for the challenge (e.g., python, java, c) */
+    /**
+     * Format: text
+     * @description Programming language used for the challenge (e.g., python, java, c)
+     * @default python
+     */
     language: string;
     /**
-     * Primary ID in int8 format for coding challenges
+     * Format: bigint
+     * @description Primary ID in int8 format for coding challenges
      *
      * Note:
      * This is a Primary Key.<pk/>
      */
     id: number;
-    /** Solution code */
+    /**
+     * Format: text
+     * @description Solution code
+     */
     solution_code?: string;
   };
   mcq_with_options: {
     /**
-     * Note:
+     * Format: bigint
+     * @description Note:
      * This is a Primary Key.<pk/>
      */
     id?: number;
+    /** Format: timestamp with time zone */
     created_at?: string;
+    /** Format: timestamp with time zone */
     updated_at?: string;
+    /** Format: text */
     title?: string;
+    /** Format: text */
     text_markdown?: string;
+    /** Format: json */
     options?: string;
+    /** Format: bigint */
     num_correct_options?: number;
   };
-  /** Recorded attempts of multiple choice questions */
+  /** @description Recorded attempts of multiple choice questions */
   multiple_choice_attempts: {
     /**
-     * Note:
+     * Format: bigint
+     * @description Note:
      * This is a Primary Key.<pk/>
      */
     id: number;
     /**
-     * Note:
+     * Format: uuid
+     * @description Note:
      * This is a Foreign Key to `profiles.id`.<fk table='profiles' column='id'/>
      */
     user_id: string;
     /**
-     * Note:
+     * Format: bigint
+     * @description Note:
      * This is a Foreign Key to `multiple_choice_questions.id`.<fk table='multiple_choice_questions' column='id'/>
      */
     question_id: number;
+    /**
+     * Format: timestamp with time zone
+     * @default now()
+     */
     submitted_at?: string;
+    /** Format: boolean */
     is_success: boolean;
   };
-  /** Options for multiple choice questions */
+  /** @description Options for multiple choice questions */
   multiple_choice_options: {
     /**
-     * Note:
+     * Format: bigint
+     * @description Note:
      * This is a Primary Key.<pk/>
      */
     id: number;
     /**
-     * Note:
+     * Format: bigint
+     * @description Note:
      * This is a Foreign Key to `multiple_choice_questions.id`.<fk table='multiple_choice_questions' column='id'/>
      */
     question_id: number;
+    /** Format: text */
     text_markdown: string;
+    /** Format: boolean */
     is_correct: boolean;
-    /** Explanation shown to a learner after submission (pertaining to each option) */
+    /**
+     * Format: text
+     * @description Explanation shown to a learner after submission (pertaining to each option)
+     */
     explanation_markdown?: string;
-    /** Used to determine the display order */
+    /**
+     * Format: bigint
+     * @description Used to determine the display order
+     */
     order: number;
   };
-  /** Multiple choice questions */
+  /** @description Multiple choice questions */
   multiple_choice_questions: {
     /**
-     * Note:
+     * Format: bigint
+     * @description Note:
      * This is a Primary Key.<pk/>
      */
     id: number;
+    /**
+     * Format: timestamp with time zone
+     * @default now()
+     */
     created_at: string;
+    /**
+     * Format: timestamp with time zone
+     * @default now()
+     */
     updated_at: string;
+    /**
+     * Format: text
+     * @default New Multiple Choice Challenge
+     */
     title: string;
-    /** Question text in markdown format */
+    /**
+     * Format: text
+     * @description Question text in markdown format
+     * @default Instruction text
+     */
     text_markdown: string;
-    /** Explanation shown to a learner after submission (pertaining to the whole question) */
+    /**
+     * Format: text
+     * @description Explanation shown to a learner after submission (pertaining to the whole question)
+     */
     explanation_markdown?: string;
   };
   profiles: {
     /**
-     * Note:
+     * Format: uuid
+     * @description Note:
      * This is a Primary Key.<pk/>
      */
     id: string;
+    /**
+     * Format: timestamp with time zone
+     * @default now()
+     */
     updated_at?: string;
+    /** Format: text */
     display_name?: string;
+    /** Format: text */
     email?: string;
-    /** A user's role for role-based access control */
+    /**
+     * Format: ARRAY
+     * @description A user's role for role-based access control
+     */
     roles?: unknown[];
   };
 }
 
 export interface parameters {
-  /** Preference */
+  /**
+   * @description Preference
+   * @enum {string}
+   */
   preferParams: "params=single-object";
-  /** Preference */
+  /**
+   * @description Preference
+   * @enum {string}
+   */
   preferReturn: "return=representation" | "return=minimal" | "return=none";
-  /** Preference */
+  /**
+   * @description Preference
+   * @enum {string}
+   */
   preferCount: "count=none";
-  /** Filtering Columns */
+  /** @description Filtering Columns */
   select: string;
-  /** On Conflict */
+  /** @description On Conflict */
   on_conflict: string;
-  /** Ordering */
+  /** @description Ordering */
   order: string;
-  /** Limiting and Pagination */
+  /** @description Limiting and Pagination */
   range: string;
-  /** Limiting and Pagination */
+  /**
+   * @description Limiting and Pagination
+   * @default items
+   */
   rangeUnit: string;
-  /** Limiting and Pagination */
+  /** @description Limiting and Pagination */
   offset: string;
-  /** Limiting and Pagination */
+  /** @description Limiting and Pagination */
   limit: string;
-  /** coding_challenge_attempts */
+  /** @description code_snippets */
+  "body.code_snippets": definitions["code_snippets"];
+  /** Format: bigint */
+  "rowFilter.code_snippets.id": string;
+  /** Format: text */
+  "rowFilter.code_snippets.title": string;
+  /** Format: uuid */
+  "rowFilter.code_snippets.user_id": string;
+  /** Format: text */
+  "rowFilter.code_snippets.user_code": string;
+  /** Format: text */
+  "rowFilter.code_snippets.language": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.code_snippets.created_at": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.code_snippets.updated_at": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.code_snippets.last_accessed_at": string;
+  /** @description coding_challenge_attempts */
   "body.coding_challenge_attempts": definitions["coding_challenge_attempts"];
+  /** Format: bigint */
   "rowFilter.coding_challenge_attempts.id": string;
+  /** Format: uuid */
   "rowFilter.coding_challenge_attempts.user_id": string;
+  /** Format: bigint */
   "rowFilter.coding_challenge_attempts.challenge_id": string;
+  /** Format: timestamp with time zone */
   "rowFilter.coding_challenge_attempts.submitted_at": string;
+  /** Format: boolean */
   "rowFilter.coding_challenge_attempts.is_success": string;
+  /** Format: text */
   "rowFilter.coding_challenge_attempts.user_code": string;
-  /** coding_challenge_solution_lookup */
+  /** @description coding_challenge_solution_lookup */
   "body.coding_challenge_solution_lookup": definitions["coding_challenge_solution_lookup"];
+  /** Format: bigint */
   "rowFilter.coding_challenge_solution_lookup.id": string;
+  /** Format: uuid */
   "rowFilter.coding_challenge_solution_lookup.user_id": string;
+  /** Format: bigint */
   "rowFilter.coding_challenge_solution_lookup.challenge_id": string;
+  /** Format: timestamp with time zone */
   "rowFilter.coding_challenge_solution_lookup.looked_at": string;
-  /** coding_challenges */
+  /** @description coding_challenges */
   "body.coding_challenges": definitions["coding_challenges"];
+  /** Format: timestamp with time zone */
   "rowFilter.coding_challenges.created_at": string;
+  /** Format: text */
   "rowFilter.coding_challenges.starter_code": string;
+  /** Format: text */
   "rowFilter.coding_challenges.test_code": string;
+  /** Format: text */
   "rowFilter.coding_challenges.text_markdown": string;
+  /** Format: text */
   "rowFilter.coding_challenges.title": string;
+  /** Format: timestamp with time zone */
   "rowFilter.coding_challenges.updated_at": string;
-  /** Programming language used for the challenge (e.g., python, java, c) */
+  /**
+   * Format: text
+   * @description Programming language used for the challenge (e.g., python, java, c)
+   */
   "rowFilter.coding_challenges.language": string;
-  /** Primary ID in int8 format for coding challenges */
+  /**
+   * Format: bigint
+   * @description Primary ID in int8 format for coding challenges
+   */
   "rowFilter.coding_challenges.id": string;
-  /** Solution code */
+  /**
+   * Format: text
+   * @description Solution code
+   */
   "rowFilter.coding_challenges.solution_code": string;
-  /** mcq_with_options */
+  /** @description mcq_with_options */
   "body.mcq_with_options": definitions["mcq_with_options"];
+  /** Format: bigint */
   "rowFilter.mcq_with_options.id": string;
+  /** Format: timestamp with time zone */
   "rowFilter.mcq_with_options.created_at": string;
+  /** Format: timestamp with time zone */
   "rowFilter.mcq_with_options.updated_at": string;
+  /** Format: text */
   "rowFilter.mcq_with_options.title": string;
+  /** Format: text */
   "rowFilter.mcq_with_options.text_markdown": string;
+  /** Format: json */
   "rowFilter.mcq_with_options.options": string;
+  /** Format: bigint */
   "rowFilter.mcq_with_options.num_correct_options": string;
-  /** multiple_choice_attempts */
+  /** @description multiple_choice_attempts */
   "body.multiple_choice_attempts": definitions["multiple_choice_attempts"];
+  /** Format: bigint */
   "rowFilter.multiple_choice_attempts.id": string;
+  /** Format: uuid */
   "rowFilter.multiple_choice_attempts.user_id": string;
+  /** Format: bigint */
   "rowFilter.multiple_choice_attempts.question_id": string;
+  /** Format: timestamp with time zone */
   "rowFilter.multiple_choice_attempts.submitted_at": string;
+  /** Format: boolean */
   "rowFilter.multiple_choice_attempts.is_success": string;
-  /** multiple_choice_options */
+  /** @description multiple_choice_options */
   "body.multiple_choice_options": definitions["multiple_choice_options"];
+  /** Format: bigint */
   "rowFilter.multiple_choice_options.id": string;
+  /** Format: bigint */
   "rowFilter.multiple_choice_options.question_id": string;
+  /** Format: text */
   "rowFilter.multiple_choice_options.text_markdown": string;
+  /** Format: boolean */
   "rowFilter.multiple_choice_options.is_correct": string;
-  /** Explanation shown to a learner after submission (pertaining to each option) */
+  /**
+   * Format: text
+   * @description Explanation shown to a learner after submission (pertaining to each option)
+   */
   "rowFilter.multiple_choice_options.explanation_markdown": string;
-  /** Used to determine the display order */
+  /**
+   * Format: bigint
+   * @description Used to determine the display order
+   */
   "rowFilter.multiple_choice_options.order": string;
-  /** multiple_choice_questions */
+  /** @description multiple_choice_questions */
   "body.multiple_choice_questions": definitions["multiple_choice_questions"];
+  /** Format: bigint */
   "rowFilter.multiple_choice_questions.id": string;
+  /** Format: timestamp with time zone */
   "rowFilter.multiple_choice_questions.created_at": string;
+  /** Format: timestamp with time zone */
   "rowFilter.multiple_choice_questions.updated_at": string;
+  /** Format: text */
   "rowFilter.multiple_choice_questions.title": string;
-  /** Question text in markdown format */
+  /**
+   * Format: text
+   * @description Question text in markdown format
+   */
   "rowFilter.multiple_choice_questions.text_markdown": string;
-  /** Explanation shown to a learner after submission (pertaining to the whole question) */
+  /**
+   * Format: text
+   * @description Explanation shown to a learner after submission (pertaining to the whole question)
+   */
   "rowFilter.multiple_choice_questions.explanation_markdown": string;
-  /** profiles */
+  /** @description profiles */
   "body.profiles": definitions["profiles"];
+  /** Format: uuid */
   "rowFilter.profiles.id": string;
+  /** Format: timestamp with time zone */
   "rowFilter.profiles.updated_at": string;
+  /** Format: text */
   "rowFilter.profiles.display_name": string;
+  /** Format: text */
   "rowFilter.profiles.email": string;
-  /** A user's role for role-based access control */
+  /**
+   * Format: ARRAY
+   * @description A user's role for role-based access control
+   */
   "rowFilter.profiles.roles": string;
 }
 
