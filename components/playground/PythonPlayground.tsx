@@ -135,6 +135,18 @@ export default function PythonPlayground() {
               <h3>
                 <span className={styles.text}>Output</span>
 
+                {!codeResult?.hasError && (
+                  <span
+                    className={clsx("accent", {
+                      gray: !(
+                        codeResult?.stdout || codeResult?.lastEvaluatedResult
+                      ),
+                      green:
+                        codeResult?.stdout || codeResult?.lastEvaluatedResult,
+                    })}
+                  />
+                )}
+
                 {codeResult?.hasError && (
                   <span className={clsx(styles.status, styles.hasError)}>
                     Error
