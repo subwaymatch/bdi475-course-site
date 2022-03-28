@@ -104,7 +104,7 @@
           font-family: $font-monospace;
           font-size: 1.05rem;
           line-height: 1.5;
-          padding: 0.25rem 1.25rem 1.25rem 1.25rem;
+          padding: 0.5rem 1.25rem;
           white-space: pre-line;
 
           &.errorMessage {
@@ -159,6 +159,57 @@
   }
 }
 
+.renderedHtml {
+  padding: 0.5rem 1.25rem;
+  width: max-content;
+
+  table:global(.dataframe) {
+    display: table;
+    border: none;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 0.85rem;
+    width: initial;
+
+    tr,
+    th,
+    td {
+      text-align: right;
+      vertical-align: middle;
+      padding: 0.5rem;
+      line-height: normal;
+      white-space: normal;
+      max-width: none;
+      border: none;
+    }
+
+    th {
+      font-weight: bold;
+    }
+
+    thead {
+      border-bottom: 1px solid black;
+      vertical-align: bottom;
+    }
+
+    tbody {
+      tr:nth-child(odd) {
+        background: $color-gray-20;
+
+        &:hover {
+          background: $color-gray-30;
+        }
+      }
+
+      tr:nth-child(even) {
+        &:hover {
+          background-color: $color-gray-30;
+        }
+      }
+    }
+  }
+}
+
 .bottomBar {
   border-top: 1px solid $color-gray-300;
   display: flex;
@@ -198,52 +249,6 @@
 
       &:hover {
         color: $color-gray-500;
-      }
-    }
-  }
-}
-
-.renderedHtml {
-  table:global(.dataframe) {
-    border: none;
-    border-collapse: collapse;
-    border-spacing: 0;
-    font-size: 0.85rem;
-
-    tr,
-    th,
-    td {
-      text-align: right;
-      vertical-align: middle;
-      padding: 0.5rem;
-      line-height: normal;
-      white-space: normal;
-      max-width: none;
-      border: none;
-    }
-
-    th {
-      font-weight: bold;
-    }
-
-    thead {
-      border-bottom: 1px solid black;
-      vertical-align: bottom;
-    }
-
-    tbody {
-      tr:nth-child(odd) {
-        background: $color-gray-20;
-
-        &:hover {
-          background: $color-gray-30;
-        }
-      }
-
-      tr:nth-child(even) {
-        &:hover {
-          background-color: $color-gray-30;
-        }
       }
     }
   }

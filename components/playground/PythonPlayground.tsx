@@ -26,6 +26,7 @@ import {
 import { BsQuestion } from "react-icons/bs";
 import PlaygroundTopBar from "./PlaygroundTopBar";
 import { useSnapshot } from "valtio";
+import range from "lodash/range";
 
 export default function PythonPlayground() {
   const router = useRouter();
@@ -178,6 +179,12 @@ export default function PythonPlayground() {
             </div>
 
             <div className={styles.boxContent}>
+              {codeResult?.stdout && (
+                <h4 className={styles.stdoutTitle}>
+                  <span>Standard Output</span>
+                </h4>
+              )}
+
               {(codeResult?.stdout || codeResult?.hasError) && (
                 <>
                   {codeResult?.stdout && (
@@ -197,7 +204,7 @@ export default function PythonPlayground() {
               )}
 
               {codeResult?.lastEvaluatedResult && (
-                <h4>
+                <h4 className={styles.evaluatedResultTitle}>
                   <span>Last Evaluated Result</span>
                 </h4>
               )}
