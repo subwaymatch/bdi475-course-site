@@ -294,6 +294,21 @@ export default function NotesPage() {
               title="More SQL Queries and Aggregations"
               colorTheme={ColorTheme.Green}
             />
+
+            <NoteItem
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/166da5e11aa44757987094d44692cd7ded635713/L19-SQL-joins-vocareum-SOLUTION.ipynb"
+              thumbnail={
+                <Image
+                  src="/images/notes/sql-gray-bg.png"
+                  width={900}
+                  height={450}
+                  alt=""
+                />
+              }
+              date="2022-03-29"
+              title="Basic SQL Joins"
+              colorTheme={ColorTheme.Green}
+            />
           </Row>
 
           {/*

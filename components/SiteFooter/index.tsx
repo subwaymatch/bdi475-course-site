@@ -31,7 +31,7 @@ export default function SiteFooter() {
               <ul>
                 <li>
                   <Link href="/python-playground/untitled">
-                    Python Playground
+                    Python Playground (Experimental)
                   </Link>
                 </li>
                 <li>

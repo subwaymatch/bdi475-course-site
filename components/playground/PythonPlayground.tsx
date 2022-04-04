@@ -26,7 +26,6 @@ import {
 import { BsQuestion } from "react-icons/bs";
 import PlaygroundTopBar from "./PlaygroundTopBar";
 import { useSnapshot } from "valtio";
-import range from "lodash/range";
 
 export default function PythonPlayground() {
   const router = useRouter();
