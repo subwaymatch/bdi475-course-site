@@ -311,7 +311,6 @@ export default function NotesPage() {
             />
           </Row>
 
-          {/*
           <Row>
             <Col>
               <h2
@@ -327,7 +326,7 @@ export default function NotesPage() {
 
           <Row>
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/14b726cfc43bc5950a15968e4a7c809b6b857bf8/L19-graph-data-structure.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/615ac7de4fad9684898ca16ba8628641690ea171/L20-intro-to-visualizations-vocareum-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/l19-dataviz.png"
@@ -336,26 +335,12 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2021-10-28"
-              title="Graph Data Structure"
-              colorTheme={ColorTheme.Blue}
-            />
-
-            <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/main/L20-intro-to-visualizations-SOLUTION.ipynb"
-              thumbnail={
-                <Image
-                  src="/images/notes/l19-dataviz.png"
-                  width={900}
-                  height={600}
-                  alt=""
-                />
-              }
-              date="2021-11-02"
+              date="2022-04-05"
               title="Introduction to DataViz"
               colorTheme={ColorTheme.Blue}
             />
 
+            {/*
             <NoteItem
               href="https://nbviewer.org/github/bdi475/notebooks/blob/main/L21-line-bar-scatter-plots-SOLUTION.ipynb"
               thumbnail={
@@ -414,8 +399,8 @@ export default function NotesPage() {
               date="2021-11-16"
               title="Advanced Tableau Visualizations"
               colorTheme={ColorTheme.Blue}
-            />
-          </Row> */}
+            />*/}
+          </Row>
         </Container>
       </main>
     </Layout>
