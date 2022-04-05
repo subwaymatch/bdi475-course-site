@@ -219,14 +219,7 @@
   {
     "date": "2022-04-07",
     "type": "LECTURE",
-    "text": [
-      "DataViz (continued)",
-      "Scatter Plots",
-      "Pie Chart",
-      "Heatmap",
-      "Sunburst",
-      "Treemap"
-    ]
+    "text": ["DataViz (continued)", "Line Chart", "Scatter Plots", "Bar Chart"]
   },
   {
     "date": "2022-04-08",
@@ -236,29 +229,34 @@
   {
     "date": "2022-04-12",
     "type": "LECTURE",
-    "text": ["Case Study Workday"]
-  },
-  {
-    "date": "2022-04-13",
-    "type": "CASE_STUDY",
-    "text": "Case Study 4 - Chicago Rideshare Trips"
+    "text": [
+      "DataViz (continued)",
+      "Pie Chart",
+      "Heatmap",
+      "Sunburst",
+      "Treemap"
+    ]
   },
   {
     "date": "2022-04-14",
     "type": "LECTURE",
-    "text": ["Intro to Tableau", "Box Plots", "Histograms", "Line/Bar Charts"]
+    "text": ["Case Study Workday"]
   },
   {
     "date": "2022-04-15",
-    "type": "EXERCISE",
-    "text": "Exercise 10"
+    "type": "CASE_STUDY",
+    "text": "Case Study 4 - Chicago Rideshare Trips"
   },
   {
     "date": "2022-04-19",
     "type": "LECTURE",
-    "text": ["Tableau", "Scatter Plot", "Heatmap", "Geographic Map"]
+    "text": ["Intro to Tableau", "Box Plots", "Histograms", "Line/Bar Charts"]
   },
-
+  {
+    "date": "2022-04-20",
+    "type": "EXERCISE",
+    "text": "Exercise 10"
+  },
   {
     "date": "2022-04-21",
     "type": "QUIZ",
@@ -267,10 +265,10 @@
   {
     "date": "2022-04-21",
     "type": "LECTURE",
-    "text": ["Case Study Workday"]
+    "text": ["Tableau (continued)", "Scatter Plot", "Heatmap", "Geographic Map"]
   },
   {
-    "date": "2022-04-22",
+    "date": "2022-04-24",
     "type": "CASE_STUDY",
     "text": "Case Study 5 - Fortune 1000 Companies"
   },
