@@ -326,12 +326,12 @@ export default function NotesPage() {
 
           <Row>
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/615ac7de4fad9684898ca16ba8628641690ea171/L20-intro-to-visualizations-vocareum-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/5a7526421f6725df6b66ab7f128a9f836d4c7c65/L20-intro-to-visualizations-vocareum-SOLUTION.ipynb"
               thumbnail={
                 <Image
-                  src="/images/notes/l19-dataviz.png"
+                  src="/images/notes/dataviz.png"
                   width={900}
-                  height={600}
+                  height={450}
                   alt=""
                 />
               }
@@ -340,22 +340,22 @@ export default function NotesPage() {
               colorTheme={ColorTheme.Blue}
             />
 
-            {/*
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/main/L21-line-bar-scatter-plots-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/5a7526421f6725df6b66ab7f128a9f836d4c7c65/L21-line-bar-scatter-plots-vocareum-SOLUTION.ipynb"
               thumbnail={
                 <Image
-                  src="/images/notes/l19-dataviz.png"
+                  src="/images/notes/dataviz.png"
                   width={900}
-                  height={600}
+                  height={450}
                   alt=""
                 />
               }
-              date="2021-11-04"
+              date="2022-04-07"
               title="Line, Scatter, and Bar Plots"
               colorTheme={ColorTheme.Blue}
             />
 
+            {/*
             <NoteItem
               href="https://nbviewer.org/github/bdi475/notebooks/blob/main/L22-advanced-visualizations-SOLUTION.ipynb"
               thumbnail={
