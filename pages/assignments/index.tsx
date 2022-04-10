@@ -97,16 +97,16 @@ export default function AssignmentsPage() {
                   colorTheme={ColorTheme.Purple}
                 />
 
-                {/*
                 <AssignmentItem
                   name="Exercise 8"
-                  dueDate={dayjs("2021-11-03").tz().format("ll")}
+                  dueDate={dayjs("2022-04-08").tz().format("ll")}
                   pointsAvailable={20}
-                  status={AssignmentStatus.Available}
+                  status={AssignmentStatus.Unavailable}
                   link="https://canvas.illinois.edu/courses/14860/assignments/342468"
                   colorTheme={ColorTheme.Purple}
                 />
 
+                {/*
                 <AssignmentItem
                   name="Exercise 9"
                   dueDate={dayjs("2021-11-05").tz().format("ll")}
@@ -246,7 +246,7 @@ export default function AssignmentsPage() {
                 name="Starbucks App Customers"
                 dueDate={dayjs("2022-03-12").tz().format("ll")}
                 pointsAvailable={80}
-                status={AssignmentStatus.Available}
+                status={AssignmentStatus.Unavailable}
                 link="https://canvas.illinois.edu/courses/18332/assignments/438367"
                 thumbnail={
                   <Image
@@ -264,7 +264,7 @@ export default function AssignmentsPage() {
                 name="Airbnb Listings Analysis with SQL"
                 dueDate={dayjs("2022-04-01").tz().format("ll")}
                 pointsAvailable={80}
-                status={AssignmentStatus.Available}
+                status={AssignmentStatus.Unavailable}
                 link="https://canvas.illinois.edu/courses/18332/assignments/443931"
                 thumbnail={
                   <Image
