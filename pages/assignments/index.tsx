@@ -106,16 +106,16 @@ export default function AssignmentsPage() {
                   colorTheme={ColorTheme.Purple}
                 />
 
-                {/*
                 <AssignmentItem
                   name="Exercise 9"
-                  dueDate={dayjs("2021-11-05").tz().format("ll")}
+                  dueDate={dayjs("2022-04-08").tz().format("ll")}
                   pointsAvailable={20}
-                  status={AssignmentStatus.Available}
-                  link="https://canvas.illinois.edu/courses/14860/assignments/343676"
+                  status={AssignmentStatus.Unavailable}
+                  link="https://canvas.illinois.edu/courses/18332/assignments/448938"
                   colorTheme={ColorTheme.Purple}
                 />
 
+                {/*
                 <AssignmentItem
                   name="Exercise 10"
                   dueDate={dayjs("2021-11-17").tz().format("ll")}
@@ -277,14 +277,13 @@ export default function AssignmentsPage() {
               />
             </Col>
 
-            {/*
             <Col lg={6}>
               <CaseStudyItem
-                name="Chicago Ridesharing Trips Before & After COVID-19"
-                dueDate={dayjs("2021-11-30").tz().format("ll")}
+                name="Chicago Uber/Lyft Trips Before & After COVID-19"
+                dueDate={dayjs("2022-04-15").tz().format("ll")}
                 pointsAvailable={80}
                 status={AssignmentStatus.Available}
-                link="https://canvas.illinois.edu/courses/14860/assignments/346161"
+                link="https://canvas.illinois.edu/courses/18332/assignments/450023"
                 thumbnail={
                   <Image
                     src="/images/case-studies/case_study_ridesharing_trips.jpg"
@@ -296,6 +295,7 @@ export default function AssignmentsPage() {
               />
             </Col>
 
+            {/*
             <Col lg={6}>
               <CaseStudyItem
                 name="Fortune 1000 Tableau Visualizations"

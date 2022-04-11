@@ -357,7 +357,7 @@ export default function NotesPage() {
 
             {/*
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/main/L22-advanced-visualizations-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/ad249d27dcfeb51051da5b5582dcde3c93589737/L22-advanced-visualizations-vocareum-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/l19-dataviz.png"
@@ -370,7 +370,7 @@ export default function NotesPage() {
               title="Advanced Visualizations"
               colorTheme={ColorTheme.Blue}
             />
-
+            
             <NoteItem
               href="https://www.notion.so/bdi475/Lecture-22-Introduction-to-Tableau-15832a839f2146a59f36160bd7ce1450"
               thumbnail={
