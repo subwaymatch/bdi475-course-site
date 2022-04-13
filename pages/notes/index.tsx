@@ -355,22 +355,22 @@ export default function NotesPage() {
               colorTheme={ColorTheme.Blue}
             />
 
-            {/*
             <NoteItem
               href="https://nbviewer.org/github/bdi475/notebooks/blob/ad249d27dcfeb51051da5b5582dcde3c93589737/L22-advanced-visualizations-vocareum-SOLUTION.ipynb"
               thumbnail={
                 <Image
-                  src="/images/notes/l19-dataviz.png"
+                  src="/images/notes/dataviz.png"
                   width={900}
-                  height={600}
+                  height={450}
                   alt=""
                 />
               }
-              date="2021-11-09"
+              date="2022-04-12"
               title="Advanced Visualizations"
               colorTheme={ColorTheme.Blue}
             />
-            
+
+            {/*
             <NoteItem
               href="https://www.notion.so/bdi475/Lecture-22-Introduction-to-Tableau-15832a839f2146a59f36160bd7ce1450"
               thumbnail={
