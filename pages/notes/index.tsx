@@ -370,22 +370,22 @@ export default function NotesPage() {
               colorTheme={ColorTheme.Blue}
             />
 
-            {/*
             <NoteItem
               href="https://www.notion.so/bdi475/Lecture-22-Introduction-to-Tableau-15832a839f2146a59f36160bd7ce1450"
               thumbnail={
                 <Image
-                  src="/images/notes/l19-dataviz.png"
+                  src="/images/notes/dataviz.png"
                   width={900}
-                  height={600}
+                  height={450}
                   alt=""
                 />
               }
-              date="2021-11-11"
+              date="2022-04-19"
               title="Introduction to Tableau"
               colorTheme={ColorTheme.Blue}
             />
 
+            {/*
             <NoteItem
               href="https://bdi475.notion.site/Lecture-24-Advanced-Tableau-Visualizations-334bf4b89ffe4012b6b0fcb334da0178"
               thumbnail={
