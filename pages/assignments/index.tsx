@@ -39,7 +39,7 @@ export default function AssignmentsPage() {
                   name="Exercise 1"
                   dueDate={dayjs("2022-01-27").tz().format("ll")}
                   pointsAvailable={20}
-                  status={AssignmentStatus.Available}
+                  status={AssignmentStatus.Unavailable}
                   link="/assignments/exercise-01"
                   colorTheme={ColorTheme.Purple}
                 />
@@ -48,7 +48,7 @@ export default function AssignmentsPage() {
                   name="Exercise 2"
                   dueDate={dayjs("2022-02-09").tz().format("ll")}
                   pointsAvailable={20}
-                  status={AssignmentStatus.Available}
+                  status={AssignmentStatus.Unavailable}
                   link="/assignments/exercise-02"
                   colorTheme={ColorTheme.Purple}
                 />
@@ -57,7 +57,7 @@ export default function AssignmentsPage() {
                   name="Exercise 3"
                   dueDate={dayjs("2022-02-09").tz().format("ll")}
                   pointsAvailable={20}
-                  status={AssignmentStatus.Available}
+                  status={AssignmentStatus.Unavailable}
                   link="/assignments/exercise-03"
                   colorTheme={ColorTheme.Purple}
                 />
@@ -66,7 +66,7 @@ export default function AssignmentsPage() {
                   name="Exercise 4"
                   dueDate={dayjs("2022-02-11").tz().format("ll")}
                   pointsAvailable={20}
-                  status={AssignmentStatus.Available}
+                  status={AssignmentStatus.Unavailable}
                   link="/assignments/exercise-04"
                   colorTheme={ColorTheme.Purple}
                 />
@@ -138,7 +138,7 @@ export default function AssignmentsPage() {
                   name="Problem Set 1"
                   dueDate={dayjs("2022-02-14").tz().format("ll")}
                   pointsAvailable={60}
-                  status={AssignmentStatus.Available}
+                  status={AssignmentStatus.Unavailable}
                   link="/assignments/problem-set-01"
                   colorTheme={ColorTheme.Blue}
                 />
@@ -198,15 +198,14 @@ export default function AssignmentsPage() {
                   colorTheme={ColorTheme.Green}
                 />
 
-                {/*
                 <AssignmentItem
                   name="Quiz 5"
-                  dueDate={dayjs("2021-11-25").tz().format("ll")}
+                  dueDate={dayjs("2022-04-21").tz().format("ll")}
                   pointsAvailable={25}
                   status={AssignmentStatus.Available}
-                  link="https://canvas.illinois.edu/courses/14860/assignments/346164/edit"
+                  link="https://canvas.illinois.edu/courses/18332/quizzes/218735"
                   colorTheme={ColorTheme.Green}
-                /> */}
+                />
               </div>
             </Col>
           </Row>
@@ -294,14 +293,13 @@ export default function AssignmentsPage() {
               />
             </Col>
 
-            {/*
             <Col lg={6}>
               <CaseStudyItem
                 name="Fortune 1000 Tableau Visualizations"
-                dueDate={dayjs("2021-12-01").tz().format("ll")}
+                dueDate={dayjs("2022-04-24").tz().format("ll")}
                 pointsAvailable={80}
                 status={AssignmentStatus.Available}
-                link="https://canvas.illinois.edu/courses/14860/assignments/346162"
+                link="https://canvas.illinois.edu/courses/18332/assignments/453910"
                 thumbnail={
                   <Image
                     src="/images/case-studies/case_study_fortune_1000.jpg"
@@ -311,7 +309,7 @@ export default function AssignmentsPage() {
                   />
                 }
               />
-            </Col> */}
+            </Col>
           </Row>
         </Container>
       </main>
