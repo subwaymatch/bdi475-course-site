@@ -385,21 +385,20 @@ export default function NotesPage() {
               colorTheme={ColorTheme.Blue}
             />
 
-            {/*
             <NoteItem
               href="https://bdi475.notion.site/Lecture-24-Advanced-Tableau-Visualizations-334bf4b89ffe4012b6b0fcb334da0178"
               thumbnail={
                 <Image
-                  src="/images/notes/l19-dataviz.png"
+                  src="/images/notes/dataviz.png"
                   width={900}
-                  height={600}
+                  height={450}
                   alt=""
                 />
               }
-              date="2021-11-16"
+              date="2022-04-21"
               title="Advanced Tableau Visualizations"
               colorTheme={ColorTheme.Blue}
-            />*/}
+            />
           </Row>
         </Container>
       </main>

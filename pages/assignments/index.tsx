@@ -115,15 +115,14 @@ export default function AssignmentsPage() {
                   colorTheme={ColorTheme.Purple}
                 />
 
-                {/*
                 <AssignmentItem
                   name="Exercise 10"
-                  dueDate={dayjs("2021-11-17").tz().format("ll")}
-                  pointsAvailable={80}
+                  dueDate={dayjs("2022-04-21").tz().format("ll")}
+                  pointsAvailable={20}
                   status={AssignmentStatus.Available}
-                  link="https://canvas.illinois.edu/courses/14860/assignments/346038"
+                  link="https://canvas.illinois.edu/courses/18332/assignments/453067"
                   colorTheme={ColorTheme.Purple}
-                /> */}
+                />
               </div>
             </Col>
           </Row>
@@ -282,7 +281,7 @@ export default function AssignmentsPage() {
                 name="Chicago Uber/Lyft Trips Before & After COVID-19"
                 dueDate={dayjs("2022-04-15").tz().format("ll")}
                 pointsAvailable={80}
-                status={AssignmentStatus.Available}
+                status={AssignmentStatus.Unavailable}
                 link="https://canvas.illinois.edu/courses/18332/assignments/450023"
                 thumbnail={
                   <Image
