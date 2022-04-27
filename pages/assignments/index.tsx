@@ -119,8 +119,8 @@ export default function AssignmentsPage() {
                   name="Exercise 10"
                   dueDate={dayjs("2022-04-21").tz().format("ll")}
                   pointsAvailable={20}
-                  status={AssignmentStatus.Available}
-                  link="https://canvas.illinois.edu/courses/18332/assignments/453067"
+                  status={AssignmentStatus.Unavailable}
+                  link="https://www.notion.so/bdi475/BDI-475-Final-Project-Spring-2022-34c000e9f6ed4d21aa53943d06ea60bd"
                   colorTheme={ColorTheme.Purple}
                 />
               </div>
@@ -298,11 +298,29 @@ export default function AssignmentsPage() {
                 name="Fortune 1000 Tableau Visualizations"
                 dueDate={dayjs("2022-04-24").tz().format("ll")}
                 pointsAvailable={80}
-                status={AssignmentStatus.Available}
+                status={AssignmentStatus.Unavailable}
                 link="https://canvas.illinois.edu/courses/18332/assignments/453910"
                 thumbnail={
                   <Image
                     src="/images/case-studies/case_study_fortune_1000.jpg"
+                    layout="responsive"
+                    width={1920}
+                    height={640}
+                  />
+                }
+              />
+            </Col>
+
+            <Col lg={6}>
+              <CaseStudyItem
+                name="Independent Case Study"
+                dueDate={dayjs("2022-05-13").tz().format("ll")}
+                pointsAvailable={140}
+                status={AssignmentStatus.Available}
+                link="https://canvas.illinois.edu/courses/18332/assignments/453910"
+                thumbnail={
+                  <Image
+                    src="/images/case-studies/case-study-independent-study.jpg"
                     layout="responsive"
                     width={1920}
                     height={640}
