@@ -11,4 +11,7 @@ export interface IMultipleChoiceQuestionWithOptions {
 export interface IMultipleChoiceOption {
   id: number;
   text_markdown: string;
+  is_correct: boolean;
+  order: number;
+  explanation_markdown: string;
 }
