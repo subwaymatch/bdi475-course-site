@@ -447,6 +447,7 @@ export interface paths {
           updated_at?: parameters["rowFilter.mcq_with_options.updated_at"];
           title?: parameters["rowFilter.mcq_with_options.title"];
           text_markdown?: parameters["rowFilter.mcq_with_options.text_markdown"];
+          explanation_markdown?: parameters["rowFilter.mcq_with_options.explanation_markdown"];
           options?: parameters["rowFilter.mcq_with_options.options"];
           num_correct_options?: parameters["rowFilter.mcq_with_options.num_correct_options"];
           /** Filtering Columns */
@@ -1124,6 +1125,8 @@ export interface definitions {
     title?: string;
     /** Format: text */
     text_markdown?: string;
+    /** Format: text */
+    explanation_markdown?: string;
     /** Format: json */
     options?: string;
     /** Format: bigint */
@@ -1361,6 +1364,8 @@ export interface parameters {
   "rowFilter.mcq_with_options.title": string;
   /** Format: text */
   "rowFilter.mcq_with_options.text_markdown": string;
+  /** Format: text */
+  "rowFilter.mcq_with_options.explanation_markdown": string;
   /** Format: json */
   "rowFilter.mcq_with_options.options": string;
   /** Format: bigint */
