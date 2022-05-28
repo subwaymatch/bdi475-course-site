@@ -1,0 +1,18 @@
+@use "sass:color";
+@import "styles/variables";
+@import "styles/mixins";
+
+.boxItems {
+  .item {
+    border-top: 1px solid $color-border-gray;
+    padding-top: 2rem;
+
+    p {
+      margin-top: 1rem;
+    }
+
+    @include media-breakpoint-down(md) {
+      padding: 2rem 0;
+    }
+  }
+}

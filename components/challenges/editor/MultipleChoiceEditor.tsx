@@ -140,7 +140,6 @@ export default function MultipleChoiceEditor({
                 isSelected={false}
                 disabled={true}
                 optionData={o}
-                answerData={null}
                 onClick={() => {}}
                 showResult={false}
               />

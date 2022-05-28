@@ -18,13 +18,9 @@ export default function CenteredColumn({
           span: 6,
           offset: 3,
         }}
-        lg={{
+        md={{
           span: 8,
           offset: 2,
-        }}
-        md={{
-          span: 12,
-          offset: 0,
         }}
       >
         <div

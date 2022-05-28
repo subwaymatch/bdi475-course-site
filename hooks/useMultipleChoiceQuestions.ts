@@ -9,7 +9,7 @@ export default function useMultipleChoiceQuestions(questionIds: number[]) {
     data: IMultipleChoiceQuestionWithOptions[];
     error: string;
   }>({
-    status: QueryStatusEnum.LOADING,
+    status: QueryStatusEnum.INITIALIZED,
     data: null,
     error: "",
   });
@@ -26,31 +26,20 @@ export default function useMultipleChoiceQuestions(questionIds: number[]) {
       .select()
       .in("id", questionIds);
 
-    if (error) {
-      console.error(error);
-      setResult((prevResult) =>
-        Object.assign({}, prevResult, {
-          status: QueryStatusEnum.ERROR,
-          data: null,
-          error: error.message,
-        })
-      );
-    } else {
-      setResult((prevResult) =>
-        Object.assign({}, prevResult, {
-          status: QueryStatusEnum.SUCCESS,
-          data,
-          error: "",
-        })
-      );
-    }
+    setResult((prevResult) =>
+      Object.assign({}, prevResult, {
+        status: error ? QueryStatusEnum.ERROR : QueryStatusEnum.SUCCESS,
+        data,
+        error: error?.message,
+      })
+    );
   };
 
   useEffect(() => {
-    if (result.status !== QueryStatusEnum.SUCCESS) {
+    if (questionIds && result.status === QueryStatusEnum.INITIALIZED) {
       fetchData();
     }
-  }, []);
+  }, [questionIds]);
 
   return result;
 }

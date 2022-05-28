@@ -1,0 +1,204 @@
+---
+title: Data Types and Variables
+listTitle: "Objectives ⟶"
+listItems:
+  - Learn expressions and evaluations
+  - Understand what a data type is
+  - Discuss basic data types
+  - Understand what a variable is
+  - Discuss why variables are useful
+thumbnailSrc: /images/notes/abstract-001.png
+thumbnailWidth: 2400
+thumbnailHeight: 1200
+---
+
+<CenteredColumn>
+
+## How Python Executes Your Code
+
+<Chip color="black">Expressions</Chip>
+
+To understand how the Python interpreter executes your code, we first need to understand *expression*s in the context of programming.
+
+An expression is a syntatic entity that may be _evaluated_ to determine its value ([source](<https://en.wikipedia.org/wiki/Expression_(computer_science)>)). Here is a simple expression.
+
+$$
+1 + 2
+$$
+
+The mathematical expression above *evaluate*s to the value $3$.
+
+Expressions are not always as simple as having two operands and a single operator. Sometimes, you may have an expression that contains multiple *sub-expression*s. Look at this mathematical expression.
+
+$$
+(1 + 2) \times (4 \div 2)
+$$
+
+We are trained to perform the arithmetic operations in the predefined order of operations ([PEMDAS](https://www.khanacademy.org/math/cc-sixth-grade-math/cc-6th-arithmetic-operations/cc-6th-order-of-operations/v/more-complicated-order-of-operations-example)). Here is a step-by-step breakdown of how a human would carry out this evaluation process.
+
+1. Evaluate $(1 + 2)$ to $3$,
+2. Evaluate $(4 \div 2)$ to $2$,
+3. Rewrite the equation to $3 \times 2$,
+4. Evaluate $3 \times 2$ to $6$
+
+Python executes your program in a similar fashion. It evaluates your expressions from left to right (except when you're performing an assignment operation, which we will discuss later). The operator precedence also emulates the mathematical order of operations, except that there are some operators that only exist in Python.
+
+For a summary of the operator precedence in Python, refer to the **Operator Precedence** section of https://docs.python.org/3/reference/expressions.html.
+
+</CenteredColumn>
+
+[multiple-choice 41]
+[multiple-choice 42]
+
+<CenteredColumn>
+
+## Python Data Types
+
+<Chip color="black">What is it?</Chip>
+
+A data type denotes the category of a value. In Python, ALL values have *data type*s. We'll go over a few **built-in** types. Built-in types are pre-defined data types that are part of the Python programming language itself.
+
+- Text `"Hello World"` is a text type (`str` ).
+- Number `475` is an integer type (`int` ).
+- Number `1.99` is a float type (`float` ).
+- Logical `True` is a boolean type (`bool`).
+
+<Chip color="black">Primitive vs Non-primitive</Chip>
+
+Data types can be categorized into two types - <em className="color-blue">primitive</em> and <em className="color-blue">non-primitive</em> types. Technically speaking, Python only has _non-primitive_ types as everything is an _object_ in Python. For the purpose of this course, you do not have to worry about differentiating between primitive and non-primitive types.
+
+</CenteredColumn>
+
+<RowBoxItems title="Python Basic Data Types" color="blue">
+  <>
+    <Chip color="blue">Text</Chip>
+
+    <p>Strings (`str`) are text types. They are always enclosed in single or double quotes.</p>
+
+  </>
+  <>
+    <Chip color="blue">Numbers</Chip>
+
+    <p>Integers (`int`) and decimals (`float`) are numeric types. There is also another numeric type (`complex`) that is rarely used.</p>
+
+  </>
+  <>
+    <Chip color="blue">Logical Yes/No</Chip>
+
+    <p>Booleans (`bool`) can only have two possible values - `True` or `False`. Note that `"True"` is a string type since it's enclosed in double quotes. Boolean values should not be enclosed in quotes.</p>
+
+  </>
+</RowBoxItems>
+
+[multiple-choice 27]
+[multiple-choice 28]
+[multiple-choice 29]
+
+<CenteredColumn>
+
+### Checking Data Type of a Value
+
+You can use the `type()` function to check the data type of a value programmatically.
+
+```python
+type(some_value)
+```
+
+Combine `print()` and `type()` to print out the data type.
+
+```python
+# Syntax
+print(type(some_value))
+
+# Examples
+print(type(1))    # <class 'int'>
+print(type(True)) # <class 'bool'>
+print(type("A"))  # <class 'str'>
+```
+
+</CenteredColumn>
+
+[python-challenge 151]
+[python-challenge 153]
+[python-challenge 253]
+
+<CenteredColumn>
+
+## Variables
+
+<Chip>From Wikipedia</Chip>
+
+~~A variable is a storage location (identified by a memory address) paired with an associated symbolic name, which contains some known or unknown quantity of information referred to as a value.~~
+
+<Chip color="black">What it really means</Chip>
+
+A variable is a nickname for a stored value that can _change_.
+
+<Chip color="black">Why do we use variables?</Chip>
+
+If you have a constantly-changing value that is used in many different places of a computer program, you will likely run into a maintenance issue as you have to manually update those values every time the value changes. If you create a variable and reference that variable instead, you only have to update that variable instead of having to update every occurrence.
+
+Variables also increase the **readability** if properly used. Assume that you are calculating the after-tax price (at a tax rate of 10%) of an item that is 2 dollars. In Python code, the calculation of the after-tax price can be written as `2 * 1.10`. Although you may understand what the numbers in `2 * 1.10` mean, but other people may have a difficult time understanding it. Rewriting it to `before_tax_price * (1 + tax_rate)` improves the readability of your code.
+
+### Working with Variables
+
+<Chip color="black">Creating a Variable</Chip>
+
+To create a new variable, use the assignment operator (`=`).
+
+```python
+my_variable = some_value
+```
+
+It is important to note that the `=` symbol here is an **assignment operator** and NOT a symbol for equality.
+
+</CenteredColumn>
+
+[multiple-choice 30]
+[python-challenge 254]
+[multiple-choice 31]
+[python-challenge 255]
+
+<RowBoxItems title="Python Variable Naming Rules" color="blue">
+  <>
+    <Chip>First Character</Chip>
+
+    Variable names must begin with a letter or an underscore.
+
+  </>
+  <>
+    <Chip>Allowed Characters</Chip>
+
+    You can use letters, numbers, and underscores for the remainder of your variable name.
+
+  </>
+  <>
+    <Chip>Case Matters</Chip>
+
+    You can use letters, numbers, and underscores for the remainder of your variable name.
+
+  </>
+</RowBoxItems>
+
+[python-challenge 156]
+[python-challenge 157]
+
+<CenteredColumn>
+
+### Working with Variables, continued
+
+<Chip color="black">Updating a Variable</Chip>
+
+The syntax for updating a variable is identical to that of creating a new variable.
+
+```python
+# create a new variable
+my_city = "Champaign"
+
+# update a variable
+my_city = "Urbana"
+```
+
+</CenteredColumn>
+
+[python-challenge 158]

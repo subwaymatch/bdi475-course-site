@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ReactModal from "react-modal";
 import styles from "./SolutionCodeModal.module.scss";
 import _ from "lodash";
@@ -8,67 +8,24 @@ import { CgClose } from "react-icons/cg";
 import useSupabaseAuth from "hooks/useSupabaseAuth";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { materialDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
-import { toast } from "react-toastify";
 import Chip from "components/common/Chip";
 import { useMediaQuery } from "@mui/material";
 import { md } from "constants/media-query-strings";
 
-enum RequestStatusEnum {
-  LOADING,
-  SUCCESS,
-  ERROR,
-}
-
 interface ISolutionCodeModal {
   isOpen: boolean;
   onClose: () => void;
-  cid: number;
+  solutionCode: string;
   language: string;
 }
 
 export default function SolutionCodeModal({
   isOpen,
   onClose,
-  cid,
+  solutionCode,
   language,
 }: ISolutionCodeModal) {
-  const { user } = useSupabaseAuth();
-  const [status, setStatus] = useState(RequestStatusEnum.LOADING);
-  const [solutionCode, setSolutionCode] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-  const { session } = useSupabaseAuth();
-
   const isMdBreakpoint = useMediaQuery(md);
-
-  const getSolutionCode = async () => {
-    setStatus(RequestStatusEnum.LOADING);
-
-    try {
-      const fetchResult = await fetch(`/api/coding-challenge/${cid}/solution`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          authorization: `Bearer ${session.access_token}`,
-        },
-      });
-      const data = await fetchResult.json();
-
-      setSolutionCode((data as any).solutionCode);
-      setStatus(RequestStatusEnum.SUCCESS);
-    } catch (err) {
-      console.error(err);
-      setStatus(RequestStatusEnum.ERROR);
-      setErrorMessage(err.message);
-
-      toast.error(err.message);
-    }
-  };
-
-  useEffect(() => {
-    if (isOpen && user) {
-      getSolutionCode();
-    }
-  }, [isOpen, user]);
 
   const handleClose = async () => {
     onClose();
@@ -119,7 +76,7 @@ export default function SolutionCodeModal({
             }}
             wrapLongLines={true}
           >
-            {status === RequestStatusEnum.SUCCESS ? solutionCode : "# Loading"}
+            {solutionCode}
           </SyntaxHighlighter>
         </div>
 

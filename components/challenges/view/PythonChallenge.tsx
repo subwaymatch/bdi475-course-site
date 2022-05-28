@@ -311,7 +311,7 @@ export default function PythonChallenge({
       <SolutionCodeModal
         isOpen={showSolutionModal}
         onClose={() => setShowSolutionModal(false)}
-        cid={challengeData.id}
+        solutionCode={challengeData.solution_code}
         language="python"
       />
 

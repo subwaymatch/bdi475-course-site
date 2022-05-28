@@ -14,6 +14,7 @@ import CenteredColumn from "components/common/CenteredColumn";
 import Chip from "components/common/Chip";
 import styles from "styles/pages/notes/common.module.scss";
 import ListWithTitle from "components/common/ListWithTitle";
+import RowBoxItems from "components/common/RowBoxItems";
 import LargeQuote from "components/common/LargeQuote";
 import RecordedMultipleChoiceQuestion from "components/common/RecordedMultipleChoiceQuestion";
 import RecordedPythonChallenge from "components/common/RecordedPythonChallenge";
@@ -46,6 +47,7 @@ const components = {
   CenteredColumn,
   LargeQuote,
   ListWithTitle,
+  RowBoxItems,
   Chip,
   Green,
   Purple,

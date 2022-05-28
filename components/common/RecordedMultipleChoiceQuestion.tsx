@@ -5,13 +5,13 @@ import { Row, Col } from "react-bootstrap";
 import { BsCheckCircle, BsXCircle } from "react-icons/bs";
 import { RiEditBoxLine } from "react-icons/ri";
 import Tippy from "@tippyjs/react";
+import isEqual from "lodash/isEqual";
 import clsx from "clsx";
 import styles from "./RecordedChallenge.module.scss";
 import MultipleChoiceQuestion from "components/challenges/view/MultipleChoiceQuestion";
-import { definitions } from "types/database";
 import { toast } from "react-toastify";
-import useChallenges from "hooks/useChallenges";
 import { ChallengeTypeEnum } from "types/challenge";
+import useChallenges from "hooks/useChallenges";
 
 interface IRecordedMultipleChoiceQuestionProps {
   questionId: number;
@@ -23,6 +23,7 @@ export default function RecordedMultipleChoiceQuestion({
   className,
 }: IRecordedMultipleChoiceQuestionProps) {
   const { user, session, isAdmin } = useSupabaseAuth();
+
   const { multipleChoiceQuestions, challengeResults } = useChallenges();
   const questionData = multipleChoiceQuestions?.find((o) => o.id == questionId);
   const challengeResult = challengeResults?.find(
@@ -30,13 +31,19 @@ export default function RecordedMultipleChoiceQuestion({
       o.challenge_type === ChallengeTypeEnum.MultipleChoice &&
       o.challenge_id == questionId
   );
-  const [answersData, setAnswersData] = useState<
-    definitions["multiple_choice_options"][]
-  >([]);
+
   const editLinkRef = useRef<HTMLAnchorElement>();
   const [showResult, setShowResult] = useState(false);
 
-  const onSubmit = async (userSelections: number[]) => {
+  const handleSubmit = async (userSelections: number[]) => {
+    if (session) {
+      submitForMembers(userSelections);
+    } else {
+      submitForGuests(userSelections);
+    }
+  };
+
+  const submitForMembers = async (userSelections: number[]) => {
     if (!session) {
       return;
     }
@@ -65,7 +72,23 @@ export default function RecordedMultipleChoiceQuestion({
       toast.error("Try again! 🧐");
     }
 
-    setAnswersData(submitResult.answersData);
+    setShowResult(true);
+  };
+
+  const submitForGuests = async (userSelections: number[]) => {
+    const correctOptionIds = questionData.options
+      .filter((o) => o.is_correct)
+      .map((o) => o.id)
+      .sort();
+
+    const isCorrect = isEqual(correctOptionIds, userSelections);
+
+    if (isCorrect) {
+      toast.success("Great work! 👊");
+    } else {
+      toast.error("Try again! 🧐");
+    }
+
     setShowResult(true);
   };
 
@@ -81,8 +104,7 @@ export default function RecordedMultipleChoiceQuestion({
     }
   };
 
-  const onReset = () => {
-    setAnswersData([]);
+  const handleReset = () => {
     setShowResult(false);
   };
 
@@ -162,15 +184,12 @@ export default function RecordedMultipleChoiceQuestion({
             </Col>
           </Row>
 
-          {questionData && (
-            <MultipleChoiceQuestion
-              questionData={questionData}
-              answersData={answersData}
-              showResult={showResult}
-              onSubmit={onSubmit}
-              onReset={onReset}
-            />
-          )}
+          <MultipleChoiceQuestion
+            questionData={questionData}
+            showResult={showResult}
+            onSubmit={handleSubmit}
+            onReset={handleReset}
+          />
         </div>
       </Col>
     </Row>

@@ -2,13 +2,11 @@ import clsx from "clsx";
 import styles from "./MultipleChoiceOption.module.scss";
 import { parseMarkdown } from "lib/markdown";
 import { definitions } from "types/database";
-import { IMultipleChoiceOption } from "types/database/multiple-choice";
 
 interface IMultipleChoiceOptionProps {
   isSelected: boolean;
   disabled: boolean;
-  optionData: IMultipleChoiceOption;
-  answerData: definitions["multiple_choice_options"];
+  optionData: definitions["multiple_choice_options"];
   onClick: () => void;
   showResult: boolean;
 }
@@ -18,11 +16,10 @@ export default function MultipleChoiceOption({
   disabled,
   onClick,
   optionData,
-  answerData,
   showResult,
 }: IMultipleChoiceOptionProps) {
-  const isUserCorrect = answerData
-    ? isSelected === answerData.is_correct
+  const isUserCorrect = optionData
+    ? isSelected === optionData.is_correct
     : false;
 
   return (
@@ -33,8 +30,8 @@ export default function MultipleChoiceOption({
         [styles.isNotSelected]: !isSelected,
         [styles.showResult]: showResult,
         [styles.highlighted]:
-          showResult && (isSelected || answerData?.is_correct),
-        [styles.isCorrectOption]: answerData?.is_correct,
+          showResult && (isSelected || optionData?.is_correct),
+        [styles.isCorrectOption]: optionData?.is_correct,
         [styles.isUserCorrect]: isSelected && isUserCorrect,
         [styles.isUserIncorrect]: isSelected && !isUserCorrect,
       })}

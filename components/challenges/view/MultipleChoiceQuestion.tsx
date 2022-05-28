@@ -2,33 +2,26 @@ import { useState } from "react";
 import _ from "lodash";
 import { Col, Row } from "react-bootstrap";
 import { RiUploadLine } from "react-icons/ri";
-import { IoRefresh, IoCheckmark } from "react-icons/io5";
+import { IoRefresh } from "react-icons/io5";
 import styles from "./MultipleChoiceQuestion.module.scss";
-import { definitions } from "types/database";
 import InstructionText from "./InstructionText";
 import MultipleChoiceOption from "./MultipleChoiceOption";
-import { QueryStatusEnum } from "types";
 import Button from "components/ui/Button";
 import { IconType } from "react-icons";
 import { ColorTheme } from "types/color-theme";
 import { IMultipleChoiceQuestionWithOptions } from "types/database/multiple-choice";
 import Chip from "components/common/Chip";
-import { GoCheck } from "react-icons/go";
 import { FiThumbsUp } from "react-icons/fi";
 
 interface IMultipleChoiceQuestionProps {
-  status?: QueryStatusEnum;
   questionData: IMultipleChoiceQuestionWithOptions;
-  answersData: definitions["multiple_choice_options"][];
   showResult?: boolean;
   onSubmit: (userSelectionIds: number[]) => Promise<void>;
   onReset: () => void;
 }
 
 export default function MultipleChoiceQuestion({
-  status,
   questionData,
-  answersData,
   showResult,
   onSubmit,
   onReset,
@@ -36,6 +29,7 @@ export default function MultipleChoiceQuestion({
   const [userSelections, setUserSelections] = useState<number[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const isLoading = !questionData;
+  const answersData = questionData?.options;
   const isUserCorrect =
     answersData &&
     userSelections.length > 0 &&
@@ -93,7 +87,7 @@ export default function MultipleChoiceQuestion({
   const getSubmitButtonIconComponent = (): IconType | null => {
     if (isLoading || isSubmitting) {
       return null;
-    } else if (isUserCorrect) {
+    } else if (showResult && isUserCorrect) {
       return FiThumbsUp;
     } else if (showResult && !isUserCorrect) {
       return IoRefresh;
@@ -164,7 +158,6 @@ export default function MultipleChoiceQuestion({
                       isSelected={userSelections.includes(o.id)}
                       disabled={isSubmitting}
                       optionData={o}
-                      answerData={answersData?.find((a) => a.id === o.id)}
                       onClick={() => onToggle(o.id)}
                       showResult={showResult}
                     />
@@ -181,7 +174,7 @@ export default function MultipleChoiceQuestion({
                     userSelections.length !==
                       questionData?.num_correct_options) ||
                   isSubmitting ||
-                  isUserCorrect
+                  (showResult && isUserCorrect)
                 }
                 label={getSubmitButtonMessage()}
                 IconComponent={getSubmitButtonIconComponent()}

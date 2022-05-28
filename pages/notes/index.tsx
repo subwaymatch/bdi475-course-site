@@ -26,7 +26,7 @@ export default function NotesPage() {
 
           <Row>
             <NoteItem
-              href="/notes/variables-and-data-types"
+              href="/lecture-notes/data-types-and-variables"
               thumbnail={
                 <Image
                   src="/images/notes/abstract-001.png"
@@ -36,12 +36,12 @@ export default function NotesPage() {
                 />
               }
               date="2022-01-20"
-              title="Variables and Data Types"
+              title="Data Types and Variables"
               colorTheme={ColorTheme.Green}
             />
 
             <NoteItem
-              href="/notes/booleans-and-conditionals"
+              href="/lecture-notes/booleans-and-conditionals"
               thumbnail={
                 <Image
                   src="/images/notes/abstract-002.png"

@@ -1,0 +1,206 @@
+---
+title: Booleans and Conditionals
+listTitle: "Objectives ⟶"
+listItems:
+  - Discuss operators
+  - Understand the `bool` data type
+  - Understand why booleans are important in programming
+  - Discuss the <Purple>operators</Purple> that return boolean values
+  - Understand `if`/`else` statements
+thumbnailSrc: /images/notes/abstract-002.png
+thumbnailWidth: 2400
+thumbnailHeight: 1200
+---
+
+<CenteredColumn>
+
+## Operators
+
+<Chip color="blue">What are they?</Chip>
+
+Operators are symbols that perform various types of opertions. The most simple example is an addition (e.g., `1 + 1`), which performs an arithmetic operation.
+
+Python operations are categorized into the following groups:
+
+- Arithmetic Operators
+- Assignment Operators
+- Comparison Operators
+- Logical Operators
+- Bitwise Operators
+- Membership Operators
+- Identity Operators
+
+</CenteredColumn>
+
+[multiple-choice 32]
+
+[multiple-choice 33]
+
+<CenteredColumn>
+
+## Booleans
+
+<Chip color="purple">Overview</Chip>
+
+A **boolean** is a data type that can only represent two possible values - `True` or `False`. The name boolean originates from the English mathematician George Boole.
+
+Although having only two possible values makes booleans look trivial, booleans will end up playing a critical role in writing your code.
+
+A boolean `True` is NOT the same as a string `"True"` (note the double quotes around the text in string `"True"`).
+
+</CenteredColumn>
+
+<LargeQuote>
+  Will you marry me? <br className="d-none d-md-inline" />
+  Heck <span style={{ color: "#aaa", textDecoration: "line-through" }}>
+    yes
+  </span> <Green>True</Green>! I'll marry you.
+</LargeQuote>
+
+[python-challenge 10]
+
+[python-challenge 8]
+
+[python-challenge 9]
+
+<RowBoxItems title="Why are booleans so important?" color="blue">
+<>
+    <Chip color="blue">Evaluation</Chip>
+
+    Even the most complex boolean _expressions_ in programming eventually boils down to a single boolean value.
+
+</>
+<>
+    <Chip color="blue">Logic</Chip>
+
+    It controls the _flow_ of your program. We will soon see how `if` statements can conditionally run some code.
+
+</>
+</RowBoxItems>
+
+<LargeQuote>
+  If I have over $100 in my wallet, I will go grab a Ribeye steak.
+</LargeQuote>
+
+[python-challenge 23]
+
+[python-challenge 159]
+
+[python-challenge 160]
+
+<CenteredColumn>
+### Expressions
+
+<Chip color="purple">Evaluated Chunk of Code</Chip>
+
+If you're new to programming, an <Blue>expression</Blue> may mean the look on your face, or a group of words used to signal how you feel.
+
+In the context of **mathematics**, an expression is <Pink>a combination of symbols that is well-formed according to the rules</Pink> that depend on the context (thank you Wikipedia).
+
+<Chip color="green">For Us</Chip>
+
+In the context of **programming**, an expression is <Green>a unit of code that can be evaluated to determine its value</Green> . This definition does not deviate far away from that of mathematics. We'll come back to how math and programming are intertwined.
+
+A <Green>boolean expression</Green> is any expression that evaluates to either `True` or `False`.
+
+</CenteredColumn>
+
+<ListWithTitle
+  title="Examples of Expressions ⟶"
+  items={[
+    <>
+      <code>1 + 1</code> is an expression that evaluates to <code>2</code>.
+    </>,
+    <>
+      <code>575 &gt; 500</code> is an expression that evaluates to
+      <code>True</code>.
+    </>,
+    <>
+      <code>"Five" + "Guys"</code> is an expression that evaluates to
+      <code>"FiveGuys"</code>.
+    </>,
+    <>
+      <code>hometown == "Taipei"</code> is an expression that evaluates to
+      either <code>True</code>
+      or <code>False</code> depending on the value of the <code>hometown</code> variable.
+    </>,
+    <>
+      <code>True</code> is an expression too.
+    </>,
+    <>
+      And yes, <code>1</code> is another expression. <em>Constants</em>
+      themselves are expressions.
+    </>,
+  ]}
+/>
+
+[python-challenge 5]
+
+[python-challenge 161]
+
+[python-challenge 36]
+
+<CenteredColumn>
+### If...Else
+
+<Chip color="green">Conditional Blocks</Chip>
+
+Being able to use expressions to dynamically determine a value sounds... fancy. But how exactly is it _useful_?
+
+This is where the <Green>conditional statements</Green> shine. Conditional statements allow your code to make decisions based on rules.
+
+</CenteredColumn>
+
+<LargeQuote>
+  If I can't afford a Ribeye steak, I'm heading to Panda Express.
+</LargeQuote>
+
+[python-challenge 3]
+
+[python-challenge 162]
+
+[python-challenge 163]
+
+<CenteredColumn>
+### Why are some lines indented?
+
+<Chip color="green">Code Blocks</Chip>
+
+Python uses indentation to define a block of code. What do you mean block of code? A block of code refers to <Purple>one or more lines of code that belong to if/elif/else statements, a function, or a loop.</Purple>
+
+You can use however many spaces you want. However, you must be **consistent** in the number of spaces you use. Python will throw an error if you mix the number of spaces used for indentation.
+
+</CenteredColumn>
+
+[python-challenge 33]
+
+<RowBoxItems title="Conditional Statements" color="blue">
+<>
+<Chip color="green">if</Chip>
+
+`if` statements always come first. You must specify a condition here (`if cash > 100`). An `if` block is required before you use `elif` or `else`. You can only have one `if` statment in a set of `if/elif/else` statements.
+
+</>
+<>
+<Chip color="yellow">elif</Chip>
+
+`elif` statements come after the first `if` block. Similar to `if` statements, you must specify a condition for `elif` statements. You can have as many `elif` blocks as you'd like.
+
+</>
+<>
+<Chip color="pink">else</Chip>
+
+`else` statements come last. `else` statements caputure **any** cases that are not satisfied by the preceding `if/elif` statements.
+
+</>
+</RowBoxItems>
+
+[python-challenge 25]
+
+[python-challenge 27]
+
+[python-challenge 164]
+
+[python-challenge 165]
+
+[python-challenge 166]
