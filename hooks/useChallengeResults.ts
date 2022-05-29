@@ -175,12 +175,10 @@ export default function useChallengeResults(
   }, [user]);
 
   useEffect(() => {
-    if (!user) {
-      return;
+    if (challenges && user) {
+      load();
     }
-
-    load();
-  }, [userId]);
+  }, [challenges, userId]);
 
   useEffect(() => {
     challengeResultsRef.current = result?.data;

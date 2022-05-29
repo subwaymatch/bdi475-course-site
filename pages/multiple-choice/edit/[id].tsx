@@ -194,8 +194,6 @@ export default function EditCodingChallengePage() {
   };
 
   useEffect(() => {
-    console.log(`useEffect(), challengeId=${challengeId}, user=${user}`);
-
     if (!challengeId || !user) {
       return;
     }

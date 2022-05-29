@@ -2,19 +2,19 @@ import React, { useState, useEffect } from "react";
 import Layout from "components/Layout";
 import { Col, Container, Row } from "react-bootstrap";
 import ChallengeList from "components/challenges/list/ChallengeList";
-import ReactPaginate from "react-paginate";
 import { IChallengeListItemProps } from "components/challenges/list/ChallengeListItem";
 import { supabaseClient } from "lib/supabase/supabaseClient";
 import { toast } from "react-toastify";
 import { definitions } from "types/database";
 import { useRouter } from "next/router";
 import ChallengeListHeader from "components/challenges/list/ChallengeListHeader";
+import { Pagination } from "@mui/material";
 
-export default function PythonChallengeListPage({ page }) {
+export default function MultipleChoiceQuestionListPage({ page }) {
   const initialPage = Number(page);
   const [totalNumberOfPages, setTotalNumberOfPages] = useState(1);
   // zero-based page number
-  const [currentPageIndex, setCurrentPageIndex] = useState(initialPage - 1);
+  const [currentPage, setCurrentPage] = useState(initialPage);
   const [pageSize, setPageSize] = useState(20);
   const [listItems, setListItems] = useState<IChallengeListItemProps[]>([]);
   const router = useRouter();
@@ -69,14 +69,16 @@ export default function PythonChallengeListPage({ page }) {
     return item;
   };
 
-  const loadPage = async (pageIndex: number) => {
+  const loadPage = async (page: number) => {
+    const pageIndex = page - 1;
+
     const { data, error } = await supabaseClient
       .from<definitions["multiple_choice_questions"]>(
         "multiple_choice_questions"
       )
       .select()
       .order("updated_at", { ascending: false })
-      .range(pageIndex * pageSize, (pageIndex + 1) * pageSize);
+      .range(pageIndex * pageSize, (pageIndex + 1) * pageSize - 1);
 
     if (!error) {
       setListItems(data.map((o) => toListItem(o)));
@@ -85,13 +87,13 @@ export default function PythonChallengeListPage({ page }) {
     }
   };
 
-  const handlePageChange = async (pageIndex: number) => {
-    setCurrentPageIndex(pageIndex);
-    loadPage(pageIndex);
+  const handlePageChange = async (page: number) => {
+    setCurrentPage(page);
+    loadPage(page);
 
     router.push({
       pathname: router.pathname,
-      query: { page: pageIndex + 1 },
+      query: { page },
     });
   };
 
@@ -152,6 +154,7 @@ export default function PythonChallengeListPage({ page }) {
 
   useEffect(() => {
     calculatePageCount();
+    loadPage(currentPage);
   }, []);
 
   return (
@@ -166,28 +169,22 @@ export default function PythonChallengeListPage({ page }) {
 
           <ChallengeListHeader
             create={createNewChallenge}
-            currentPage={currentPageIndex}
+            currentPage={currentPage}
           />
 
           <ChallengeList items={listItems} />
 
           <Row>
-            <Col md={12}>
+            <Col>
               <div className="paginationContainer">
-                <ReactPaginate
-                  pageCount={totalNumberOfPages}
-                  marginPagesDisplayed={2}
-                  pageRangeDisplayed={5}
-                  initialPage={initialPage - 1}
-                  onPageChange={(data) => handlePageChange(data.selected)}
-                  containerClassName="pagination"
-                  activeClassName="active"
-                  pageClassName="page"
-                  previousLabel="←"
-                  previousClassName="previous"
-                  nextLabel="→"
-                  nextClassName="next"
-                  eventListener="onClick"
+                <Pagination
+                  boundaryCount={2}
+                  count={totalNumberOfPages}
+                  page={currentPage}
+                  onChange={(event, page) => {
+                    handlePageChange(page);
+                  }}
+                  shape="rounded"
                 />
               </div>
             </Col>

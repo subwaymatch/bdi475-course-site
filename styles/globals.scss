@@ -365,57 +365,27 @@ table {
 
 .paginationContainer {
   display: flex;
-  width: 100%;
   margin-top: 3rem;
   justify-content: center;
 }
 
-ul.pagination {
-  list-style: none;
-  display: inline-block;
+.MuiPaginationItem-root {
   font-size: 1.1rem;
+  padding: 0.8rem 1.5rem;
+  font-weight: 500;
+  color: $color-gray-90;
+  height: auto;
 
-  li {
-    display: inline-block;
-    font-weight: 500;
+  &:hover {
+    color: $color-text-gray;
+  }
 
-    a {
-      color: $color-gray-90;
-      display: inline-block;
-      padding: 0.8rem 1.5rem;
-      border-radius: 4px;
-      text-decoration: none;
+  &.Mui-selected {
+    color: color.adjust($color-green, $lightness: -10%);
+    background-color: color.adjust($color-green, $lightness: 35%);
 
-      &:hover {
-        color: $color-text-gray;
-        background: #f9f9f9;
-      }
-    }
-
-    &.disabled a {
-      color: $color-gray-40;
-      cursor: not-allowed;
-
-      &:hover {
-        background: none;
-      }
-    }
-
-    &.previous {
-      margin-left: 0;
-    }
-
-    &.next {
-      margin-right: 0;
-    }
-
-    &.page {
-      &.active {
-        a {
-          color: color.adjust($color-green, $lightness: -10%);
-          background-color: color.adjust($color-green, $lightness: 25%);
-        }
-      }
+    &:hover {
+      background-color: color.adjust($color-green, $lightness: 30%);
     }
   }
 }

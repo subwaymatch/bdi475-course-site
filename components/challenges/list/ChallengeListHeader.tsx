@@ -38,7 +38,7 @@ export default function ChallengeListHeader({
         <Col md={6}>
           <div className={styles.pageDisplay}>
             <AiOutlineNumber className={styles.reactIcon} />
-            <span>Page {currentPage + 1}</span>
+            <span>Page {currentPage}</span>
           </div>
         </Col>
       </Row>
