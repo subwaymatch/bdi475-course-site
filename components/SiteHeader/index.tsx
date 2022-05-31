@@ -169,40 +169,44 @@ export default function SiteHeader() {
       )}
 
       <header className={styles.header}>
-        <Container>
-          <Row className="align-items-center">
-            <Col md={2} style={{ lineHeight: 0 }}>
-              <Link href="/">
-                <a className={clsx(styles.logoLink)}>
-                  <Image
-                    src={logoImage}
-                    alt="BDI 475"
-                    width={110}
-                    height={28}
-                  />
-                </a>
-              </Link>
-            </Col>
+        <Container fluid>
+          <Col>
+            <div className={styles.inner}>
+              <Row className="align-items-center">
+                <Col md={2} style={{ lineHeight: 0 }}>
+                  <Link href="/">
+                    <a className={clsx(styles.logoLink)}>
+                      <Image
+                        src={logoImage}
+                        alt="BDI 475"
+                        width={110}
+                        height={28}
+                      />
+                    </a>
+                  </Link>
+                </Col>
 
-            <Col md={8} className="d-none d-md-block">
-              <HeaderDesktopMenu />
-            </Col>
+                <Col md={8} className="d-none d-md-block">
+                  <HeaderDesktopMenu />
+                </Col>
 
-            <Col md={2} className="d-none d-md-block">
-              <UserMenu />
-            </Col>
+                <Col md={2} className="d-none d-md-block">
+                  <UserMenu />
+                </Col>
 
-            <Col xs={6} className="d-md-none">
-              <div className={styles.menuBtnWrapper}>
-                <MenuButton
-                  isOpen={isMenuOpen}
-                  onClick={() => {
-                    setIsMenuOpen((v) => !v);
-                  }}
-                />
-              </div>
-            </Col>
-          </Row>
+                <Col xs={6} className="d-md-none">
+                  <div className={styles.menuBtnWrapper}>
+                    <MenuButton
+                      isOpen={isMenuOpen}
+                      onClick={() => {
+                        setIsMenuOpen((v) => !v);
+                      }}
+                    />
+                  </div>
+                </Col>
+              </Row>
+            </div>
+          </Col>
         </Container>
       </header>
 
@@ -224,7 +228,7 @@ export default function SiteHeader() {
               closed: { height: 0, opacity: 0 },
             }}
           >
-            <Container>
+            <Container fluid>
               <HeaderMobileMenu />
             </Container>
           </motion.div>

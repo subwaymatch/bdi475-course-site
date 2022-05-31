@@ -13,7 +13,7 @@ export default function PoliciesAndDisclosures() {
 function Policies() {
   return (
     <section className={styles.policies}>
-      <Container>
+      <Container fluid>
         <Row>
           <Col>
             <h2 className="sectionTitle">
@@ -157,7 +157,7 @@ function Policies() {
 function Disclosures() {
   return (
     <section className={styles.disclosures}>
-      <Container>
+      <Container fluid>
         <Row>
           <Col>
             <h2 className="sectionTitle">

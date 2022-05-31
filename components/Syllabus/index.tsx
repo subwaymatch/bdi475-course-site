@@ -11,7 +11,7 @@ export default function CourseInformation() {
   return (
     <section className={styles.courseInformation}>
       <div className={styles.sectionInfo}>
-        <Container>
+        <Container fluid>
           <Row>
             <Col>
               <h2 className="sectionTitle">
@@ -91,7 +91,7 @@ export default function CourseInformation() {
       </div>
 
       <div className={styles.instructionalTeam}>
-        <Container>
+        <Container fluid>
           <Row>
             <Col>
               <h2 className="sectionTitle">

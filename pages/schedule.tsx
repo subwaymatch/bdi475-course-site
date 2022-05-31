@@ -7,7 +7,7 @@ export default function SchedulePage() {
   return (
     <Layout>
       <main className={styles.schedulePage}>
-        <Container>
+        <Container fluid>
           <Row>
             <Col>
               <h1 className="pageTitle">Course Calendar</h1>

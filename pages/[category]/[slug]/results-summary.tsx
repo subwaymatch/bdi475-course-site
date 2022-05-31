@@ -82,7 +82,7 @@ export default function ChallengeResultsSummary({
     <ChallengesContextProvider challenges={challenges}>
       <Layout>
         <div className={styles.page}>
-          <Container>
+          <Container fluid>
             {frontMatterData.title && (
               <Row>
                 <Col>

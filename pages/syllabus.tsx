@@ -7,7 +7,7 @@ export default function SyllabusPage() {
   return (
     <Layout>
       <main className={styles.syllabusPage}>
-        <Container>
+        <Container fluid>
           <Row>
             <Col>
               <h1 className="pageTitle">Syllabus</h1>

@@ -49,7 +49,7 @@ const GradedItem = ({
 export default function GradingBreakdown() {
   return (
     <section className={styles.gradingBreakdownSection}>
-      <Container>
+      <Container fluid>
         <Row>
           <Col>
             <h2 className="sectionTitle grayBottomBorder">

@@ -63,7 +63,7 @@ export default function Login() {
   return (
     <main className={styles.authPage}>
       <form onSubmit={submit}>
-        <Container>
+        <Container fluid>
           <Row>
             <Col>
               <h1 className="pageTitle">Sign In</h1>

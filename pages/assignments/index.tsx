@@ -21,7 +21,7 @@ export default function AssignmentsPage() {
   return (
     <Layout>
       <main className={styles.assignmentsPage}>
-        <Container>
+        <Container fluid>
           <Row>
             <Col>
               <h1 className="pageTitle">Assignments</h1>

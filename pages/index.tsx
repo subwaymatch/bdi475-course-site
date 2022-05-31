@@ -11,7 +11,7 @@ export default function MainPage() {
   return (
     <Layout>
       <main className={styles.mainPage}>
-        <Container>
+        <Container fluid>
           <div className={styles.courseTitleWrapper}>
             <Row>
               <Col>
@@ -22,7 +22,7 @@ export default function MainPage() {
         </Container>
 
         <section className={styles.linksSection}>
-          <Container>
+          <Container fluid>
             <Row>
               <Col lg={6}>
                 <a

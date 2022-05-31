@@ -9,7 +9,7 @@ import { FaGithub } from "react-icons/fa";
 export default function SiteFooter() {
   return (
     <section className={styles.footer}>
-      <Container>
+      <Container fluid>
         <Row>
           <Col lg={4} md={12}>
             <Link href="/">

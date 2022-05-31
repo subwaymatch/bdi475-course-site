@@ -27,7 +27,7 @@ export default function PythonChallengeUserHistoryPage() {
   return (
     <Layout>
       <main className={styles.page}>
-        <Container>
+        <Container fluid>
           <Row>
             <Col>
               <h2 className="sectionTitle">

@@ -203,7 +203,7 @@ export default function EditCodingChallengePage() {
 
   return isLoading ? (
     <Layout excludeHeader={true} excludeFooter={true}>
-      <Container>
+      <Container fluid>
         <Row>
           <Col>Loading...</Col>
         </Row>

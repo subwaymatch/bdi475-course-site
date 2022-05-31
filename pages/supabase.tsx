@@ -19,7 +19,7 @@ export default function LoginPage() {
   return (
     <Layout>
       <section style={{ marginBottom: "8rem" }}>
-        <Container>
+        <Container fluid>
           <Row>
             <Col md={{ span: 6, offset: 3 }} sm={{ span: 8, offset: 2 }}>
               <h3

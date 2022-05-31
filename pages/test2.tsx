@@ -6,7 +6,7 @@ export default function TestPage() {
   return (
     <Layout>
       <main className={styles.page}>
-        <Container>
+        <Container fluid>
           <Row>
             <Col>
               <h1 className="pageTitle">Test Page</h1>

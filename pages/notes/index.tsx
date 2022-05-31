@@ -9,7 +9,7 @@ export default function NotesPage() {
   return (
     <Layout>
       <main className={styles.page}>
-        <Container>
+        <Container fluid>
           <Row>
             <Col>
               <h1 className="pageTitle">Lecture Notes</h1>

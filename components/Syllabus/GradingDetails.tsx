@@ -257,7 +257,7 @@ const LetterGradeRange = () => (
 export default function GradingDetails() {
   return (
     <div className={styles.gradingDetails}>
-      <Container>
+      <Container fluid>
         <Row>
           <Col lg={8} xs={12}>
             <GradingComponentDetails />
