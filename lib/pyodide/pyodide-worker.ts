@@ -1,4 +1,4 @@
-importScripts("https://cdn.jsdelivr.net/pyodide/v0.19.1/full/pyodide.js");
+importScripts("https://cdn.jsdelivr.net/pyodide/v0.20.0/full/pyodide.js");
 
 import * as Comlink from "comlink";
 import { ICodeExecutionResult, PyodideResultDisplayType } from "types/pyodide";
@@ -30,7 +30,7 @@ export class PythonRuntime {
   async initialize() {
     // @ts-expect-error
     this.pyodide = await loadPyodide({
-      indexURL: "https://cdn.jsdelivr.net/pyodide/v0.19.1/full/",
+      indexURL: "https://cdn.jsdelivr.net/pyodide/v0.20.0/full",
     });
 
     await this.pyodide.registerComlink(Comlink);
