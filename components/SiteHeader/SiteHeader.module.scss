@@ -2,6 +2,13 @@
 @import "styles/mixins";
 
 .header {
+  padding: 0 0.5rem;
+
+  @include media-breakpoint-down(lg) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
   .inner {
     padding: 0.5rem 0;
     border-bottom: 1px solid $color-border-gray;
