@@ -11,15 +11,15 @@ export default function MainPage() {
   return (
     <Layout>
       <main className={styles.mainPage}>
-        <Container fluid>
-          <div className={styles.courseTitleWrapper}>
+        <section className={styles.courseTitleWrapper}>
+          <Container fluid>
             <Row>
               <Col>
                 <h1>Introduction to Data Analytics Applications in Business</h1>
               </Col>
             </Row>
-          </div>
-        </Container>
+          </Container>
+        </section>
 
         <section className={styles.linksSection}>
           <Container fluid>
