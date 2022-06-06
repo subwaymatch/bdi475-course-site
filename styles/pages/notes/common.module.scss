@@ -4,6 +4,7 @@
 
 .page {
   padding-bottom: 10rem;
+  @include page-horizontal-padding();
 
   h1.noteTitle {
     color: $color-dark-gray;

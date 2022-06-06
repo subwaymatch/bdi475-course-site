@@ -124,3 +124,18 @@
     padding-top: 0;
   }
 }
+
+@mixin page-horizontal-padding() {
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  @include media-breakpoint-down(xl) {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  @include media-breakpoint-down(lg) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

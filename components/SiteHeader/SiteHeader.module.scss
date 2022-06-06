@@ -2,12 +2,7 @@
 @import "styles/mixins";
 
 .header {
-  padding: 0 0.5rem;
-
-  @include media-breakpoint-down(lg) {
-    padding-left: 0;
-    padding-right: 0;
-  }
+  @include page-horizontal-padding();
 
   .inner {
     padding: 0.5rem 0;

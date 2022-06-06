@@ -5,6 +5,7 @@
   color: white;
   background: #111;
   padding: 5rem 0;
+  @include page-horizontal-padding();
   font-size: 1.05rem;
   letter-spacing: 0;
 
