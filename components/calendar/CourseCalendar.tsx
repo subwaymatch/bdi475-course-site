@@ -25,7 +25,7 @@ export default function CourseCalendar() {
   const eventYears = Object.keys(weeklyDayjsObjectsByYear).map((o) =>
     Number.parseInt(o)
   );
-  const [showPrev, setShowPrev] = useState(false);
+  const [showPrev, setShowPrev] = useState(true);
 
   return (
     <div

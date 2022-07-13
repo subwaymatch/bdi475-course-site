@@ -26,6 +26,21 @@ export default function NotesPage() {
 
           <Row>
             <NoteItem
+              href="/lecture-notes/intro-to-analytics"
+              thumbnail={
+                <Image
+                  src="/images/notes/abstract-005.png"
+                  width={900}
+                  height={450}
+                  alt=""
+                />
+              }
+              date="2022-01-20"
+              title="Intro to Analytics"
+              colorTheme={ColorTheme.Green}
+            />
+
+            <NoteItem
               href="/lecture-notes/data-types-and-variables"
               thumbnail={
                 <Image
