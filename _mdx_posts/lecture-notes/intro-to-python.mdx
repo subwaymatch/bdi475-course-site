@@ -1,0 +1,290 @@
+---
+title: Introduction to Python
+listTitle: "Objectives ⟶"
+listItems:
+  - Introduce you to Python
+  - Discuss why Python is popular
+  - Discuss why Python is great for Data Analytics
+  - Learn how to add comments
+thumbnailSrc: /images/notes/intro-to-analytics-cover.jpg
+thumbnailWidth: 2000
+thumbnailHeight: 600
+---
+
+<CenteredColumn>
+
+## What is Python?
+
+<img
+  src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Python_logo_and_wordmark.svg/640px-Python_logo_and_wordmark.svg.png"
+  alt="Python Logo"
+  style={{ marginTop: "1rem" }}
+/>
+
+Python is a broad-purpose programming language that is designed to be human-readable. It was created by Guido van Rossum in the 1980s. Its simple syntax emphasizes readability. Unlike many other programming languages, Python code often reads like natural English sentences. According to [PYPL Programming Language Popularity Index](https://pypl.github.io/PYPL.html "PYPL PopularitY of Programming Language"), Python is the world's most popular programming language as of May 2022.
+
+<table>
+  <thead>
+    <tr>
+      <th>Rank</th>
+      <th>Change</th>
+      <th>Language</th>
+      <th>Share</th>
+      <th>Trend</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td></td>
+      <td>
+        <strong className="color-blue">Python</strong>
+      </td>
+      <td>27.85%</td>
+      <td>-2.5%</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td></td>
+      <td>Java</td>
+      <td>17.86%</td>
+      <td>-0.1%</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td></td>
+      <td>JavaScript</td>
+      <td>9.17%</td>
+      <td>+0.4%</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td></td>
+      <td>C#</td>
+      <td>7.62%</td>
+      <td>+0.7%</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td></td>
+      <td>C/C++</td>
+      <td>7.0%</td>
+      <td>+0.4%</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td></td>
+      <td>PHP</td>
+      <td>5.36%</td>
+      <td>-1.0%</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td></td>
+      <td>R</td>
+      <td>4.34%</td>
+      <td>+0.5%</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>
+        <span className="color-green">↑</span>
+      </td>
+      <td>Typescript</td>
+      <td>2.39%</td>
+      <td>+0.7%</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>
+        <span className="color-red">↓</span>
+      </td>
+      <td>Objective C</td>
+      <td>2.25%</td>
+      <td>+0.0%</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td></td>
+      <td>Swift</td>
+      <td>2.05%</td>
+      <td>+0.3%</td>
+    </tr>
+  </tbody>
+</table>
+
+### What makes Python so charming?
+
+1. 🍰 It's easy to read and write.
+2. 🔨 It's [open-source](https://github.com/python/cpython) and free.
+3. 🚀 There are thousdands of [packages](https://pypi.org/) available.
+4. 🦄 It's versatile. You can use Python for data science (machine learning, deep learning, AI), web development, desktop app development, low-level programs, game programming, and more.
+5. ⚔️ It has a massive community of users and supporters.
+
+</CenteredColumn>
+
+[multiple-choice 46]
+[multiple-choice 47]
+
+<CenteredColumn>
+### Python and Data Analytics
+
+<Chip color="orange">Why do we use Python?</Chip>
+
+Python is a great programming language for data analytics.
+
+First, Python has a wide offering of data analysis and visualization libraries. [Pandas](https://pandas.pydata.org/) is the de-facto standard library for data analysis which we will learn in later chapters. Libraries like [TensorFlow](https://www.tensorflow.org/) and [PyTorch](https://pytorch.org/) are used for machine learning.
+
+Second, Python offers a higher development speed, especially when it comes to working with data. Data analysts can quickly perform exploratory data analysis to obtain a high-level understanding of a dataset. They can also prototype a statistical model with well-maintained libraries.
+
+Finally, Python is a great beginner's language. Recall that the Python syntax is human-readable. You can often _guess_ what a block of code is doing even if you don't fully understand Python.
+
+Take this block of <Blue>Python</Blue> code as an example. Can you guess what it does?
+
+```python
+# Python code
+lemonade_sales = [3, 9, 6, 3]
+sales_target = 20
+
+if sum(lemonade_sales) > sales_target:
+  print("Exceeds sales target!")
+else:
+  print("Not quite there yet")
+```
+
+Compare that with another block of <Blue>Java</Blue> code. Would you believe me if this block of code does the exact same thing as the previous one?
+
+```java
+// Java code
+public class SalesTargetChecker {
+    public static void main(String args[]) {
+        int[] lemonade_sales = new int[] { 3, 9, 6, 3 };
+        int sales_target = 20;
+        int total_sales = 0;
+
+        for (int sale: lemonade_sales) {
+            total_sales += sale;
+        }
+
+        if (total_sales > sales_target) {
+            System.out.println("Exceeds sales target!");
+        } else {
+            System.out.println("Not quite there yet");
+        }
+    }
+}
+```
+
+</CenteredColumn>
+
+[python-challenge 261]
+
+<CenteredColumn>
+
+## Running Python
+
+<Chip color="black">Python Version</Chip>
+
+There are three major Python versions - 1, 2, and 3. Most tutorials you find nowadays are based on version 3. The previous versions are deprecated and no longer supported. We recommend you to use version 3 unless you have a very specific reason to use one of the older versions (e.g., using a package that only supports version 2). All materials on this site use version 3.
+
+You can programmatically check the Python version using the code below.
+
+```python
+import sys
+print(sys.version)
+```
+
+```
+# Output
+3.9.5 (default, Feb 22 2022, 14:12:02)
+[Clang 13.0.0]
+```
+
+<Chip color="black">Python Intrepreter</Chip>
+
+To run Python locally, you will need to install a [Python interpreter](https://www.python.org/downloads/). If your goal is to simply learn Python through this website, you do not install a Python interpreter locally.
+
+## Python Comments
+
+When writing code, you may want to add notes for yourself or other humans. You can use *comment*s to write text that are ignored by the Python interpreter. There are two types of comments:
+
+1. single-line
+2. multi-line
+
+<Chip color="green">Single-line Comment</Chip>
+
+<div
+  style={{
+    color: "black",
+    fontSize: "10rem",
+    lineHeight: 1,
+    fontWeight: 900,
+    textAlign: "center",
+    background: "-webkit-linear-gradient(#fff, #000)",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+  }}
+>
+  &#x23;
+</div>
+
+Lines that start with &#x23; are ignored by the Python interpreter.
+
+```python
+lemonade_price = 3
+
+# Sales tax in Champaign is 9%
+sales_tax = 0.09
+```
+
+You can also use the hash character (&#x23;) after a line of code to add an _inline comment_.
+
+```python
+lemonade_price = 3
+sales_tax = 0.09    # Sales tax in Champaign is 9%
+```
+
+<Chip color="green">Multi-line Comment</Chip>
+
+<div
+  style={{
+    color: "black",
+    fontFamily: 'Consolas, "Courier New", monospace',
+    fontSize: "10rem",
+    lineHeight: 1,
+    fontWeight: "bold",
+    textAlign: "center",
+    background: "-webkit-linear-gradient(#fff, #000)",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+  }}
+>
+  """
+</div>
+
+Any lines of code between a set of three single quotes (''') or three double quotes (""") are considered multi-line comments. The Python interpreter ignores those lines of code.
+
+```python
+"""
+We sell lemonade at $3 per cup.
+Sales tax in Champaign is 9%. This consists of:
+  state: 6.25%
+  county: 1.25%
+  city: 1.5%
+"""
+lemonade_price = 3
+sales_tax = 0.09
+```
+
+Recall that you can use a set of three single quotes (''') as well.
+
+```python
+'''
+This is an example
+of a multi-line comment
+'''
+```
+
+</CenteredColumn>
+
+[multiple-choice 48]

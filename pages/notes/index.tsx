@@ -41,6 +41,21 @@ export default function NotesPage() {
             />
 
             <NoteItem
+              href="/lecture-notes/intro-to-python"
+              thumbnail={
+                <Image
+                  src="/images/notes/abstract-006.png"
+                  width={900}
+                  height={450}
+                  alt=""
+                />
+              }
+              date="2022-08-25"
+              title="Intro to Python"
+              colorTheme={ColorTheme.Blue}
+            />
+
+            <NoteItem
               href="/lecture-notes/data-types-and-variables"
               thumbnail={
                 <Image
@@ -54,7 +69,7 @@ export default function NotesPage() {
               title="Data Types and Variables"
               colorTheme={ColorTheme.Green}
             />
-
+            {/* 
             <NoteItem
               href="/lecture-notes/booleans-and-conditionals"
               thumbnail={
@@ -95,7 +110,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-09-06"
+              date="2022-09-01"
               title="Loops and Collections"
               colorTheme={ColorTheme.Purple}
             />
@@ -110,7 +125,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-09-08"
+              date="2022-09-01"
               title="Strings and String Methods"
               colorTheme={ColorTheme.Green}
             />
@@ -125,12 +140,12 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-02-08"
-              title="Functions Part 1"
+              date="2022-09-06"
+              title="Functions"
               colorTheme={ColorTheme.Blue}
-            />
+            /> */}
           </Row>
-
+          {/* 
           <Row>
             <Col>
               <h2
@@ -414,7 +429,7 @@ export default function NotesPage() {
               title="Advanced Tableau Visualizations"
               colorTheme={ColorTheme.Blue}
             />
-          </Row>
+          </Row> */}
         </Container>
       </main>
     </Layout>
