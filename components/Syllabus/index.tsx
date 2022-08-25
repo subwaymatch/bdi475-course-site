@@ -48,7 +48,7 @@ export default function CourseInformation() {
             <Col md={4}>
               <div className={styles.displayBox}>
                 <Chip>Term</Chip>
-                <span className={styles.largeText}>Spring 2022</span>
+                <span className={styles.largeText}>Fall 2022</span>
               </div>
             </Col>
 
@@ -56,9 +56,11 @@ export default function CourseInformation() {
               <div className={styles.displayBox}>
                 <Chip color="green">Class Time &amp; Location</Chip>
                 <div className={styles.largeText}>
-                  Tues &amp; Thurs 12:30-1:50 PM
+                  Tues &amp; Thurs 3:30-4:50 PM
                   <br />
-                  <span className="color-gray">226 Wohlers Hall</span>
+                  <span className="color-gray">
+                    3007 Business Instructional Facility
+                  </span>
                 </div>
               </div>
             </Col>
@@ -176,23 +178,17 @@ export default function CourseInformation() {
               >
                 <div className={styles.memberHeader}>
                   <span className={styles.role}>Teaching Assistant</span>
-                  <span className={styles.name}>Sandip Sonawane</span>
-                  <span className={styles.title}>
-                    MS Statistics with Analytics Concentration
-                  </span>
+                  <span className={styles.name}>Anushree Vilas Pimpalkar</span>
+                  <span className={styles.title}>MS Statistics</span>
                 </div>
 
                 <div className={styles.memberDesc}>
                   <p className={styles.text}>
-                    I am pursuing a Master's Degree in Statistics-Analytics at
-                    UIUC. In my previous role at Eaton Research Labs, I had an
-                    extensive range of responsibilities including selecting
-                    features, mining data, improving data collection techniques,
-                    processing data, optimizing classifiers, and doing ad-hoc
-                    analyses. As a Data Scientist, I was required to have
-                    excellent communication skills, understanding of algorithms,
-                    excellence in Python, proficiency in Pandas & SQL, and
-                    excellent knowledge of applied statistics.
+                    Hello! I am a graduate student in the department of
+                    Statistics at UIUC. I love to code, and I have ~4 years of
+                    professional experience in Data Science and Analytics. I am
+                    excited to be a part of this amazing course and looking
+                    forward to learning together.
                   </p>
                 </div>
               </Col>
@@ -209,13 +205,13 @@ export default function CourseInformation() {
               >
                 <div className={styles.memberImage}>
                   <Image
-                    src="/images/sandip_square_bw.jpg"
+                    src="/images/anushree_square_bw.jpg"
                     width={1000}
                     height={1000}
                   />
 
                   <div className={styles.imageLabel}>
-                    <Chip color="black">Sandip</Chip>
+                    <Chip color="black">Anushree</Chip>
                   </div>
                 </div>
               </Col>

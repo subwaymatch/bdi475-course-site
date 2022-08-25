@@ -35,7 +35,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-01-20"
+              date="2022-08-25"
               title="Intro to Analytics"
               colorTheme={ColorTheme.Green}
             />
@@ -50,7 +50,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-01-20"
+              date="2022-08-25"
               title="Data Types and Variables"
               colorTheme={ColorTheme.Green}
             />
@@ -65,7 +65,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-01-25"
+              date="2022-08-30"
               title="Operators, Booleans, and Conditionals"
               colorTheme={ColorTheme.Green}
             />
@@ -80,7 +80,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-01-27"
+              date="2022-09-01"
               title="Lists and Loops"
               colorTheme={ColorTheme.Blue}
             />
@@ -95,8 +95,8 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-02-01"
-              title="Loops, Collections, Quiz Prep"
+              date="2022-09-06"
+              title="Loops and Collections"
               colorTheme={ColorTheme.Purple}
             />
 
@@ -110,7 +110,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-02-03"
+              date="2022-09-08"
               title="Strings and String Methods"
               colorTheme={ColorTheme.Green}
             />

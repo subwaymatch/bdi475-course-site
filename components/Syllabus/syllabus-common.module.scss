@@ -2,11 +2,15 @@
 @import "styles/mixins";
 
 p.text {
-  color: #999;
+  color: $color-gray-80;
   font-size: 1.26rem;
   letter-spacing: -0.03rem;
   line-height: 1.8;
   margin-top: 1.5rem;
+
+  strong {
+    color: $color-gray-300;
+  }
 
   &:first-of-type {
     margin-top: 0;

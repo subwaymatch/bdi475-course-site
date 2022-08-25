@@ -14,9 +14,13 @@ const GradingComponentDetails = () => (
       <h3>Participation</h3>
 
       <p className={styles.text}>
-        During the live lectures, you will work on coding exercises. Your
-        participation is measured by a mix of the correctness and efforts in
-        those exercises. It's perfectly okay to get a few questions wrong.
+        Your participation grades are based on two criteria – 1){" "}
+        <strong>participation in in-class exercises</strong> and 2){" "}
+        <strong>participation in discussions in class</strong>. Your
+        participation grades are purely subjective. Over the course of the
+        semester, I will observe who speaks up in classes, who helps their
+        classmates, and who puts in efforts on in-class exercises. I will reward
+        the <strong>quality</strong>, not quantity of participation.
       </p>
     </div>
 

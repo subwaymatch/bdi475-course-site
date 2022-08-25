@@ -50,6 +50,42 @@ function Policies() {
             <div className={styles.item}>
               <Row>
                 <Col lg={4}>
+                  <h3>Late Submissions</h3>
+                </Col>
+
+                <Col lg={8}>
+                  <p className={styles.text}>
+                    Students are to complete and submit assignments on the due
+                    date.{" "}
+                    <strong>
+                      10% will be deducted each day from the total available
+                      points of the assignment
+                    </strong>
+                    for late submission. No assignments will be accepted more
+                    than 48 after the deadline.
+                  </p>
+
+                  <p className={styles.text}>
+                    <strong>Final Case Study:</strong> Late submission of the
+                    final assignment will NOT BE ACCEPTED to give graders enough
+                    time before the grade entry deadline.
+                  </p>
+                  <p className={styles.text}>
+                    <strong>Quizzes: </strong> Unless otherwise noted, quizzes
+                    are to be accomplished in-class. Remote access or late
+                    attempts will not be allowed (access code will be required).
+                  </p>
+                </Col>
+              </Row>
+            </div>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col>
+            <div className={styles.item}>
+              <Row>
+                <Col lg={4}>
                   <h3>Course Recordings</h3>
                 </Col>
 
@@ -216,67 +252,13 @@ function Disclosures() {
               <Row>
                 <Col xxl={8} xl={10} lg={12}>
                   <p className={styles.text}>
-                    <span className="color-dark-gray w-600">General</span> -
-                    Following University policy, all students are required to
-                    engage in appropriate behavior to protect the health and
-                    safety of the community. Students are also required to
-                    follow the campus COVID-19 protocols. Students who feel ill
-                    must not come to class. In addition, students who test
-                    positive for COVID-19 or have had an exposure that requires
-                    testing and/or quarantine must not attend class. The
-                    University will provide information to the instructor, in a
-                    manner that complies with privacy laws, about students in
-                    these latter categories. These students are judged to have
-                    excused absences for the class period and should contact the
-                    instructor via email about making up the work. Students who
-                    fail to abide by these rules will first be asked to comply;
-                    if they refuse, they will be required to leave the classroom
-                    immediately. If a student is asked to leave the classroom,
-                    the non-compliant student will be judged to have an
-                    unexcused absence and reported to the Office for Student
-                    Conflict Resolution for disciplinary action. Accumulation of
-                    non-compliance complaints against a student may result in
-                    dismissal from the University.
-                  </p>
-
-                  <p className={styles.text}>
-                    <span className="color-dark-gray w-600">
-                      Face Coverings
-                    </span>{" "}
-                    - All students, faculty, staff, and visitors are required to
-                    wear face coverings in classrooms and university spaces.
-                    This is in accordance with CDC guidance and University
-                    policy and expected in this class. Please refer to the
-                    University of Illinois Urbana-Champaign's COVID-19 website
-                    for further information on face coverings. Thank you for
-                    respecting all of our well-being so we can learn and
-                    interact together productively.{" "}
-                  </p>
-                  <p className={styles.text}>
-                    <span className="color-dark-gray w-600">
-                      Building Access
-                    </span>{" "}
-                    - In order to implement COVID-19-related guidelines and
-                    policies affecting university operations, instructional
-                    faculty members may ask students in the classroom to show
-                    their Building Access Status in the Safer Illinois app or
-                    the Boarding Pass. Staff members may ask students in
-                    university offices to show their Building Access Status in
-                    the Safer Illinois app or the Boarding Pass. If the Building
-                    Access Status says "Granted," that means the individual is
-                    compliant with the university's COVID-19 policies—either
-                    with a university-approved COVID-19 vaccine or with the
-                    on-campus COVID-19 testing program for unvaccinated
-                    students. Students are required to show only the Building
-                    Access Screen, which shows compliance without specifying
-                    whether it was through COVID-19 vaccination or regular
-                    on-campus testing. To protect personal health information,
-                    this screen does not say if a person is vaccinated or not.
-                    Students are not required to show anyone the screen that
-                    displays their vaccination status. No university official,
-                    including faculty members, may ask students why they are not
-                    vaccinated or any other questions seeking personal health
-                    information.
+                    If you feel ill or unable to come to class or complete class
+                    assignments due to issues related to COVID-19, including but
+                    not limited to testing positive yourself, feeling ill,
+                    caring for a family member with COVID-19, or having
+                    unexpected child-care obligations, you should contact your
+                    instructor immediately, and you are encouraged to copy your
+                    academic advisor.
                   </p>
                 </Col>
               </Row>
