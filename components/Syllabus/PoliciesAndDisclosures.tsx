@@ -60,9 +60,9 @@ function Policies() {
                     <strong>
                       10% will be deducted each day from the total available
                       points of the assignment
-                    </strong>
+                    </strong>{" "}
                     for late submission. No assignments will be accepted more
-                    than 48 after the deadline.
+                    than 48 hours after the deadline.
                   </p>
 
                   <p className={styles.text}>
