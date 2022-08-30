@@ -11,7 +11,7 @@ import { useRouter } from "next/router";
 import { BiNote } from "react-icons/bi";
 import { FiLogIn, FiCalendar, FiHexagon } from "react-icons/fi";
 import { HiOutlineMail } from "react-icons/hi";
-import { RiBook3Line } from "react-icons/ri";
+import { RiBook3Line, RiUserLine } from "react-icons/ri";
 import MenuButton from "components/SiteHeader/MenuButton";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { desktop } from "constants/media-query-strings";
@@ -38,19 +38,19 @@ const menuItems = [
     iconChild: <RiBook3Line className={styles.reactIcon} />,
     isActive: (asPath: string) => asPath.startsWith("/notes"),
   },
-  {
-    href: "/assignments",
-    label: "Assignments",
-    iconChild: <FiHexagon className={styles.reactIcon} />,
-    isActive: (asPath: string) => asPath.startsWith("/assignments"),
-  },
+  // {
+  //   href: "/assignments",
+  //   label: "Assignments",
+  //   iconChild: <FiHexagon className={styles.reactIcon} />,
+  //   isActive: (asPath: string) => asPath.startsWith("/assignments"),
+  // },
 ];
 
 const SignInButton = forwardRef((props, ref: React.Ref<HTMLDivElement>) => (
-  <Link href="/login">
+  <Link href="/supabase">
     <div ref={ref} className={styles.signInButton}>
       <span className={styles.label}>Sign In</span>
-      <HiOutlineMail className={styles.reactIcon} />
+      <RiUserLine className={styles.reactIcon} />
     </div>
   </Link>
 ));

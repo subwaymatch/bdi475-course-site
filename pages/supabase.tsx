@@ -29,7 +29,7 @@ export default function LoginPage() {
                   marginTop: "4rem",
                 }}
               >
-                Supabase Auth
+                Sign In or Register
               </h3>
               <p
                 style={{
@@ -37,8 +37,7 @@ export default function LoginPage() {
                   marginBottom: "2rem",
                 }}
               >
-                All grades are published only on Canvas. This website is
-                strictly used for exercises.
+                Please use your Illinois email address (johndoe2@illinois.edu) .
               </p>
               <Auth supabaseClient={supabaseClient} providers={[]} />
             </Col>

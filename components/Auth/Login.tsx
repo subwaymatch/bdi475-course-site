@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { toast } from "react-toastify";
 import { MdDone } from "react-icons/md";
@@ -13,15 +13,6 @@ export default function Login() {
   const [isSendingEmail, setIsSendingEmail] = useState(false);
   const [isEmailSent, setIsEmailSent] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-
-  const emailRef = useRef();
-  const passwordRef = useRef();
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-
-    // @TODO: add login logic
-  }
 
   const sendSignInLink = async (email: string) => {
     try {
@@ -71,18 +62,6 @@ export default function Login() {
 
   return (
     <main className={styles.authPage}>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="input-email">Email</label>
-        <input id="input-email" type="email" ref={emailRef} />
-
-        <label htmlFor="input-password">Password</label>
-        <input id="input-password" type="password" ref={passwordRef} />
-
-        <br />
-
-        <button type="submit">Login</button>
-      </form>
-
       <form onSubmit={submit}>
         <Container fluid>
           <Row>

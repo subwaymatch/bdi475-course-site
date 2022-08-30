@@ -32,8 +32,8 @@ export default function MainPage() {
                   <div className={styles.linkText}>
                     <span className={styles.title}>Zoom Link ⟶</span>
                     <p className={styles.desc}>
-                      Office hours are Wednesdays 4-5 PM (Park), Fridays 4-5 PM
-                      (Sandip), or by appointment.
+                      Office hours are Thursdays 7-8 PM (Park), Wednesdays
+                      4:30-5:30 PM (Anushree), or by appointment.
                     </p>
                   </div>
 
@@ -45,7 +45,7 @@ export default function MainPage() {
 
               <Col lg={6}>
                 <a
-                  href="https://canvas.illinois.edu/courses/18332"
+                  href="https://canvas.illinois.edu/courses/31640"
                   className={styles.linkItem}
                 >
                   <div className={styles.linkText}>
@@ -83,7 +83,7 @@ export default function MainPage() {
 
               <Col lg={6}>
                 <a
-                  href="https://www.datacamp.com/groups/shared_links/e80741d5bd5c2b8749b5bcfa128c705bb6a14e2ee65bfaf7efb080b1da94e74d"
+                  href="https://www.datacamp.com/groups/shared_links/07eeb60021b3ac6340ebb634f55b6edce8eca0b71464d3898701eabf43fc7a3d"
                   className={styles.linkItem}
                 >
                   <div className={styles.linkText}>
