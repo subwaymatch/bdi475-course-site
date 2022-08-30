@@ -69,7 +69,7 @@ export default function NotesPage() {
               title="Data Types and Variables"
               colorTheme={ColorTheme.Green}
             />
-            {/* 
+
             <NoteItem
               href="/lecture-notes/booleans-and-conditionals"
               thumbnail={
@@ -85,6 +85,7 @@ export default function NotesPage() {
               colorTheme={ColorTheme.Green}
             />
 
+            {/* 
             <NoteItem
               href="/lecture-notes/lists-and-loops"
               thumbnail={

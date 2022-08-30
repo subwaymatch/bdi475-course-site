@@ -37,7 +37,8 @@ export default function LoginPage() {
                   marginBottom: "2rem",
                 }}
               >
-                Password sign-ins are for instructors, TAs, and admins only.
+                All grades are published only on Canvas. This website is
+                strictly used for exercises.
               </p>
               <Auth supabaseClient={supabaseClient} providers={[]} />
             </Col>
