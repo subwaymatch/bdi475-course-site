@@ -110,12 +110,24 @@ export default function NotesPage() {
                 />
               }
               date="2022-09-01"
-              title="Collections and Strings"
+              title="Loops and Collections"
               colorTheme={ColorTheme.Purple}
             />
 
-            {/* 
-          
+            <NoteItem
+              href="/lecture-notes/strings-and-string-methods"
+              thumbnail={
+                <Image
+                  src="/images/notes/abstract-005.png"
+                  width={900}
+                  height={450}
+                  alt=""
+                />
+              }
+              date="2022-09-01"
+              title="Strings and String Methods"
+              colorTheme={ColorTheme.Green}
+            />
 
             <NoteItem
               href="/lecture-notes/functions"
@@ -130,9 +142,8 @@ export default function NotesPage() {
               date="2022-09-06"
               title="Functions"
               colorTheme={ColorTheme.Blue}
-            /> */}
+            />
           </Row>
-          {/* 
           <Row>
             <Col>
               <h2
@@ -416,7 +427,7 @@ export default function NotesPage() {
               title="Advanced Tableau Visualizations"
               colorTheme={ColorTheme.Blue}
             />
-          </Row> */}
+          </Row>
         </Container>
       </main>
     </Layout>

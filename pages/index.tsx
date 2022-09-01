@@ -33,7 +33,7 @@ export default function MainPage() {
                     <span className={styles.title}>Zoom Link ⟶</span>
                     <p className={styles.desc}>
                       Office hours are Thursdays 7-8 PM (Park), Wednesdays
-                      4:30-5:30 PM (Anushree), or by appointment.
+                      5:30-6:30 PM (Anushree), or by appointment.
                     </p>
                   </div>
 
