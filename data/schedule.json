@@ -26,7 +26,7 @@
   {
     "date": "2022-09-01",
     "type": "LECTURE",
-    "text": ["Lists", "For Loops", "While Loops", "Slicing"]
+    "text": ["Lists", "For Loops", "While Loops", "Collections", "String"]
   },
   {
     "date": "2022-09-04",
@@ -36,7 +36,7 @@
   {
     "date": "2022-09-06",
     "type": "LECTURE",
-    "text": ["Dictionaries", "Functions", "Parameters", "Return Values"]
+    "text": ["Slicing", "Functions", "Parameters", "Return Values"]
   },
   {
     "date": "2022-09-07",
