@@ -109,13 +109,10 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-09-01"
+              date="2022-09-06"
               title="Collections and Strings"
               colorTheme={ColorTheme.Purple}
             />
-
-            {/* 
-          
 
             <NoteItem
               href="/lecture-notes/functions"
@@ -127,10 +124,10 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-09-06"
+              date="2022-09-08"
               title="Functions"
               colorTheme={ColorTheme.Blue}
-            /> */}
+            />
           </Row>
           {/* 
           <Row>
