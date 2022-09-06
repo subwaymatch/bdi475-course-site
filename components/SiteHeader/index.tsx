@@ -47,7 +47,7 @@ const menuItems = [
 ];
 
 const SignInButton = forwardRef((props, ref: React.Ref<HTMLDivElement>) => (
-  <Link href="/supabase">
+  <Link href="/login">
     <div ref={ref} className={styles.signInButton}>
       <span className={styles.label}>Sign In</span>
       <RiUserLine className={styles.reactIcon} />
