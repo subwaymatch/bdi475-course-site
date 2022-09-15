@@ -129,7 +129,7 @@ export default function NotesPage() {
               colorTheme={ColorTheme.Blue}
             />
           </Row>
-          {/* 
+
           <Row>
             <Col>
               <h2
@@ -145,7 +145,7 @@ export default function NotesPage() {
 
           <Row>
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/4c66be3bb966b9a58564f58b6cabbf7d6c9a82e8/L08-introduction-to-jupyter-and-pandas-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/main/L07-introduction-to-jupyter-and-pandas-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/pandas-gray-bg.png"
@@ -154,13 +154,13 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-02-10"
+              date="2022-09-13"
               title="Introduction to Jupyter and Pandas"
               colorTheme={ColorTheme.Orange}
             />
-
+            {/* 
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/4c66be3bb966b9a58564f58b6cabbf7d6c9a82e8/L09-pandas-series-dataframe-csv-filtering-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/1078839bd57d985ce431d089c3788d979732d383/L08-pandas-filtering-and-sorting-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/pandas-gray-bg.png"
@@ -169,11 +169,11 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-02-15"
-              title="Series, DataFrame, CSV"
+              date="2022-09-15"
+              title="Pandas Filtering and Sorting"
               colorTheme={ColorTheme.Orange}
-            />
-
+            /> */}
+            {/* 
             <NoteItem
               href="https://nbviewer.org/github/bdi475/notebooks/blob/4c66be3bb966b9a58564f58b6cabbf7d6c9a82e8/L10-pandas-filtering-sorting-SOLUTION.ipynb"
               thumbnail={
@@ -262,9 +262,9 @@ export default function NotesPage() {
               date="2022-03-08"
               title="Hypothesis Testing"
               colorTheme={ColorTheme.Orange}
-            />
+            />*/}
           </Row>
-
+          {/* 
           <Row>
             <Col>
               <h2

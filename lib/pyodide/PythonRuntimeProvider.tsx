@@ -2,7 +2,6 @@ import { useState, useEffect, createContext } from "react";
 import availablePyodidePackages from "data/available-pyodide-packages.json";
 import {
   PythonRuntimeStatus,
-  IPyodidePackageNameAndVersion,
   IPackageLoadingStatus,
   PackageLoadingStatus,
   ICodeExecutionResult,
