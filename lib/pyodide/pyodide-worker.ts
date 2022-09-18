@@ -1,4 +1,4 @@
-importScripts("https://cdn.jsdelivr.net/pyodide/v0.21.1/full/pyodide.js");
+importScripts("https://cdn.jsdelivr.net/pyodide/v0.21.3/full/pyodide.js");
 
 import * as Comlink from "comlink";
 import { ICodeExecutionResult, PyodideResultDisplayType } from "types/pyodide";
@@ -29,18 +29,13 @@ export class PythonRuntime {
 
   async initialize() {
     // @ts-expect-error
-    this.pyodide = await loadPyodide({
-      indexURL: "https://cdn.jsdelivr.net/pyodide/v0.21.1/full",
-    });
+    this.pyodide = await loadPyodide();
 
     await this.pyodide.registerComlink(Comlink);
 
     self.pyodideGlobals = (
       await this.pyodide.runPythonAsync("list(globals().keys())")
     ).toJs();
-
-    console.log(`pyodideGlobals`);
-    console.log(self.pyodideGlobals);
   }
 
   async findImports(code: string): Promise<string[]> {
@@ -51,6 +46,14 @@ export class PythonRuntime {
     resultProxy.destroy();
 
     return imports;
+  }
+
+  getLoadedPackages(): string[] {
+    const loadedPackages = Object.keys(this.pyodide.loadedPackages);
+
+    console.log(loadedPackages);
+
+    return loadedPackages;
   }
 
   async loadPackages(packages: string | string[]) {
@@ -130,6 +133,11 @@ runPyodideFromJs()
     // plt.show()
 
     if (await this.pyodide.isPyProxy(result.lastEvaluatedResult)) {
+      console.log(result.lastEvaluatedResult.toString());
+      // TODO: Error in this logic since v0.21
+      console.log(
+        `supportsLength=${await result.lastEvaluatedResult.supportsLength()}`
+      );
       console.log(`length=${await result.lastEvaluatedResult.length}`);
       console.log(await result.lastEvaluatedResult.type);
 

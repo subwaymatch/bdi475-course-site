@@ -63,8 +63,13 @@ export default function PythonRuntimeProvider({ children }: any) {
     setStatus(PythonRuntimeStatus.READY);
   };
 
-  const updateLoadedPackages = async () => {
-    setLoadedPackages(Object.keys(await runtime.pyodide.loadedPackages));
+  const updateLoadedPackages = () => {
+    console.log(`inside updatedLoadedPackages`);
+    console.log(runtime);
+
+    const loadedPackages = runtime.getLoadedPackages();
+
+    setLoadedPackages(Object.keys(loadedPackages));
   };
 
   const loadPackages = async (packages: string | string[] = []) => {

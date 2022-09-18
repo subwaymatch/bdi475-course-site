@@ -62,18 +62,24 @@ export default function PythonPlayground() {
   const runUserCode = async () => {
     const newImports = await findNewImports(userCode);
 
+    console.log(`11`);
+
     if (newImports) {
       await loadPackages(newImports);
     }
 
-    const result = await runCode(userCode);
-    pythonPlaygroundState.codeResult = result;
+    console.log(`22`);
 
-    if (result.hasError) {
-      toast.error("See the error message below.");
-    } else {
-      toast("Run complete");
-    }
+    const result = await runCode(userCode);
+    // pythonPlaygroundState.codeResult = result;
+
+    console.log(`33`);
+
+    // if (result.hasError) {
+    //   toast.error("See the error message below.");
+    // } else {
+    //   toast("Run complete");
+    // }
   };
 
   useEffect(() => {}, [router.isReady]);

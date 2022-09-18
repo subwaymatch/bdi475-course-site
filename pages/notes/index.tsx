@@ -158,7 +158,7 @@ export default function NotesPage() {
               title="Introduction to Jupyter and Pandas"
               colorTheme={ColorTheme.Orange}
             />
-            {/* 
+
             <NoteItem
               href="https://nbviewer.org/github/bdi475/notebooks/blob/1078839bd57d985ce431d089c3788d979732d383/L08-pandas-filtering-and-sorting-SOLUTION.ipynb"
               thumbnail={
@@ -172,7 +172,7 @@ export default function NotesPage() {
               date="2022-09-15"
               title="Pandas Filtering and Sorting"
               colorTheme={ColorTheme.Orange}
-            /> */}
+            />
             {/* 
             <NoteItem
               href="https://nbviewer.org/github/bdi475/notebooks/blob/4c66be3bb966b9a58564f58b6cabbf7d6c9a82e8/L10-pandas-filtering-sorting-SOLUTION.ipynb"
