@@ -86,11 +86,6 @@
     "text": "Exercise 5"
   },
   {
-    "date": "2022-09-19",
-    "type": "CASE_STUDY",
-    "text": "Problem Set - Variables, Data Types, Conditional Logic"
-  },
-  {
     "date": "2022-09-20",
     "type": "QUIZ",
     "text": "Quiz 2"
@@ -98,12 +93,12 @@
   {
     "date": "2022-09-20",
     "type": "LECTURE",
-    "text": [
-      "Pandas Data Types",
-      "Datetime",
-      "Column Operations",
-      "Missing Values"
-    ]
+    "text": ["Pandas Data Types", "Column Operations"]
+  },
+  {
+    "date": "2022-09-21",
+    "type": "CASE_STUDY",
+    "text": "Problem Set - Variables, Data Types, Conditional Logic"
   },
   {
     "date": "2022-09-22",
