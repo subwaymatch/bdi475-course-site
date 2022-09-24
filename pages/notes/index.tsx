@@ -173,37 +173,37 @@ export default function NotesPage() {
               title="Pandas Filtering and Sorting"
               colorTheme={ColorTheme.Orange}
             />
+
+            <NoteItem
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/main/L09-pandas-column-operations-SOLUTION.ipynb"
+              thumbnail={
+                <Image
+                  src="/images/notes/pandas-gray-bg.png"
+                  width={900}
+                  height={450}
+                  alt=""
+                />
+              }
+              date="2022-09-20"
+              title="Pandas Data Types and Column Operations"
+              colorTheme={ColorTheme.Orange}
+            />
+
+            <NoteItem
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/main/L10-missing-values-datetime-aggregation-joins-SOLUTION.ipynb"
+              thumbnail={
+                <Image
+                  src="/images/notes/pandas-gray-bg.png"
+                  width={900}
+                  height={450}
+                  alt=""
+                />
+              }
+              date="2022-09-22"
+              title="Missing Values, Datetime, Aggregation, and Merges"
+              colorTheme={ColorTheme.Orange}
+            />
             {/* 
-            <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/4c66be3bb966b9a58564f58b6cabbf7d6c9a82e8/L10-pandas-filtering-sorting-SOLUTION.ipynb"
-              thumbnail={
-                <Image
-                  src="/images/notes/pandas-gray-bg.png"
-                  width={900}
-                  height={450}
-                  alt=""
-                />
-              }
-              date="2022-02-17"
-              title="Pandas Filtering and Sorting"
-              colorTheme={ColorTheme.Orange}
-            />
-
-            <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/2f71cdaf7cdaab48817b44dc8ed1e6e47fd326cc/L11-pandas-columns-missing-values-vocareum-SOLUTION.ipynb"
-              thumbnail={
-                <Image
-                  src="/images/notes/pandas-gray-bg.png"
-                  width={900}
-                  height={450}
-                  alt=""
-                />
-              }
-              date="2022-02-22"
-              title="Pandas Column Operations and Missing Values"
-              colorTheme={ColorTheme.Orange}
-            />
-
             <NoteItem
               href="https://nbviewer.org/github/bdi475/notebooks/blob/2f71cdaf7cdaab48817b44dc8ed1e6e47fd326cc/L12-missing-values-datetime-aggregation-joins-vocareum-SOLUTION.ipynb"
               thumbnail={
