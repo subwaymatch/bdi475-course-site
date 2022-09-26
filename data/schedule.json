@@ -103,10 +103,10 @@
   {
     "date": "2022-09-22",
     "type": "LECTURE",
-    "text": ["Aggregations", "Group By", "Index Column"]
+    "text": ["Missing Values", "Datetime", "Aggregations", "Merges"]
   },
   {
-    "date": "2022-09-26",
+    "date": "2022-09-27",
     "type": "CASE_STUDY",
     "text": "Case Study 1 - Chicago Rideshare Vehicles"
   },
