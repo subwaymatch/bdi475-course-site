@@ -203,24 +203,9 @@ export default function NotesPage() {
               title="Missing Values, Datetime, Aggregation, and Merges"
               colorTheme={ColorTheme.Orange}
             />
-            {/* 
-            <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/2f71cdaf7cdaab48817b44dc8ed1e6e47fd326cc/L12-missing-values-datetime-aggregation-joins-vocareum-SOLUTION.ipynb"
-              thumbnail={
-                <Image
-                  src="/images/notes/pandas-gray-bg.png"
-                  width={900}
-                  height={450}
-                  alt=""
-                />
-              }
-              date="2022-02-24"
-              title="Missing Values, Datetime, Aggregation, and Merging"
-              colorTheme={ColorTheme.Orange}
-            />
 
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/3c6b43e4566a94e85b6b9e5d6097a33a848b8fd8/L13-aggregations-and-intro-to-merges-vocareum-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/0283d206c007d1cbb541a9fbfb6b6fe5043ecfe8/L11-pandas-update-cells-more-exercises-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/pandas-gray-bg.png"
@@ -229,42 +214,12 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-03-01"
-              title="More Aggregations, Intro to Merges"
+              date="2022-09-27"
+              title="Update Cells, More Exercises"
               colorTheme={ColorTheme.Orange}
             />
-
-            <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/3c6b43e4566a94e85b6b9e5d6097a33a848b8fd8/L14-more-pandas-vocareum-SOLUTION.ipynb"
-              thumbnail={
-                <Image
-                  src="/images/notes/pandas-gray-bg.png"
-                  width={900}
-                  height={450}
-                  alt=""
-                />
-              }
-              date="2022-03-03"
-              title="Cell Operations, Advanced Exercises"
-              colorTheme={ColorTheme.Orange}
-            />
-
-            <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/3699e186389ba9035794008559f2a25fec1b5638/L15-hypothesis-testing-vocareum-SOLUTION.ipynb"
-              thumbnail={
-                <Image
-                  src="/images/notes/pandas-gray-bg.png"
-                  width={900}
-                  height={450}
-                  alt=""
-                />
-              }
-              date="2022-03-08"
-              title="Hypothesis Testing"
-              colorTheme={ColorTheme.Orange}
-            />*/}
           </Row>
-          {/* 
+
           <Row>
             <Col>
               <h2
@@ -289,13 +244,13 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-03-22"
+              date="2022-10-11"
               title="Introduction to SQL"
               colorTheme={ColorTheme.Green}
             />
 
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/ce3b24aca031d595cb8c58ede3d43c973ad1f354/L18-SQL-queries-aggregations-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/0283d206c007d1cbb541a9fbfb6b6fe5043ecfe8/L16-SQL-queries-aggregations-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/sql-gray-bg.png"
@@ -304,12 +259,12 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-03-24"
+              date="2022-10-13"
               title="More SQL Queries and Aggregations"
               colorTheme={ColorTheme.Green}
             />
 
-            <NoteItem
+            {/* <NoteItem
               href="https://nbviewer.org/github/bdi475/notebooks/blob/166da5e11aa44757987094d44692cd7ded635713/L19-SQL-joins-vocareum-SOLUTION.ipynb"
               thumbnail={
                 <Image
@@ -322,9 +277,10 @@ export default function NotesPage() {
               date="2022-03-29"
               title="Basic SQL Joins"
               colorTheme={ColorTheme.Green}
-            />
+            /> */}
           </Row>
 
+          {/* 
           <Row>
             <Col>
               <h2
