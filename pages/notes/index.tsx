@@ -264,8 +264,8 @@ export default function NotesPage() {
               colorTheme={ColorTheme.Green}
             />
 
-            {/* <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/166da5e11aa44757987094d44692cd7ded635713/L19-SQL-joins-vocareum-SOLUTION.ipynb"
+            <NoteItem
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/01a3cd4136f3a8a8a7d4aca73d4bdc7aae888b79/L17-SQL-joins-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/sql-gray-bg.png"
@@ -274,13 +274,12 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-03-29"
-              title="Basic SQL Joins"
+              date="2022-10-18"
+              title="SQL Joins"
               colorTheme={ColorTheme.Green}
-            /> */}
+            />
           </Row>
 
-          {/* 
           <Row>
             <Col>
               <h2
@@ -296,7 +295,7 @@ export default function NotesPage() {
 
           <Row>
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/5a7526421f6725df6b66ab7f128a9f836d4c7c65/L20-intro-to-visualizations-vocareum-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/01a3cd4136f3a8a8a7d4aca73d4bdc7aae888b79/L21-intro-to-visualizations-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/dataviz.png"
@@ -305,13 +304,13 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-04-05"
+              date="2022-11-01"
               title="Introduction to DataViz"
               colorTheme={ColorTheme.Blue}
             />
 
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/5a7526421f6725df6b66ab7f128a9f836d4c7c65/L21-line-bar-scatter-plots-vocareum-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/01a3cd4136f3a8a8a7d4aca73d4bdc7aae888b79/L22-line-bar-scatter-plots-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/dataviz.png"
@@ -320,13 +319,13 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-04-07"
+              date="2022-11-03"
               title="Line, Scatter, and Bar Plots"
               colorTheme={ColorTheme.Blue}
             />
 
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/68028638d96a81dc201e0b758c8700b021f2740e/L22-advanced-visualizations-vocareum-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/01a3cd4136f3a8a8a7d4aca73d4bdc7aae888b79/L23-advanced-visualizations-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/dataviz.png"
@@ -335,11 +334,11 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-04-12"
-              title="Advanced Visualizations"
+              date="2022-11-10"
+              title="Advanced Plotly Visualizations"
               colorTheme={ColorTheme.Blue}
             />
-
+            {/* 
             <NoteItem
               href="https://www.notion.so/bdi475/Lecture-22-Introduction-to-Tableau-15832a839f2146a59f36160bd7ce1450"
               thumbnail={
@@ -368,8 +367,8 @@ export default function NotesPage() {
               date="2022-04-21"
               title="Advanced Tableau Visualizations"
               colorTheme={ColorTheme.Blue}
-            />
-          </Row> */}
+            /> */}
+          </Row>
         </Container>
       </main>
     </Layout>
