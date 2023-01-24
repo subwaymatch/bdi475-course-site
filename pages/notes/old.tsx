@@ -109,24 +109,9 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-09-01"
-              title="Loops and Collections"
+              date="2022-09-06"
+              title="Collections and Strings"
               colorTheme={ColorTheme.Purple}
-            />
-
-            <NoteItem
-              href="/lecture-notes/strings-and-string-methods"
-              thumbnail={
-                <Image
-                  src="/images/notes/abstract-005.png"
-                  width={900}
-                  height={450}
-                  alt=""
-                />
-              }
-              date="2022-09-01"
-              title="Strings and String Methods"
-              colorTheme={ColorTheme.Green}
             />
 
             <NoteItem
@@ -139,11 +124,12 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-09-06"
+              date="2022-09-08"
               title="Functions"
               colorTheme={ColorTheme.Blue}
             />
           </Row>
+
           <Row>
             <Col>
               <h2
@@ -159,7 +145,7 @@ export default function NotesPage() {
 
           <Row>
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/4c66be3bb966b9a58564f58b6cabbf7d6c9a82e8/L08-introduction-to-jupyter-and-pandas-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/main/L07-introduction-to-jupyter-and-pandas-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/pandas-gray-bg.png"
@@ -168,13 +154,13 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-02-10"
+              date="2022-09-13"
               title="Introduction to Jupyter and Pandas"
               colorTheme={ColorTheme.Orange}
             />
 
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/4c66be3bb966b9a58564f58b6cabbf7d6c9a82e8/L09-pandas-series-dataframe-csv-filtering-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/1078839bd57d985ce431d089c3788d979732d383/L08-pandas-filtering-and-sorting-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/pandas-gray-bg.png"
@@ -183,28 +169,13 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-02-15"
-              title="Series, DataFrame, CSV"
-              colorTheme={ColorTheme.Orange}
-            />
-
-            <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/4c66be3bb966b9a58564f58b6cabbf7d6c9a82e8/L10-pandas-filtering-sorting-SOLUTION.ipynb"
-              thumbnail={
-                <Image
-                  src="/images/notes/pandas-gray-bg.png"
-                  width={900}
-                  height={450}
-                  alt=""
-                />
-              }
-              date="2022-02-17"
+              date="2022-09-15"
               title="Pandas Filtering and Sorting"
               colorTheme={ColorTheme.Orange}
             />
 
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/2f71cdaf7cdaab48817b44dc8ed1e6e47fd326cc/L11-pandas-columns-missing-values-vocareum-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/main/L09-pandas-column-operations-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/pandas-gray-bg.png"
@@ -213,13 +184,13 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-02-22"
-              title="Pandas Column Operations and Missing Values"
+              date="2022-09-20"
+              title="Pandas Data Types and Column Operations"
               colorTheme={ColorTheme.Orange}
             />
 
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/2f71cdaf7cdaab48817b44dc8ed1e6e47fd326cc/L12-missing-values-datetime-aggregation-joins-vocareum-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/main/L10-missing-values-datetime-aggregation-joins-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/pandas-gray-bg.png"
@@ -228,13 +199,13 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-02-24"
-              title="Missing Values, Datetime, Aggregation, and Merging"
+              date="2022-09-22"
+              title="Missing Values, Datetime, Aggregation, and Merges"
               colorTheme={ColorTheme.Orange}
             />
 
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/3c6b43e4566a94e85b6b9e5d6097a33a848b8fd8/L13-aggregations-and-intro-to-merges-vocareum-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/0283d206c007d1cbb541a9fbfb6b6fe5043ecfe8/L11-pandas-update-cells-more-exercises-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/pandas-gray-bg.png"
@@ -243,38 +214,8 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-03-01"
-              title="More Aggregations, Intro to Merges"
-              colorTheme={ColorTheme.Orange}
-            />
-
-            <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/3c6b43e4566a94e85b6b9e5d6097a33a848b8fd8/L14-more-pandas-vocareum-SOLUTION.ipynb"
-              thumbnail={
-                <Image
-                  src="/images/notes/pandas-gray-bg.png"
-                  width={900}
-                  height={450}
-                  alt=""
-                />
-              }
-              date="2022-03-03"
-              title="Cell Operations, Advanced Exercises"
-              colorTheme={ColorTheme.Orange}
-            />
-
-            <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/3699e186389ba9035794008559f2a25fec1b5638/L15-hypothesis-testing-vocareum-SOLUTION.ipynb"
-              thumbnail={
-                <Image
-                  src="/images/notes/pandas-gray-bg.png"
-                  width={900}
-                  height={450}
-                  alt=""
-                />
-              }
-              date="2022-03-08"
-              title="Hypothesis Testing"
+              date="2022-09-27"
+              title="Update Cells, More Exercises"
               colorTheme={ColorTheme.Orange}
             />
           </Row>
@@ -303,13 +244,13 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-03-22"
+              date="2022-10-11"
               title="Introduction to SQL"
               colorTheme={ColorTheme.Green}
             />
 
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/ce3b24aca031d595cb8c58ede3d43c973ad1f354/L18-SQL-queries-aggregations-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/0283d206c007d1cbb541a9fbfb6b6fe5043ecfe8/L16-SQL-queries-aggregations-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/sql-gray-bg.png"
@@ -318,13 +259,13 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-03-24"
+              date="2022-10-13"
               title="More SQL Queries and Aggregations"
               colorTheme={ColorTheme.Green}
             />
 
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/166da5e11aa44757987094d44692cd7ded635713/L19-SQL-joins-vocareum-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/01a3cd4136f3a8a8a7d4aca73d4bdc7aae888b79/L17-SQL-joins-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/sql-gray-bg.png"
@@ -333,8 +274,8 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-03-29"
-              title="Basic SQL Joins"
+              date="2022-10-18"
+              title="SQL Joins"
               colorTheme={ColorTheme.Green}
             />
           </Row>
@@ -354,7 +295,7 @@ export default function NotesPage() {
 
           <Row>
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/5a7526421f6725df6b66ab7f128a9f836d4c7c65/L20-intro-to-visualizations-vocareum-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/01a3cd4136f3a8a8a7d4aca73d4bdc7aae888b79/L21-intro-to-visualizations-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/dataviz.png"
@@ -363,13 +304,13 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-04-05"
+              date="2022-11-01"
               title="Introduction to DataViz"
               colorTheme={ColorTheme.Blue}
             />
 
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/5a7526421f6725df6b66ab7f128a9f836d4c7c65/L21-line-bar-scatter-plots-vocareum-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/01a3cd4136f3a8a8a7d4aca73d4bdc7aae888b79/L22-line-bar-scatter-plots-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/dataviz.png"
@@ -378,13 +319,13 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-04-07"
+              date="2022-11-03"
               title="Line, Scatter, and Bar Plots"
               colorTheme={ColorTheme.Blue}
             />
 
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/68028638d96a81dc201e0b758c8700b021f2740e/L22-advanced-visualizations-vocareum-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/01a3cd4136f3a8a8a7d4aca73d4bdc7aae888b79/L23-advanced-visualizations-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/dataviz.png"
@@ -393,11 +334,11 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-04-12"
-              title="Advanced Visualizations"
+              date="2022-11-10"
+              title="Advanced Plotly Visualizations"
               colorTheme={ColorTheme.Blue}
             />
-
+            {/* 
             <NoteItem
               href="https://www.notion.so/bdi475/Lecture-22-Introduction-to-Tableau-15832a839f2146a59f36160bd7ce1450"
               thumbnail={
@@ -426,7 +367,7 @@ export default function NotesPage() {
               date="2022-04-21"
               title="Advanced Tableau Visualizations"
               colorTheme={ColorTheme.Blue}
-            />
+            /> */}
           </Row>
         </Container>
       </main>

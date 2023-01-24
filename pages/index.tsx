@@ -32,8 +32,7 @@ export default function MainPage() {
                   <div className={styles.linkText}>
                     <span className={styles.title}>Zoom Link ⟶</span>
                     <p className={styles.desc}>
-                      Office hours are Thursdays 7-8 PM (Park), Wednesdays
-                      5:30-6:30 PM (Anushree), or by appointment.
+                      Office hours are Thursdays 5-6 PM (Park) or by appointment.
                     </p>
                   </div>
 
@@ -45,7 +44,7 @@ export default function MainPage() {
 
               <Col lg={6}>
                 <a
-                  href="https://canvas.illinois.edu/courses/31640"
+                  href="https://canvas.illinois.edu/courses/34817"
                   className={styles.linkItem}
                 >
                   <div className={styles.linkText}>
@@ -65,7 +64,7 @@ export default function MainPage() {
             <Row>
               <Col lg={6} style={{ display: "none" }}>
                 <a
-                  href="https://mediaspace.illinois.edu/channel/Intro+to+Data+Analytics+Apps+in+Business+%28BDI+475%29+Fall+2021/227356363"
+                  href="https://mediaspace.illinois.edu/"
                   className={styles.linkItem}
                 >
                   <div className={styles.linkText}>

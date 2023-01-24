@@ -35,7 +35,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-08-25"
+              date="2023-01-19"
               title="Intro to Analytics"
               colorTheme={ColorTheme.Green}
             />
@@ -50,7 +50,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-08-25"
+              date="2023-01-19"
               title="Intro to Python"
               colorTheme={ColorTheme.Blue}
             />
@@ -65,7 +65,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-08-25"
+              date="2023-01-19"
               title="Data Types and Variables"
               colorTheme={ColorTheme.Green}
             />
@@ -80,11 +80,11 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-08-30"
+              date="2023-01-24"
               title="Operators, Booleans, and Conditionals"
               colorTheme={ColorTheme.Green}
             />
-
+{/* 
             <NoteItem
               href="/lecture-notes/lists-and-loops"
               thumbnail={
@@ -95,7 +95,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-09-01"
+              date="2023-09-01"
               title="Lists and Loops"
               colorTheme={ColorTheme.Blue}
             />
@@ -109,7 +109,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-09-06"
+              date="2023-09-06"
               title="Collections and Strings"
               colorTheme={ColorTheme.Purple}
             />
@@ -124,12 +124,13 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-09-08"
+              date="2023-09-08"
               title="Functions"
               colorTheme={ColorTheme.Blue}
-            />
+            /> */}
           </Row>
 
+{/* 
           <Row>
             <Col>
               <h2
@@ -154,7 +155,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-09-13"
+              date="2023-09-13"
               title="Introduction to Jupyter and Pandas"
               colorTheme={ColorTheme.Orange}
             />
@@ -169,7 +170,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-09-15"
+              date="2023-09-15"
               title="Pandas Filtering and Sorting"
               colorTheme={ColorTheme.Orange}
             />
@@ -184,7 +185,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-09-20"
+              date="2023-09-20"
               title="Pandas Data Types and Column Operations"
               colorTheme={ColorTheme.Orange}
             />
@@ -199,7 +200,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-09-22"
+              date="2023-09-22"
               title="Missing Values, Datetime, Aggregation, and Merges"
               colorTheme={ColorTheme.Orange}
             />
@@ -214,7 +215,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-09-27"
+              date="2023-09-27"
               title="Update Cells, More Exercises"
               colorTheme={ColorTheme.Orange}
             />
@@ -244,7 +245,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-10-11"
+              date="2023-10-11"
               title="Introduction to SQL"
               colorTheme={ColorTheme.Green}
             />
@@ -259,7 +260,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-10-13"
+              date="2023-10-13"
               title="More SQL Queries and Aggregations"
               colorTheme={ColorTheme.Green}
             />
@@ -274,7 +275,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-10-18"
+              date="2023-10-18"
               title="SQL Joins"
               colorTheme={ColorTheme.Green}
             />
@@ -304,7 +305,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-11-01"
+              date="2023-11-01"
               title="Introduction to DataViz"
               colorTheme={ColorTheme.Blue}
             />
@@ -319,7 +320,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-11-03"
+              date="2023-11-03"
               title="Line, Scatter, and Bar Plots"
               colorTheme={ColorTheme.Blue}
             />
@@ -334,11 +335,11 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-11-10"
+              date="2023-11-10"
               title="Advanced Plotly Visualizations"
               colorTheme={ColorTheme.Blue}
             />
-            {/* 
+            
             <NoteItem
               href="https://www.notion.so/bdi475/Lecture-22-Introduction-to-Tableau-15832a839f2146a59f36160bd7ce1450"
               thumbnail={
@@ -349,7 +350,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-04-19"
+              date="2023-04-19"
               title="Introduction to Tableau"
               colorTheme={ColorTheme.Blue}
             />
@@ -364,11 +365,12 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2022-04-21"
+              date="2023-04-21"
               title="Advanced Tableau Visualizations"
               colorTheme={ColorTheme.Blue}
-            /> */}
-          </Row>
+            />
+          </Row> */}
+
         </Container>
       </main>
     </Layout>

@@ -1,11 +1,11 @@
 [
   {
-    "date": "2022-08-23",
+    "date": "2023-01-17",
     "type": "LECTURE",
     "text": ["Welcome", "Course Overview"]
   },
   {
-    "date": "2022-08-25",
+    "date": "2023-01-19",
     "type": "LECTURE",
     "text": [
       "Intro to Analytics",
@@ -14,52 +14,52 @@
     ]
   },
   {
-    "date": "2022-08-30",
+    "date": "2023-01-24",
     "type": "LECTURE",
     "text": ["Operators", "Booleans", "Conditional Logic"]
   },
   {
-    "date": "2022-08-31",
+    "date": "2023-01-25",
     "type": "EXERCISE",
     "text": "Exercise 1"
   },
   {
-    "date": "2022-09-01",
+    "date": "2023-01-26",
     "type": "LECTURE",
     "text": ["Lists", "For Loops", "While Loops"]
   },
   {
-    "date": "2022-09-04",
+    "date": "2023-01-27",
     "type": "EXERCISE",
     "text": "Exercise 2"
   },
   {
-    "date": "2022-09-06",
+    "date": "2023-01-31",
     "type": "LECTURE",
     "text": ["Dictionaries"]
   },
   {
-    "date": "2022-09-07",
+    "date": "2023-02-01",
     "type": "EXERCISE",
     "text": "Exercise 3"
   },
   {
-    "date": "2022-09-08",
+    "date": "2023-02-02",
     "type": "QUIZ",
     "text": "Quiz 1"
   },
   {
-    "date": "2022-09-08",
+    "date": "2023-02-02",
     "type": "LECTURE",
     "text": ["Functions", "Parameters", "Return Values"]
   },
   {
-    "date": "2022-09-12",
+    "date": "2023-02-04",
     "type": "EXERCISE",
     "text": "Exercise 4"
   },
   {
-    "date": "2022-09-13",
+    "date": "2023-02-07",
     "type": "LECTURE",
     "text": [
       "Intro to Jupyter Notebooks",
@@ -70,7 +70,7 @@
     ]
   },
   {
-    "date": "2022-09-15",
+    "date": "2023-02-09",
     "type": "LECTURE",
     "text": [
       "Data Formats",
@@ -81,57 +81,57 @@
     ]
   },
   {
-    "date": "2022-09-16",
+    "date": "2023-02-10",
     "type": "EXERCISE",
     "text": "Exercise 5"
   },
   {
-    "date": "2022-09-20",
+    "date": "2023-02-14",
     "type": "QUIZ",
     "text": "Quiz 2"
   },
   {
-    "date": "2022-09-20",
+    "date": "2023-02-14",
     "type": "LECTURE",
     "text": ["Pandas Data Types", "Column Operations"]
   },
   {
-    "date": "2022-09-21",
+    "date": "2023-02-15",
     "type": "CASE_STUDY",
     "text": "Problem Set - Variables, Data Types, Conditional Logic"
   },
   {
-    "date": "2022-09-22",
+    "date": "2023-02-16",
     "type": "LECTURE",
     "text": ["Missing Values", "Datetime", "Aggregations", "Merges"]
   },
   {
-    "date": "2022-09-27",
+    "date": "2023-02-21",
     "type": "CASE_STUDY",
     "text": "Case Study 1 - Chicago Rideshare Vehicles"
   },
   {
-    "date": "2022-09-27",
+    "date": "2023-02-21",
     "type": "LECTURE",
     "text": ["String Operations", "Merge", "Join Types"]
   },
   {
-    "date": "2022-09-28",
+    "date": "2023-02-22",
     "type": "EXERCISE",
     "text": "Exercise 6"
   },
   {
-    "date": "2022-09-29",
+    "date": "2023-02-23",
     "type": "QUIZ",
     "text": "Quiz 3"
   },
   {
-    "date": "2022-09-29",
+    "date": "2023-02-23",
     "type": "LECTURE",
     "text": ["Index", "Select", "Assign"]
   },
   {
-    "date": "2022-10-04",
+    "date": "2023-02-28",
     "type": "LECTURE",
     "text": [
       "Cloud Technologies",
@@ -142,157 +142,152 @@
     ]
   },
   {
-    "date": "2022-10-05",
+    "date": "2023-03-01",
     "type": "CASE_STUDY",
     "text": "Case Study 2 - Starbucks App Customers"
   },
   {
-    "date": "2022-10-06",
+    "date": "2023-03-02",
     "type": "LECTURE",
     "text": ["Network Analysis", "Sentiment Analysis"]
   },
   {
-    "date": "2022-10-11",
+    "date": "2023-03-07",
     "type": "LECTURE",
     "text": ["Intro to Databases", "SQL", "Relationships"]
   },
   {
-    "date": "2022-10-13",
+    "date": "2023-03-09",
     "type": "LECTURE",
     "text": ["Create Table", "Query Data", "Sort Data", "Aggregations"]
   },
   {
-    "date": "2022-10-17",
+    "date": "2023-03-10",
     "type": "EXERCISE",
     "text": "Exercise 7"
   },
   {
-    "date": "2022-10-18",
+    "date": "2023-03-14",
+    "type": "NO_LECTURE",
+    "text": "Spring Break"
+  },
+  {
+    "date": "2023-03-16",
+    "type": "NO_LECTURE",
+    "text": "Spring Break"
+  },
+  {
+    "date": "2023-03-21",
     "type": "QUIZ",
     "text": "Quiz 4"
   },
   {
-    "date": "2022-10-18",
+    "date": "2023-03-21",
     "type": "LECTURE",
     "text": ["SQL Joins"]
   },
   {
-    "date": "2022-10-20",
+    "date": "2023-03-23",
     "type": "LECTURE",
     "text": ["Advanced Query Practice"]
   },
   {
-    "date": "2022-10-24",
+    "date": "2023-03-26",
     "type": "CASE_STUDY",
     "text": "Case Study 3 - AirBnB Listings"
   },
   {
-    "date": "2022-10-25",
+    "date": "2023-03-28",
     "type": "LECTURE",
     "text": ["Intro to NoSQL", "SQL vs NoSQL", "Scaling", "MongoDB"]
   },
   {
-    "date": "2022-10-27",
+    "date": "2023-03-30",
     "type": "LECTURE",
     "text": ["Intro to DataViz", "Types of Visualizations", "Best Practice"]
   },
   {
-    "date": "2022-11-01",
+    "date": "2023-04-04",
     "type": "LECTURE",
     "text": ["Plotly", "Box Plots", "Histogram", "Line", "Bar", "Scatter"]
   },
   {
-    "date": "2022-11-02",
+    "date": "2023-04-05",
     "type": "EXERCISE",
     "text": "Exercise 8"
   },
   {
-    "date": "2022-11-03",
+    "date": "2023-04-06",
     "type": "LECTURE",
     "text": ["Pie Chart", "Heatmap", "Sunburst", "Treemap"]
   },
   {
-    "date": "2022-11-04",
+    "date": "2023-04-07",
     "type": "EXERCISE",
     "text": "Exercise 9"
   },
   {
-    "date": "2022-11-08",
-    "type": "NO_LECTURE",
-    "text": "General Election Day"
-  },
-  {
-    "date": "2022-11-10",
+    "date": "2023-04-11",
     "type": "LECTURE",
     "text": ["In-class Visualization Practice"]
   },
   {
-    "date": "2022-11-14",
+    "date": "2023-04-12",
     "type": "CASE_STUDY",
     "text": "Case Study 4 - Chicago Rideshare Trips"
   },
   {
-    "date": "2022-11-15",
+    "date": "2023-04-13",
     "type": "LECTURE",
     "text": ["Intro to Tableau", "Box Plots", "Histograms", "Line", "Bar"]
   },
   {
-    "date": "2022-11-16",
+    "date": "2023-04-14",
     "type": "EXERCISE",
     "text": "Exercise 10"
   },
   {
-    "date": "2022-11-17",
+    "date": "2023-04-18",
     "type": "QUIZ",
     "text": "Quiz 5"
   },
   {
-    "date": "2022-11-17",
+    "date": "2023-04-18",
     "type": "LECTURE",
     "text": ["Scatter", "Heatmap", "Geographic Map"]
   },
   {
-    "date": "2022-11-19",
+    "date": "2023-04-19",
     "type": "CASE_STUDY",
     "text": "Case Study 5 - Fortune 1000 Companies"
   },
   {
-    "date": "2022-11-22",
-    "type": "NO_LECTURE",
-    "text": "Thanksgiving Break"
-  },
-  {
-    "date": "2022-11-24",
-    "type": "NO_LECTURE",
-    "text": "Thanksgiving Break"
-  },
-  {
-    "date": "2022-11-29",
+    "date": "2023-04-25",
     "type": "LECTURE",
     "text": ["Final Case Study Setup"]
   },
   {
-    "date": "2022-12-01",
+    "date": "2023-04-27",
     "type": "LECTURE",
     "text": ["Final Case Study Check-in", "Workday"]
   },
   {
-    "date": "2022-12-06",
+    "date": "2023-05-02",
     "type": "LECTURE",
     "text": ["Milestone Check", "Individual Feedback"]
   },
   {
-    "date": "2022-12-06",
-    "type": "CASE_STUDY",
-    "text": "Final Case Study First Draft Due"
-  },
-  {
-    "date": "2022-12-08",
+    "date": "2023-05-04",
     "type": "NO_LECTURE",
     "text": "Reading Day"
   },
   {
-    "date": "2022-12-17",
+    "date": "2023-05-05",
+    "type": "CASE_STUDY",
+    "text": "Final Case Study First Draft Due"
+  },
+  {
+    "date": "2023-05-12",
     "type": "CASE_STUDY",
     "text": "Final Case Study Due"
   }

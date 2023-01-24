@@ -48,7 +48,7 @@ export default function CourseInformation() {
             <Col md={4}>
               <div className={styles.displayBox}>
                 <Chip>Term</Chip>
-                <span className={styles.largeText}>Fall 2022</span>
+                <span className={styles.largeText}>Spring 2023</span>
               </div>
             </Col>
 
@@ -56,10 +56,10 @@ export default function CourseInformation() {
               <div className={styles.displayBox}>
                 <Chip color="green">Class Time &amp; Location</Chip>
                 <div className={styles.largeText}>
-                  Tues &amp; Thurs 3:30-4:50 PM
+                  Tues &amp; Thurs 12:30-1:50 PM
                   <br />
                   <span className="color-gray">
-                    3007 Business Instructional Facility
+                    226 Wohlers
                   </span>
                 </div>
               </div>
@@ -132,9 +132,9 @@ export default function CourseInformation() {
                     Greetings! Please call me <code>Park</code>. I started
                     programming as a hobby in elementary school. During my final
                     year as an accounting major here, I've made up my mind to
-                    pursue what I love to do! Fast-forward to 2021, I'm excited
+                    pursue what I love to do! Fast-forward to 2023, I'm excited
                     to be back at my alma mater to be a part of a leading-edge
-                    data analytics curriculum.
+                    data analytics curriculum. My email is <a href="mailto:ypark32@illinois.edu">ypark32@illinois.edu</a> in case you need to reach me.
                   </p>
                 </div>
               </Col>
@@ -178,17 +178,13 @@ export default function CourseInformation() {
               >
                 <div className={styles.memberHeader}>
                   <span className={styles.role}>Teaching Assistant</span>
-                  <span className={styles.name}>Anushree Vilas Pimpalkar</span>
-                  <span className={styles.title}>MS Statistics</span>
+                  <span className={styles.name}>Sebastian Munoz</span>
+                  <span className={styles.title}>MS Accountancy</span>
                 </div>
 
                 <div className={styles.memberDesc}>
                   <p className={styles.text}>
-                    Hello! I am a graduate student in the department of
-                    Statistics at UIUC. I love to code, and I have ~4 years of
-                    professional experience in Data Science and Analytics. I am
-                    excited to be a part of this amazing course and looking
-                    forward to learning together.
+                    TBD
                   </p>
                 </div>
               </Col>
@@ -204,14 +200,14 @@ export default function CourseInformation() {
                 }}
               >
                 <div className={styles.memberImage}>
-                  <Image
+                  {/* <Image
                     src="/images/anushree_square_bw.jpg"
                     width={1000}
                     height={1000}
-                  />
+                  /> */}
 
                   <div className={styles.imageLabel}>
-                    <Chip color="black">Anushree</Chip>
+                    <Chip color="black">Sebastian</Chip>
                   </div>
                 </div>
               </Col>
