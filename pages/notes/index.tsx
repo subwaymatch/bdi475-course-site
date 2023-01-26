@@ -84,7 +84,7 @@ export default function NotesPage() {
               title="Operators, Booleans, and Conditionals"
               colorTheme={ColorTheme.Green}
             />
-{/* 
+
             <NoteItem
               href="/lecture-notes/lists-and-loops"
               thumbnail={
@@ -95,10 +95,12 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2023-09-01"
+              date="2023-01-26"
               title="Lists and Loops"
               colorTheme={ColorTheme.Blue}
             />
+
+            {/* 
             <NoteItem
               href="/lecture-notes/collections-and-strings"
               thumbnail={
@@ -130,7 +132,7 @@ export default function NotesPage() {
             /> */}
           </Row>
 
-{/* 
+          {/* 
           <Row>
             <Col>
               <h2
@@ -370,7 +372,6 @@ export default function NotesPage() {
               colorTheme={ColorTheme.Blue}
             />
           </Row> */}
-
         </Container>
       </main>
     </Layout>

@@ -58,9 +58,7 @@ export default function CourseInformation() {
                 <div className={styles.largeText}>
                   Tues &amp; Thurs 12:30-1:50 PM
                   <br />
-                  <span className="color-gray">
-                    226 Wohlers
-                  </span>
+                  <span className="color-gray">226 Wohlers</span>
                 </div>
               </div>
             </Col>
@@ -134,7 +132,11 @@ export default function CourseInformation() {
                     year as an accounting major here, I've made up my mind to
                     pursue what I love to do! Fast-forward to 2023, I'm excited
                     to be back at my alma mater to be a part of a leading-edge
-                    data analytics curriculum. My email is <a href="mailto:ypark32@illinois.edu">ypark32@illinois.edu</a> in case you need to reach me.
+                    data analytics curriculum. My email is{" "}
+                    <a href="mailto:ypark32@illinois.edu">
+                      ypark32@illinois.edu
+                    </a>{" "}
+                    in case you need to reach me.
                   </p>
                 </div>
               </Col>
@@ -184,7 +186,14 @@ export default function CourseInformation() {
 
                 <div className={styles.memberDesc}>
                   <p className={styles.text}>
-                    TBD
+                    Hello everyone, My name is Sebastian Munoz and I am a
+                    graduate student pursuing a MS in Accountancy currently
+                    studying for the CPA exam. I am also pursuing a minor in
+                    Data Analytics which has brought me here to you all. I
+                    started programming in Python back when I was in middle
+                    school to do mathematics, automation, and other small
+                    projects. I hope to meet every one of you and help you learn
+                    the intricacies of Python this semester.
                   </p>
                 </div>
               </Col>
@@ -199,12 +208,12 @@ export default function CourseInformation() {
                   order: 1,
                 }}
               >
-                <div className={styles.memberImage}>
-                  {/* <Image
+                <div className={styles.memberImage} style={{ display: "none" }}>
+                  <Image
                     src="/images/anushree_square_bw.jpg"
                     width={1000}
                     height={1000}
-                  /> */}
+                  />
 
                   <div className={styles.imageLabel}>
                     <Chip color="black">Sebastian</Chip>
