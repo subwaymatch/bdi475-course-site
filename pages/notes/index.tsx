@@ -100,7 +100,6 @@ export default function NotesPage() {
               colorTheme={ColorTheme.Blue}
             />
 
-            {/* 
             <NoteItem
               href="/lecture-notes/collections-and-strings"
               thumbnail={
@@ -111,11 +110,12 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2023-09-06"
+              date="2023-01-31"
               title="Collections and Strings"
               colorTheme={ColorTheme.Purple}
             />
 
+            {/* 
             <NoteItem
               href="/lecture-notes/functions"
               thumbnail={
