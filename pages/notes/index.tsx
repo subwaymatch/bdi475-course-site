@@ -115,7 +115,6 @@ export default function NotesPage() {
               colorTheme={ColorTheme.Purple}
             />
 
-            {/* 
             <NoteItem
               href="/lecture-notes/functions"
               thumbnail={
@@ -126,10 +125,10 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2023-09-08"
+              date="2023-02-02"
               title="Functions"
               colorTheme={ColorTheme.Blue}
-            /> */}
+            />
           </Row>
 
           {/* 
