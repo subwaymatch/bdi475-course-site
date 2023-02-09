@@ -131,7 +131,6 @@ export default function NotesPage() {
             />
           </Row>
 
-          {/* 
           <Row>
             <Col>
               <h2
@@ -147,7 +146,7 @@ export default function NotesPage() {
 
           <Row>
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/main/L07-introduction-to-jupyter-and-pandas-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/7fe9fb6559b012d26d34f21234aa6b506fcb261a/L07-introduction-to-jupyter-and-pandas-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/pandas-gray-bg.png"
@@ -156,13 +155,13 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2023-09-13"
+              date="2023-02-07"
               title="Introduction to Jupyter and Pandas"
               colorTheme={ColorTheme.Orange}
             />
 
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/1078839bd57d985ce431d089c3788d979732d383/L08-pandas-filtering-and-sorting-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/7fe9fb6559b012d26d34f21234aa6b506fcb261a/L08-pandas-filtering-and-sorting-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/pandas-gray-bg.png"
@@ -171,11 +170,12 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2023-09-15"
+              date="2023-02-09"
               title="Pandas Filtering and Sorting"
               colorTheme={ColorTheme.Orange}
             />
 
+            {/* 
             <NoteItem
               href="https://nbviewer.org/github/bdi475/notebooks/blob/main/L09-pandas-column-operations-SOLUTION.ipynb"
               thumbnail={
@@ -233,8 +233,10 @@ export default function NotesPage() {
                 SQL <span className="green accent" />
               </h2>
             </Col>
+              */}
           </Row>
 
+          {/*
           <Row>
             <NoteItem
               href="https://nbviewer.org/github/bdi475/notebooks/blob/ce3b24aca031d595cb8c58ede3d43c973ad1f354/L17-intro-to-SQL-SOLUTION.ipynb"
