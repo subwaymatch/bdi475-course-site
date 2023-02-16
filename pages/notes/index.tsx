@@ -175,9 +175,8 @@ export default function NotesPage() {
               colorTheme={ColorTheme.Orange}
             />
 
-            {/* 
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/main/L09-pandas-column-operations-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/45cd2d94aabf112355b16283127ad3f26968d1a3/L09-pandas-column-operations-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/pandas-gray-bg.png"
@@ -186,13 +185,13 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2023-09-20"
+              date="2023-02-14"
               title="Pandas Data Types and Column Operations"
               colorTheme={ColorTheme.Orange}
             />
 
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/main/L10-missing-values-datetime-aggregation-joins-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/45cd2d94aabf112355b16283127ad3f26968d1a3/L10-missing-values-datetime-aggregation-joins-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/pandas-gray-bg.png"
@@ -201,11 +200,12 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2023-09-22"
+              date="2023-02-16"
               title="Missing Values, Datetime, Aggregation, and Merges"
               colorTheme={ColorTheme.Orange}
             />
 
+            {/* 
             <NoteItem
               href="https://nbviewer.org/github/bdi475/notebooks/blob/0283d206c007d1cbb541a9fbfb6b6fe5043ecfe8/L11-pandas-update-cells-more-exercises-SOLUTION.ipynb"
               thumbnail={
