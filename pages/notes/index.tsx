@@ -205,9 +205,8 @@ export default function NotesPage() {
               colorTheme={ColorTheme.Orange}
             />
 
-            {/* 
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/0283d206c007d1cbb541a9fbfb6b6fe5043ecfe8/L11-pandas-update-cells-more-exercises-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/2319edbc5bfe5730d83cc11a0b1b4e1123333e77/L11-pandas-update-cells-more-exercises-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/pandas-gray-bg.png"
@@ -216,13 +215,14 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2023-09-27"
+              date="2023-02-21"
               title="Update Cells, More Exercises"
               colorTheme={ColorTheme.Orange}
             />
           </Row>
-
+          {/* 
           <Row>
+            
             <Col>
               <h2
                 className="sectionTitle"
@@ -233,9 +233,9 @@ export default function NotesPage() {
                 SQL <span className="green accent" />
               </h2>
             </Col>
-              */}
+              
           </Row>
-
+*/}
           {/*
           <Row>
             <NoteItem
