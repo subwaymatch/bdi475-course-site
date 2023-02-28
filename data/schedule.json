@@ -133,13 +133,7 @@
   {
     "date": "2023-02-28",
     "type": "LECTURE",
-    "text": [
-      "Cloud Technologies",
-      "Compute",
-      "Storage",
-      "Database",
-      "Serverless Functions"
-    ]
+    "text": ["Intro to Databases", "SQL", "Relationships"]
   },
   {
     "date": "2023-03-01",
@@ -149,22 +143,32 @@
   {
     "date": "2023-03-02",
     "type": "LECTURE",
-    "text": ["Network Analysis", "Sentiment Analysis"]
+    "text": ["Create Table", "Query Data", "Sort Data", "Aggregations"]
+  },
+  {
+    "date": "2023-03-06",
+    "type": "EXERCISE",
+    "text": "Exercise 7"
+  },
+  {
+    "date": "2023-03-07",
+    "type": "QUIZ",
+    "text": "Quiz 4"
   },
   {
     "date": "2023-03-07",
     "type": "LECTURE",
-    "text": ["Intro to Databases", "SQL", "Relationships"]
+    "text": ["SQL Joins"]
   },
   {
     "date": "2023-03-09",
     "type": "LECTURE",
-    "text": ["Create Table", "Query Data", "Sort Data", "Aggregations"]
+    "text": ["Advanced Query Practice"]
   },
   {
     "date": "2023-03-10",
-    "type": "EXERCISE",
-    "text": "Exercise 7"
+    "type": "CASE_STUDY",
+    "text": "Case Study 3 - AirBnB Listings"
   },
   {
     "date": "2023-03-14",
@@ -178,23 +182,19 @@
   },
   {
     "date": "2023-03-21",
-    "type": "QUIZ",
-    "text": "Quiz 4"
-  },
-  {
-    "date": "2023-03-21",
     "type": "LECTURE",
-    "text": ["SQL Joins"]
+    "text": [
+      "Cloud Technologies",
+      "Compute",
+      "Storage",
+      "Database",
+      "Serverless Functions"
+    ]
   },
   {
     "date": "2023-03-23",
     "type": "LECTURE",
-    "text": ["Advanced Query Practice"]
-  },
-  {
-    "date": "2023-03-26",
-    "type": "CASE_STUDY",
-    "text": "Case Study 3 - AirBnB Listings"
+    "text": ["Network Analysis", "Sentiment Analysis"]
   },
   {
     "date": "2023-03-28",

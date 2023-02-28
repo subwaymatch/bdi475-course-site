@@ -220,9 +220,8 @@ export default function NotesPage() {
               colorTheme={ColorTheme.Orange}
             />
           </Row>
-          {/* 
+
           <Row>
-            
             <Col>
               <h2
                 className="sectionTitle"
@@ -233,13 +232,11 @@ export default function NotesPage() {
                 SQL <span className="green accent" />
               </h2>
             </Col>
-              
           </Row>
-*/}
-          {/*
+
           <Row>
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/ce3b24aca031d595cb8c58ede3d43c973ad1f354/L17-intro-to-SQL-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/b685b79ab094e9432700785a57211199c5d3788b/L13-intro-to-SQL-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/sql-gray-bg.png"
@@ -248,13 +245,14 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2023-10-11"
+              date="2023-02-28"
               title="Introduction to SQL"
               colorTheme={ColorTheme.Green}
             />
 
+            {/*
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/0283d206c007d1cbb541a9fbfb6b6fe5043ecfe8/L16-SQL-queries-aggregations-SOLUTION.ipynb"
+              href="hhttps://nbviewer.org/github/bdi475/notebooks/blob/b685b79ab094e9432700785a57211199c5d3788b/L14-SQL-queries-aggregations-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/sql-gray-bg.png"
@@ -263,13 +261,13 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2023-10-13"
+              date="2023-03-02"
               title="More SQL Queries and Aggregations"
               colorTheme={ColorTheme.Green}
             />
 
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/01a3cd4136f3a8a8a7d4aca73d4bdc7aae888b79/L17-SQL-joins-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/b685b79ab094e9432700785a57211199c5d3788b/L15-SQL-joins-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/sql-gray-bg.png"
@@ -278,12 +276,14 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2023-10-18"
+              date="2023-03-07"
               title="SQL Joins"
               colorTheme={ColorTheme.Green}
             />
+            */}
           </Row>
 
+          {/*
           <Row>
             <Col>
               <h2
