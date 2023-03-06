@@ -251,7 +251,7 @@ export default function NotesPage() {
             />
 
             <NoteItem
-              href="hhttps://nbviewer.org/github/bdi475/notebooks/blob/b685b79ab094e9432700785a57211199c5d3788b/L14-SQL-queries-aggregations-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/b685b79ab094e9432700785a57211199c5d3788b/L14-SQL-queries-aggregations-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/sql-gray-bg.png"
