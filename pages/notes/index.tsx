@@ -250,7 +250,6 @@ export default function NotesPage() {
               colorTheme={ColorTheme.Green}
             />
 
-            {/*
             <NoteItem
               href="hhttps://nbviewer.org/github/bdi475/notebooks/blob/b685b79ab094e9432700785a57211199c5d3788b/L14-SQL-queries-aggregations-SOLUTION.ipynb"
               thumbnail={
@@ -280,7 +279,6 @@ export default function NotesPage() {
               title="SQL Joins"
               colorTheme={ColorTheme.Green}
             />
-            */}
           </Row>
 
           {/*
