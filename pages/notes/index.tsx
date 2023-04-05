@@ -281,7 +281,6 @@ export default function NotesPage() {
             />
           </Row>
 
-          {/*
           <Row>
             <Col>
               <h2
@@ -297,7 +296,7 @@ export default function NotesPage() {
 
           <Row>
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/01a3cd4136f3a8a8a7d4aca73d4bdc7aae888b79/L21-intro-to-visualizations-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/10c3cc373456dabc254cd5e618ba839c1698b6ba/L21-intro-to-visualizations-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/dataviz.png"
@@ -306,11 +305,11 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2023-11-01"
+              date="2023-04-04"
               title="Introduction to DataViz"
               colorTheme={ColorTheme.Blue}
             />
-
+            {/* 
             <NoteItem
               href="https://nbviewer.org/github/bdi475/notebooks/blob/01a3cd4136f3a8a8a7d4aca73d4bdc7aae888b79/L22-line-bar-scatter-plots-SOLUTION.ipynb"
               thumbnail={
@@ -369,8 +368,8 @@ export default function NotesPage() {
               date="2023-04-21"
               title="Advanced Tableau Visualizations"
               colorTheme={ColorTheme.Blue}
-            />
-          </Row> */}
+            /> */}
+          </Row>
         </Container>
       </main>
     </Layout>
