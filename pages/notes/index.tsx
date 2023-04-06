@@ -309,7 +309,7 @@ export default function NotesPage() {
               title="Introduction to DataViz"
               colorTheme={ColorTheme.Blue}
             />
-            {/* 
+
             <NoteItem
               href="https://nbviewer.org/github/bdi475/notebooks/blob/01a3cd4136f3a8a8a7d4aca73d4bdc7aae888b79/L22-line-bar-scatter-plots-SOLUTION.ipynb"
               thumbnail={
@@ -320,7 +320,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2023-11-03"
+              date="2023-04-06"
               title="Line, Scatter, and Bar Plots"
               colorTheme={ColorTheme.Blue}
             />
@@ -335,11 +335,12 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2023-11-10"
+              date="2023-04-06"
               title="Advanced Plotly Visualizations"
               colorTheme={ColorTheme.Blue}
             />
-            
+
+            {/*
             <NoteItem
               href="https://www.notion.so/bdi475/Lecture-22-Introduction-to-Tableau-15832a839f2146a59f36160bd7ce1450"
               thumbnail={
