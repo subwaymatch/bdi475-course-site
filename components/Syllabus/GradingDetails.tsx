@@ -67,7 +67,7 @@ const GradingComponentDetails = () => (
         insights. Unlike the previous coding challenges, you will complete these
         case studies in a Jupyter notebook environment (e.g.,{" "}
         <a href="https://jupyter.org/">JupyterLab</a>,{" "}
-        <a href="https://colab.google.com">Google Colab</a>,{" "}
+        <a href="https://colab.research.google.com/">Google Colab</a>,{" "}
         <a href="https://jupyterlite.rtfd.io/en/latest/try/lab">JupyterLite</a>
         ).
       </p>
