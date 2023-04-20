@@ -262,9 +262,14 @@
     "text": "Case Study 5 - Fortune 1000 Companies"
   },
   {
+    "date": "2023-04-20",
+    "type": "LECTURE",
+    "text": ["Final Case Study Kickoff", "Dataset Search"]
+  },
+  {
     "date": "2023-04-25",
     "type": "LECTURE",
-    "text": ["Final Case Study Setup"]
+    "text": ["Final Case Study Setup", "Dataset Selection"]
   },
   {
     "date": "2023-04-27",
