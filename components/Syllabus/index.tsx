@@ -56,9 +56,11 @@ export default function CourseInformation() {
               <div className={styles.displayBox}>
                 <Chip color="green">Class Time &amp; Location</Chip>
                 <div className={styles.largeText}>
-                  Tues &amp; Thurs 12:30-1:50 PM
+                  Section A: Tues &amp; Thurs 3:30-4:50 PM{" "}
+                  <span className="color-gray">@ 3007 BIF</span>
                   <br />
-                  <span className="color-gray">226 Wohlers</span>
+                  Section B: Tues &amp; Thurs 12:30-1:50 PM{" "}
+                  <span className="color-gray">@ 3041 BIF</span>
                 </div>
               </div>
             </Col>
@@ -120,7 +122,7 @@ export default function CourseInformation() {
                     Instructor of Accountancy
                   </span>
                   <span className={styles.title}>
-                    Associate Director, UI-Deloitte Center for Business
+                    Associate Academic Director, UI-Deloitte Center for Business
                     Analytics
                   </span>
                 </div>
@@ -180,21 +182,12 @@ export default function CourseInformation() {
               >
                 <div className={styles.memberHeader}>
                   <span className={styles.role}>Teaching Assistant</span>
-                  <span className={styles.name}>Sebastian Munoz</span>
-                  <span className={styles.title}>MS Accountancy</span>
+                  <span className={styles.name}>Amarthya Kuchana</span>
+                  <span className={styles.title}>MS Statistics</span>
                 </div>
 
                 <div className={styles.memberDesc}>
-                  <p className={styles.text}>
-                    Hello everyone, My name is Sebastian Munoz and I am a
-                    graduate student pursuing a MS in Accountancy currently
-                    studying for the CPA exam. I am also pursuing a minor in
-                    Data Analytics which has brought me here to you all. I
-                    started programming in Python back when I was in middle
-                    school to do mathematics, automation, and other small
-                    projects. I hope to meet every one of you and help you learn
-                    the intricacies of Python this semester.
-                  </p>
+                  <p className={styles.text}>TBD</p>
                 </div>
               </Col>
 

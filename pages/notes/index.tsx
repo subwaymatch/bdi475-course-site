@@ -15,7 +15,7 @@ export default function NotesPage() {
               <h1 className="pageTitle">Lecture Notes</h1>
             </Col>
           </Row>
-
+          {/* 
           <Row>
             <Col>
               <h2 className="sectionTitle">
@@ -369,7 +369,7 @@ export default function NotesPage() {
               title="Advanced Tableau Visualizations"
               colorTheme={ColorTheme.Blue}
             />
-          </Row>
+          </Row> */}
         </Container>
       </main>
     </Layout>

@@ -32,8 +32,7 @@ export default function MainPage() {
                   <div className={styles.linkText}>
                     <span className={styles.title}>Zoom Link ⟶</span>
                     <p className={styles.desc}>
-                      Office hours are Thursdays 5-6 PM (Park) via Zoom and
-                      Tuesdays 2-3 PM in-person (no Zoom) in BIF 2056.
+                      Office hours are Wednesdays 4-6 PM (Park) via Zoom.
                     </p>
                   </div>
 
