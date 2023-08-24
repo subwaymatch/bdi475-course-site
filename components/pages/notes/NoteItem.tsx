@@ -11,6 +11,7 @@ interface NoteItemProps {
   title: string;
   date: string;
   colorTheme?: ColorTheme;
+  show?: boolean;
 }
 
 export default function NoteItem({
@@ -19,10 +20,11 @@ export default function NoteItem({
   title,
   date,
   colorTheme = ColorTheme.Green,
+  show = true,
 }: NoteItemProps) {
   const day = dayjs(date);
 
-  return (
+  return show ? (
     <Col lg={4} md={6}>
       <Link href={href}>
         <a className={styles.noteItem}>
@@ -53,5 +55,5 @@ export default function NoteItem({
         </a>
       </Link>
     </Col>
-  );
+  ) : null;
 }

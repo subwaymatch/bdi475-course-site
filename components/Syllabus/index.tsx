@@ -59,7 +59,7 @@ export default function CourseInformation() {
                   Section A: Tues &amp; Thurs 3:30-4:50 PM{" "}
                   <span className="color-gray">@ 3007 BIF</span>
                   <br />
-                  Section B: Tues &amp; Thurs 12:30-1:50 PM{" "}
+                  Section B: Tues &amp; Thurs 2:00-3:20 PM{" "}
                   <span className="color-gray">@ 3041 BIF</span>
                 </div>
               </div>
