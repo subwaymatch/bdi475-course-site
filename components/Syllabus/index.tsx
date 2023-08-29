@@ -187,7 +187,15 @@ export default function CourseInformation() {
                 </div>
 
                 <div className={styles.memberDesc}>
-                  <p className={styles.text}>TBD</p>
+                  <p className={styles.text}>
+                    Hello All! I'm Amarthya, a grad student from
+                    Statistics-Analytics. I'm particularly interested in Machine
+                    Learning, Deep Learning, and AI, with a special focus on
+                    predictive analytics. Outside of academics, I enjoy watching
+                    movies and am a big fan of soccer. Looking forward to an
+                    exciting semester ahead! If you ever need help or have
+                    questions, feel free to reach out to me
+                  </p>
                 </div>
               </Col>
 
@@ -201,15 +209,15 @@ export default function CourseInformation() {
                   order: 1,
                 }}
               >
-                <div className={styles.memberImage} style={{ display: "none" }}>
+                <div className={styles.memberImage}>
                   <Image
-                    src="/images/anushree_square_bw.jpg"
+                    src="/images/amarthya_square_bw.jpg"
                     width={1000}
                     height={1000}
                   />
 
                   <div className={styles.imageLabel}>
-                    <Chip color="black">Sebastian</Chip>
+                    <Chip color="black">Amarthya</Chip>
                   </div>
                 </div>
               </Col>

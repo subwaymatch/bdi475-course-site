@@ -83,7 +83,7 @@ export default function MainPage() {
 
               <Col lg={6}>
                 <a
-                  href="https://www.datacamp.com/groups/shared_links/07705eebd0e224773ef036ae1ada6fbd1e74e58d792cfba6f73104b0fdc4e8be"
+                  href="https://www.datacamp.com/groups/shared_links/ef45627ced809200331bb127a53a6f2b8b249dc823429f507a246a7c0f7ddf94"
                   className={styles.linkItem}
                 >
                   <div className={styles.linkText}>
