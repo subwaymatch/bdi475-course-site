@@ -102,7 +102,7 @@ export default function NotesPage() {
               date="2023-08-31"
               title="Lists and Loops"
               colorTheme={ColorTheme.Blue}
-              show={false}
+              show={true}
             />
 
             <NoteItem
