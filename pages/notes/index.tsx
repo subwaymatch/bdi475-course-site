@@ -134,7 +134,7 @@ export default function NotesPage() {
               date="2023-09-07"
               title="Functions"
               colorTheme={ColorTheme.Blue}
-              show={false}
+              show={true}
             />
           </Row>
 
