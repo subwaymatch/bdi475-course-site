@@ -36,8 +36,22 @@ function Policies() {
                     Your attendance is reflected towards the participation
                     points. Up to 2 absences are allowed without a prior
                     approval (no points will be deducted for the first 2
-                    absences). For any special occasions, please email me in
-                    advance.
+                    absences). For any special occasions, please email Amarthya
+                    in advance.
+                  </p>
+                  <p className={styles.text}>
+                    Amarthya, our TA, will be managing the attendance and
+                    coordinating with those who are absent. If you are going to
+                    miss a class, please directly email Amarthya at{" "}
+                    <a
+                      href="mailto:kuchana2@illinois.edu"
+                      title="kuchana2@illinois.edu"
+                    >
+                      kuchana2@illinois.edu
+                    </a>{" "}
+                    with the following subject format - "BDI 475: Absent -
+                    [Name] - [Date(s)]" (example: "BDI 475: Absent - John Doe -
+                    09/14/2023) with documentation.
                   </p>
                 </Col>
               </Row>

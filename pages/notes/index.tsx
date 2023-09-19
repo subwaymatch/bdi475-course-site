@@ -153,7 +153,7 @@ export default function NotesPage() {
 
           <Row>
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/41217762f172a850534ca064a46a378ff906779b/L07-introduction-to-jupyter-and-pandas-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/5c2a12580718902da8168c0e191e57f922a5c2b8/L07-introduction-to-jupyter-and-pandas-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/pandas-gray-bg.png"
@@ -169,7 +169,7 @@ export default function NotesPage() {
             />
 
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/7fe9fb6559b012d26d34f21234aa6b506fcb261a/L08-pandas-filtering-and-sorting-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/5c2a12580718902da8168c0e191e57f922a5c2b8/L08-pandas-filtering-and-sorting-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/pandas-gray-bg.png"
@@ -181,11 +181,11 @@ export default function NotesPage() {
               date="2023-09-14"
               title="Pandas Filtering and Sorting"
               colorTheme={ColorTheme.Orange}
-              show={false}
+              show={true}
             />
 
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/41217762f172a850534ca064a46a378ff906779b/L08-pandas-filtering-and-sorting-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/5c2a12580718902da8168c0e191e57f922a5c2b8/L09-pandas-column-operations-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/pandas-gray-bg.png"
