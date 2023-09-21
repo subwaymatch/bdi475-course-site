@@ -47,12 +47,33 @@ function Policies() {
                       href="mailto:kuchana2@illinois.edu"
                       title="kuchana2@illinois.edu"
                     >
-                      kuchana2@illinois.edu
+                      kuchana2@illinois.edu ✉️
                     </a>{" "}
                     with the following subject format - "BDI 475: Absent -
                     [Name] - [Date(s)]" (example: "BDI 475: Absent - John Doe -
                     09/14/2023) with documentation.
                   </p>
+                  <p className={styles.text}>
+                    👉 Valid documentation include but are not limited to:
+                  </p>
+                  <ul>
+                    <li>
+                      <a href="https://odos.illinois.edu/community-of-care/resources/students/absence-letters/">
+                        Absence Letter
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://odos.illinois.edu/community-of-care/emergency-dean/">
+                        A Letter from the Emergency Dean
+                      </a>
+                    </li>
+                    <li>Doctor's Note</li>
+                    <li>
+                      <a href="https://www.mckinley.illinois.edu/event-confirmations-replace-visit-slips">
+                        McKinley Health Center Event Confirmation
+                      </a>
+                    </li>
+                  </ul>
                 </Col>
               </Row>
             </div>

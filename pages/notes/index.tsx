@@ -201,7 +201,7 @@ export default function NotesPage() {
             />
 
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/45cd2d94aabf112355b16283127ad3f26968d1a3/L10-missing-values-datetime-aggregation-joins-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/725c653f4c4822fbe1a6182e1500843528be6d71/L10-missing-values-datetime-aggregation-joins-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/pandas-gray-bg.png"
@@ -213,7 +213,7 @@ export default function NotesPage() {
               date="2023-09-21"
               title="Missing Values, Datetime, Aggregation, and Merges"
               colorTheme={ColorTheme.Orange}
-              show={false}
+              show={true}
             />
 
             <NoteItem
