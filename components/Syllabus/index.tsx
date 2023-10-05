@@ -194,7 +194,11 @@ export default function CourseInformation() {
                     predictive analytics. Outside of academics, I enjoy watching
                     movies and am a big fan of soccer. Looking forward to an
                     exciting semester ahead! If you ever need help or have
-                    questions, feel free to reach out to me
+                    questions, feel free to reach out to me at{" "}
+                    <a href="mailto:kuchana2@illinois.edu">
+                      kuchana2@illinois.edu
+                    </a>
+                    .
                   </p>
                 </div>
               </Col>
