@@ -116,7 +116,7 @@ function Policies() {
           </Col>
         </Row>
 
-        <Row>
+        {/* <Row>
           <Col>
             <div className={styles.item}>
               <Row>
@@ -135,7 +135,7 @@ function Policies() {
               </Row>
             </div>
           </Col>
-        </Row>
+        </Row> */}
 
         <Row>
           <Col>
