@@ -292,7 +292,7 @@ export default function NotesPage() {
               date="2023-10-10"
               title="SQL Joins"
               colorTheme={ColorTheme.Green}
-              show={false}
+              show={true}
             />
           </Row>
 
