@@ -323,7 +323,7 @@ export default function NotesPage() {
               date="2023-10-26"
               title="Introduction to DataViz"
               colorTheme={ColorTheme.Blue}
-              show={false}
+              show={true}
             />
 
             <NoteItem
