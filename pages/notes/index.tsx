@@ -311,7 +311,7 @@ export default function NotesPage() {
 
           <Row>
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/10c3cc373456dabc254cd5e618ba839c1698b6ba/L21-intro-to-visualizations-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/7d5ad1b6038f4840ff4856123b94326a5448ab30/L20-intro-to-visualizations-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/dataviz.png"
@@ -327,7 +327,7 @@ export default function NotesPage() {
             />
 
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/01a3cd4136f3a8a8a7d4aca73d4bdc7aae888b79/L22-line-bar-scatter-plots-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/7d5ad1b6038f4840ff4856123b94326a5448ab30/L21-line-bar-scatter-plots-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/dataviz.png"
@@ -339,11 +339,11 @@ export default function NotesPage() {
               date="2023-10-31"
               title="Line, Scatter, and Bar Plots"
               colorTheme={ColorTheme.Blue}
-              show={false}
+              show={true}
             />
 
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/01a3cd4136f3a8a8a7d4aca73d4bdc7aae888b79/L23-advanced-visualizations-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/7d5ad1b6038f4840ff4856123b94326a5448ab30/L22-advanced-visualizations-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/dataviz.png"
