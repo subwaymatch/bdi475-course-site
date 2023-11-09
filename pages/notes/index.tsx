@@ -371,7 +371,7 @@ export default function NotesPage() {
               date="2023-11-09"
               title="Introduction to Tableau"
               colorTheme={ColorTheme.Blue}
-              show={false}
+              show={true}
             />
 
             <NoteItem
