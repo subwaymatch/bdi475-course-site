@@ -232,7 +232,7 @@
     "text": ["Intro to Tableau", "Box Plots", "Histograms", "Line", "Bar"]
   },
   {
-    "date": "2023-11-10",
+    "date": "2023-11-16",
     "type": "EXERCISE",
     "text": "Exercise 10"
   },
@@ -254,7 +254,7 @@
   {
     "date": "2023-11-16",
     "type": "LECTURE",
-    "text": ["Final Case Study Kickoff", "Dataset Search"]
+    "text": ["Workday"]
   },
   {
     "date": "2023-11-21",
