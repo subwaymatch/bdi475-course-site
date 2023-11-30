@@ -390,6 +390,37 @@ export default function NotesPage() {
               show={true}
             />
           </Row>
+
+          <Row>
+            <Col>
+              <h2
+                className="sectionTitle"
+                style={{
+                  marginTop: "4rem",
+                }}
+              >
+                Final Case Study <span className="blue accent" />
+              </h2>
+            </Col>
+          </Row>
+
+          <Row>
+            <NoteItem
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/main/case-study-06-clean-data.ipynb"
+              thumbnail={
+                <Image
+                  src="/images/notes/dataviz.png"
+                  width={900}
+                  height={450}
+                  alt=""
+                />
+              }
+              date="2023-11-30"
+              title="Cleaning and Concatenating Data Files"
+              colorTheme={ColorTheme.Blue}
+              show={true}
+            />
+          </Row>
         </Container>
       </main>
     </Layout>
