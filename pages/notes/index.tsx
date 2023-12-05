@@ -420,6 +420,22 @@ export default function NotesPage() {
               colorTheme={ColorTheme.Blue}
               show={true}
             />
+
+            <NoteItem
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/57847e1e6cc62d7808984506fd9f9cbb7d18169e/case-study-06-NLP.ipynb"
+              thumbnail={
+                <Image
+                  src="/images/notes/dataviz.png"
+                  width={900}
+                  height={450}
+                  alt=""
+                />
+              }
+              date="2023-12-05"
+              title="Natural Language Processing"
+              colorTheme={ColorTheme.Blue}
+              show={true}
+            />
           </Row>
         </Container>
       </main>
