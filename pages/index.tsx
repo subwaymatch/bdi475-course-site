@@ -32,7 +32,7 @@ export default function MainPage() {
                   <div className={styles.linkText}>
                     <span className={styles.title}>Zoom Link ⟶</span>
                     <p className={styles.desc}>
-                      Office hours are Wednesdays 4-6 PM (Park) and Mondays
+                      Office hours are Thursdays 5-7 PM (Park) and Mondays
                       1:30-3:30 PM (Amarthya) via Zoom.
                     </p>
                   </div>

@@ -38,7 +38,7 @@ export default function NotesPage() {
               date="2023-08-24"
               title="Intro to Analytics"
               colorTheme={ColorTheme.Green}
-              show={true}
+              show={false}
             />
 
             <NoteItem
@@ -54,7 +54,7 @@ export default function NotesPage() {
               date="2023-08-24"
               title="Intro to Python"
               colorTheme={ColorTheme.Blue}
-              show={true}
+              show={false}
             />
 
             <NoteItem
@@ -70,7 +70,7 @@ export default function NotesPage() {
               date="2023-08-24"
               title="Data Types and Variables"
               colorTheme={ColorTheme.Green}
-              show={true}
+              show={false}
             />
 
             <NoteItem
@@ -86,7 +86,7 @@ export default function NotesPage() {
               date="2023-08-29"
               title="Operators, Booleans, and Conditionals"
               colorTheme={ColorTheme.Green}
-              show={true}
+              show={false}
             />
 
             <NoteItem
@@ -102,7 +102,7 @@ export default function NotesPage() {
               date="2023-08-31"
               title="Lists and Loops"
               colorTheme={ColorTheme.Blue}
-              show={true}
+              show={false}
             />
 
             <NoteItem
@@ -118,7 +118,7 @@ export default function NotesPage() {
               date="2023-09-05"
               title="Collections and Strings"
               colorTheme={ColorTheme.Purple}
-              show={true}
+              show={false}
             />
 
             <NoteItem
@@ -134,7 +134,7 @@ export default function NotesPage() {
               date="2023-09-07"
               title="Functions"
               colorTheme={ColorTheme.Blue}
-              show={true}
+              show={false}
             />
           </Row>
 
@@ -165,7 +165,7 @@ export default function NotesPage() {
               date="2023-09-12"
               title="Introduction to Jupyter and Pandas"
               colorTheme={ColorTheme.Orange}
-              show={true}
+              show={false}
             />
 
             <NoteItem
@@ -181,7 +181,7 @@ export default function NotesPage() {
               date="2023-09-14"
               title="Pandas Filtering and Sorting"
               colorTheme={ColorTheme.Orange}
-              show={true}
+              show={false}
             />
 
             <NoteItem
@@ -197,7 +197,7 @@ export default function NotesPage() {
               date="2023-09-19"
               title="Pandas Data Types and Column Operations"
               colorTheme={ColorTheme.Orange}
-              show={true}
+              show={false}
             />
 
             <NoteItem
@@ -213,7 +213,7 @@ export default function NotesPage() {
               date="2023-09-21"
               title="Missing Values, Datetime, Aggregation, and Merges"
               colorTheme={ColorTheme.Orange}
-              show={true}
+              show={false}
             />
 
             <NoteItem
@@ -229,7 +229,7 @@ export default function NotesPage() {
               date="2023-09-26"
               title="Update Cells, More Exercises"
               colorTheme={ColorTheme.Orange}
-              show={true}
+              show={false}
             />
           </Row>
 
@@ -260,7 +260,7 @@ export default function NotesPage() {
               date="2023-10-03"
               title="Introduction to SQL"
               colorTheme={ColorTheme.Green}
-              show={true}
+              show={false}
             />
 
             <NoteItem
@@ -276,7 +276,7 @@ export default function NotesPage() {
               date="2023-10-05"
               title="More SQL Queries and Aggregations"
               colorTheme={ColorTheme.Green}
-              show={true}
+              show={false}
             />
 
             <NoteItem
@@ -292,7 +292,7 @@ export default function NotesPage() {
               date="2023-10-10"
               title="SQL Joins"
               colorTheme={ColorTheme.Green}
-              show={true}
+              show={false}
             />
           </Row>
 
@@ -323,7 +323,7 @@ export default function NotesPage() {
               date="2023-10-26"
               title="Introduction to DataViz"
               colorTheme={ColorTheme.Blue}
-              show={true}
+              show={false}
             />
 
             <NoteItem
@@ -339,7 +339,7 @@ export default function NotesPage() {
               date="2023-10-31"
               title="Line, Scatter, and Bar Plots"
               colorTheme={ColorTheme.Blue}
-              show={true}
+              show={false}
             />
 
             <NoteItem
@@ -355,7 +355,7 @@ export default function NotesPage() {
               date="2023-11-02"
               title="Advanced Plotly Visualizations"
               colorTheme={ColorTheme.Blue}
-              show={true}
+              show={false}
             />
 
             <NoteItem
@@ -371,7 +371,7 @@ export default function NotesPage() {
               date="2023-11-09"
               title="Introduction to Tableau"
               colorTheme={ColorTheme.Blue}
-              show={true}
+              show={false}
             />
 
             <NoteItem
@@ -387,7 +387,7 @@ export default function NotesPage() {
               date="2023-11-14"
               title="Advanced Tableau Visualizations"
               colorTheme={ColorTheme.Blue}
-              show={true}
+              show={false}
             />
           </Row>
 
@@ -418,7 +418,7 @@ export default function NotesPage() {
               date="2023-11-30"
               title="Cleaning and Concatenating Data Files"
               colorTheme={ColorTheme.Blue}
-              show={true}
+              show={false}
             />
 
             <NoteItem
@@ -434,7 +434,7 @@ export default function NotesPage() {
               date="2023-12-05"
               title="Natural Language Processing"
               colorTheme={ColorTheme.Blue}
-              show={true}
+              show={false}
             />
           </Row>
         </Container>

@@ -459,7 +459,9 @@ function Disclosures() {
                 .
               </p>
             </div>
+          </Col>
 
+          <Col lg={6}>
             <div className={styles.resourceItem}>
               <h4>McKinley Health Center</h4>
               <span className={styles.phoneNumber}>217-333-2700</span>
@@ -467,29 +469,13 @@ function Disclosures() {
                 1109 South Lincoln Avenue, Urbana, IL
               </span>
             </div>
-          </Col>
 
-          <Col lg={6}>
             <div className={styles.resourceItem}>
               <h4>Disability Resources &amp; Educational Services (DRES)</h4>
               <span className={styles.phoneNumber}>217-333-1970</span>
               <span className={styles.address}>
                 1207 S Oak St, Champaign, IL
               </span>
-            </div>
-
-            <div className={styles.resourceItem}>
-              <h4>Kognito</h4>
-
-              <p>
-                Kognito teaches skills to recognize distress in others, talk to
-                them about it, and connect them to resources that can help.
-                Kognito offers modules specific to concerns of LGBTQ individuals
-                and student veterans. Having conversations about suicide can be
-                difficult, but it is important to have them. If you are unsure
-                where to begin, practice at{" "}
-                <a href="http://ui.kognito.com">http://ui.kognito.com</a>.
-              </p>
             </div>
           </Col>
         </Row>
