@@ -54,7 +54,7 @@ export default function NotesPage() {
               date="2024-01-18"
               title="Intro to Python"
               colorTheme={ColorTheme.Blue}
-              show={faltruese}
+              show={true}
             />
 
             <NoteItem
