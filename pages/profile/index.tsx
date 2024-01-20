@@ -17,7 +17,7 @@ export default function Profile({ user }) {
 
       <div>
         <Link href="/">
-          <a>Static example with useSWR</a>
+          Static example with useSWR
         </Link>
       </div>
     </div>

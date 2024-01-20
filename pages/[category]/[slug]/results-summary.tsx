@@ -109,7 +109,7 @@ export default function ChallengeResultsSummary({
                       }}
                     >
                       <ButtonGroup>
-                        <Link href={`/${category}/${slug}`}>
+                        <Link href={`/${category}/${slug}`} legacyBehavior>
                           <Button
                             size="large"
                             disableElevation

@@ -127,13 +127,13 @@ export default function RecordedPythonChallenge({
                 <div className={styles.topControls}>
                   {user && isAdmin && (
                     <>
-                      <Link href={`/python-challenge/edit/${challengeId}`}>
-                        <a
-                          className={clsx(styles.iconButton, styles.editButton)}
-                          ref={editLinkRef}
-                        >
-                          <RiEditBoxLine className={styles.reactIcon} />
-                        </a>
+                      <Link
+                        href={`/python-challenge/edit/${challengeId}`}
+                        className={clsx(styles.iconButton, styles.editButton)}
+                        ref={editLinkRef}>
+
+                        <RiEditBoxLine className={styles.reactIcon} />
+
                       </Link>
 
                       <Tippy
@@ -147,13 +147,11 @@ export default function RecordedPythonChallenge({
 
                       <Link
                         href={`/admin/python-challenge/attempts/${challengeId}`}
-                      >
-                        <a
-                          className={clsx(styles.iconButton, styles.editButton)}
-                          ref={attemptsLinkRef}
-                        >
-                          <RiGroupLine className={styles.reactIcon} />
-                        </a>
+                        className={clsx(styles.iconButton, styles.editButton)}
+                        ref={attemptsLinkRef}>
+
+                        <RiGroupLine className={styles.reactIcon} />
+
                       </Link>
 
                       <Tippy
@@ -169,21 +167,21 @@ export default function RecordedPythonChallenge({
 
                   {user && (
                     <>
-                      <Link href={`/python-challenge/history/${challengeId}`}>
-                        <a
-                          className={clsx(
-                            styles.iconButton,
-                            styles.historyButton,
-                            {
-                              [styles.disabled]:
-                                !challengeResult ||
-                                challengeResult.total_count === 0,
-                            }
-                          )}
-                          ref={historyLinkRef}
-                        >
-                          <RiHistoryLine className={styles.reactIcon} />
-                        </a>
+                      <Link
+                        href={`/python-challenge/history/${challengeId}`}
+                        className={clsx(
+                          styles.iconButton,
+                          styles.historyButton,
+                          {
+                            [styles.disabled]:
+                              !challengeResult ||
+                              challengeResult.total_count === 0,
+                          }
+                        )}
+                        ref={historyLinkRef}>
+
+                        <RiHistoryLine className={styles.reactIcon} />
+
                       </Link>
                       <Tippy
                         content={

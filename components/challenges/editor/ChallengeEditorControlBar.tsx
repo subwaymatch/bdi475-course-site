@@ -32,8 +32,8 @@ export default function ChallengeEditorControlBar({
       <Container fluid>
         <Row className={clsx(styles.controlRow, "align-items-center")}>
           <Col xs={4}>
-            <Link href={backUrl}>
-              <a className={styles.backButton}>← Back to List</a>
+            <Link href={backUrl} className={styles.backButton}>
+              ← Back to List
             </Link>
           </Col>
 

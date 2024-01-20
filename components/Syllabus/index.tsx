@@ -158,6 +158,7 @@ export default function CourseInformation() {
                     src="/images/park_square_bw.jpg"
                     width={1000}
                     height={1000}
+                    alt="Park's Profile Photo"
                   />
 
                   <div className={styles.imageLabel}>
@@ -218,6 +219,7 @@ export default function CourseInformation() {
                     src="/images/amarthya_square_bw.jpg"
                     width={1000}
                     height={1000}
+                    alt="Amarthya's Profile Photo"
                   />
 
                   <div className={styles.imageLabel}>

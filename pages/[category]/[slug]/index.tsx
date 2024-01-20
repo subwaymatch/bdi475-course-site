@@ -127,15 +127,15 @@ export default function PageWithChallenges({
                   {isAdmin && challenges?.length > 0 && (
                     <ButtonGroup>
                       <Link href={`/${category}/${slug}/results-summary`}>
-                        <a>
-                          <Button
-                            size="large"
-                            disableElevation
-                            startIcon={<ArrowForwardIcon />}
-                          >
-                            View Submission Results Summary
-                          </Button>
-                        </a>
+
+                        <Button
+                          size="large"
+                          disableElevation
+                          startIcon={<ArrowForwardIcon />}
+                        >
+                          View Submission Results Summary
+                        </Button>
+
                       </Link>
                     </ButtonGroup>
                   )}

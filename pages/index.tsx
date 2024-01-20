@@ -38,7 +38,12 @@ export default function MainPage() {
                   </div>
 
                   <div className={styles.linkImage}>
-                    <Image src={geometricImage1} width={160} height={138} />
+                    <Image
+                      src={geometricImage1}
+                      width={160}
+                      height={138}
+                      alt=""
+                    />
                   </div>
                 </a>
               </Col>
@@ -56,7 +61,12 @@ export default function MainPage() {
                   </div>
 
                   <div className={styles.linkImage}>
-                    <Image src={geometricImage3} width={130} height={160} />
+                    <Image
+                      src={geometricImage3}
+                      width={130}
+                      height={160}
+                      alt=""
+                    />
                   </div>
                 </a>
               </Col>
@@ -76,7 +86,12 @@ export default function MainPage() {
                   </div>
 
                   <div className={styles.linkImage}>
-                    <Image src={geometricImage2} width={147} height={160} />
+                    <Image
+                      src={geometricImage2}
+                      width={147}
+                      height={160}
+                      alt=""
+                    />
                   </div>
                 </a>
               </Col>
@@ -94,7 +109,12 @@ export default function MainPage() {
                   </div>
 
                   <div className={styles.linkImage}>
-                    <Image src={geometricImage4} width={125} height={160} />
+                    <Image
+                      src={geometricImage4}
+                      width={125}
+                      height={160}
+                      alt=""
+                    />
                   </div>
                 </a>
               </Col>

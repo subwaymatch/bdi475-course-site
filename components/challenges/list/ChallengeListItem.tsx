@@ -62,27 +62,27 @@ export default function ChallengeListItem({
         </Col>
 
         <Col md={5}>
-          <Link href={editLink}>
-            <a
-              className={styles.title}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {title}
-            </a>
+          <Link
+            href={editLink}
+            className={styles.title}
+            target="_blank"
+            rel="noopener noreferrer">
+
+            {title}
+
           </Link>
         </Col>
 
         <Col md={2}>
           <div className={styles.actions}>
-            <Link href={permalink}>
-              <a
-                className={clsx(styles.iconButton)}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FiExternalLink className={styles.reactIcon} />
-              </a>
+            <Link
+              href={permalink}
+              className={clsx(styles.iconButton)}
+              target="_blank"
+              rel="noopener noreferrer">
+
+              <FiExternalLink className={styles.reactIcon} />
+
             </Link>
 
             <a

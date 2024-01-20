@@ -12,15 +12,15 @@ export default function SiteFooter() {
       <Container fluid>
         <Row>
           <Col lg={4} md={12}>
-            <Link href="/">
-              <a className={styles.logoImageWrapper}>
-                <Image
-                  src={courseLogoWhiteImage}
-                  alt="BDI 475"
-                  width={120}
-                  height={31}
-                />
-              </a>
+            <Link href="/" className={styles.logoImageWrapper}>
+
+              <Image
+                src={courseLogoWhiteImage}
+                alt="BDI 475"
+                width={120}
+                height={31}
+              />
+
             </Link>
           </Col>
 

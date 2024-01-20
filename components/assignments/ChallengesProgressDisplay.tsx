@@ -40,11 +40,9 @@ export default function ChallengesProgressDisplay() {
     return (
       <div className={styles.bottomBar}>
         <div className={styles.progressDisplay}>
-          <Link href="/login">
-            <a className={styles.signInLink}>
-              <AccountCircleOutlinedIcon className={styles.icon} />
-              Sign in to record your challenge submissions
-            </a>
+          <Link href="/login" className={styles.signInLink}>
+
+            <AccountCircleOutlinedIcon className={styles.icon} />Sign in to record your challenge submissions
           </Link>
         </div>
       </div>

@@ -129,13 +129,13 @@ export default function RecordedMultipleChoiceQuestion({
                 <div className={styles.topControls}>
                   {user && isAdmin && (
                     <>
-                      <Link href={`/multiple-choice/edit/${questionId}`}>
-                        <a
-                          className={clsx(styles.iconButton, styles.editButton)}
-                          ref={editLinkRef}
-                        >
-                          <RiEditBoxLine className={styles.reactIcon} />
-                        </a>
+                      <Link
+                        href={`/multiple-choice/edit/${questionId}`}
+                        className={clsx(styles.iconButton, styles.editButton)}
+                        ref={editLinkRef}>
+
+                        <RiEditBoxLine className={styles.reactIcon} />
+
                       </Link>
 
                       <Tippy

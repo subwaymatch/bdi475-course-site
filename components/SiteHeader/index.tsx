@@ -47,7 +47,7 @@ const menuItems = [
 ];
 
 const SignInButton = forwardRef((props, ref: React.Ref<HTMLDivElement>) => (
-  <Link href="/login">
+  <Link href="/login" legacyBehavior>
     <div ref={ref} className={styles.signInButton}>
       <span className={styles.label}>Sign In</span>
       <RiUserLine className={styles.reactIcon} />
@@ -107,16 +107,16 @@ const HeaderDesktopMenu = () => {
     <Row className={clsx(styles.mainMenu, "align-items-center")}>
       {menuItems.map((item) => (
         <Col key={item.href}>
-          <Link href={item.href}>
-            <a
-              className={clsx(styles.menuLink, {
-                [styles.isActive]: item.isActive
-                  ? item.isActive(router.asPath)
-                  : false,
-              })}
-            >
-              <span>{item.label}</span>
-            </a>
+          <Link
+            href={item.href}
+            className={clsx(styles.menuLink, {
+              [styles.isActive]: item.isActive
+                ? item.isActive(router.asPath)
+                : false,
+            })}>
+
+            <span>{item.label}</span>
+
           </Link>
         </Col>
       ))}
@@ -128,13 +128,13 @@ const HeaderMobileMenu = () => (
   <Row className={clsx(styles.mobileMenu)}>
     {menuItems.map((item) => (
       <Col xs={12} key={item.href}>
-        <Link href={item.href}>
-          <a className={styles.menuLink}>
-            <span>{item.label}</span>
-            {item.iconChild && (
-              <span className={styles.iconWrapper}>{item.iconChild}</span>
-            )}
-          </a>
+        <Link href={item.href} className={styles.menuLink}>
+
+          <span>{item.label}</span>
+          {item.iconChild && (
+            <span className={styles.iconWrapper}>{item.iconChild}</span>
+          )}
+
         </Link>
       </Col>
     ))}
@@ -155,85 +155,83 @@ export default function SiteHeader() {
     }
   }, [isScreenDesktop]);
 
-  return (
-    <>
+  return <>
+    {isMenuOpen && (
+      <div
+        className={styles.backdrop}
+        onClick={(e) => {
+          e.preventDefault();
+
+          setIsMenuOpen(false);
+        }}
+      />
+    )}
+
+    <header className={styles.header}>
+      <Container fluid>
+        <Col>
+          <div className={styles.inner}>
+            <Row className="align-items-center">
+              <Col md={2} style={{ lineHeight: 0 }}>
+                <Link href="/" className={clsx(styles.logoLink)}>
+
+                  <Image
+                    src={logoImage}
+                    alt="BDI 475"
+                    width={110}
+                    height={28}
+                  />
+
+                </Link>
+              </Col>
+
+              <Col md={8} className="d-none d-md-block">
+                <HeaderDesktopMenu />
+              </Col>
+
+              <Col md={2} className="d-none d-md-block">
+                <UserMenu />
+              </Col>
+
+              <Col xs={6} className="d-md-none">
+                <div className={styles.menuBtnWrapper}>
+                  <MenuButton
+                    isOpen={isMenuOpen}
+                    onClick={() => {
+                      setIsMenuOpen((v) => !v);
+                    }}
+                  />
+                </div>
+              </Col>
+            </Row>
+          </div>
+        </Col>
+      </Container>
+    </header>
+
+    <AnimatePresence>
       {isMenuOpen && (
-        <div
-          className={styles.backdrop}
-          onClick={(e) => {
-            e.preventDefault();
-
-            setIsMenuOpen(false);
+        <motion.div
+          className={styles.mobileMenuWrapper}
+          initial="closed"
+          animate="open"
+          exit={{
+            height: 0,
+            opacity: 0,
           }}
-        />
+          variants={{
+            open: {
+              height: "auto",
+              opacity: 1,
+            },
+            closed: { height: 0, opacity: 0 },
+          }}
+        >
+          <Container fluid>
+            <HeaderMobileMenu />
+          </Container>
+        </motion.div>
       )}
-
-      <header className={styles.header}>
-        <Container fluid>
-          <Col>
-            <div className={styles.inner}>
-              <Row className="align-items-center">
-                <Col md={2} style={{ lineHeight: 0 }}>
-                  <Link href="/">
-                    <a className={clsx(styles.logoLink)}>
-                      <Image
-                        src={logoImage}
-                        alt="BDI 475"
-                        width={110}
-                        height={28}
-                      />
-                    </a>
-                  </Link>
-                </Col>
-
-                <Col md={8} className="d-none d-md-block">
-                  <HeaderDesktopMenu />
-                </Col>
-
-                <Col md={2} className="d-none d-md-block">
-                  <UserMenu />
-                </Col>
-
-                <Col xs={6} className="d-md-none">
-                  <div className={styles.menuBtnWrapper}>
-                    <MenuButton
-                      isOpen={isMenuOpen}
-                      onClick={() => {
-                        setIsMenuOpen((v) => !v);
-                      }}
-                    />
-                  </div>
-                </Col>
-              </Row>
-            </div>
-          </Col>
-        </Container>
-      </header>
-
-      <AnimatePresence>
-        {isMenuOpen && (
-          <motion.div
-            className={styles.mobileMenuWrapper}
-            initial="closed"
-            animate="open"
-            exit={{
-              height: 0,
-              opacity: 0,
-            }}
-            variants={{
-              open: {
-                height: "auto",
-                opacity: 1,
-              },
-              closed: { height: 0, opacity: 0 },
-            }}
-          >
-            <Container fluid>
-              <HeaderMobileMenu />
-            </Container>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
-  );
+    </AnimatePresence>
+  </>;
 }

@@ -260,8 +260,8 @@ export default function PythonPlayground() {
           </div>
         </div>
         <div className={styles.logoWrapper} style={{}}>
-          <Link href="/">
-            <a className={clsx(styles.logoLink)}>python playground</a>
+          <Link href="/" className={clsx(styles.logoLink)}>
+            python playground
           </Link>
         </div>
       </div>

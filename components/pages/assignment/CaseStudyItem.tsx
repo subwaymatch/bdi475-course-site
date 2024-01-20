@@ -33,7 +33,7 @@ export default function CaseStudyItem({
   thumbnail,
 }: ICaseStudyItemProps) {
   return (
-    <Link href={link ? link : "/"}>
+    <Link href={link ? link : "/"} legacyBehavior>
       <div
         className={clsx(styles.caseStudyItem, {
           [styles.complete]: status === AssignmentStatus.Complete,

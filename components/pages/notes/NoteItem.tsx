@@ -26,33 +26,31 @@ export default function NoteItem({
 
   return show ? (
     <Col lg={4} md={6}>
-      <Link href={href}>
-        <a className={styles.noteItem}>
-          {thumbnail}
+      <Link href={href} className={styles.noteItem}>
 
-          <h3>{title}</h3>
-
-          <div className={styles.dateWrapper}>
-            <div className={styles.date}>
-              <span>{day.format("YYYY")}</span>
-              <div className={styles.dateDivider}>⁄</div>
-              <span>{day.format("MM")}</span>
-              <div className={styles.dateDivider}>⁄</div>
-              <span>{day.format("DD")}</span>
-            </div>
-
-            <span
-              className={clsx(
-                styles.divider,
-                `color-${colorTheme.toLowerCase()}`
-              )}
-            >
-              •
-            </span>
-
-            <div className={styles.weekday}>{day.format("ddd")}</div>
+        {thumbnail}
+        <h3>{title}</h3>
+        <div className={styles.dateWrapper}>
+          <div className={styles.date}>
+            <span>{day.format("YYYY")}</span>
+            <div className={styles.dateDivider}>⁄</div>
+            <span>{day.format("MM")}</span>
+            <div className={styles.dateDivider}>⁄</div>
+            <span>{day.format("DD")}</span>
           </div>
-        </a>
+
+          <span
+            className={clsx(
+              styles.divider,
+              `color-${colorTheme.toLowerCase()}`
+            )}
+          >
+            •
+          </span>
+
+          <div className={styles.weekday}>{day.format("ddd")}</div>
+        </div>
+
       </Link>
     </Col>
   ) : null;
