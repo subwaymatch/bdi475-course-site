@@ -83,10 +83,10 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2024-01-29"
+              date="2024-01-23"
               title="Operators, Booleans, and Conditionals"
               colorTheme={ColorTheme.Green}
-              show={false}
+              show={true}
             />
 
             <NoteItem
@@ -99,7 +99,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2024-01-31"
+              date="2024-01-25"
               title="Lists and Loops"
               colorTheme={ColorTheme.Blue}
               show={false}
