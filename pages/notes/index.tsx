@@ -153,7 +153,7 @@ export default function NotesPage() {
 
           <Row>
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/5c2a12580718902da8168c0e191e57f922a5c2b8/L07-introduction-to-jupyter-and-pandas-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/main/L07-introduction-to-jupyter-and-pandas-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/pandas-gray-bg.png"
@@ -165,7 +165,7 @@ export default function NotesPage() {
               date="2024-02-06"
               title="Introduction to Jupyter and Pandas"
               colorTheme={ColorTheme.Orange}
-              show={false}
+              show={true}
             />
 
             <NoteItem
