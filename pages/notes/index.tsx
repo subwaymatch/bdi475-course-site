@@ -169,7 +169,7 @@ export default function NotesPage() {
             />
 
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/5c2a12580718902da8168c0e191e57f922a5c2b8/L08-pandas-filtering-and-sorting-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/main/L08-pandas-filtering-and-sorting-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/pandas-gray-bg.png"
@@ -181,11 +181,11 @@ export default function NotesPage() {
               date="2024-02-08"
               title="Pandas Filtering and Sorting"
               colorTheme={ColorTheme.Orange}
-              show={false}
+              show={true}
             />
 
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/5c2a12580718902da8168c0e191e57f922a5c2b8/L09-pandas-column-operations-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/main/L09-pandas-column-operations-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/pandas-gray-bg.png"
@@ -201,7 +201,7 @@ export default function NotesPage() {
             />
 
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/725c653f4c4822fbe1a6182e1500843528be6d71/L10-missing-values-datetime-aggregation-joins-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/main/L10-missing-values-datetime-aggregation-joins-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/pandas-gray-bg.png"
@@ -217,7 +217,7 @@ export default function NotesPage() {
             />
 
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/2319edbc5bfe5730d83cc11a0b1b4e1123333e77/L11-pandas-update-cells-more-exercises-SOLUTION.ipynb"
+              href="https://github.com/bdi475/notebooks/blob/main/L11-pandas-update-cells-more-exercises-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/pandas-gray-bg.png"
