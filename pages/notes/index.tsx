@@ -229,7 +229,7 @@ export default function NotesPage() {
               date="2024-02-20"
               title="Update Cells, More Exercises"
               colorTheme={ColorTheme.Orange}
-              show={false}
+              show={true}
             />
           </Row>
 
