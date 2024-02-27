@@ -276,7 +276,7 @@ export default function NotesPage() {
               date="2024-02-27"
               title="Introduction to SQL"
               colorTheme={ColorTheme.Green}
-              show={false}
+              show={true}
             />
 
             <NoteItem
