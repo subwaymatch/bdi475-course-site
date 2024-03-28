@@ -231,6 +231,22 @@ export default function NotesPage() {
               colorTheme={ColorTheme.Orange}
               show={true}
             />
+
+            <NoteItem
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/main/L12-pandas-merge-string-methods-SOLUTION.ipynb"
+              thumbnail={
+                <Image
+                  src="/images/notes/pandas-gray-bg.png"
+                  width={900}
+                  height={450}
+                  alt=""
+                />
+              }
+              date="2024-02-22"
+              title="Merge and String Methods"
+              colorTheme={ColorTheme.Orange}
+              show={true}
+            />
           </Row>
 
           <Row>
@@ -260,7 +276,7 @@ export default function NotesPage() {
               date="2024-02-27"
               title="Introduction to SQL"
               colorTheme={ColorTheme.Green}
-              show={false}
+              show={true}
             />
 
             <NoteItem
@@ -276,7 +292,7 @@ export default function NotesPage() {
               date="2024-02-29"
               title="More SQL Queries and Aggregations"
               colorTheme={ColorTheme.Green}
-              show={false}
+              show={true}
             />
 
             <NoteItem
@@ -292,7 +308,7 @@ export default function NotesPage() {
               date="2024-03-05"
               title="SQL Joins"
               colorTheme={ColorTheme.Green}
-              show={false}
+              show={true}
             />
           </Row>
 
