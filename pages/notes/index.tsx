@@ -355,7 +355,7 @@ export default function NotesPage() {
               date="2024-04-02"
               title="Line, Scatter, and Bar Plots"
               colorTheme={ColorTheme.Blue}
-              show={false}
+              show={true}
             />
 
             <NoteItem
