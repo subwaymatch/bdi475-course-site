@@ -371,7 +371,7 @@ export default function NotesPage() {
               date="2024-04-04"
               title="Advanced Plotly Visualizations"
               colorTheme={ColorTheme.Blue}
-              show={false}
+              show={true}
             />
 
             <NoteItem
