@@ -375,6 +375,22 @@ export default function NotesPage() {
             />
 
             <NoteItem
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/2340c9e6f6a76b62b1dcd6bb755af52da4f7f854/L23-in-class-dataviz-challenges-SOLUTION.ipynb"
+              thumbnail={
+                <Image
+                  src="/images/notes/dataviz.png"
+                  width={900}
+                  height={450}
+                  alt=""
+                />
+              }
+              date="2024-04-09"
+              title="In-class DataViz Challenge Day"
+              colorTheme={ColorTheme.Blue}
+              show={true}
+            />
+
+            <NoteItem
               href="https://bdi475.notion.site/Lecture-24-Introduction-to-Tableau-15832a839f2146a59f36160bd7ce1450"
               thumbnail={
                 <Image
