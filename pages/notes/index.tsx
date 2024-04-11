@@ -403,7 +403,7 @@ export default function NotesPage() {
               date="2024-04-11"
               title="Introduction to Tableau"
               colorTheme={ColorTheme.Blue}
-              show={false}
+              show={true}
             />
 
             <NoteItem
