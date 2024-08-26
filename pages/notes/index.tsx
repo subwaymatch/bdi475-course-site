@@ -35,7 +35,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2024-01-18"
+              date="2024-08-29"
               title="Intro to Analytics"
               colorTheme={ColorTheme.Green}
               show={true}
@@ -51,7 +51,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2024-01-18"
+              date="2024-08-29"
               title="Intro to Python"
               colorTheme={ColorTheme.Blue}
               show={true}
@@ -67,7 +67,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2024-01-18"
+              date="2024-08-29"
               title="Data Types and Variables"
               colorTheme={ColorTheme.Green}
               show={true}
@@ -83,10 +83,10 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2024-01-23"
+              date="2024-09-03"
               title="Operators, Booleans, and Conditionals"
               colorTheme={ColorTheme.Green}
-              show={true}
+              show={false}
             />
 
             <NoteItem
@@ -99,7 +99,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2024-01-25"
+              date="2024-09-05"
               title="Lists and Loops"
               colorTheme={ColorTheme.Blue}
               show={false}
@@ -115,10 +115,10 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2024-01-30"
+              date="2024-09-10"
               title="Collections and Strings"
               colorTheme={ColorTheme.Purple}
-              show={true}
+              show={false}
             />
 
             <NoteItem
@@ -131,10 +131,10 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2024-02-01"
+              date="2024-09-12"
               title="Functions"
               colorTheme={ColorTheme.Blue}
-              show={true}
+              show={false}
             />
           </Row>
 
@@ -162,10 +162,10 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2024-02-06"
+              date="2024-09-17"
               title="Introduction to Jupyter and Pandas"
               colorTheme={ColorTheme.Orange}
-              show={true}
+              show={false}
             />
 
             <NoteItem
@@ -178,10 +178,10 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2024-02-08"
+              date="2024-09-19"
               title="Pandas Filtering and Sorting"
               colorTheme={ColorTheme.Orange}
-              show={true}
+              show={false}
             />
 
             <NoteItem
@@ -194,10 +194,10 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2024-02-13"
+              date="2024-09-24"
               title="Pandas Data Types and Column Operations"
               colorTheme={ColorTheme.Orange}
-              show={true}
+              show={false}
             />
 
             <NoteItem
@@ -210,10 +210,10 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2024-02-15"
+              date="2024-09-26"
               title="Missing Values, Datetime, Aggregation, and Merges"
               colorTheme={ColorTheme.Orange}
-              show={true}
+              show={false}
             />
 
             <NoteItem
@@ -226,10 +226,10 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2024-02-20"
+              date="2024-10-01"
               title="Update Cells, More Exercises"
               colorTheme={ColorTheme.Orange}
-              show={true}
+              show={false}
             />
 
             <NoteItem
@@ -242,10 +242,10 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2024-02-22"
+              date="2024-10-03"
               title="Merge and String Methods"
               colorTheme={ColorTheme.Orange}
-              show={true}
+              show={false}
             />
           </Row>
 
@@ -273,10 +273,10 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2024-02-27"
+              date="2024-10-08"
               title="Introduction to SQL"
               colorTheme={ColorTheme.Green}
-              show={true}
+              show={false}
             />
 
             <NoteItem
@@ -289,10 +289,10 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2024-02-29"
+              date="2024-10-10"
               title="More SQL Queries and Aggregations"
               colorTheme={ColorTheme.Green}
-              show={true}
+              show={false}
             />
 
             <NoteItem
@@ -305,10 +305,10 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2024-03-05"
+              date="2024-10-15"
               title="SQL Joins"
               colorTheme={ColorTheme.Green}
-              show={true}
+              show={false}
             />
           </Row>
 
@@ -336,10 +336,10 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2024-03-28"
+              date="2024-10-31"
               title="Introduction to DataViz"
               colorTheme={ColorTheme.Blue}
-              show={true}
+              show={false}
             />
 
             <NoteItem
@@ -352,10 +352,10 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2024-04-02"
+              date="2024-11-05"
               title="Line, Scatter, and Bar Plots"
               colorTheme={ColorTheme.Blue}
-              show={true}
+              show={false}
             />
 
             <NoteItem
@@ -368,10 +368,10 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2024-04-04"
+              date="2024-11-07"
               title="Advanced Plotly Visualizations"
               colorTheme={ColorTheme.Blue}
-              show={true}
+              show={false}
             />
 
             <NoteItem
@@ -384,10 +384,10 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2024-04-09"
+              date="2024-11-12"
               title="In-class DataViz Challenge Day"
               colorTheme={ColorTheme.Blue}
-              show={true}
+              show={false}
             />
 
             <NoteItem
@@ -400,10 +400,10 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2024-04-11"
+              date="2024-11-14"
               title="Introduction to Tableau"
               colorTheme={ColorTheme.Blue}
-              show={true}
+              show={false}
             />
 
             <NoteItem
@@ -416,10 +416,10 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2024-04-16"
+              date="2024-11-19"
               title="Advanced Tableau Visualizations"
               colorTheme={ColorTheme.Blue}
-              show={true}
+              show={false}
             />
           </Row>
 
@@ -447,7 +447,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2024-04-25"
+              date="2024-12-03"
               title="Cleaning and Concatenating Data Files"
               colorTheme={ColorTheme.Blue}
               show={false}
@@ -463,7 +463,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2024-04-30"
+              date="2024-12-05"
               title="Natural Language Processing"
               colorTheme={ColorTheme.Blue}
               show={false}

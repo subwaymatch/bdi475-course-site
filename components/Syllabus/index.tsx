@@ -6,6 +6,7 @@ import GradingBreakdown from "./GradingBreakdown";
 import GradingDetails from "./GradingDetails";
 import PoliciesAndDisclosures from "./PoliciesAndDisclosures";
 import Chip from "components/common/Chip";
+import Link from "next/link";
 
 export default function CourseInformation() {
   return (
@@ -48,7 +49,7 @@ export default function CourseInformation() {
             <Col md={4}>
               <div className={styles.displayBox}>
                 <Chip>Term</Chip>
-                <span className={styles.largeText}>Spring 2024</span>
+                <span className={styles.largeText}>Fall 2024</span>
               </div>
             </Col>
 
@@ -56,11 +57,49 @@ export default function CourseInformation() {
               <div className={styles.displayBox}>
                 <Chip color="green">Class Time &amp; Location</Chip>
                 <div className={styles.largeText}>
-                  Section DAA: Tues &amp; Thurs 12:30-1:50 PM{" "}
+                  {/* Section DAA: Tues &amp; Thurs 12:30-1:50 PM{" "}
                   <span className="color-gray">@ 226 Wohlers</span>
-                  {/* <br />
+                  <br /> */}
                   Section B: Tues &amp; Thurs 2:00-3:20 PM{" "}
-                  <span className="color-gray">@ 3041 BIF</span> */}
+                  <span className="color-gray">@ 3041 BIF</span>
+                  <br />
+                  Section A: Tues &amp; Thurs 3:30-4:50 PM{" "}
+                  <span className="color-gray">@ 3007 BIF</span>
+                </div>
+              </div>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col md={4}>
+              <div className={styles.displayBox}>
+                <h3>Office Hours</h3>
+              </div>
+            </Col>
+
+            <Col md={8}>
+              <div className={styles.displayBox}>
+                <div className={styles.largeText}>
+                  <span className="color-green">Park</span>
+                  <br />
+                  Tuesdays 5:00-6:00 PM
+                </div>
+              </div>
+
+              <div className={styles.displayBox}>
+                <div className={styles.largeText}>
+                  <span className="color-green">Amarthya</span>
+                  <br />
+                  Mondays 4:00-5:00 PM
+                </div>
+              </div>
+
+              <div className={styles.displayBox}>
+                <div className={styles.largeText}>
+                  {" "}
+                  <Link href="https://illinois.zoom.us/j/88199992344?pwd=dTMvdnM3SHF4eE11NnBjZGJ6NGhMZz09">
+                    🖥️ Office Hours Zoom Link ⟶
+                  </Link>
                 </div>
               </div>
             </Col>

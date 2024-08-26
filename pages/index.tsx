@@ -32,8 +32,8 @@ export default function MainPage() {
                   <div className={styles.linkText}>
                     <span className={styles.title}>Zoom Link ⟶</span>
                     <p className={styles.desc}>
-                      Office hours are Thursdays 7-8 PM (Park) and Mondays 4-5
-                      PM (Amarthya) via Zoom.
+                      Office hours are Tuesdays 5-6 PM (Park) and Mondays 4-5 PM
+                      (Amarthya) via Zoom.
                     </p>
                   </div>
 
@@ -45,7 +45,7 @@ export default function MainPage() {
 
               <Col lg={6}>
                 <a
-                  href="https://canvas.illinois.edu/courses/40773"
+                  href="https://canvas.illinois.edu/courses/51399"
                   className={styles.linkItem}
                 >
                   <div className={styles.linkText}>
