@@ -171,7 +171,7 @@ export default function CourseInformation() {
                     Greetings! Please call me <code>Park</code>. I started
                     programming as a hobby in elementary school. During my final
                     year as an accounting major here, I've made up my mind to
-                    pursue what I love to do! Fast-forward to 2023, I'm excited
+                    pursue what I love to do! Fast-forward to 2024, I'm excited
                     to be back at my alma mater to be a part of a leading-edge
                     data analytics curriculum. My email is{" "}
                     <a href="mailto:ypark32@illinois.edu">
