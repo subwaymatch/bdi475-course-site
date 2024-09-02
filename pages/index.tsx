@@ -32,8 +32,8 @@ export default function MainPage() {
                   <div className={styles.linkText}>
                     <span className={styles.title}>Zoom Link ⟶</span>
                     <p className={styles.desc}>
-                      Office hours are Tuesdays 5-6 PM (Park) and Mondays 4-5 PM
-                      (Amarthya) via Zoom.
+                      Office hours are Thursdays 5-6 PM (Park) and Mondays 4-5
+                      PM (Amarthya) via Zoom.
                     </p>
                   </div>
 
@@ -83,7 +83,7 @@ export default function MainPage() {
 
               <Col lg={6}>
                 <a
-                  href="https://www.datacamp.com/groups/shared_links/ef45627ced809200331bb127a53a6f2b8b249dc823429f507a246a7c0f7ddf94"
+                  href="https://www.datacamp.com/groups/shared_links/ef21e0db19cd7e9e4e4488f3c92ca4d410a46b8b143b85bef8d2b49af9863b21"
                   className={styles.linkItem}
                 >
                   <div className={styles.linkText}>

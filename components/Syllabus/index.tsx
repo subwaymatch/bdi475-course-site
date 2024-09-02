@@ -82,7 +82,7 @@ export default function CourseInformation() {
                 <div className={styles.largeText}>
                   <span className="color-green">Park</span>
                   <br />
-                  Tuesdays 5:00-6:00 PM
+                  Thursdays 5:00-6:00 PM
                 </div>
               </div>
 
