@@ -34,17 +34,13 @@ Let's forget about Python for a moment and go back a few years all the way back 
 - `f(10) = 10 + 3`, returns `13`
 - `f(-3) = -3 + 3`, returns `0`
 
-In mathematical terms, a function takes one or more inputs and produces an output. Our previous function `f(x) = x + 3` can be broken down into:
-
-![Function Breakdown](https://accy570-fa2020-course-site-assets.s3-us-west-2.amazonaws.com/images/function-breakdown-01.png)
+In mathematical terms, a function takes one or more inputs and produces an output. Our previous function `f(x) = x + 3` takes `x` as an input and outputs `x + 3`.
 
 `f` in front of the parentheses is an arbitrary name used to represent a function. We can choose to rename our function to `add_three`. This changes our function expression to `add_three(x) = x + 3`.
 
 A function can also take more than one input (e.g., `add_three(a, b) = a + b`).
 
 In programming, an inputs is referred as an _argument_, and an output is referred as a _return value_.
-
-![Function Diagram](https://accy570-fa2020-course-site-assets.s3-us-west-2.amazonaws.com/images/function-diagram-01.png)
 
 </CenteredColumn>
 
@@ -66,8 +62,40 @@ In programming, an inputs is referred as an _argument_, and an output is referre
 [python-challenge 96]
 [python-challenge 95]
 [python-challenge 102]
-
 [python-challenge 55]
+
+<CenteredColumn>
+
+## Slicing a List
+
+<Chip>Select Subset</Chip>
+
+In Python, you can easily slice and retrieve a subset of a `list` using the slice notation. The basic syntax is `my_list[start:stop]` where `my_list` is a `list`-like value (or a variable). `start` and `stop` specify the _index_ where you would like to start/stop retrieving values.
+
+</CenteredColumn>
+
+<ListWithTitle
+  title="Slicing"
+  items={[
+    <>
+      <code>my_list[start:stop]</code> retrieves all values from{" "}
+      <code>start</code> to <code>stop - 1.</code>
+    </>,
+    <>
+      <code>my_list[start:]</code> retrieves all values from <code>start</code>{" "}
+      to the end of the list.
+    </>,
+    <>
+      <code>my_list[:stop]</code> retrieves all values from the beginning to{" "}
+      <code>stop - 1.</code>
+    </>,
+    <>
+      <code>my_list[:]</code> retrieves all values from the list. This is often
+      used to create a shallow copy of a list.
+    </>,
+  ]}
+/>
+
 [python-challenge 79]
 [python-challenge 83]
 [python-challenge 115]
