@@ -165,7 +165,7 @@ export default function NotesPage() {
               date="2024-09-17"
               title="Introduction to Jupyter and Pandas"
               colorTheme={ColorTheme.Orange}
-              show={false}
+              show={true}
             />
 
             <NoteItem
@@ -181,7 +181,7 @@ export default function NotesPage() {
               date="2024-09-19"
               title="Pandas Filtering and Sorting"
               colorTheme={ColorTheme.Orange}
-              show={false}
+              show={true}
             />
 
             <NoteItem
