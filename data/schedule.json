@@ -87,18 +87,8 @@
   },
   {
     "date": "2024-09-24",
-    "type": "QUIZ",
-    "text": "Quiz 2"
-  },
-  {
-    "date": "2024-09-24",
     "type": "LECTURE",
-    "text": ["Pandas Data Types", "Column Operations"]
-  },
-  {
-    "date": "2024-09-25",
-    "type": "CASE_STUDY",
-    "text": "Problem Set - Variables, Data Types, Conditional Logic"
+    "text": ["Pandas Data Types", "Column Operations", "Problem Set Workday"]
   },
   {
     "date": "2024-09-26",
@@ -106,9 +96,19 @@
     "text": ["Missing Values", "Datetime", "Aggregations", "Merges"]
   },
   {
+    "date": "2024-09-26",
+    "type": "QUIZ",
+    "text": "Quiz 2"
+  },
+  {
+    "date": "2024-09-27",
+    "type": "EXERCISE",
+    "text": "Exercise 6"
+  },
+  {
     "date": "2024-09-30",
     "type": "CASE_STUDY",
-    "text": "Case Study 1 - Chicago Rideshare Vehicles"
+    "text": "Problem Set - Variables, Data Types, Conditional Logic"
   },
   {
     "date": "2024-10-01",
@@ -117,8 +117,8 @@
   },
   {
     "date": "2024-10-02",
-    "type": "EXERCISE",
-    "text": "Exercise 6"
+    "type": "CASE_STUDY",
+    "text": "Case Study 1 - Chicago Rideshare Vehicles"
   },
   {
     "date": "2024-10-03",

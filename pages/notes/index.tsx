@@ -197,7 +197,7 @@ export default function NotesPage() {
               date="2024-09-24"
               title="Pandas Data Types and Column Operations"
               colorTheme={ColorTheme.Orange}
-              show={false}
+              show={true}
             />
 
             <NoteItem
@@ -213,7 +213,7 @@ export default function NotesPage() {
               date="2024-09-26"
               title="Missing Values, Datetime, Aggregation, and Merges"
               colorTheme={ColorTheme.Orange}
-              show={false}
+              show={true}
             />
 
             <NoteItem
