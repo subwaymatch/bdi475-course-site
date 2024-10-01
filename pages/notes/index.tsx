@@ -217,7 +217,7 @@ export default function NotesPage() {
             />
 
             <NoteItem
-              href="https://github.com/bdi475/notebooks/blob/main/L11-pandas-update-cells-more-exercises-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/main/L11-pandas-update-cells-more-exercises-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/pandas-gray-bg.png"
