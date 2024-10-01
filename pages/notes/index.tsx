@@ -229,7 +229,7 @@ export default function NotesPage() {
               date="2024-10-01"
               title="Update Cells, More Exercises"
               colorTheme={ColorTheme.Orange}
-              show={false}
+              show={true}
             />
 
             <NoteItem
@@ -245,7 +245,7 @@ export default function NotesPage() {
               date="2024-10-03"
               title="Merge and String Methods"
               colorTheme={ColorTheme.Orange}
-              show={false}
+              show={true}
             />
           </Row>
 
