@@ -308,7 +308,7 @@ export default function NotesPage() {
               date="2024-10-15"
               title="SQL Joins"
               colorTheme={ColorTheme.Green}
-              show={false}
+              show={true}
             />
           </Row>
 
