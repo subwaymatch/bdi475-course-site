@@ -355,7 +355,7 @@ export default function NotesPage() {
               date="2024-11-05"
               title="Line, Scatter, and Bar Plots"
               colorTheme={ColorTheme.Blue}
-              show={false}
+              show={true}
             />
 
             <NoteItem
@@ -371,7 +371,7 @@ export default function NotesPage() {
               date="2024-11-07"
               title="Advanced Plotly Visualizations"
               colorTheme={ColorTheme.Blue}
-              show={false}
+              show={true}
             />
 
             <NoteItem
