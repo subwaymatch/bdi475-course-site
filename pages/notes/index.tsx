@@ -387,7 +387,7 @@ export default function NotesPage() {
               date="2024-11-12"
               title="In-class DataViz Challenge Day"
               colorTheme={ColorTheme.Blue}
-              show={false}
+              show={true}
             />
 
             <NoteItem
