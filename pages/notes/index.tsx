@@ -403,7 +403,7 @@ export default function NotesPage() {
               date="2024-11-14"
               title="Introduction to Tableau"
               colorTheme={ColorTheme.Blue}
-              show={false}
+              show={true}
             />
 
             <NoteItem
@@ -419,7 +419,7 @@ export default function NotesPage() {
               date="2024-11-19"
               title="Advanced Tableau Visualizations"
               colorTheme={ColorTheme.Blue}
-              show={false}
+              show={true}
             />
           </Row>
 
