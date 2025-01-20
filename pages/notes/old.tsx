@@ -35,7 +35,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2023-08-24"
+              date="2025-01-23"
               title="Intro to Analytics"
               colorTheme={ColorTheme.Green}
               show={true}
@@ -51,7 +51,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2023-08-24"
+              date="2025-01-23"
               title="Intro to Python"
               colorTheme={ColorTheme.Blue}
               show={true}
@@ -67,7 +67,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2023-08-24"
+              date="2024-08-29"
               title="Data Types and Variables"
               colorTheme={ColorTheme.Green}
               show={true}
@@ -83,7 +83,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2023-08-29"
+              date="2024-09-03"
               title="Operators, Booleans, and Conditionals"
               colorTheme={ColorTheme.Green}
               show={true}
@@ -99,7 +99,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2023-08-31"
+              date="2024-09-05"
               title="Lists and Loops"
               colorTheme={ColorTheme.Blue}
               show={true}
@@ -115,7 +115,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2023-09-05"
+              date="2024-09-10"
               title="Collections and Strings"
               colorTheme={ColorTheme.Purple}
               show={true}
@@ -131,7 +131,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2023-09-07"
+              date="2024-09-12"
               title="Functions"
               colorTheme={ColorTheme.Blue}
               show={true}
@@ -153,7 +153,7 @@ export default function NotesPage() {
 
           <Row>
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/7fe9fb6559b012d26d34f21234aa6b506fcb261a/L07-introduction-to-jupyter-and-pandas-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/main/L07-introduction-to-jupyter-and-pandas-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/pandas-gray-bg.png"
@@ -162,14 +162,14 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2023-09-12"
+              date="2024-09-17"
               title="Introduction to Jupyter and Pandas"
               colorTheme={ColorTheme.Orange}
               show={true}
             />
 
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/7fe9fb6559b012d26d34f21234aa6b506fcb261a/L08-pandas-filtering-and-sorting-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/main/L08-pandas-filtering-and-sorting-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/pandas-gray-bg.png"
@@ -178,14 +178,14 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2023-09-14"
+              date="2024-09-19"
               title="Pandas Filtering and Sorting"
               colorTheme={ColorTheme.Orange}
               show={true}
             />
 
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/45cd2d94aabf112355b16283127ad3f26968d1a3/L09-pandas-column-operations-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/main/L09-pandas-column-operations-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/pandas-gray-bg.png"
@@ -194,14 +194,14 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2023-09-19"
+              date="2024-09-24"
               title="Pandas Data Types and Column Operations"
               colorTheme={ColorTheme.Orange}
               show={true}
             />
 
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/45cd2d94aabf112355b16283127ad3f26968d1a3/L10-missing-values-datetime-aggregation-joins-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/main/L10-missing-values-datetime-aggregation-joins-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/pandas-gray-bg.png"
@@ -210,14 +210,14 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2023-09-21"
+              date="2024-09-26"
               title="Missing Values, Datetime, Aggregation, and Merges"
               colorTheme={ColorTheme.Orange}
               show={true}
             />
 
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/2319edbc5bfe5730d83cc11a0b1b4e1123333e77/L11-pandas-update-cells-more-exercises-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/main/L11-pandas-update-cells-more-exercises-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/pandas-gray-bg.png"
@@ -226,8 +226,24 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2023-09-26"
+              date="2024-10-01"
               title="Update Cells, More Exercises"
+              colorTheme={ColorTheme.Orange}
+              show={true}
+            />
+
+            <NoteItem
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/main/L12-pandas-merge-string-methods-SOLUTION.ipynb"
+              thumbnail={
+                <Image
+                  src="/images/notes/pandas-gray-bg.png"
+                  width={900}
+                  height={450}
+                  alt=""
+                />
+              }
+              date="2024-10-03"
+              title="Merge and String Methods"
               colorTheme={ColorTheme.Orange}
               show={true}
             />
@@ -257,7 +273,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2023-10-03"
+              date="2024-10-08"
               title="Introduction to SQL"
               colorTheme={ColorTheme.Green}
               show={true}
@@ -273,7 +289,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2023-10-05"
+              date="2024-10-10"
               title="More SQL Queries and Aggregations"
               colorTheme={ColorTheme.Green}
               show={true}
@@ -289,7 +305,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2023-10-10"
+              date="2024-10-15"
               title="SQL Joins"
               colorTheme={ColorTheme.Green}
               show={true}
@@ -311,7 +327,7 @@ export default function NotesPage() {
 
           <Row>
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/10c3cc373456dabc254cd5e618ba839c1698b6ba/L21-intro-to-visualizations-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/7d5ad1b6038f4840ff4856123b94326a5448ab30/L20-intro-to-visualizations-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/dataviz.png"
@@ -320,14 +336,14 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2023-10-26"
+              date="2024-10-31"
               title="Introduction to DataViz"
               colorTheme={ColorTheme.Blue}
               show={true}
             />
 
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/01a3cd4136f3a8a8a7d4aca73d4bdc7aae888b79/L22-line-bar-scatter-plots-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/7d5ad1b6038f4840ff4856123b94326a5448ab30/L21-line-bar-scatter-plots-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/dataviz.png"
@@ -336,14 +352,14 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2023-10-31"
+              date="2024-11-05"
               title="Line, Scatter, and Bar Plots"
               colorTheme={ColorTheme.Blue}
               show={true}
             />
 
             <NoteItem
-              href="https://nbviewer.org/github/bdi475/notebooks/blob/01a3cd4136f3a8a8a7d4aca73d4bdc7aae888b79/L23-advanced-visualizations-SOLUTION.ipynb"
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/7d5ad1b6038f4840ff4856123b94326a5448ab30/L22-advanced-visualizations-SOLUTION.ipynb"
               thumbnail={
                 <Image
                   src="/images/notes/dataviz.png"
@@ -352,8 +368,24 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2023-11-02"
+              date="2024-11-07"
               title="Advanced Plotly Visualizations"
+              colorTheme={ColorTheme.Blue}
+              show={true}
+            />
+
+            <NoteItem
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/2340c9e6f6a76b62b1dcd6bb755af52da4f7f854/L23-in-class-dataviz-challenges-SOLUTION.ipynb"
+              thumbnail={
+                <Image
+                  src="/images/notes/dataviz.png"
+                  width={900}
+                  height={450}
+                  alt=""
+                />
+              }
+              date="2024-11-12"
+              title="In-class DataViz Challenge Day"
               colorTheme={ColorTheme.Blue}
               show={true}
             />
@@ -368,7 +400,7 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2023-11-09"
+              date="2024-11-14"
               title="Introduction to Tableau"
               colorTheme={ColorTheme.Blue}
               show={true}
@@ -384,8 +416,55 @@ export default function NotesPage() {
                   alt=""
                 />
               }
-              date="2023-11-14"
+              date="2024-11-19"
               title="Advanced Tableau Visualizations"
+              colorTheme={ColorTheme.Blue}
+              show={true}
+            />
+          </Row>
+
+          <Row>
+            <Col>
+              <h2
+                className="sectionTitle"
+                style={{
+                  marginTop: "4rem",
+                }}
+              >
+                Final Case Study <span className="blue accent" />
+              </h2>
+            </Col>
+          </Row>
+
+          <Row>
+            <NoteItem
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/main/case-study-06-clean-data.ipynb"
+              thumbnail={
+                <Image
+                  src="/images/notes/dataviz.png"
+                  width={900}
+                  height={450}
+                  alt=""
+                />
+              }
+              date="2024-12-03"
+              title="Cleaning and Concatenating Data Files"
+              colorTheme={ColorTheme.Blue}
+              show={true}
+            />
+
+            <NoteItem
+              href="https://nbviewer.org/github/bdi475/notebooks/blob/57847e1e6cc62d7808984506fd9f9cbb7d18169e/case-study-06-NLP.ipynb"
+              thumbnail={
+                <Image
+                  src="/images/notes/dataviz.png"
+                  width={900}
+                  height={450}
+                  alt=""
+                />
+              }
+              date="2024-12-05"
+              title="Natural Language Processing"
               colorTheme={ColorTheme.Blue}
               show={true}
             />
