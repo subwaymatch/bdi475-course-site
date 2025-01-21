@@ -36,22 +36,22 @@ function Policies() {
                     Your attendance is reflected towards the participation
                     points. Up to 2 absences are allowed without a prior
                     approval (no points will be deducted for the first 2
-                    absences). For any special occasions, please email Amarthya
+                    absences). For any special occasions, please email Se-ya
                     in advance.
                   </p>
                   <p className={styles.text}>
-                    Amarthya, our TA, will be managing the attendance and
+                    Se-ya, our TA, will be managing the attendance and
                     coordinating with those who are absent. If you are going to
-                    miss a class, please directly email Amarthya at{" "}
+                    miss a class, please directly email Se-ya at{" "}
                     <a
-                      href="mailto:kuchana2@illinois.edu"
-                      title="kuchana2@illinois.edu"
+                      href="mailto:seyakim2@illinois.edu"
+                      title="seyakim2@illinois.edu"
                     >
-                      kuchana2@illinois.edu ✉️
+                      seyakim2@illinois.edu ✉️
                     </a>{" "}
                     with the following subject format - "BDI 475: Absent -
                     [Name] - [Date(s)]" (example: "BDI 475: Absent - John Doe -
-                    09/14/2023) with documentation.
+                    01/21/2025) with documentation.
                   </p>
                   <p className={styles.text}>
                     👉 Valid documentation include but are not limited to:
@@ -241,15 +241,13 @@ function Disclosures() {
         <Row>
           <Col>
             <div className={styles.item}>
-              <h3>Food/Housing Insecurity Statement</h3>
+              <h3>Building Emergency Procedures 	
+              </h3>
 
               <Row>
                 <Col xxl={8} xl={10} lg={12}>
                   <p className={styles.text}>
-                    Any student who faces challenges securing their food or
-                    housing and believes this may affect their performance in
-                    the course is urged to contact the Dean of Students for
-                    support and alert the course instructor.
+                  In the event of a tornado warning, please seek shelter in the Wohlers Hall basement or the Armory, or in the BIF basement between 8 am and 4:30 pm weekdays (the nearest designated University tornado shelters).  If a tornado is imminent, the BIF basement stairwells also can be used on an emergency basis.  In the event of a fire in BIF, exit BIF and proceed to 141 Wohlers Hall.  In the event of threat from a shooter on campus, lock down the classroom and move to a place of safety within the classroom.  If you encounter a suspicious package, do not touch the package; alert campus security, and refrain from cell phone usage until the situation is resolved.  More detailed information and action instructions are available in the <a href="https://police.illinois.edu/em/building-emergency-action-plans/">Building Emergency Action Plan</a>.
                   </p>
                 </Col>
               </Row>
@@ -257,78 +255,6 @@ function Disclosures() {
           </Col>
         </Row>
 
-        <Row>
-          <Col>
-            <div className={styles.item}>
-              <h3>Disability Resource Statement</h3>
-
-              <Row>
-                <Col xxl={8} xl={10} lg={12}>
-                  <p className={styles.text}>
-                    To obtain disability-related academic adjustments and/or
-                    auxiliary aids, students with disabilities must contact the
-                    course instructor and the Disability Resources and
-                    Educational Services (DRES) as soon as possible. To contact
-                    DRES, you may visit 1207 S. Oak St., Champaign, call
-                    217-333-4603, email disability@illinois.edu or go to the
-                    DRES website: www.disability.illinois.edu.
-                  </p>
-                </Col>
-              </Row>
-            </div>
-          </Col>
-        </Row>
-
-        <Row>
-          <Col>
-            <div className={styles.item}>
-              <h3>COVID-19 Statement</h3>
-
-              <Row>
-                <Col xxl={8} xl={10} lg={12}>
-                  <p className={styles.text}>
-                    If you feel ill or unable to come to class or complete class
-                    assignments due to issues related to COVID-19, including but
-                    not limited to testing positive yourself, feeling ill,
-                    caring for a family member with COVID-19, or having
-                    unexpected child-care obligations, you should contact your
-                    instructor immediately, and you are encouraged to copy your
-                    academic advisor.
-                  </p>
-                </Col>
-              </Row>
-            </div>
-          </Col>
-        </Row>
-
-        <Row>
-          <Col>
-            <div className={styles.item}>
-              <h3>Building Emergency Procedures</h3>
-
-              <Row>
-                <Col xxl={8} xl={10} lg={12}>
-                  <p className={styles.text}>
-                    In the event of a tornado warning, please seek shelter in
-                    the Wohlers Hall basement or the Armory, or in the BIF
-                    basement between 8 am and 4:30 pm weekdays (the nearest
-                    designated University tornado shelters). If a tornado is
-                    imminent, the BIF basement stairwells also can be used on an
-                    emergency basis. In the event of a fire in BIF, exit BIF and
-                    proceed to 141 Wohlers Hall. In the event of threat from a
-                    shooter on campus, lock down the classroom and move to a
-                    place of safety within the classroom. If you encounter a
-                    suspicious package, do not touch the package; alert campus
-                    security, and refrain from cell phone usage until the
-                    situation is resolved. More detailed information and action
-                    instructions are available in the Building Emergency Action
-                    Plan.
-                  </p>
-                </Col>
-              </Row>
-            </div>
-          </Col>
-        </Row>
 
         <Row>
           <Col>
@@ -367,6 +293,7 @@ function Disclosures() {
             </div>
           </Col>
         </Row>
+
 
         <Row>
           <Col>
@@ -408,6 +335,47 @@ function Disclosures() {
           </Col>
         </Row>
 
+        <Row>
+          <Col>
+            <div className={styles.item}>
+              <h3>Food/Housing Insecurity Statement</h3>
+
+              <Row>
+                <Col xxl={8} xl={10} lg={12}>
+                  <p className={styles.text}>
+                    Any student who faces challenges securing their food or
+                    housing and believes this may affect their performance in
+                    the course is urged to contact the Dean of Students for
+                    support and alert the course instructor.
+                  </p>
+                </Col>
+              </Row>
+            </div>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col>
+            <div className={styles.item}>
+              <h3>Disability Resource Statement</h3>
+
+              <Row>
+                <Col xxl={8} xl={10} lg={12}>
+                  <p className={styles.text}>
+                    To obtain disability-related academic adjustments and/or
+                    auxiliary aids, students with disabilities must contact the
+                    course instructor and the Disability Resources and
+                    Educational Services (DRES) as soon as possible. To contact
+                    DRES, you may visit 1207 S. Oak St., Champaign, call
+                    217-333-4603, email <a href="mailto:disability@illinois.edu">disability@illinois.edu</a> or go to the
+                    DRES website: <a href="https://www.disability.illinois.edu">www.disability.illinois.edu</a>.
+                  </p>
+                </Col>
+              </Row>
+            </div>
+          </Col>
+        </Row>
+      
         <Row>
           <Col>
             <div className={styles.item}>
@@ -455,8 +423,7 @@ function Disclosures() {
                 the counseling center website site at:
                 <a href="http://counselingcenter.illinois.edu/about-us/embedded-counselors">
                   http://counselingcenter.illinois.edu/about-us/embedded-counselors
-                </a>
-                .
+                </a>.
               </p>
             </div>
           </Col>
@@ -476,6 +443,39 @@ function Disclosures() {
               <span className={styles.address}>
                 1207 S Oak St, Champaign, IL
               </span>
+            </div>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col>
+            <div className={styles.item}>
+              <h3>Class Session Recording</h3>
+
+              <Row>
+                <Col xxl={8} xl={10} lg={12}>
+                  <p className={styles.text}>
+                  This class is not recorded. However, all lecture notes are posted on Canvas after each lecture.
+                  </p>
+                </Col>
+              </Row>
+            </div>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col>
+            <div className={styles.item}>
+              <h3>Accommodations for Religious Observance	
+              </h3>
+
+              <Row>
+                <Col xxl={8} xl={10} lg={12}>
+                  <p className={styles.text}>
+                  Students must submit requests for accommodations for religious observances directly to instructors. The request should be submitted in advance of the conflict to allow for enough time both for consideration of the request and facilitation of alternative arrangements, as necessary. If students need assistance in formulating the request, the Office of the Dean of Students offers an <a href="https://cm.maxient.com/reportingform.php?UnivofIllinois&layout_id=42">optional resource</a>. that should prove helpful. For more information and/or guidance, please contact the <a href="https://odos.illinois.edu/resources/students/religious-observances">Office of the Dean of Students</a>.
+                  </p>
+                </Col>
+              </Row>
             </div>
           </Col>
         </Row>

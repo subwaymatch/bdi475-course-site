@@ -49,7 +49,7 @@ export default function CourseInformation() {
             <Col md={4}>
               <div className={styles.displayBox}>
                 <Chip>Term</Chip>
-                <span className={styles.largeText}>Fall 2024</span>
+                <span className={styles.largeText}>Spring 2025</span>
               </div>
             </Col>
 
@@ -57,14 +57,14 @@ export default function CourseInformation() {
               <div className={styles.displayBox}>
                 <Chip color="green">Class Time &amp; Location</Chip>
                 <div className={styles.largeText}>
-                  {/* Section DAA: Tues &amp; Thurs 12:30-1:50 PM{" "}
+                  Section DAA: Tues &amp; Thurs 12:30-1:50 PM{" "}
                   <span className="color-gray">@ 226 Wohlers</span>
-                  <br /> */}
+                  {/* <br />
                   Section B: Tues &amp; Thurs 2:00-3:20 PM{" "}
                   <span className="color-gray">@ 3041 BIF</span>
                   <br />
                   Section A: Tues &amp; Thurs 3:30-4:50 PM{" "}
-                  <span className="color-gray">@ 3007 BIF</span>
+                  <span className="color-gray">@ 3007 BIF</span> */}
                 </div>
               </div>
             </Col>
@@ -82,15 +82,15 @@ export default function CourseInformation() {
                 <div className={styles.largeText}>
                   <span className="color-green">Park</span>
                   <br />
-                  Thursdays 5:00-6:00 PM
+                  Thursdays 6:00-7:00 PM
                 </div>
               </div>
 
               <div className={styles.displayBox}>
                 <div className={styles.largeText}>
-                  <span className="color-green">Amarthya</span>
+                  <span className="color-green">Se-ya Kim</span>
                   <br />
-                  Mondays 4:00-5:00 PM
+                  TBD
                 </div>
               </div>
 
@@ -171,7 +171,7 @@ export default function CourseInformation() {
                     Greetings! Please call me <code>Park</code>. I started
                     programming as a hobby in elementary school. During my final
                     year as an accounting major here, I've made up my mind to
-                    pursue what I love to do! Fast-forward to 2024, I'm excited
+                    pursue what I love to do! Fast-forward to 2025, I'm excited
                     to be back at my alma mater to be a part of a leading-edge
                     data analytics curriculum. My email is{" "}
                     <a href="mailto:ypark32@illinois.edu">
@@ -221,23 +221,15 @@ export default function CourseInformation() {
               >
                 <div className={styles.memberHeader}>
                   <span className={styles.role}>Teaching Assistant</span>
-                  <span className={styles.name}>Amarthya Kuchana</span>
-                  <span className={styles.title}>MS Statistics</span>
+                  <span className={styles.name}>Se-ya Kim</span>
+                  <span className={styles.title}>Master of Accounting Science</span>
                 </div>
 
                 <div className={styles.memberDesc}>
                   <p className={styles.text}>
-                    Hello All! I'm Amarthya, a grad student from
-                    Statistics-Analytics. I'm particularly interested in Machine
-                    Learning, Deep Learning, and AI, with a special focus on
-                    predictive analytics. Outside of academics, I enjoy watching
-                    movies and am a big fan of soccer. Looking forward to an
-                    exciting semester ahead! If you ever need help or have
-                    questions, feel free to reach out to me at{" "}
-                    <a href="mailto:kuchana2@illinois.edu">
-                      kuchana2@illinois.edu
+                    <a href="mailto:seyakim2@illinois.edu">
+                    seyakim2@illinois.edu
                     </a>
-                    .
                   </p>
                 </div>
               </Col>
@@ -253,14 +245,14 @@ export default function CourseInformation() {
                 }}
               >
                 <div className={styles.memberImage}>
-                  <Image
+                  {/* <Image
                     src="/images/amarthya_square_bw.jpg"
                     width={1000}
                     height={1000}
-                  />
+                  /> */}
 
                   <div className={styles.imageLabel}>
-                    <Chip color="black">Amarthya</Chip>
+                    <Chip color="black">Se-ya</Chip>
                   </div>
                 </div>
               </Col>
