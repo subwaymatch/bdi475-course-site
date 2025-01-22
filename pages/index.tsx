@@ -44,7 +44,7 @@ export default function MainPage() {
 
               <Col lg={6}>
                 <a
-                  href="https://canvas.illinois.edu/courses/51399"
+                  href="https://canvas.illinois.edu/courses/55711"
                   className={styles.linkItem}
                 >
                   <div className={styles.linkText}>
