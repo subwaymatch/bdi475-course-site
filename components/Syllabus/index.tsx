@@ -86,13 +86,13 @@ export default function CourseInformation() {
                 </div>
               </div>
 
-              <div className={styles.displayBox}>
+              {/* <div className={styles.displayBox}>
                 <div className={styles.largeText}>
                   <span className="color-green">Se-ya Kim</span>
                   <br />
                   TBD
                 </div>
-              </div>
+              </div> */}
 
               <div className={styles.displayBox}>
                 <div className={styles.largeText}>
@@ -222,14 +222,28 @@ export default function CourseInformation() {
                 <div className={styles.memberHeader}>
                   <span className={styles.role}>Teaching Assistant</span>
                   <span className={styles.name}>Se-ya Kim</span>
-                  <span className={styles.title}>Master of Accounting Science</span>
+                  <span className={styles.title}>
+                    Master of Accounting Science
+                  </span>
                 </div>
 
                 <div className={styles.memberDesc}>
                   <p className={styles.text}>
+                    Hi everyone! My name is Se-Ya Kim, and I am a master's
+                    student in Accountancy at the Gies College of Business,
+                    specializing in financial reporting, assurance, and data
+                    analytics. I've also completed my undergraduate degree in
+                    Accountancy at the University of Illinois. Throughout my
+                    time at the U of I, I've had the opportunity to explore the
+                    integration of data analytics into accounting practices
+                    through various coursework and involvement in RSOs. I
+                    believe that data analytics is a powerful tool that fuels
+                    both our personal curiosity and professional growth. I'm
+                    looking forward to supporting you in BDI 475! My email is{" "}
                     <a href="mailto:seyakim2@illinois.edu">
-                    seyakim2@illinois.edu
+                      seyakim2@illinois.edu
                     </a>
+                    .
                   </p>
                 </div>
               </Col>
@@ -245,14 +259,14 @@ export default function CourseInformation() {
                 }}
               >
                 <div className={styles.memberImage}>
-                  {/* <Image
-                    src="/images/amarthya_square_bw.jpg"
+                  <Image
+                    src="/images/seya_square_bw.jpg"
                     width={1000}
                     height={1000}
-                  /> */}
+                  />
 
                   <div className={styles.imageLabel}>
-                    <Chip color="black">Se-ya</Chip>
+                    <Chip color="black">Se-Ya</Chip>
                   </div>
                 </div>
               </Col>
