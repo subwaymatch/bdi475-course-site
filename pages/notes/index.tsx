@@ -86,7 +86,7 @@ export default function NotesPage() {
               date="2025-01-28"
               title="Operators, Booleans, and Conditionals"
               colorTheme={ColorTheme.Green}
-              show={false}
+              show={true}
             />
 
             <NoteItem
