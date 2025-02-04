@@ -118,7 +118,7 @@ export default function NotesPage() {
               date="2025-02-04"
               title="Collections and Strings"
               colorTheme={ColorTheme.Purple}
-              show={false}
+              show={true}
             />
 
             <NoteItem
