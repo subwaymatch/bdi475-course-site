@@ -165,7 +165,7 @@ export default function NotesPage() {
               date="2025-02-11"
               title="Introduction to Jupyter and Pandas"
               colorTheme={ColorTheme.Orange}
-              show={false}
+              show={true}
             />
 
             <NoteItem
