@@ -181,7 +181,7 @@ export default function NotesPage() {
               date="2025-02-13"
               title="Pandas Filtering and Sorting"
               colorTheme={ColorTheme.Orange}
-              show={false}
+              show={true}
             />
 
             <NoteItem
