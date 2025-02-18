@@ -197,7 +197,7 @@ export default function NotesPage() {
               date="2025-02-18"
               title="Pandas Data Types and Column Operations"
               colorTheme={ColorTheme.Orange}
-              show={false}
+              show={true}
             />
 
             <NoteItem
