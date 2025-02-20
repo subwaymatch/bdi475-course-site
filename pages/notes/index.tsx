@@ -213,7 +213,7 @@ export default function NotesPage() {
               date="2025-02-20"
               title="Missing Values, Datetime, Aggregation, and Merges"
               colorTheme={ColorTheme.Orange}
-              show={false}
+              show={true}
             />
 
             <NoteItem
