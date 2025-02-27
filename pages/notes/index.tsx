@@ -245,7 +245,7 @@ export default function NotesPage() {
               date="2025-02-27"
               title="Merge and String Methods"
               colorTheme={ColorTheme.Orange}
-              show={false}
+              show={true}
             />
           </Row>
 
