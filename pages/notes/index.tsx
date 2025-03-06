@@ -292,7 +292,7 @@ export default function NotesPage() {
               date="2025-03-06"
               title="More SQL Queries and Aggregations"
               colorTheme={ColorTheme.Green}
-              show={false}
+              show={true}
             />
 
             <NoteItem
