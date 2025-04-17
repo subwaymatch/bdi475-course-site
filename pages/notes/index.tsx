@@ -387,7 +387,7 @@ export default function NotesPage() {
               date="2025-04-15"
               title="In-class DataViz Challenge Day"
               colorTheme={ColorTheme.Blue}
-              show={false}
+              show={true}
             />
 
             <NoteItem
@@ -403,7 +403,7 @@ export default function NotesPage() {
               date="2025-04-17"
               title="Introduction to Tableau"
               colorTheme={ColorTheme.Blue}
-              show={false}
+              show={true}
             />
 
             <NoteItem
