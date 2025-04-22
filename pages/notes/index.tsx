@@ -419,7 +419,7 @@ export default function NotesPage() {
               date="2025-04-22"
               title="Advanced Tableau Visualizations"
               colorTheme={ColorTheme.Blue}
-              show={false}
+              show={true}
             />
           </Row>
 
