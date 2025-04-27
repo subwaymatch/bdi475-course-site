@@ -274,13 +274,13 @@
   },
   {
     "date": "2025-05-01",
-    "type": "LECTURE",
-    "text": ["Final Case Study", "Natural Language Processing"]
+    "type": "NO_LECTURE",
+    "text": "Workday"
   },
   {
     "date": "2025-05-06",
-    "type": "LECTURE",
-    "text": ["Milestone Check", "Individual Feedback"]
+    "type": "NO_LECTURE",
+    "text": "Workday"
   },
   {
     "date": "2025-05-08",
@@ -288,12 +288,7 @@
     "text": "Reading Day"
   },
   {
-    "date": "2025-05-10",
-    "type": "CASE_STUDY",
-    "text": "Final Case Study First Draft Due (Optional)"
-  },
-  {
-    "date": "2025-05-16",
+    "date": "2025-05-13",
     "type": "CASE_STUDY",
     "text": "Final Case Study Due"
   }
